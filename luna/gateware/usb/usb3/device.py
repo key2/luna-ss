@@ -43,6 +43,56 @@ class USBSuperSpeedDevice(Elaboratable):
         self.link_trained   = Signal()
         self.link_in_reset  = Signal()
 
+        # Debug taps (physical-layer visibility for hardware bring-up).
+        self.debug_phy_ready              = Signal()
+        self.debug_send_lfps_polling      = Signal()
+        self.debug_lfps_polling_detected  = Signal()
+        self.debug_engage_terminations    = Signal()
+        self.debug_ts1_detected           = Signal()
+        self.debug_ts2_detected           = Signal()
+
+        # Debug taps (control-transfer/handshake path visibility for the
+        # SET_ADDRESS bring-up contract; prunable).
+        self.debug_hsk_ack_dispatch       = Signal()  # generator accepted an ACK request
+        self.debug_hsk_ep0_dispatch       = Signal()  # ...and it names endpoint 0
+        self.debug_status_received        = Signal()  # STATUS TP broadcast to endpoints
+        self.debug_address_changed        = Signal()  # SET_ADDRESS commit strobe
+        self.debug_address_nonzero        = Signal()  # current device address != 0
+        self.debug_hsk_pending0           = Signal()  # control iface demoted off fast path
+        self.debug_tp_hdr_accepted        = Signal()  # TP generator header entered link queue
+        self.debug_tp_hdr_valid           = Signal()  # TP generator holds a header (in SEND_x)
+        self.debug_link_hdr_blocked       = Signal()  # link header queue offered but not ready
+        self.debug_link_hdr_accepted      = Signal()  # link header queue consumed a header (any)
+        self.debug_tx_credits_zero        = Signal()  # transmitter holds no link credits
+        self.debug_recovery               = Signal()  # any recovery-required strobe
+        self.debug_hsk_ready              = Signal()  # generator ready as seen by the mux
+        self.debug_hsk_granted            = Signal()  # arbiter grant path active
+        self.debug_hsk_grant_is0          = Signal()  # grant parked on the control iface
+        self.debug_hsk_pass_is0           = Signal()  # fast path selecting the control iface
+        self.debug_hsk_any_dispatch       = Signal()  # generator accepted any request kind
+        self.debug_hsk_stall_dispatch     = Signal()  # ...specifically a STALL
+        self.debug_hsk_bus                = Signal(16) # arbiter cycle-trace bus
+
+        # Wire-level TX tap + RX ACK broadcast (open item #23 probes).
+        self.debug_wire_tx_data           = Signal(32) # pre-scrambler TX word
+        self.debug_wire_tx_ctrl           = Signal(4)
+        self.debug_wire_tx_strobe         = Signal()   # word consumed this cycle
+        self.debug_ack_received           = Signal()   # ACK TP broadcast strobe
+        self.debug_payload_underrun       = Signal()   # transmitter consumed invalid payload
+        self.debug_rx_dpp_invalid         = Signal()   # received DPP failed CRC-32
+        self.debug_rx_hdr_bad             = Signal()   # received header failed CRC (LBAD path)
+        # RX header field tap (bug-#34 ACK/DPH field probe): every header
+        # the link layer delivers to -- and is accepted by -- the protocol
+        # layer, with its type and raw DW1 (ACK TPs: nseq/rty/NumP; DPHs:
+        # dseq/EOB/length).  Registered; strobe aligned with the fields.
+        self.debug_rx_hdr_stb             = Signal()   # header accepted this cycle
+        self.debug_rx_hdr_type            = Signal(5)  # dw0[0:5] of that header
+        self.debug_rx_hdr_dw1             = Signal(32) # dw1 of that header
+        # Debug hook: strobe to force one link recovery entry from U0
+        # (hardware verdict path for the #29-#31 recovery-retransmit
+        # fixes; see link.force_recovery).
+        self.debug_force_recovery         = Signal()
+
         # Temporary, debug signals.
         self.rx_data_tap         = USBRawSuperSpeedStream()
         self.tx_data_tap         = USBRawSuperSpeedStream()
@@ -122,8 +172,32 @@ class USBSuperSpeedDevice(Elaboratable):
             self.link_trained     .eq(link.trained),
             self.link_in_reset    .eq(link.in_reset),
 
-            link.current_address  .eq(address)
+            link.current_address  .eq(address),
+
+            # Debug taps.
+            self.debug_phy_ready             .eq(physical.ready),
+            self.debug_send_lfps_polling     .eq(physical.send_lfps_polling),
+            self.debug_lfps_polling_detected .eq(physical.lfps_polling_detected),
+            self.debug_engage_terminations   .eq(physical.engage_terminations),
+            self.debug_ts1_detected          .eq(link.debug_ts1_detected),
+            self.debug_ts2_detected          .eq(link.debug_ts2_detected),
+            self.debug_wire_tx_data          .eq(physical.debug_tx_data),
+            self.debug_wire_tx_ctrl          .eq(physical.debug_tx_ctrl),
+            self.debug_wire_tx_strobe        .eq(physical.debug_tx_strobe),
+            self.debug_payload_underrun      .eq(link.debug_payload_underrun),
+            self.debug_rx_dpp_invalid        .eq(link.data_source_invalid),
+            self.debug_rx_hdr_bad            .eq(link.debug_rx_bad_packet),
         ]
+
+        # RX header field tap (bug-#34 probe): registered so the consumer
+        # sees stable fields aligned with the strobe.
+        m.d.ss += [
+            self.debug_rx_hdr_stb .eq(link.header_source.valid
+                                      & link.header_source.ready),
+            self.debug_rx_hdr_type.eq(link.header_source.header.dw0[0:5]),
+            self.debug_rx_hdr_dw1 .eq(link.header_source.header.dw1),
+        ]
+        m.d.comb += link.force_recovery.eq(self.debug_force_recovery)
 
         #
         # Protocol layer.
@@ -157,12 +231,60 @@ class USBSuperSpeedDevice(Elaboratable):
             protocol.endpoint_interface.tx_endpoint_number  .eq(endpoint_collection.tx_endpoint_number),
             protocol.endpoint_interface.tx_sequence_number  .eq(endpoint_collection.tx_sequence_number),
             protocol.endpoint_interface.tx_direction        .eq(endpoint_collection.tx_direction),
+            protocol.endpoint_interface.tx_eob              .eq(endpoint_collection.tx_eob),
+            endpoint_collection.tx_parameters_consumed
+                .eq(protocol.endpoint_interface.tx_parameters_consumed),
+
+            # Link state: burst engines void their grants while the link
+            # is out of U0 (see SuperSpeedEndpointInterface.link_reset).
+            endpoint_collection.link_reset                  .eq(~link.trained),
 
             # Handshake interface.
             protocol.endpoint_interface.handshakes_out      .connect(endpoint_collection.handshakes_out),
             protocol.endpoint_interface.handshakes_in       .connect(endpoint_collection.handshakes_in)
         ]
 
+
+        # Control-path debug taps (see __init__).  Registered: several of
+        # these sample deep combinational cones (the shared handshake
+        # strobes reach through the endpoint-mux arbitration from every
+        # interface's parameters); observing them combinationally drags
+        # that cone to wherever the consumer is placed and costs Fmax.
+        # They are event/level probes -- one cycle of lag is immaterial.
+        m.d.ss += [
+            self.debug_hsk_ack_dispatch .eq(endpoint_collection.handshakes_out.send_ack &
+                                            endpoint_collection.handshakes_out.ready),
+            self.debug_hsk_ep0_dispatch .eq(endpoint_collection.handshakes_out.send_ack &
+                                            endpoint_collection.handshakes_out.ready &
+                                            (endpoint_collection.handshakes_out.endpoint_number == 0)),
+            self.debug_status_received  .eq(endpoint_collection.handshakes_in.status_received),
+            self.debug_ack_received     .eq(endpoint_collection.handshakes_in.ack_received),
+            self.debug_address_changed  .eq(endpoint_collection.address_changed),
+            self.debug_address_nonzero  .eq(address != 0),
+            self.debug_hsk_pending0     .eq(endpoint_mux.debug_pending0_any),
+            self.debug_tp_hdr_accepted  .eq(protocol.debug_tp_hdr_accepted),
+            self.debug_tp_hdr_valid     .eq(protocol.debug_tp_hdr_valid),
+            self.debug_link_hdr_blocked .eq(link.header_sink.valid &
+                                            ~link.header_sink.ready),
+            self.debug_link_hdr_accepted.eq(link.header_sink.valid &
+                                            link.header_sink.ready),
+            self.debug_tx_credits_zero  .eq(link.debug_tx_credits == 0),
+            self.debug_recovery         .eq(link.debug_rec_timers |
+                                            link.debug_rec_rx |
+                                            link.debug_rec_tx),
+            self.debug_hsk_ready        .eq(endpoint_collection.handshakes_out.ready),
+            self.debug_hsk_granted      .eq(endpoint_mux.debug_granted),
+            self.debug_hsk_grant_is0    .eq(endpoint_mux.debug_grant_is0),
+            self.debug_hsk_pass_is0     .eq(endpoint_mux.debug_pass_is0),
+            self.debug_hsk_any_dispatch .eq((endpoint_collection.handshakes_out.send_ack |
+                                             endpoint_collection.handshakes_out.send_nrdy |
+                                             endpoint_collection.handshakes_out.send_erdy |
+                                             endpoint_collection.handshakes_out.send_stall) &
+                                            endpoint_collection.handshakes_out.ready),
+            self.debug_hsk_stall_dispatch.eq(endpoint_collection.handshakes_out.send_stall &
+                                             endpoint_collection.handshakes_out.ready),
+            self.debug_hsk_bus          .eq(endpoint_mux.debug_bus),
+        ]
 
         # If an endpoint wants to update our address or configuration, accept the update.
         with m.If(endpoint_collection.address_changed):

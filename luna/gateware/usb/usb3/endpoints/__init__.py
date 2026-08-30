@@ -7,3 +7,4 @@
 
 
 from .control import USB3ControlEndpoint
+from .ss_stream_out import SuperSpeedStreamOutEndpoint

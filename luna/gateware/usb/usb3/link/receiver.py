@@ -85,6 +85,8 @@ class RawHeaderPacketReceiver(Elaboratable):
         #
         # Receiver Sequencing
         #
+        is_hpstart = stream_matches_symbols(sink, SHP, SHP, SHP, EPF)
+
         with m.FSM(domain="ss"):
 
             # WAIT_FOR_HPSTART -- we're currently waiting for HPSTART framing, which indicates
@@ -94,7 +96,6 @@ class RawHeaderPacketReceiver(Elaboratable):
                 # Don't start our CRC until we're past our HPSTART header.
                 m.d.comb += crc16.clear.eq(1)
 
-                is_hpstart = stream_matches_symbols(sink, SHP, SHP, SHP, EPF)
                 with m.If(is_hpstart):
                     m.next = "RECEIVE_DW0"
 
@@ -154,7 +155,19 @@ class RawHeaderPacketReceiver(Elaboratable):
                         self.packet      .eq(packet)
                     ]
 
-                m.next = "WAIT_FOR_HPSTART"
+                # A new header packet may begin on this very cycle: nothing requires
+                # the link partner to leave a gap between consecutive header packets,
+                # and a host under load packs them back to back.  Treating this cycle
+                # as blind silently drops that header, desequencing the link (the
+                # next header triggers bad_sequence -> Recovery).  Restart reception
+                # immediately; our (registered) CRC clear below takes effect next
+                # cycle, after the comparisons above have already used this packet's
+                # running CRC.
+                with m.If(is_hpstart):
+                    m.d.comb += crc16.clear.eq(1)
+                    m.next = "RECEIVE_DW0"
+                with m.Else():
+                    m.next = "WAIT_FOR_HPSTART"
 
 
         return m
@@ -242,6 +255,11 @@ class HeaderPacketReceiver(Elaboratable):
         self.reject_power_state      = Signal()
         self.acknowledge_power_state = Signal()
 
+        # Debug taps (prunable).
+        self.debug_expected_seq      = Signal(3)
+        self.debug_rx_seq            = Signal(3)
+        self.debug_new_packet        = Signal()
+
 
     def elaborate(self, platform):
         m = Module()
@@ -266,7 +284,20 @@ class HeaderPacketReceiver(Elaboratable):
         #
 
         # Keep track of how many header received acknowledgements (LGOODs) we need to send.
-        acks_to_send      = Signal(range(self._buffer_count + 1), init=1)
+        #
+        # This backlog can exceed the buffer count: our link-command stream
+        # only gets the wire between packet transmissions (and yields it
+        # after every single command, as the command generator drops
+        # ``valid`` between commands), so while long data packets stream
+        # out, LGOODs for freshly received headers queue up.  The link
+        # partner may hold up to ``buffer_count`` headers outstanding and
+        # keeps sending as LCRDs return, so the transient backlog is
+        # bounded by roughly twice the buffer count.  A counter sized to
+        # ``buffer_count`` wraps under concurrent multi-endpoint traffic,
+        # silently discarding eight LGOODs at a time -- undetectable by the
+        # 3-bit sequence check, but the partner's PENDING_HP_TIMER then
+        # forces link recovery.  Size it with generous headroom.
+        acks_to_send      = Signal(range(4 * self._buffer_count + 1), init=1)
         enqueue_ack       = Signal()
         dequeue_ack       = Signal()
 
@@ -279,6 +310,9 @@ class HeaderPacketReceiver(Elaboratable):
         # Keep track of how many link credits we've yet to free.
         # We'll start with every one of our buffers marked as "pending free"; this ensures
         # we perform our credit restoration properly.
+        # (Pending credits are structurally bounded by the buffer count --
+        # a buffer cannot be refilled before its credit is announced -- but
+        # share the generous sizing above for uniformity.)
         credits_to_issue  = Signal.like(acks_to_send, init=self._buffer_count)
         enqueue_credit_issue = Signal()
         dequeue_credit_issue = Signal()
@@ -350,7 +384,13 @@ class HeaderPacketReceiver(Elaboratable):
         ignore_packets = Signal()
 
         # Create our raw packet parser / receiver.
-        m.submodules.receiver = rx = RawHeaderPacketReceiver()
+        #
+        # It is held in reset while the link is down: a header truncated
+        # by a retrain must not leave the parser mid-packet, where it
+        # would misinterpret training/idle words (or the first fresh
+        # header) as the remainder of the old one.
+        m.submodules.receiver = rx = \
+            ResetInserter({"ss": ~self.enable})(RawHeaderPacketReceiver())
         m.d.comb += [
             # Our receiver passively monitors the data received for header packets.
             rx.sink                   .tap(self.sink),
@@ -366,7 +406,12 @@ class HeaderPacketReceiver(Elaboratable):
             self.packet_received      .eq(rx.new_packet),
 
             # Notify the link layer if any bad packets are received; for diagnostics.
-            self.bad_packet_received  .eq(rx.bad_packet)
+            self.bad_packet_received  .eq(rx.bad_packet),
+
+            # Debug taps.
+            self.debug_expected_seq   .eq(expected_sequence_number),
+            self.debug_rx_seq         .eq(rx.packet.sequence_number),
+            self.debug_new_packet     .eq(rx.new_packet),
         ]
 
 
@@ -445,7 +490,15 @@ class HeaderPacketReceiver(Elaboratable):
         #
         # Link command generation.
         #
-        m.submodules.lc_generator = lc_generator = LinkCommandGenerator()
+        # The generator is held in reset while the link is down: a link
+        # command caught mid-transmission by a retrain (the arbiter
+        # switches to training sets and stalls our stream) would
+        # otherwise sit in the generator and be emitted -- stale -- onto
+        # the freshly retrained link, ahead of the sequence/credit
+        # advertisements.  Observed as a pre-recovery LCRD_n leaking out
+        # after re-entry, desynchronizing the partner's credit index.
+        m.submodules.lc_generator = lc_generator = \
+            ResetInserter({"ss": ~self.enable})(LinkCommandGenerator())
         m.d.comb += [
             self.source             .stream_eq(lc_generator.source),
             self.link_command_sent  .eq(lc_generator.done),
@@ -488,44 +541,6 @@ class HeaderPacketReceiver(Elaboratable):
                         m.next = "SEND_KEEPALIVE"
 
 
-
-                # Once we've become disabled, we'll want to prepare for our next enable.
-                # This means preparing for our advertisement, by:
-                with m.If((last_enable & ~self.enable) | self.usb_reset):
-                    m.d.ss += [
-                        # -Resetting our pending ACKs to 1, so we perform an sequence number advertisement
-                        #  when we're next enabled.
-                        acks_to_send          .eq(1),
-
-                        # -Decreasing our next sequence number; so we maintain a continuity of sequence numbers
-                        #  without counting the advertising one. This doesn't seem to be be strictly necessary
-                        #  per the spec; but seem to make analyzers happier, so we'll go with it.
-                        next_header_to_ack    .eq(next_header_to_ack - 1),
-
-                        # - Clearing all of our buffers.
-                        read_pointer          .eq(0),
-                        write_pointer         .eq(0),
-                        buffers_filled        .eq(0),
-
-                        # - Preparing to re-issue all of our buffer credits.
-                        next_credit_to_issue  .eq(0),
-                        credits_to_issue      .eq(self._buffer_count),
-
-                        # - Clear our pending events.
-                        lrty_pending          .eq(0),
-                        lbad_pending          .eq(0),
-                        keepalive_pending     .eq(0),
-                        ignore_packets        .eq(0)
-                    ]
-
-                    # If this is a USB Reset, also reset our sequences.
-                    with m.If(self.usb_reset):
-                        m.d.ss += [
-                            expected_sequence_number  .eq(0),
-                            next_header_to_ack        .eq(-1)
-                        ]
-
-
             # SEND_ACKS -- a valid header packet has been received, or we're advertising
             # our initial sequence number; send an LGOOD packet.
             with m.State("SEND_ACKS"):
@@ -537,16 +552,24 @@ class HeaderPacketReceiver(Elaboratable):
                     lc_generator.subtype       .eq(next_header_to_ack)
                 ]
 
-                # Wait until our link command is done, and then move on.
+                # Wait until our link command is done, and then re-arbitrate.
                 with m.If(lc_generator.done):
                     # Move to the next header packet in the sequence, and decrease
                     # the number of outstanding ACKs.
                     m.d.comb += dequeue_ack         .eq(1)
                     m.d.ss   += next_header_to_ack  .eq(next_header_to_ack + 1)
 
-                    # If this was the last ACK we had to send, move back to our dispatch state.
-                    with m.If(acks_to_send == 1):
-                        m.next = "DISPATCH_COMMAND"
+                    # Return to dispatch after *every* command, so the queues
+                    # are re-arbitrated by priority: staying while our own
+                    # queue is non-empty starves the other queues whenever
+                    # ours is continuously replenished by ongoing traffic.
+                    m.next = "DISPATCH_COMMAND"
+
+                # A link drop aborts the command (the generator is reset);
+                # dispatch runs fresh -- with re-initialized queues -- on
+                # the next link-up.
+                with m.If(~self.enable):
+                    m.next = "DISPATCH_COMMAND"
 
 
             # ISSUE_CREDITS -- header packet buffers have been freed; and we now need to notify the
@@ -560,15 +583,23 @@ class HeaderPacketReceiver(Elaboratable):
                     lc_generator.subtype       .eq(next_credit_to_issue)
                 ]
 
-                # Wait until our link command is done, and then move on.
+                # Wait until our link command is done, and then re-arbitrate.
                 with m.If(lc_generator.done):
                     # Move to the next credit...
                     m.d.comb += dequeue_credit_issue  .eq(1)
                     m.d.ss   += next_credit_to_issue  .eq(next_credit_to_issue + 1)
 
-                    # If this was the last credit we had to issue, move back to our dispatch state.
-                    with m.If(credits_to_issue == 1):
-                        m.next = "DISPATCH_COMMAND"
+                    # Re-arbitrate by priority after every command (see
+                    # SEND_ACKS): under sustained traffic the credit queue
+                    # refills continuously, and looping here starves the
+                    # pending-LGOOD queue -- the link partner then never
+                    # sees its headers acknowledged and (on real hosts) its
+                    # PENDING_HP_TIMER forces link recovery.
+                    m.next = "DISPATCH_COMMAND"
+
+                # Aborted by a link drop (see SEND_ACKS).
+                with m.If(~self.enable):
+                    m.next = "DISPATCH_COMMAND"
 
 
             # SEND_LBAD -- we've received a bad header packet; we'll need to let the other side know.
@@ -584,6 +615,10 @@ class HeaderPacketReceiver(Elaboratable):
                     m.d.ss += lbad_pending.eq(0)
                     m.next = "DISPATCH_COMMAND"
 
+                # Aborted by a link drop (see SEND_ACKS).
+                with m.If(~self.enable):
+                    m.next = "DISPATCH_COMMAND"
+
 
             # SEND_LRTY -- our transmitter has requested that we send an retry indication to the other side.
             # We'll do our transmitter a favor and do so.
@@ -595,6 +630,10 @@ class HeaderPacketReceiver(Elaboratable):
 
                 with m.If(lc_generator.done):
                     m.d.ss += lrty_pending.eq(0)
+                    m.next = "DISPATCH_COMMAND"
+
+                # Aborted by a link drop (see SEND_ACKS).
+                with m.If(~self.enable):
                     m.next = "DISPATCH_COMMAND"
 
 
@@ -617,6 +656,10 @@ class HeaderPacketReceiver(Elaboratable):
                     m.d.ss += keepalive_pending.eq(0)
                     m.next = "DISPATCH_COMMAND"
 
+                # Aborted by a link drop (see SEND_ACKS).
+                with m.If(~self.enable):
+                    m.next = "DISPATCH_COMMAND"
+
 
             # SEND_LXU -- we're being instructed to reject a requested power-state transfer.
             # We'll send an LXU packet to inform the other side of the rejection.
@@ -629,5 +672,80 @@ class HeaderPacketReceiver(Elaboratable):
                 with m.If(lc_generator.done):
                     m.d.ss += lxu_pending.eq(0)
                     m.next = "DISPATCH_COMMAND"
+
+                # Aborted by a link drop (see SEND_ACKS).
+                with m.If(~self.enable):
+                    m.next = "DISPATCH_COMMAND"
+
+
+        #
+        # Disable (link-down) preparation.
+        #
+        # This must run regardless of the FSM state: the historical
+        # placement inside DISPATCH_COMMAND missed the one-shot disable
+        # edge whenever the link dropped while a link command was being
+        # sent (SEND_ACKS / ISSUE_CREDITS under load) -- no advertisement
+        # was prepared, and the interrupted stale command leaked onto the
+        # retrained link.  Placed after the FSM so it takes priority over
+        # any same-cycle state assignment.
+        #
+        # Once we've become disabled, we'll want to prepare for our next
+        # enable.  This means preparing for our advertisement, by:
+        with m.If((last_enable & ~self.enable) | self.usb_reset):
+            m.d.ss += [
+                # -Resetting our pending ACKs to 1, so we perform a sequence number advertisement
+                #  when we're next enabled.
+                acks_to_send          .eq(1),
+
+                # -The advertisement must carry the sequence number of the last header packet we
+                #  received PROPERLY [USB3.2r1: 7.2.4.1.x] -- that is ``expected_sequence_number - 1``,
+                #  NOT ``next_header_to_ack - 1``: the latter lags by the pending-LGOOD backlog, and
+                #  under-advertising makes the partner retransmit headers we already received and
+                #  processed (observed as an immediate bad-sequence recovery loop after re-entry:
+                #  we under-advertise, the partner resends one header too many, and its next fresh
+                #  header then looks like a sequence skip).
+                next_header_to_ack    .eq(expected_sequence_number - 1),
+
+                # - RULE 2d [USB3.2r1: 7.2.4.1.x]: header packets already
+                #   counted as received (the advertisement above claims
+                #   them!) but not yet drained by the protocol layer MUST
+                #   still be delivered -- the partner will never
+                #   retransmit them.  The buffers, their pointers and the
+                #   fill level therefore SURVIVE the link-down; the
+                #   protocol layer keeps draining through the normal
+                #   queue path while the link retrains.  (The historical
+                #   unconditional clear silently dropped any header in
+                #   the 1-2 cycle buffer-to-drain window at the moment of
+                #   link-down.)
+                #
+                # - Credits: re-advertise only the buffers that are
+                #   actually FREE; the credits for still-occupied buffers
+                #   are enqueued by the drain logic as usual (converging
+                #   to the full count once drained).  A drain completing
+                #   this very cycle is accounted through
+                #   ``release_buffer``.
+                next_credit_to_issue  .eq(0),
+                credits_to_issue      .eq(self._buffer_count
+                                          - buffers_filled + release_buffer),
+
+                # - Clear our pending events.
+                lrty_pending          .eq(0),
+                lbad_pending          .eq(0),
+                keepalive_pending     .eq(0),
+                ignore_packets        .eq(0)
+            ]
+
+            # If this is a USB Reset, also reset our sequences -- and,
+            # unlike a link-down, fully clear the buffers (the protocol
+            # state is being torn down; rule 2d does not apply).
+            with m.If(self.usb_reset):
+                m.d.ss += [
+                    expected_sequence_number  .eq(0),
+                    next_header_to_ack        .eq(-1),
+                    read_pointer              .eq(0),
+                    write_pointer             .eq(0),
+                    buffers_filled            .eq(0),
+                    credits_to_issue          .eq(self._buffer_count),
+                ]
 
         return m

@@ -16,6 +16,7 @@ from .ltssm        import LTSSMController
 from .header       import HeaderQueue, HeaderQueueArbiter
 from .receiver     import HeaderPacketReceiver
 from .transmitter  import PacketTransmitter
+from ..physical.ctc import TxStreamSkidBuffer
 from .timers       import LinkMaintenanceTimers
 from .ordered_sets import TSTransceiver
 from .data         import DataPacketReceiver, DataPacketTransmitter, DataHeaderPacket
@@ -30,9 +31,11 @@ class USB3LinkLayer(Elaboratable):
 
     """
 
-    def __init__(self, *, physical_layer, ss_clock_frequency=125e6):
-        self._physical_layer  = physical_layer
-        self._clock_frequency = ss_clock_frequency
+    def __init__(self, *, physical_layer, ss_clock_frequency=125e6,
+                 tseq_burst_length=65536):
+        self._physical_layer    = physical_layer
+        self._clock_frequency   = ss_clock_frequency
+        self._tseq_burst_length = tseq_burst_length
 
         #
         # I/O port
@@ -54,6 +57,12 @@ class USB3LinkLayer(Elaboratable):
         self.data_sink_endpoint_number = Signal(4)
         self.data_sink_length          = Signal(range(1024 + 1))
         self.data_sink_direction       = Signal()
+        self.data_sink_eob             = Signal()
+
+        # Strobe: the parameters above were consumed for the packet whose
+        # transmission is beginning (see DataPacketTransmitter -- used by
+        # the endpoint multiplexer to release its parameter registers).
+        self.data_sink_parameters_consumed = Signal()
 
         # Device state for header packets
         self.current_address           = Signal(7)
@@ -62,6 +71,33 @@ class USB3LinkLayer(Elaboratable):
         self.trained                   = Signal()
         self.ready                     = Signal()
         self.in_reset                  = Signal()
+
+        # Debug hook: strobe to force ONE link recovery entry from U0
+        # (ORed into the LTSSM's recovery trigger).  Gives bench and
+        # simulation a cycle-exact recovery entry: the recovery-
+        # retransmit conformance fixes (#29-#31) are otherwise
+        # unreachable on a bench whose link never leaves U0, and the
+        # receiver's acked-but-undrained rule-2d window is only 1-2
+        # cycles wide.
+        self.force_recovery            = Signal()
+
+        # Debug taps.
+        self.debug_ts1_detected        = Signal()
+        self.debug_ts2_detected        = Signal()
+
+        # Recovery-cause debug taps (single-cycle strobes; prunable).
+        self.debug_rec_timers          = Signal()
+        self.debug_rec_rx              = Signal()
+        self.debug_rec_tx              = Signal()
+        self.debug_rx_bad_packet       = Signal()
+        self.debug_tx_credits          = Signal(3)
+        self.debug_tx_pending          = Signal(3)
+        self.debug_rx_expected_seq     = Signal(3)
+        self.debug_rx_seq              = Signal(3)
+        self.debug_dtx_fsm             = Signal(2)
+        self.debug_dsink_valid         = Signal()
+        self.debug_dsink_ready         = Signal()
+        self.debug_payload_underrun    = Signal()
 
         # Test and debug signals.
         self.disable_scrambling        = Signal()
@@ -85,13 +121,20 @@ class USB3LinkLayer(Elaboratable):
         #
         training_set_source = USBRawSuperSpeedStream()
 
-        m.submodules.ts = ts = TSTransceiver()
+        m.submodules.ts = ts = TSTransceiver(
+            tseq_burst_length=self._tseq_burst_length)
+
+        # The training-set stream is decoupled through a registered skid:
+        # the emitters' FSM state otherwise reaches through the transmit
+        # arbiter into the U0 datapath ready cone.
+        m.submodules.ts_skid = ts_skid = TxStreamSkidBuffer()
         m.d.comb += [
             # Note: we bring the physical layer's "raw" (non-descrambled) source to the TS detector,
             # as we'll still need to detect non-scrambled TS1s and TS2s if they arrive during normal
             # operation.
             ts.sink              .tap(physical_layer.raw_source),
-            training_set_source  .stream_eq(ts.source)
+            ts_skid.sink         .stream_eq(ts.source),
+            training_set_source  .stream_eq(ts_skid.source)
         ]
 
 
@@ -113,6 +156,22 @@ class USB3LinkLayer(Elaboratable):
         # Link Training and Status State Machine (LTSSM)
         #
         m.submodules.ltssm = ltssm = LTSSMController(ss_clock_frequency=self._clock_frequency)
+
+        # Distribute ``link_ready`` through a register: it is decoded
+        # combinationally from the LTSSM state, and its fanout otherwise
+        # reaches into U0 datapath enables all over the link layer.  U0
+        # entry/exit tolerates a cycle trivially.
+        link_ready = Signal()
+        m.d.ss += link_ready.eq(ltssm.link_ready)
+
+        send_tseq_burst_r = Signal()
+        send_ts1_burst_r  = Signal()
+        send_ts2_burst_r  = Signal()
+        m.d.ss += [
+            send_tseq_burst_r.eq(ltssm.send_tseq_burst),
+            send_ts1_burst_r .eq(ltssm.send_ts1_burst),
+            send_ts2_burst_r .eq(ltssm.send_ts2_burst),
+        ]
 
         tx_deemph = Mux(compliance_emitter.disable_deemph,
                         TXDeemphMode.DEEMPH_NONE,
@@ -147,15 +206,20 @@ class USB3LinkLayer(Elaboratable):
             ltssm.tseq_detected                  .eq(ts.tseq_detected),
             ltssm.ts1_detected                   .eq(ts.ts1_detected),
             ltssm.inverted_ts1_detected          .eq(ts.inverted_ts1_detected),
+            self.debug_ts1_detected              .eq(ts.ts1_detected),
+            self.debug_ts2_detected              .eq(ts.ts2_detected),
             ltssm.ts2_detected                   .eq(ts.ts2_detected),
             ltssm.hot_reset_requested            .eq(ts.hot_reset_requested),
             ltssm.loopback_requested             .eq(ts.loopback_requested),
             ltssm.no_scrambling_requested        .eq(ts.no_scrambling_requested),
 
-            # Training set emitters
-            ts.send_tseq_burst                   .eq(ltssm.send_tseq_burst),
-            ts.send_ts1_burst                    .eq(ltssm.send_ts1_burst),
-            ts.send_ts2_burst                    .eq(ltssm.send_ts2_burst),
+            # Training set emitters (registered: these are decoded from the
+            # LTSSM state, and the TS stream's valid otherwise carries the
+            # LTSSM into the transmit arbiter's idle/ready cone; bursts are
+            # millisecond-scale, so a cycle of latency is free).
+            ts.send_tseq_burst                   .eq(send_tseq_burst_r),
+            ts.send_ts1_burst                    .eq(send_ts1_burst_r),
+            ts.send_ts2_burst                    .eq(send_ts2_burst_r),
             ts.request_hot_reset                 .eq(ltssm.request_hot_reset),
             ts.request_no_scrambling             .eq(ltssm.request_no_scrambling),
             ltssm.ts_burst_complete              .eq(ts.burst_complete),
@@ -168,10 +232,10 @@ class USB3LinkLayer(Elaboratable):
             ltssm.idle_handshake_complete        .eq(idle.idle_handshake_complete),
 
             # Link maintainance.
-            timers.enable                        .eq(ltssm.link_ready),
+            timers.enable                        .eq(link_ready),
 
             # Status signaling.
-            self.trained                         .eq(ltssm.link_ready),
+            self.trained                         .eq(link_ready),
             self.in_reset                        .eq(ltssm.request_hot_reset | ltssm.in_usb_reset),
 
             # Test and debug.
@@ -191,12 +255,22 @@ class USB3LinkLayer(Elaboratable):
         m.submodules.hp_mux = hp_mux = HeaderQueueArbiter()
         hp_mux.add_producer(self.header_sink)
 
+        # Track how the current period in U0 was entered: entry from
+        # Recovery preserves the transmit-side header state (the coming
+        # Header Sequence Number Advertisement decides what is flushed
+        # vs retransmitted); entry from Polling or Hot Reset flushes
+        # everything [USB3.2r1: 7.2.4.1.x rule 7].
+        u0_from_recovery = Signal()
+        with m.If(ltssm.entering_u0):
+            m.d.ss += u0_from_recovery.eq(ltssm.entering_u0_from_recovery)
+
         # Core transmitter.
         m.submodules.transmitter = transmitter = PacketTransmitter()
         m.d.comb += [
             transmitter.sink                .tap(physical_layer.source),
-            transmitter.enable              .eq(ltssm.link_ready),
+            transmitter.enable              .eq(link_ready),
             transmitter.usb_reset           .eq(self.in_reset),
+            transmitter.from_recovery       .eq(u0_from_recovery),
 
             transmitter.queue               .header_eq(hp_mux.source),
 
@@ -214,7 +288,7 @@ class USB3LinkLayer(Elaboratable):
         m.submodules.header_rx = header_rx = HeaderPacketReceiver()
         m.d.comb += [
             header_rx.sink                   .tap(physical_layer.source),
-            header_rx.enable                 .eq(ltssm.link_ready),
+            header_rx.enable                 .eq(link_ready),
             header_rx.usb_reset              .eq(self.in_reset),
 
             # Bring our header packet interface to the protocol layer.
@@ -242,8 +316,22 @@ class USB3LinkLayer(Elaboratable):
         m.d.comb += ltssm.trigger_link_recovery.eq(
             timers.transition_to_recovery |
             header_rx.recovery_required   |
-            transmitter.recovery_required
+            transmitter.recovery_required |
+            self.force_recovery
         )
+
+        # Debug taps for the individual recovery causes.
+        m.d.comb += [
+            self.debug_rec_timers    .eq(timers.transition_to_recovery),
+            self.debug_rec_rx        .eq(header_rx.recovery_required),
+            self.debug_rec_tx        .eq(transmitter.recovery_required),
+            self.debug_rx_bad_packet .eq(header_rx.bad_packet_received),
+            self.debug_tx_credits    .eq(transmitter.credits_available),
+            self.debug_tx_pending    .eq(transmitter.packets_to_send),
+            self.debug_rx_expected_seq .eq(header_rx.debug_expected_seq),
+            self.debug_rx_seq          .eq(header_rx.debug_rx_seq),
+        ]
+
 
         #
         # Data packet handlers.
@@ -251,14 +339,39 @@ class USB3LinkLayer(Elaboratable):
 
         # Receiver.
         m.submodules.data_rx = data_rx = DataPacketReceiver()
+
+        # The received payload stream is registered before it fans out to
+        # the endpoints: its per-lane valids are decoded combinationally
+        # from the physical-layer stream (byte-count comparisons), and that
+        # cone otherwise stretches into every endpoint's capture logic.
+        # The completion strobes are delayed identically, preserving their
+        # ordering against the payload.
+        rx_data_q     = Signal.like(data_rx.source.data)
+        rx_valid_q    = Signal.like(data_rx.source.valid)
+        rx_first_q    = Signal()
+        rx_last_q     = Signal()
+        rx_good_q     = Signal()
+        rx_bad_q      = Signal()
+        m.d.ss += [
+            rx_data_q   .eq(data_rx.source.data),
+            rx_valid_q  .eq(data_rx.source.valid),
+            rx_first_q  .eq(data_rx.source.first),
+            rx_last_q   .eq(data_rx.source.last),
+            rx_good_q   .eq(data_rx.packet_good),
+            rx_bad_q    .eq(data_rx.packet_bad),
+        ]
+
         m.d.comb += [
             data_rx.sink                .tap(physical_layer.source),
 
             # Data interface to Protocol layer.
-            self.data_source            .stream_eq(data_rx.source),
+            self.data_source.data       .eq(rx_data_q),
+            self.data_source.valid      .eq(rx_valid_q),
+            self.data_source.first      .eq(rx_first_q),
+            self.data_source.last       .eq(rx_last_q),
             self.data_header_from_host  .eq(data_rx.header),
-            self.data_source_complete   .eq(data_rx.packet_good),
-            self.data_source_invalid    .eq(data_rx.packet_bad),
+            self.data_source_complete   .eq(rx_good_q),
+            self.data_source_invalid    .eq(rx_bad_q),
         ]
 
         # Transmitter.
@@ -277,7 +390,17 @@ class USB3LinkLayer(Elaboratable):
             data_tx.sequence_number  .eq(self.data_sink_sequence_number),
             data_tx.endpoint_number  .eq(self.data_sink_endpoint_number),
             data_tx.data_length      .eq(self.data_sink_length),
-            data_tx.direction        .eq(self.data_sink_direction)
+            data_tx.direction        .eq(self.data_sink_direction),
+            data_tx.end_of_burst     .eq(self.data_sink_eob),
+
+            self.data_sink_parameters_consumed
+                                     .eq(data_tx.parameters_consumed),
+        ]
+        m.d.comb += [
+            self.debug_dtx_fsm         .eq(data_tx.debug_fsm),
+            self.debug_dsink_valid     .eq(transmitter.data_sink.valid.any()),
+            self.debug_dsink_ready     .eq(transmitter.data_sink.ready),
+            self.debug_payload_underrun.eq(transmitter.debug_payload_underrun),
         ]
 
 
@@ -300,14 +423,34 @@ class USB3LinkLayer(Elaboratable):
                 physical_layer.sink.data     .eq(IDL.value),
                 physical_layer.sink.ctrl     .eq(IDL.ctrl),
 
-                # Let the physical layer know it can insert CTC skips whenever data is being accepted
-                # from our logical idle stream.
+                # Logical idle words are always a safe place for the CTC
+                # inserter to place SKP ordered sets; mark them as packet
+                # boundaries.  (The physical layer derives its insertion
+                # qualifier from the stream's ``first`` markers.)
+                physical_layer.sink.first    .eq(1),
+
+                # Legacy qualifier; informational.
                 physical_layer.can_send_skp  .eq(1)
             ]
 
         # Otherwise, output our stream data.
         with m.Else():
             m.d.comb += physical_layer.sink.stream_eq(arbiter.source)
+
+            # SKP ordered sets are also required during training bursts
+            # [USB 3.2r1: 6.4.3.1] -- without them, the link partner's
+            # elastic buffer under/overruns during our multi-millisecond
+            # TSEQ/TS1/TS2 bursts (+-300ppm and SSC accumulate) and it
+            # never recognizes our training sets.  They are equally
+            # required under saturated U0 traffic, where back-to-back
+            # packets and link commands leave no idle cycles.  The packet
+            # transmitter, link-command generator and training-set
+            # emitters all mark the first word of everything they send;
+            # the physical layer's inserter holds a marked word and
+            # transmits the pending SKPs first, so they land cleanly
+            # between packets.
+            m.d.comb += physical_layer.can_send_skp.eq(
+                arbiter.source.valid & arbiter.source.first)
 
 
 

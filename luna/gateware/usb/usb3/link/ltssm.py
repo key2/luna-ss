@@ -69,6 +69,14 @@ class LTSSMController(Elaboratable):
         self.in_usb_reset              = Signal()
         self.entering_u0               = Signal()
 
+        # Strobed together with ``entering_u0`` when -- and only when --
+        # U0 is being entered from Recovery.  The link layer uses this to
+        # apply the Recovery variant of the Tx Header Buffer flush rule
+        # [USB3.2r1: 7.2.4.1.x]: unacknowledged headers are retransmitted
+        # after the Header Sequence Number Advertisement instead of being
+        # flushed (as they are on entry from Polling or Hot Reset).
+        self.entering_u0_from_recovery = Signal()
+
         # External event controls.
         self.trigger_link_recovery     = Signal()
 
@@ -203,14 +211,27 @@ class LTSSMController(Elaboratable):
             m.next = state
 
 
+        # Registered timeout comparators: comparing the (26-bit) state timer
+        # combinationally inside every transition arm puts a wide comparator
+        # into the state-transition select cone, which misses timing at
+        # 125 MHz.  The comparison is registered one cycle early instead
+        # (fires when the counter *will* reach the timeout), preserving the
+        # original cycle count; ``cycles_in_state`` clears on transitions,
+        # so a pending flag can never apply to the wrong state.
+        timeout_hits = {}
+
         def transition_on_timeout(timeout, *, to):
             """ FSM helper that adds a state transition that is automatically invoked after a timeout. """
 
             # Figure out how many cycles need to pass before we consider ourselves timed out.
             timeout_in_cycles = int(math.ceil(timeout * self._clock_frequency))
 
+            if timeout_in_cycles not in timeout_hits:
+                timeout_hits[timeout_in_cycles] = Signal(
+                    name=f"timeout_hit_{timeout_in_cycles}")
+
             # If we've reached that many cycles, transition to the target state.
-            with m.If(cycles_in_state == timeout_in_cycles):
+            with m.If(timeout_hits[timeout_in_cycles]):
                 transition_to_state(to)
 
 
@@ -676,7 +697,10 @@ class LTSSMController(Elaboratable):
                 # Idle signals are scrambled, this helps to ensure that both sides of the link have
                 # synchronized scrambler state and that the other side has stopped sending TS2s.
                 with m.Elif(self.idle_handshake_complete):
-                    m.d.comb += self.entering_u0.eq(1)
+                    m.d.comb += [
+                        self.entering_u0                .eq(1),
+                        self.entering_u0_from_recovery  .eq(1),
+                    ]
                     transition_to_state("U0")
 
                 # If we don't see that logical idle within 2ms, something's gone wrong. We'll
@@ -765,5 +789,11 @@ class LTSSMController(Elaboratable):
                     self.tx_electrical_idle    .eq(1),
                     self.engage_terminations   .eq(0)
                 ]
+
+        # Registered timeout comparators (see transition_on_timeout above).
+        # Ungated: they track the state timer continuously, and clear
+        # automatically one cycle after any state transition resets it.
+        for timeout_in_cycles, hit in timeout_hits.items():
+            m.d.ss += hit.eq(cycles_in_state + 1 == timeout_in_cycles)
 
         return m

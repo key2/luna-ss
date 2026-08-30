@@ -56,8 +56,29 @@ class RawPacketTransmitter(Elaboratable):
         self.header    = HeaderPacket()
         self.data_sink = SuperSpeedStreamInterface()
 
+        # When set alongside a delayed (DL=1) data header, indicates that the
+        # header's payload was already consumed by an earlier transmission:
+        # the retransmission must then abort its DPP (EDB), as we keep no
+        # copy.  A delayed header whose original send never happened still
+        # has its payload staged, and transmits it normally.
+        self.header_sent_before = Signal()
+
         self.generate  = Signal()
+        self.starting  = Signal()
         self.done      = Signal()
+
+        # High while words of the current packet's payload have been
+        # partially consumed from ``data_sink`` -- i.e. from the first
+        # payload word accepted until the ``last``-marked word has been
+        # accepted.  If a transmission is interrupted (link recovery)
+        # while this is high, the tail of the packet is still staged
+        # upstream and must be drained before the next packet.
+        self.payload_pending = Signal()
+
+        # Debug: strobed when a payload word is consumed while the payload
+        # stream is invalid -- a violation of the gapless-feed contract
+        # (whatever is captured then goes onto the wire).  Prunable.
+        self.debug_payload_underrun = Signal()
 
 
     def elaborate(self, platform):
@@ -74,9 +95,12 @@ class RawPacketTransmitter(Elaboratable):
         # CRC Generators
         #
 
-        # CRC-16, for header packets
+        # CRC-16, for header packets.  Fed from the header words directly
+        # rather than from ``source.data``: the CRC only advances during the
+        # header data words, and tapping the full source mux would put the
+        # data-packet CRC-splice cone in front of the CRC-16 XOR tree -- a
+        # (functionally false) path that misses timing.
         m.submodules.crc16 = crc16 = HeaderPacketCRC()
-        m.d.comb += crc16.data_input.eq(source.data)
 
         # CRC-32, for payload packets
         m.submodules.crc32 = crc32 = DataPacketPayloadCRC()
@@ -106,6 +130,9 @@ class RawPacketTransmitter(Elaboratable):
         # Store whether our packet is a ZLP.
         packet_is_zlp = Signal()
 
+        # Latched copy of ``header_sent_before`` (see above).
+        sent_before = Signal()
+
         with m.FSM(domain="ss"):
 
             # IDLE -- wait for a generate command
@@ -118,7 +145,12 @@ class RawPacketTransmitter(Elaboratable):
 
                 # Once we have a request, latch in our data, and start sending.
                 with m.If(self.generate):
-                    m.d.ss += header.eq(self.header)
+                    m.d.comb += self.starting.eq(1)
+                    m.d.ss += [
+                        header               .eq(self.header),
+                        sent_before          .eq(self.header_sent_before),
+                        self.payload_pending .eq(0),
+                    ]
                     m.next = "SEND_HPSTART"
 
 
@@ -131,6 +163,14 @@ class RawPacketTransmitter(Elaboratable):
                     source.valid  .eq(1),
                     source.data   .eq(header_data),
                     source.ctrl   .eq(header_ctrl),
+
+                    # Mark the packet boundary: this word starting a new packet is
+                    # a legal place for the CTC skip inserter to place SKP ordered
+                    # sets (it back-pressures us and sends them first).  Without
+                    # boundary markers, saturated traffic (data packets interleaved
+                    # with link commands, no logical-idle gaps) starves the link of
+                    # SKPs and the partner's elastic buffer over/underruns.
+                    source.first  .eq(1),
                 ]
 
                 # ... and keep driving it until it's accepted.
@@ -149,6 +189,7 @@ class RawPacketTransmitter(Elaboratable):
                         source.valid  .eq(1),
                         source.data   .eq(data_words[n]),
                         source.ctrl   .eq(0),
+                        crc16.data_input.eq(data_words[n]),
                     ]
 
                     # ... and keep driving it until it's accepted.
@@ -203,10 +244,17 @@ class RawPacketTransmitter(Elaboratable):
 
                 with m.If(source.ready):
 
-                    # Special case: if we're retransmitting a data packet, we'll abort it immediately,
-                    # since we don't have the data buffered anywhere. Retransmission of the data payload
-                    # will be handled at the protocol layer.
-                    with m.If(header.delayed):
+                    # Special case: if we're retransmitting a data packet whose payload was
+                    # already consumed by its original transmission, we'll abort it immediately,
+                    # since we don't have the data buffered anywhere. Retransmission of the data
+                    # payload will then be handled at the protocol layer.
+                    #
+                    # A delayed header that was never actually transmitted (it was still queued
+                    # when the LBAD arrived) still has its payload staged on ``data_sink``, and
+                    # is sent with it normally.  Aborting those is not only wasteful -- it
+                    # orphans the staged payload, wedging the (shared) data packet transmitter
+                    # and every endpoint behind it.
+                    with m.If(header.delayed & sent_before):
                         m.next = "ABORT_DPP"
 
                     # Special case: if we're sending a ZLP, we'll jump directly to sending our CRC.
@@ -232,6 +280,8 @@ class RawPacketTransmitter(Elaboratable):
                         # ... and as long as we didn't just capture the last word, start the actual
                         # payload transmission.
                         with m.If(~self.data_sink.last):
+                            # Words of this packet remain on the stream.
+                            m.d.ss += self.payload_pending.eq(1)
                             m.next = "SEND_PAYLOAD"
 
                         # If we -did- just capture the last word, we can skip to our last-word handler.
@@ -253,6 +303,8 @@ class RawPacketTransmitter(Elaboratable):
                 # word into our pipeline register.
                 with m.If(source.ready):
                     m.d.comb += self.data_sink.ready.eq(1)
+                    with m.If(~data_sink.valid.any()):
+                        m.d.comb += self.debug_payload_underrun.eq(1)
                     m.d.ss   += [
                         pipelined_data_word   .eq(self.data_sink.data),
                         pipelined_data_valid  .eq(self.data_sink.valid)
@@ -262,6 +314,8 @@ class RawPacketTransmitter(Elaboratable):
                     # This means we can move on safely to sending our pipelined word; knowing we're ready to
                     # send part of our CRC if the last word isn't fully aligned.
                     with m.If(data_sink.last):
+                        # The whole packet has been consumed from the stream.
+                        m.d.ss += self.payload_pending.eq(0)
                         m.next = "SEND_LAST_WORD"
 
 
@@ -464,6 +518,14 @@ class PacketTransmitter(Elaboratable):
         self.usb_reset             = Signal()
         self.bringup_complete      = Signal()
 
+        # High when the current (or most recent) entry to U0 came from
+        # Recovery rather than Polling / Hot Reset.  Latched by the link
+        # layer at U0 entry; sampled when the Header Sequence Number
+        # Advertisement arrives to select between flushing all buffered
+        # headers (fresh link) and retransmitting the unacknowledged
+        # ones (recovery) [USB3.2r1: 7.2.4.1.x rule 7].
+        self.from_recovery         = Signal()
+
         # Protocol layer interface.
         self.queue                 = HeaderQueue()
         self.data_sink             = SuperSpeedStreamInterface()
@@ -481,6 +543,7 @@ class PacketTransmitter(Elaboratable):
         # Debug information.
         self.credits_available     = Signal(range(self._buffer_count + 1))
         self.packets_to_send       = Signal(range(self._buffer_count + 1))
+        self.debug_payload_underrun = Signal()
 
 
     def elaborate(self, platform):
@@ -519,7 +582,14 @@ class PacketTransmitter(Elaboratable):
         # If we need to retry sending our packets, we'll need to reset our pending packet count.
         # Otherwise, we increment and decrement our "to send" counts normally.
         with m.If(self.retry_required):
-            m.d.ss += packets_to_send.eq(packets_awaiting_ack)
+            # A header being enqueued in this very cycle is not yet counted
+            # in ``packets_awaiting_ack``; forgetting it here leaves it
+            # buffered but never dispatched -- and its staged payload then
+            # wedges the shared data-packet transmitter for good.
+            with m.If(enqueue_send):
+                m.d.ss += packets_to_send.eq(packets_awaiting_ack + 1)
+            with m.Else():
+                m.d.ss += packets_to_send.eq(packets_awaiting_ack)
         with m.Elif(enqueue_send & ~dequeue_send):
             m.d.ss += packets_to_send.eq(packets_to_send + 1)
         with m.Elif(dequeue_send & ~enqueue_send):
@@ -546,6 +616,13 @@ class PacketTransmitter(Elaboratable):
 
         # Create buffers to receive any incoming header packets.
         buffers = Array(HeaderPacket() for _ in range(self._buffer_count))
+
+        # Track, per buffer, whether the header it holds has completed a
+        # transmission attempt (and thus consumed any associated payload).
+        # Used to decide whether a link-level retransmission must abort its
+        # DPP or can still send the (never-consumed) staged payload.
+        sent_flags = Array(Signal(name=f"hdr_sent_{i}")
+                           for i in range(self._buffer_count))
 
         # If we need to retry sending our packets, we'll need to start reading
         # again from the last acknowledged packet; so we'll reset our read pointer.
@@ -584,6 +661,7 @@ class PacketTransmitter(Elaboratable):
             m.d.ss += [
                 buffers[write_pointer]                  .eq(self.queue.header),
                 buffers[write_pointer].sequence_number  .eq(transmit_sequence_number),
+                sent_flags[write_pointer]               .eq(0),
                 write_pointer                           .eq(write_pointer + 1),
                 transmit_sequence_number                .eq(transmit_sequence_number + 1)
             ]
@@ -592,11 +670,18 @@ class PacketTransmitter(Elaboratable):
         #
         # Packet delivery (link layer -> physical layer)
         #
-        m.submodules.packet_tx = packet_tx = RawPacketTransmitter()
+        # The raw transmitter is held in reset while the link is down: a
+        # packet caught mid-transmission by a retrain must not resume --
+        # its remaining words would be spliced into the freshly trained
+        # link as framing garbage.  Its header stays buffered (unacked)
+        # and is handled by the post-recovery advertisement.
+        m.submodules.packet_tx = packet_tx = \
+            ResetInserter({"ss": ~self.enable})(RawPacketTransmitter())
         m.d.comb += [
-            packet_tx.header     .eq(buffers[read_pointer]),
-            packet_tx.data_sink  .stream_eq(self.data_sink),
-            self.source          .stream_eq(packet_tx.source)
+            packet_tx.header             .eq(buffers[read_pointer]),
+            packet_tx.header_sent_before .eq(sent_flags[read_pointer]),
+            packet_tx.data_sink          .stream_eq(self.data_sink),
+            self.source                  .stream_eq(packet_tx.source)
         ]
 
 
@@ -604,6 +689,23 @@ class PacketTransmitter(Elaboratable):
         retry_pending = Signal()
         with m.If(self.retry_required):
             m.d.ss += retry_pending.eq(1)
+
+        # Set when a link drop interrupted a transmission whose payload
+        # was partially consumed: the stale tail still staged on
+        # ``data_sink`` must be drained before anything new is
+        # dispatched.  (Logic below the FSM.)
+        drain_required = Signal()
+
+        # The buffer slot whose header the packet transmitter is currently
+        # sending.  Latched when the transmission *starts*: ``read_pointer``
+        # itself may rewind mid-send (an LBAD arriving while a packet is on
+        # the wire resets it to the ack pointer), and marking the sent flag
+        # through the live pointer would then tag the wrong slot -- leaving
+        # the in-flight header marked never-sent, so its later DL=1
+        # retransmission wrongly attaches the *next* staged payload.
+        sending_slot = Signal.like(read_pointer)
+        with m.If(packet_tx.starting):
+            m.d.ss += sending_slot.eq(read_pointer)
 
 
         with m.FSM(domain="ss"):
@@ -613,9 +715,18 @@ class PacketTransmitter(Elaboratable):
             with m.State("DISPATCH_PACKET"):
 
                 # If we have packets to send, pass them to our transmitter.
-                with m.If(self.bringup_complete & (packets_to_send != 0)):
+                # (Never while a stale post-recovery packet tail is still
+                # being drained from the payload stream.)
+                with m.If(self.bringup_complete & (packets_to_send != 0)
+                          & ~drain_required):
 
-                    with m.If(~retry_pending):
+                    # The registered ``retry_pending`` flag lags ``retry_required``
+                    # by a cycle; an LBAD processed in this very cycle must already
+                    # steer us to the retry path.  Otherwise the head of the retry
+                    # set is dispatched as a *normal* send -- no DL bit, no waiting
+                    # for our LRTY -- and, for a data header whose payload was
+                    # already consumed, with whatever payload happens to be staged.
+                    with m.If(~retry_pending & ~self.retry_required):
                         # Wait until the packet is sent.
                         m.next = "WAIT_FOR_SEND"
 
@@ -626,10 +737,14 @@ class PacketTransmitter(Elaboratable):
 
             # WAIT_FOR_SEND -- we've now dispatched our packet; and we're ready to wait for it to be sent.
             with m.State("WAIT_FOR_SEND"):
-                m.d.comb += packet_tx.generate.eq(1)
+                m.d.comb += packet_tx.generate.eq(self.enable)
 
                 # We're done with this packet.
                 with m.If(packet_tx.done):
+
+                    # This transmission attempt completed: any payload belonging to
+                    # this header has been consumed from the data stream.
+                    m.d.ss += sent_flags[sending_slot].eq(1)
 
                     # If we received an LBAD in the meantime, our read pointer and counter are already
                     # set up for retransmission; don't touch them.
@@ -639,21 +754,67 @@ class PacketTransmitter(Elaboratable):
                     # Handle the next packet, or wait for one.
                     m.next = "DISPATCH_PACKET"
 
+                # A link drop aborts the transmission (the raw transmitter
+                # is reset); the interrupted header stays buffered and is
+                # resolved by the post-recovery advertisement.
+                with m.If(~self.enable):
+                    m.next = "DISPATCH_PACKET"
+
 
             # WAIT_FOR_RETRY -- we're retransmitting all of the non-acknowledged packets, with the DL bit set;
             # but only after the receiver transmits LRTY.
             with m.State("WAIT_FOR_RETRY"):
                 m.d.comb += packet_tx.header.delayed.eq(1)
-                m.d.comb += packet_tx.generate.eq(~self.lrty_pending)
+                m.d.comb += packet_tx.generate.eq(~self.lrty_pending & self.enable)
 
                 # We're done with this packet.
                 with m.If(packet_tx.done):
                     m.d.comb += dequeue_send.eq(1)
+                    m.d.ss   += sent_flags[sending_slot].eq(1)
 
                     # If this was the last packet to retransmit, we're done handling this LBAD.
                     with m.If(packets_to_send == 1):
                         m.d.ss += retry_pending.eq(0)
                         m.next = "DISPATCH_PACKET"
+
+                # Aborted by a link drop (see WAIT_FOR_SEND).
+                with m.If(~self.enable):
+                    m.next = "DISPATCH_PACKET"
+
+
+        #
+        # Recovery interruption handling.
+        #
+
+        # Track whether the raw transmitter has a transmission in flight.
+        tx_in_flight = Signal()
+        with m.If(packet_tx.starting):
+            m.d.ss += tx_in_flight.eq(1)
+        with m.Elif(packet_tx.done):
+            m.d.ss += tx_in_flight.eq(0)
+
+        # When the link drops mid-transmission, the interrupted header
+        # stays buffered for the advertisement to resolve -- but if part
+        # of its payload was already consumed, we must remember that (the
+        # retransmission has to abort its DPP; we keep no copy), and the
+        # tail of the packet still staged on ``data_sink`` must be
+        # drained, or it would be spliced onto the front of the next
+        # packet's payload.
+        with m.If(~self.enable & tx_in_flight):
+            m.d.ss += tx_in_flight.eq(0)
+            with m.If(packet_tx.payload_pending):
+                m.d.ss += [
+                    sent_flags[sending_slot]  .eq(1),
+                    drain_required            .eq(1),
+                ]
+
+        # Drain and discard the stale packet tail (up to and including
+        # its ``last``-marked word).  The override below takes priority
+        # over the (reset-held) raw transmitter's ready.
+        with m.If(drain_required):
+            m.d.comb += self.data_sink.ready.eq(1)
+            with m.If(self.data_sink.valid.any() & self.data_sink.last):
+                m.d.ss += drain_required.eq(0)
 
 
         #
@@ -661,7 +822,17 @@ class PacketTransmitter(Elaboratable):
         #
 
         # Core link command receiver.
-        m.submodules.lc_detector = lc_detector = LinkCommandDetector()
+        #
+        # Held in reset while the link is down (bug #36, the transmit-side
+        # twin of bug #30's receiver fixes): a link command truncated by a
+        # retrain must not leave the detector mid-command, where it would
+        # misparse the first post-recovery words -- the Header Sequence
+        # Number Advertisement itself -- as the remainder of the old
+        # command, read a wrong LGOOD/LCRD out of it, and immediately
+        # force ANOTHER recovery (observed with the force-recovery hook
+        # strobed while a host link-command burst was mid-wire).
+        m.submodules.lc_detector = lc_detector = \
+            ResetInserter({"ss": ~self.enable})(LinkCommandDetector())
         m.d.comb += [
             lc_detector.sink            .tap(self.sink),
             self.link_command_received  .eq(lc_detector.new_command)
@@ -703,10 +874,57 @@ class PacketTransmitter(Elaboratable):
                     with m.If(~self.bringup_complete):
                         m.d.ss += [
                             self.bringup_complete     .eq(1),
-
                             next_expected_ack_number  .eq(lc_detector.subtype + 1),
-                            transmit_sequence_number  .eq(lc_detector.subtype + 1)
                         ]
+
+                        # The advertisement acknowledges every header up to
+                        # and including its sequence number.  How many of
+                        # our outstanding headers that retires:
+                        adv_delta = Signal(self.SEQUENCE_NUMBER_WIDTH)
+                        adv_retired = Signal.like(packets_awaiting_ack)
+                        m.d.comb += [
+                            adv_delta   .eq(lc_detector.subtype + 1
+                                            - next_expected_ack_number),
+                            adv_retired .eq(Mux(adv_delta <= packets_awaiting_ack,
+                                                adv_delta, packets_awaiting_ack)),
+                        ]
+
+                        with m.If(~self.from_recovery):
+                            # Entry from Polling or Hot Reset: flush ALL
+                            # buffered headers; the transmit sequence
+                            # restarts from the advertisement
+                            # [USB3.2r1: 7.2.4.1.x rule 7a].
+                            m.d.ss += [
+                                transmit_sequence_number  .eq(lc_detector.subtype + 1),
+                                packets_awaiting_ack      .eq(0),
+                                packets_to_send           .eq(0),
+                                read_pointer              .eq(0),
+                                write_pointer             .eq(0),
+                                ack_pointer               .eq(0),
+                            ]
+
+                        with m.Else():
+                            # Entry from Recovery: flush only the headers
+                            # the advertisement acknowledges; every
+                            # remaining unacknowledged header is
+                            # RETRANSMITTED with its originally assigned
+                            # sequence number [rule 7b].  The transmit
+                            # sequence number is preserved.  Upstream LUNA
+                            # flushed everything here -- guaranteed data
+                            # loss (lost DPs, lost handshake TPs) on any
+                            # link the moment recovery fires.
+                            m.d.ss += [
+                                ack_pointer               .eq(ack_pointer + adv_retired),
+                                read_pointer              .eq(ack_pointer + adv_retired),
+                                packets_awaiting_ack      .eq(packets_awaiting_ack - adv_retired),
+                                packets_to_send           .eq(packets_awaiting_ack - adv_retired),
+
+                                # Dispatch the survivors through the retry
+                                # path: DL=1, and data headers whose payload
+                                # was consumed by their original transmission
+                                # abort their DPP (protocol-level recovery).
+                                retry_pending             .eq(packets_awaiting_ack != adv_retired),
+                            ]
 
                     # If the credit matches the sequence we're expecting, we can accept it!
                     with m.Elif(next_expected_ack_number == lc_detector.subtype):
@@ -789,15 +1007,25 @@ class PacketTransmitter(Elaboratable):
             m.d.ss += [
                 self.bringup_complete     .eq(0),
 
+                # The credit indexes restart at A on every U0 entry; the
+                # partner re-advertises its receive credits.
                 next_expected_credit      .eq(0),
                 credits_available         .eq(0),
 
+                # Nothing is dispatched while the link is down (and the
+                # coming advertisement recomputes what must be sent).
                 packets_to_send           .eq(0),
-                packets_awaiting_ack      .eq(0),
-                read_pointer              .eq(0),
-                write_pointer             .eq(0),
-                ack_pointer               .eq(0),
                 retry_pending             .eq(0),
+
+                # NOTE: the header buffers -- write/ack/read pointers,
+                # ``packets_awaiting_ack``, ``sent_flags``, and both
+                # sequence numbers -- are deliberately PRESERVED here.
+                # Whether they are flushed or retransmitted is decided by
+                # the Header Sequence Number Advertisement on the next
+                # link-up, based on how U0 is entered (``from_recovery``)
+                # [USB3.2r1: 7.2.4.1.x rule 7].  The historical
+                # flush-everything here silently lost every
+                # unacknowledged header on entry to Recovery.
             ]
 
 
@@ -806,7 +1034,8 @@ class PacketTransmitter(Elaboratable):
         #
         m.d.comb += [
             self.credits_available  .eq(credits_available),
-            self.packets_to_send    .eq(packets_to_send)
+            self.packets_to_send    .eq(packets_to_send),
+            self.debug_payload_underrun.eq(packet_tx.debug_payload_underrun),
         ]
 
 

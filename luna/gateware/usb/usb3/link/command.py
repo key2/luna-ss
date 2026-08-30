@@ -197,6 +197,10 @@ class LinkCommandGenerator(Elaboratable):
                     self.source.valid  .eq(1),
                     self.source.data   .eq(header_data),
                     self.source.ctrl   .eq(header_ctrl),
+
+                    # Packet boundary: allow the CTC skip inserter to place SKP
+                    # ordered sets before this link command (see transmitter.py).
+                    self.source.first  .eq(1),
                 ]
 
                 # ... and keep driving it until it's accepted.

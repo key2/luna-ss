@@ -305,8 +305,15 @@ class DataPacketReceiver(Elaboratable):
                 with m.Else():
                     m.d.comb += self.packet_bad.eq(1)
 
-                # Finally, wait for our next packet.
-                    m.next = "WAIT_FOR_HPSTART"
+                # Finally, wait for our next packet.  (This transition used
+                # to sit inside the Else arm above -- a good packet then
+                # lingered here a second cycle, re-compared against
+                # whatever word followed, and strobed a spurious
+                # ``packet_bad`` after every good packet; endpoints whose
+                # accept paths stay in their idle state on completion then
+                # served the phantom failure as a retransmission request
+                # (bug #27, HANDOVER 10l).
+                m.next = "WAIT_FOR_HPSTART"
 
 
         return m
@@ -357,10 +364,26 @@ class DataPacketTransmitter(Elaboratable):
         self.data_length     = Signal(range(self.MAX_PACKET_SIZE + 1))
         self.address         = Signal(7)
         self.direction       = Signal()
+        self.end_of_burst    = Signal()
 
         # Output streams.
         self.header_source   = HeaderQueue()
         self.data_source     = SuperSpeedStreamInterface()
+
+        # Strobe: the data parameters above have just been consumed
+        # (latched for the packet whose transmission is beginning).  The
+        # endpoint multiplexer holds its captured parameter registers --
+        # and defers granting the shared transmit stream to a *new*
+        # packet -- until this fires: a short packet small enough to be
+        # absorbed by the buffering between the multiplexer and this
+        # transmitter otherwise releases the grant early, and the next
+        # packet's grant-lock overwrites the shared parameters before we
+        # latch them (DPH emitted with the wrong length/endpoint/sequence
+        # -- GW_USB3 bug #25).
+        self.parameters_consumed = Signal()
+
+        # Debug tap (prunable).
+        self.debug_fsm       = Signal(2)
 
 
     def elaborate(self, platform):
@@ -376,6 +399,7 @@ class DataPacketTransmitter(Elaboratable):
         endpoint_number = Signal.like(self.endpoint_number)
         data_length     = Signal.like(self.data_length)
         direction       = Signal.like(self.direction)
+        end_of_burst    = Signal.like(self.end_of_burst)
 
 
         # For now, we'll pass our data stream through unmodified; only buffered to improve
@@ -383,12 +407,30 @@ class DataPacketTransmitter(Elaboratable):
         #
         # We'll keep this architecture; as later code is likely to want to more actively
         # control when data is passed through to the transmitter.
-        with m.If(~data_source.valid.any() | data_source.ready):
-            m.d.ss   += data_source.stream_eq(data_sink, omit={'ready'})
-            m.d.comb += data_sink.ready.eq(1)
+        #
+        # The register must never refill ACROSS a packet boundary: once it
+        # holds the current packet's ``last`` word, the following upstream
+        # word belongs to the NEXT packet.  Capturing it on the very cycle
+        # the last word is consumed (upstream gaps arrive compressed
+        # through the buffered stages -- see the boundary discussion in
+        # SEND_PAYLOAD) absorbs the new packet's head into a register the
+        # WAIT_FOR_DATA state never looks at: its header is never
+        # generated and the shared transmit path wedges for every
+        # endpoint (bug #24's remaining half, found by tx_fuzz).  Instead,
+        # the register empties and the new packet waits upstream, where
+        # WAIT_FOR_DATA observes it.
+        may_refill    = ~data_source.valid.any() | data_source.ready
+        boundary_hold = data_source.valid.any() & data_source.last
+        with m.If(may_refill):
+            with m.If(~boundary_hold):
+                m.d.ss   += data_source.stream_eq(data_sink, omit={'ready'})
+                m.d.comb += data_sink.ready.eq(1)
+            with m.Else():
+                # Consume-without-refill: the register empties.
+                m.d.ss += data_source.valid.eq(0)
 
 
-        with m.FSM(domain="ss"):
+        with m.FSM(domain="ss") as dtx_fsm:
 
             # WAIT_FOR_DATA -- we're idly waiting for our input data stream to become valid.
             with m.State("WAIT_FOR_DATA"):
@@ -398,14 +440,27 @@ class DataPacketTransmitter(Elaboratable):
                     sequence_number  .eq(self.sequence_number),
                     endpoint_number  .eq(self.endpoint_number),
                     data_length      .eq(self.data_length),
-                    direction        .eq(self.direction)
+                    direction        .eq(self.direction),
+                    end_of_burst     .eq(self.end_of_burst),
                 ]
 
                 # Once our data goes valid, begin sending our data.
-                with m.If(data_sink.valid.any()):
+                # (Either transition freezes the parameter latches above:
+                # signal their consumption to the endpoint multiplexer.)
+                #
+                # Never re-arm while the PREVIOUS packet's final word is
+                # still unconsumed in our output register
+                # (``boundary_hold``): the header offer and the packet
+                # transmitter's ZLP decision both sample our output
+                # stream, and a stale tail there would be mistaken for
+                # the new packet's payload.  The tail drains within a few
+                # cycles (the transmitter is still finishing that DPP).
+                with m.If(data_sink.valid.any() & ~boundary_hold):
+                    m.d.comb += self.parameters_consumed.eq(1)
                     m.next = "SEND_HEADER"
 
-                with m.Elif(self.send_zlp):
+                with m.Elif(self.send_zlp & ~boundary_hold):
+                    m.d.comb += self.parameters_consumed.eq(1)
                     m.next = "SEND_ZLP"
 
 
@@ -414,7 +469,15 @@ class DataPacketTransmitter(Elaboratable):
                 header = DataHeaderPacket()
                 m.d.comb += [
                     header_source.header    .eq(header),
-                    header_source.valid     .eq(1),
+
+                    # Only present the header once the first payload word is
+                    # staged on our output register: the packet transmitter
+                    # decides whether a data packet is a ZLP by sampling the
+                    # payload stream as it accepts the header.  Offering the
+                    # header a cycle early makes an idle transmitter treat a
+                    # data-carrying packet as a ZLP -- a malformed packet
+                    # whose payload length contradicts its header.
+                    header_source.valid     .eq(data_source.valid.any()),
 
                     # We're sending a data packet from up to the host.
                     header.type             .eq(HeaderPacketType.DATA),
@@ -425,10 +488,19 @@ class DataPacketTransmitter(Elaboratable):
                     header.data_sequence    .eq(sequence_number),
                     header.data_length      .eq(data_length),
                     header.endpoint_number  .eq(endpoint_number),
+                    header.end_of_burst     .eq(end_of_burst),
                 ]
 
                 # Once our header is accepted, move on to passing through our payload.
-                with m.If(header_source.ready):
+                #
+                # The acceptance is ``valid & ready``: the header-queue
+                # arbiter keeps routing the downstream ``ready`` to its
+                # (sticky) selected producer even while that producer
+                # offers nothing, so a bare ``ready`` here is NOT an
+                # acceptance -- advancing on it dispatches no header, and
+                # the packet's staged payload then wedges the shared
+                # transmit path for every endpoint.
+                with m.If(header_source.valid & header_source.ready):
                     m.next = "SEND_PAYLOAD"
 
 
@@ -436,8 +508,37 @@ class DataPacketTransmitter(Elaboratable):
             # drive ready when it's time to accept data.
             with m.State("SEND_PAYLOAD"):
 
-                # Once our packet is complete, we'll go back to idle.
+                # Once our packet is complete, we'll go back to idle.  Two
+                # redundant boundary observations:
+                #
+                # (a) the input stream going invalid -- the historical
+                #     delimiter (the endpoint multiplexer inserts a
+                #     one-cycle gap between packets);
+                # (b) the packet's ``last``-marked word being consumed from
+                #     our register stage by the packet transmitter.
+                #
+                # (a) alone is UNSOUND: the gap travels through buffered
+                # stages (the protocol layer's TxDataSkidBuffer) that only
+                # represent gaps as "running dry" -- when the downstream
+                # freezes across a packet handoff with words buffered (the
+                # transmitter stops consuming payload the moment it captures
+                # the last word), the following packet's words refill the
+                # buffer seamlessly and the gap is silently compressed away.
+                # Missing the boundary leaves this FSM in SEND_PAYLOAD
+                # forever: the next packet's header is never generated and
+                # its staged payload wedges the shared transmit path for
+                # every endpoint (reproduced with three concurrent bulk IN
+                # endpoints; GW_USB3 open-item work, bug #24).
+                #
+                # (b) catches exactly that case: the consumption of the
+                # ``last`` word is the authoritative end of the packet's
+                # payload, independent of input-gap survival.  (A packet
+                # whose producer does not mark ``last`` still relies on
+                # (a), as before.)
                 with m.If(~data_sink.valid.any()):
+                    m.next = "WAIT_FOR_DATA"
+                with m.Elif(data_source.valid.any() & data_source.last
+                            & data_source.ready):
                     m.next = "WAIT_FOR_DATA"
 
 
@@ -458,6 +559,7 @@ class DataPacketTransmitter(Elaboratable):
                     header.data_sequence    .eq(sequence_number),
                     header.data_length      .eq(0),
                     header.endpoint_number  .eq(endpoint_number),
+                    header.end_of_burst     .eq(end_of_burst),
                 ]
 
                 # Once our header is accepted, we can move directly back to idle.
@@ -465,6 +567,9 @@ class DataPacketTransmitter(Elaboratable):
                 with m.If(header_source.ready):
                     m.next = "WAIT_FOR_DATA"
 
-
+        for _i, _name in enumerate(("WAIT_FOR_DATA", "SEND_HEADER",
+                                    "SEND_PAYLOAD", "SEND_ZLP")):
+            with m.If(dtx_fsm.ongoing(_name)):
+                m.d.comb += self.debug_fsm.eq(_i)
 
         return m

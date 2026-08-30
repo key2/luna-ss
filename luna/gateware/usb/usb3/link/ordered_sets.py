@@ -288,8 +288,15 @@ class TSTransceiver(Elaboratable):
 
     Detect/generate the Training Sequence Ordered Sets required for a USB3.0 link with simple
     control/status signals.
+
+    Parameters
+    ----------
+    tseq_burst_length: int
+        Number of TSEQ ordered sets emitted during Polling.RxEQ.  The
+        specification value is 65536; simulations may shorten it.
     """
-    def __init__(self):
+    def __init__(self, *, tseq_burst_length=65536):
+        self._tseq_burst_length = tseq_burst_length
 
         #
         # I/O port
@@ -384,7 +391,7 @@ class TSTransceiver(Elaboratable):
         m.submodules.tseq_generator = tseq_generator = TSEmitter(
             set_data              = TSEQ_SET_DATA,
             first_word_ctrl       = 0b0001,
-            transmit_burst_length = 65536
+            transmit_burst_length = self._tseq_burst_length
         )
         with m.If(self.send_tseq_burst):
             m.d.comb += [

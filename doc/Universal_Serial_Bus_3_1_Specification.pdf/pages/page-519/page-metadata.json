@@ -1,0 +1,155 @@
+{
+  "index": 518,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 29,
+      "bottomRightX": 701,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 699,
+      "bottomRightY": 160,
+      "content": "A buffered TP shall be selected for transmission before any buffered DPs. TPs shall be selected in the order in which they were buffered for a port (e.g. FIFO). When selecting a TP to transmit on the hub upstream facing port, there is no specific ordering requirement for TPs buffered from different downstream ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 165,
+      "bottomRightX": 665,
+      "bottomRightY": 198,
+      "content": "A buffered Interrupt or Isochronous DP shall be selected for transmission before any buffered Control or Bulk DPs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 203,
+      "bottomRightX": 693,
+      "bottomRightY": 255,
+      "content": "Once a hub starts transmitting a packet on a port, it shall continue transmitting that packet until the packet transmission is complete. With respect to the following arbitration rules, there is no “pre-emption” of the transmission of one packet for the transmission of another packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 259,
+      "bottomRightX": 699,
+      "bottomRightY": 326,
+      "content": "If a DP is being received on a port and the port to which it is to be routed has no other packets buffered nor has a packet currently being transmitted, the hub shall begin transmitting the packet on the destination port before the DP is fully received. Transmission of the DP shall not begin transmission until sufficient bytes have been received, so that transmitter under-run is avoided.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 339,
+      "bottomRightX": 584,
+      "bottomRightY": 359,
+      "content": "### 10.8.6.3 Downstream Flowing Packet Reception and Selection",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 365,
+      "bottomRightX": 693,
+      "bottomRightY": 467,
+      "content": "For downstream flowing traffic, buffered Isochronous and Interrupt DPs destined to be transmitted on the same downstream port shall be selected to be transmitted in the same order as they were received on the upstream port. Control and Bulk DPs buffered for transmission on the same downstream port shall be selected for transmission in the same order as they were received on the upstream port. TPs buffered for transmission on the same downstream port shall be selected for transmission in the same order as they were received on the upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 480,
+      "bottomRightX": 562,
+      "bottomRightY": 500,
+      "content": "### 10.8.6.4 Upstream Flowing Packet Reception and Selection",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 504,
+      "bottomRightX": 687,
+      "bottomRightY": 555,
+      "content": "When the Upstream Controller needs to select a packet to transmit on the upstream port, any fully buffered packets from downstream ports are candidates for the next packet to transmit. However, some packets still being received and not fully buffered can also be candidates.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 559,
+      "bottomRightX": 671,
+      "bottomRightY": 577,
+      "content": "To select the next DP for transmission on the upstream port, the Upstream Controller shall use:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 581,
+      "bottomRightX": 693,
+      "bottomRightY": 655,
+      "content": "- A weighted round robin arbitration behavior to select the next Control/Bulk DP buffered from the hub downstream ports.\n- A simple round robin arbitration behavior to select the next Interrupt/Isochronous DP buffered from the hub downstream ports.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 670,
+      "bottomRightX": 684,
+      "bottomRightY": 721,
+      "content": "The next section describes when an incompletely buffered DP that is still being received can be a candidate. The section after that describes the upstream weighted round robin arbitration mechanism.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 727,
+      "bottomRightX": 489,
+      "bottomRightY": 747,
+      "content": "#### 10.8.6.4.1 Partially Buffered DP Selection Candidate",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 750,
+      "bottomRightX": 682,
+      "bottomRightY": 784,
+      "content": "A DP (call it RCV_DP) shall be considered as a possible candidate, after the DPH has been fully received and validated and all of the following conditions are true:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 788,
+      "bottomRightX": 697,
+      "bottomRightY": 881,
+      "content": "- Let ALT_P be the candidate packet that would have been selected from the current set of fully buffered packets (i.e. when not considering RCV_DP as a possible candidate). RCV_DP would be selected when compared to ALT_P.\n- The time remaining to fully receive this DPP is less than the time it will take to transmit ALT_P.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 664,
+      "topLeftY": 980,
+      "bottomRightX": 699,
+      "bottomRightY": 995,
+      "content": "10-41",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

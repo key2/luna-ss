@@ -1,0 +1,102 @@
+{
+  "index": 482,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 95,
+      "bottomRightX": 675,
+      "bottomRightY": 129,
+      "content": "The following sections present the typical flow for connection management in various types of systems for the simple topology shown in Figure 10-4 when the host system is first powered on.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 133,
+      "bottomRightX": 659,
+      "bottomRightY": 167,
+      "content": "Note: These connection examples outline cases where the system operates as expected. The handling of error cases are specified later in this chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 187,
+      "bottomRightX": 561,
+      "bottomRightY": 547,
+      "content": "![img-260.jpeg](img-260.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-260.jpeg"
+    },
+    {
+      "topLeftX": 301,
+      "topLeftY": 559,
+      "bottomRightX": 522,
+      "bottomRightY": 577,
+      "content": "Figure 10-4. Simple USB Topology",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 591,
+      "bottomRightX": 659,
+      "bottomRightY": 612,
+      "content": "### 10.1.1 Connecting to an Enhanced SuperSpeed Capable Host",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 616,
+      "bottomRightX": 686,
+      "bottomRightY": 650,
+      "content": "When the host is powered off, the hub does not provide power to its downstream ports unless the hub supports charging applications (refer to Section 10.3.1.1).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 655,
+      "bottomRightX": 686,
+      "bottomRightY": 689,
+      "content": "When a hub is connected to a powered port and it detects Enhanced SuperSpeed connectivity, by default the following is the typical sequence of events:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 693,
+      "bottomRightX": 694,
+      "bottomRightY": 855,
+      "content": "- The upstream facing port will train at the fastest speed supported by its link partner as defined in the link chapter.\n- Simultaneously, the hub powers its downstream ports and trains each link at the fastest speed supported by its link partner.\n- If a downstream port trained at a higher speed than the upstream port then the downstream port shall retrain at a speed no faster than the upstream port.\n- Hub connects both as an Enhanced SuperSpeed hub device and as a high-speed hub device.\n- Host system begins hub enumeration at high-speed and Gen X speed.\n- Host system begins device enumeration at Gen X speed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 673,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "10-5",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

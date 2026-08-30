@@ -1,0 +1,57 @@
+{
+  "index": 21,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 61,
+      "content": "- xxii -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 913,
+      "content": "|  B | Symbol Scrambling | 479  |\n| --- | --- | --- |\n|  B.1 | Data Scrambling | 479  |\n|  C | Power Management | 485  |\n|  D | Example Packets | 486  |\n|  E | Repeaters | 489  |\n|  E.1 | Overview | 489  |\n|  E.1.1 | Term Definitions | 489  |\n|  E.1.2 | Scope of the Re-time Connectivity and Link Delay Budget | 490  |\n|  E.1.2.1 | Re-timer Connectivity Models | 490  |\n|  E.1.2.2 | Link Delay Budget Requirement | 491  |\n|  E.2 | Re-timer Architectural Overview and Requirement | 492  |\n|  E.2.1 | Architectural Overview | 493  |\n|  E.2.2 | General Requirements | 494  |\n|  E.2.2.1 | Physical Layer Requirements | 495  |\n|  E.2.2.2 | Link Layer Requirements | 495  |\n|  E.2.2.3 | x2 Re-timer Requirements | 495  |\n|  E.3 | Re-timer Training and Status State Machine (RTSSM) | 495  |\n|  E.3.1 | Warm Reset | 497  |\n|  E.3.2 | Rx.Detect | 498  |\n|  E.3.2.1 | Rx.Detect Requirements | 498  |\n|  E.3.2.2 | Exit from Rx.Detect | 499  |\n|  E.3.3 | eSS.Disabled | 499  |\n|  E.3.3.1 | eSS.Disabled Requirements | 499  |\n|  E.3.3.2 | Exit from eSS.Disabled | 499  |\n|  E.3.4 | Polling | 499  |\n|  E.3.4.1 | Polling.SpeedDetect | 500  |\n|  E.3.4.2 | Polling.PortConfig | 502  |\n|  E.3.4.3 | Polling.RxEQ | 504  |\n|  E.3.4.4 | Polling.TSx | 505  |\n|  E.3.4.5 | Polling.Idle | 510  |\n|  E.3.5 | Compliance Mode | 511  |\n|  E.3.5.1 | Compliance Mode Requirements | 511  |\n|  E.3.5.2 | Exit from Compliance Mode | 512  |\n|  E.3.6 | BLR Compliance Mode | 512  |\n|  E.3.6.1 | BLR Compliance Mode Requirements | 512  |\n|  E.3.6.2 | Exit from BLR Compliance Mode | 512  |\n|  E.3.7 | U0 | 512  |\n|  E.3.7.1 | U0 Requirements | 512  |\n|  E.3.7.2 | Exit from U0 | 513  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-15.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "index": 319,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 289 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 94,
+      "bottomRightX": 672,
+      "bottomRightY": 215,
+      "content": "The Data stage, if present, of a control transfer consists of one or more IN or OUT transactions and follows the same protocol rules as bulk transfers except that the **Direction** field shall always be set to zero. The Data stage always starts with the sequence number set to zero. All the transactions in the Data stage shall be in the same direction (i.e., all INs or all OUTs). The maximum amount of data to be sent during the data stage and its direction are specified during the Setup stage. If the amount of data exceeds the data packet size, the data is sent in multiple data packets that carry the maximum packet size. Any remaining data is sent as a residual in the last data packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 227,
+      "bottomRightX": 670,
+      "bottomRightY": 259,
+      "content": "Note that all control endpoints only support a burst of one and hence the host can only send or receive one packet at a time to or from a control endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 270,
+      "bottomRightX": 672,
+      "bottomRightY": 408,
+      "content": "The Status stage of a control transfer is the last transaction in the sequence. The status stage transaction is identified by a TP with the SubType set to *STATUS*. In response to a STATUS TP with zero in the **Deferred** bit, a device shall send an NRDY, STALL, or ACK TP. If a device sends an NRDY TP, the host shall wait for it to send an ERDY TP for that control endpoint before sending another STATUS TP to the device. However, the host may resume transactions to any endpoint – even if the endpoint had not returned an ERDY TP after returning a flow control response. If the **Deferred** bit is set in the STATUS TP, then the device shall send an ERDY TP to indicate to the host that is ready to complete the status stage of the control transfer.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 420,
+      "bottomRightX": 657,
+      "bottomRightY": 451,
+      "content": "Figure 8-47 and Figure 8-48 show the transaction order, the data sequence number value, and the data packet types for control read and write sequences.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

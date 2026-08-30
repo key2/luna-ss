@@ -1,0 +1,50 @@
+|  8.5.6.6 | Bus Interval Adjustment Message | 8-40  |
+| --- | --- | --- |
+|  8.5.6.7 | Sublink Speed Device Notification | 8-42  |
+|  8.5.7 | PING Transaction Packet | 8-44  |
+|  8.5.8 | PING_RESPONSE Transaction Packet | 8-44  |
+|  8.6 | Data Packet (DP) | 8-45  |
+|  8.7 | Isochronous Timestamp Packet (ITP) | 8-49  |
+|  8.8 | Addressing Triple | 8-50  |
+|  8.9 | Route String Field | 8-50  |
+|  8.9.1 | Route String Port Field | 8-51  |
+|  8.9.2 | Route String Port Field Width | 8-51  |
+|  8.9.3 | Port Number | 8-51  |
+|  8.10 | Transaction Packet Usages | 8-51  |
+|  8.10.1 | Flow Control Conditions | 8-51  |
+|  8.10.2 | Burst Transactions | 8-52  |
+|  8.10.2.1 | Enhanced SuperSpeed Burst Transactions | 8-52  |
+|  8.10.2.2 | SuperSpeedPlus Burst Transactions | 8-53  |
+|  8.10.3 | Short Packets | 8-54  |
+|  8.10.4 | SuperSpeedPlus Transaction Reordering | 8-54  |
+|  8.11 | TP or DP Responses | 8-57  |
+|  8.11.1 | Device Response to TP Requesting Data | 8-57  |
+|  8.11.2 | Host Response to Data Received from a Device | 8-57  |
+|  8.11.3 | Device Response to Data Received from the Host | 8-58  |
+|  8.11.4 | Device Response to a SETUP DP | 8-60  |
+|  8.12 | TP Sequences | 8-61  |
+|  8.12.1 | Bulk Transactions | 8-61  |
+|  8.12.1.1 | State Machine Notation Information | 8-61  |
+|  8.12.1.2 | Bulk IN Transactions | 8-62  |
+|  8.12.1.3 | Bulk OUT Transactions | 8-63  |
+|  8.12.1.4 | Bulk Streaming Protocol | 8-65  |
+|  8.12.1.4.1 | Stream IDs | 8-67  |
+|  8.12.1.4.2 | Device IN Stream Protocol | 8-69  |
+|  8.12.1.4.2.1 | Disabled | 8-70  |
+|  8.12.1.4.2.2 | Prime Pipe | 8-70  |
+|  8.12.1.4.2.3 | Deferred Prime Pipe | 8-71  |
+|  8.12.1.4.2.4 | Idle 8-71 |   |
+|  8.12.1.4.2.5 | Start Stream | 8-72  |
+|  8.12.1.4.2.6 | Move Data | 8-73  |
+|  8.12.1.4.2.7 | INMvData Device | 8-74  |
+|  8.12.1.4.2.8 | INMvData Host | 8-74  |
+|  8.12.1.4.2.9 | INMvData Device Terminate | 8-75  |
+|  8.12.1.4.2.10 | INMvData Burst End | 8-75  |
+|  8.12.1.4.3 | Device OUT Stream Protocol | 8-75  |
+|  8.12.1.4.3.1 | Disabled | 8-76  |
+|  8.12.1.4.3.2 | Prime Pipe | 8-77  |
+|  8.12.1.4.3.3 | Deferred Prime Pipe | 8-77  |
+|  8.12.1.4.3.4 | Idle 8-77 |   |
+|  8.12.1.4.3.5 | Start Stream | 8-78  |
+|  8.12.1.4.3.6 | Start Stream End | 8-79  |
+|  8.12.1.4.3.7 | Move Data | 8-79  |

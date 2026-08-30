@@ -1,0 +1,48 @@
+{
+  "index": 46,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 555,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Terms and Abbreviations",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 902,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  K codes | The control type codes used in 8b/10b encoding. SHP – start header packet SDP – start data packet END – end header or data packet EDB – end of nullified (bad) packet SLC – start link command COM – comma SKP – skip EPF – end packet framing  |\n|  Iane | The connection between a transmitter (Tx) of one port to the receiver (Rx) in another port. See Figure 2-1.  |\n|  LBPM | LFPS Based PWM Messaging  |\n|  LCSTART | Frame ordered set used to denote the start of a link command.  |\n|  LDM | See Link Delay Measurement.  |\n|  LDM Context | Timestamps recorded by an LDM Requester or Responder.  |\n|  LDM Link Delay | The delay across the Link between a Responder and a Requester.  |\n|  LDM Requester | A USB hub or device that uses the LDM protocol to communicate with an upstream host controller or hub and measure the upstream link delay.  |\n|  LDM Responder | A USB host controller or hub that uses the LDM protocol to communicate with a downstream hub or device.  |\n|  LFPS | Low frequency periodic signal. Used to communicate information across a link without using Enhanced SuperSpeed signaling.  |\n|  LFSR | Linear feedback shift register. Used to create pseudo-random characters for scrambling.  |\n|  LI | Logical Idle  |\n|  Link | The connection between 2 ports. Includes both the Upstream and Downstream sublinks. See Figure 2-1.  |\n|  link command | An eight-symbol sequence used for link-level flow control, retries, power management, and device removal.  |\n|  Link Control Word | Two bytes with 11 bits to define the link level flow control and a 5-bit CRC5 to ensure data integrity.  |\n|  Link Delay Measurement (LDM) | To perform LDM a device utilizes the PTM link level protocol to poll and automatically determine if an upstream port supports PTM, and to precisely calculate the delay of its upstream link. PTM LMPs shall be used to measure the link delay of a device upstream link.  |\n|  Link Error Count | The number of events that result in entry to Recovery due to bit errors.  |\n|  little endian | Method of storing data that places the least significant byte of multiple-byte values at lower storage addresses. For example, a 16-bit integer stored in little endian format places the least significant byte at the lower address and the most significant byte at the next address. See also big endian.  |\n|  LMP | Link Management Packet. A type of header packet used to communicate information between a pair of link partners.  |\n|  Local Rx Header Buffer Credit | The availability of a single free Rx Header Buffer of a port itself.  |\n|  Logical Idle | Period of one or more symbol times when no information (packets or link commands) is being transmitted when link is in U0.  |\n|  low-speed | USB operation at 1.5 Mbps. See also full-speed and high-speed.  |\n|  LSb | Least significant bit.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-27.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 963,
+      "bottomRightX": 269,
+      "bottomRightY": 979,
+      "content": "For USB Contributor Review Only",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "2-5",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

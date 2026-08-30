@@ -1,0 +1,48 @@
+{
+  "index": 402,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 283,
+      "topLeftY": 92,
+      "bottomRightX": 545,
+      "bottomRightY": 567,
+      "content": "![img-248.jpeg](img-248.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-248.jpeg"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 580,
+      "bottomRightX": 638,
+      "bottomRightY": 598,
+      "content": "Figure 8-62. Sample Enhanced SuperSpeed Isochronous IN Transaction",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "8-109",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

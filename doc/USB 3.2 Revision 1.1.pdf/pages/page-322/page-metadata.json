@@ -1,0 +1,111 @@
+{
+  "index": 321,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 291 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 274,
+      "topLeftY": 92,
+      "bottomRightX": 515,
+      "bottomRightY": 110,
+      "content": "Figure 8-48. Control Write Sequence",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 272,
+      "topLeftY": 120,
+      "bottomRightX": 515,
+      "bottomRightY": 564,
+      "content": "![img-139.jpeg](img-139.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-139.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 586,
+      "bottomRightX": 655,
+      "bottomRightY": 678,
+      "content": "When a STALL TP is sent by a control endpoint in either the Data or Status stages of a control transfer, a STALL TP shall be returned on all succeeding accesses to that endpoint until a SETUP DP is received. An endpoint shall return an ACK TP when it receives a subsequent SETUP DP. For control endpoints, if an ACK TP is returned for the SETUP transaction, the host expects that the endpoint has automatically recovered from the condition that caused the STALL and the endpoint shall operate normally.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 690,
+      "bottomRightX": 353,
+      "bottomRightY": 706,
+      "content": "### 8.12.2.1 Reporting Status Results",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 713,
+      "bottomRightX": 661,
+      "bottomRightY": 743,
+      "content": "During the Status stage, a device reports to the host the outcome of the previous Setup and Data stages of the transfer. Three possible results may be returned:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 750,
+      "bottomRightX": 456,
+      "bottomRightY": 810,
+      "content": "- The command sequence completed successfully.\n- The command sequence failed to complete.\n- The device is still busy completing the command.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 830,
+      "bottomRightX": 668,
+      "bottomRightY": 879,
+      "content": "Status reporting is always in the device-to-host direction. Table 8-31 summarizes the type of responses required for each. All Control transfers return status in the TP that is returned to the host in response to a STATUS TP transaction.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

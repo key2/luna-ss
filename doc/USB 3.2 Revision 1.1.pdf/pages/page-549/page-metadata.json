@@ -1,0 +1,155 @@
+{
+  "index": 548,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 518 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 92,
+      "bottomRightX": 660,
+      "bottomRightY": 230,
+      "content": "○ If switching from the received TS1 OS, it shall complete the clock switching within 140 μs. Note that a bit-level re-timer may monitor the clock offset between the recovered clock and its local reference clock, and attempt to perform the clock switching when the clock offset is small. A bit-level re-timer shall expect that the frequency range of a host or device is either within +300ppm to -5300ppm, or within -1700ppm to -5300ppm if a RF-friendly SSC profile is employed. It is desired that a bit-level re-timer to monitor the recovered clock and determine its frequency range before setting the clock switching point.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 236,
+      "bottomRightX": 656,
+      "bottomRightY": 303,
+      "content": "○ If switching from the received TS1A OS or TS1B OS, it shall complete the clock switching within 10 μs. Note that TS1A/TS1B OS do not contain SSC.\n○ Upon completing the clock switching at both simplex links, a bit-level re-timer shall complete the OS switching within two OS interval.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 309,
+      "bottomRightX": 633,
+      "bottomRightY": 355,
+      "content": "• The re-timer shall start the tRecoveryActiveTimeout timer upon entry to this substate. The tRecoveryActiveTimeout timer shall be reset and disabled upon observing successful exit handshake.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 364,
+      "bottomRightX": 668,
+      "bottomRightY": 423,
+      "content": "• The re-timer shall start the tRecoveryConfigurationTimeout timer upon observing TS2 OS at both ports. Note that a host and device may not exit from Recovery.Active simultaneously. For re-timers, observing TS2 OS at both ports is an indication that both the host and device have entered Recovery.configuration.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 435,
+      "bottomRightX": 290,
+      "bottomRightY": 451,
+      "content": "### E.3.11.3 Recovery.Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 457,
+      "bottomRightX": 651,
+      "bottomRightY": 488,
+      "content": "Recovery.Idle is a substate where re-timers decode TS2 OS and decide the next operation state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 502,
+      "bottomRightX": 374,
+      "bottomRightY": 517,
+      "content": "### E.3.11.3.1 Recovery.Idle Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 524,
+      "bottomRightX": 663,
+      "bottomRightY": 590,
+      "content": "• The re-timer shall decode the link configuration field in TS2 OS and configure itself to the corresponding operation state.\n• The re-timer shall start the tRecoveryIdleTimeout timer to monitor the progression of LTSSM.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 604,
+      "bottomRightX": 346,
+      "bottomRightY": 621,
+      "content": "### E.3.11.3.2 Exit from Recovery.Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 628,
+      "bottomRightX": 652,
+      "bottomRightY": 643,
+      "content": "• The re-timer shall transition to U0 if either one of the following conditions is met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 649,
+      "bottomRightX": 486,
+      "bottomRightY": 685,
+      "content": "○ Successful idle symbol handshake is observed.\n○ A link command is observed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 693,
+      "bottomRightX": 672,
+      "bottomRightY": 882,
+      "content": "• The re-timer shall transition to PassThrough Loopback if the Loopback bit (bit 2) in the link configuration field is asserted and the Compliance bit (bit 5) in the link configuration field is de-asserted.\n• The re-timer shall transition to BLR Compliance Mode if the Loopback bit (bit 2) in the link configuration field and the Compliance bit (bit 5) in the link configuration field are both asserted.\n• The re-timer shall transition to Local Loopback as the loopback slave if the re-timer loopback bit (bit 4 in the link configuration field) is asserted. Note that it is illegal to have both bit 4 and bit 2 asserted. If both bits are asserted, the re-timer shall give priority to PassThrough Loopback.\n• The re-timer shall transition to Hot Reset if the Reset bit is asserted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

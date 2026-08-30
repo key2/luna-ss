@@ -1,0 +1,183 @@
+{
+  "index": 449,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 419 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 92,
+      "bottomRightX": 614,
+      "bottomRightY": 110,
+      "content": "Table 10-3. Downstream Flowing Header Packet Processing Actions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 119,
+      "bottomRightX": 676,
+      "bottomRightY": 258,
+      "content": "|  Packet Type  |   |   |   |\n| --- | --- | --- | --- |\n|  DFP LTSSM State | ITP | PING | Other TPs/DPs  |\n|  U0 | Queue | Queue | Queue  |\n|  U1/U2 | Silently Discarded | Queue (Wake) | Queue (Wake, DF, drop DPP)  |\n|  Recovery | Queue | Queue | Queue  |\n|  Others | Silently Discarded | Silently Discarded | Silently Discarded  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-211.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 278,
+      "bottomRightX": 437,
+      "bottomRightY": 293,
+      "content": "The steps described in the next 4 sections depend on:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 299,
+      "bottomRightX": 650,
+      "bottomRightY": 353,
+      "content": "- whether the hub is operating as a SuperSpeed hub or a SuperSpeedPlus hub, and\n- whether the port processing is being done for an upstream or downstream facing port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 374,
+      "bottomRightX": 435,
+      "bottomRightY": 389,
+      "content": "#### 10.9.4.4.1 SuperSpeed Hub Upstream Facing Port",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 396,
+      "bottomRightX": 663,
+      "bottomRightY": 426,
+      "content": "- The header packet is not an ITP and not a PING and is routed to a downstream port that is in U1 or in U2:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 433,
+      "bottomRightX": 661,
+      "bottomRightY": 479,
+      "content": "1. The hub initiates U0 entry on the appropriate downstream port link. U0 entry shall be initiated no later than tDownLinkStateChange from when the hub received the first symbol of the header packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 485,
+      "bottomRightX": 523,
+      "bottomRightY": 501,
+      "content": "2. If the header packet is not already marked deferred:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 227,
+      "topLeftY": 506,
+      "bottomRightX": 672,
+      "bottomRightY": 634,
+      "content": "a) The header packet is marked deferred and the Link Control Word CRC-5 is re-calculated for the deferred header packet. If the deferred header packet is a DPH, the corresponding DPP is silently discarded.\nb) A copy of the header packet is modified to include the hub's hub depth, marked as deferred and with the Link Control Word CRC-5 recalculated is queued for transmission on the upstream port. Note that the route string in this deferred header packet is preserved and not set to zero.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 641,
+      "bottomRightX": 593,
+      "bottomRightY": 673,
+      "content": "3. The deferred header packet (see Section 7.2.4.1.4) is queued for transmission on the appropriate downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 679,
+      "bottomRightX": 663,
+      "bottomRightY": 710,
+      "content": "- If the header packet is a PING and is routed to a downstream port that is in U0 or is in U1 or is in U2 or is in Recovery:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 716,
+      "bottomRightX": 656,
+      "bottomRightY": 776,
+      "content": "1. If the appropriate downstream port link is in U1 or in U2, the hub initiates U0 entry on the appropriate downstream port link. U0 entry shall be initiated no later than tDownLinkStateChange from when the hub received the first symbol of the header packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 782,
+      "bottomRightX": 599,
+      "bottomRightY": 813,
+      "content": "2. The header packet is queued for transmission on the appropriate downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 819,
+      "bottomRightX": 671,
+      "bottomRightY": 851,
+      "content": "- If the header packet is not an ITP and not a PING and is routed to a downstream port that is in U0 or in Recovery:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 857,
+      "bottomRightX": 666,
+      "bottomRightY": 902,
+      "content": "1. If the downstream port Tx header packet buffer queue is not empty (there is at least one header packet in the queue that has not been completely transmitted) or no link credit is available for transmission on the",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

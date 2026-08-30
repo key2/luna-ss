@@ -1,0 +1,120 @@
+{
+  "index": 572,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 94,
+      "bottomRightX": 598,
+      "bottomRightY": 126,
+      "content": "# 11 Interoperability and Power Delivery",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 159,
+      "bottomRightX": 694,
+      "bottomRightY": 212,
+      "content": "This chapter defines interoperability and power delivery requirements for USB 3.1. Areas covered include USB 3.1 host and device support for USB 2.0 operation, and USB 3.1 VBUS power consumption limits.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 217,
+      "bottomRightX": 691,
+      "bottomRightY": 269,
+      "content": "Table 11-1 lists the compatibility matrix for USB 3.1 and USB 2.0. The implication of identifying a host port as supporting USB 3.1 is that both hardware and software support for USB 3.1 is in place; otherwise the port shall only be identified as a USB 2.0 port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 287,
+      "bottomRightX": 429,
+      "bottomRightY": 304,
+      "content": "Table 11-1. USB 3.0 and USB 2.0 Interoperability",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 306,
+      "bottomRightX": 652,
+      "bottomRightY": 400,
+      "content": "|  USB Host Port | USB Device Capability | Connected Mode  |\n| --- | --- | --- |\n|  USB 2.0 | USB 2.0 | USB 2.0 high-speed, full-speed, or low-speed  |\n|   |  USB 3.1 | USB 2.0 high-speed, full-speed, or low-speed  |\n|  USB 3.1 | USB 2.0 | USB 2.0 high-speed, full-speed, or low-speed  |\n|   |  USB 3.1 | USB 3.1 SuperSpeed or SuperSpeedPlus mode  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-254.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 412,
+      "bottomRightX": 687,
+      "bottomRightY": 447,
+      "content": "It should be noted that USB 3.1 devices are not required to be backward compatible with USB 1.1 host ports although supporting full-speed and low-speed modes are allowed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 473,
+      "bottomRightX": 497,
+      "bottomRightY": 498,
+      "content": "## 11.1 USB 3.1 Host Support for USB 2.0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 508,
+      "bottomRightX": 686,
+      "bottomRightY": 577,
+      "content": "USB 3.1-capable ports on hosts shall also support USB 2.0 operation in order to enable backward compatibility with USB 2.0 devices. It should be noted, however, that USB 3.1-capable hosts are not required to support Enhanced SuperSpeed operation on all of the ports available on the host, i.e., some USB 3.1-capable hosts may have a mix of USB 2.0-only and USB 3.1-capable ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 584,
+      "bottomRightX": 700,
+      "bottomRightY": 702,
+      "content": "To address the situation where a USB 3.1 device is connected to a USB 2.0-only port on a USB 3.1-capable host, after establishing a USB 2.0 high-speed connection with the device, it is recommended that the host inform the user that the device will support Enhanced SuperSpeed operation if it is moved to a USB 3.1-capable port on the same host. If a USB 3.1 device is connected to a USB 3.1-capable host via a USB 2.0 hub, it is recommended that the host inform the user that the device will support Enhanced SuperSpeed operation if it is moved to an appropriate host port or if the hub is replaced with a USB 3.1 hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 711,
+      "bottomRightX": 681,
+      "bottomRightY": 778,
+      "content": "When a USB 3.1 hub is connected to a host's USB 3.1-capable port, both USB 3.1 Enhanced SuperSpeed and USB 2.0 high-speed bus connections shall be allowed to connect and operate in parallel. There is no requirement for a USB 3.1-capable host to support multiple parallel connections to peripheral devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 786,
+      "bottomRightX": 700,
+      "bottomRightY": 821,
+      "content": "The USB 2.0 capabilities of a USB 3.1 host shall be designed to the USB 2.0 specification and shall meet the USB 2.0 compliance requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 673,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "11-1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

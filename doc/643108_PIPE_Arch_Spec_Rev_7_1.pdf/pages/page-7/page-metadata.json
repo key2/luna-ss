@@ -1,0 +1,56 @@
+{
+  "index": 6,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 698,
+      "bottomRightY": 93,
+      "content": "intel.",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 120,
+      "bottomRightX": 234,
+      "bottomRightY": 154,
+      "content": "# Figures",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 177,
+      "bottomRightX": 700,
+      "bottomRightY": 905,
+      "content": "2-1 Partitioning PHY Layer for PCIe... 18\n2-2 Partitioning PHY Layer for USB ... 19\n2-3 Partitioning PHY Layer for USB4 ... 20\n3-1 PHY/MAC Interface ... 26\n3-2 DPTX PHY/MAC Interface ... 27\n3-3 DPRX PHY/MAC Interface ... 27\n4-1 PHY Functional Block Diagram for Tx+Rx Usage ... 34\n4-2 PHY Functional Diagram for Tx+Tx Usage Case ... 35\n4-3 PHY Functional Diagram for Rx+Rx Usage Case ... 35\n4-4 Transmitter Block Diagram (2.5 and 5.0 GT/s) ... 36\n4-5 Transmitter Block Diagram (8.0/10/16/32 GT/s) ... 37\n4-6 Receiver Block Diagram (2.5 and 5.0 GT/s) ... 38\n4-7 Receiver Block Diagram (8.0/10/16 GT/s) ... 39\n4-8 SerDes Architecture: PHY Transmitter Block Diagram ... 40\n4-9 SerDes Architecture: PHY Receiver Block Diagram ... 41\n5-1 PHY Functional Block Diagram ... 42\n5-2 Transmitter Block Diagram (1.5, 3.0, and 6.0 GT/s) ... 43\n5-3 Receiver Block Diagram (1.5, 3.0, and 6.0 GT/s) ... 44\n6-1 Message Bus Transaction Framing ... 69\n7-1 Message Bus Address Space ... 79\n8-1 PCLK as PHY Output ... 111\n8-2 PCLK as PHY Input with a PHY-Owned PLL ... 112\n8-3 PCLK as PHY Input with an External PLL and PHY PLL ... 113\n8-4 PCLK as PHY Input with External PLL ... 114\n8-5 MacCLK Lane ... 115\n8-6 Basic MacCLK Lane Operation ... 115\n8-7 Reset# Deassertion and PhyStatus for PCLK as PHY Output ... 116\n8-8 PCIe P2 Entry and Exit with PCLK as PHY Output ... 118\n8-9 PCIe P2 Entry and Exit with PCLK as PHY Input ... 118\n8-10 L1 SubState Entry and Exit with PCLK as PHY Output ... 119\n8-11 USB U1 Exit ... 121\n8-12 DeepPMReq#/DeepPMAck# Handshake Sequencing ... 125\n8-13 PHY Context Restoration after the Power is Restored ... 125\n8-14 Rate Change with Fixed Data Path ... 128\n8-15 Change from PCIe 2.5 Gt/s to 5.0 Gt/s with PCLK as PHY Input ... 128\n8-16 Rate Change with Fixed PCLK Frequency ... 129\n8-17 Selecting Tx Margining Value ... 129\n8-18 Selecting Tx De-Emphasis Value ... 130\n8-19 Receiver Detect – Receiver Present ... 131\n8-20 Beacon Transmit ... 131\n8-21 LFPS Transmit ... 132\n8-22 LFPS Transmit for USB4 and DisplayPort Modes ... 133\n8-23 Beacon Receive ... 133\n8-24 LFPS Receive ... 134\n8-25 Clock Correction – Add an SKP ... 136\n8-26 Clock Correction – Remove an SKP ... 137\n8-27 8B/10B Decode Error ... 138",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 953,
+      "bottomRightX": 297,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 690,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 966,
+      "content": "7",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

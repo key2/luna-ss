@@ -1,0 +1,183 @@
+{
+  "index": 438,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 592,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 698,
+      "bottomRightY": 162,
+      "content": "Feature selector values in wValue shall be appropriate to the recipient. Only device feature selector values may be used when the recipient is a device, only interface feature selector values may be used when the recipient is an interface, and only endpoint feature selector values may be used when the recipient is an endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 169,
+      "bottomRightX": 695,
+      "bottomRightY": 187,
+      "content": "Refer to Table 9-7 for a definition of which feature selector values are defined for which recipients.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 195,
+      "bottomRightX": 694,
+      "bottomRightY": 247,
+      "content": "A ClearFeature() request that references a feature that cannot be cleared, that does not exist, or that references an interface or an endpoint that does not exist, will cause the device to respond with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 255,
+      "bottomRightX": 498,
+      "bottomRightY": 272,
+      "content": "If wLength is non-zero, then the device behavior is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 279,
+      "bottomRightX": 666,
+      "bottomRightY": 313,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 319,
+      "bottomRightX": 699,
+      "bottomRightY": 371,
+      "content": "Address state: This request is valid when the device is in the Address state; references to interfaces, or to endpoints other than the Default Control Pipe, shall cause the device to respond with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 376,
+      "bottomRightX": 618,
+      "bottomRightY": 394,
+      "content": "Configured state: This request is valid when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 154,
+      "topLeftY": 422,
+      "bottomRightX": 201,
+      "bottomRightY": 438,
+      "content": "# NOTE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 445,
+      "bottomRightX": 682,
+      "bottomRightY": 480,
+      "content": "The device shall process a Clear Feature (U1_Enable or U2_Enable or LTM_Enable) only if the device is in the configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 497,
+      "bottomRightX": 341,
+      "bottomRightY": 517,
+      "content": "### 9.4.2 Get Configuration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 522,
+      "bottomRightX": 465,
+      "bottomRightY": 540,
+      "content": "This request returns the current device configuration value.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 552,
+      "bottomRightX": 700,
+      "bottomRightY": 609,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10000000B | GET_CONFIGURATION | Zero | Zero | One | Configuration Value  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-155.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 625,
+      "bottomRightX": 455,
+      "bottomRightY": 642,
+      "content": "If the returned value is zero, the device is not configured.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 650,
+      "bottomRightX": 695,
+      "bottomRightY": 669,
+      "content": "If wValue, wIndex, or wLength are not as specified above, then the device behavior is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 674,
+      "bottomRightX": 665,
+      "bottomRightY": 709,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 715,
+      "bottomRightX": 444,
+      "bottomRightY": 731,
+      "content": "Address state: The value zero shall be returned.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 738,
+      "bottomRightX": 666,
+      "bottomRightY": 771,
+      "content": "Configured state: The non-zero bConfigurationValue of the current configuration shall be returned.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 995,
+      "content": "9-21",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

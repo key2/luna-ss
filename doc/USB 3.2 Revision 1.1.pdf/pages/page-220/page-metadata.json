@@ -1,0 +1,128 @@
+{
+  "index": 219,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 189 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 92,
+      "bottomRightX": 591,
+      "bottomRightY": 173,
+      "content": "○ In Gen 1x1 operation, tDHPResponse shall be less than 2540 ns.\n○ In Gen 2x1 operation, tDHPResponse shall be less than 1610 ns.\n○ In Gen 1x2 operation, tDHPResponse shall be less than 2270 ns.\n○ In Gen 2x2 operation, tDHPResponse shall be less than 1355 ns.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 179,
+      "bottomRightX": 652,
+      "bottomRightY": 270,
+      "content": "Note that tDHPResponse includes some worst case delay, tDPacket = 2140 ns in Gen 1x1 operation and tDPacket = 910 ns in Gen 2x1 operation, when additional packets are scheduled ahead of the corresponding LGOOD_n or LBAD. It is recommended that a design respond with LGOOD_n or LBAD within 400 ns in Gen 1x1 operation or 700 ns in Gen 2x1 operation when no packets delay the LGOOD_n or LBAD transmission. Refer to Figure E-5 of Section E.1.2.3 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 276,
+      "bottomRightX": 666,
+      "bottomRightY": 308,
+      "content": "• A port shall acknowledge the received LGO_Ux with LAU or LXU based on the timing defined by tDHPResponse.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 329,
+      "bottomRightX": 238,
+      "bottomRightY": 343,
+      "content": "### 7.5.6.2 Exit from U0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 352,
+      "bottomRightX": 668,
+      "bottomRightY": 629,
+      "content": "• The port shall transition to U1 upon successful completion of LGO_U1 entry sequence. Refer to Section 7.2.4.2 for details.\n• The port shall transition to U2 upon successful completion of LGO_U2 entry sequence. Refer to Section 7.2.4.2 for details.\n• The port shall transition to U3 upon successful completion of LGO_U3 entry sequence. Refer to Section 7.2.4.2 for details.\n• A downstream port shall transition to eSS.Inactive when it fails U3 entry on three consecutive attempts.\n• The port shall transition to Recovery upon any errors stated in Section 7.3 that will cause a link to transition to Recovery.\n• The port shall transition to Recovery upon detection of a TS1 ordered set on any negotiated lane.\n• The port shall transition to Recovery when directed.\n• The port shall transition to eSS.Inactive when PENDING_HP_TIMER times out for the fourth consecutive time.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 635,
+      "bottomRightX": 663,
+      "bottomRightY": 667,
+      "content": "Note: This implies the link has transitioned to Recovery for three consecutive times and each time the transition to Recovery is due to PENDING_HP_TIMER timeout.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 673,
+      "bottomRightX": 561,
+      "bottomRightY": 734,
+      "content": "• A downstream port shall transition to eSS.Disabled when directed.\n• A downstream port shall transition to eSS.Inactive when directed.\n• An upstream port shall transition to eSS.Disabled when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 739,
+      "bottomRightX": 641,
+      "bottomRightY": 802,
+      "content": "Note: After entry to U0 and the successful completion of training and link initialization, both ports are required to exchange port capabilities information using Port Capability LMPs within tPortConfiguration time as defined in Section 8.4.5. This includes the following scenarios:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 806,
+      "bottomRightX": 665,
+      "bottomRightY": 897,
+      "content": "1. Entry to U0 from polling directly;\n2. Entry to U0 indirectly from Polling through Hot Reset;\n3. Entry to U0 from Recovery and port configuration has not been successfully completed after exiting from Polling. In this case, both ports shall continue the port configuration process by completing the remaining LMP exchanges.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

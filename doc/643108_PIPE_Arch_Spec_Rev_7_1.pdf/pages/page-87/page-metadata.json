@@ -1,0 +1,131 @@
+{
+  "index": 86,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 487,
+      "bottomRightY": 137,
+      "content": "Table 7-12. Address 400h: PHY Tx Control0 (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 344,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [1:0] | 0h | Level | SATA | **Tx Pattern[1:0]:** This field controls which pattern the PHY sends at the Gen1 rate when sending OOB or initialization signaling. The PHY transmits this pattern at the Gen 1 rate regardless of what rate the PHY is configured at. 0 ALIGN 1 D24.3 2 D10.2 3 Reserved See Section 8.23 for a more detailed description of the usage of these pins. **Note:** This field is not used in the SerDes architecture.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-75.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 360,
+      "bottomRightX": 506,
+      "bottomRightY": 381,
+      "content": "### 7.1.12 Address 401h: PHY Tx Control1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 387,
+      "bottomRightX": 536,
+      "bottomRightY": 402,
+      "content": "This register is used to control the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 418,
+      "bottomRightX": 392,
+      "bottomRightY": 432,
+      "content": "Table 7-13. Address 401h: PHY Tx Control1",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 436,
+      "bottomRightX": 699,
+      "bottomRightY": 567,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:1] | 0h | N/A | N/A | Reserved  |\n|  [0] | 0h | Level | USB | **TxOnesZeros:** This field is used when transmitting USB-compliance patterns CP7 or CP8. When this field is set, the transmitter is to transmit an alternating sequence of 50-250 ones and 50-250 zeros (regardless of the state of the TxData interface). This field is only applicable to 8b/10b modes. **Note:** This field is not used in the SerDes architecture.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-76.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 581,
+      "bottomRightX": 507,
+      "bottomRightY": 600,
+      "content": "### 7.1.13 Address 402h: PHY Tx Control2",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 608,
+      "bottomRightX": 536,
+      "bottomRightY": 624,
+      "content": "This register is used to control the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 639,
+      "bottomRightX": 487,
+      "bottomRightY": 654,
+      "content": "Table 7-14. Address 402h: PHY Tx Control2 (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 657,
+      "bottomRightX": 706,
+      "bottomRightY": 702,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-77.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "87",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

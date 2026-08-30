@@ -1,0 +1,20 @@
+{
+  "index": 30,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 252,
+      "topLeftY": 793,
+      "bottomRightX": 466,
+      "bottomRightY": 874,
+      "content": "GOWIN\nPROGRAMMING FOR THE FUTURE",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

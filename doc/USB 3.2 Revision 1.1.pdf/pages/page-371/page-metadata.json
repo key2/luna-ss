@@ -1,0 +1,57 @@
+{
+  "index": 370,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 193,
+      "bottomRightY": 80,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 340 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 80,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 94,
+      "bottomRightX": 676,
+      "bottomRightY": 244,
+      "content": "|  Default state: | If the address specified is non-zero, then the device shall enter the Address state; otherwise, the device remains in the Default state (this is not an error condition).  |\n| --- | --- |\n|  Address state: | If the address specified is zero, then the device shall enter the Default state; otherwise, the device remains in the Address state but uses the newly-specified address.  |\n|  Configured state: | Device behavior when this request is received while the device is in the Configured state is not specified.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-165.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

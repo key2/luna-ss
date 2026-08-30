@@ -1,0 +1,56 @@
+{
+  "index": 6,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 578,
+      "topLeftY": 37,
+      "bottomRightX": 646,
+      "bottomRightY": 50,
+      "content": "List of Tables",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 66,
+      "topLeftY": 93,
+      "bottomRightX": 235,
+      "bottomRightY": 119,
+      "content": "# List of Tables",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 117,
+      "topLeftY": 176,
+      "bottomRightX": 635,
+      "bottomRightY": 489,
+      "content": "Table 1-1 Terminology and Abbreviations...2\nTable 3-1 JTAG Pin Distribution...9\nTable 3-2 Clock Pin Distribution...10\nTable 3-3 DDR3 Configuration...10\nTable 3-4 DDR3 Pin Distribution...11\nTable 3-5 Pin Distribution of DP-RX Interface...13\nTable 3-6 Pin Distribution of MIPI CPHY & DPHY Hard core Interface...15\nTable 3-7 J21 Pin Distribution of I2C Interface...18\nTable 3-8 Pin Distribution of Key...19\nTable 3-9 Pin Distribution of LED...19\nTable 3-10 Pin Distribution of Type-C Interface...21\nTable 3-11 Pin Distribution of SDI Interface...22",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 634,
+      "topLeftY": 945,
+      "bottomRightX": 646,
+      "bottomRightY": 956,
+      "content": "iv",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

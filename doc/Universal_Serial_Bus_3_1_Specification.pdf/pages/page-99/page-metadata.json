@@ -1,0 +1,114 @@
+{
+  "index": 98,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 148,
+      "bottomRightX": 494,
+      "bottomRightY": 336,
+      "content": "![img-29.jpeg](img-29.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-29.jpeg"
+    },
+    {
+      "topLeftX": 515,
+      "topLeftY": 151,
+      "bottomRightX": 693,
+      "bottomRightY": 313,
+      "content": "![img-30.jpeg](img-30.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-30.jpeg"
+    },
+    {
+      "topLeftX": 134,
+      "topLeftY": 399,
+      "bottomRightX": 420,
+      "bottomRightY": 593,
+      "content": "![img-31.jpeg](img-31.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-31.jpeg"
+    },
+    {
+      "topLeftX": 473,
+      "topLeftY": 449,
+      "bottomRightX": 668,
+      "bottomRightY": 520,
+      "content": "![img-32.jpeg](img-32.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-32.jpeg"
+    },
+    {
+      "topLeftX": 497,
+      "topLeftY": 547,
+      "bottomRightX": 594,
+      "bottomRightY": 563,
+      "content": "SECTION P-P",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 700,
+      "bottomRightX": 272,
+      "bottomRightY": 711,
+      "content": "NOTES:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 711,
+      "bottomRightX": 539,
+      "bottomRightY": 731,
+      "content": "1) NON-DIMENSIONED GEOMETRY FOR REFERENCE ONLY,\nSUBJECT TO CHANGE",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 731,
+      "bottomRightX": 597,
+      "bottomRightY": 752,
+      "content": "2) DRAWING FOR MATING INTERFACE DIMENSIONS ONLY,\nVIEWS MAY NOT SHOW REALISTIC MANUFACTURING CONDITION.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 572,
+      "topLeftY": 772,
+      "bottomRightX": 698,
+      "bottomRightY": 788,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 697,
+      "bottomRightY": 993,
+      "content": "5-11",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

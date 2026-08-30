@@ -1,0 +1,129 @@
+{
+  "index": 302,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 272 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 92,
+      "bottomRightX": 609,
+      "bottomRightY": 110,
+      "content": "Figure 8-41. Device OUT Stream Protocol State Machine (DOSPSM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 119,
+      "bottomRightX": 646,
+      "bottomRightY": 530,
+      "content": "![img-132.jpeg](img-132.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-132.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 552,
+      "bottomRightX": 260,
+      "bottomRightY": 565,
+      "content": "### 8.12.1.4.3.1 Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 573,
+      "bottomRightX": 671,
+      "bottomRightY": 603,
+      "content": "After an endpoint is configured or receives a SetFeature(ENDPOINT_HALT) request, the pipe is in the Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 617,
+      "bottomRightX": 671,
+      "bottomRightY": 725,
+      "content": "DP(Prime, PP=0) - If a DP with the Stream ID field set to Prime is successfully received, then the device shall transition the pipe to the Prime Pipe state. The DPP shall contain a zero-length data payload. This transition occurs after the initial Endpoint Buffers are assigned to the pipe by system software. Note, if an error is detected in the DP data (even though it is zero-length) the device shall remain in the Disabled state, and issue ACK(Prime, NumP>0, Rty) packets, retrying until a DP(Prime) is successfully received. This case is not illustrated in the figure above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 735,
+      "bottomRightX": 667,
+      "bottomRightY": 783,
+      "content": "DPH(Deferred) - If a DP with the Deferred (DF) flag set is received, then the device shall transition the pipe to the Deferred Prime Pipe state. This packet is received when the link has transitioned to a U1 or U2 state while waiting for the initial Endpoint Data assignment.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 795,
+      "bottomRightX": 272,
+      "bottomRightY": 810,
+      "content": "### 8.12.1.4.3.2 Prime Pipe",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 816,
+      "bottomRightX": 671,
+      "bottomRightY": 879,
+      "content": "The Prime Pipe state informs the device that the Endpoint Data has been assigned to one or more Streams; however, it does not specify which Stream(s). After returning to the Idle state the device shall issue an ERDY to start a specific Stream from its list of Active and Ready Streams.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 891,
+      "bottomRightX": 673,
+      "bottomRightY": 922,
+      "content": "NRDY(Prime) - Upon entering the Prime Pipe state, the device shall return an NRDY TP with its Stream ID field set to Prime and immediately transition to the Idle state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "index": 156,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 683,
+      "bottomRightY": 148,
+      "content": "Figure 8-39. PCIe 8 GT/s or Higher TxDataValid Timing for 16 Bit-Wide TxData Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 152,
+      "bottomRightX": 700,
+      "bottomRightY": 359,
+      "content": "![img-60.jpeg](img-60.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-60.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 369,
+      "bottomRightX": 686,
+      "bottomRightY": 385,
+      "content": "Figure 8-40. PCIe 8 GT/s or Higher RxDataValid Timing for 16 Bit-Wide RxData Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 389,
+      "bottomRightX": 700,
+      "bottomRightY": 638,
+      "content": "![img-61.jpeg](img-61.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-61.jpeg"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 643,
+      "bottomRightX": 696,
+      "bottomRightY": 702,
+      "content": "There are situations, such as upconfigure or L0p, when a MAC must start transmissions on idle lanes while some other lanes are already active. In any such situation, the MAC must wait until the cycle after TxDataValid is deasserted to allow the PHY to transmit the backlog of data due to 128b/130b to start transmissions on previously idle lanes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 722,
+      "bottomRightX": 553,
+      "bottomRightY": 767,
+      "content": "### 8.28 128b/132b Encoding and Block Synchronization (USB 10 GT/s)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 772,
+      "bottomRightX": 696,
+      "bottomRightY": 902,
+      "content": "For every 128 bits that are moved across the PIPE TxData interface at the 10.0 GT/s rate the PHY must transmit 132 bits. The MAC must use the TxDataValid signal periodically to allow the PHY to transmit the built-up backlog of data. For example – if the TxData bus is 16-bits wide and PCLK is 625 MHz then every four blocks the MAC must deassert TxDataValid for one PCLK to allow the PHY to transmit the 16-bit backlog of built up data. The buffers used by the PHY to store Tx data related to the 128/132b encoding rate mismatch must be empty when the PHY comes out of reset and must be empty whenever the PHY exits electrical idle (since Tx buffers are flushed before entry to idle). The PHY must use RxDataValid in a similar fashion. TxDataValid and",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "157",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

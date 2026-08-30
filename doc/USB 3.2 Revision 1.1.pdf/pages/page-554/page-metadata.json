@@ -1,0 +1,156 @@
+{
+  "index": 553,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 523 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 660,
+      "bottomRightY": 139,
+      "content": "The transfer function for the jitter suppression filter may be either first order or second order, depending upon implementation. The reference JTF curves in Figure E-18 assume a second order filter with transfer function expressed as:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 154,
+      "bottomRightX": 375,
+      "bottomRightY": 197,
+      "content": "$$H_{JSF}(s) = \\frac{2\\zeta_{JSF}\\omega_{nJSF}s + \\omega_{nJSF}^2}{s^2 + 2\\zeta_{JSF}\\omega_{nJSF}s + \\omega_{nJSF}^2} \\tag{E.3}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 212,
+      "bottomRightX": 457,
+      "bottomRightY": 228,
+      "content": "where $\\omega_{nRs}$ is the natural frequency of the re-timer CDR",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 241,
+      "bottomRightX": 432,
+      "bottomRightY": 257,
+      "content": "$\\zeta_{Rs}$ is the damping factor of the re-timer CDR",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 268,
+      "bottomRightX": 606,
+      "bottomRightY": 287,
+      "content": "$\\omega_{nJSF}$ is the natural frequency of the low pass jitter suppression filter (JSF)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 298,
+      "bottomRightX": 584,
+      "bottomRightY": 314,
+      "content": "$\\zeta_{JSF}$ is the damping factor of the low pass jitter suppression filter (JSF)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 325,
+      "bottomRightX": 666,
+      "bottomRightY": 356,
+      "content": "The relationship of the 3 dB frequencies of the CDR and JSF to their natural frequencies and damping factors are",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 370,
+      "bottomRightX": 426,
+      "bottomRightY": 435,
+      "content": "$$\\omega_{3dBRs} = \\omega_{nRs} \\left( 1 + 2 \\zeta_{Rs}^2 + \\left[ (1 + 2 \\zeta_{Rs}^2)^2 + 1 \\right]^{\\frac{1}{2}} \\right)^{\\frac{1}{2}} \\tag{E.4}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 449,
+      "bottomRightX": 453,
+      "bottomRightY": 513,
+      "content": "$$\\omega_{3dBJSF} = \\omega_{nJSF} \\left( 1 + 2 \\zeta_{JSF}^2 + \\left[ (1 + 2 \\zeta_{JSF}^2)^2 + 1 \\right]^{\\frac{1}{2}} \\right)^{\\frac{1}{2}} \\tag{E.5}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 526,
+      "bottomRightX": 663,
+      "bottomRightY": 588,
+      "content": "The jitter transfer function for this system is illustrated in Figure E-17. Bit-level re-timers shall meet the normative jitter gain requirements defined in Table E-4. In addition, the re-timer shall meet all normative timing and electrical requirements defined in Chapter 6. A set of reference curves for SuperSpeed Gen 1x1 re-timers are shown in Figure E-18.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 599,
+      "bottomRightX": 523,
+      "bottomRightY": 615,
+      "content": "Figure E-17. Jitter Transfer Illustration",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 224,
+      "topLeftY": 641,
+      "bottomRightX": 573,
+      "bottomRightY": 853,
+      "content": "![img-212.jpeg](img-212.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-212.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

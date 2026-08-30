@@ -1,0 +1,93 @@
+{
+  "index": 190,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 160 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 671,
+      "bottomRightY": 156,
+      "content": "timers used in the link layer have a tolerance of 0~+50% accuracy with exception of the U2 inactivity timer (refer to Section 10.4.1 for U2 inactivity timer accuracy). All timeout values must be set to the specified values after PowerOn Reset or Inband Reset. All counters must be also initialized after PowerOn Reset or Inband Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 167,
+      "bottomRightX": 666,
+      "bottomRightY": 182,
+      "content": "In the state machine descriptions, lists of state entry and exit conditions are not prioritized.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 195,
+      "bottomRightX": 645,
+      "bottomRightY": 211,
+      "content": "State machine diagrams are overviews and may not include all the transition conditions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 245,
+      "topLeftY": 223,
+      "bottomRightX": 542,
+      "bottomRightY": 238,
+      "content": "Table 7-12. LTSSM State Transition Timeouts",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 248,
+      "bottomRightX": 688,
+      "bottomRightY": 931,
+      "content": "|  Name | Initial State | Timeout to Next State | Timeout Values  |\n| --- | --- | --- | --- |\n|  teSSInactiveQuietTimeout | eSS.Inactive.Quiet | eSS.Inactive.Disconnect.Detect | 12 ms  |\n|  tRxDetectQuietTimeoutDFP^{1} | Rx.Detect.Quiet | Rx.Detect.Active | 12 ms (min) 120 ms (max)  |\n|  tRxDetectQuietTimeoutUFP | Rx.Detect.Quiet | Rx.Detect.Active | 12 ms  |\n|  tPollingLFPSTimeout | Polling.LFPS /Polling.LFPSPlus^{2} | Compliance/Rx.Detect/ eSS.Disabled/eSS.Inactive | 360 ms  |\n|  tPollingSCDLFPSTimeout (SuperSpeedPlus operation) | Polling.LFPS or Polling.LFPSPlus | Polling.RxEQ | 60 μs  |\n|  tPollingLBPMLFPSTimeout (SuperSpeedPlus operation) | Polling.PortMatch or Polling.PortConfig | Rx.Detect/ eSS.Disabled/eSS.Inactive | 12 ms  |\n|  tPollingActiveTimeout | Polling.Active^{2} | Rx.Detect/Polling.PortMatch/ eSS.Disabled/eSS.Inactive | 12 ms (x1) 24 ms (x2)  |\n|  tPollingConfigurationTimeout | Polling.Configuration^{2} | Rx.Detect/Polling.PortMatch/ eSS.Disabled/eSS.Inactive | 12 ms (x1) 24 ms (x2)  |\n|  tPollingIdleTimeout | Polling.Idle^{2} | Rx.Detect/Polling.PortMatch/ eSS.Disabled/ eSS.Inactive | 2 ms  |\n|  tU0RecoveryTimeout | U0 | Recovery | 1 ms  |\n|  tU0LTimeout | U0 | U0 | 10 μs  |\n|  tNoLFPSResponseTimeout | U1 | eSS.Inactive | 2 ms  |\n|  PORT_U2_TIMEOUT | U1^{3} | U2 | U2 Inactivity field set in LMP (refer to Section 8.4 for details)  |\n|  tU1PingTimeout | U1 | Rx.Detect | 300 ms  |\n|  tNoLFPSResponseTimeout | U2 | eSS.Inactive | 2 ms  |\n|  tNoLFPSResponseTimeout | U3 | U3 | 10 ms  |\n|  tRecoveryActiveTimeout | Recovery.Active | eSS.Inactive, Rx.Detect | 12 ms  |\n|  tRecoveryConfigurationTimeout | Recovery.Configuration | eSS.Inactive, Rx.Detect | 6 ms  |\n|  tRecoveryIdleTimeout | Recovery.Idle | eSS.Inactive | 2 ms  |\n|  tLoopbackExitTimeout | Loopback.Exit | eSS.Inactive | 2 ms  |\n|  tHotResetActiveTimeout | Hot Reset.Active | eSS.Inactive | 12 ms  |\n|  tHotResetExitTimeout | Hot Reset.Exit | eSS.Inactive | 2 ms  |\n|  tU3WakeupRetryDelay | U3 | U3 | 100 ms  |\n|  tU2RxdetDelay | U2 | U2 | 100 ms  |\n|  tU3RxdetDelay | U3 | U3 | 100 ms  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-91.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

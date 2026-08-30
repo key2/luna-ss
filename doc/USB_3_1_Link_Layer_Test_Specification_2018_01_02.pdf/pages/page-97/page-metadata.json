@@ -1,0 +1,137 @@
+{
+  "index": 96,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 254,
+      "bottomRightY": 109,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 116,
+      "bottomRightX": 696,
+      "bottomRightY": 274,
+      "content": "1. Perform the Link Initialization Sequence to bring the LVS and PUT link to U0. The PUT host controller machine enumerates the LVS.\n2. The LVS software prompts the test operator to put the PUT host controller machine to sleep or, if the DUT is an Embedded Host and power is lost to the host during sleep, to U3.\n3. The LVS waits to receive an LGO_U3 from the PUT.\n4. The LVS sends an LAU when it receives an LGO_U3 from the PUT.\n5. The LVS waits to receive an LPMA from the PUT.\n6. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 280,
+      "bottomRightX": 614,
+      "bottomRightY": 319,
+      "content": "a. The LVS does not receive an LGO_U3\nb. The LVS does not receive an LPMA before PM_ENTRY_TIMER deadline.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 325,
+      "bottomRightX": 708,
+      "bottomRightY": 492,
+      "content": "7. The LVS prompts the test operator to verify that the host controller machine is in a sleep state.\n8. The LVS prompts the test operator to wake the host controller machine.\n9. The LVS waits to receive a U3 Exit LFPS from PUT.\n10. The test fails if no U3 Exit LFPS is received.\n11. The LVS sends a U3 Exit LFPS 5ms after detecting an LFPS from the PUT.\n12. The LVS and PUT transition through Recovery to U0.\n13. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 551,
+      "bottomRightX": 439,
+      "bottomRightY": 568,
+      "content": "# TD.7.37 Packet Pending Test (Upstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 570,
+      "bottomRightX": 630,
+      "bottomRightY": 587,
+      "content": "This test verifies that the PUT releases its Packet Pending flag at the end of a Control Transfer.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 594,
+      "bottomRightX": 234,
+      "bottomRightY": 607,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 615,
+      "bottomRightX": 169,
+      "bottomRightY": 630,
+      "content": "8.6#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 639,
+      "bottomRightX": 254,
+      "bottomRightY": 654,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 660,
+      "bottomRightX": 701,
+      "bottomRightY": 909,
+      "content": "1. Perform the Link Initialization Sequence to bring the LVS and PUT link to U0. The LVS enumerates the PUT to a configured state.\n2. If the PUT is an US port of a hub, the LVS issues a SetPortFeature(PLS=4) for each DS port on the hub.\n3. The LVS software issues a GetDescriptor request SETUP packet, with the PP bit set to 1.\n4. The LVS sends an ACK TP, with the PP bit set to 1, to start the IN stage of the GetDescriptor request.\n5. The LVS waits to receive IN data from the PUT.\n6. The LVS software issues a GetDescriptor STATUS packet, with a PP bit set to 0.\n7. The LVS waits to receive ACK TP from the PUT, concluding the GetDescriptor request.\n8. The test fails if the GetDescriptor request is not completed.\n9. The LVS sends an LGO_U1 and waits to receive LAU from the PUT.\n10. The test fails if the PUT does not send an LAU.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "89",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

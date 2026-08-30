@@ -1,0 +1,84 @@
+{
+  "index": 135,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 235,
+      "topLeftY": 117,
+      "bottomRightX": 578,
+      "bottomRightY": 419,
+      "content": "![img-101.jpeg](img-101.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-101.jpeg"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 437,
+      "bottomRightX": 629,
+      "bottomRightY": 456,
+      "content": "Figure 5-21. Impedance Limits of a Mated Connector for Gen 2 Speed",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 469,
+      "bottomRightX": 492,
+      "bottomRightY": 488,
+      "content": "### 5.6.1.3 Mated Cable Assemblies for Gen 2 speed",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 494,
+      "bottomRightX": 667,
+      "bottomRightY": 546,
+      "content": "The requirements for mated cable assemblies for Gen 2 speed are divided into informative and normative requirements. The informative requirements are provided as design targets and normative requirements are pass/fail criteria for mated cable assembly compliance testing.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 552,
+      "bottomRightX": 301,
+      "bottomRightY": 571,
+      "content": "#### 5.6.1.3.1 Design Targets",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 586,
+      "bottomRightX": 698,
+      "bottomRightY": 639,
+      "content": "The design targets are summarized in Table 5-15. Cable assemblies that meet the target performance should pass the cable assembly compliance tests, but it is not guaranteed. Compliance is determined with the normative requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-48",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

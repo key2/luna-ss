@@ -1,0 +1,120 @@
+{
+  "index": 143,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 189,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 113 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 94,
+      "bottomRightX": 228,
+      "bottomRightY": 111,
+      "content": "## 7 Link Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 122,
+      "bottomRightX": 673,
+      "bottomRightY": 276,
+      "content": "The Enhanced SuperSpeed USB consists of SuperSpeed USB based on Gen 1x1 operation, and SuperSpeedPlus USB based on Gen 2 operation (Gen 2x1 or Gen 2x2) or Gen 1x2 operation. The link layer of the Enhanced SuperSpeed USB has the responsibility of maintaining the link connectivity so that successful data transfers between the two link partners are ensured. A robust link flow control is defined based on packets and link commands. Packets are prepared in the link layer to carry data and different information between the host and a device. Link commands are defined for communications between the two link partners. Packet frame ordered sets and link command ordered sets are also constructed such that they are tolerant to one symbol error. In addition, error detection capabilities are also incorporated into a packet and a link command to verify packet and link command integrity.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 319,
+      "topLeftY": 287,
+      "bottomRightX": 469,
+      "bottomRightY": 304,
+      "content": "Figure 7-1. Link Layer",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 312,
+      "bottomRightX": 676,
+      "bottomRightY": 636,
+      "content": "![img-61.jpeg](img-61.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-61.jpeg"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 638,
+      "bottomRightX": 260,
+      "bottomRightY": 649,
+      "content": "(1) Definition is Gen X dependent",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 664,
+      "bottomRightX": 621,
+      "bottomRightY": 710,
+      "content": "The link layer also facilitates link training, link testing/debugging, and link power management. This is accomplished by the introduction of Link Training Status State Machine (LTSSM).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 721,
+      "bottomRightX": 483,
+      "bottomRightY": 737,
+      "content": "The focus of this chapter is to address the following in detail:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 751,
+      "bottomRightX": 377,
+      "bottomRightY": 901,
+      "content": "- Packet Framing\n- Link command definition and usage\n- Link initialization and flow control\n- Link power management\n- Link error rules/recovery\n- Resets\n- LTSSM specifications",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

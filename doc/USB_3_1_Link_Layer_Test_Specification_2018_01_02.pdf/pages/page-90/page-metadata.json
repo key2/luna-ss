@@ -1,0 +1,173 @@
+{
+  "index": 89,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 92,
+      "bottomRightX": 702,
+      "bottomRightY": 207,
+      "content": "a. The PUT does not transmit at least sixteen consecutive TS2 ordered sets after receiving one TS2 ordered set.\nb. The PUT sends Idle symbols before the LVS sends at least eight consecutive TS2 ordered sets.\nc. The PUT interrupts transmission of a TS2 ordered set to transmit a SKP or SYNC (for Gen 2 only) ordered set (between TS2 ordered sets is OK).\nd. The PUT continues to transmit TS2 ordered sets after tRecoveryConfigurationTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 212,
+      "bottomRightX": 710,
+      "bottomRightY": 334,
+      "content": "7. The LVS transmits Idle symbols. In Gen 2 operation the LVS transmits a single SDS Ordered Set and then data blocks with Idle Symbols.\n8. The test fails if upon entering U0, the PUT does not transmit the Header Sequence Number Advertisement and the Rx Header Buffer Credit Advertisement or Type 1 and Type 2 Rx Header Buffer Credit Advertisement before their respective timeouts, PENDING_HP_TIMER and (Type 1 and Type 2) CREDIT_HP_TIMER, expire.\n9. The LVS and PUT continue the test with the Link Initialization Sequence starting at step two.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 415,
+      "bottomRightX": 527,
+      "bottomRightY": 432,
+      "content": "### TD.7.27 Hot Reset Detection in Polling Test (Upstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 435,
+      "bottomRightX": 465,
+      "bottomRightY": 451,
+      "content": "This test verifies that the PUT detects the Hot Reset in Polling.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 457,
+      "bottomRightX": 234,
+      "bottomRightY": 471,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 478,
+      "bottomRightX": 241,
+      "bottomRightY": 495,
+      "content": "7.2.4.1.1#6,8,17,22",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 502,
+      "bottomRightX": 179,
+      "bottomRightY": 516,
+      "content": "7.4.2#4",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 524,
+      "bottomRightX": 198,
+      "bottomRightY": 539,
+      "content": "7.5.4.7.2#4",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 547,
+      "bottomRightX": 224,
+      "bottomRightY": 562,
+      "content": "7.5.12.3.1#1,3,4",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 569,
+      "bottomRightX": 203,
+      "bottomRightY": 584,
+      "content": "7.5.12.3.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 592,
+      "bottomRightX": 203,
+      "bottomRightY": 606,
+      "content": "7.5.12.4.1#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 615,
+      "bottomRightX": 203,
+      "bottomRightY": 630,
+      "content": "7.5.12.4.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 638,
+      "bottomRightX": 253,
+      "bottomRightY": 653,
+      "content": "#### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 659,
+      "bottomRightX": 708,
+      "bottomRightY": 917,
+      "content": "1. Both LVS and PUT detect each other and then transition through Polling to Polling.RxEQ.\n2. Both LVS and PUT transmit the TS1 ordered sets during Polling.Active.\n3. The LVS waits to receive TS2 ordered sets.\n4. The test fails if the PUT does not transmit TS2s before tPollingActiveTimeout expires.\n5. The LVS initiates a Hot Reset and transmits TS2 ordered sets with the Reset bit asserted.\n6. The test fails if the PUT does not transmit at least sixteen TS2 ordered sets with the Reset bit asserted followed by two consecutive TS2 ordered sets with the Reset bit de-asserted.\n7. The LVS transmits four consecutive TS2 ordered sets with the Reset bit de-asserted, and then transmits Idle Symbols for Gen 1, or an SDS Ordered Set followed by Idle Symbols for Gen 2.\n8. The test fails if upon entering U0, the PUT does not transmit the Header Sequence Number Advertisement and the (Type 1 / Type 2) Rx Header Buffer Credit Advertisement before their respective timeouts, PENDING_HP_TIMER and (Type 1 / Type 2) CREDIT_HP_TIMER, expire.\n9. The LVS and PUT exchange Port Configuration transactions.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "82",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

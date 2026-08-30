@@ -1,0 +1,101 @@
+{
+  "index": 477,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 110,
+      "bottomRightX": 405,
+      "bottomRightY": 132,
+      "content": "## 9.7 Device Class Definitions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 138,
+      "bottomRightX": 698,
+      "bottomRightY": 223,
+      "content": "All devices shall support the requests and descriptor definitions described in this chapter. Most devices provide additional requests and, possibly, descriptors for device-specific extensions. In addition, devices may provide extended services that are common to a group of devices. In order to define a class of devices, the following information shall be provided to completely define the appearance and behavior of the device class.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 240,
+      "bottomRightX": 289,
+      "bottomRightY": 262,
+      "content": "### 9.7.1 Descriptors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 266,
+      "bottomRightX": 698,
+      "bottomRightY": 351,
+      "content": "If the class requires any specific definition of the standard descriptors, the class definition shall include those requirements as part of the class definition. In addition, if the class defines a standard extended set of descriptors, they shall also be fully defined in the class definition. Any extended descriptor definitions shall follow the approach used for standard descriptors; for example, all descriptors shall begin with a length field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 370,
+      "bottomRightX": 285,
+      "bottomRightY": 391,
+      "content": "### 9.7.2 Interface(s)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 395,
+      "bottomRightX": 689,
+      "bottomRightY": 447,
+      "content": "When a class of devices is standardized, the interfaces used by the devices shall be included in the device class definition. Devices may further extend a class definition with proprietary features as long as they meet the base definition of the class.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 466,
+      "bottomRightX": 269,
+      "bottomRightY": 488,
+      "content": "### 9.7.3 Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 492,
+      "bottomRightX": 445,
+      "bottomRightY": 510,
+      "content": "All of the requests specific to the class shall be defined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "9-60",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

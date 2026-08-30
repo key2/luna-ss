@@ -1,0 +1,94 @@
+{
+  "index": 31,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 617,
+      "bottomRightY": 137,
+      "content": "Table 3-5. SATA Mode (SerDes Only) – Possible RXCLK Rates and Data Widths",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 686,
+      "bottomRightY": 217,
+      "content": "|  3.0 GT/s SATA | 75 MHz | 40 bits  |\n| --- | --- | --- |\n|  6.0 GT/s SATA | 600 MHz | 10 bits  |\n|  6.0 GT/s SATA | 300 MHz | 20 bits  |\n|  6.0 GT/s SATA | 150 MHz | 40 bits  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-14.md"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 223,
+      "bottomRightX": 687,
+      "bottomRightY": 239,
+      "content": "Table 3-6 shows possible PCLK and data width options for DisplayPort implementations.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 253,
+      "bottomRightX": 645,
+      "bottomRightY": 268,
+      "content": "Table 3-6. DPTX and DPRX Mode – Possible PCLK or RXCLK Rates and Data Widths",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 273,
+      "bottomRightX": 688,
+      "bottomRightY": 787,
+      "content": "|  Mode | PCLK/RXCLK | Data Width  |\n| --- | --- | --- |\n|  1.62 Gbps DisplayPort | 162 MHz | 10 bits  |\n|   |  81 MHz | 20 bits  |\n|   |  40.5 MHz | 40 bits  |\n|  2.16 Gbps DisplayPort (eDP) | 216 MHz | 10 bits  |\n|   |  108 MHz | 20 bits  |\n|   |  54 MHz | 40 bits  |\n|  2.43 Gbps DisplayPort (eDP) | 243 MHz | 10 bits  |\n|   |  121.5 MHz | 20 bits  |\n|   |  60.75 MHz | 40 bits  |\n|  2.7 Gbps DisplayPort | 270 MHz | 10 bits  |\n|   |  135 MHz | 20 bits  |\n|   |  67.5 MHz | 40 bits  |\n|  3.24 Gbps DisplayPort (eDP) | 324 MHz | 10 bits  |\n|   |  162 MHz | 20 bits  |\n|   |  81 MHz | 40 bits  |\n|  4.32 Gbps DisplayPort (eDP) | 432 MHz | 10 bits  |\n|   |  216 MHz | 20 bits  |\n|   |  108 MHz | 40 bits  |\n|  5.4 Gbps DisplayPort | 540 MHz | 10 bits  |\n|   |  270 MHz | 20 bits  |\n|   |  135 MHz | 40 bits  |\n|  8.1 Gbps DisplayPort | 810 MHz | 10 bits  |\n|   |  405 MHz | 20 bits  |\n|   |  202.5 MHz | 40 bits  |\n|  10 Gbps DisplayPort | 312.5 MHz | 40 bits^{1}  |\n|  13.5 Gbps DisplayPort | 421.875 MHz | 40 bits^{2}  |\n|  20 Gbps DisplayPort | 625 MHz | 40 bits^{2}  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-15.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 788,
+      "bottomRightX": 688,
+      "bottomRightY": 824,
+      "content": "1. 40-bit data width is for consistency with other protocols. For block-encoded DisplayPort modes (that is, 10 Gbps, 13.5 Gbps, and 20 Gbps), the controller utilizes only 8 out of every 10 bits of data. See Section 6.1.1 for more details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 966,
+      "content": "32",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 688,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

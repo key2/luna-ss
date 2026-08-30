@@ -1,0 +1,119 @@
+{
+  "index": 528,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 498 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 222,
+      "bottomRightY": 106,
+      "content": "### E.3.2 Rx.Detect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 674,
+      "bottomRightY": 177,
+      "content": "Rx.Detect is the default power-on state of the re-timer. The re-timer's responsibility is to detect the presence of its link partners by performing far-end receiver termination detection periodically and to mirror the presence status of its link partners. Rx.Detect also serves as an error state for the re-timer when an error situation is detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 189,
+      "bottomRightX": 305,
+      "bottomRightY": 204,
+      "content": "#### E.3.2.1 Rx.Detect Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 211,
+      "bottomRightX": 673,
+      "bottomRightY": 527,
+      "content": "- The re-timer's receiver terminations at both ports shall present high impedance to ground of ZRX-HIGH-IMP-DC-POS defined in Table 6-22 upon power-on. Note that a re-timer may not have the knowledge to which port a host or a device is connected upon power-on.\n- The re-timer shall preserve its original receiver termination if the transition to this state is due to an error event. Refer to transition conditions to eSS.Inactive in LTSSM.\n- The re-timer shall initiate the far-end receiver termination detection at both ports upon entry to this state. It shall perform the far-end receiver termination detection at least every 8 ms. Note that this is to ensure the receiver termination from host DFP is propagated to a peripheral device before the peripheral device times out from Rx.Detect and transition to eSS.Disabled. Refer to Section 7.5.3 for behavior of a peripheral device in Rx.Detect.\n- The re-timer, upon detecting far-end low-impedance receiver termination (RRX-DC) defined in Table 6-22, shall enable its low-impedance receiver termination (RRX-DC) at its respective port to mirror the presence of its link partner.\n- The re-timer shall forward Polling.LFPS it may receive in this state and start monitoring the Polling.LFPS exit handshake if both of the following two conditions are met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 535,
+      "bottomRightX": 671,
+      "bottomRightY": 571,
+      "content": "- The low-impedance receiver terminations (RRX-DC) are detected at both ports.\n- The LFPS operating conditions are established at both ports.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 579,
+      "bottomRightX": 666,
+      "bottomRightY": 699,
+      "content": "- The re-timer shall start the tPollingLFPSTimeout timer upon receiving Polling.LFPS.\n- The re-timer shall enable the transition path to Compliance Mode by default upon power-on.\n- The re-timer shall conclude the far-end receiver termination detection at its port where Polling.LFPS is received and continue to perform the far-end receiver termination detection at its other port if Polling.LFPS is not received. A re-timer shall perform the following under this condition.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 706,
+      "bottomRightX": 663,
+      "bottomRightY": 787,
+      "content": "- Upon start of forwarding Polling.LFPS at one direction, it shall start a 24 ms timer to monitor the absence of the Polling.LFPS at its other direction.\n- If the 24 ms timer times out and no Polling.LFPS is received, it shall terminate the Polling.LFPS forwarding and perform far-end receiver termination detection.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 228,
+      "topLeftY": 794,
+      "bottomRightX": 673,
+      "bottomRightY": 923,
+      "content": "- If the far-end low-impedance receiver termination is removed, the re-timer shall propagate the receiver termination state by presenting high impedance to ground of ZRX-HIGH-IMP-DC-POS defined in Table 6-22, stop forwarding the Polling.LFPS signal and reset the tPollingLFPSTimeout timer. Note that this implies that a peripheral device may have transitioned to eSS.Disabled.\n- If the far-end low-impedance receiver termination is detected, the re-timer shall resume forwarding the Polling.LFPS signal and restart the",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

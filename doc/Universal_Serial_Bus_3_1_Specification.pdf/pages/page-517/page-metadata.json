@@ -1,0 +1,147 @@
+{
+  "index": 516,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 343,
+      "bottomRightY": 113,
+      "content": "### 10.8.2 SKP Ordered Sets",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 657,
+      "bottomRightY": 154,
+      "content": "A SuperSpeedPlus hub transmits SKP ordered sets, following the rules for all transmitters in Chapter 6, for all transmissions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 169,
+      "bottomRightX": 358,
+      "bottomRightY": 190,
+      "content": "### 10.8.3 Interpacket Spacing",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 195,
+      "bottomRightX": 677,
+      "bottomRightY": 228,
+      "content": "When a hub originates or forwards packets, DPHs and their corresponding DPPs shall be sent as required in Section 7.2.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 232,
+      "bottomRightX": 689,
+      "bottomRightY": 285,
+      "content": "The SuperSpeedPlus hub has several aspects to its store and forward behavior including buffering, arbitration among packets to be forwarded upstream, and modifications of packets during forwarding.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 298,
+      "bottomRightX": 429,
+      "bottomRightY": 321,
+      "content": "### 10.8.4 Upstream Flowing Buffering",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 325,
+      "bottomRightX": 684,
+      "bottomRightY": 410,
+      "content": "The SuperSpeedPlus hub shall provide buffering for 16x 1KB Control/Bulk DPP buffers and 16x 1KB Interrupt/Isochronous DPP buffers for each DFP receiver. The SuperSpeedPlus hub shall provide buffering for 16x Control/Bulk header buffers and 16x TP/Interrupt/Isochronous header buffers per DFP receiver. These buffers shall be used to hold packets received from downstream ports that are awaiting transmission on the upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 415,
+      "bottomRightX": 679,
+      "bottomRightY": 481,
+      "content": "Buffer space is required for each downstream port since there can be packets simultaneously arriving on each downstream port while there is a packet being transmitted on the upstream port. Further, the hub arbitration rules (see Section 10.8.6) can delay when a packet received on a downstream port can be transmitted on the upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 519,
+      "bottomRightX": 736,
+      "bottomRightY": 722,
+      "content": "![img-274.jpeg](img-274.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-274.jpeg"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 748,
+      "bottomRightX": 620,
+      "bottomRightY": 766,
+      "content": "Figure 10-17. Logical Representation of Upstream Flowing Buffers",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 780,
+      "bottomRightX": 454,
+      "bottomRightY": 803,
+      "content": "### 10.8.5 Downstream Flowing Buffering",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 806,
+      "bottomRightX": 692,
+      "bottomRightY": 858,
+      "content": "The SuperSpeedPlus hub shall provide buffering for 18x 1KB Control/Bulk DPP buffers and 18x 1KB Interrupt/Isochronous DPP buffers per hub. The SuperSpeedPlus hub shall provide buffering for 18x Control/Bulk header buffers and 18x TP/Interrupt/Isochronous header buffers per hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 862,
+      "bottomRightX": 686,
+      "bottomRightY": 896,
+      "content": "Buffering for downstream flowing traffic is primarily present to provide a rate matching function due to the different possible upstream port and downstream port speeds. Therefore, it is provided",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "10-39",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

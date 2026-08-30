@@ -1,0 +1,173 @@
+{
+  "index": 87,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 93,
+      "topLeftY": 29,
+      "bottomRightX": 380,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 684,
+      "bottomRightY": 144,
+      "content": "capability to accommodate this. When the sink recognizes this condition, it should adjust the reported $F_f$ value to correct it. This may also be necessary to compensate for relative clock drifts. The implementation of this correction process is endpoint-specific and is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 159,
+      "bottomRightX": 360,
+      "bottomRightY": 178,
+      "content": "### 4.4.9 Device Notifications",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 184,
+      "bottomRightX": 698,
+      "bottomRightY": 252,
+      "content": "Device notifications are a standard method for a device to communicate asynchronous device- and bus-level event information to the host. This feature does not map to the pipe model defined for the standard transfer types. Device notifications are always initiated by a device and the flow of data information is always device to host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 256,
+      "bottomRightX": 686,
+      "bottomRightY": 307,
+      "content": "Device notifications are message-oriented data communications that have a specific data format structure as defined in Section 8.5.6. Device notifications do not have any data payload. Devices can send a device notification at any time.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 323,
+      "bottomRightX": 273,
+      "bottomRightY": 344,
+      "content": "### 4.4.10 Reliability",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 348,
+      "bottomRightX": 698,
+      "bottomRightY": 382,
+      "content": "To ensure reliable operation, several layers of protection are used. This provides reliability for both flow control and data end to end.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 396,
+      "bottomRightX": 297,
+      "bottomRightY": 416,
+      "content": "### 4.4.10.1 Physical Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 420,
+      "bottomRightX": 649,
+      "bottomRightY": 438,
+      "content": "The Enhanced SuperSpeed physical layer provides bit error rates less than 1 bit in $10^{12}$ bits.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 453,
+      "bottomRightX": 265,
+      "bottomRightY": 471,
+      "content": "### 4.4.10.2 Link Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 476,
+      "bottomRightX": 686,
+      "bottomRightY": 544,
+      "content": "The Enhanced SuperSpeed link layer has mechanisms that ensure a bit error rate less than 1 bit in $10^{20}$ bits for header packets. The link layer uses a number of techniques including packet framing ordered sets, link level flow control and retries to ensure reliable end-to-end delivery for header packets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 558,
+      "bottomRightX": 297,
+      "bottomRightY": 578,
+      "content": "### 4.4.10.3 Protocol Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 582,
+      "bottomRightX": 686,
+      "bottomRightY": 616,
+      "content": "The Enhanced SuperSpeed protocol layer depends on a 32-bit CRC appended to the Data Payload and a timeout coupled with retries to ensure that reliable data is provided to the application.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 631,
+      "bottomRightX": 273,
+      "bottomRightY": 652,
+      "content": "### 4.4.11 Efficiency",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 656,
+      "bottomRightX": 684,
+      "bottomRightY": 691,
+      "content": "Enhanced SuperSpeed communications efficiency is dependent on a number of factors, including line encoding, packet structure and framing, link level flow control and protocol overhead.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 695,
+      "bottomRightX": 684,
+      "bottomRightY": 748,
+      "content": "Links that operate at Gen 1 speed (5 Gbps and 8b/10b line encoding) the raw throughput is 500 MBps. Accounting for flow control, packet framing and protocol overheads reduces the effective bandwidth down to 450 MBps or less to be delivered to an application.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 752,
+      "bottomRightX": 698,
+      "bottomRightY": 852,
+      "content": "Links that operate at Gen 2 speed (10 Gbps and 128b/132b line encoding) the raw throughput is approximately 1.2 GBps. Accounting for flow control, packet framing, and protocol overheads reduces the best case effective bandwidth down to approximately 1.1 GBps or less to be delivered to an application. Also, effective bandwidth of individual endpoint flows can be affected by interaction with other simultaneously active endpoint flows traversing through SuperSpeedPlus hub arbiters.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 964,
+      "bottomRightX": 117,
+      "bottomRightY": 976,
+      "content": "4-18",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

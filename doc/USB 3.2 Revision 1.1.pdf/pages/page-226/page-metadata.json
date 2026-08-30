@@ -1,0 +1,155 @@
+{
+  "index": 225,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 195 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 390,
+      "bottomRightY": 108,
+      "content": "### 7.5.10.3.1 Recovery.Active Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 115,
+      "bottomRightX": 671,
+      "bottomRightY": 296,
+      "content": "- A 12 ms timer (tRecoveryActiveTimeout) shall be started upon entry to this substate. Note that in x2 operation, the timer shall continue until each negotiated lane has met the exit conditions to Recovery.Configuration.\n- The port shall transmit identical TS1 ordered sets on each negotiated lane upon entry to this substate. Note that in Gen 2 operation, Symbols 14 and 15 of the TS1 ordered set may be different for DC balance. Note also that in x2 operation, one lane may complete its TS1 OS exit handshake earlier than the other lane. Under this condition, the lane that has completed the TS1 OS exit handshake successfully shall continue to transmit TS1 OS until the port is ready to transition to the next state.\n- The port shall train its receiver on each negotiated lane with TS1 or TS2 ordered sets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 157,
+      "topLeftY": 303,
+      "bottomRightX": 660,
+      "bottomRightY": 379,
+      "content": "Note: Depending on the link condition and different receiver implementations, one port's receiver may train faster than the other. When this occurs, the port whose receiver trains first will enter Recovery.Configuration and start transmitting TS2 ordered sets while the port whose receiver is not yet trained is still in Recovery.Active using the TS2 ordered sets to train its receiver.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 386,
+      "bottomRightX": 681,
+      "bottomRightY": 461,
+      "content": "- The port shall monitor the exit handshake on each negotiated lane.\n- The port in Gen 2 operation shall insert a SYNC ordered set every 32 TS1 ordered sets.\n- The port in Gen 2 operation shall perform block alignment and scrambler synchronization as defined in Sections 6.3.2.3 and 6.4.1.2.4.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 473,
+      "bottomRightX": 362,
+      "bottomRightY": 488,
+      "content": "### 7.5.10.3.2 Exit from Recovery.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 497,
+      "bottomRightX": 671,
+      "bottomRightY": 595,
+      "content": "- The port in SuperSpeed operation shall transition to Recovery.Configuration after eight consecutive and identical TS1 or TS2 ordered sets are received on each negotiated lane.\n- The port in Gen 2 operation shall transition to Recovery.Configuration upon receiving eight consecutive and identical TS1 or TS2 ordered sets on each negotiated lane, excluding symbols 14 and 15 of TS1 or TS2 ordered sets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 157,
+      "topLeftY": 601,
+      "bottomRightX": 666,
+      "bottomRightY": 647,
+      "content": "Note: SYNC OS and SKP OS in between TS1 OS and/or TS2 OS do not disqualify the consecutive detection of TS1 OS and TS2 OS. Symbols 14 and 15 are used for TS1 or TS2 ordered set identifier or DC balance adjustment.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 653,
+      "bottomRightX": 639,
+      "bottomRightY": 670,
+      "content": "- The port shall transition to eSS.Inactive when the following conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 675,
+      "bottomRightX": 649,
+      "bottomRightY": 742,
+      "content": "1. Either the Ux_EXIT_TIMER or the 12 ms timer (tRecoveryActiveTimeout) times out.\n2. For a downstream port, the transition to Recovery is not to attempt a Hot Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 750,
+      "bottomRightX": 657,
+      "bottomRightY": 779,
+      "content": "- A downstream port shall transition to Rx.Detect when the following conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 786,
+      "bottomRightX": 645,
+      "bottomRightY": 840,
+      "content": "1. Either the Ux_EXIT_TIMER or the 12 ms timer (tRecoveryActiveTimeout) times out.\n2. The transition to Recovery is to attempt a Hot Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 846,
+      "bottomRightX": 667,
+      "bottomRightY": 906,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

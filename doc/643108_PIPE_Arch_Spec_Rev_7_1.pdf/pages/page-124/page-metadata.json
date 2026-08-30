@@ -1,0 +1,111 @@
+{
+  "index": 123,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 186,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 122,
+      "bottomRightX": 662,
+      "bottomRightY": 173,
+      "content": "- P3: Shutdown mode. This is the lowest PHY power consumption state.\n- P4: Transmitter is off. This mode is suitable for usages with higher exit latency budgets. A typical usage is during PSR and Panel Replay deep sleep.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 204,
+      "bottomRightX": 375,
+      "bottomRightY": 219,
+      "content": "Table 8-2. DisplayPort PHY Power States",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 222,
+      "bottomRightX": 666,
+      "bottomRightY": 389,
+      "content": "|  State | Description | PowerDown Encoding | Common Mode | PLL^{1} | Total Latency^{2}  |\n| --- | --- | --- | --- | --- | --- |\n|  P0 | Fully active | 0x0 | ON | ON | NA  |\n|  P1 | Tx off Fast exit | 0x1 | ON | ON | 10 us  |\n|  P2 | Tx off Medium exit | 0x2 | ON | ON/OFF | 25 us  |\n|  P3 | Shutdown | 0x3 | ON/OFF (PHY implementation specific) | ON/OFF | 1 ms  |\n|  P4 | Tx off Slow exit | 0x4 | ON/OFF (PHY implementation specific | ON/OFF | 150 us  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-131.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 390,
+      "bottomRightX": 501,
+      "bottomRightY": 402,
+      "content": "1. Where PLL is specified as ON/OFF, the MAC determines whether it should be on or off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 402,
+      "bottomRightX": 666,
+      "bottomRightY": 445,
+      "content": "2. The total latency is defined as the time interval to enter a state and exit back to P0. The intention is to ensure the return to a fully active state in the case of wake event race scenario. Budget includes turn OFF and ON of PLL when the power state allows. In the case that the PHY has completed the entry phase, this delay can be considered as the exit latency budget in which the PHY can take extra power optimizations.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 466,
+      "bottomRightX": 588,
+      "bottomRightY": 486,
+      "content": "### 8.3.6 Asynchronous Deep Power Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 504,
+      "bottomRightX": 677,
+      "bottomRightY": 523,
+      "content": "#### 8.3.6.1 Deep Power Management Control Handshake Sequencing",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 528,
+      "bottomRightX": 686,
+      "bottomRightY": 828,
+      "content": "The PIPE specification enables deep power management states during certain PowerDown states by defining a set of asynchronous handshake signals DeepPMReq# and DeepPMAck#. During deep power management states, the PHY is permitted to take appropriate actions to reduce power such as clock gating, power gating, or power rail removal. By implementing Active State Deep Power Management (ASDPM) mechanisms, for instance, through latency tolerance reporting or workload monitoring, the MAC determines when it can tolerate higher exit latencies and subsequently notifies the PHY that it is permitted to enter a deep power management state by asserting DeepPMReq#. The PHY acknowledges this request immediately by asserting DeepPMAck#; the actual PHY entry to a deep power management state occurs after the DeepPMAck# is asserted, and it is possible that PHY internal conditions may prevent entry from ever happening. Since DeepPMReq# and DeepPMAck# are asynchronous signals, the PCLK is permitted to remain gated during transitions into and out of the deep power management states. The MAC directs the PHY to exit its deep power management state by deasserting DeepPMReq#. Upon detecting deassertion of DeepPMReq#, the PHY must exit its deep power management state and then signal that the exit has occurred by deasserting DeepPMAck#. The MAC confirms that the PHY is not in a deep power management state before transitioning PowerDown states; this enables PowerDown to always be used in a synchronous manner when the PCLK is a PHY input. Figure 8-12 illustrates the handshake sequencing for entering and exiting deep power management.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "124",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

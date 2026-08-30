@@ -1,0 +1,200 @@
+{
+  "index": 144,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 632,
+      "topLeftY": 30,
+      "bottomRightX": 701,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 93,
+      "bottomRightX": 425,
+      "bottomRightY": 115,
+      "content": "### 5.6.2 DC Electrical Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 129,
+      "bottomRightX": 515,
+      "bottomRightY": 148,
+      "content": "#### 5.6.2.1 Low Level Contact Resistance (EIA 364-23B)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 154,
+      "bottomRightX": 546,
+      "bottomRightY": 171,
+      "content": "The following requirement applies to both the power and signal contacts:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 174,
+      "bottomRightX": 561,
+      "bottomRightY": 267,
+      "content": "- 30 mΩ (Max) initial for Vbus and GND contacts.\n- 50 mΩ (Max) initial for all other contacts.\n- Maximum change (delta) of +10 mΩ after environmental stresses.\n- Measure at 20 mV (Max) open circuit at 100 mA.\n- Refer to Section 5.7 for environmental requirements and test sequences.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 281,
+      "bottomRightX": 419,
+      "bottomRightY": 300,
+      "content": "#### 5.6.2.2 Dielectric Strength (EIA 364-20)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 306,
+      "bottomRightX": 677,
+      "bottomRightY": 340,
+      "content": "- No breakdown shall occur when 100 Volts AC (RMS) is applied between adjacent contacts of unmated and mated connectors.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 354,
+      "bottomRightX": 440,
+      "bottomRightY": 374,
+      "content": "#### 5.6.2.3 Insulation Resistance (EIA 364-21)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 379,
+      "bottomRightX": 694,
+      "bottomRightY": 413,
+      "content": "A minimum of 100 MΩ insulation resistance is required between adjacent contacts of unmated and mated connectors.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 427,
+      "bottomRightX": 528,
+      "bottomRightY": 447,
+      "content": "#### 5.6.2.4 Contact Current Rating (EIA 364-70, Method 2)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 454,
+      "bottomRightX": 697,
+      "bottomRightY": 554,
+      "content": "A current of 1.8 A shall be applied to VBUS pin and its corresponding GND pin (pin 1 and pin 4 of the USB 3.1 Standard-A and Standard-B connectors; pin 1 and pin 5 of the USB 3.1 Micro connector family). Additionally, a minimum current of 0.25 A shall be applied to all the other contacts. When the current is applied to the contacts, the delta temperature shall not exceed +30 °C at any point on the USB 3.1 connectors under test, when measured at an ambient temperature of 25 °C.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 577,
+      "bottomRightX": 610,
+      "bottomRightY": 601,
+      "content": "## 5.7 Mechanical and Environmental Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 607,
+      "bottomRightX": 675,
+      "bottomRightY": 642,
+      "content": "The requirements in this section apply to all USB 3.1 connectors and/or cable assemblies unless specified otherwise.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 655,
+      "bottomRightX": 411,
+      "bottomRightY": 678,
+      "content": "### 5.7.1 Mechanical Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 691,
+      "bottomRightX": 393,
+      "bottomRightY": 711,
+      "content": "#### 5.7.1.1 Insertion Force (EIA 364-13)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 718,
+      "bottomRightX": 677,
+      "bottomRightY": 750,
+      "content": "The connector insertion force shall not exceed 35 N at a maximum rate of 12.5 mm (0.492\") per minute.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 756,
+      "bottomRightX": 686,
+      "bottomRightY": 790,
+      "content": "It is recommended to use a non-silicon based lubricant on the latching mechanism to reduce wear. The effects of lubricants should be restricted to insertion and extraction characteristics.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 804,
+      "bottomRightX": 511,
+      "bottomRightY": 823,
+      "content": "#### 5.7.1.2 Extraction Force Requirements (EIA 364-13)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 829,
+      "bottomRightX": 619,
+      "bottomRightY": 849,
+      "content": "##### 5.7.1.2.1 Extraction Force (EIA 364-13, USB3.1 Standard Connector)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 852,
+      "bottomRightX": 661,
+      "bottomRightY": 890,
+      "content": "The connector extraction force shall not be less than 10 N initial and 8 N after the specified insertion/extraction or durability cycles (at a maximum rate of 12.5 mm (0.492\") per minute).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 669,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "5-57",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

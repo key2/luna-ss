@@ -1,0 +1,103 @@
+{
+  "index": 338,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 98,
+      "bottomRightX": 666,
+      "bottomRightY": 205,
+      "content": "![img-215.jpeg](img-215.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-215.jpeg"
+    },
+    {
+      "topLeftX": 637,
+      "topLeftY": 211,
+      "bottomRightX": 662,
+      "bottomRightY": 221,
+      "content": "U-110",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 236,
+      "bottomRightX": 571,
+      "bottomRightY": 253,
+      "content": "Figure 8-29. PING_RESPONSE Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 282,
+      "bottomRightX": 546,
+      "bottomRightY": 299,
+      "content": "Table 8-24. PING_RESPONSE TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 300,
+      "bottomRightX": 660,
+      "bottomRightY": 463,
+      "content": "|  Width(bits) | Offset(DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to PING_RESPONSE.  |\n|  3 | 1:4 | Reserved.  |\n|  1 | 1:7 | Direction (D). This field shall be set to the value of the Direction field in the PING TP for which this PING_RESPONSE TP is being sent.  |\n|  4 | 1:8 | Endpoint Number (Ept Num). This field shall be set to the value of the Ept Num field in the PING TP for which this PING_RESPONSE TP is being sent.  |\n|  52 | 1:12 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-129.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 493,
+      "bottomRightX": 329,
+      "bottomRightY": 517,
+      "content": "### 8.6 Data Packet (DP)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 528,
+      "bottomRightX": 695,
+      "bottomRightY": 595,
+      "content": "This packet can be sent by either the host or a device. The host uses this packet to send data to a device. Devices use this packet to return data to the host in response to an ACK TP. All data packets are comprised of a Data Packet Header and a Data Packet Payload. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 604,
+      "bottomRightX": 684,
+      "bottomRightY": 640,
+      "content": "Data packets traverse the direct path between the host and a device. Note that it is permissible to send a data packet with a zero length data block; however, it shall have a CRC-32.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-45",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

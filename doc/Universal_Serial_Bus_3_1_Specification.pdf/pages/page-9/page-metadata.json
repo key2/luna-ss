@@ -1,0 +1,38 @@
+{
+  "index": 8,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 94,
+      "topLeftY": 90,
+      "bottomRightX": 218,
+      "bottomRightY": 166,
+      "content": "Egbert Stellinga  \nNoah Zhang  \nMarvin DeForest  \nLarry McMillan  \nCristian Roman Del Nido  \nCurtis Stevens",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 280,
+      "topLeftY": 90,
+      "bottomRightX": 546,
+      "bottomRightY": 166,
+      "content": "Tyco Electronics Corp., a TE Connectivity Ltd. company  \nTyco Electronics Corp., a TE Connectivity Ltd. company  \nWestern Digital Technologies, Inc.  \nWestern Digital Technologies, Inc.  \nWestern Digital Technologies, Inc.  \nWestern Digital Technologies, Inc.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 683,
+      "topLeftY": 980,
+      "bottomRightX": 701,
+      "bottomRightY": 997,
+      "content": "ix",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

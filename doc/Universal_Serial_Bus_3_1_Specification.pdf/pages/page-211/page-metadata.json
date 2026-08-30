@@ -1,0 +1,65 @@
+{
+  "index": 210,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 503,
+      "bottomRightY": 116,
+      "content": "### 6.11.3 Upper Limit on Channel Capacitance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 119,
+      "bottomRightX": 700,
+      "bottomRightY": 187,
+      "content": "The interconnect total capacitance to ground seen by the Receiver Detection circuit shall not exceed 3 nF to ground, including capacitance added by attached test instrumentation. This limit is needed to guarantee proper operation during Receiver detect. Note that this capacitance is separate and distinct from the AC coupling capacitance value.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 213,
+      "bottomRightX": 254,
+      "bottomRightY": 236,
+      "content": "### 6.12 Retimers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 248,
+      "bottomRightX": 435,
+      "bottomRightY": 267,
+      "content": "Requirements for estimers are defined in Appendix E.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "6-55",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

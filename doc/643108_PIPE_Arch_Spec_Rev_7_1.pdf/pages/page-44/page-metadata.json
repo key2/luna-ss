@@ -1,0 +1,57 @@
+{
+  "index": 43,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 137,
+      "bottomRightX": 492,
+      "bottomRightY": 155,
+      "content": "Figure 5-3. Receiver Block Diagram (1.5, 3.0, and 6.0 GT/s)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 182,
+      "bottomRightX": 554,
+      "bottomRightY": 639,
+      "content": "![img-19.jpeg](img-19.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-19.jpeg"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 955,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "44",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

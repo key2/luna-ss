@@ -1,0 +1,103 @@
+{
+  "index": 413,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 98,
+      "bottomRightX": 671,
+      "bottomRightY": 131,
+      "content": "If the host receives a corrupted data packet, it discards the remaining data in the current service interval and informs host software of the error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 151,
+      "bottomRightX": 421,
+      "bottomRightY": 166,
+      "content": "Table 8-34. Host Responses to IN Transactions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 169,
+      "bottomRightX": 700,
+      "bottomRightY": 372,
+      "content": "|  Data Packet Error | Host Can Accept Data | Host Data Processing  |\n| --- | --- | --- |\n|  Yes | N/A | Discard data  |\n|  No | No. (This should never happen for a compliant host implementation.) | Discard data  |\n|  No – Data Packet Has Expected Sequence Number | Yes | Accept data  |\n|  No – Data Packet Does Not Have Expected Sequence Number. | Yes | Discard data  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-140.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 391,
+      "bottomRightX": 584,
+      "bottomRightY": 410,
+      "content": "### 8.12.6.7 Device Response to an Isochronous OUT Data Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 416,
+      "bottomRightX": 686,
+      "bottomRightY": 450,
+      "content": "Table 8-35 lists the device processing of data from an OUT data packet. A device never returns a TP in response. In Table 8-35, DP Error may be due to one or more of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 454,
+      "bottomRightX": 583,
+      "bottomRightY": 562,
+      "content": "- CRC-32 incorrect\n- DPP aborted\n- DPP missing\n- DPH TT is not set to Isochmous (for a device not operating at Gen 1 speed)\n- Data length in the DPH does not match the actual data payload length\n- Deferred bit set in the DPH",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 579,
+      "bottomRightX": 447,
+      "bottomRightY": 595,
+      "content": "Table 8-35. Device Responses to OUT Data Packets",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 598,
+      "bottomRightX": 700,
+      "bottomRightY": 778,
+      "content": "|  Data Packet Error | Expected Sequence Number | Device Can Accept Data | Device Data Processing  |\n| --- | --- | --- | --- |\n|  Yes | Do not care | Do not care | Discard data  |\n|  No | Yes | Yes | Accept data  |\n|  No | Yes | No | Data discarded  |\n|  No | No | No | Data discarded. Device may discard any additional data for current service interval.  |\n|  No | No | Yes | Data discarded. Device may discard any additional data for current service interval.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-141.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "8-120",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

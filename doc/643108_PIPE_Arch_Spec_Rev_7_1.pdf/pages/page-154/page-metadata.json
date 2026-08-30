@@ -1,0 +1,103 @@
+{
+  "index": 153,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 132,
+      "bottomRightX": 480,
+      "bottomRightY": 148,
+      "content": "Figure 8-37. Possible TxElecIdle[3:0] Transition Scenarios",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 152,
+      "bottomRightX": 690,
+      "bottomRightY": 324,
+      "content": "![img-58.jpeg](img-58.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-58.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 336,
+      "bottomRightX": 656,
+      "bottomRightY": 381,
+      "content": "### 8.24 Control Signal Decode Table – USB Mode, USB4 Mode, and DisplayPort Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 386,
+      "bottomRightX": 686,
+      "bottomRightY": 446,
+      "content": "Table 8-6 summarizes the encodings of four of the seven control signals that cause different behaviors depending on power state. For the other three signals, Reset# always overrides any other PHY activity. RxPolarity is only valid, and therefore should only be asserted, when the PHY is in P0 and is actively transmitting.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 457,
+      "bottomRightX": 538,
+      "bottomRightY": 473,
+      "content": "Note: The same table is applicable to TxDetectRx2 and TxElecIdle2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 486,
+      "bottomRightX": 676,
+      "bottomRightY": 515,
+      "content": "Table 8-6. Control Signal Decode Table – USB Mode, USB4 Mode, and DisplayPort Mode (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 518,
+      "bottomRightX": 687,
+      "bottomRightY": 898,
+      "content": "|  PowerDown[3:0] | TxDetectRx/ Loopback | TxElecIdle | Description  |\n| --- | --- | --- | --- |\n|  P0: 0000b | 0 | 0 | PHY is transmitting data. MAC is providing data bytes to be sent every clock cycle.  |\n|   |  0 | 1 | PHY is not transmitting and is in electrical idle. Note that any data transferred across the PIPE interface before TxElecIdle is asserted, but not yet signaled on the analog interface is signaled before the analog interface becomes idle.  |\n|   |  1 | 0 | USB mode: PHY goes into loopback mode. USB4 and DisplayPort mode: If PHY configured to transmit LFPS, PHY goes into loopback mode. If MAC configured to transmit LFPS, indicates that MAC is transmitting LFPS on TxData parallel data interface.  |\n|   |  1 | 1 | USB mode: PHY transmits LFPS signaling. USB4 and DisplayPort mode: If PHY configured to transmit LFPS, PHY transmits LFPS signaling. If MAC configured to transmit LFPS, indicates that MAC plans to transmit LFPS on TxData soon and PHY should prepare.  |\n|  P1: 0001b | Don't care | 0 | USB: PHY transmits LFPS signaling. USB4 and DisplayPort: Not allowed.  |\n|   |   |  1 | PHY is not transmitting and is in electrical idle.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-142.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "154",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 689,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

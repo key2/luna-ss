@@ -1,0 +1,155 @@
+{
+  "index": 197,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 167 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 666,
+      "bottomRightY": 138,
+      "content": "- The number of far-end receiver termination detection events shall be counted by an upstream port. The detection of far-end receiver termination is defined in Section 6.11.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 145,
+      "bottomRightX": 666,
+      "bottomRightY": 191,
+      "content": "Note: This count value is used by a peripheral device to determine when it needs to transition to eSS.Disabled. It is also used by a hub to control its downstream port state machine. Refer to Section 10.3.1.1 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 213,
+      "bottomRightX": 318,
+      "bottomRightY": 227,
+      "content": "### 7.5.3.6 Exit from Rx.Detect.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 236,
+      "bottomRightX": 666,
+      "bottomRightY": 431,
+      "content": "- The port shall transition to Polling upon detection of a far-end low-impedance receiver termination (R$_{RX-DC}$) defined in Table 6-22. Note that for an upstream port capable of x2 operation, the far-end low-impedance receiver termination (R$_{RX-DC}$) is only presented on the Configuration Lane. Refer to Section 6.11.1 for details.\n- A downstream port shall transition to Rx.Detect.Quiet when a far-end low-impedance receiver termination (R$_{RX-DC}$) defined in Table 6-22 is not detected.\n- A downstream port shall transition to eSS.Disabled when directed.\n- An upstream port of a hub shall transition to Rx.Detect.Quiet when a far-end low-impedance receiver termination (R$_{RX-DC}$) defined in Table 6-22 is not detected.\n- An upstream port of a peripheral device shall transition to Rx.Detect.Quiet when the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 437,
+      "bottomRightX": 667,
+      "bottomRightY": 504,
+      "content": "1. A far-end low-impedance receiver termination (R$_{RX-DC}$) defined in Table 6-22 is not detected.\n2. The number of far-end receiver termination detection events is less than eight.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 512,
+      "bottomRightX": 652,
+      "bottomRightY": 542,
+      "content": "- An upstream port of a peripheral device shall transition to eSS.Disabled when the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 548,
+      "bottomRightX": 667,
+      "bottomRightY": 614,
+      "content": "1. A far-end low-impedance receiver termination (R$_{RX-DC}$) defined in Table 6-22 is not detected.\n2. The number of far-end receiver termination detection events has reached eight.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 622,
+      "bottomRightX": 670,
+      "bottomRightY": 668,
+      "content": "Note: This limit on the number of the far-end receiver termination detections is to allow an Enhanced SuperSpeed peripheral device on a legacy platform to transition to USB 2.0 after 80 ms.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 689,
+      "bottomRightX": 257,
+      "bottomRightY": 702,
+      "content": "### 7.5.3.7 Rx.Detect.Quiet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 711,
+      "bottomRightX": 639,
+      "bottomRightY": 741,
+      "content": "Rx.Detect.Quiet is a substate where a port has disabled its far-end receiver termination detection.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 755,
+      "bottomRightX": 389,
+      "bottomRightY": 770,
+      "content": "### 7.5.3.7.1 Rx.Detect.Quiet Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 777,
+      "bottomRightX": 666,
+      "bottomRightY": 867,
+      "content": "- The far-end receiver termination detection shall be disabled.\n- A downstream port shall start a timer (tRxDetectQuietTimeoutDFP) with a timeout between 12 ms and 120 ms upon entry to the substate.\n- An upstream port shall start a timer (tRxDetectQuietTimeoutUFP) with a timeout of 12 ms upon entry to the substate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

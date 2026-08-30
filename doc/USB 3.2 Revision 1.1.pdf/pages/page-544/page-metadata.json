@@ -1,0 +1,137 @@
+{
+  "index": 543,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 513 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 670,
+      "bottomRightY": 334,
+      "content": "- The re-timer shall determine its port orientation towards a host downstream port or device upstream port.\n- The re-timer shall decode U2 Inactivity timeout LMP from host, when acknowledged by device with ACK.\n- A SRIS re-timer shall perform the clock offset compensation as defined in Section E.4.\n- The re-timer shall not initiate entry to Recovery due to bit errors at its inbound traffic.\n- The re-timer shall start a 1 ms timer (tU0RecoveryTimeout) to monitor the absence of link command at each port. This timer will be reset and restarted every time a link command is received. Note that a re-timer may lose receiver lock before the timer expires. Under this condition, a re-timer may transmit any scrambled idle symbols based its local scrambler. A bit-level re-timer may transmit idle symbols or TS1A OS with its local reference clock.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 348,
+      "bottomRightX": 238,
+      "bottomRightY": 361,
+      "content": "### E.3.7.2 Exit from U0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 370,
+      "bottomRightX": 662,
+      "bottomRightY": 512,
+      "content": "- The re-timer shall transition to U1 upon successful completion of LGO_U1 entry sequence. Refer to Section 7.2.4.2 for details.\n- The re-timer shall transition to U2 upon successful completion of LGO_U2 entry sequence. Refer to Section 7.2.4.2 for details.\n- The re-timer shall transition to U3 upon successful completion of LGO_U3 entry sequence. Refer to Section 7.2.4.2 for details.\n- The re-timer shall transition to Recovery if either one of the following conditions is met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 519,
+      "bottomRightX": 531,
+      "bottomRightY": 556,
+      "content": "- Upon observing TS1 OS, TS2 OS, TS1A OS, or TS1B OS.\n- Upon timeout of the tU0RecoveryTimeout timer.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 563,
+      "bottomRightX": 672,
+      "bottomRightY": 593,
+      "content": "- The re-timer shall transition to Rx.Detect if Warm Reset is detected. Refer to Section E.3.1 for Warm Reset detection.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 606,
+      "bottomRightX": 179,
+      "bottomRightY": 621,
+      "content": "### E.3.8 U1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 628,
+      "bottomRightX": 639,
+      "bottomRightY": 657,
+      "content": "U1 is a low power state where no packets are observed and the re-timer is in a standby state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 672,
+      "bottomRightX": 264,
+      "bottomRightY": 686,
+      "content": "### E.3.8.1 U1 Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 694,
+      "bottomRightX": 672,
+      "bottomRightY": 898,
+      "content": "- The re-timer shall distinguish the received LFPS signal to determine if it is Ping.LFPS or U1 LFPS exit signal.\n- The re-timer shall either forward or regenerate Ping.LFPS meeting the timing requirement defined in Table 6-30. Note that if a re-timer forwards Ping.LFPS, it shall be prepared that the received Ping.LFPS meet only the minimum Ping.LFPS timing requirement defined in Table 6-30. Any distortion introduced by the re-timer may lead to non-compliant Ping.LFPS.\n- A captive re-timer shall perform the U1 LFPS exit handshake meeting the timing specification defined in Section 6.9.2. This is measured at the connector side.\n- The re-timers in active cable shall initiate simultaneous U1 LFPS exit handshake at both sides of its connectors and meet the timing specification defined in Section 6.9.2. This is defined by re-timers performing the following operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 904,
+      "bottomRightX": 652,
+      "bottomRightY": 921,
+      "content": "- As LP2 defined in Section 6.9.2 responding to the U1 LFPS exit handshake.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

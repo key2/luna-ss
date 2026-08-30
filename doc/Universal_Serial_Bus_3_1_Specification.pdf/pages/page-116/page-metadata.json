@@ -1,0 +1,75 @@
+{
+  "index": 115,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 97,
+      "bottomRightX": 668,
+      "bottomRightY": 799,
+      "content": "![img-76.jpeg](img-76.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-76.jpeg"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 822,
+      "bottomRightX": 229,
+      "bottomRightY": 836,
+      "content": "NOTES:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 839,
+      "bottomRightX": 591,
+      "bottomRightY": 854,
+      "content": "1. Dimensions that are labeled REF may vary from manufacturer to manufacturer.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 856,
+      "bottomRightX": 568,
+      "bottomRightY": 871,
+      "content": "2. General tolerance is +/-0.05mm, otherwise the specified tolerances apply.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 572,
+      "topLeftY": 878,
+      "bottomRightX": 698,
+      "bottomRightY": 893,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-28",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

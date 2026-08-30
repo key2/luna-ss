@@ -1,0 +1,173 @@
+{
+  "index": 74,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 254,
+      "bottomRightY": 109,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 116,
+      "bottomRightX": 609,
+      "bottomRightY": 154,
+      "content": "1. Perform the Link Initialization Sequence.\n2. At this stage the Downstream Port is expected to issue a GetDeviceDescriptor request.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 161,
+      "bottomRightX": 447,
+      "bottomRightY": 176,
+      "content": "▪ If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 182,
+      "bottomRightX": 707,
+      "bottomRightY": 304,
+      "content": "a. The LVS prompts the test operator to have the PUT send a GetDeviceDescriptor request through USB30CV and then press “OK”.\nb. The test fails if no GetDeviceDescriptor request is received and the test operator has pressed “OK”.\nc. When the LVS receives a GetDeviceDescriptor request, it closes the prompt. The LVS will respond to the request with a DPP containing the Device Descriptor data which includes the first framing error listed above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 310,
+      "bottomRightX": 704,
+      "bottomRightY": 341,
+      "content": "▪ If the LVS is configured as a Downstream Port, it will issue a GetDeviceDescriptor request, but will send the SETUP DP with the first framing error listed above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 348,
+      "bottomRightX": 705,
+      "bottomRightY": 461,
+      "content": "3. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n4. The test fails if the data exchange fails on the protocol level.\n5. The test passes if the exchanges are successful, no timeout is detected, no recovery is entered, all packets are successfully received by the PUT, all credits are restored and the link stays in U0 for at least 50ms.\n6. Repeat for each condition listed above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 520,
+      "bottomRightX": 421,
+      "bottomRightY": 535,
+      "content": "# TD.7.7 RX Header Packet Retransmission Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 540,
+      "bottomRightX": 666,
+      "bottomRightY": 569,
+      "content": "This test verifies that the PUT will send an LBAD if an invalid header packet is received, and that the retransmission will be correctly handled.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 578,
+      "bottomRightX": 422,
+      "bottomRightY": 593,
+      "content": "The tested conditions invalidating a header packet are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 600,
+      "bottomRightX": 382,
+      "bottomRightY": 749,
+      "content": "A. Incorrect CRC-16\nB. Incorrect CRC-5\nC. K28.2 SDP symbol in HP data\nD. K28.3 EDB symbol in HP data\nE. K28.4 SUB symbol in HP data\nF. K28.6 Reserved K-symbol in HP data\nG. K27.7 SHP symbol in HP data\nH. K29.7 END symbol in HP data\nI. K30.7 SLC symbol in HP data\nJ. K23.7 EPF symbol in HP data",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 764,
+      "bottomRightX": 707,
+      "bottomRightY": 793,
+      "content": "Conditions C – J are tested for Gen 1 PUTs only. Each of the conditions C – J in the following positions, one case at a time:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 801,
+      "bottomRightX": 522,
+      "bottomRightY": 830,
+      "content": "1. Position 2: SHP SHP SHP EPF DX.X KX.X DX.X DX.X\n2. Position 5: SHP SHP SHP EPF DX.X DX.X DX.X DX.X KX.X",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 853,
+      "bottomRightX": 234,
+      "bottomRightY": 867,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 876,
+      "bottomRightX": 211,
+      "bottomRightY": 890,
+      "content": "7.2.4.1.4#3, 4",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "67",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

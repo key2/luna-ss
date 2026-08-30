@@ -1,0 +1,103 @@
+{
+  "index": 20,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 556,
+      "topLeftY": 35,
+      "bottomRightX": 645,
+      "bottomRightY": 48,
+      "content": "3.7 MIPI Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 86,
+      "bottomRightX": 653,
+      "bottomRightY": 305,
+      "content": "|  Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  HDMI_RX1P | B13 | 2 | 2.5V | HDMI receiving data  |\n|  HDMI_RX1N | A13 | 2 | 2.5V | HDMI receiving data  |\n|  HDMI_RX2P | E5 | 1 | 2.5V | HDMI receiving data  |\n|  HDMI_RX2N | E6 | 1 | 2.5V | HDMI receiving data  |\n|  HDMI_CEC | H6 | 10 | 3.3V | CEC  |\n|  HDMI_SCL | M13 | 5 | 3.3V | I2C serial clock  |\n|  HDMI_SDA | L12 | 5 | 3.3V | I2C serial data  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-10.md"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 320,
+      "bottomRightX": 249,
+      "bottomRightY": 340,
+      "content": "### 3.7 MIPI Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 367,
+      "bottomRightX": 217,
+      "bottomRightY": 386,
+      "content": "#### 3.7.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 406,
+      "bottomRightX": 653,
+      "bottomRightY": 501,
+      "content": "The development board leads one MIPI CPHY hard core interface and one MIPI DPHY hard core interface from the FPGA. The MIPI CPHY hard core interface, MIPI DPHY hard core interface, and eight 3.3V GPIOs are led to 80P AXK580147YG connector with 0.5mm pitch. The connection diagram is as follows.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 511,
+      "bottomRightX": 621,
+      "bottomRightY": 528,
+      "content": "Figure 3-6 Connection Diagram of MIPI CPHY & DPHY Hard Core Interfaces",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 534,
+      "bottomRightX": 535,
+      "bottomRightY": 766,
+      "content": "![img-11.jpeg](img-11.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-11.jpeg"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 168,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 612,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "14(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "index": 5,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 573,
+      "topLeftY": 37,
+      "bottomRightX": 646,
+      "bottomRightY": 51,
+      "content": "List of Figures",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 66,
+      "topLeftY": 185,
+      "bottomRightX": 245,
+      "bottomRightY": 217,
+      "content": "# List of Figures",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 117,
+      "topLeftY": 267,
+      "bottomRightX": 635,
+      "bottomRightY": 662,
+      "content": "Figure 2-1 DK_USB_GW5AT-LV60UG225_V1.0 Development Board ... 3\nFigure 2-2 A Development Board Kit ... 4\nFigure 2-3 PCB Components... 5\nFigure 2-4 System Block Diagram ... 5\nFigure 3-1 Power Distribution Diagram ... 8\nFigure 3-2 Connection Diagram of Download ... 9\nFigure 3-3 Clock Connection Diagram ... 10\nFigure 3-4 Hardware Connection Diagram of DDR3... 11\nFigure 3-5 Connection Diagram of HDMI-RX Interface... 13\nFigure 3-6 Connection Diagram of MIPI CPHY & DPHY Hard Core Interfaces ... 14\nFigure 3-7 Connection Diagram of I2C Interface... 18\nFigure 3-8 Connection Diagram of Key ... 19\nFigure 3-9 Connection Diagram of LED ... 19\nFigure 3-10 Connection Diagram of Type-C Interface... 20\nFigure 3-11 Connection Diagram of SDI Interface... 22",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 635,
+      "topLeftY": 944,
+      "bottomRightX": 646,
+      "bottomRightY": 956,
+      "content": "iii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

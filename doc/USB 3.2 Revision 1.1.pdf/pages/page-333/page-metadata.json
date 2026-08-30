@@ -1,0 +1,110 @@
+{
+  "index": 332,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 302 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 95,
+      "bottomRightX": 675,
+      "bottomRightY": 156,
+      "content": "For IN transactions, the current ACK TP **Seq Num** field shall be set to the value of the sum of the **Seq Num** and **NumP** fields in the previous ACK TP as long as all the data for the service interval has not been returned. The equation used to set the current sequence is given below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 274,
+      "topLeftY": 168,
+      "bottomRightX": 515,
+      "bottomRightY": 185,
+      "content": "$$Seq Num[i + 1] = Seq Num[i] + NumP[i]$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 196,
+      "bottomRightX": 664,
+      "bottomRightY": 243,
+      "content": "A device with an isochronous endpoint shall be able to send or receive the number of packets indicated in its endpoint and endpoint companion descriptors per service interval. The host shall be able to accept and send up to:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 248,
+      "bottomRightX": 563,
+      "bottomRightY": 309,
+      "content": "- 48 DPs per service interval for devices operating at Gen 1x1 speed\n- 96 DPs for devices operating at Gen 1x2 speed and Gen 2x1 speed\n- 192 DPs for devices operating at Gen 2x2 speed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 323,
+      "bottomRightX": 675,
+      "bottomRightY": 431,
+      "content": "The last packet in the service interval shall be sent with the *lpf* field set to 1 and can be less than or equal to MaxPacketSize bytes. Each packet except the last packet in the service interval shall be sent with the *lpf* field set to 0 and shall be equal to MaxPacketSize bytes. If there is no data to send to an isochronous OUT endpoint during a service interval, the host does not send anything during the interval. If a device with an isochronous IN endpoint does not have data to send when an isochronous IN ACK TP is received from the host, it shall send a zero length data packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 442,
+      "bottomRightX": 658,
+      "bottomRightY": 489,
+      "content": "Figure 8-62 and Figure 8-63 show sample isochronous IN and OUT transactions for endpoints that have requested 2000 bytes of bandwidth per service interval (i.e., no more than two packets can be sent or received each service interval).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 500,
+      "bottomRightX": 679,
+      "bottomRightY": 561,
+      "content": "If the host is not able to send isochronous OUT data during the specified interval due to an error condition, the host discards the data and notifies host software of the error. If the host is not able to send an isochronous ACK TP during the specified service interval due to an error condition, the host notifies host software of the error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

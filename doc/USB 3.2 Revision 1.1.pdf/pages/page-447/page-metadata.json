@@ -1,0 +1,138 @@
+{
+  "index": 446,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 416 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 663,
+      "bottomRightY": 124,
+      "content": "- From the Tx Link Command state when there are additional link commands queued for transmission.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 140,
+      "bottomRightX": 325,
+      "bottomRightY": 155,
+      "content": "### 10.9.3 Port Receive State Machine",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 162,
+      "bottomRightX": 663,
+      "bottomRightY": 193,
+      "content": "This section describes the functional requirements of the upstream and downstream facing port receiver (Rx) state machine.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 205,
+      "bottomRightX": 569,
+      "bottomRightY": 221,
+      "content": "Figure 10-20. Upstream Facing Port Rx State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 243,
+      "bottomRightX": 652,
+      "bottomRightY": 660,
+      "content": "![img-181.jpeg](img-181.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-181.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 700,
+      "bottomRightX": 347,
+      "bottomRightY": 716,
+      "content": "### 10.9.4 Port Receive State Descriptions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 724,
+      "bottomRightX": 272,
+      "bottomRightY": 738,
+      "content": "#### 10.9.4.1 Rx Default",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 745,
+      "bottomRightX": 651,
+      "bottomRightY": 777,
+      "content": "In the Rx Default state, the port receiver is actively receiving symbols and looking for the speed specific beginning of a valid packet or a link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 788,
+      "bottomRightX": 644,
+      "bottomRightY": 805,
+      "content": "A port receiver shall transition to the Rx Default state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 811,
+      "bottomRightX": 645,
+      "bottomRightY": 908,
+      "content": "- From the Rx Data state when a speed specific end of packet or abort indication is detected.\n- From the Rx Header state when the last symbol of the header packet is received.\n- After receiving a link command.\n- As the default state when the link enters U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "index": 395,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 697,
+      "bottomRightY": 144,
+      "content": "When an endpoint receives data from the host, and it cannot receive data momentarily, it shall send an NRDY (or STALL in case of an internal endpoint or device error) TP to the host. The host shall not perform any more transactions to the endpoint in subsequent service intervals.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 153,
+      "bottomRightX": 697,
+      "bottomRightY": 238,
+      "content": "A host shall only resume interrupt transactions to an endpoint that responded with a flow control response after it receives an ERDY TP from that endpoint. This notifies the host about the endpoint's readiness to receive data again. Once the host receives an ERDY TP, the host shall transmit the data packet to the endpoint no later than twice the service interval as determined by the value of the bInterval field in the interrupt endpoint descriptor for that endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 246,
+      "bottomRightX": 688,
+      "bottomRightY": 296,
+      "content": "If a device receives a deferred interrupt OUT DPH, and the device needs to receive interrupt OUT data, the device shall respond with an ERDY TP and keep its link in U0 until it receives the subsequent interrupt transaction from the host, or until tPingTimeout (see Table 8-36) elapses.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 305,
+      "bottomRightX": 668,
+      "bottomRightY": 339,
+      "content": "As in the case of Bulk transactions, the sequence number is continually incremented with each packet sent by host. When the sequence number reaches 31 it wraps around to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 364,
+      "bottomRightX": 538,
+      "bottomRightY": 631,
+      "content": "![img-240.jpeg](img-240.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-240.jpeg"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 645,
+      "bottomRightX": 647,
+      "bottomRightY": 663,
+      "content": "Figure 8-54. Host Sends Interrupt OUT Transaction in Each Service Interval",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "8-102",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

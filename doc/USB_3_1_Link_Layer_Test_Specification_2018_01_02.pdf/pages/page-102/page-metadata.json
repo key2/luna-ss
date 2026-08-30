@@ -1,0 +1,128 @@
+{
+  "index": 101,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 109,
+      "bottomRightX": 235,
+      "bottomRightY": 123,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 131,
+      "bottomRightX": 201,
+      "bottomRightY": 145,
+      "content": "7.2.1.3#1,2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 154,
+      "bottomRightX": 254,
+      "bottomRightY": 169,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 176,
+      "bottomRightX": 698,
+      "bottomRightY": 267,
+      "content": "5. Do steps 1 to 4 of the Link Initialization Sequence.\n6. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms. All data blocks will be generated according to Condition A described above.\n7. At this stage the Downstream Port is expected to issue a GetDeviceDescriptor request.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 273,
+      "bottomRightX": 447,
+      "bottomRightY": 289,
+      "content": "a. If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 226,
+      "topLeftY": 295,
+      "bottomRightX": 694,
+      "bottomRightY": 401,
+      "content": "i. The LVS prompts the test operator to have the PUT send a GetDeviceDescriptor request through USB30CV and then press “OK”.\nii. The test fails if no GetDeviceDescriptor request is received and the test operator has pressed “OK”.\niii. When the LVS receives a GetDeviceDescriptor request, it closes the prompt, and responds to the request as appropriate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 408,
+      "bottomRightX": 707,
+      "bottomRightY": 438,
+      "content": "b. If the LVS is configured as a Downstream Port, it will issue a GetDeviceDescriptor request, and complete the transaction as appropriate.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 445,
+      "bottomRightX": 705,
+      "bottomRightY": 476,
+      "content": "8. The test passes if the exchanges are successful, no timeout is detected, no recovery is entered, all packets are successfully received, all credits are restored and the link stays in U0 for at least 50ms.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 482,
+      "bottomRightX": 453,
+      "bottomRightY": 498,
+      "content": "9. Repeat the steps with the next combination listed above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "94",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "index": 337,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 109,
+      "bottomRightX": 403,
+      "bottomRightY": 128,
+      "content": "### 8.5.7 PING Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 135,
+      "bottomRightX": 698,
+      "bottomRightY": 185,
+      "content": "This TP can only be sent by the host. It is used by the host to transition all links in the path to a device back to U0 prior to initiating an isochronous transfer. Refer to Appendix C for details on the usage of this TP. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 193,
+      "bottomRightX": 695,
+      "bottomRightY": 262,
+      "content": "A device shall respond to the PING TP by sending a PING_RESPONSE TP (refer to Section 8.5.8) to the host within the tPingResponse time (refer to Table 8-36). Note that the device shall not validate the EP_NUM and Direction fields and simply copy them to the respective fields in the PING_RESPONSE TP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 269,
+      "bottomRightX": 679,
+      "bottomRightY": 305,
+      "content": "A device shall keep its link in U0 until it receives a subsequent packet from the host, or until the tPingTimeout time (refer to Table 8-36) elapses.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 326,
+      "bottomRightX": 666,
+      "bottomRightY": 454,
+      "content": "![img-214.jpeg](img-214.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-214.jpeg"
+    },
+    {
+      "topLeftX": 292,
+      "topLeftY": 466,
+      "bottomRightX": 532,
+      "bottomRightY": 483,
+      "content": "Figure 8-28. PING Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 512,
+      "bottomRightX": 463,
+      "bottomRightY": 527,
+      "content": "Table 8-23. PING TP Format (differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 530,
+      "bottomRightX": 686,
+      "bottomRightY": 627,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to PING.  |\n|  3 | 1:4 | Reserved.  |\n|  52 | 1:12 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-128.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 641,
+      "bottomRightX": 515,
+      "bottomRightY": 663,
+      "content": "### 8.5.8 PING_RESPONSE Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 668,
+      "bottomRightX": 684,
+      "bottomRightY": 734,
+      "content": "This TP can only be sent by a device in response to a PING TP sent by the host. A PING_RESPONSE TP shall be sent for each PING TP received. Refer to Appendix C for details on the usage of this TP. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-44",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

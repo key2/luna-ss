@@ -1,0 +1,20 @@
+{
+  "index": 37,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 978,
+      "bottomRightX": 128,
+      "bottomRightY": 998,
+      "content": "xxxviii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

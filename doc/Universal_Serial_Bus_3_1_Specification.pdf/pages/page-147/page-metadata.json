@@ -1,0 +1,74 @@
+{
+  "index": 146,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 674,
+      "bottomRightY": 128,
+      "content": "horizontal plane, and an 8-N tensile force shall be applied to the cable in a downward direction, perpendicular to the axis of insertion, for a period of at least 10 seconds.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 132,
+      "bottomRightX": 702,
+      "bottomRightY": 216,
+      "content": "The continuity across each contact shall be measured throughout the application of the tensile force. The PCB shall then be rotated 90 degrees such that the cable is still inserted horizontally and the 8 N tensile force will be applied again in the downward direction and continuity measured as before. This test is repeated for 180-degree and 270-degree rotations. Passing parts shall not exhibit any discontinuities greater than 1 μs duration in any of the four orientations.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 221,
+      "bottomRightX": 692,
+      "bottomRightY": 272,
+      "content": "One method for measuring the continuity through the contacts is to short all the wires at the end of the cable pigtail and apply a voltage through a pull-up to each of VBUS, D+, D-, ID, and the SuperSpeed pins, with the GND pins connected to ground.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 278,
+      "bottomRightX": 690,
+      "bottomRightY": 344,
+      "content": "When testing a USB 3.1 Micro-A plug, all the sense resistors shall stay pulled down for the length of the test. When testing a USB 3.1 Micro-B plug, the ID pin shall stay high and the other pins shall remain low for the duration of the test. Alternate methods are allowed to verify continuity through all pins.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 349,
+      "bottomRightX": 643,
+      "bottomRightY": 401,
+      "content": "The 4 axes continuity tests shall be done with a USB 3.1 Micro-B/-A plug in a USB 3.1 Micro-B/-AB receptacle and with a USB 2.0 Micro-B/-A plug in a USB 3.1 Micro-B/-AB receptacle, as illustrated in Figure 5-30.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "5-59",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

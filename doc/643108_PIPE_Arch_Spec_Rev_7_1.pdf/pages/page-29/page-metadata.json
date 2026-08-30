@@ -1,0 +1,57 @@
+{
+  "index": 28,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 611,
+      "bottomRightY": 137,
+      "content": "Table 3-1. PCIe Mode - Possible PCLK Rates and Data Widths (Sheet 2 of 3)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 141,
+      "bottomRightX": 696,
+      "bottomRightY": 894,
+      "content": "|  Mode | PCLK | Original PIPE Data Width (SerDes Data Width^{1}) | TXDataValid and RXDataValid^{2} Strobe Rate  |\n| --- | --- | --- | --- |\n|  2.5 GT/s | 500 MHz | 16 bits (20 bits) | 1 in 4 PCLKs  |\n|  2.5 GT/s | 250 MHz | 16 bits (20 bits) | 1 in 2 PCLKs  |\n|  2.5 GT/s | 125 MHz | 16 bits (20 bits) | N/A  |\n|  2.5 GT/s | 250 MHz | 32 bits (40 bits) | 1 in 4 PCLKs  |\n|  2.5 GT/s | 62.5 MHz | 32 bits (40 bits) | N/A  |\n|  2.5 GT/s | 62.5 MHz | N/A (80 bits) | 1 in 2 PCLKs  |\n|  5.0 GT/s | 4000 MHz | 8 bits (10 bits) | 1 in 8 PCLKs  |\n|  5.0 GT/s | 2000 MHz | 8 bits (10 bits) | 1 in 4 PCLKs  |\n|  5.0 GT/s | 1000 MHz | 8 bits (10 bits) | 1 in 2 PCLKs  |\n|  5.0 GT/s | 500 MHz | 8 bits (10 bits) | N/A  |\n|  5.0 GT/s | 2000 MHz | 16 bits (20 bits) | 1 in 8 PCLKs  |\n|  5.0 GT/s | 500 MHz | 16 bits (20 bits) | 1 in 2 PCLKs  |\n|  5.0 GT/s | 250 MHz | 16 bits (20 bits) | N/A  |\n|  5.0 GT/s | 250 MHz | 32 bits (40 bits) | 1 in 2 PCLKs  |\n|  5.0 GT/s | 125 MHz | 32 bits (40 bits) | N/A  |\n|  5.0 GT/s | 125 MHz | N/A (80 bits) | 1 in 2 PCLKs  |\n|  5.0 GT/s | 62.5 MHz | N/A (80 bits) | N/A  |\n|  8.0 GT/s | 4000 MHz | 8 bits (10 bits) | 1 in 4 PCLKs  |\n|  8.0 GT/s | 2000 MHz | 8 bits (10 bits) | 1 in 2 PCLKs  |\n|  8.0 GT/s | 2000 MHz | 32 bits (40 bits) | 1 in 8 PCLKs  |\n|  8.0 GT/s | 1000 MHz | 8 bits (10 bits) | N/A  |\n|  8.0 GT/s | 1000 MHz | 16 bits (20 bits) | 1 in 2 PCLKs  |\n|  8.0 GT/s | 1000 MHz | 32 bits (40 bits) | 1 in 4 PCLKs  |\n|  8.0 GT/s | 500 MHz | 16 bits (20 bits) | N/A  |\n|  8.0 GT/s | 500 MHz | 32 bits (40 bits) | 1 in 2 PCLKs  |\n|  8.0 GT/s | 250 MHz | 32 bits (40 bits) | N/A  |\n|  8.0 GT/s | 250 MHz | N/A (80 bits) | 1 in 2 PCLKs  |\n|  8.0 GT/s | 125 MHz | N/A (80 bits) | N/A  |\n|  16.0 GT/s | 4000 MHz | 8 bits (10 bits) | 1 in 2 PCLKs  |\n|  16.0 GT/s | 2000 MHz | 8 bits (10 bits) | N/A  |\n|  16.0 GT/s | 2000 MHz | 32 bits (40 bits) | 1 in 4 PCLKs  |\n|  16.0 GT/s | 1000 MHz | 16 bits (20 bits) | N/A  |\n|  16.0 GT/s | 1000 MHz | 32 bits (40 bits) | 1 in 2 PCLKs  |\n|  16.0 GT/s | 500 MHz | 32 bits (40 bits) | N/A  |\n|  16.0 GT/s | 250 MHz | N/A (80 bits) | N/A  |\n|  32 GT/s | 4000 MHz | 8 bits (10 bits) | N/A  |\n|  32 GT/s | 2000 MHz | 16 bits (20 bits) | N/A  |\n|  32 GT/s | 2000 MHz | 32 bits (40 bits) | 1 in 2 PCLKs  |\n|  32 GT/s | 1000 MHz | 32 bits (40 bits) | N/A  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-7.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "29",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "index": 70,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 61,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 698,
+      "bottomRightY": 243,
+      "content": "2. The test fails if the PUT does not transmit two SCD1 after one SCD1 or SCD2 is received.\n3. The LVS transitions to transmitting Polling.LFPS bursts with an SCD2 signature after transmitting two SCD1 after receiving 1 SCD1 or SCD2 from the PUT\n4. The test fails if the PUT does not transmit two SCD2 after one SCD2 is received.\n5. The LVS transmits continuous PHY Capability LBPMs to announce its 10Gbps capability.\n6. The test fails if the PUT does not continuously transmit its PHY Capability LBPMs.\n7. If the LVS has a PHY Capability greater than the PUT, then:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 248,
+      "bottomRightX": 700,
+      "bottomRightY": 287,
+      "content": "a. The LVS adjusts its PHY Capability by transmitting PHY Capability LBPMs that match the PUT.\nb. The test fails if the PUT does not continuously transmit its PHY Capability LBPMs.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 294,
+      "bottomRightX": 694,
+      "bottomRightY": 399,
+      "content": "8. The test fails if the PUT does not transmit four consecutive and matched PHY Capability LBPMs after receiving two consecutive and matched PHY Capability LBPMs or PHY Ready LBPMs.\n9. The LVS transmits 524,288 TSEQ Ordered Sets, inserting a SYNC Ordered Set every 16,384 Ordered Sets.\n10. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 404,
+      "bottomRightX": 690,
+      "bottomRightY": 486,
+      "content": "a. The PUT does not transmit TSEQ Ordered Sets.\nb. The PUT does not transmit a SYNC Ordered Set for every 16,384 TSEQ Ordered Sets.\nc. The PUT transmits Idle Symbols, or any other Packet, Symbol or Ordered Set besides SYNC or SKP Ordered Sets, during TSEQ transmission or between TSEQ Ordered Sets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 493,
+      "bottomRightX": 705,
+      "bottomRightY": 622,
+      "content": "11. The LVS transmits TS1 Ordered Sets, inserting a SYNC Ordered Set every 32 Ordered Sets, and inserting SKP Ordered Sets periodically when necessary.\n12. The LVS waits to receive eight consecutive and identical TS1 or TS2 Ordered Sets from the PUT. Note: SYNC and SKP Ordered Sets do not disqualify consecutive TS1s / TS2s. Symbols 14-15 of the TS1 / TS2 Ordered Sets do not need to be identical.\n13. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 627,
+      "bottomRightX": 694,
+      "bottomRightY": 755,
+      "content": "a. The PUT does not transmit TS1 ordered sets.\nb. The PUT transmits TS2s before the LVS transmits eight consecutive and identical TS1s or TS2s.\nc. The PUT interrupts a TS1 Ordered Set to transmit a SKP or SYNC Ordered Set (between TS1 ordered sets is OK).\nd. The PUT transmits Idle Symbols or any other Packet.\ne. The PUT continues to transmit TS1 Ordered Sets after tPollingActiveTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 761,
+      "bottomRightX": 664,
+      "bottomRightY": 821,
+      "content": "14. The LVS transmits TS2 Ordered Sets, inserting a SYNC Ordered Set every 32 Ordered Sets, and inserting SKP Ordered Sets periodically when necessary.\n15. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 827,
+      "bottomRightX": 690,
+      "bottomRightY": 889,
+      "content": "a. The PUT does not transmit at least 16 consecutive TS2 ordered sets after receiving one TS2 ordered set.\nb. The PUT transmits Idle symbols before the LVS transmits eight consecutive and identical TS2s.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "63",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

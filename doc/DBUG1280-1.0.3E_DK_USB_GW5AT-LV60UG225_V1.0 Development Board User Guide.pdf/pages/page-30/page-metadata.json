@@ -1,0 +1,57 @@
+{
+  "index": 29,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 36,
+      "bottomRightX": 216,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 555,
+      "topLeftY": 36,
+      "bottomRightX": 646,
+      "bottomRightY": 48,
+      "content": "3.11 SDI Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 86,
+      "bottomRightX": 653,
+      "bottomRightY": 305,
+      "content": "|  Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  SDI_OUT2_DN | C8 | SerDes Q0 | - | LMH1218 IN0-  |\n|  SDI_OUT1_DP | D12 | SerDes Q0 | - | LMH1218 IN0+  |\n|  SDI_OUT1_DN | C12 | SerDes Q0 | - | LMH1218 IN0-  |\n|  SDI_IN2_DP | B9 | SerDes Q0 | - | LMH1219 OUT0+  |\n|  SDI_IN2_DN | A9 | SerDes Q0 | - | LMH1219 OUT0-  |\n|  SDI_IN1_DP | B11 | SerDes Q0 | - | LMH1219 OUT0+  |\n|  SDI_IN1_DN | A11 | SerDes Q0 | - | LMH1219 OUT0-  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-19.md"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 611,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "23(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

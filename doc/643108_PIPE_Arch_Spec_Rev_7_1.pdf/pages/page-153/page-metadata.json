@@ -1,0 +1,93 @@
+{
+  "index": 152,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 130,
+      "bottomRightX": 657,
+      "bottomRightY": 143,
+      "content": "1. See the PCIe base specification. In case of discrepancy, the PCIe base specification supersedes the PIPE specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 190,
+      "bottomRightX": 668,
+      "bottomRightY": 213,
+      "content": "## 8.23 Control Signal Decode Table – PCIe Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 218,
+      "bottomRightX": 696,
+      "bottomRightY": 293,
+      "content": "Table 8-5 summarizes the encodings of four of the seven control signals that cause different behaviors depending on power state. For the other three signals, Reset# always overrides any other PHY activity. TxCompliance and RxPolarity are only valid when the PHY is in P0 and is actively transmitting. Note that these rules only apply to lanes that have not been “turned off” as described in Section 10 (multi-lane PIPE).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 298,
+      "bottomRightX": 697,
+      "bottomRightY": 441,
+      "content": "For SerDes mode, the rules summarized in Table 8-5 apply to each of the TxElecIdle[3:0] bits independently for the P0 and P0s states. There is an expectation that entering Electrical Idle must occur from MSB to LSB, that is, valid values of TxElecIdle[3:0] are 1000b, 1100b, 1110b, 1111b, and 0000b. Figure 8-7 shows the various scenarios of valid TxElecIdle transitions. Transitions into Electrical Idle can include a single cycle of only a subset of data bytes driven to Electrical Idle followed by all data bytes in Electrical Idle; transitions out of Electrical Idle must be done simultaneously for all data bytes. For the P1 and P2 power states, all the bits of TxElecIdle[3:0] are expected to be driven to the same value so only TxElecIdle[0] needs to be decoded.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 456,
+      "bottomRightX": 458,
+      "bottomRightY": 471,
+      "content": "Table 8-5. Control Signal Decode Table – PCIe Mode",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 474,
+      "bottomRightX": 699,
+      "bottomRightY": 793,
+      "content": "|  PowerDown[1:0] | TxDetectRx/Loopback | TxElecIdle | Description  |\n| --- | --- | --- | --- |\n|  P0: 00b | 0 | 0 | PHY is transmitting data. MAC is providing data bytes to be sent every clock cycle.  |\n|   |  0 | 1 | PHY is not transmitting and is in electrical idle.  |\n|   |  1 | 0 | PHY goes into loopback mode.  |\n|   |  1 | 1 | Illegal. MAC should never do this.  |\n|  P0s: 01b | Don’t care | 0 | Illegal. MAC should always have PHY doing electrical idle while in P0s. PHY behavior is undefined if TxElecIdle is deasserted while in P0s or P1.  |\n|   |   |  1 | PHY is not transmitting and is in electrical idle. **Note:** Any data transferred across the PIPE interface before TxElecIdle is asserted, but not yet signaled on the analog interface is signaled before the analog interface becomes idle.  |\n|  P1: 10b | Don’t care | 0 | Illegal. MAC should always have PHY doing electrical idle while in P1. PHY behavior is undefined if TxElecIdle is deasserted while in P0s or P1.  |\n|   |  0 | 1 | PHY is idle.  |\n|   |  1 | 1 | PHY does a receiver detection operation.  |\n|  P2: 11b | Don’t care | 0 | PHY transmits Beacon signaling.  |\n|   |  0 | 1 | PHY is idle.  |\n|   |  1 | 1 | PHY does a receiver detection operation.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-141.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 967,
+      "content": "153",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

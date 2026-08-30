@@ -1,0 +1,138 @@
+{
+  "index": 187,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 157 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 91,
+      "bottomRightX": 668,
+      "bottomRightY": 334,
+      "content": "|  Error Type | Description/Example | Error Recovery Path | Update Link Error Count? | Update Soft Error Count? (SuperSpeedPlus USB)  |\n| --- | --- | --- | --- | --- |\n|  Gen 2x1 Block Header Two-bit Error | Detectable | Recovery | Yes | No  |\n|  Single Bit SKP/SKPEND Error (Gen 2) | Detectable | Correctable | No | Yes  |\n|  Gen 2x2 Block Header Two-bit Error | Correctable with BH0/BH1 association (optional) | Correctable | No | Yes  |\n|  Gen 2x2 Block Header Multi-bit Error | Detectable with BH0/BH1 association (optional) | Recovery | Yes | No  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-90.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 366,
+      "bottomRightX": 359,
+      "bottomRightY": 380,
+      "content": "### 7.4 PowerOn Reset and Inband Reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 387,
+      "bottomRightX": 675,
+      "bottomRightY": 494,
+      "content": "There are two categories of reset associated with a link. The first, PowerOn Reset, restores storage elements, registers, or memories to predetermined states when power is applied. Upon PowerOn Reset, the LTSSM (described in Section 7.5) shall enter Rx.Detect. The second, Inband Reset, uses Enhanced SuperSpeed or LFPS signaling to propagate the reset across the link. There are two mechanisms to complete an Inband Reset, Hot Reset and Warm Reset. Upon completion of either a PowerOn Reset or an Inband Reset, the link shall transition to U0 as described in Section 7.4.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 502,
+      "bottomRightX": 253,
+      "bottomRightY": 514,
+      "content": "#### 7.4.1 PowerOn Reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 522,
+      "bottomRightX": 671,
+      "bottomRightY": 585,
+      "content": "PowerOn Reset restores a storage element, register, or memory to a predetermined state when power is applied (refer to Section 9.1.1.2 for clarification of when power is applied for self-powered devices). A port must be responsible for its own internal Reset signaling and timing.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 596,
+      "bottomRightX": 614,
+      "bottomRightY": 612,
+      "content": "The following shall occur when PowerOn Reset is asserted or while VBUS is invalid:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 625,
+      "bottomRightX": 654,
+      "bottomRightY": 691,
+      "content": "1. Receiver termination shall meet the ZRX-HIGH-IMP-DC-POS specification defined in Table 6-22.\n2. Transmitters shall hold a constant DC common mode voltage (VTX-DC-CM) defined in Table 6-18.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 713,
+      "bottomRightX": 586,
+      "bottomRightY": 728,
+      "content": "The following shall occur when PowerOn Reset is completed and VBUS is valid:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 740,
+      "bottomRightX": 666,
+      "bottomRightY": 844,
+      "content": "1. The LTSSM of a port shall be initialized to Rx.Detect. Note that an dual-lane capable port shall not enter Rx.Detect until the Configuration Lane is decided.\n2. The LTSSM and the PHY level variables (such as Rx equalization settings) shall be reset to their default values.\n3. The receiver termination of a port shall meet the RRX-DC specification defined in Table 6-22.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 852,
+      "bottomRightX": 650,
+      "bottomRightY": 882,
+      "content": "Note: Rx termination shall always be maintained throughout operation except for eSS.Disabled",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

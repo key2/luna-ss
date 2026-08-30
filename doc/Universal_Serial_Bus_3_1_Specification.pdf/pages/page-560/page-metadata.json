@@ -1,0 +1,191 @@
+{
+  "index": 559,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 259,
+      "bottomRightY": 126,
+      "content": "# C_PORT_CONNECTION",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 130,
+      "bottomRightX": 509,
+      "bottomRightY": 146,
+      "content": "This bit is set to one when the PORT_CONNECTION bit changes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 152,
+      "bottomRightX": 667,
+      "bottomRightY": 186,
+      "content": "This bit shall be set to zero by a ClearPortFeature(C_PORT_CONNECTION) request or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 200,
+      "bottomRightX": 278,
+      "bottomRightY": 217,
+      "content": "# C_PORT_OVER_CURRENT",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 222,
+      "bottomRightX": 694,
+      "bottomRightY": 272,
+      "content": "This bit is set to one when the PORT_OVER_CURRENT bit changes from zero to one or from one to zero. This bit is also set if the port is placed in the DSPORT-Powered-off-reset state due to an over-current condition on another port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 276,
+      "bottomRightX": 639,
+      "bottomRightY": 295,
+      "content": "This bit shall be set to zero by a ClearPortFeature(C_PORT_OVER_CURRENT) request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 309,
+      "bottomRightX": 207,
+      "bottomRightY": 326,
+      "content": "# C_PORT_RESET",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 330,
+      "bottomRightX": 621,
+      "bottomRightY": 365,
+      "content": "This bit is set to one when the port transitions from the DSPORT.Resetting state to the DSPORT.Enabled state for any type of reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 369,
+      "bottomRightX": 691,
+      "bottomRightY": 403,
+      "content": "This bit shall be set to zero by a ClearPortFeature(C_PORT_RESET) request, or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 418,
+      "bottomRightX": 237,
+      "bottomRightY": 435,
+      "content": "# C_PORT_BH_RESET",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 439,
+      "bottomRightX": 621,
+      "bottomRightY": 473,
+      "content": "This bit is set to one when the port transitions from the DSPORT.Resetting state to the DSPORT.Enabled state for a Warm Reset only.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 478,
+      "bottomRightX": 673,
+      "bottomRightY": 512,
+      "content": "This bit shall be cleared by a ClearPortFeature(C_PORT_BH_RESET) request, or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 526,
+      "bottomRightX": 253,
+      "bottomRightY": 544,
+      "content": "# C_PORT_LINK_STATE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 548,
+      "bottomRightX": 694,
+      "bottomRightY": 631,
+      "content": "This bit is set to one when the port's link completes a transition from the U3 state to the U0 state as a result of a SetPortFeature(Port_Link_State) request or completes a transition to Loopback state or to Compliance or to eSS.Inactive with Rx terminations present. This bit is not set to one due to transitions from U3 to U0 as a result of remote wakeup signaling received on a downstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 636,
+      "bottomRightX": 684,
+      "bottomRightY": 671,
+      "content": "This bit will be cleared by a ClearPortFeature(C_PORT_LINK_STATE) request, or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 685,
+      "bottomRightX": 278,
+      "bottomRightY": 702,
+      "content": "# C_PORT_CONFIG_ERROR",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 707,
+      "bottomRightX": 697,
+      "bottomRightY": 757,
+      "content": "This bit is set to one if the link connected to the port could not be successfully configured, e.g., if two downstream only capable ports are connected to each other or if the link configuration could not be completed. In addition, the port shall transition to the DSPORT.Error state when this occurs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 761,
+      "bottomRightX": 664,
+      "bottomRightY": 797,
+      "content": "This bit will be cleared by a ClearPortFeature(C_PORT_CONFIG_ERROR) request, or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-82",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

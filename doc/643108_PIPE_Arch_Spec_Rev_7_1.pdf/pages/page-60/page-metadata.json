@@ -1,0 +1,57 @@
+{
+  "index": 59,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 510,
+      "bottomRightY": 138,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 12 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 690,
+      "bottomRightY": 558,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  PCLK Rate[4:0] | N/A | Control the PIPE PCLK rate SATA Mode: 0 37.5 MHz 1 75 MHz 2 150 MHz 3 300 MHz 4 600 MHz All others Reserved PCIe Mode: 0 62.5 MHz 1 125 MHz 2 250 MHz 3 500 MHz 4 1000 MHz 5 2000 MHz 6 4000 MHz All others Reserved USB Mode: 0 125 MHz 1 250 MHz 2 312.5 MHz (10 GT/s) 3 500 MHz 4 625 MHz (10 GT/s) 5 1250 MHz (10 GT/s) All others Reserved | PCIe, SATA, USB, and DisplayPort  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-32.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 955,
+      "bottomRightX": 105,
+      "bottomRightY": 966,
+      "content": "60",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

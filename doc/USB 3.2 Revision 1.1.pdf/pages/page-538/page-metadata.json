@@ -1,0 +1,130 @@
+{
+  "index": 537,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 507 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 673,
+      "bottomRightY": 184,
+      "content": "- Upon entry to Polling.TSx, a bit-level re-timer shall transmit TS1A OS based on its local transmit clock at both ports with SSC disabled. It shall train its receiver at both ports based on TS1 OS, TS1A OS or TS1B OS while transmitting TS1A OS.\n- Upon declaring successful receiver training, a bit-level re-timer shall perform one of the following.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 189,
+      "bottomRightX": 673,
+      "bottomRightY": 317,
+      "content": "○ If it has detected TS1 OS or TS1B OS at one simplex link, it shall perform the clock switching at its other simplex link and comply with the electrical and timing requirements defined in Chapter 6. It shall continue the TS1A OS transmission at both ports. Note that a bit-level re-timer may receive TS1 OS and/or TS1B OS at both ports. Under this situation, a bit-level re-timer shall perform the clock switching at both simplex links.\n○ If it has detected TS1A OS, it shall continue the TS1A OS transmission while waiting for incoming TS1 OS or TS1B OS.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 330,
+      "bottomRightX": 675,
+      "bottomRightY": 423,
+      "content": "- During the clock switching, a bit-level re-timer shall attempt to minimize the frequency jump when switching from its transmit clock based on the local reference clock to the transmit clock based on the recovered clock. This is to maximally ensure its following link partner to maintain its CDR lock during the clock switching. A bit-level re-timer shall comply with the short-term SSCdf/dt clock switching requirement specified in Table E-3.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 170,
+      "topLeftY": 434,
+      "bottomRightX": 640,
+      "bottomRightY": 452,
+      "content": "Table E-3. Bit-Level Re-timer Short-Term Clock Switching Requirement¹",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 460,
+      "bottomRightX": 630,
+      "bottomRightY": 538,
+      "content": "|   | Frequency offset (ppm) | Time interval (μs) | Comments  |\n| --- | --- | --- | --- |\n|  SSCdf/dt_A² | ≤ 1400 | 0.2 | Waveform under test is defined as window of switching point (+/-) * 0.5/t_{SSC_MOD_RATE}  |\n|  SSCdf/dt_B² | ≤ 2200 | 1.0  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-284.md"
+    },
+    {
+      "topLeftX": 165,
+      "topLeftY": 541,
+      "bottomRightX": 611,
+      "bottomRightY": 566,
+      "content": "Note 1: The requirements are outside the specification defined, thus interoperability may not be formally guaranteed but are strongly believed to be adequate.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 165,
+      "topLeftY": 568,
+      "bottomRightX": 515,
+      "bottomRightY": 582,
+      "content": "Note 2: Refer to Figure E-10 for SSCdf/dt_A and SSCdf/dt_B definition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 221,
+      "topLeftY": 606,
+      "bottomRightX": 565,
+      "bottomRightY": 624,
+      "content": "Figure E-10. Definition of SSCdf/dt_A and SSCdf/dt_B",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 631,
+      "bottomRightX": 635,
+      "bottomRightY": 880,
+      "content": "![img-205.jpeg](img-205.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-205.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

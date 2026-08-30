@@ -1,0 +1,146 @@
+{
+  "index": 320,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 92,
+      "bottomRightX": 691,
+      "bottomRightY": 162,
+      "content": "1. The Responder shall adjust the TS Response LMP Response Delay (t3-t2 Timestamp) value appropriately for its Rx/Tx Asymmetry, such that its t2 and t3 Timestamps appear to have been captured at equal TS Delays from the Link boundary.\n2. The Requester shall account for its Rx/Tx Asymmetry when computing the t4 Timestamp.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 164,
+      "bottomRightX": 686,
+      "bottomRightY": 267,
+      "content": "- The Link Delay between Requester and Responder should be constant over the time interval between LDM Request and Response LMPs.\n- The worst case delay fluctuation (Uncertainty) of timestamps shall be bounded by tPropagationDelayJitterLimit.\n- Delay fluctuation (Uncertainty) of timestamps due to link components and due to the protocol stack within clocks should be reduced by two techniques:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 268,
+      "bottomRightX": 672,
+      "bottomRightY": 318,
+      "content": "1. The Timestamp Measurement Planes used in PTM should be generated as close to the physical Link boundary as practical for a given clock implementation, i.e. minimize TS Delay.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 321,
+      "bottomRightX": 672,
+      "bottomRightY": 371,
+      "content": "2. Remaining delay fluctuation (Uncertainty) introduced by the protocol stack and by link components can be reduced by averaging Link Delay values over multiple Timestamp Exchanges. The averaging algorithms are outside the scope of this specification.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 374,
+      "bottomRightX": 676,
+      "bottomRightY": 406,
+      "content": "- The inherent stability and precision of a clock's oscillator must be within the clock accuracy requirements defined for the Unit Interval in Table 6-17.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 421,
+      "bottomRightX": 281,
+      "bottomRightY": 440,
+      "content": "# IMPLEMENTATION NOTE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 461,
+      "bottomRightX": 323,
+      "bottomRightY": 478,
+      "content": "# LDM Timestamp Capture Mechanisms",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 497,
+      "bottomRightX": 681,
+      "bottomRightY": 564,
+      "content": "LDM uses services from both the Data Link and Transaction Layers. LDM accuracy requires that time measurements be taken as close to the Physical Layer as possible. Conversely, the messaging protocol itself properly belongs to the Transaction Layer. The LDM message protocol applies to a single Link, where the Upstream Facing Port is the Requestor and the Downstream Facing Port is the Responder.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 570,
+      "bottomRightX": 693,
+      "bottomRightY": 652,
+      "content": "For most implementations, the logic within the Transaction Layer and Data Link Layers is essentially non-deterministic. Implementation details and current conditions have considerable impact on exactly when a particular packet may encounter any particular processing step. This makes it effectively impossible to capture any timestamp that accurately records the time of a particular physical event within these layers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 660,
+      "bottomRightX": 700,
+      "bottomRightY": 808,
+      "content": "Ideally time measurements should be taken with the symbol level accuracy as close to the D+/D- outputs of the Transmitter Differential Driver block (Figure 6-2), or the D+/D- inputs of the Differential Receiver and Equalization block (Figure 6-3). Typically this will require an implementation specific adjustment to compensate for the inability to directly measure the time at the actual pins, because the time will typically be measured (i.e. the Timestamp captured) at some internal point in the Rx or Tx path. The designer should approximate these delays and accommodate them by the timestamp values that they record and the time values that they generate (e.g. the Response Delay value in a LDM TS Response) appropriately. The accuracy and consistency of this measurement are not bounded by this specification, but it is strongly recommended that the highest practical level of accuracy and consistency be achieved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 823,
+      "bottomRightX": 245,
+      "bottomRightY": 842,
+      "content": "### 8.4.8.9 LDM Rules",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 848,
+      "bottomRightX": 684,
+      "bottomRightY": 882,
+      "content": "A Responder shall respond to each LDM Request LMP with a LDM Response LMP according to the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 887,
+      "bottomRightX": 673,
+      "bottomRightY": 904,
+      "content": "- A Responder shall not send a LDM Response without first receiving a LDM Request LMP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-27",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

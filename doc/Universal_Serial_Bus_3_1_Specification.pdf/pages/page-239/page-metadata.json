@@ -1,0 +1,191 @@
+{
+  "index": 238,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 95,
+      "topLeftY": 97,
+      "bottomRightX": 473,
+      "bottomRightY": 116,
+      "content": "### 7.2.4.1.11 Receiving LCRD_x/LCRD1_x/LCRD2_x",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 119,
+      "bottomRightX": 684,
+      "bottomRightY": 152,
+      "content": "- A port in SuperSpeed operation shall adjust its Remote Rx Header Buffer Credit Count based on the received LCRD_x:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 154,
+      "bottomRightX": 693,
+      "bottomRightY": 206,
+      "content": "1. A port shall increment its Remote Rx Header Buffer Credit Count by one upon receipt of LCRD_x.\n2. A port shall transition to Recovery if it receives an out of order LCRD_x.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 208,
+      "bottomRightX": 696,
+      "bottomRightY": 243,
+      "content": "Note: A port that has received an out of order credit implies a lost or corrupted link command and shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 250,
+      "bottomRightX": 693,
+      "bottomRightY": 284,
+      "content": "- A port in SuperSpeedPlus operation shall adjust accordingly its Remote Type 1 and Type 2 Rx Buffer Credit Count based on the received LCRD1_x and LCRD2_x:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 286,
+      "bottomRightX": 689,
+      "bottomRightY": 338,
+      "content": "1. A port shall increment accordingly its Remote Type 1 or Type 2 Rx Buffer Credit Count by one upon receipt of LCRD1_x or LCRD2_x.\n2. A port shall transition to Recovery if it receives an out of order LCRD1_x or LCRD2_x.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 343,
+      "bottomRightX": 317,
+      "bottomRightY": 361,
+      "content": "### 7.2.4.1.12 Receiving LBAD",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 367,
+      "bottomRightX": 698,
+      "bottomRightY": 418,
+      "content": "Upon receipt of LBAD, a port shall send a single LRTY before retransmitting all the header packets in the Tx Header Buffers or Type 1/Type 2 Tx Header Buffers that have not been acknowledged with LGOOD_n. Additional rules in the following shall apply.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 420,
+      "bottomRightX": 694,
+      "bottomRightY": 539,
+      "content": "1. A hub shall set the DL bit in the Link Control Word on all resent header packets and recalculate CRC-5. When retransmitting a DP in SuperSpeed operation, a hub shall drop the DPP. When retransmitting a DP in SuperSpeedPlus operation, a hub shall drop the DPP and replace it with a nullified DPP. Refer to Section 7.2.1.2.2 for definition of a nullified DPP.\n2. The host or a peripheral device may optionally set the DL bit in the Link Control Word on any resent header packets and recalculate CRC-5. If the retried packet is a DP and the DL bit in DPH is clear, the DPH shall be followed by a DPP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 542,
+      "bottomRightX": 698,
+      "bottomRightY": 577,
+      "content": "Note: Resending an ITP invalidates the isochronous timestamp value. CRC-16 is unchanged in a retried header packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 581,
+      "bottomRightX": 676,
+      "bottomRightY": 614,
+      "content": "Upon receipt of LBAD, a port shall send a single LRTY if there is no unacknowledged header packet in the Tx Header Buffers or Type 1/Type 2 Tx Header Buffers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 617,
+      "bottomRightX": 591,
+      "bottomRightY": 634,
+      "content": "Note: This is an error condition where LBAD is created due to a link error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 641,
+      "bottomRightX": 335,
+      "bottomRightY": 657,
+      "content": "### 7.2.4.1.13 Transmitter Timers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 664,
+      "bottomRightX": 695,
+      "bottomRightY": 749,
+      "content": "A PENDING_HP_TIMER is specified to cover the period of time from when a header packet is sent to a link partner, to when the header packet is acknowledged by a link partner. The purpose of this time limit is to allow a port to detect if the header packet acknowledgement sent by its link partner is lost or corrupted. The timeout value for the PENDING_HP_TIMER is listed in Table 7-7. The operation of the PENDING_HP_TIMER shall be based on the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 752,
+      "bottomRightX": 698,
+      "bottomRightY": 784,
+      "content": "- A port shall have a PENDING_HP_TIMER that is active only in U0 and if one of the following conditions is met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 787,
+      "bottomRightX": 682,
+      "bottomRightY": 856,
+      "content": "1. A port has a header packet transmitted but not acknowledged by its link partner, except during the period between receipt of LBAD and retransmission of the oldest header packet in the Tx Header Buffer or Type 1/Type 2 Tx Header Buffer.\n2. A port is expecting the Header Sequence Number Advertisement from its link partner.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 858,
+      "bottomRightX": 642,
+      "bottomRightY": 875,
+      "content": "- The PENDING_HP_TIMER shall be started if one of the following conditions is met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 877,
+      "bottomRightX": 677,
+      "bottomRightY": 893,
+      "content": "1. When a port enters U0 in expectation of the Header Sequence Number Advertisement.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-27",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

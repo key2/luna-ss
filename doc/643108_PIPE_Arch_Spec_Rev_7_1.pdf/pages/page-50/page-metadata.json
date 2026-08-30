@@ -1,0 +1,57 @@
+{
+  "index": 49,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 501,
+      "bottomRightY": 138,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 2 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 690,
+      "bottomRightY": 896,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  TxDetectRx/Loopback | High | Used to tell the PHY to begin a receiver detection operation or to begin loopback or to signal LFPS during P0 for USB Polling state. See Section 8.23 and Section 8.24 for details on the required values for all control signals to perform loopback and receiver detection operations and to signal Polling.LFPS. **Note:** Loopback usage is not applicable to SerDes architecture since loopback is implemented by the MAC in SerDes. For receive detect in PHY power states where the PCLK can be gated, this signal is asynchronous; in all other states, it is synchronous to PCLK. SATA mode: Loopback support is optional for SATA PHYs. Loopback is only valid in SATA mode when EncodeDecodeBypass is asserted. The Rx elasticity buffer must be active during loopback. If the PHY runs out of data to transmit during loopback – it must transmit ALIGNs. TxDetectRx is not used in SATA mode. USB4 mode, Displayport TX mode: This signal is used when the MAC is configured to generate LFPS via the MacTransmitLFPS bit in the PHY Common Control0 register. This signal indicates to the PHY that the LFPS pattern is being transmitted. This corresponds to the Tx differential pair. | PCIe, SATA, USB, DisplayPort TX, USB4  |\n|  TxDetectRx2 | High | Refer to TxDetectRx for description. This signal corresponds to the Tx2 differential pair. | USB4, DisplayPort Tx  |\n|  TxElecIdle[3:0] | High | Forces Tx output to electrical idle when asserted except in loopback. See Section 8.21, Section 8.22, or Section 8.23 for the full description and usage of this pin. **Note:** The MAC must always have TxDataValid asserted when TxElecIdle transitions to either asserted or deasserted; TxDataValid is a qualifier for TxElecIdle sampling. See Section 8.3 for the definitions of the PHY power states. For original PIPE architecture and for non-PCIe mode SerDes architecture, only bit zero of this signal is used and all other bits are reserved. For SerDes architecture in PCIe mode at 32 GT/s or lower rate, one bit is required per two symbols of interface data. For example, for an eight-symbol wide interface, bit zero would apply to symbols 0 and 1, bit 1 would apply to symbols 2 and 3, bit 2 would apply to symbols 4 and 5, bit 3 would apply to symbols 6 and 7. For narrower interfaces, unused bits of this signal are reserved. This is due to EIOS truncation rules in Section 4.2.5.3 of the PCIe 7.0 Base Specification and due to the maximum time to transition to a valid electrical idle after sending an EIOS. For the SerDes architecture in PCIe mode at 64 GT/s rate and 128 GT/s, one bit is required per four symbols of interface data. For example, for an eight-symbol wide interface, bit zero would apply to symbols 0 through 3, and bit 1 would apply to symbols 4 through 7, and so on. Unused bits of this signal are reserved. | PCIe, SATA USB, USB4, DisplayPort  |\n|  TxElecIdle2 | High | This signal is used in asymmetric mode and corresponds to the Tx2 differential pair. Refer to TxElecIdle for more details. | USB4, DisplayPort Tx  |\n|  Reset# | Low | Resets the transmitter and receiver. This signal is asynchronous and is permitted to assert at any time regardless of PHY state. The PHY must hold itself in its lowest power state on the lane during the Reset# assertion, irrespective of values on other PIPE signals. The PHY reports its default power state after reset as defined in Section 8.1.2. | PCIe, SATA, USB, DisplayPort, and USB4  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-22.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "50",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

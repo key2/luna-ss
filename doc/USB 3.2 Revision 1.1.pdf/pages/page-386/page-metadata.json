@@ -1,0 +1,57 @@
+{
+  "index": 385,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 355 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 90,
+      "bottomRightX": 676,
+      "bottomRightY": 760,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  7 | bU1DevExitLat | 1 | Number | U1 Device Exit Latency. Worst-case latency to transition from U1 to U0, assuming the latency is limited only by the device and not the device's link partner. This field applies only to the exit latency associated with an individual port, and does not apply to the total latency through a hub (e.g., from downstream port to upstream port). The following are permissible values: ValueMeaning 00H Zero. 01H Less than 1 μs 02H Less than 2 μs 03H Less than 3 μs 04H Less than 4 μs ... ... 0AH Less than 10 μs 0BH – Reserved FFH For a hub, this is the value for both its upstream and downstream ports.  |\n|  8 | wU2DevExitLat | 2 | Number | U2 Device Exit Latency. Worst-case latency to transition from U2 to U0, assuming the latency is limited only by the device and not the device's link partner. Applies to all ports on a device. The following are permissible values: ValueMeaning 0000H Zero 0001H Less than 1 μs 0002H Less than 2 μs 0003H Less than 3 μs 0004H Less than 4 μs ... ... 07FFH Less than 2047 μs 0800H – Reserved FFFFH For a hub, this is the value for both its upstream and downstream ports.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-186.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

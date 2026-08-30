@@ -1,0 +1,75 @@
+{
+  "index": 61,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 272,
+      "bottomRightY": 62,
+      "content": "Chapter 4: Timing Definitions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 712,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 90,
+      "bottomRightX": 655,
+      "bottomRightY": 577,
+      "content": "|   | (USB 3.1 specification defined value) | (Calculated test time) (Gen 1) | (Calculated test time) (Gen 2)  |\n| --- | --- | --- | --- |\n|  tDHPResponse (Gen 1) | 2540ns |  |   |\n|  tDHPResponse (Gen 2) | 1610ns |  |   |\n|  tDPacket (Gen 1) | 2150ns |  |   |\n|  tDPacket (Gen 2) | 910ns |  |   |\n|  tLinkTurnAround |  | 400ns | 700ns  |\n|  tRxDetectQuietTimeoutUFP | 12ms | 18.0904ms | 18.0907ms  |\n|  tRxDetectQuietTimeoutDFP | 12ms | 120ms | 120ms  |\n|  tPollingLFPSTimeout | 360ms | 542.7004ms | 542.7007ms  |\n|  tPollingLFPSEstablishedTimeout |  | 80us | 80us  |\n|  tPollingSCDLFPSTimeout | 60us | 90.850us | 91.150us  |\n|  tPollingLBPMLFPSTimeout | 12ms | 18.0904ms | 18.0907ms  |\n|  tPollingActiveTimeout | 12ms | 18.0904ms | 18.0907ms  |\n|  tPollingConfigurationTimeout | 12ms | 18.0904ms | 18.0907ms  |\n|  tRecoveryActiveTimeout | 12ms | 18.0904ms | 18.0907ms  |\n|  tRecoveryConfigurationTimeout | 6ms | 9.0454ms | 9.0457ms  |\n|  tRecoveryTransition |  | 1us | 1us  |\n|  tU0RecoveryTimeout | 1ms | 1.5079ms | 1.5082ms  |\n|  tHotResetActiveTimeout | 12ms | 18.0904ms | 18.0907ms  |\n|  [Type 1/Type 2] CREDIT_HP_TIMER | 5ms | 7.5379ms | 7.5382ms  |\n|  PENDING_HP_TIMER | 10μs | 15.475μs | 15.775μs  |\n|  PM_LC_TIMER | 4μs | 6.43μs | 6.73μs  |\n|  PM_ENTRY_TIMER | 8μs | 12.46μs | 12.76μs  |\n|  Ux_EXIT_TIMER | 6ms | 9.0454ms | 9.0457ms  |\n|  tPortConfiguration | 20μs | 30μs | 30μs  |\n|  tNoLFPSResponseTimeout for U1/2 | 2ms | 2.0104ms | 2.0107ms  |\n|  tNoLFPSResponseTimeout for U3 | 10ms | 10.0504ms | 10.0507ms  |\n|  tU3WakeupRetryDelay | 100ms | 150.7504ms | 150.7507ms  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-55.md"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 576,
+      "bottomRightX": 193,
+      "bottomRightY": 589,
+      "content": "Table 4-1",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 597,
+      "bottomRightX": 479,
+      "bottomRightY": 613,
+      "content": "Note +/- 100ns applies to Timer Expiration Times in Table 4-1 above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "54",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

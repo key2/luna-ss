@@ -1,0 +1,156 @@
+{
+  "index": 224,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 194 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 340,
+      "topLeftY": 92,
+      "bottomRightX": 447,
+      "bottomRightY": 110,
+      "content": "Figure 7-24. U3",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 120,
+      "bottomRightX": 630,
+      "bottomRightY": 352,
+      "content": "![img-90.jpeg](img-90.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-90.jpeg"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 363,
+      "bottomRightX": 671,
+      "bottomRightY": 379,
+      "content": "Note: Transition conditions are illustrative only, Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 416,
+      "bottomRightX": 218,
+      "bottomRightY": 432,
+      "content": "### 7.5.10 Recovery",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 437,
+      "bottomRightX": 660,
+      "bottomRightY": 527,
+      "content": "The Recovery link state is entered to retrain the link, or to perform Hot Reset, or to switch to Loopback mode. In order to retrain the link and also minimize the recovery latency, the two link partners do not train the receiver equalizers. Instead, the last trained equalizer configurations are maintained. Only TS1 and TS2 ordered sets are transmitted to synchronize the link and to exchange the link configuration information defined in Table 6-6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 541,
+      "bottomRightX": 378,
+      "bottomRightY": 556,
+      "content": "#### 7.5.10.1 Recovery Substate Machines",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 563,
+      "bottomRightX": 654,
+      "bottomRightY": 580,
+      "content": "Recovery contains a substate machine shown in Figure 7-25 with the following substates:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 593,
+      "bottomRightX": 305,
+      "bottomRightY": 652,
+      "content": "- Recovery.Active\n- Recovery.Configuration\n- Recovery.Idle",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 674,
+      "bottomRightX": 349,
+      "bottomRightY": 689,
+      "content": "#### 7.5.10.2 Recovery Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 696,
+      "bottomRightX": 665,
+      "bottomRightY": 840,
+      "content": "- The port shall meet the transmitter specifications as defined in Table 6-18.\n- The port shall maintain the low-impedance receiver termination (R_RX-DC) as defined in Table 6-22.\n- For SuperSpeed USB, all header packets in the Tx Header Buffers and the Rx Header Buffers shall be handled based on the requirements specified in Section 7.2.4.\n- For SuperSpeedPlus USB, all header packets and data packet headers in the Type 1/Type 2 Tx Header Buffers and the Type 1/Type 2 Rx Buffers shall be handled based on the requirements specified in Section 7.2.4.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 861,
+      "bottomRightX": 304,
+      "bottomRightY": 877,
+      "content": "#### 7.5.10.3 Recovery.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 883,
+      "bottomRightX": 668,
+      "bottomRightY": 913,
+      "content": "Recovery.Active is a substate to train the Enhanced SuperSpeed link by transmitting the TS1 ordered sets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "index": 488,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 62,
+      "content": "- 458 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 95,
+      "bottomRightX": 665,
+      "bottomRightY": 230,
+      "content": "- From the USDPORT-Powered-off state when VBUS becomes valid (and local power is valid if required).\n- From the USDPORT.Error state when the link receives a warm reset or Far-end terminations are removed.\n- From the USDPORT.Connected/Enabled state when the link receives a Warm Reset.\n- From the USDPORT.Disabled state if the port receives a USB 2.0 reset.\n- From the USDPORT.Training state when the link receives a Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 250,
+      "bottomRightX": 651,
+      "bottomRightY": 281,
+      "content": "In this state, the port's link shall be in the Rx.Detect state. The corresponding peripheral device USB state shall be Powered (Far-end Receiver Termination substate).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 293,
+      "bottomRightX": 656,
+      "bottomRightY": 325,
+      "content": "If the transition is from the USDPORT.Disabled state the USB 2.0 pull-up shall remain enabled. If the transition is from any other state the USB 2.0 pull-up shall not be enabled.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 337,
+      "bottomRightX": 318,
+      "bottomRightY": 352,
+      "content": "#### **10.18.2.3 USDPORT.Training**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 359,
+      "bottomRightX": 624,
+      "bottomRightY": 390,
+      "content": "A port transitions to this state from the USDPORT-Powered-on state when Enhanced SuperSpeed Far-end Receiver Terminations are detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 402,
+      "bottomRightX": 636,
+      "bottomRightY": 433,
+      "content": "In this state, the port's link shall be in the Polling state. The corresponding peripheral device USB state shall be Powered (Link Training substate).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 445,
+      "bottomRightX": 612,
+      "bottomRightY": 477,
+      "content": "As noted in Figure 10-26, the peripheral device shall disconnect on USB 2.0 within tUSB2SwitchDisconnect after entering this state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 489,
+      "bottomRightX": 386,
+      "bottomRightY": 505,
+      "content": "#### **10.18.2.4 USDPORT.Connected/Enabled**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 513,
+      "bottomRightX": 645,
+      "bottomRightY": 557,
+      "content": "A port transitions to this state from the USDPORT.Training state when its link enters U0 from Polling.Idle. A port remains in this state during hot reset. When a hot reset is completed, the corresponding peripheral device USB state shall transition to Default.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 569,
+      "bottomRightX": 670,
+      "bottomRightY": 615,
+      "content": "In this state, the Enhanced SuperSpeed link is in U0, U1, U2, U3 or Recovery and the USB 2.0 pull-up is not applied. The corresponding peripheral device USB state shall be Default, Address, or Configured.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 627,
+      "bottomRightX": 300,
+      "bottomRightY": 642,
+      "content": "#### **10.18.2.5 USDPORT.Error**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 650,
+      "bottomRightX": 667,
+      "bottomRightY": 681,
+      "content": "A port transitions to this state when a serious error condition occurred while attempting to operate the link. A port transitions to this state if the following situation occurs:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 694,
+      "bottomRightX": 660,
+      "bottomRightY": 725,
+      "content": "- From the USDPORT.Connected/Enabled state if the link enters Recovery and times out without recovering.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 745,
+      "bottomRightX": 667,
+      "bottomRightY": 777,
+      "content": "In this state, the port's link shall be in the eSS.Inactive state. The corresponding peripheral device USB state shall be Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 790,
+      "bottomRightX": 662,
+      "bottomRightY": 820,
+      "content": "A port exits the USDPORT.Error state only if a Warm Reset is received on the link or if Far-end Receiver Terminations are removed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 832,
+      "bottomRightX": 321,
+      "bottomRightY": 847,
+      "content": "#### **10.18.2.6 USDPORT.Disabled**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 854,
+      "bottomRightX": 299,
+      "bottomRightY": 869,
+      "content": "A port transitions to this state",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 882,
+      "bottomRightX": 662,
+      "bottomRightY": 913,
+      "content": "- From the USDPORT-Powered on state when Far-end Receiver Terminations are not detected as per the rules described below:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

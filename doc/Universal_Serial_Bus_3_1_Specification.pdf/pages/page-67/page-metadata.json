@@ -1,0 +1,111 @@
+{
+  "index": 66,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 520,
+      "topLeftY": 30,
+      "bottomRightX": 699,
+      "bottomRightY": 44,
+      "content": "USB 3.1 Architectural Overview",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 92,
+      "bottomRightX": 694,
+      "bottomRightY": 128,
+      "content": "Figure 3-8 illustrates a SuperSpeedPlus hub with an upstream facing port running in beyond Gen 1 speed, supporting downstream devices operating at both Gen 1 speed and beyond Gen 1 speeds.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 691,
+      "bottomRightY": 284,
+      "content": "In contrast to the SuperSpeed hub, which is characterized as a repeater/forwarder hub architecture, the SuperSpeedPlus hub is characterized as a store-and-forward hub because it can receive one or more entire DPs before transmitting up or downstream. The store-and-forward architecture of a SuperSpeedPlus hub allows a host to schedule multiple endpoint bursts, across multiple endpoints, for both in-bound and out-bound flows, as long as they bursts are to SuperSpeedPlus endpoints. The SuperSpeedPlus host is also able to use the same SuperSpeedPlus scheduling rules across SuperSpeed endpoints on different downstream SuperSpeed bus instances. The SuperSpeedPlus host must use SuperSpeed only bus scheduling rules for all SuperSpeed endpoints on the same SuperSpeed bus instance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 207,
+      "topLeftY": 303,
+      "bottomRightX": 617,
+      "bottomRightY": 617,
+      "content": "![img-8.jpeg](img-8.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-8.jpeg"
+    },
+    {
+      "topLeftX": 148,
+      "topLeftY": 629,
+      "bottomRightX": 674,
+      "bottomRightY": 646,
+      "content": "Figure 3-8. Multiple SuperSpeed Bus Instances in an Enhanced SuperSpeed System",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 660,
+      "bottomRightX": 684,
+      "bottomRightY": 713,
+      "content": "A SuperSpeedPlus hub consists of three logical components: a SuperSpeedPlus hub controller, a SuperSpeedPlus upstream controller and a SuperSpeedPlus downstream controller (one for each downstream facing port).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 717,
+      "bottomRightX": 650,
+      "bottomRightY": 734,
+      "content": "A SuperSpeedPlus hub is required to implement USB PTM (Precision Time Management).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 738,
+      "bottomRightX": 682,
+      "bottomRightY": 757,
+      "content": "SuperSpeedPlus hubs actively participate in the (end-to-end) protocol in several ways, including:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 760,
+      "bottomRightX": 698,
+      "bottomRightY": 827,
+      "content": "- Routes and preserves ordering (within an endpoint flow) of out-bound packets (TPs, DPs) from the upstream port to specific downstream ports\n- Routes in-bound packets and preserves ordering (within an endpoint flow) to the upstream port, via:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 832,
+      "bottomRightX": 698,
+      "bottomRightY": 901,
+      "content": "- Providing fair-service for simultaneously active, in-bound, asynchronous transfer type endpoint data flows, independent of device operating speed or location within the topology.\n- Providing strict-priority for simultaneously active, in-bound, periodic transfer type endpoint data flows, independent of device operating speed or location within the topology.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "3-15",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

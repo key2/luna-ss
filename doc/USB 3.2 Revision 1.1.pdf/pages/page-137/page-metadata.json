@@ -1,0 +1,148 @@
+{
+  "index": 136,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 106 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 92,
+      "bottomRightX": 617,
+      "bottomRightY": 109,
+      "content": "SCD1 and SCD2 when transitioning from Polling.LFPS to Polling.LFPSPlus.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 138,
+      "bottomRightX": 686,
+      "bottomRightY": 207,
+      "content": "![img-53.jpeg](img-53.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-53.jpeg"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 209,
+      "bottomRightX": 652,
+      "bottomRightY": 241,
+      "content": "(c). Illustration of consecutive SCD1 and SCD2 transmission with end of SCD between SCD1 and SCD2 when transitioning from Polling.LFPS to Polling.LFPSPlus.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 283,
+      "bottomRightX": 679,
+      "bottomRightY": 461,
+      "content": "![img-54.jpeg](img-54.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-54.jpeg"
+    },
+    {
+      "topLeftX": 231,
+      "topLeftY": 472,
+      "bottomRightX": 555,
+      "bottomRightY": 488,
+      "content": "(d). Illustration of end of SCD1 or SCD2 transmission.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 522,
+      "bottomRightX": 458,
+      "bottomRightY": 539,
+      "content": "### 6.9.5 SuperSpeedPlus LFPS Based PWM Message (LBPM)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 544,
+      "bottomRightX": 660,
+      "bottomRightY": 621,
+      "content": "LBPM is defined as a low power signaling mechanism for two SuperSpeedPlus ports to communicate with each other based on LFPS signals. The adoption of Pulse Width Modulation (PWM) is to embed the transmitting clock in data and to allow for easy data recovery at the receiver based on LFPS clock defined in Table 6-29. This section describes the concept and construction of LBPM. Refer to Chapter 7 for use of LBPM.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 633,
+      "bottomRightX": 451,
+      "bottomRightY": 648,
+      "content": "#### 6.9.5.1 Introduction to LFPS Based PWM Signaling (LBPS)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 655,
+      "bottomRightX": 663,
+      "bottomRightY": 701,
+      "content": "LBPS is based on PWM with embedded transmit clock and is basically constructed with two distinctive electrical states, which are LFPS signaling state and EI state. As is shown in Figure 6-37, two logic states are defined based on LBPS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 714,
+      "bottomRightX": 638,
+      "bottomRightY": 782,
+      "content": "- Logic '0' is defined within the unit interval of tPWM as one-third of LFPS signal followed by two-third of EI.\n- Logic '1' is defined within the unit interval of tPWM as two-third of LFPS signal followed by one-third of EI.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 788,
+      "bottomRightX": 567,
+      "bottomRightY": 805,
+      "content": "The specification of the transmit and receive LBPS is defined in Table 6-33.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

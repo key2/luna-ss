@@ -1,0 +1,173 @@
+{
+  "index": 602,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 586,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 354,
+      "bottomRightY": 111,
+      "content": "# Transitioning directly to U2 from U0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 682,
+      "bottomRightY": 187,
+      "content": "A downstream port can be configured for direct, hardware autonomous transition from U0 → U2 by programming its U1 inactivity timer to zero while programming its U2 inactivity timer with a non-zero value in the range 0x01- 0xFE. In this case, when the U2 inactivity timer expires, the downstream port initiates U2 entry from U0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 195,
+      "bottomRightX": 698,
+      "bottomRightY": 263,
+      "content": "When a port initiates U2 entry from U0, its link partner may either accept or reject the request. The link level U0 → U2 transition process consists of one port transmitting an LGO_U2 Link Command, and its link partner responding with either an LAU (accept the request) or an LXU (reject the request) Link Command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 272,
+      "bottomRightX": 196,
+      "bottomRightY": 289,
+      "content": "# Exiting U2",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 297,
+      "bottomRightX": 692,
+      "bottomRightY": 365,
+      "content": "Exiting U2 can only result in a link state transition to U0. Either link partner can initiate U2 exit, which is initiated when a packet needs to be transmitted. The exit process is similar to that of a U1 → U0 transition, consisting of a Low Frequency Periodic Signaling handshake followed by link recovery and training.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 382,
+      "bottomRightX": 327,
+      "bottomRightY": 402,
+      "content": "# C.1.1.5 U3 – Link Suspend",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 407,
+      "bottomRightX": 692,
+      "bottomRightY": 440,
+      "content": "The U3 state is a deep power saving state where portions of device power may be removed, except as needed to perform the following functions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 445,
+      "bottomRightX": 380,
+      "bottomRightY": 461,
+      "content": "- For upstream ports in devices and hubs:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 466,
+      "bottomRightX": 567,
+      "bottomRightY": 525,
+      "content": "- Warm Reset signaling detection\n- Wakeup signaling detection (for host initiated wakeup)\n- Wakeup signaling transmission (for remote wakeup capable devices)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 527,
+      "bottomRightX": 383,
+      "bottomRightY": 543,
+      "content": "- For downstream ports in hubs and hosts:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 549,
+      "bottomRightX": 508,
+      "bottomRightY": 629,
+      "content": "- Warm Reset generation\n- Disconnect event detection\n- Wakeup signaling detection (for remote wakeup)\n- Wakeup signaling transmission (for host initiated wakeup)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 635,
+      "bottomRightX": 629,
+      "bottomRightY": 652,
+      "content": "The purpose of U3 is to minimize power consumption during device or system suspend.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 660,
+      "bottomRightX": 680,
+      "bottomRightY": 695,
+      "content": "Vbus remains active during U3. Any power rail switching by devices is implementation specific and beyond the scope of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 704,
+      "bottomRightX": 261,
+      "bottomRightY": 721,
+      "content": "# Entering the U3 State",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 729,
+      "bottomRightX": 672,
+      "bottomRightY": 780,
+      "content": "U3 entry may only be initiated by the host (refer to Chapter 10 for details). Software typically implements an inactivity timeout for the purpose of placing a function into suspend following a long period of inactivity.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 788,
+      "bottomRightX": 698,
+      "bottomRightY": 841,
+      "content": "When a downstream port initiates a U3 entry request, its link partner is not allowed to reject it. The downstream port sends an LGO_U3 Link Command, and its link partner responds with an LAU Link Command (refer to Chapter 7 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 676,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "C-5",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "index": 80,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 375,
+      "bottomRightY": 138,
+      "content": "Table 7-1. PHY Registers (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 215,
+      "content": "|  Byte Address | Register Name | Notes  |\n| --- | --- | --- |\n|  12'hA00 - 12'BFF | CMN2: Same registers are defined in this region for CMN2 as for CMN1 above | -  |\n|  12'hC00-12'hFFF | VDR: Reserved | -  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-61.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 231,
+      "bottomRightX": 511,
+      "bottomRightY": 253,
+      "content": "### 7.1.1 Address 0h: Rx Margin Control0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 258,
+      "bottomRightX": 657,
+      "bottomRightY": 289,
+      "content": "This register is used along with the Rx Margin Control1 to control the PCIe Lane Margining at the receiver.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 303,
+      "bottomRightX": 396,
+      "bottomRightY": 318,
+      "content": "Table 7-2. Address 0h: Rx Margin Control0",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 323,
+      "bottomRightX": 699,
+      "bottomRightY": 606,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:5] | 0h | N/A | N/A | Reserved  |\n|  [4] | 0h | Level | USB4 | **Voltage Margining Eye:** This field is used only for PAM3 signaling rates. This field indicates which of the eyes is being margined. 0 - Bottom Eye 1 - Top Eye  |\n|  [3] | 0h | 1-cycle | PCIe (optional) | **Sample Count Reset:** This field is used to reset the \"Sample Count[6:0]\" field of the Rx Margin Status1 register.  |\n|  [2] | 0h | 1-cycle | PCIe (optional) | **Error Count Reset:** This field is used to reset the \"Error Count[5:0]\" field of the Rx Margin Status2 register.  |\n|  [1] | 0h | Level | PCIe | **Margin Voltage or Timing:** This field is used to select between margining voltage (1'b0) or margining timing (1'b1). The value can be changed only when margining is stopped.  |\n|  [0] | 0h | Level | PCIe | **Start Margin:** This field is used to start and stop margining. A transition from 1'b0 to 1'b1 starts the margining process. A transition from 1'b1 to 1'b0 stops the margining process.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-62.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 622,
+      "bottomRightX": 511,
+      "bottomRightY": 643,
+      "content": "### 7.1.2 Address 1h: Rx Margin Control1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 648,
+      "bottomRightX": 644,
+      "bottomRightY": 680,
+      "content": "This register is used along with the Rx Margin Control0 to control the PCIe Rx margining.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 693,
+      "bottomRightX": 396,
+      "bottomRightY": 709,
+      "content": "Table 7-3. Address 1h: Rx Margin Control1",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 713,
+      "bottomRightX": 699,
+      "bottomRightY": 888,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7] | 0h | Level | PCIe | **Margin Direction:** This field is used to control the time or voltage direction for margining. For timing margining, this field steps the time left (1'b0) or right (1'b1).^{1} For voltage margining, this field steps the voltage up (1'b0) or down (1'b1). This value can be changed only when the margining is stopped. This field should be ignored by PHYs that do not support individual time or voltage margining as advertised in the PHY datasheet.  |\n|  [6:0] | 0h | Level | PCIe | **Margin Offset:** This field is used to change the margin offset a number of steps from the default position. This value can be changed even during the margining process.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-63.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 891,
+      "bottomRightX": 575,
+      "bottomRightY": 904,
+      "content": "1. This is reversed from the timing margining direction convention used in the PCIe Base Specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 966,
+      "content": "81",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

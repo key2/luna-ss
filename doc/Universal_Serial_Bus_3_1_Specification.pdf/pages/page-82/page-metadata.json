@@ -1,0 +1,146 @@
+{
+  "index": 81,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 93,
+      "topLeftY": 29,
+      "bottomRightX": 380,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 691,
+      "bottomRightY": 144,
+      "content": "device may reject a Stream selection initiated by the host if it has no Function Data available for it. The Device Class defines when a stream may be selected by the host or the device, and the actions that will be taken when a Stream is rejected (refer to Section 8.12.1.4).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 148,
+      "bottomRightX": 694,
+      "bottomRightY": 199,
+      "content": "A combination of vendor and Device Class defined algorithms determine how Streams are scheduled by a device. The Stream protocol provides methods for starting, stopping, and switching Streams (refer to Section 8.12.1.4).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 204,
+      "bottomRightX": 685,
+      "bottomRightY": 238,
+      "content": "Mechanisms defined by the Stream protocol allow the device or the host to flow control a Stream. These mechanisms overlap with the standard bulk flow control mechanism.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 243,
+      "bottomRightX": 689,
+      "bottomRightY": 309,
+      "content": "The host also may start or stop a Stream. For instance, the host will stop a Stream if it runs out of buffer space for the Stream. When the host controller informs the device of this condition, the device may switch to another Stream or wait and continue the same Stream when the host receives more buffers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 314,
+      "bottomRightX": 694,
+      "bottomRightY": 416,
+      "content": "The Stream Protocol also provides a mechanism which allows the host to asynchronously inform the device when Endpoint Buffers have been added to the pipe. This is useful in cases in which the host must terminate a stream because it ran out of Endpoint Buffers; however, the device still has more Function Data to transfer. Without this mechanism, the device would have to periodically retry starting the Stream (impacting power management), or a long latency out-of-band method would be required.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 421,
+      "bottomRightX": 673,
+      "bottomRightY": 472,
+      "content": "Since Streams are run over a standard bulk pipe, an error will halt the pipe, stopping all stream activity. Removal of the halt condition is achieved via software intervention through a separate control pipe as it is for a standard bulk pipe.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 476,
+      "bottomRightX": 694,
+      "bottomRightY": 512,
+      "content": "Finally, Streams significantly increase the functionality of a bulk endpoint, while having a minimal impact on the additional hardware required to support the feature in hosts and devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 524,
+      "bottomRightX": 349,
+      "bottomRightY": 546,
+      "content": "### 4.4.7 Interrupt Transfers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 552,
+      "bottomRightX": 698,
+      "bottomRightY": 670,
+      "content": "The purpose and characteristics of interrupt transfers are similar to those defined in USB 2.0 (see Section 5.7 of the Universal Serial Bus Specification, Revision 2.0). The Enhanced SuperSpeed interrupt transfer types are intended to support devices that require a high reliability method to communicate a small amount of data with a bounded service interval. The Protocol Layer chapter of this specification describes the details of the packets, bus transactions and transaction sequences used to accomplish Interrupt transfers. The Enhanced SuperSpeed Interrupt transfer type nominally provides the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 674,
+      "bottomRightX": 518,
+      "bottomRightY": 710,
+      "content": "- Guaranteed maximum service interval\n- Guaranteed retry of transfer attempts in the next service interval",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 715,
+      "bottomRightX": 698,
+      "bottomRightY": 849,
+      "content": "Interrupt transfers are attempted each service interval for an interrupt endpoint. Bandwidth is reserved to guarantee a transfer attempt each service interval. Once a transfer is successful, another transfer attempt is not made until the next service interval. If the endpoint responds with a not ready notification, or an acknowledgement indicating that it cannot accept any more packets, the host will not attempt another transfer to that endpoint until it receives a ready notification. The host must then service the endpoint within the larger of (a) twice the service interval, and (b) the device's last reported BELT, after receipt of the ready notification. The requested service interval for the endpoint is described in its endpoint descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 854,
+      "bottomRightX": 663,
+      "bottomRightY": 871,
+      "content": "The Enhanced SuperSpeed architecture retains the following characteristics of interrupt pipes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 876,
+      "bottomRightX": 607,
+      "bottomRightY": 892,
+      "content": "- No data content structure is imposed on communication flow for interrupt pipes",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 964,
+      "bottomRightX": 117,
+      "bottomRightY": 977,
+      "content": "4-12",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

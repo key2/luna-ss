@@ -1,0 +1,175 @@
+{
+  "index": 401,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 371 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 265,
+      "topLeftY": 92,
+      "bottomRightX": 522,
+      "bottomRightY": 109,
+      "content": "Table 9-31. UNICODE String Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 119,
+      "bottomRightX": 676,
+      "bottomRightY": 207,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of this descriptor in bytes  |\n|  1 | bDescriptorType | 1 | Constant | STRING Descriptor Type  |\n|  2 | bString | N | Number | UNICODE encoded string  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-206.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 226,
+      "bottomRightX": 302,
+      "bottomRightY": 242,
+      "content": "### 9.7 Device Class Definitions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 249,
+      "bottomRightX": 665,
+      "bottomRightY": 326,
+      "content": "All devices shall support the requests and descriptor definitions described in this chapter. Most devices provide additional requests and, possibly, descriptors for device-specific extensions. In addition, devices may provide extended services that are common to a group of devices. In order to define a class of devices, the following information shall be provided to completely define the appearance and behavior of the device class.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 338,
+      "bottomRightX": 230,
+      "bottomRightY": 352,
+      "content": "### 9.7.1 Descriptors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 359,
+      "bottomRightX": 665,
+      "bottomRightY": 437,
+      "content": "If the class requires any specific definition of the standard descriptors, the class definition shall include those requirements as part of the class definition. In addition, if the class defines a standard extended set of descriptors, they shall also be fully defined in the class definition. Any extended descriptor definitions shall follow the approach used for standard descriptors; for example, all descriptors shall begin with a length field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 449,
+      "bottomRightX": 231,
+      "bottomRightY": 464,
+      "content": "### 9.7.2 Interface(s)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 470,
+      "bottomRightX": 671,
+      "bottomRightY": 516,
+      "content": "When a class of devices is standardized, the interfaces used by the devices shall be included in the device class definition. Devices may further extend a class definition with proprietary features as long as they meet the base definition of the class.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 529,
+      "bottomRightX": 216,
+      "bottomRightY": 545,
+      "content": "### 9.7.3 Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 551,
+      "bottomRightX": 447,
+      "bottomRightY": 567,
+      "content": "All of the requests specific to the class shall be defined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 580,
+      "bottomRightX": 222,
+      "bottomRightY": 593,
+      "content": "### 9.8 Constants",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 601,
+      "bottomRightX": 469,
+      "bottomRightY": 617,
+      "content": "Table 9-32 lists the constants that are used in this chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 320,
+      "topLeftY": 630,
+      "bottomRightX": 467,
+      "bottomRightY": 644,
+      "content": "Table 9-32. Constants",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 654,
+      "bottomRightX": 673,
+      "bottomRightY": 838,
+      "content": "|  Name | Description | Min | Max | Units  |\n| --- | --- | --- | --- | --- |\n|  LANE_SPEED_MANTISSA_GEN1 | Land Speed Mantissa for Gen 1 | NA | 5 | NA  |\n|  UNIT_LOAD | The amount a device, operating in single lane mode, can draw in the unconfigured state | NA | 150 | mA  |\n|   |  The amount a device, operating in multilane mode, can draw in the unconfigured state | NA | 250 | mA  |\n|  MAX_ISO_BYTES_PER_BI_GEN1 | Maximum number of Isochronous bytes per bus interval when a device is operating at Gen 1x1 speed | NA | 48 * 1024 | bytes  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-207.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

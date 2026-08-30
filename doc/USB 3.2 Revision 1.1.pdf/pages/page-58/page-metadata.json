@@ -1,0 +1,130 @@
+{
+  "index": 57,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 27 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 651,
+      "bottomRightY": 140,
+      "content": "implementation may provide appropriate full functionality when operating in the implemented USB 2.0 speed mode. Simultaneous operation of Enhanced SuperSpeed and USB 2.0 speed modes is not allowed for peripheral devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 152,
+      "bottomRightX": 663,
+      "bottomRightY": 213,
+      "content": "USB 3.2 devices within a single physical package (i.e., a single peripheral) can consist of a number of functional topologies including single function, multiple functions on a single peripheral device (composite device), and permanently attached peripheral devices behind an integrated hub (compound device) (see Figure 3-4).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 223,
+      "bottomRightX": 637,
+      "bottomRightY": 242,
+      "content": "Figure 3-4. Examples of Supported USB 3.2 USB Physical Device Topologies",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 249,
+      "bottomRightX": 624,
+      "bottomRightY": 537,
+      "content": "![img-4.jpeg](img-4.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-4.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 561,
+      "bottomRightX": 663,
+      "bottomRightY": 593,
+      "content": "An Enhanced SuperSpeed portion of a peripheral device may only be assembled into one of the following configurations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 599,
+      "bottomRightX": 657,
+      "bottomRightY": 646,
+      "content": "- SuperSpeed Only Peripheral Device. This device implementation is comprised of a Gen 1x1 only PHY and conforms to the SuperSpeed link, protocol and device specifications; see Figure 3-5.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 660,
+      "bottomRightX": 666,
+      "bottomRightY": 678,
+      "content": "Figure 3-5. SuperSpeed Only Enhanced SuperSpeed Peripheral Device Configuration",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 293,
+      "topLeftY": 688,
+      "bottomRightX": 510,
+      "bottomRightY": 812,
+      "content": "![img-5.jpeg](img-5.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-5.jpeg"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 842,
+      "bottomRightX": 673,
+      "bottomRightY": 889,
+      "content": "- Enhanced SuperSpeed Device. This is an attachable device that must implement both SuperSpeed and SuperSpeedPlus device architecture and at all Gen X x Y speeds; see Figure 3-6.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

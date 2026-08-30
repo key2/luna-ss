@@ -1,0 +1,76 @@
+{
+  "index": 23,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- xxiv -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 349,
+      "content": "|  E.6.4.2 | Linearity Requirements | 531  |\n| --- | --- | --- |\n|  E.6.4.3 | Intrinsic Jitter Requirements | 532  |\n|  E.6.4.4 | Additive Noise Requirement (σ_{n}) | 533  |\n|  E.6.4.5 | Integrated Return Loss Requirement | 534  |\n|  E.6.4.6 | Integrated Crosstalk Requirement | 534  |\n|  E.6.4.7 | Compliance Eye Requirement | 535  |\n|  E.6.4.8 | Implementation Guidelines | 536  |\n|  E.6.4.9 | Electrical Over Stress Requirements | 538  |\n|  E.7 | Compliance | 538  |\n|  E.7.1 | Host and Device Product Compliance | 538  |\n|  E.7.2 | Component-Level Re-timer Compliance | 538  |\n|  E.7.3 | Component-Level LRD Conformance | 538  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-17.md"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 373,
+      "bottomRightX": 160,
+      "bottomRightY": 389,
+      "content": "## Figures",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 402,
+      "bottomRightX": 676,
+      "bottomRightY": 919,
+      "content": "|  Figure 2-1. Port and Link Pictorial | 14  |\n| --- | --- |\n|  Figure 3-1. USB 3.2 Dual Bus System Architecture | 16  |\n|  Figure 3-2. USB 3.2 Terminology Reference Model | 19  |\n|  Figure 3-3. Enhanced SuperSpeed Bus Communications Layers and Power Management Elements | 20  |\n|  Figure 3-4. Examples of Supported USB 3.2 USB Physical Device Topologies | 27  |\n|  Figure 3-5. SuperSpeed Only Enhanced SuperSpeed Peripheral Device Configuration | 27  |\n|  Figure 3-6. Enhanced SuperSpeed Device Configuration | 28  |\n|  Figure 3-7. Multiple SuperSpeed Bus Instances in an Enhanced SuperSpeed System | 29  |\n|  Figure 4-1. Enhanced SuperSpeed IN Transaction Protocol | 37  |\n|  Figure 4-2. Enhanced SuperSpeed OUT Transaction Protocol | 38  |\n|  Figure 4-3. Enhanced SuperSpeed IN Stream Example | 42  |\n|  Figure 6-1. SuperSpeed Physical Layer | 51  |\n|  Figure 6-2. Transmitter Block Diagram | 52  |\n|  Figure 6-3. Gen 1 Receiver Block Diagram | 53  |\n|  Figure 6-4. Gen 2 Receiver Block Diagram | 54  |\n|  Figure 6-5. Channel Models | 55  |\n|  Figure 6-6. Electrical Test Points | 56  |\n|  Figure 6-7. Character to Symbol Mapping | 57  |\n|  Figure 6-8. Bit Transmission Order | 57  |\n|  Figure 6-9. LFSR with Scrambling Polynomial | 58  |\n|  Figure 6-10. Gen 2 Serialization and Deserialization Order | 59  |\n|  Figure 6-11. Gen 2 Bit Transmission Order and Framing | 60  |\n|  Figure 6-12. LFSR for use in Gen 2 operation | 62  |\n|  Figure 6-13. Jitter Filtering – “Golden PLL” and Jitter Transfer Functions | 75  |\n|  Figure 6-14. “Golden PLL” and Jitter Transfer Functions for Gen 1 Operation | 76  |\n|  Figure 6-15. “Golden PLL” and Jitter Transfer Functions for Gen 2 Operation | 76  |\n|  Figure 6-16. Example of Period Modulation from Triangular SSC | 78  |\n|  Figure 6-17. Eye Masks | 79  |\n|  Figure 6-18. Single-ended and Differential Voltage Levels | 81  |\n|  Figure 6-19. Device Termination Schematic | 81  |\n|  Figure 6-20. Tx Normative Setup with Reference Channel | 85  |\n|  Figure 6-21. De-Emphasis Waveform | 85  |\n|  Figure 6-22. 3-tap Transmit Equalizer Structure | 86  |\n|  Figure 6-23. Example Output Waveform for 3-tap Transmit Equalizer | 87  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-18.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

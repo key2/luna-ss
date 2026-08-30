@@ -1,0 +1,76 @@
+{
+  "index": 189,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 216,
+      "topLeftY": 112,
+      "bottomRightX": 617,
+      "bottomRightY": 356,
+      "content": "![img-144.jpeg](img-144.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-144.jpeg"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 382,
+      "bottomRightX": 561,
+      "bottomRightY": 400,
+      "content": "Figure 6-21. 3-tap Transmit Equalizer Structure",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 459,
+      "bottomRightX": 684,
+      "bottomRightY": 792,
+      "content": "![img-145.jpeg](img-145.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-145.jpeg"
+    },
+    {
+      "topLeftX": 275,
+      "topLeftY": 802,
+      "bottomRightX": 448,
+      "bottomRightY": 837,
+      "content": "Preshoot = 20log(Vc/Vb)\nDe-emphasis = 20log(Vb/Va)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 847,
+      "bottomRightX": 625,
+      "bottomRightY": 865,
+      "content": "Figure 6-22. Example Output Waveform for 3-tap Transmit Equalizer",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "6-34",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

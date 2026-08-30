@@ -1,0 +1,121 @@
+{
+  "index": 28,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 555,
+      "topLeftY": 35,
+      "bottomRightX": 646,
+      "bottomRightY": 48,
+      "content": "3.11 SDI Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 95,
+      "bottomRightX": 248,
+      "bottomRightY": 118,
+      "content": "### 3.11 SDI Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 144,
+      "bottomRightX": 226,
+      "bottomRightY": 163,
+      "content": "#### 3.11.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 181,
+      "bottomRightX": 642,
+      "bottomRightY": 238,
+      "content": "The development board includes two SDI-IN interfaces and two SDI-OUT interfaces, and the interface connectors are BNC, which can meet the performance evaluation needs of the 3G SDI and 6G SDI interfaces.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 249,
+      "bottomRightX": 458,
+      "bottomRightY": 266,
+      "content": "Figure 3-11 Connection Diagram of SDI Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 277,
+      "bottomRightX": 631,
+      "bottomRightY": 635,
+      "content": "![img-16.jpeg](img-16.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-16.jpeg"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 659,
+      "bottomRightX": 257,
+      "bottomRightY": 679,
+      "content": "#### 3.11.2 Pin Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 698,
+      "bottomRightX": 427,
+      "bottomRightY": 713,
+      "content": "Table 3-11 Pin Distribution of SDI Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 717,
+      "bottomRightX": 653,
+      "bottomRightY": 922,
+      "content": "|  Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  SDI_OUT1_EN | F10 | 1 | 2.5V | U28 (LMH1218) output enable  |\n|  SDI_OUT2_EN | E10 | 1 | 2.5V | U43 (LMH1218) output enable  |\n|  SDI_SDA | H11 | 5 | 3.3V | I2C control signal of LMH1218/LMH1219  |\n|  SDI_SCL | H10 | 5 | 3.3V  |   |\n|  SDI_OUT2_DP | D8 | SerDes Q0 | - | LMH1218 IN0+  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-18.md"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 610,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "22(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

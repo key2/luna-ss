@@ -1,0 +1,11 @@
+|  Symbol | Parameter | Gen 1 (5.0 GT/s) | Gen 2 (10 GT/s) | Units | Comments  |
+| --- | --- | --- | --- | --- | --- |
+|  UI | Unit Interval | 199.94 (min) 200.06 (max) | 99.97 (min) 100.03 (max) | ps | The specified UI is equivalent to a tolerance of ±300 ppm for each device. Period does not account for SSC induced variations.  |
+|  V_{TX-DIFF-PP} | Differential p-p Tx voltage swing | 0.8 (min) 1.2 (max) | 0.8 (min) 1.2 (max) | V | Nominal is 1 V p-p  |
+|  V_{TX-DIFF-PP-LOW} | Low-Power Differential p-p Tx voltage swing | 0.4 (min) 1.2 (max) | 0.4 (min) 1.2 (max) | V | Refer to Section 6.7.2. There is no de-emphasis requirement in this mode. De-emphasis is implementation specific for this mode.  |
+|  V_{TX-DE-RATIO} | Tx de-emphasis | 3.0 (min) 4.0 (max) | Not applicable | dB | Nominal is 3.5 dB for Gen 1 operation. Gen 2 transmitter equalization recommendations are described in section 6.7.5.2.  |
+|  R_{TX-DIFF-DC} | DC differential impedance | 72 (min) 120 (max) | 72 (min) 120 (max) | Ω |   |
+|  V_{TX-RCV-DETECT} | The amount of voltage change allowed during Receiver Detection | 0.6 (max) | 0.6 (max) | V | Detect voltage transition should be an increase in voltage on the pin looking at the detect signal to avoid a high impedance requirement when an "off" receiver's input goes below ground.  |
+|  C_{AC-COUPLING} | AC Coupling Capacitor | 75 (min) 200 (max) | 75 (min) 265 (max) | nF | All Transmitters shall be AC coupled. The AC coupling is required either within the media or within the transmitting component itself.  |
+|  I_{CDR_SLEW_MAX} | Maximum slew rate | 10 | Not applicable | ms/s | See the jitter white paper for details on this measurement. This is a df/ft specification; refer to Section 6.5.4 for details.  |
+|  SSC_{df/dt} | SSC df/dt | Not applicable | 1250 (max) | ppm/μs | See note 1.  |

@@ -1,0 +1,93 @@
+{
+  "index": 130,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 44,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 671,
+      "bottomRightY": 130,
+      "content": "### 5.5.5 USB 3.1 Micro-A to USB 3.1 Standard-B Cable Assembly",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 136,
+      "bottomRightX": 694,
+      "bottomRightY": 186,
+      "content": "A USB 3.1 Micro-A to USB 3.1 Standard-B cable assembly is also allowed. Figure 5-18 and Figure 5-16 show, respectively, the USB 3.1 Micro-A cable overmold and the USB 3.1 Standard-B cable overmold dimensions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 191,
+      "bottomRightX": 668,
+      "bottomRightY": 225,
+      "content": "Table 5-12 shows the wire connections for the USB 3.1 Micro-A to USB 3.1 Standard-B cable assembly.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 240,
+      "bottomRightX": 592,
+      "bottomRightY": 256,
+      "content": "Table 5-12. USB 3.1 Micro-A to USB 3.1 Standard-B Cable Assembly Wiring",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 258,
+      "bottomRightX": 707,
+      "bottomRightY": 509,
+      "content": "|  USB 3.1 Micro-A Plug |   | Wire |   | USB 3.1 Standard-B Plug  |   |\n| --- | --- | --- | --- | --- | --- |\n|  Pin Number | Signal Name | Wire Number | Signal Name | Pin Number | Signal Name  |\n|  1 | VBUS | 1 | PWR | 1 | VBUS  |\n|  2 | D- | 2 | D- | 2 | D-  |\n|  3 | D+ | 3 | D+ | 3 | D+  |\n|  4 | ID (see Note 1) | No Connect |   |  |   |\n|  5 | GND | 4 | GND_PWRrt | 4 | GND  |\n|  6 | MicA_SSTX- | 5 | P1- | 8 | StdB_SSRX-  |\n|  7 | MicA_SSTX+ | 6 | P1+ | 9 | StdB_SSRX+  |\n|  8 | GND_DRAIN | 7 and 10 | P1_Drain P2_Drain | 7 | GND_DRAIN  |\n|  9 | MicA_SSRX- | 8 | P2- | 5 | StdB_SSTX-  |\n|  10 | MicA_SSRX+ | 9 | P2+ | 6 | StdB_SSTX+  |\n|  Shell | Shield | Braid | Shield | Shell | Shield  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-44.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 511,
+      "bottomRightX": 160,
+      "bottomRightY": 521,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 523,
+      "bottomRightX": 257,
+      "bottomRightY": 537,
+      "content": "1. Connect to the GND",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-43",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

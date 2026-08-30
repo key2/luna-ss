@@ -1,0 +1,164 @@
+{
+  "index": 374,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 100,
+      "bottomRightX": 277,
+      "bottomRightY": 116,
+      "content": "### 8.12.1.4.3.9 OUTMvData Host",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 129,
+      "bottomRightX": 700,
+      "bottomRightY": 179,
+      "content": "In this state the host has just received an ACK TP from the device for a previous DP and has more Endpoint Data available for CStream. The host generates a DP in this state. The pipe will also wait in this state between bursts from the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 187,
+      "bottomRightX": 659,
+      "bottomRightY": 239,
+      "content": "DP(CStream, PP=1) - If the device receives a DP with PP = 1, then it shall transition to the OUTMvData Device state. The DPP shall contain a CStream data payload. This is the host response if it has more than one Max Packet Size of Endpoint Data available for CStream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 248,
+      "bottomRightX": 696,
+      "bottomRightY": 314,
+      "content": "DP(CStream, PP=0) - If the device receives a DP with PP = 0, then it shall transition to the OUTMvData Host Terminate state. The DPP shall contain a CStream data payload. This is the host response if it has exhausted the Endpoint Data that it has available for CStream. The length of the DP will be less than or equal to one Max Packet Size.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 325,
+      "bottomRightX": 665,
+      "bottomRightY": 390,
+      "content": "DPH(Deferred) - If a DPH with the Deferred (DF) flag set is received, then the device shall transition to the Idle state, exiting the DOMDSM. This packet is received when the link has transitioned to a U1 or U2 state while waiting for the next DP from the host. There is no DPP associated with a deferred DPH.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 400,
+      "bottomRightX": 348,
+      "bottomRightY": 417,
+      "content": "### 8.12.1.4.3.10 OUTMvData Host Terminate",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 430,
+      "bottomRightX": 698,
+      "bottomRightY": 479,
+      "content": "This state is entered because the host has just sent the last DP that it has available for CStream, e.g., it has exhausted its CStream Endpoint Data. In this state the device acknowledges the last DP from the host for the Move Data transfer.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 489,
+      "bottomRightX": 692,
+      "bottomRightY": 524,
+      "content": "ACK(CStream, NumP=0) - If the device has also exhausted its Function Buffer space, then it shall generate an ACK TP with NumP = 0 and transition to the Idle state, exiting the DOMDSM.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 531,
+      "bottomRightX": 687,
+      "bottomRightY": 583,
+      "content": "ACK(CStream, NumP>0) - If the device has not exhausted its Function Buffer space, then it shall generate an ACK TP with NumP > 0, and transition to the Idle state, exiting the DOMDSM. The device shall set CStream to Not Ready due to this transition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 592,
+      "bottomRightX": 698,
+      "bottomRightY": 641,
+      "content": "ACK(CStream, NumP>0, Rty) - If an error was detected on the last DP by the device, then it shall generate an ACK TP with NumP > 0 and Rty = 1, so that the host will retry the last DP. The device shall then transition to the OUTMvData Host state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 650,
+      "bottomRightX": 695,
+      "bottomRightY": 718,
+      "content": "NRDY(CStream) - The device may flow control on the last CStream transfer by sending an NRDY with its Stream ID set to CStream and transition to the Idle state, exiting the DOMDSM. The device may generate this transition due to unexpected internal conditions where it wants to flow control CStream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 729,
+      "bottomRightX": 370,
+      "bottomRightY": 745,
+      "content": "### 8.12.1.4.4 Host IN Stream Protocol",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 755,
+      "bottomRightX": 693,
+      "bottomRightY": 790,
+      "content": "This section defines the Enhanced SuperSpeed packet exchanges that transition the host side of the Stream Protocol from one state to another on an IN bulk endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 798,
+      "bottomRightX": 700,
+      "bottomRightY": 849,
+      "content": "In the following text, a Host IN Stream state transition is assumed to occur at the point the host sends the first bit of the first symbol of a state machine related message to the device, or at the point the host first decodes state machine related message from the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 857,
+      "bottomRightX": 595,
+      "bottomRightY": 875,
+      "content": "For an IN pipe, Endpoint Buffers in the host receive Function Data from a device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 995,
+      "content": "8-81",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "index": 615,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 477,
+      "bottomRightY": 129,
+      "content": "### C.2.2 Device Connected Through a Hub",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 135,
+      "bottomRightX": 689,
+      "bottomRightY": 184,
+      "content": "In this example a peripheral device (Dev2) is connected to one of a hub's downstream ports (DP2) via a link (Link3), which in turn is connected to a host controller's root port (RP2) via a link (Link2).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 212,
+      "bottomRightX": 609,
+      "bottomRightY": 691,
+      "content": "![img-295.jpeg](img-295.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-295.jpeg"
+    },
+    {
+      "topLeftX": 268,
+      "topLeftY": 704,
+      "bottomRightX": 557,
+      "bottomRightY": 721,
+      "content": "Figure C-5. Device Connected Through a Hub",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 750,
+      "bottomRightX": 364,
+      "bottomRightY": 768,
+      "content": "#### C.2.2.1 Host Initiated Transition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 787,
+      "bottomRightX": 321,
+      "bottomRightY": 807,
+      "content": "##### U1 → U0 Transition Latency",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 818,
+      "bottomRightX": 684,
+      "bottomRightY": 870,
+      "content": "This example highlights the end to end latency incurred when transitioning both Link2 and Link3 from U1 → U0. For the purposes of this example, it is assumed that all link partners are enabled for U1, and that both Link2 and Link3 are currently in the U1 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 119,
+      "bottomRightY": 994,
+      "content": "C-18",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

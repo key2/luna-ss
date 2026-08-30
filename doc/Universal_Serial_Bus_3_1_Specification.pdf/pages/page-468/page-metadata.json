@@ -1,0 +1,48 @@
+{
+  "index": 467,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 31,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 108,
+      "bottomRightX": 384,
+      "bottomRightY": 123,
+      "content": "Table 9-23. Standard Interface Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 126,
+      "bottomRightX": 700,
+      "bottomRightY": 761,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of this descriptor in bytes  |\n|  1 | bDescriptorType | 1 | Constant | INTERFACE Descriptor Type  |\n|  2 | bInterfaceNumber | 1 | Number | Number of this interface. Zero-based value identifying the index in the array of concurrent interfaces supported by this configuration.  |\n|  3 | bAlternateSetting | 1 | Number | Value used to select this alternate setting for the interface identified in the prior field  |\n|  4 | bNumEndpoints | 1 | Number | Number of endpoints used by this interface (excluding the Default Control Pipe). If this value is zero, this interface only uses the Default Control Pipe.  |\n|  5 | bInterfaceClass | 1 | Class | Class code (assigned by the USB-IF). A value of zero is reserved for future standardization. If this field is set to FFH, the interface class is vendor-specific. All other values are reserved for assignment by the USB-IF.  |\n|  6 | bInterfaceSubClass | 1 | SubClass | Subclass code (assigned by the USB-IF). These codes are qualified by the value of the bInterfaceClass field. If the bInterfaceClass field is reset to zero, this field shall also be reset to zero. If the bInterfaceClass field is not set to FFH, all values are reserved for assignment by the USB-IF.  |\n|  7 | bInterfaceProtocol | 1 | Protocol | Protocol code (assigned by the USB). These codes are qualified by the value of the bInterfaceClass and the bInterfaceSubClass fields. If an interface supports class-specific requests, this code identifies the protocols that the device uses as defined by the specification of the device class. If this field is reset to zero, the device does not use a class-specific protocol on this interface. If this field is set to FFH, the device uses a vendor-specific protocol for this interface.  |\n|  8 | iInterface | 1 | Index | Index of string descriptor describing this interface  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-190.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "9-50",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

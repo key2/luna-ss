@@ -1,0 +1,101 @@
+{
+  "index": 273,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 362,
+      "bottomRightY": 110,
+      "content": "### 7.5.4.7.2 Exit from Polling.RxEQ",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 114,
+      "bottomRightX": 689,
+      "bottomRightY": 256,
+      "content": "- The port in SuperSpeed operation shall transition to Polling.Active after 65,536 consecutive TSEQ ordered sets defined in Table 6-2 are transmitted.\n- The port in SuperSpeedPlus operation shall transition to Polling.Active after 262,143 TSEQ ordered sets defined in Table 6-8 are transmitted. Refer to Section 6.4.1.2.1 for SYNC ordered set insertion while transmitting TSEQ ordered sets.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 270,
+      "bottomRightX": 290,
+      "bottomRightY": 289,
+      "content": "### 7.5.4.8 Polling.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 294,
+      "bottomRightX": 605,
+      "bottomRightY": 311,
+      "content": "Polling.Active is a substate that continues the link's Enhanced SuperSpeed training.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 318,
+      "bottomRightX": 398,
+      "bottomRightY": 336,
+      "content": "#### 7.5.4.8.1 Polling.Active Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 340,
+      "bottomRightX": 684,
+      "bottomRightY": 623,
+      "content": "- A 12-ms timer (tPollingActiveTimeout) shall be started upon entry to this substate.\n- The port shall transmit TS1 ordered sets.\n- The port in SuperSpeedPlus operation shall insert a SYNC ordered set every 32 TS1 ordered sets.\n- The port in SuperSpeedPlus operation shall perform block alignment and scrambler synchronization as defined in sections 6.3.2.3 and 6.4.1.2.4 of Chapter 6.\n- Lane polarity detection and correction shall be completed.\n- The port that fails to achieve a successful training with its link partner shall reconfigure itself for the next capability it supports.\n- Note: An example of this is, when a SuperSpeedPlus port fails to reach successful handshake with its link partner, it shall re-configure itself for SuperSpeed operation.\n- The receiver is in training using TS1 or TS2 ordered sets.\n- Note: Depending on the link condition and different receiver implementations, one port's receiver may train faster than the other. When this occurs, the port whose receiver trains first will enter Polling.Configuration and start transmitting TS2 ordered sets while the port whose receiver is not yet trained is still in Polling.Active using TS2 ordered sets to train its receiver.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 630,
+      "bottomRightX": 365,
+      "bottomRightY": 647,
+      "content": "#### 7.5.4.8.2 Exit from Polling.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 651,
+      "bottomRightX": 694,
+      "bottomRightY": 895,
+      "content": "- The port in SuperSpeed operation shall transition to Polling.Configuration upon receiving eight consecutive and identical TS1 or TS2 ordered sets.\n- The port in SuperSpeedPlus operation shall transition to Polling.Configuration upon receiving eight consecutive and identical TS1 or TS2 ordered sets, excluding symbols 14 and 15 of TS1 or TS2 ordered sets.\nNote: SYNC OS and SKP OS in between TS1 OS and/or TS2 OS do not disqualify the consecutive detection of TS1 OS and TS2 OS. Symbols 14 and 15 are used for TS1 or TS2 ordered set identifier or DC balance adjustment.\n- A downstream port in SuperSpeed operation shall transition to Rx.Detect upon the 12-ms timer timeout (tPollingActiveTimeout) and the following two conditions are met.\n1. The conditions to transition to Polling.Configuration are not met.\n2. cPollingTimeout is less than two.\n- A downstream port in SuperSpeed operation shall transition to eSS.Inactive upon the 12-ms timer timeout (tPollingActiveTimeout) and the following two conditions are met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-62",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

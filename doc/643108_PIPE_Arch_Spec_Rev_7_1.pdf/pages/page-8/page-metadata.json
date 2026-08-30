@@ -1,0 +1,47 @@
+{
+  "index": 7,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 53,
+      "bottomRightX": 185,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 120,
+      "bottomRightX": 690,
+      "bottomRightY": 757,
+      "content": "8-28 Disparity Error...138\n8-29 Elastic Buffer Underflow...139\n8-30 Elastic Buffer Overflow...140\n8-31 Loopback Start...141\n8-32 Loopback End...142\n8-33 Polarity Inversion...142\n8-34 Setting Negative Disparity...143\n8-35 PCIe 3.0 TxDataValid Timings for Electrical Idle Exit and Entry...144\n8-36 Data Throttling and TxElecIdle...145\n8-37 Possible TxElecIdle[3:0] Transition Scenarios...154\n8-38 PCIe 8 GT/s or Higher TxDataValid Timing for 8 Bit-Wide TxData Interface...156\n8-39 PCIe 8 GT/s or Higher TxDataValid Timing for 16 Bit-Wide TxData Interface...157\n8-40 PCIe 8 GT/s or Higher RxDataValid Timing for 16 Bit-Wide RxData Interface...157\n8-41 PCIe Receiver Equalization...164\n8-42 USB Receiver Equalization...164\n8-43 PHY Recalibration Initiated by Controller...165\n8-44 PHY Recalibration Initiated by PHY...166\n8-45 Original PIPE Architecture: DNELB Path Examples...166\n8-46 SerDes Architecture: DNELB Path Examples...167\n8-47 Transitioning from Rx to Tx Operation...171\n8-48 Transitioning from Tx to Rx Operation...171\n9-1 L0 to L0s...172\n9-2 L0s to L0...173\n9-3 L0 to L1...174\n9-4 L1 to L0...175\n9-5 L1 Substate Management Using RxEIDetectDisable and TxCommonModeDisable...176\n9-6 Receiver Active to Idle...177\n9-7 Receiver Idle to Active...178\n9-8 BlockAlignControl Example Timing...179\n9-9 Sample Rx Margining Sequence...180\n9-10 LocalFS/LocalLF/LocalG4FS/LocalG4LF Updates Out of Reset and After Rate Change...181\n9-11 LocalFS/LocalLF Update Due to GetLocalPresetCoefficients...181\n9-12 Updating TxDeemph after GetLocalPresetCoefficients Request...182\n9-13 Successful Equalization...182\n9-14 Equalization with Invalid Request...183\n9-15 Aborted Equalization, Scenario #1...183\n9-16 Aborted Equalization, Scenario #2...183\n9-17 Message Bus: BlockAlignControl Example...184\n9-18 Message Bus: Updating ElasticBufferLocation...184\n9-19 Example Sequence: RxInPhase01Equalization and RxEqTraining Relationship...185\n10-1 Four-Lane PIPE Implementation...186",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 953,
+      "bottomRightX": 101,
+      "bottomRightY": 966,
+      "content": "8",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 491,
+      "topLeftY": 953,
+      "bottomRightX": 689,
+      "bottomRightY": 966,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

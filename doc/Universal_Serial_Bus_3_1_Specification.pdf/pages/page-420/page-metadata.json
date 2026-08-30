@@ -1,0 +1,75 @@
+{
+  "index": 419,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 705,
+      "bottomRightY": 739,
+      "content": "![img-255.jpeg](img-255.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-255.jpeg"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 740,
+      "bottomRightX": 520,
+      "bottomRightY": 753,
+      "content": "¹ Refer to Note 2 in Figure 10-26 Peripheral Device Upstream Port State Machine.",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 753,
+      "bottomRightX": 538,
+      "bottomRightY": 765,
+      "content": "² Refer to sections 10.16.2.6 and 10.16.2.7 for the conditions that cause this transition.",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 148,
+      "topLeftY": 781,
+      "bottomRightX": 675,
+      "bottomRightY": 812,
+      "content": "Figure 9-1. Peripheral State Diagram and Hub State Diagram (Enhanced SuperSpeed Portion Only)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 833,
+      "bottomRightX": 676,
+      "bottomRightY": 900,
+      "content": "Figure 9-1, above, is a combined state diagram for both peripherals and hubs. Note that a USB Hub has two discrete state diagrams, one for the Enhanced SuperSpeed portion shown in Figure 9-1 and another for the non-SuperSpeed portion that may be found in Figure 9-1 in the USB 2.0 Specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 111,
+      "bottomRightY": 994,
+      "content": "9-2",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

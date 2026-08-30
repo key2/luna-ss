@@ -1,0 +1,141 @@
+{
+  "index": 97,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 474,
+      "bottomRightY": 137,
+      "content": "Table 7-28. Address 2h: Rx Margin Status2 (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 690,
+      "bottomRightY": 326,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:0] | 0h | Level | PCIe (optional) and USB4 | **Error Count[7:0]:** This field is only required if errors do not happen in the data stream and thus an independent error sampler is implemented in the PHY. This field is used by the PHY to report actual bit errors to the MAC. This field can increment only when \"Start Margin\" is asserted. This field only resets on a PIPE reset or when the MAC writes to the \"Error Count Reset\" bit in the Rx Margin Control1 register. If used, this field must be updated by the PHY every time the associated value changes; implementations may collapse multiple updates into a single write to avoid creating a backlog of writes. For PCIe, the upper two bits are reserved and only the lower 6 bits are utilized. For USB4, the Error Count is 16 bits, refer to RX Margin Status3 in Section 7.2.8 for upper 8 bits.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-98.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 343,
+      "bottomRightX": 513,
+      "bottomRightY": 365,
+      "content": "### 7.2.4 Address 3h: Elastic Buffer Status",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 375,
+      "bottomRightX": 393,
+      "bottomRightY": 389,
+      "content": "Table 7-29. Address 3h: Elastic Buffer Status",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 392,
+      "bottomRightX": 690,
+      "bottomRightY": 503,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:1] | 0h | N/A | N/A | Reserved  |\n|  [0] | 0h | 1-cycle | PCIe (optional) | **Elastic Buffer Status:** The PHY sets this status bit to 1'b1 when it has completed its elastic buffer depth adjustment to the value specified in the Elastic Buffer Control register. **Note:** This field is not used in the SerDes architecture.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-99.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 520,
+      "bottomRightX": 534,
+      "bottomRightY": 542,
+      "content": "### 7.2.5 Address 4h: Elastic Buffer Location",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 552,
+      "bottomRightX": 407,
+      "bottomRightY": 566,
+      "content": "Table 7-30. Address 4h: Elastic Buffer Location",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 570,
+      "bottomRightX": 690,
+      "bottomRightY": 709,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:0] | 0h | Level | PCIe (optional), and USB (optional) | **ElasticBufferLocation:** This field reflects the number of entries that are currently in the elastic buffer. Whenever the number of entries in the elastic buffer changes the PHY schedules an update to this register, with the frequency of update not to exceed that programmed in the ElasticBufferLocationUpdateFrequency field. **Note:** This field is not used in the SerDes architecture.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-100.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 727,
+      "bottomRightX": 416,
+      "bottomRightY": 748,
+      "content": "### 7.2.6 Address 5h: Rx Status0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 767,
+      "bottomRightX": 425,
+      "bottomRightY": 782,
+      "content": "Table 7-31. Address 5h: Rx Status0 (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 785,
+      "bottomRightX": 690,
+      "bottomRightY": 901,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:1] | 0h | N/A | N/A | Reserved  |\n|  [1] | 0h | 1-cycle | PCIe (optional), USB (optional), and USB4 (optional) | **IORecalDone:** This field is set to \"1\" to indicate that an IORecal operation has successfully completed.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-101.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "98",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 689,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "index": 223,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 104,
+      "bottomRightX": 447,
+      "bottomRightY": 123,
+      "content": "### 7.2.1.3 SuperSpeedPlus Packet Placement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 128,
+      "bottomRightX": 558,
+      "bottomRightY": 144,
+      "content": "For SuperSpeedPlus USB, packet placement shall meet the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 150,
+      "bottomRightX": 692,
+      "bottomRightY": 201,
+      "content": "- All packets shall be placed in data blocks.\n- The placement of a packet may start in any symbol position within a data block, and may cross over to the next consecutive data blocks.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 207,
+      "bottomRightX": 543,
+      "bottomRightY": 224,
+      "content": "Refer to Appendix D for examples of SuperSpeedPlus packet placement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 239,
+      "bottomRightX": 329,
+      "bottomRightY": 258,
+      "content": "### 7.2.2 Link Commands",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 265,
+      "bottomRightX": 693,
+      "bottomRightY": 333,
+      "content": "Link commands are used for link level data integrity, flow control and link power management. Link commands are a fixed length of eight symbols and contain repeated symbols to increase the error tolerance. Refer to Section 7.3 for more details. Link command names have the L-preface to differentiate their link level usage and to avoid confusion with packets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 347,
+      "bottomRightX": 373,
+      "bottomRightY": 365,
+      "content": "### 7.2.2.1 Link Command Structure",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 371,
+      "bottomRightX": 693,
+      "bottomRightY": 439,
+      "content": "Link command shall be eight symbols long and constructed with the following format shown in Figure 7-12. The first four symbols, LCSTART, are the link command starting frame ordered set consisting of three consecutive SLCs followed by EPF. The second four symbols consist of a two-symbol link command word and its replica. Table 7-3 summarizes the link command structure.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 453,
+      "bottomRightX": 428,
+      "bottomRightY": 468,
+      "content": "Table 7-3. Link Command Ordered Set Structure",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 471,
+      "bottomRightX": 386,
+      "bottomRightY": 609,
+      "content": "|  Symbol Number | Description  |\n| --- | --- |\n|  0 | SLC (Start Link Command)  |\n|  1 | SLC (Start Link Command)  |\n|  2 | SLC (Start Link Command)  |\n|  3 | EPF  |\n|  4~5 | Link Command Word  |\n|  6~7 | Link Command Word  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-89.md"
+    },
+    {
+      "topLeftX": 257,
+      "topLeftY": 630,
+      "bottomRightX": 569,
+      "bottomRightY": 810,
+      "content": "![img-175.jpeg](img-175.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-175.jpeg"
+    },
+    {
+      "topLeftX": 292,
+      "topLeftY": 820,
+      "bottomRightX": 532,
+      "bottomRightY": 837,
+      "content": "Figure 7-12. Link Command Structure",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "7-12",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "index": 114,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 84 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 301,
+      "bottomRightY": 108,
+      "content": "### 6.7.2 Low Power Transmitter",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 667,
+      "bottomRightY": 237,
+      "content": "In addition to the full swing transmitter specification, an optional low power swing transmitter is also specified for SuperSpeed applications. A low power swing transmitter is typically used in systems that are sensitive to power and noise interference, and have a relatively short channel. The requirement as to whether a transmitter needs to support full swing, low power swing, or both swings, is dependent on its usage model. All SuperSpeed transmitters must support full swing, while support for low power swing is optional. The method by which the output swing is selected is not defined in the specification, and is implementation specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 249,
+      "bottomRightX": 672,
+      "bottomRightY": 295,
+      "content": "While two different transmitters are specified, only a single receiver specification is defined. This implies that receiver margins (as specified in Table 6-22) shall be met if a low power transmitter is used.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 307,
+      "bottomRightX": 257,
+      "bottomRightY": 323,
+      "content": "### 6.7.3 Transmitter Eye",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 329,
+      "bottomRightX": 675,
+      "bottomRightY": 407,
+      "content": "The eye mask is measured using the compliance data patterns as described in Section 6.4.3.2. The transmitter compliance test for Gen 1 uses compliance patterns CP0 and CP1 for TJ and RJ, respectively. The transmitter compliance test for Gen 2 uses compliance patterns CP9 and CP10 for TJ and RJ, respectively. Eye height is measured for 10⁶ consecutive UI. Jitter is extrapolated from 10⁶ UI to 10⁻¹² BER.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 188,
+      "topLeftY": 418,
+      "bottomRightX": 599,
+      "bottomRightY": 434,
+      "content": "Table 6-20. Normative Transmitter Eye Mask at Test Point TP4",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 443,
+      "bottomRightX": 652,
+      "bottomRightY": 572,
+      "content": "|  Signal Characteristic | 5GT/s |   | 10GT/s |   | Units | Note  |\n| --- | --- | --- | --- | --- | --- | --- |\n|   |  Minimum | Maximum | Minimum | Maximum  |   |   |\n|  Eye Height | 100 | 1200 | 70 | 1200 | mV | 2, 3, 4  |\n|  Dj |  | 0.43 |  | 0.530 | UI | 1, 2, 3  |\n|  Rj |  | 0.23 |  | 0.141 | UI | 1, 5, 6  |\n|  Tj |  | 0.66 |  | 0.671 | UI | 1, 2, 3  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-57.md"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 574,
+      "bottomRightX": 181,
+      "bottomRightY": 585,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 589,
+      "bottomRightX": 483,
+      "bottomRightY": 602,
+      "content": "1. Measured over 10⁶ consecutive UI and extrapolated to 10⁻¹² BER.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 605,
+      "bottomRightX": 391,
+      "bottomRightY": 617,
+      "content": "2. Measured after receiver equalization function.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 622,
+      "bottomRightX": 515,
+      "bottomRightY": 634,
+      "content": "3. Measured at end of reference channel and cables at TP4 in Figure 6-20.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 637,
+      "bottomRightX": 632,
+      "bottomRightY": 662,
+      "content": "4. The eye height is to be measured at the minimum opening over the range from the center of the eye ± 0.05 UI.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 665,
+      "bottomRightX": 584,
+      "bottomRightY": 678,
+      "content": "5. The Rj specification is calculated as 14.069 times the RMS random jitter for 10⁻¹² BER.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 681,
+      "bottomRightX": 617,
+      "bottomRightY": 706,
+      "content": "6. Measured at the output of the compliance breakout board without embedding the compliance cable and load board.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 717,
+      "bottomRightX": 655,
+      "bottomRightY": 763,
+      "content": "The compliance testing setup is shown in Figure 6-20. All measurements are made at the test point (TP4), and the Tx specifications are applied after processing the measured data with the compliance reference equalizer transfer function described in the next section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

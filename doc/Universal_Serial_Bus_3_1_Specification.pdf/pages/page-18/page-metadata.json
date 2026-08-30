@@ -1,0 +1,30 @@
+{
+  "index": 17,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 89,
+      "bottomRightX": 701,
+      "bottomRightY": 891,
+      "content": "|   | 7.5.7.1 | U1 Requirements | 7-70  |\n| --- | --- | --- | --- |\n|   | 7.5.7.2 | Exit from U1 | 7-70  |\n|  7.5.8 | U2 |  | 7-71  |\n|   | 7.5.8.1 | U2 Requirements | 7-71  |\n|   | 7.5.8.2 | Exit from U2 | 7-71  |\n|  7.5.9 | U3 |  | 7-72  |\n|   | 7.5.9.1 | U3 Requirements | 7-72  |\n|   | 7.5.9.2 | Exit from U3 | 7-72  |\n|  7.5.10 | Recovery |  | 7-73  |\n|   | 7.5.10.1 | Recovery Substate Machines | 7-73  |\n|   | 7.5.10.2 | Recovery Requirements | 7-73  |\n|   | 7.5.10.3 | Recovery.Active | 7-74  |\n|   | 7.5.10.3.1 | Recovery.Active Requirements | 7-74  |\n|   | 7.5.10.3.2 | Exit from Recovery.Active | 7-74  |\n|   | 7.5.10.4 | Recovery.Configuration | 7-74  |\n|   | 7.5.10.4.1 | Recovery.Configuration Requirements | 7-75  |\n|   | 7.5.10.4.2 | Exit from Recovery.Configuration | 7-75  |\n|   | 7.5.10.5 | Recovery.Idle | 7-75  |\n|   | 7.5.10.5.1 | Recovery.Idle Requirements | 7-75  |\n|   | 7.5.10.5.2 | Exit from Recovery.Idle | 7-76  |\n|  7.5.11 | Loopback |  | 7-77  |\n|   | 7.5.11.1 | Loopback Substate Machines | 7-77  |\n|   | 7.5.11.2 | Loopback Requirements | 7-78  |\n|   | 7.5.11.3 | Loopback.Active | 7-78  |\n|   | 7.5.11.3.1 | Loopback.Active Requirements | 7-78  |\n|   | 7.5.11.3.2 | Exit from Loopback.Active | 7-78  |\n|   | 7.5.11.4 | Loopback.Exit | 7-78  |\n|   | 7.5.11.4.1 | Loopback.Exit Requirements | 7-78  |\n|   | 7.5.11.4.2 | Exit from Loopback.Exit | 7-78  |\n|  7.5.12 | Hot Reset |  | 7-79  |\n|   | 7.5.12.1 | Hot Reset Substate Machines | 7-79  |\n|   | 7.5.12.2 | Hot Reset Requirements | 7-79  |\n|   | 7.5.12.3 | Hot Reset.Active | 7-80  |\n|   | 7.5.12.3.1 | Hot Reset.Active Requirements | 7-80  |\n|   | 7.5.12.3.2 | Exit from Hot Reset.Active | 7-80  |\n|   | 7.5.12.4 | Hot Reset.Exit | 7-80  |\n|   | 7.5.12.4.1 | Hot Reset.Exit Requirements | 7-80  |\n|   | 7.5.12.4.2 | Exit from Hot Reset.Exit | 7-81  |\n|  **8** | **Protocol Layer** |  | **8-1**  |\n|  8.1 | Enhanced SuperSpeed Transactions |  | 8-2  |\n|  8.1.1 | Transactions on a SuperSpeed Bus Instance |  | 8-2  |\n|  8.1.2 | Transactions on a SuperSpeedPlus Bus Instance |  | 8-3  |\n|  8.1.2.1 | Simultaneous IN Transactions |  | 8-3  |\n|  8.1.2.2 | Transaction Reordering |  | 8-3  |\n|  8.2 | Packet Types |  | 8-4  |\n|  8.3 | Packet Formats |  | 8-5  |\n|  8.3.1 | Fields Common to all Headers |  | 8-5  |\n|  8.3.1.1 | Reserved Values and Reserved Field Handling |  | 8-5  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-14.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 981,
+      "bottomRightX": 115,
+      "bottomRightY": 995,
+      "content": "xviii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "index": 10,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 379,
+      "topLeftY": 46,
+      "bottomRightX": 411,
+      "bottomRightY": 61,
+      "content": "- xi -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 929,
+      "content": "6.12 Re-timers...110\n6.13 Dual-lane Requirements...110\n6.13.1 Operation...110\n6.13.2 Capability Determination...110\n6.13.3 Lane Numbering...110\n6.13.4 Data Striping...110\n6.13.5 Data Scrambling...111\n6.13.6 Ordered Set Rules...111\n6.13.7 Lane Polarity Inversion...111\n6.13.8 Lane-to-Lane Skew...111\n6.13.9 Compliance Patterns...112\n6.13.10 Receiver Detection...112\n6.13.11 Receiver Loopback...112\n6.13.12 LFPS...112\n6.13.13 Ux Exit...112\n7 Link Layer...113\n7.1 Byte Ordering...114\n7.1.1 Gen 1 Line Code...114\n7.1.2 Gen 2 Line Code...114\n7.2 Link Management and Flow Control...115\n7.2.1 Packets and Packet Framing...115\n7.2.1.1 Header Packet Structure...115\n7.2.1.2 Data Packet Payload Structure...119\n7.2.1.3 Gen 2 Packet Placement...123\n7.2.2 Link Commands...123\n7.2.2.1 Link Command Structure...123\n7.2.2.2 Link Command Word Definition...124\n7.2.2.3 Link Command Placement...127\n7.2.3 Logical Idle...128\n7.2.4 Link Command Usage for Flow Control, Error Recovery, and Power\nManagement...128\n7.2.4.1 Header Packet Flow Control and Error Recovery...128\n7.2.4.2 Link Power Management and Flow...142\n7.3 Link Error Rules/Recovery...147\n7.3.1 Overview of Enhanced SuperSpeed Bit Errors...147\n7.3.2 Link Error Types, Detection, and Recovery...147\n7.3.3 Link Error Statistics...148\n7.3.3.1 Link Error Count...148\n7.3.3.2 Soft Error Count...148\n7.3.4 Header Packet Errors...149\n7.3.4.1 Packet Framing Error...149\n7.3.4.2 Header Packet Error...150",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "index": 119,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 89 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 661,
+      "bottomRightY": 138,
+      "content": "In addition, a transmitter's output voltage swing with no equalization is obtained by measuring the peak-to-peak voltage using the CP16 compliance pattern as shown in Figure 6-22.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 152,
+      "bottomRightX": 629,
+      "bottomRightY": 169,
+      "content": "Figure 6-25. Example waveforms for measuring transmitter equalization",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 193,
+      "bottomRightX": 416,
+      "bottomRightY": 352,
+      "content": "![img-37.jpeg](img-37.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-37.jpeg"
+    },
+    {
+      "topLeftX": 195,
+      "topLeftY": 359,
+      "bottomRightX": 367,
+      "bottomRightY": 376,
+      "content": "(a) CP13 (with preshoot only)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 423,
+      "topLeftY": 193,
+      "bottomRightX": 679,
+      "bottomRightY": 352,
+      "content": "![img-38.jpeg](img-38.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-38.jpeg"
+    },
+    {
+      "topLeftX": 446,
+      "topLeftY": 359,
+      "bottomRightX": 639,
+      "bottomRightY": 376,
+      "content": "(b) CP14 (with de-emphasis only)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 394,
+      "bottomRightX": 416,
+      "bottomRightY": 555,
+      "content": "![img-39.jpeg](img-39.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-39.jpeg"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 560,
+      "bottomRightX": 404,
+      "bottomRightY": 578,
+      "content": "(c) CP15 (with preshoot and de-emphasis)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 423,
+      "topLeftY": 394,
+      "bottomRightX": 679,
+      "bottomRightY": 555,
+      "content": "![img-40.jpeg](img-40.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-40.jpeg"
+    },
+    {
+      "topLeftX": 447,
+      "topLeftY": 560,
+      "bottomRightX": 638,
+      "bottomRightY": 594,
+      "content": "(d) CP16(without preshoot or de-emphasis)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 634,
+      "bottomRightX": 327,
+      "bottomRightY": 649,
+      "content": "### 6.7.6 Entry into Electrical Idle, U1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 655,
+      "bottomRightX": 660,
+      "bottomRightY": 702,
+      "content": "Electrical Idle is a steady state condition where the Transmitter Txp and Txn voltages are held constant at the same value and the Receiver Termination is within the range specified by ZRx-DC. Electrical Idle is used in the power saving state of U1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 715,
+      "bottomRightX": 652,
+      "bottomRightY": 761,
+      "content": "The low impedance common mode and differential Receiver terminations values (see Table 6-22) must be met in Electrical Idle. The Transmitter can be in either a low or high impedance mode during Electrical Idle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 773,
+      "bottomRightX": 298,
+      "bottomRightY": 787,
+      "content": "### 6.8 Receiver Specifications",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 795,
+      "bottomRightX": 340,
+      "bottomRightY": 811,
+      "content": "#### 6.8.1 Receiver Equalization Training",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 816,
+      "bottomRightX": 663,
+      "bottomRightY": 909,
+      "content": "The receiver equalization training sequence, detailed in Section 6.4.1.1 for Gen 1 operation and in Section 6.4.1.2 for Gen 2 operation, can be used to train the receiver equalizer. The TSEQ training sequence is designed to provide spectrally rich data patterns that are useful for training typical receiver equalization architectures. For Gen 1 operation, a high edge density pattern is interleaved with the data to help the CDR maintain bit lock. For Gen 2 operation the sequence is deemed sufficiently rich on its own.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "index": 488,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 699,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 103,
+      "bottomRightX": 392,
+      "bottomRightY": 124,
+      "content": "### 10.1.6 Hub Buffer Architecture",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 130,
+      "bottomRightX": 699,
+      "bottomRightY": 200,
+      "content": "The buffering behaviors of an Enhanced SuperSpeed hub operating at Gen 1 or at above Gen 1 speeds are different. Section 10.1.6.1 summarizes the buffering behavior of the hub when operating at Gen 1 speed. Section 10.1.6.2 summarizes the buffering and arbitration behavior of the hub when operating at above Gen 1 Speed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 212,
+      "bottomRightX": 458,
+      "bottomRightY": 231,
+      "content": "#### 10.1.6.1 SuperSpeed Hub Buffer Architecture",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 237,
+      "bottomRightX": 696,
+      "bottomRightY": 287,
+      "content": "The SuperSpeed hub has header packet buffers associated with its upstream and downstream ports. It also has data packet payload (DPP) buffers for upstream and downstream data flows. See Section 10.7 or Section 10.7.4 for more details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 292,
+      "bottomRightX": 557,
+      "bottomRightY": 311,
+      "content": "##### 10.1.6.1.1 SuperSpeed Hub Header Packet Buffer Architecture",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 316,
+      "bottomRightX": 700,
+      "bottomRightY": 537,
+      "content": "Figure 10-8 shows the logical representation of a typical header packet buffer implementation for a SuperSpeed hub. Logically, a SuperSpeed hub has separate header packet buffers associated with each port for both upstream and downstream traffic. When a SuperSpeed hub receives a header packet on its upstream port, it routes the header packet to the appropriate downstream header packet buffer for transmission (unless the header packet is for the hub). When the SuperSpeed hub receives a non-LMP header packet on a downstream port, it routes the header packet to the upstream port header packet buffer for transmission. Header packets are kept in the SuperSpeed hub header packet buffers after transmission until link level acknowledgement (LGOOD_n) for the header packet is received. This allows the SuperSpeed hub to retry the header packets if necessary to ensure that header packets are received correctly at the link level. The header packet buffers also allow a SuperSpeed hub to store the header packets until they can be forwarded when the header packet is directed to a downstream link that is a low power link state. SuperSpeed hubs store the header packet and deliver it once the link becomes active.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 130,
+      "topLeftY": 550,
+      "bottomRightX": 411,
+      "bottomRightY": 730,
+      "content": "![img-264.jpeg](img-264.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-264.jpeg"
+    },
+    {
+      "topLeftX": 416,
+      "topLeftY": 550,
+      "bottomRightX": 698,
+      "bottomRightY": 729,
+      "content": "![img-265.jpeg](img-265.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-265.jpeg"
+    },
+    {
+      "topLeftX": 669,
+      "topLeftY": 730,
+      "bottomRightX": 694,
+      "bottomRightY": 739,
+      "content": "U-146",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 752,
+      "bottomRightX": 638,
+      "bottomRightY": 770,
+      "content": "Figure 10-8. Typical SuperSpeed Hub Header Packet Buffer Architecture",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-11",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "index": 385,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 672,
+      "bottomRightY": 143,
+      "content": "PP = 1 - Upon entry into the HOMDSM, if the host has more than one packet of Endpoint Data available for the Stream then PP will equal 1 in the first DP sent to the Device, and it shall transition to the OUTMvData Device state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 153,
+      "bottomRightX": 694,
+      "bottomRightY": 187,
+      "content": "The HOMDSM always exits to the Idle state. The Retry (Rty=1) flag shall never be set in a packet that causes a HOMDSM exit. A Stream pipe remains in the Move Data state during packet retries.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 195,
+      "bottomRightX": 698,
+      "bottomRightY": 246,
+      "content": "Note: The Stream ID value shall be CStream for all packets exchanged in the Move Data state, except the OUTMvData Device substate ERDY transition. For the identified substates, if a Stream ID value other than CStream is detected while in the HOMDSM the host should halt the endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 256,
+      "bottomRightX": 288,
+      "bottomRightY": 272,
+      "content": "### 8.12.1.4.5.7 OUTMvData Device",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 286,
+      "bottomRightX": 685,
+      "bottomRightY": 318,
+      "content": "This state is initially entered from the Start Stream state or the Idle state. In this state the host is waiting for an ACK TP or a rejection of a HIMD from the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 328,
+      "bottomRightX": 698,
+      "bottomRightY": 445,
+      "content": "ACK(CStream, NumP>0) - If the host receives an ACK TP with NumP > 0, it shall transition to the OUTMvData Host state. This transition occurs when device has more Function Buffer space available for the stream. If the device detected an error on the last DP from the host, then the Retry (Rty) flag shall be set. If a Retry is requested, the host shall continue the current burst until all retries are exhausted or a good packet is transmitted. The host shall set LCStream = CStream. This action updates LCStream with the value of Stream x if the device accepts a HIMD, i.e., LCStream records the last Stream that was of interest to the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 455,
+      "bottomRightX": 698,
+      "bottomRightY": 555,
+      "content": "ACK(CStream, NumP=0) - If the host receives an ACK TP with NumP = 0, it shall transition to the Idle state, exiting the HOMDSM. This transition occurs when device has no more Function Buffer space available for the Stream, e.g., it is terminating the Move Data operation because the last DP exhausted its Function Buffer space. The host shall set LCStream = CStream. This action updates LCStream with the value of Stream x if the device accepts a HIMD, i.e., LCStream records the last Stream that was of interest to the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 563,
+      "bottomRightX": 685,
+      "bottomRightY": 630,
+      "content": "NRDY(CStream) - If the host receives an NRDY, it shall transition to the Idle state, exiting the HOMDSM. This transition may occur upon initial entry into the HOMDSM when the device rejects a HIMD, or during a Stream transfer due to unexpected internal device conditions where it wants to flow control CStream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 639,
+      "bottomRightX": 691,
+      "bottomRightY": 740,
+      "content": "DPH(Deferred) - If the host receives a DPH with the Deferred (DF) flag set, then it shall transition to the Idle state, exiting the HOMDSM. This packet may be received when the link has transitioned to a U1 or U2 state and the host has attempted a HIMD or between bursts on the OUT pipe, if there is a lot of endpoint activity on other devices and the Ux Timeouts in the path to this device are set to short values. When this transition occurs the host will wait in the Idle state for an ERDY from the device to restart the stream. There is no DPP associated with a deferred DPH.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 750,
+      "bottomRightX": 694,
+      "bottomRightY": 850,
+      "content": "ERDY() - If an ERDY is received, a race condition has occurred. During this condition, the device is in the Start Stream state and the host is in the Move Data state. The host has entered the Move Data state as the result of a HIMD, at the same time that the device has attempted to initiate a Stream transfer, and their respective messages have passed each other on the link. To resolve this condition, the host shall remain in the OUTMvData Device state and wait for an ACK or an NRDY from the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-92",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "index": 143,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 133,
+      "bottomRightX": 588,
+      "bottomRightY": 150,
+      "content": "Figure 8-35. PCIe 3.0 TxDataValid Timings for Electrical Idle Exit and Entry",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 152,
+      "bottomRightX": 690,
+      "bottomRightY": 653,
+      "content": "![img-56.jpeg](img-56.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-56.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 658,
+      "bottomRightX": 129,
+      "bottomRightY": 673,
+      "content": "Note:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 658,
+      "bottomRightX": 679,
+      "bottomRightY": 699,
+      "content": "Figure 8-35 only shows two blocks of TxData and thus TxDataValid does not deassert during the data. Other examples in the specification show longer sequences where TxDataValid deasserts.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 705,
+      "bottomRightX": 682,
+      "bottomRightY": 735,
+      "content": "When data throttling is happening, TxElecIdle must be set long enough to be sampled by TxDataValid as shown in Figure 8-36.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "144",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

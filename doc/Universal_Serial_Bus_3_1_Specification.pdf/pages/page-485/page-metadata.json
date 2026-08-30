@@ -1,0 +1,57 @@
+{
+  "index": 484,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 697,
+      "bottomRightY": 195,
+      "content": "Figure 10-5 illustrates the use of route strings in an example topology with five levels of four port USB hubs. The hub depth value for each level of hub is illustrated in the figure. Each hub and each device in the topology contains the route string that would be used to route a packet to that device/hub. For each hub depth, the octet in the route string that determines the routing target at that hub depth is shown in bold and a larger font size than the rest of the route string. The host root port is not included in the 20-bit route string.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 213,
+      "bottomRightX": 605,
+      "bottomRightY": 857,
+      "content": "![img-261.jpeg](img-261.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-261.jpeg"
+    },
+    {
+      "topLeftX": 302,
+      "topLeftY": 866,
+      "bottomRightX": 522,
+      "bottomRightY": 884,
+      "content": "Figure 10-5 Route String Example",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 673,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "10-7",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

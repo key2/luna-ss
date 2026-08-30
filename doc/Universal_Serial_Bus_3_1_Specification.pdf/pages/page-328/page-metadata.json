@@ -1,0 +1,131 @@
+{
+  "index": 327,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 109,
+      "bottomRightX": 517,
+      "bottomRightY": 129,
+      "content": "### 8.5.2 Not Ready (NRDY) Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 135,
+      "bottomRightX": 694,
+      "bottomRightY": 200,
+      "content": "This TP can only be sent by a device for a non-isochronous endpoint. An OUT endpoint sends this TP to the host if it has no packet buffer space available to accept the DP sent by the host. An IN endpoint sends this TP to the host if it cannot return a DP in response to an ACK TP sent by the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 210,
+      "bottomRightX": 579,
+      "bottomRightY": 227,
+      "content": "Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 251,
+      "bottomRightX": 662,
+      "bottomRightY": 377,
+      "content": "![img-205.jpeg](img-205.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-205.jpeg"
+    },
+    {
+      "topLeftX": 289,
+      "topLeftY": 389,
+      "bottomRightX": 533,
+      "bottomRightY": 407,
+      "content": "Figure 8-19. NRDY Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 435,
+      "bottomRightX": 471,
+      "bottomRightY": 452,
+      "content": "Table 8-14. NRDY TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 455,
+      "bottomRightX": 699,
+      "bottomRightY": 570,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to NRDY.  |\n|  3 | 1:4 | Reserved (Rsvd).  |\n|  20 | 1:12 | Reserved.  |\n|  5 | 2:27 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-118.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 592,
+      "bottomRightX": 564,
+      "bottomRightY": 613,
+      "content": "### 8.5.3 Endpoint Ready (ERDY) Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 617,
+      "bottomRightX": 689,
+      "bottomRightY": 668,
+      "content": "This TP can only be sent by a device for a non-isochronous endpoint. It is used to inform the host that an endpoint is ready to send or receive data packets. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 692,
+      "bottomRightX": 662,
+      "bottomRightY": 817,
+      "content": "![img-206.jpeg](img-206.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-206.jpeg"
+    },
+    {
+      "topLeftX": 289,
+      "topLeftY": 832,
+      "bottomRightX": 533,
+      "bottomRightY": 848,
+      "content": "Figure 8-20. ERDY Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 981,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-34",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "index": 326,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 296 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 92,
+      "bottomRightX": 603,
+      "bottomRightY": 110,
+      "content": "Figure 8-53. Host Detects Error in Data and Device Resends Data",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 265,
+      "topLeftY": 120,
+      "bottomRightX": 523,
+      "bottomRightY": 521,
+      "content": "![img-144.jpeg](img-144.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-144.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 542,
+      "bottomRightX": 667,
+      "bottomRightY": 588,
+      "content": "Note: In Figure 8-53 the host retries the data packet received with an error in the same service interval. It is not required to do so and may retry the transaction in the next service interval.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 601,
+      "bottomRightX": 369,
+      "bottomRightY": 615,
+      "content": "### 8.12.4.2 Interrupt OUT Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 623,
+      "bottomRightX": 668,
+      "bottomRightY": 699,
+      "content": "When the host wants to start an Interrupt OUT transaction to an endpoint, it sends the first DP with the expected sequence number. The host may send more packets to the endpoint in the same service interval if the endpoint supports a burst size greater than one. If an endpoint was able to receive that data from the host, it sends an ACK TP to acknowledge the successful receipt of data.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 712,
+      "bottomRightX": 673,
+      "bottomRightY": 773,
+      "content": "Note that the host always initializes the first DP sequence number to zero in the first transfer it performs to an endpoint after the endpoint is initialized (via a Set Configuration or Set Interface or ClearFeature (ENDPOINT_HALT) command – refer to Chapter 9 for details on these commands).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 785,
+      "bottomRightX": 655,
+      "bottomRightY": 847,
+      "content": "As long as a device returns ACK TPs in response to the host sending data packets and the transfer is not complete, the host shall continue to send data to the device during every service interval for that endpoint. A device shall acknowledge the successful reception of the DP or ask the host to retry the transaction if the data packet was corrupted.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 858,
+      "bottomRightX": 617,
+      "bottomRightY": 889,
+      "content": "In response to the OUT data sent by the host an interrupt endpoint shall respond as described in Section 8.11.3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

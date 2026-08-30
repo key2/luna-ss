@@ -1,0 +1,84 @@
+{
+  "index": 526,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 496 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 671,
+      "bottomRightY": 169,
+      "content": "host and device, participating the speed negotiation during initialization, link training with its link partners, tracking the link commands and HPs for link power management, and port orientation identification. A re-timer training, and status state machine (RTSSM) is defined to facilitate the successful operation of a re-timer. As shown in Figure E-6, RTSSM is similar to LTSSM defined in Chapter 7. The main differences are summarized in the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 182,
+      "bottomRightX": 667,
+      "bottomRightY": 495,
+      "content": "- eSS.Inactive is combined with Rx.Detect as the behaviors of a re-timer in those two states are the same. A re-timer, even upon detecting the presence of its far-end link partners, will not transition to Polling until Polling.LFPS is received.\n- eSS.Disabled is defined in LTSSM for a self-powered peripheral device where it may operate at USB 2.0 mode. The eSS operation is disabled and the link may enter the lowest power state. For re-timer operation, unless it is aware of the link configuration, it will not be able to take the advantage of this state. However, it is kept for implementations capable of managing the re-timer operation under proprietary mechanism, which is out of the scope of this specification.\n- PassThrough Loopback is introduced for a re-timer. It is a special operation pertained to re-timers only when LTSSM is in Loopback. A re-timer in this state passes the inbound traffic directly as if it is in U0.\n- Local Loopback is named to contrast PassThrough Loopback. The purpose and the operation of a re-timer in this state are the same as Loopback defined in LTSSM.\n- BLR Compliance Mode is introduced to perform bit-level re-timer specific transmitter compliance test. The entry to this substate is based on the link configuration field of TS2 OS. Refer to Section E.3.6 for details.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 506,
+      "bottomRightX": 574,
+      "bottomRightY": 523,
+      "content": "Figure E-6. Re-timer Training and Status State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 542,
+      "bottomRightX": 630,
+      "bottomRightY": 915,
+      "content": "![img-201.jpeg](img-201.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-201.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

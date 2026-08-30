@@ -1,0 +1,56 @@
+{
+  "index": 19,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 46,
+      "bottomRightX": 413,
+      "bottomRightY": 61,
+      "content": "- xx -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 91,
+      "bottomRightX": 678,
+      "bottomRightY": 923,
+      "content": "10.8.6.2 Direction Independent Packet Selection...410\n10.8.6.3 Downstream Flowing Packet Reception and Selection...410\n10.8.6.4 Upstream Flowing Packet Reception and Selection...410\n10.8.7 SuperSpeedPlus Upstream Flowing Packet Modifications...412\n10.8.8 SuperSpeedPlus Downstream Controller...413\n10.9 Port State Machines...413\n10.9.1 Port Transmit State Machine...413\n10.9.2 Port Transmit State Descriptions...415\n10.9.2.1 Tx IDLE...415\n10.9.2.2 Tx Header...415\n10.9.2.3 Tx Data...415\n10.9.2.4 Tx Data Abort...415\n10.9.2.5 Tx Link Command...415\n10.9.3 Port Receive State Machine...416\n10.9.4 Port Receive State Descriptions...416\n10.9.4.1 Rx Default...416\n10.9.4.2 Rx Data...417\n10.9.4.3 Rx Header...417\n10.9.4.4 Process Header Packet...417\n10.9.4.5 Rx Link Command...422\n10.9.4.6 Process Link Command...422\n10.10 Suspend and Resume...423\n10.11 Hub Upstream Port Reset Behavior...423\n10.12 Hub Port Power Control...424\n10.12.1 Multiple Gangs (Only supported for downstream USB Standard-A ports)...424\n10.13 Hub Controller...425\n10.13.1 Endpoint Organization...425\n10.13.2 Hub Information Architecture and Operation...426\n10.13.3 Port Change Information Processing...427\n10.13.4 Hub and Port Status Change Bitmap...427\n10.13.5 Over-current Reporting and Recovery...428\n10.13.6 Enumeration Handling...429\n10.14 Hub Configuration...429\n10.15 Descriptors...431\n10.15.1 Standard Descriptors for Hub Class...432\n10.15.2 Class-specific Descriptors...437\n10.15.2.1 Hub Descriptor...437\n10.16 Requests...439\n10.16.1 Standard Requests...439\n10.16.2 Class-specific Requests...439",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

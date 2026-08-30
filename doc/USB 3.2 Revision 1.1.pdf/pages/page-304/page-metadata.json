@@ -1,0 +1,155 @@
+{
+  "index": 303,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 62,
+      "content": "- 273 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 94,
+      "bottomRightX": 329,
+      "bottomRightY": 109,
+      "content": "#### 8.12.1.4.3.3 Deferred Prime Pipe",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 115,
+      "bottomRightX": 676,
+      "bottomRightY": 147,
+      "content": "The **Deferred Prime Pipe** state informs the device that the Endpoint Data has been assigned to one or more Streams; however, the link has transitioned to a U1 or U2 state while waiting.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 159,
+      "bottomRightX": 664,
+      "bottomRightY": 190,
+      "content": "No Condition - Upon entering the **Deferred Prime Pipe** state, the device shall immediately transition to the **Idle** state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 203,
+      "bottomRightX": 234,
+      "bottomRightY": 217,
+      "content": "#### 8.12.1.4.3.4 Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 224,
+      "bottomRightX": 672,
+      "bottomRightY": 286,
+      "content": "In the **Idle** state, the pipe is waiting for a Stream selection (e.g., a transition to **Start Stream** or **Move Data**) or a notification from the host that Endpoint Data has been added or modified for the pipe (i.e., transition to **Prime Pipe**). Note that upon the initial entry in to **Idle**, only the device may initiate a Stream selection.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 298,
+      "bottomRightX": 675,
+      "bottomRightY": 434,
+      "content": "ERDY(Stream n, NumP>0) - To initiate a Stream selection, the device generates an ERDY TP with its Stream ID set to *Stream n* and a NumP value > 0, and transitions to the **Start Stream** state, where *Stream n* is the Stream ID proposed by the device. A device may initiate this transition when it wishes to start a Stream transfer, regardless of whether the pipe is in a flow control condition or not. The device maintains a list of *Active and Ready* Streams that it may generate ERDYs for. The method that a device uses for Stream selection is outside the scope of this specification and is normally defined by the Device Class associated with the pipe. Note that the value of ERDY NumP reflects the amount of Endpoint Buffer space the device has available for *Stream n*.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 447,
+      "bottomRightX": 676,
+      "bottomRightY": 523,
+      "content": "DP(Prime, PP=0) - If a DP with a Stream ID equal to *Prime* is successfully received, the device shall transition to the **Prime Pipe** state. The DPP shall contain a zero-length data payload. Note, if an error is detected in the DP data the device shall remain in the **Idle** state, and issue ACK(Prime, NumP>0, Rty) packets, retrying until a DP(Prime) is successfully received. This case is not illustrated in the Figure above. The DPP shall contain a zero-length data payload.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 535,
+      "bottomRightX": 669,
+      "bottomRightY": 718,
+      "content": "DP(Stream x) - With this transition the host proposes the Stream ID *Stream x* to the device. If a DP with a Stream ID not equal to *Prime* is received from the host, the device shall transition to the **Move Data** state. The host may initiate this transition when it wishes to start a Stream transfer and is referred to as a *Host Initiated Move Data* or **HIMD**. A HIMD indicates the specific Stream that the Endpoint Data had been changed for. The device shall set *Stream x* to Ready due to this transition. After entering the **Move Data** state, the device may reject the proposed Stream with an NRDY or accept the proposed Stream with an ACK TP. Upon transitioning to the **Move Data** state the device sets *CStream* to the value of the received Stream ID (*Stream x*). The DPP shall contain the first data payload for the Stream. Typically *Stream x* will be equal to the Stream ID (*Stream n*) in the last ERDY generated by the device. *Stream x* may not be equal to *Stream n* if one of the race conditions described below occurs, because the host drops ERDYs under these conditions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 730,
+      "bottomRightX": 674,
+      "bottomRightY": 792,
+      "content": "DPH(Deferred) - If a DPH with the Deferred (DF) flag set is received, then the device shall transition to the **Deferred Prime Pipe** state. This packet may be received when the link has transitioned to a U1 or U2 state and the host has attempted a transition to **Prime Pipe** or **Move Data** (a HIMD).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 804,
+      "bottomRightX": 285,
+      "bottomRightY": 819,
+      "content": "#### 8.12.1.4.3.5 Start Stream",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 826,
+      "bottomRightX": 675,
+      "bottomRightY": 857,
+      "content": "In the **Start Stream** state, the device is waiting for the host to accept or reject the Active and Ready Stream selection that it has proposed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 869,
+      "bottomRightX": 675,
+      "bottomRightY": 915,
+      "content": "DP(Stream n) - If a DP with a Stream ID equal to *Stream n* is received: the host has accepted the device's proposal for starting *Stream n* and provided the first packet of *Stream n* data, and the device shall transition to the **Move Data** state. Upon transitioning to the **Move Data**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

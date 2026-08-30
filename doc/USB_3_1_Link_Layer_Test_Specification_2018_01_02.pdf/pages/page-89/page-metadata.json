@@ -1,0 +1,146 @@
+{
+  "index": 88,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 704,
+      "bottomRightY": 207,
+      "content": "4. The LVS transmits an LPMA and then transitions to U3.\n5. The test fails if the PUT does not transition to U3 when the PM_ENTRY_TIMER expires, if recovery is entered, or if the PUT sends any packet.\n6. The LVS transmits the U3 Exit LFPS to transition to U0 and waits to receive U3 Exit LFPS to complete the U3 Exit LFPS handshake.\n7. The test fails if the LFPS handshake does not conform to the following specifications from section 6.9.2:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 213,
+      "bottomRightX": 698,
+      "bottomRightY": 302,
+      "content": "a. Between 300ns - 10ms elapses between the start of the LVS U3 Exit LFPS and the start of the PUT U3 Exit LFPS.\nb. The PUT U3 exit LFPS duration is within 80us - 10ms.\nc. The PUT enters Recovery before tNoLFPSResponseTimeout deadline after the start of its U3 exit LFPS.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 309,
+      "bottomRightX": 694,
+      "bottomRightY": 341,
+      "content": "8. The test passes if all packets are successful, recovery is entered once, no extra packets or LFPS signals are received, and the PUT enters Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 400,
+      "bottomRightX": 403,
+      "bottomRightY": 416,
+      "content": "### TD.7.26 Transition to U0 from Recovery Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 420,
+      "bottomRightX": 507,
+      "bottomRightY": 435,
+      "content": "This test verifies that the PUT transitions to U0 when it is in Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 442,
+      "bottomRightX": 234,
+      "bottomRightY": 457,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 464,
+      "bottomRightX": 242,
+      "bottomRightY": 592,
+      "content": "7.2.4.1.1#3,4,7,9\n7.3.6#17.5.10.3.1#1\n7.5.10.3.2#1\n7.5.10.4.2#1\n7.5.10.5.1#1\n7.5.10.5.2#1",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 601,
+      "bottomRightX": 253,
+      "bottomRightY": 616,
+      "content": "#### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 622,
+      "bottomRightX": 700,
+      "bottomRightY": 752,
+      "content": "1. Both the LVS and the PUT go through the initial steps of the LTSSM to reach U0.\n2. The LVS does not transmit the Header Sequence Advertisement and the Rx Header Buffer Credit Advertisement or Type 1 and Type 2 Rx Header Buffer Credit Advertisements. The PUT will then transition to Recovery because the PENDING_HP_TIMER will time out.\n3. The test fails if the PUT transitions to Recovery before PENDING_HP_TIMER deadline or it does not transition to Recovery when the PENDING_HP_TIMER expires.\n4. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 757,
+      "bottomRightX": 684,
+      "bottomRightY": 880,
+      "content": "a. The PUT does not transmit TS1 ordered sets.\nb. The PUT transmits TS2s before the LVS sends eight consecutive and identical TS1s or TS2s.\nc. The PUT interrupts a TS1 ordered set to transmit a SKP or SYNC (for Gen 2 only) Ordered Set (between TS1 ordered sets is OK).\nd. The PUT transmits Idle Symbols or any other Packet.\ne. The PUT continues to transmit TS1 ordered sets after tRecoveryActiveTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 886,
+      "bottomRightX": 688,
+      "bottomRightY": 925,
+      "content": "5. The LVS transmits TS2 ordered sets and readies to complete the Recovery.Configuration handshake.\n6. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 418,
+      "bottomRightY": 946,
+      "content": "81",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

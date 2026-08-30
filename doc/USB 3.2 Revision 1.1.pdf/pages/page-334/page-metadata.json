@@ -1,0 +1,84 @@
+{
+  "index": 333,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 61,
+      "content": "Revision 1.1",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 62,
+      "bottomRightX": 177,
+      "bottomRightY": 77,
+      "content": "June 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 303 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 61,
+      "content": "Universal Serial Bus 3.2",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 62,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 92,
+      "bottomRightX": 625,
+      "bottomRightY": 110,
+      "content": "Figure 8-62. Sample Enhanced SuperSpeed Isochronous IN Transaction",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 266,
+      "topLeftY": 121,
+      "bottomRightX": 525,
+      "bottomRightY": 589,
+      "content": "![img-153.jpeg](img-153.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-153.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

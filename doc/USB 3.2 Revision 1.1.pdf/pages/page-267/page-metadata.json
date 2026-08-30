@@ -1,0 +1,150 @@
+{
+  "index": 266,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 236 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 91,
+      "bottomRightX": 652,
+      "bottomRightY": 169,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  11 | 1:21 | Reserved.  |\n|  5 | 2:27 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-115.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 190,
+      "bottomRightX": 322,
+      "bottomRightY": 205,
+      "content": "### 8.5.4 STATUS Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 212,
+      "bottomRightX": 673,
+      "bottomRightY": 258,
+      "content": "This TP can only be sent by the host. It is used to inform a control endpoint that the host has initiated the Status stage of a control transfer. This TP shall only be sent to a control endpoint. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 260,
+      "topLeftY": 269,
+      "bottomRightX": 527,
+      "bottomRightY": 285,
+      "content": "Figure 8-21. STATUS Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 302,
+      "bottomRightX": 652,
+      "bottomRightY": 411,
+      "content": "![img-114.jpeg](img-114.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-114.jpeg"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 440,
+      "bottomRightX": 581,
+      "bottomRightY": 456,
+      "content": "Table 8-16. STATUS TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 466,
+      "bottomRightX": 676,
+      "bottomRightY": 565,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to STATUS.  |\n|  3 | 1:4 | Reserved (Rsvd).  |\n|  52 | 1:12 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-116.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 585,
+      "bottomRightX": 312,
+      "bottomRightY": 599,
+      "content": "### 8.5.5 STALL Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 606,
+      "bottomRightX": 671,
+      "bottomRightY": 653,
+      "content": "This TP can only be sent by an endpoint on the device. It is used to inform the host that the endpoint is halted or that a control transfer is invalid. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 266,
+      "topLeftY": 666,
+      "bottomRightX": 522,
+      "bottomRightY": 682,
+      "content": "Figure 8-22. STALL Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 691,
+      "bottomRightX": 655,
+      "bottomRightY": 801,
+      "content": "![img-115.jpeg](img-115.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-115.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

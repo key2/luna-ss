@@ -1,0 +1,119 @@
+{
+  "index": 287,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 698,
+      "bottomRightY": 250,
+      "content": "- The port shall decode the link configuration field defined in the TS2 ordered sets received during Recovery.Configuration and proceed to the next state.\n- The port in SuperSpeed operation shall enable the scrambling by default if the Disabling Scrambling bit is not asserted in the TS2 ordered set received in Recovery.configuration.\n- The port in SuperSpeed operation shall disable the scrambling if directed, or if the Disabling Scrambling bit is asserted in the TS2 ordered set received in Recovery.configuration.\n- The port in SuperSpeedPlus operation shall transmit a single SDS ordered set before the start of the data blocks with Idle Symbols if the next state is U0. The port may transmit SDS ordered set if the next state is Loopback or Hot Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 252,
+      "bottomRightX": 686,
+      "bottomRightY": 285,
+      "content": "Note: Under situation where a SKP ordered set is also scheduled at the same time with SDS ordered set, SKP ordered set shall be transmitted first.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 287,
+      "bottomRightX": 698,
+      "bottomRightY": 426,
+      "content": "- The port in SuperSpeedPlus operation shall disable the scrambling upon completion of SDS ordered set transmission if directed, or if the Disabling Scrambling bit is asserted in the TS2 ordered set received in Recovery.Configuration.\n- The port in SuperSpeedPlus operation may ignore SDS ordered set if corrupted and continue to process the following data block. The port may optionally choose to recover SDS ordered set if error is detected.\n- The port shall be able to receive the Header Sequence Number Advertisement from its link partner.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 431,
+      "bottomRightX": 692,
+      "bottomRightY": 481,
+      "content": "Note: The exit time difference between the two ports will result in one port entering U0 first and starting the Header Sequence Number Advertisement while the other port is still in Recovery.Idle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 487,
+      "bottomRightX": 364,
+      "bottomRightY": 505,
+      "content": "### 7.5.10.5.2 Exit from Recovery.Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 510,
+      "bottomRightX": 693,
+      "bottomRightY": 596,
+      "content": "- The port shall transition to Loopback when directed as a loopback master and the port is capable of being a loopback master.\n- The port shall transition to Loopback as a loopback slave if the Loopback bit is asserted in TS2 ordered sets.\n- The port shall transition to U0 when the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 598,
+      "bottomRightX": 542,
+      "bottomRightY": 633,
+      "content": "1. Eight consecutive Idle Symbols are received.\n2. Sixteen Idle Symbols are sent after receiving one Idle Symbol.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 635,
+      "bottomRightX": 672,
+      "bottomRightY": 667,
+      "content": "- The port shall transition to eSS.Inactive when one of the following timers times out and the conditions to transition to U0 are not met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 670,
+      "bottomRightX": 416,
+      "bottomRightY": 705,
+      "content": "1. Ux_EXIT_TIMER\n2. The 2-ms timer (tRecoveryIdleTimeout)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 708,
+      "bottomRightX": 679,
+      "bottomRightY": 798,
+      "content": "- A downstream port shall transition to Hot Reset when directed.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.\n- An upstream port shall transition to Hot Reset if the Reset bit is asserted in TS2 ordered sets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-76",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

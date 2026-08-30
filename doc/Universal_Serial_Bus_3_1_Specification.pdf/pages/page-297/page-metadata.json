@@ -1,0 +1,128 @@
+{
+  "index": 296,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 681,
+      "bottomRightY": 129,
+      "content": "packets traverse a direct path between the host and device. Any unused links may be placed into reduced power states making the bus amenable to aggressive power management.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 146,
+      "bottomRightX": 609,
+      "bottomRightY": 169,
+      "content": "### 8.1.2 Transactions on a SuperSpeedPlus Bus Instance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 172,
+      "bottomRightX": 681,
+      "bottomRightY": 205,
+      "content": "Transactions on a SuperSpeedPlus bus instance follow the rules defined in Section 8.1.1 with the following modifications:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 210,
+      "bottomRightX": 674,
+      "bottomRightY": 300,
+      "content": "- A SuperSpeedPlus host may issue simultaneous IN requests\n- A SuperSpeedPlus host should pipeline Isochronous IN transactions as described in Section 8.12.6.3.1\n- A SuperSpeedPlus device shall support simultaneous IN requests to different endpoints\n- Transactions may arrive/complete in a different order than they were initiated",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 314,
+      "bottomRightX": 421,
+      "bottomRightY": 333,
+      "content": "#### 8.1.2.1 Simultaneous IN Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 338,
+      "bottomRightX": 675,
+      "bottomRightY": 372,
+      "content": "A SuperSpeedPlus host may initiate simultaneous IN transactions. However, a SuperSpeedPlus host shall not initiate simultaneous IN transactions to:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 378,
+      "bottomRightX": 308,
+      "bottomRightY": 413,
+      "content": "- The same endpoint\n- A SuperSpeed bus instance",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 419,
+      "bottomRightX": 575,
+      "bottomRightY": 435,
+      "content": "Note: an ACK TP to continue a burst does not constitute a new IN transaction.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 455,
+      "bottomRightX": 362,
+      "bottomRightY": 474,
+      "content": "#### 8.1.2.2 Transaction Reordering",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 479,
+      "bottomRightX": 668,
+      "bottomRightY": 512,
+      "content": "Packets (DPs and TPs) may be delivered to the intended recipient in a different order than they were originated. This may happen due to the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 516,
+      "bottomRightX": 692,
+      "bottomRightY": 605,
+      "content": "- A SuperSpeedPlus hub may reorder due to the SuperSpeedPlus packet ordering rules. Refer to Section 10.8.6.\n- A SuperSpeedPlus device may reorder asynchronous and periodic IN requests.\n- SuperSpeedPlus devices and hubs will transmit TPs before DPs (for both periodic and asynchronous packets)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "8-3",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

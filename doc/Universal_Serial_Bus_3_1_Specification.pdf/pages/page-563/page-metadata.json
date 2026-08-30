@@ -1,0 +1,130 @@
+{
+  "index": 562,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 92,
+      "bottomRightX": 629,
+      "bottomRightY": 128,
+      "content": "except when the feature selector is PORT_U1_TIMEOUT or PORT_U2_TIMEOUT or PORT_LINK_STATE or PORT_REMOTE_WAKE_MASK.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 694,
+      "bottomRightY": 183,
+      "content": "Setting a feature enables that feature or starts a process associated with that feature; see Table 10-9 for the feature selector definitions that apply to a port as a recipient. Status change may not be acknowledged using this request. Features that can be set with this request are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 187,
+      "bottomRightX": 352,
+      "bottomRightY": 333,
+      "content": "- PORT_RESET\n- BH_PORT_RESET\n- PORT_POWER\n- PORT_U1_TIMEOUT\n- PORT_U2_TIMEOUT\n- PORT_LINK_STATE\n- PORT_REMOTE_WAKE_MASK\n- FORCE_LINKPM_ACCEPT",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 338,
+      "bottomRightX": 698,
+      "bottomRightY": 389,
+      "content": "When the feature selector is PORT_U1_TIMEOUT, the most significant byte (bits 15..8) of the wIndex field specifies the Timeout value for the U1 inactivity timer. Refer to Section 10.4.2.1 for a detailed description of how the U1 inactivity timer value is used.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 394,
+      "bottomRightX": 344,
+      "bottomRightY": 412,
+      "content": "The following are permissible values:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 426,
+      "bottomRightX": 381,
+      "bottomRightY": 442,
+      "content": "Table 10-16. U1 Timeout Value Encoding",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 445,
+      "bottomRightX": 385,
+      "bottomRightY": 598,
+      "content": "|  Value | Description  |\n| --- | --- |\n|  00H | Zero (Default)  |\n|  01H | 1 μs  |\n|  02H | 2 μs  |\n|  03H | 3 μs  |\n|  ... | ...  |\n|  7FH | 127 μs  |\n|  80H-FEH | Reserved  |\n|  FFH | Infinite  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-249.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 604,
+      "bottomRightX": 686,
+      "bottomRightY": 690,
+      "content": "When the feature selector is PORT_U2_TIMEOUT, the most significant byte (bits 15..8) of the wIndex field specifies the Timeout value for the U2 inactivity timer. The port's link shall send an LMP to its link partner with the specified timeout value after receiving a Set Port Feature request with the PORT_U2_TIMEOUT feature selector. Refer to Section 10.4.2.1 for a detailed description of how the U2 inactivity timer value is used.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 694,
+      "bottomRightX": 344,
+      "bottomRightY": 712,
+      "content": "The following are permissible values:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 726,
+      "bottomRightX": 381,
+      "bottomRightY": 742,
+      "content": "Table 10-17. U2 Timeout Value Encoding",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 744,
+      "bottomRightX": 396,
+      "bottomRightY": 902,
+      "content": "|  Value | Description  |\n| --- | --- |\n|  00H | Zero (Default)  |\n|  01H | 256 μs  |\n|  02H | 512 μs  |\n|  03H | 768 μs  |\n|  ... | ...  |\n|  FEH | 65.024 ms  |\n|  FFH | Infinite  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-250.md"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "10-85",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

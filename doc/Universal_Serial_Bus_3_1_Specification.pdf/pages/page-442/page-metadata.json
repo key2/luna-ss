@@ -1,0 +1,175 @@
+{
+  "index": 441,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 372,
+      "bottomRightY": 110,
+      "content": "Table 9-8. Standard Status Type Codes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 112,
+      "bottomRightX": 699,
+      "bottomRightY": 193,
+      "content": "|  Status Type | Value | Status Type Length | Description  |\n| --- | --- | --- | --- |\n|  STANDARD_STATUS | 00H | 2 | Returns Standard Status Request information  |\n|  PTM_STATUS | 01H | 4 | Returns PTM Status Request information  |\n|  Reserved | 02-FFH |  | Reserved for future use  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-159.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 200,
+      "bottomRightX": 677,
+      "bottomRightY": 233,
+      "content": "If wLength is not as specified above or if wIndex is non-zero for a device status request, then the behavior of the device is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 245,
+      "bottomRightX": 656,
+      "bottomRightY": 280,
+      "content": "If an interface or an endpoint is specified that does not exist, then the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 286,
+      "bottomRightX": 664,
+      "bottomRightY": 321,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 326,
+      "bottomRightX": 698,
+      "bottomRightY": 360,
+      "content": "Address state: If an interface or an endpoint other than the Default Control Pipe is specified, then the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 366,
+      "bottomRightX": 692,
+      "bottomRightY": 401,
+      "content": "Configured state: If an interface or an endpoint that does not exist is specified, then the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 409,
+      "bottomRightX": 573,
+      "bottomRightY": 426,
+      "content": "A GetStatus() request to a device returns the information shown in Figure 9-1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 449,
+      "bottomRightX": 673,
+      "bottomRightY": 532,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Reserved (Reset to Zero) |   |   | LTM Enable | U2 Enable | U1 Enable | Remote Wakeup | Self-Powered  |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D7 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-160.md"
+    },
+    {
+      "topLeftX": 648,
+      "topLeftY": 537,
+      "bottomRightX": 673,
+      "bottomRightY": 547,
+      "content": "U-083",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 562,
+      "bottomRightX": 661,
+      "bottomRightY": 581,
+      "content": "Figure 9-4. Information Returned by a Standard GetStatus() Request to a Device",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 602,
+      "bottomRightX": 671,
+      "bottomRightY": 636,
+      "content": "The status fields defined Figure 9-4 are returned by a STANDARD_STATUS type request to a Device recipient.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 647,
+      "bottomRightX": 690,
+      "bottomRightY": 698,
+      "content": "The Self Powered field indicates whether the device is currently self-powered. If D0 is reset to zero, the device is bus-powered. If D0 is set to one, the device is self-powered. The Self Powered field may not be changed by the SetFeature() or ClearFeature() requests.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 706,
+      "bottomRightX": 674,
+      "bottomRightY": 758,
+      "content": "The Remote Wakeup field is reserved and must be set to zero by Enhanced SuperSpeed devices. Enhanced SuperSpeed devices use the Function Remote Wake enable/disable field to indicate whether they are enabled for Remote Wake.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 765,
+      "bottomRightX": 692,
+      "bottomRightY": 834,
+      "content": "The U1 Enable field indicates whether the device is currently enabled to initiate U1 entry. If D2 is set to zero, the device is disabled from initiating U1 entry, otherwise; it is enabled to initiate U1 entry. The U1 Enable field can be modified by the SetFeature() and ClearFeature() requests using the U1_ENABLE feature selector. This field is reset to zero when the device is reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 842,
+      "bottomRightX": 692,
+      "bottomRightY": 877,
+      "content": "The U2 Enable field indicates whether the device is currently enabled to initiate U2 entry. If D3 is set to zero, the device is disabled from initiating U2 entry, otherwise; it is enabled to initiate U2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "9-24",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

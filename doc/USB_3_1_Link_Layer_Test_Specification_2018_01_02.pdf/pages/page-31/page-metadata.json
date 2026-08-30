@@ -1,0 +1,57 @@
+{
+  "index": 30,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 62,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 902,
+      "content": "|  7.5.1#1 | A downstream port shall transition to eSS.Disabled from any other state when directed. | NT  |\n| --- | --- | --- |\n|  7.5.1#2 | An upstream port shall transition to eSS.Disabled when VBUS is not valid. | NT  |\n|  Subsection reference: 7.5.1.1 eSS.Disabled for Downstream Ports and Hub Upstream Ports  |   |   |\n|  Subsection reference: 7.5.1.1.1 eSS.Disabled Requirements  |   |   |\n|  7.5.1.1.1#1 | The port's receiver termination shall present high impedance to ground of ZRX-HIGH-IMP-DC-POS when in SS.Disabled. | NT  |\n|  7.5.1.1.1#2 | The port shall be disabled from transmitting and receiving LFPS and Enhanced SuperSpeed signals when in SS.Disabled. | NT  |\n|  Subsection reference: 7.5.1.1.2 Exit from eSS.Disabled  |   |   |\n|  7.5.1.1.2#1 | A downstream port shall transition to Rx.Detect when directed. | NT  |\n|  7.5.1.1.2#2 | An upstream port shall transition to Rx.Detect only when VBUS transition to valid or a USB2.0 bus reset is detected. | NT  |\n|  Subsection reference: 7.5.1.2 eSS.Disabled for Upstream Ports of Peripheral Devices  |   |   |\n|  Subsection reference: 7.5.1.2.2 eSS.Disabled Requirements  |   |   |\n|  7.5.1.2.2#1 | The requirements from section 7.5.1.1.1 apply. | NT  |\n|  7.5.1.2.2#2 | A peripheral upstream port shall implement a tDisabledCount counter that shall be reset to zero upon invalid Vbus or a successful port configuration exchange. | NT  |\n|  7.5.1.2.2#3 | The tDisabledCount counter shall be incremented upon entry to eSS.Disabled.Default | NT  |\n|  Subsection reference: 7.5.1.2.3 Exit from eSS.Disabled.Default  |   |   |\n|  7.5.1.2.3#1 | A peripheral upstream port shall transition to Rx.Detect when Vbus transitions to valid. | NT  |\n|  7.5.1.2.3#2 | A peripheral upstream port shall transition to Rx.Detect when a USB 2.0 bus reset is detected and tDisabledCount is less than three. | NT  |\n|  7.5.1.2.3#3 | A peripheral upstream port shall transition to eSS.Disabled.Error if tDisabledCount is three. | NT  |\n|  Subsection reference: 7.5.1.2.4 Exit from eSS.Disabled.Error  |   |   |\n|  7.5.1.2.4#1 | A peripheral upstream port shall transition to Rx.Detect upon PowerOn reset. | NT  |\n|  7.5.1.2.4#2 | A self-powered peripheral upstream port shall transition to eSS.Disabled.Default upon detection of invalid Vbus. | NT  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-24.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "23",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

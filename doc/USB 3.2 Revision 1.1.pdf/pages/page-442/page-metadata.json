@@ -1,0 +1,164 @@
+{
+  "index": 441,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 411 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 662,
+      "bottomRightY": 125,
+      "content": "- A simple round robin arbitration behavior to select the next Interrupt/Isochronous DP buffered from the hub downstream ports.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 145,
+      "bottomRightX": 667,
+      "bottomRightY": 191,
+      "content": "The next section describes when an incompletely buffered DP that is still being received can be a candidate. The section after that describes the upstream weighted round robin arbitration mechanism.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 205,
+      "bottomRightX": 453,
+      "bottomRightY": 218,
+      "content": "### 10.8.6.4.1 Partially Buffered DP Selection Candidate",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 225,
+      "bottomRightX": 648,
+      "bottomRightY": 258,
+      "content": "A DP (call it RCV_DP) shall be considered as a possible candidate, after the DPH has been fully received and validated and all of the following conditions are true:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 263,
+      "bottomRightX": 656,
+      "bottomRightY": 385,
+      "content": "- Let ALT_P be the candidate packet that would have been selected from the current set of fully buffered packets (i.e. when not considering RCV_DP as a possible candidate). RCV_DP would be selected when compared to ALT_P.\n- The time remaining to fully receive this DPP is less than the time it will take to transmit ALT_P.\n- Enough of the DPP has been received to ensure that upstream port transmitter under-run will not occur during the transmission of this packet.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 406,
+      "bottomRightX": 673,
+      "bottomRightY": 482,
+      "content": "For example, if there are only buffered Bulk DPs from other downstream ports and an Isochronous DP is being received on one downstream port, the Upstream Controller shall select the Isochronous DP as the next packet to transmit on the upstream port; as long as the remaining time to receive the Isochronous DP is less than the time required to transmit the Bulk DP and there is a sufficient amount of the Isochronous DPP already received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 494,
+      "bottomRightX": 474,
+      "bottomRightY": 508,
+      "content": "### 10.8.6.4.2 Upstream Weighted Round Robin Arbitration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 516,
+      "bottomRightX": 660,
+      "bottomRightY": 561,
+      "content": "When the Upstream Controller needs to select the next Control/Bulk DP to transmit on the upstream port, the Upstream Controller uses the following selectPacket() algorithm to determine the next DP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 574,
+      "bottomRightX": 636,
+      "bottomRightY": 621,
+      "content": "In the selectPacket() algorithm pseudo code, once a packet is selected, the algorithm is complete and any remaining steps in the algorithm are ignored for the selection of the current packet to transmit upstream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 633,
+      "bottomRightX": 634,
+      "bottomRightY": 665,
+      "content": "Across invocations of the selectPacket algorithm, retain the value of i and curr_weight. Initial values of i=-1 and curr_weight=0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 676,
+      "bottomRightX": 612,
+      "bottomRightY": 692,
+      "content": "The i$^{th}$ downstream facing port is DFPI. The candidate packet for the i$^{th}$ DFP is CPi.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 705,
+      "bottomRightX": 267,
+      "bottomRightY": 721,
+      "content": "selectPacket() algorithm:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 732,
+      "bottomRightX": 657,
+      "bottomRightY": 928,
+      "content": "1) If there are no buffered packets, set i=-1 and curr_weight=0 and don't select a packet. Note: The upstream port will await the arrival of a packet on some DFPI.\n2) For each DFPI, identify a candidate packet CPi for the DFPI:\n  a. if there is a Control or Bulk DP buffered, set CPi to be the first one that had been buffered.\n3) If there is only one DFPI with packets buffered for upstream transmission:\n  a. Set i = port index\n  b. Set cw = CPi.AW\n  c. Select CPi\n  d. exit",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

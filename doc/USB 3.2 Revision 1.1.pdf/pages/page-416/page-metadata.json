@@ -1,0 +1,147 @@
+{
+  "index": 415,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 385 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 149,
+      "topLeftY": 91,
+      "bottomRightX": 712,
+      "bottomRightY": 242,
+      "content": "|  Key | Description  |\n| --- | --- |\n|  us.ss.rx | Far End Receiver Terminations are present on the Upstream Port's link or were present when Upstream VBUS was most recently on.  |\n|  us.ss.rx.failed | Hub's upstream port link has attempted eight consecutive Rx.Detect events without detecting far-end receiver termination  |\n|  us.vbus = off | Upstream port VBUS is Off  |\n|  us.vbus = on | Upstream port VBUS is On  |\n|  u1.u2.exit.fails | U1 or U2 Exit Fails  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-209.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 263,
+      "bottomRightX": 443,
+      "bottomRightY": 279,
+      "content": "### 10.3.1 Hub Downstream Facing Port State Descriptions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 285,
+      "bottomRightX": 335,
+      "bottomRightY": 299,
+      "content": "#### 10.3.1.1 DSPORT-Powered-off",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 307,
+      "bottomRightX": 668,
+      "bottomRightY": 369,
+      "content": "The DSPORT-Powered-off state is a logical powered off state. This is a default state where DSPORT port will be after power-up if the hub supports power switching. The hub may still be required or choose to provide VBUS for a downstream port in the DSPORT-Powered-off state. Detailed requirements for presence of VBUS are covered later in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 381,
+      "bottomRightX": 573,
+      "bottomRightY": 396,
+      "content": "A port shall transition into this state if any of the following situations occur:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 402,
+      "bottomRightX": 673,
+      "bottomRightY": 582,
+      "content": "- From any state when VBUS is removed from the hub upstream port and the hub supports power switching on the DS ports.\n- Any \"power-off\" condition is met:\n  - From any state when local power is lost to the port.\n  - From any state if the hub's upstream port link transitions to the eSS.Disabled state and Upstream PORT VBUS is on.\n  - From any state if the hub's upstream port link has attempted eight consecutive Rx.Detect events without detecting far-end receiver terminations and the receiver termination (near-end) of the hub's downstream port is ready to be turned off.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 602,
+      "bottomRightX": 628,
+      "bottomRightY": 634,
+      "content": "The downstream port's termination is considered to be ready to turn off when any of following conditions is met.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 640,
+      "bottomRightX": 666,
+      "bottomRightY": 736,
+      "content": "- Warm reset signaling has completed.\n- Optionally when the port is power switched and the USB 2.0 hub has also turned off power to the port.\n- The port is in a powered on state and not performing a warm reset\n- No device is connected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 759,
+      "bottomRightX": 666,
+      "bottomRightY": 774,
+      "content": "A port shall remain in the DSPORT-Powered-off state until the following conditions are met.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 780,
+      "bottomRightX": 665,
+      "bottomRightY": 855,
+      "content": "- The hub's Upstream Port link has detected far-end receiver terminations. Note that this requires Upstream Port VBUS to be on.\n- No \"power-off\" condition is true.\n- No Over-current condition is active.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 878,
+      "bottomRightX": 665,
+      "bottomRightY": 924,
+      "content": "If a hub was configured while the local power source was present and then if local power is lost, the hub shall place all ports in the Powered-off state if power remains to run the hub controller.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

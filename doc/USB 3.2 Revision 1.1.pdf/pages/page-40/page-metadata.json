@@ -1,0 +1,57 @@
+{
+  "index": 39,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 191,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 380,
+      "topLeftY": 46,
+      "bottomRightX": 409,
+      "bottomRightY": 61,
+      "content": "- 9 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 89,
+      "bottomRightX": 683,
+      "bottomRightY": 873,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  isochronous transfer | One of the four USB transfer types. Isochronous transfers are used when working with isochronous data. Isochronous transfers provide periodic, continuous communication between host and device. See also transfer type.  |\n|  ITP | Isochronous Timestamp Packet, sent periodically by a host to inform devices on the USB of the current bus time.  |\n|  jitter | A tendency toward lack of synchronization caused by mechanical or electrical changes. More specifically, the phase shift of digital pulses over a transmission medium.  |\n|  KB | Kilobyte or 1,024 bytes.  |\n|  K codes | The control type codes used in 8b/10b encoding. SHP – start header packet SDP – start data packet END – end header or data packet EDB – end of nullified (bad) packet SLC – start link command COM – comma SKP – skip EPF – end packet framing  |\n|  lane | The connection between the transmitter (Tx) of one port to the receiver (Rx) in another port. See Figure 2-1.  |\n|  LBPM | LFPS Based PWM Messaging  |\n|  LCSTART | Frame ordered set used to denote the start of a link command.  |\n|  LDM | See Link Delay Measurement.  |\n|  LDM Context | Timestamps recorded by an LDM Requester or Responder.  |\n|  LDM Link Delay | The delay across the Link between a Responder and a Requester.  |\n|  LDM Requester | A USB hub or device that uses the LDM protocol to communicate with an upstream host controller or hub and measure the upstream link delay.  |\n|  LDM Responder | A USB host controller or hub that uses the LDM protocol to communicate with a downstream hub or device.  |\n|  LFPS | Low frequency periodic signal. Used to communicate information across a link without using Enhanced SuperSpeed signaling.  |\n|  LFSR | Linear feedback shift register. Used to create pseudo-random characters for scrambling.  |\n|  LI | Logical Idle  |\n|  Link | The connection between 2 ports. Includes both the Upstream and Downstream sublinks. See Figure 2-1.  |\n|  link command | An eight-symbol sequence used for link-level flow control, retries, power management, and device removal.  |\n|  Link Control Word | Two bytes with 11 bits to define the link level flow control and a 5-bit CRC5 to ensure data integrity.  |\n|  Link Delay Measurement (LDM) | To perform LDM a device utilizes the PTM link level protocol to poll and automatically determine if an upstream port supports PTM, and to precisely calculate the delay of its upstream link. PTM LMPs shall be used to measure the link delay of a device upstream link.  |\n|  Link Error Count | The number of events that result in entry to Recovery due to bit errors.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-25.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

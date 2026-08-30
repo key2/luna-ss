@@ -1,0 +1,191 @@
+{
+  "index": 167,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 137 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 633,
+      "bottomRightY": 124,
+      "content": "- Upon completion of a header packet processing, a port shall restore a Local Rx Header Buffer Credit by:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 131,
+      "bottomRightX": 645,
+      "bottomRightY": 205,
+      "content": "1. Sending a single LCRD_x\n2. Advancing the Credit index alphabetically (or roll over to A if the Header Buffer Credit index of D is reached) and\n3. Incrementing the Local Rx Header Buffer Credit Count by one.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 211,
+      "bottomRightX": 648,
+      "bottomRightY": 242,
+      "content": "Note: The LCRD_x index is used to ensure Rx Header Buffer Credits are sent in an alphabetical order such that missing of an LCRD_x can be detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 263,
+      "bottomRightX": 487,
+      "bottomRightY": 279,
+      "content": "### 7.2.4.1.8 SuperSpeedPlus Type 1/Type 2 Rx Buffer Credit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 284,
+      "bottomRightX": 515,
+      "bottomRightY": 300,
+      "content": "Each port shall have the following two classes of Rx Buffer Credits.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 314,
+      "bottomRightX": 668,
+      "bottomRightY": 381,
+      "content": "- A port shall have four or seven Type 1 Rx Buffer Credits for Type 1 traffic class in its receiver. This is referred to the Local Type 1 Rx Buffer Credit.\n- A port shall have four or seven Type 2 Rx Buffer Credits for Type 2 traffic class in its receiver. This is referred to the Local Type 2 Rx Buffer Credit.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 402,
+      "bottomRightX": 660,
+      "bottomRightY": 464,
+      "content": "The operation rules of the Local Type 1 and Type 2 Rx Buffer Credits are the same. They each represent the number of Type 1 or Type 2 packets a port can accept and are managed by their respective Local Type 1 and Type 2 Rx Buffer Credit Count. The following descriptions refer to the Local Type 1/Type 2 Rx Buffer Credit management.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 476,
+      "bottomRightX": 670,
+      "bottomRightY": 576,
+      "content": "- A port shall consume one Local Type 1 or Type 2 Rx Buffer Credit if the respective Type 1 or Type 2 packet is \"received properly\". The Local Type 1/Type 2 Rx Buffer Credit Count shall be decremented by one.\n- Upon completion of a Type 1 or Type 2 packet processing, and the respective Type 1 or Type 2 Rx Buffer is made available, a port shall restore accordingly a Local Type 1 or Type 2 Rx Buffer Credit by:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 582,
+      "bottomRightX": 659,
+      "bottomRightY": 655,
+      "content": "1. Sending a single LCRD1_x or LCRD2_x\n2. Advancing the Credit index alphabetically (or roll over to A if the Rx Buffer Credit index of D (Gen 1x2 or Gen 2x1) or G (Gen 2x2) is reached) and\n3. Incrementing the Local Type 1 or Type 2 Rx Buffer Credit Count by one.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 677,
+      "bottomRightX": 389,
+      "bottomRightY": 692,
+      "content": "### 7.2.4.1.9 Receiving Data Packet Payload",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 698,
+      "bottomRightX": 578,
+      "bottomRightY": 715,
+      "content": "In Gen 1 operation, the processing of DPP shall adhere to the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 728,
+      "bottomRightX": 604,
+      "bottomRightY": 743,
+      "content": "- A DPP processing shall be started if the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 749,
+      "bottomRightX": 644,
+      "bottomRightY": 786,
+      "content": "1. A DPH is received properly.\n2. A DPPSTART ordered set is received properly immediately after its DPH.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 793,
+      "bottomRightX": 617,
+      "bottomRightY": 822,
+      "content": "- The DPP processing shall be completed when a valid DPPEND ordered set is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 830,
+      "bottomRightX": 650,
+      "bottomRightY": 846,
+      "content": "- The DPP processing shall be aborted when one of the following conditions is met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 852,
+      "bottomRightX": 656,
+      "bottomRightY": 904,
+      "content": "1. A valid DPPABORT ordered set is detected.\n2. A K-symbol that does not belong to a valid DPPEND or DPPABORT ordered set is detected before a valid DPPEND or DPPABORT ordered set. A port",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

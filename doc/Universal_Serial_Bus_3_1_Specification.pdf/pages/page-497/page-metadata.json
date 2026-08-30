@@ -1,0 +1,209 @@
+{
+  "index": 496,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 92,
+      "bottomRightX": 666,
+      "bottomRightY": 127,
+      "content": "substate which timed out is not Polling.LFPS. See definition of PollingTimeout in Section 7.5.4.2 and Section 10.16.2.10 defining Set Port Feature for enabling compliance entry.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 129,
+      "bottomRightX": 688,
+      "bottomRightY": 163,
+      "content": "- From the DSPORT.Loopback state if the port's link performs a successful LFPS handshake in Loopback.Exit.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 168,
+      "bottomRightX": 459,
+      "bottomRightY": 184,
+      "content": "In this state, the port's link shall be in the Rx.Detect state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 188,
+      "bottomRightX": 680,
+      "bottomRightY": 223,
+      "content": "Note: The port's link shall still perform connection detection normally from the Rx.Detect if the hub upstream port's link is in U3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 238,
+      "bottomRightX": 318,
+      "bottomRightY": 257,
+      "content": "### 10.3.1.3 DSPORT.Training",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 262,
+      "bottomRightX": 645,
+      "bottomRightY": 294,
+      "content": "A port transitions to this state from the DSPORT.Disconnected state when far-end receiver terminations are detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 300,
+      "bottomRightX": 442,
+      "bottomRightY": 317,
+      "content": "In this state, the port's link shall be in the Polling state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 333,
+      "bottomRightX": 313,
+      "bottomRightY": 349,
+      "content": "### 10.3.1.4 DSPORT.ERROR",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 350,
+      "bottomRightX": 686,
+      "bottomRightY": 384,
+      "content": "A port shall transition to this state only when an Enhanced SuperSpeed device is connected and a serious error condition occurred while attempting to operate the link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 128,
+      "topLeftY": 386,
+      "bottomRightX": 497,
+      "bottomRightY": 401,
+      "content": "A port transitions to this state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 128,
+      "topLeftY": 404,
+      "bottomRightX": 686,
+      "bottomRightY": 528,
+      "content": "- From the DSPORT.Enabled state if the link enters recovery and times out without recovering.\n- From the DSPORT.Enabled state if U1 or U2 exit fails.\n- From the DSPORT.Loopback state if the port is the loopback master and the LFPS handshake in Loopback.Exit fails.\n- From DSPORT.Enabled if Port Configuration fails as described in Section 8.4.6.\n- From the DSPORT.Training state if the port's link times out from any Polling substate and cPollingTimeout is 2. See 7.5.4.2 for details of SetioncPollingTimeout.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 534,
+      "bottomRightX": 472,
+      "bottomRightY": 550,
+      "content": "In this state, the port's link shall be in the eSS.Inactive state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 564,
+      "bottomRightX": 317,
+      "bottomRightY": 583,
+      "content": "### 10.3.1.5 DSPORT.Enabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 589,
+      "bottomRightX": 492,
+      "bottomRightY": 605,
+      "content": "A port transitions to this state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 610,
+      "bottomRightX": 561,
+      "bottomRightY": 645,
+      "content": "- From the Training state when the port's link successfully enters U0.\n- From the DSPORT.Resetting state when a reset completes successfully.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 650,
+      "bottomRightX": 698,
+      "bottomRightY": 751,
+      "content": "A port in the DSPORT.Enabled state will propagate packets in both the upstream and the downstream direction after its Current Connect Status (CCS) is set. When the hub downstream port first transitions to the DSPORT.Enabled state after a power on or warm reset, it shall transmit a port configuration LMP as defined in Section 8.4.6. If CCS was set before entering the DSPORT.Enabled state, it will remain set. If CCS was not set, then it shall be set only after the port configuration LMP exchange succeeds.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 757,
+      "bottomRightX": 667,
+      "bottomRightY": 790,
+      "content": "When the hub downstream port first transitions to the DSPORT.Enabled state after a power on reset, the value for the U1 and U2 inactivity timers shall be reset to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 796,
+      "bottomRightX": 454,
+      "bottomRightY": 811,
+      "content": "The link shall be in U0 when the enabled state is entered.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 817,
+      "bottomRightX": 696,
+      "bottomRightY": 866,
+      "content": "If the hub upstream port's link is in U3 when the downstream port enters DSPORT.Enabled and the hub is not enabled for remote wakeup, the downstream port shall initiate a transition to U3 on its link within tDSPortEnabledToU3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 872,
+      "bottomRightX": 656,
+      "bottomRightY": 907,
+      "content": "Section 10.4 provides a state machine that shows a functionally correct implementation for a downstream port managing different link states within the DSPORT.Enabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "10-19",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

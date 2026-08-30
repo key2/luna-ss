@@ -1,0 +1,129 @@
+{
+  "index": 266,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 188,
+      "topLeftY": 100,
+      "bottomRightX": 637,
+      "bottomRightY": 389,
+      "content": "![img-180.jpeg](img-180.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-180.jpeg"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 391,
+      "bottomRightX": 510,
+      "bottomRightY": 404,
+      "content": "Note: Transition conditions are illustrative only. Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 612,
+      "topLeftY": 407,
+      "bottomRightX": 634,
+      "bottomRightY": 416,
+      "content": "U-049",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 282,
+      "topLeftY": 427,
+      "bottomRightX": 542,
+      "bottomRightY": 445,
+      "content": "Figure 7-17. Rx.Detect Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 479,
+      "bottomRightX": 249,
+      "bottomRightY": 503,
+      "content": "### 7.5.4 Polling",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 505,
+      "bottomRightX": 695,
+      "bottomRightY": 625,
+      "content": "Polling is a state for port capability negotiation and link training. During Polling, a Polling.LFPS handshake shall take place between the two ports in SuperSpeed operation before the link training is started. Similarly for SuperSpeedPlus operation, Polling.LFPS based SCD1/SCD2 handshakes, LBPM based port capability negotiation and match, and subsequent port configuration shall take place before SuperSpeedPlus link training is started. Bit lock, block alignment for SuperSpeedPlus operation, symbol lock, lane polarity inversion, and Rx equalization trainings are achieved using TSEQ, SYNC, TS1, and TS2 training ordered sets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 638,
+      "bottomRightX": 384,
+      "bottomRightY": 657,
+      "content": "#### 7.5.4.1 Polling Substate Machines",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 662,
+      "bottomRightX": 626,
+      "bottomRightY": 679,
+      "content": "Polling contains a substate machine shown in Figure 7-18 with the following substates:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 683,
+      "bottomRightX": 278,
+      "bottomRightY": 830,
+      "content": "- Polling.LFPS\n- Polling.LFPSPlus\n- Polling.PortMatch\n- Polling.PortConfig\n- Polling.RxEQ\n- Polling.Active\n- Polling.Configuration\n- Polling.Idle",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 846,
+      "bottomRightX": 347,
+      "bottomRightY": 865,
+      "content": "#### 7.5.4.2 Polling Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 865,
+      "bottomRightX": 692,
+      "bottomRightY": 884,
+      "content": "- The port shall maintain its low-impedance receiver termination (R_RX-DC) defined in Table 6-21.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "7-55",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

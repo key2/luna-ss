@@ -1,0 +1,120 @@
+{
+  "index": 135,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 122,
+      "bottomRightX": 686,
+      "bottomRightY": 182,
+      "content": "- That is: rate=1, width=2, pclk_rate=2, RxDataValid should never assert for two consecutive pclk cycles.\n- That is: rate=1, width=2, pclk_rate=3, RxDataValid assertions must always have at least 3 pclk cycles of de-assertion between them.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 187,
+      "bottomRightX": 462,
+      "bottomRightY": 203,
+      "content": "• Example of valid optimization by EB:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 249,
+      "topLeftY": 206,
+      "bottomRightX": 684,
+      "bottomRightY": 304,
+      "content": "- Rate=1, width=2, pclk_rate=3\n- RxDataValid (t=0, t=1, and so forth, E=EB Empty): 100010001000100000000000000000000000000000000000000000000000000000000000000000000000000000\n— Vs. non-optimized: 1000100010001000EE00100010001\n— Non-optimized design builds EB depth in-order to maintain RxDataValid fixed cycle rate",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 310,
+      "bottomRightX": 684,
+      "bottomRightY": 411,
+      "content": "In USB mode for the Nominal Empty buffer model the PHY attempts to keep the elasticity buffer as close to empty as possible. This means that the PHY will be required to insert SKP ordered sets into the received data stream when no SKP ordered sets have been received, unless the RxDataValid signal is used. The Nominal Empty buffer model provides a smaller worst case and average latency than the Nominal Half Full buffer model, but it requires the MAC to support receiving SKP ordered sets any point in the data stream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 417,
+      "bottomRightX": 684,
+      "bottomRightY": 492,
+      "content": "In SATA mode for the Nominal Empty buffer model the PHY attempts to keep the elasticity buffer as close to empty as possible. In Nominal Empty mode the PHY uses the RxDataValid interface to tell the MAC when no data is available. The Nominal Empty buffer model provides a smaller worst case and average latency than the Nominal Half Full buffer model, but it requires the MAC to support the RxDataValid signal.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 497,
+      "bottomRightX": 677,
+      "bottomRightY": 568,
+      "content": "It is recommended that a PHY and MAC support the Nominal Empty buffer model in USB mode using the RxDataValid signal. The alternative of inserting SKPs in the data stream when no SKPs have been received is not recommended. The following figure shows a sequence where a PHY operating in PCIe Mode added an SKP symbol in the data stream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 578,
+      "bottomRightX": 380,
+      "bottomRightY": 593,
+      "content": "Figure 8-25. Clock Correction – Add an SKP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 597,
+      "bottomRightX": 690,
+      "bottomRightY": 828,
+      "content": "![img-46.jpeg](img-46.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-46.jpeg"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 833,
+      "bottomRightX": 677,
+      "bottomRightY": 877,
+      "content": "Figure 8-26 shows a sequence where a PHY operating in PCIe mode removed an SKP symbol from an SKP ordered set that only had one SKP symbol, resulting in a \"bare\" COM transferring across the parallel interface.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "136",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

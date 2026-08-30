@@ -1,0 +1,141 @@
+{
+  "index": 25,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 571,
+      "topLeftY": 35,
+      "bottomRightX": 646,
+      "bottomRightY": 49,
+      "content": "3.9 Key & LED",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 89,
+      "bottomRightX": 396,
+      "bottomRightY": 106,
+      "content": "Figure 3-8 Connection Diagram of Key",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 119,
+      "bottomRightX": 569,
+      "bottomRightY": 296,
+      "content": "![img-13.jpeg](img-13.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-13.jpeg"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 334,
+      "bottomRightX": 641,
+      "bottomRightY": 432,
+      "content": "The development board includes one user LED. The user LED is connected to the IO of FPGA BANK8 and can be switched on and off via the program. The user LEDs will be on when the IO voltage is high. The user LEDs will be off when the IO voltage is low. The connection diagram is shown in Figure 3-8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 441,
+      "bottomRightX": 399,
+      "bottomRightY": 458,
+      "content": "Figure 3-9 Connection Diagram of LED",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 469,
+      "bottomRightX": 613,
+      "bottomRightY": 693,
+      "content": "![img-14.jpeg](img-14.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-14.jpeg"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 713,
+      "bottomRightX": 249,
+      "bottomRightY": 733,
+      "content": "## 3.9.2 Pin Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 752,
+      "bottomRightX": 365,
+      "bottomRightY": 768,
+      "content": "Table 3-8 Pin Distribution of Key",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 770,
+      "bottomRightX": 653,
+      "bottomRightY": 825,
+      "content": "|  Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  F_KEY | R10 | 8 | 1.5V | Key  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-15.md"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 848,
+      "bottomRightX": 368,
+      "bottomRightY": 862,
+      "content": "Table 3-9 Pin Distribution of LED",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 866,
+      "bottomRightX": 652,
+      "bottomRightY": 920,
+      "content": "|  Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  F_LED1 | R11 | 8 | 1.5V | LED indicator  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-16.md"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 168,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 611,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "19(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

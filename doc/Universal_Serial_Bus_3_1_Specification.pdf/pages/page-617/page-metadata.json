@@ -1,0 +1,111 @@
+{
+  "index": 616,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 586,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 92,
+      "bottomRightX": 679,
+      "bottomRightY": 129,
+      "content": "Figure C-6 shows the chronological sequence of events. Following the figure is a more detailed description of each stage of the multi-hop link state transition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 151,
+      "bottomRightX": 652,
+      "bottomRightY": 299,
+      "content": "![img-296.jpeg](img-296.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-296.jpeg"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 312,
+      "bottomRightX": 622,
+      "bottomRightY": 330,
+      "content": "Figure C-6. Downstream Host to Device Path Exit Latency with Hub",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 344,
+      "bottomRightX": 689,
+      "bottomRightY": 564,
+      "content": "1. The host is prepared to send a packet to Dev2, however it first needs to bring Link2 out of U1 before it is able to send the packet. The host begins the process by transmitting LFPS on RP2 to Hub1's upstream port (UP) which then starts both link partners transitioning in parallel towards U0. This latency is characterized by the larger of RP2:U1DEL and Hub1:U1DEL\n2. Once the Link2 partners are in U0, the host schedules the packet targeting Dev2. After a Host Scheduling Delay (HSD) the packet is then sent over Link2 where it then is routed to Link3. This routing incurs the latency associated with the Hub having to parse the packet header to determine the target downstream port for the packet. This latency is characterized by the hub parameter HHDL.\n3. The final hop requires Hub1:DP2 to signal LFPS over Link3 at which point the final component of the end to end latency is executed by the Link3 partners in parallel. This final ingredient to the end to end latency is characterized by the larger of Hub1:U1DEL and Dev2_UP:U1DEL.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 570,
+      "bottomRightX": 559,
+      "bottomRightY": 588,
+      "content": "The total latency for end to end link transition to U0 can be summarized as:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 598,
+      "bottomRightX": 679,
+      "bottomRightY": 615,
+      "content": "Max(RP2:U1DEL, Hub1:U1DEL) + HSD + HUB1:HHDL + Max(Hub1:U1DEL, Dev2_UP:U1DEL)",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 636,
+      "bottomRightX": 321,
+      "bottomRightY": 655,
+      "content": "### U2 → U0 Transition Latency",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 668,
+      "bottomRightX": 697,
+      "bottomRightY": 719,
+      "content": "This example highlights the end to end latency incurred when transitioning both Link2 and Link3 from U2 → U0. For the purposes of this example it is assumed that all link partners are enabled for U2 and that both Link2 and Link3 are currently in the U2 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 722,
+      "bottomRightX": 697,
+      "bottomRightY": 859,
+      "content": "1. The host is prepared to send a packet to Dev2, however it first needs to bring Link2 out of U2 before it is able to send the packet. The host begins the process by transmitting LFPS to Hub1:UP which then starts both link partners transitioning in parallel towards U0. This latency is characterized by the larger of RP2:U2DEL and Hub1:U2DEL.\n2. Once the Link2 partners are in U0 the host sends its packet targeting Dev2 over Link2 where it then needs to be routed to Link3. This incurs the latency associated with the Hub having to parse the packet header to determine the target downstream port for the packet. This latency is characterized by the hub parameter HHDL.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "C-19",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

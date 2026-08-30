@@ -1,0 +1,57 @@
+{
+  "index": 18,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 72,
+      "topLeftY": 35,
+      "bottomRightX": 217,
+      "bottomRightY": 50,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 592,
+      "topLeftY": 35,
+      "bottomRightX": 653,
+      "bottomRightY": 50,
+      "content": "3.5 DDR3",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 86,
+      "bottomRightX": 650,
+      "bottomRightY": 913,
+      "content": "|  Signal Name | FPGA (U1) Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  DDR3_BA1 | P11 | 8 | 1.5V | Bank address  |\n|  DDR3_BA2 | L6 | 9 | 1.5V | Bank address  |\n|  DDR3_CS# | P2 | 9 | 1.5V | Chip select  |\n|  DDR3_CAS# | R2 | 9 | 1.5V | Column address strobe  |\n|  DDR3_CKE | R12 | 8 | 1.5V | Clock Enable  |\n|  DDR3_ODT | N1 | 9 | 1.5V | On-Die Termination Enable  |\n|  DDR3_RAS# | N7 | 9 | 1.5V | Row address strobe  |\n|  DDR3_RESET | N9 | 9 | 1.5V | Reset  |\n|  DDR3_WE# | P1 | 9 | 1.5V | Write enable  |\n|  DDR3_CLK0_P | N8 | 9 | 1.5V | Differential clock  |\n|  DDR3_CLK0_N | M8 | 9 | 1.5V | Differential clock  |\n|  DDR3_DQ0 | M6 | 9 | 1.5V | Data  |\n|  DDR3_DQ1 | R4 | 9 | 1.5V | Data  |\n|  DDR3_DQ2 | M5 | 9 | 1.5V | Data  |\n|  DDR3_DQ3 | R6 | 9 | 1.5V | Data  |\n|  DDR3_DQ4 | L5 | 9 | 1.5V | Data  |\n|  DDR3_DQ5 | R7 | 9 | 1.5V | Data  |\n|  DDR3_DQ6 | N6 | 9 | 1.5V | Data  |\n|  DDR3_DQ7 | P7 | 9 | 1.5V | Data  |\n|  DDR3_DQ8 | M4 | 9 | 1.5V | Data  |\n|  DDR3_DQ9 | M1 | 9 | 1.5V | Data  |\n|  DDR3_DQ10 | N5 | 9 | 1.5V | Data  |\n|  DDR3_DQ11 | L1 | 9 | 1.5V | Data  |\n|  DDR3_DQ12 | N4 | 9 | 1.5V | Data  |\n|  DDR3_DQ13 | L3 | 9 | 1.5V | Data  |\n|  DDR3_DQ14 | P5 | 9 | 1.5V | Data  |\n|  DDR3_DQ15 | L2 | 9 | 1.5V | Data  |\n|  DDR3_LDM0 | R5 | 9 | 1.5V | Data input mask  |\n|  DDR3_UDM0 | M3 | 9 | 1.5V | Data input mask  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-7.md"
+    },
+    {
+      "topLeftX": 72,
+      "topLeftY": 940,
+      "bottomRightX": 169,
+      "bottomRightY": 957,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 609,
+      "topLeftY": 940,
+      "bottomRightX": 653,
+      "bottomRightY": 957,
+      "content": "12(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

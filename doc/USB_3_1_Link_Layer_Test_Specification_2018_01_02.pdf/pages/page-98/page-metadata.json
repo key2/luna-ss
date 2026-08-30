@@ -1,0 +1,182 @@
+{
+  "index": 97,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 61,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 93,
+      "bottomRightX": 598,
+      "bottomRightY": 132,
+      "content": "11. The LVS transmits an LPMA and then transitions to U1.\n12. The test fails if the PUT does not transition to U1, or if the PUT sends any packet.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 190,
+      "bottomRightX": 371,
+      "bottomRightY": 207,
+      "content": "### TD.7.38 Port Capability Tiebreaker Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 210,
+      "bottomRightX": 707,
+      "bottomRightY": 256,
+      "content": "This test verifies that the PUT accepts ports capable of both US and DS operation, and that a PUT capable of both US and DS operation resends its Port Capability info with a randomly generated tiebreaker after the first tiebreaker is the same value as its link partner's.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 262,
+      "bottomRightX": 234,
+      "bottomRightY": 276,
+      "content": "### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 285,
+      "bottomRightX": 167,
+      "bottomRightY": 299,
+      "content": "TBD",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 307,
+      "bottomRightX": 254,
+      "bottomRightY": 323,
+      "content": "### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 329,
+      "bottomRightX": 700,
+      "bottomRightY": 461,
+      "content": "1. Perform steps 1 through 3 of the Link Initialization Sequence.\n2. The LVS waits to receive the Port Capability LMP.\n3. The test fails if the Port Capability LMP received is not valid.\n4. If the LVS is configured as a Downstream Port:\n  a. The LVS sends a Port Capability LMP indicating it is capable of both US and DS operation.\n  b. The test continues at step 4.d. of the Link Initialization Sequence.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 466,
+      "bottomRightX": 412,
+      "bottomRightY": 481,
+      "content": "5. If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 487,
+      "bottomRightX": 698,
+      "bottomRightY": 625,
+      "content": "a. If the Port Capability LMP from the PUT indicates that the port only supports DS operation:\n  i. The LVS sends a Port Capability LMP indicating it is capable of both US and DS operations.\n  ii. The test continues at step 4.d of the Link Initialization Sequence.\nb. If the Port Capability LMP from the PUT indicates that the port supports both US and DS operation:\n  i. The test continues at step 6 of this test.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 631,
+      "bottomRightX": 662,
+      "bottomRightY": 646,
+      "content": "6. The LVS records the tiebreaker value on the received LMP as X, and initializes a counter to 1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 653,
+      "bottomRightX": 700,
+      "bottomRightY": 683,
+      "content": "7. The LVS sends a Port Capability LMP with DS and US capability set to 1, and its tiebreaker value set to X.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 690,
+      "bottomRightX": 462,
+      "bottomRightY": 707,
+      "content": "8. The LVS waits to receive another Port Capability LMP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 714,
+      "bottomRightX": 622,
+      "bottomRightY": 856,
+      "content": "a. The test fails if the LVS does not receive another Port Capability LMP within tPortConfigurationTimeout.\nb. If the tiebreaker value is X and the counter value is less than 5:\n  i. Increment the counter.\n  ii. Go to step 7.\nc. The test fails if the tiebreaker value is X and the counter value is 5.\nd. If the tiebreaker value is not X, move to step 9.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 863,
+      "bottomRightX": 700,
+      "bottomRightY": 894,
+      "content": "9. The LVS sends a Port Capability LMP with DS and US capability set to 1, and its tiebreaker value set higher than the tiebreaker value on the received LMP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 901,
+      "bottomRightX": 673,
+      "bottomRightY": 918,
+      "content": "10. Perform the Link Initialization Sequence starting at step 4.d with the LVS as a Downstream Port",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "90",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

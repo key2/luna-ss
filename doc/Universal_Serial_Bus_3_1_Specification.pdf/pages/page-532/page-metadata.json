@@ -1,0 +1,119 @@
+{
+  "index": 531,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 686,
+      "bottomRightY": 128,
+      "content": "Although a self-powered hub is not required to implement power switching, the hub shall support the Powered-off states for all ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 552,
+      "bottomRightY": 148,
+      "content": "For a hub with no power switches, bPwrOn2PwrGood shall be set to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 164,
+      "bottomRightX": 318,
+      "bottomRightY": 186,
+      "content": "### 10.12.1 Multiple Gangs",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 190,
+      "bottomRightX": 686,
+      "bottomRightY": 258,
+      "content": "A hub may implement any number of power and/or over-current gangs. A hub that implements more than one over-current and/or power switching gang shall set both the Logical Power Switching Mode and the Over-current Reporting Mode to indicate that power switching and over-current reporting are on a per port basis (these fields are in wHubCharacteristics).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 262,
+      "bottomRightX": 694,
+      "bottomRightY": 379,
+      "content": "When an over-current condition occurs on an over-current protection device, the over-current is signaled on all ports that are protected by that device. When the over-current is signaled, all the ports in the group are placed in the DSPORT-Powered-off or the DSPORT-Powered-off-reset state, and the C_PORT_OVER_CURRENT field is set to one on all the ports. When port status is read from any port in the group, the PORT_OVER_CURRENT field will be set to one as long as the over-current condition exists. The C_PORT_OVER_CURRENT field shall be cleared in each port individually.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 384,
+      "bottomRightX": 698,
+      "bottomRightY": 469,
+      "content": "When multiple ports share a power switch, setting PORT_POWER on any port in the group will cause the power to all ports in the group to turn on. It will not, however, because the other ports in that group to leave the DSPORT-Powered-off or the DSPORT-Powered-off-reset state. When all the ports in a group are in the DSPORT-Powered-off state or the hub is not configured, the power to the ports is turned off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 473,
+      "bottomRightX": 692,
+      "bottomRightY": 508,
+      "content": "If a hub implements both power switching and over-current, it is not necessary for the over-current groups to be the same as the power switching groups.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 512,
+      "bottomRightX": 673,
+      "bottomRightY": 582,
+      "content": "If an over-current condition occurs and power switches are present, then all power switches associated with an over-current protection circuit shall be turned off. If multiple over-current protection devices are associated with a single power switch, then that switch will be turned off when any of the over-current protection circuits indicates an over-current condition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 603,
+      "bottomRightX": 310,
+      "bottomRightY": 626,
+      "content": "### 10.13 Hub Controller",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 633,
+      "bottomRightX": 518,
+      "bottomRightY": 651,
+      "content": "The Hub Controller is logically organized as shown in Figure 10-21.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-54",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

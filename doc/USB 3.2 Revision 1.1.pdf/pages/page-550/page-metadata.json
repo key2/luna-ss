@@ -1,0 +1,111 @@
+{
+  "index": 549,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 519 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 673,
+      "bottomRightY": 176,
+      "content": "- The re-timer shall transition to Rx.Detect upon the expiration of the tRecoveryIdleTimeout timer if no successful idle symbol handshake has been observed.\n- The re-timer shall transition to Rx.Detect if Warm Reset is detected. Refer to Section E.3.1 for Warm Reset detection.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 261,
+      "topLeftY": 189,
+      "bottomRightX": 526,
+      "bottomRightY": 207,
+      "content": "Figure E-14. Recovery Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 221,
+      "bottomRightX": 668,
+      "bottomRightY": 539,
+      "content": "![img-209.jpeg](img-209.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-209.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 557,
+      "bottomRightX": 296,
+      "bottomRightY": 572,
+      "content": "### E.3.12 PassThrough Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 579,
+      "bottomRightX": 671,
+      "bottomRightY": 640,
+      "content": "PassThrough Loopback is a re-timer specific state defined by the Loopback bit (Bit 2) in the link configuration field of TS2 OS. In this state the re-timer operation shall be the same as if it is in U0, except that no error correction is allowed. The re-timer does not need to implement the two substates.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 653,
+      "bottomRightX": 428,
+      "bottomRightY": 669,
+      "content": "#### E.3.12.1 PassThrough Loopback Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 676,
+      "bottomRightX": 657,
+      "bottomRightY": 900,
+      "content": "- The re-timer shall monitor the LTSSM progression.\n- The re-timer shall not perform any error correction while looping through the traffic. Additionally, in Gen 1 operation, it shall perform one of the following.\n  - Forward all data as is including bit errors.\n  - Replace an error symbol with K28.4. Note that the re-timer shall preserve the running disparity at its transmitter but is not required to use the same disparity as decoded by the remove receiver.\n- A SRIS re-timer shall perform the clock offset compensation as necessary.\n- The re-timer shall implement and start the tLoopbackExitTimeout timer upon detecting Loopback LFPS exit signal.\n- In x2 operations, the re-timer shall pass the received data on each lane independently. The transmitter lane to lane skew does not need to be maintained.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

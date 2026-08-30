@@ -1,0 +1,137 @@
+{
+  "index": 208,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 93,
+      "bottomRightX": 595,
+      "bottomRightY": 119,
+      "content": "## 6.10 Transmitter and Receiver DC Specifications",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 138,
+      "bottomRightX": 421,
+      "bottomRightY": 160,
+      "content": "### 6.10.1 Informative ESD Protection",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 164,
+      "bottomRightX": 698,
+      "bottomRightY": 215,
+      "content": "It is recommended that all signal and power pins withstand a minimum ESD value using the human body model and the charged device model, without damage, as defined by the semiconductor industry.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 218,
+      "bottomRightX": 700,
+      "bottomRightY": 302,
+      "content": "This is a suggested ESD tolerance. The ASIC designer is expected to apply current technology and knowledge of ESD prevention circuits to protect from environmental hazards that could create long term failure, and possibly, catastrophic failure in a system. It is up to the designer to use good design practices to implement appropriate ESD protection. With ESD protection in place, the ASIC design shall meet the other electrical requirements of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 315,
+      "bottomRightX": 527,
+      "bottomRightY": 339,
+      "content": "### 6.10.2 Informative Short Circuit Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 341,
+      "bottomRightX": 692,
+      "bottomRightY": 394,
+      "content": "All Transmitters and Receivers shall support surprise hot insertion/removal without damage to the component. The Transmitter and Receiver shall be capable of withstanding sustained short circuit to ground of Txp (Rxp) and Txn (Rxn).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 412,
+      "bottomRightX": 523,
+      "bottomRightY": 435,
+      "content": "### 6.10.3 Normative High Impedance Reflections",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 437,
+      "bottomRightX": 696,
+      "bottomRightY": 523,
+      "content": "During an asynchronous reset event, one device may be reset while the other device is transmitting. The device under reset is required to disconnect the receiver termination. During this time, the device under reset may be receiving active data. Since the data is not terminated, the differential voltage into the receiver will be doubled. For a short channel, the receiver may experience a total of 2* VDIFF.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 530,
+      "bottomRightX": 696,
+      "bottomRightY": 584,
+      "content": "The receiver shall tolerate this doubling of the negative voltage that can occur if the Rx termination is disconnected. A part shall tolerate a 20 ms event that doubles the voltage on the receiver input when the termination is disconnected 10,000 times over the life time of the part.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 608,
+      "bottomRightX": 351,
+      "bottomRightY": 631,
+      "content": "## 6.11 Receiver Detection",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 653,
+      "bottomRightX": 357,
+      "bottomRightY": 675,
+      "content": "### 6.11.1 Rx Detect Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 680,
+      "bottomRightX": 698,
+      "bottomRightY": 799,
+      "content": "The Receiver Detection circuit is implemented as part of a Transmitter and shall correctly detect whether a load impedance equivalent to a DC impedance RRX-DC (Table 6-21) is present. The Rx detection operates on the principle of the RC time constant of the circuit. This time constant changes based on the presence of the receiver termination. This is conceptually illustrated in Figure 6-36. In this figure, R_Detect is the implementation specific charging resistor. C_AC is the AC capacitor that is in the circuit only if R_Term is also present, otherwise, only C_Parasitic is present.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "6-53",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

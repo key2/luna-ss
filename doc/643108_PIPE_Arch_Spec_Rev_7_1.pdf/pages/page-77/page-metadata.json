@@ -1,0 +1,57 @@
+{
+  "index": 76,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 122,
+      "bottomRightX": 437,
+      "bottomRightY": 138,
+      "content": "Table 6-25. External Output Signals (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 696,
+      "bottomRightY": 467,
+      "content": "|  Name | Active Level | Description |   |   | Relevant Protocols  |\n| --- | --- | --- | --- | --- | --- |\n|  DataBusWidth[1:0] | N/A | This field reports the width of the data bus that the PHY is configured for. This field is optional. For Original PIPE architecture: |   |   | PCIe, SATA, USB, DisplayPort, and USB4  |\n|   |   |  [1] | [0] | Description  |   |\n|   |   |  0 | 0 | 32-bit mode  |   |\n|   |   |  0 | 1 | 16-bit mode  |   |\n|   |   |  1 | 0 | 8-bit mode  |   |\n|   |   |  1 | 1 | Reserved  |   |\n|   |   |  For SerDes architecture:  |   |   |   |\n|   |   |  [1] | [0] | Description  |   |\n|   |   |  0 | 0 | 10-bit mode  |   |\n|   |   |  0 | 1 | 20-bit mode  |   |\n|   |   |  1 | 0 | 40-bit mode  |   |\n|   |   |  1 | 1 | 80-bit mode  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-59.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "77",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

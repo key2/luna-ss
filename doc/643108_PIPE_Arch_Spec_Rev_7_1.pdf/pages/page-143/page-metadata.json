@@ -1,0 +1,93 @@
+{
+  "index": 142,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 122,
+      "bottomRightX": 677,
+      "bottomRightY": 167,
+      "content": "is negative. The example shows how TxCompliance is used to transmit the PCIe compliance pattern in PCIe mode. TxCompliance is only used in PCIe mode and is qualified by TxDataValid when TxDataValid is being used.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 175,
+      "bottomRightX": 364,
+      "bottomRightY": 191,
+      "content": "Figure 8-34. Setting Negative Disparity",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 195,
+      "bottomRightX": 700,
+      "bottomRightY": 481,
+      "content": "![img-55.jpeg](img-55.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-55.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 495,
+      "bottomRightX": 503,
+      "bottomRightY": 517,
+      "content": "### 8.19 Electrical Idle – PCIe Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 523,
+      "bottomRightX": 695,
+      "bottomRightY": 626,
+      "content": "The base specification requires that devices send an Electrical Idle ordered set before Tx+/Tx- goes to the electrical idle state. For a 16-bit interface or 32-bit interface, the MAC must always align the electrical idle ordered set on the parallel interface so that the COM symbol is on the low-order data lines (TxDataK[7:0]). Figure 8-35 shows an example of electrical idle exit and entry for a PCIe 8 GT/s or 16 GT/s interface. TxDataValid must be asserted whenever TxElecIdle toggles as it is used as a qualifier for sampling TxElecIdle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 638,
+      "bottomRightX": 623,
+      "bottomRightY": 653,
+      "content": "Note: For SerDes architecture, 1 bit of TxElecIdle is required per 16 bits of data.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 965,
+      "content": "143",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

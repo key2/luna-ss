@@ -1,0 +1,137 @@
+{
+  "index": 94,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 61,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 92,
+      "bottomRightX": 708,
+      "bottomRightY": 266,
+      "content": "6. When the timer expires, the LVS verifies that the device is in Compliance Mode by sending Ping.LFPS until it can verify that the LVS is receiving a Compliance Pattern, (at most by the COMs in the 4th Compliance Pattern).\n7. The test fails if the LVS cannot verify a Compliance Pattern coming from the PUT.\n8. The LVS transmits a Reset.LFPS and enters Rx.Detect.\n9. The LVS and PUT perform the Link Initialization Sequence to bring the LVS and PUT link to U0.\n10. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n11. The test passes if all exchanges are successful and the PUT stays in U0 for 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 348,
+      "bottomRightX": 499,
+      "bottomRightY": 365,
+      "content": "### TD.7.34 Exit Compliance Mode Test (Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 367,
+      "bottomRightX": 680,
+      "bottomRightY": 396,
+      "content": "This test verifies that a downstream port instructed to Reset while in Compliance Mode initiates a Warm Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 406,
+      "bottomRightX": 234,
+      "bottomRightY": 420,
+      "content": "### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 427,
+      "bottomRightX": 179,
+      "bottomRightY": 441,
+      "content": "7.4.2#9",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 451,
+      "bottomRightX": 198,
+      "bottomRightY": 463,
+      "content": "7.5.4.3.2#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 472,
+      "bottomRightX": 189,
+      "bottomRightY": 486,
+      "content": "7.5.5.1#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 497,
+      "bottomRightX": 187,
+      "bottomRightY": 509,
+      "content": "7.5.5.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 517,
+      "bottomRightX": 253,
+      "bottomRightY": 534,
+      "content": "### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 540,
+      "bottomRightX": 708,
+      "bottomRightY": 902,
+      "content": "1. The LVS prompts the test operator to enable Compliance Mode through USB30CV. CV will send SetPortFeature(PORT_LINK_STATE) = Compliance Mode for the PUT.\n2. The LVS presents termination to the PUT.\n3. When the LVS detects VBUS and Terminations from the PUT, the LVS starts a timer for tPollingLFPSTimeout and does not transmit an LFPS.\n4. When the timer expires, the LVS verifies that the device is in Compliance Mode by sending Ping.LFPS until it can verify that the LVS is receiving a Compliance Pattern, (at most by the COMs in the 4th Compliance Pattern).\n5. The test fails if the LVS cannot verify a Compliance Pattern coming from the PUT.\n6. The LVS prompts the test operator to Reset the PUT through USB30CV and then hit \"OK\".\n7. The LVS waits to receive a Warm Reset LFPS from PUT.\n8. The test fails if the LVS does not receive a Warm Reset LFPS before the test operator hits \"OK\"\n9. The LVS closes the prompt automatically when it receives a Warm Reset LFPS.\n10. The LVS transitions to Rx.Detect.Reset for the duration of the Warm Reset LFPS.\n11. The LVS transitions to Rx.Detect and the LVS and PUT transition through Polling to U0.\n12. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n13. The test passes after the Port Configuration exchange is successful and the link stays in U0 for 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "87",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 969,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

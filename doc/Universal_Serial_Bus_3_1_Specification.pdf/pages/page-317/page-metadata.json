@@ -1,0 +1,191 @@
+{
+  "index": 316,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 676,
+      "bottomRightY": 111,
+      "content": "If LDM Valid is zero, then the LDM Link Delay shall be calculated using the following formula:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 119,
+      "bottomRightX": 626,
+      "bottomRightY": 136,
+      "content": "$$LDM \\text{ Link Delay} = TP \\text{ Transmission Time} - tTP \\text{ Transmission Delay}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 144,
+      "bottomRightX": 679,
+      "bottomRightY": 198,
+      "content": "If LDM Valid is one, then the received LDM TS Response LMP of a Timestamp Exchange provides the Requester with the Response Delay field which defines the delay between when the LDM Request was received and the LDM Response was transmitted by the Responder ((t3 - t2).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 206,
+      "bottomRightX": 681,
+      "bottomRightY": 272,
+      "content": "When the LDM TS Response LMP of a Timestamp Exchange is received, a Requester has accumulated the timestamps t1 and t4 that can be combined with the Response Delay (t3 - t2 timestamp) received from the Responder to calculate the value of LDM Link Delay using the following formula:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 274,
+      "bottomRightX": 656,
+      "bottomRightY": 305,
+      "content": "$$LDM \\text{ Link Delay} = \\frac{(t4 - t1) - (\\text{Response Delay})}{2} + TP \\text{ Transmission Time} - tTP \\text{ Transmission Delay}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 313,
+      "bottomRightX": 700,
+      "bottomRightY": 399,
+      "content": "The values t1, t4, and Response Delay indicate the timestamps captured during the LDM Exchanges as illustrated in Figure 8-11. The default TP transmission time (tTPTransmissionDelay) is corrected by the actual TP Transmission Time of the link. After the LDM Link Delay calculation is complete, the values of timestamps t1 and t4 in the Requester LDM Context will be overwritten with the values of the next Timestamp Exchange.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 416,
+      "bottomRightX": 508,
+      "bottomRightY": 435,
+      "content": "### 8.4.8.5 PTM Bus Interval Boundary Device Calculation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 441,
+      "bottomRightX": 565,
+      "bottomRightY": 459,
+      "content": "The bus interval boundary is calculated by a device when an ITP is received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 464,
+      "bottomRightX": 380,
+      "bottomRightY": 481,
+      "content": "An ITP provides a device with three values:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 493,
+      "bottomRightX": 684,
+      "bottomRightY": 597,
+      "content": "- The Bus Interval Counter(RxITP) subfield contains the current Frame Number.\n- The Delta(RxITP) subfield contains the delay from the start of the currently received ITP to the previous bus interval boundary.\n- The Correction(RxITP) field contains any negative delay that the ITP accumulated as it passed through hubs.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 606,
+      "bottomRightX": 573,
+      "bottomRightY": 625,
+      "content": "If Delta(RxITP) is greater than or equal to 7500, the device shall ignore the ITP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 633,
+      "bottomRightX": 696,
+      "bottomRightY": 683,
+      "content": "If Delta(RxITP) is less than 7500, the device shall apply Delta(RxITP) and Correction(RxITP) values and the LDM Link Delay (determined from preceding TS Exchanges) to set the value of the PTM Delta Counter at the time an ITP is received (tITUFP) using the following formula:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 351,
+      "topLeftY": 688,
+      "bottomRightX": 520,
+      "bottomRightY": 706,
+      "content": "$$PTM \\text{ Delta Counter}_{(\\text{tITUFP})} =$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 714,
+      "bottomRightX": 696,
+      "bottomRightY": 731,
+      "content": "$$\\text{MODULUS}(\\text{ISOCH\\_DELAY} + \\text{LDM Link Delay} + \\text{Delta}_{(\\text{RxITP})} - \\text{Correction}_{(\\text{RxITP})}, 7500)$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 739,
+      "bottomRightX": 692,
+      "bottomRightY": 774,
+      "content": "Where MODULUS(number, divisor) returns the integer remainder after number is divided by divisor and ISOCH_DELAY is the value written to the device by a SET_ISOCH_DELAY request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 786,
+      "bottomRightX": 692,
+      "bottomRightY": 836,
+      "content": "At the same time, a device shall use the values of Bus Interval Counter(RxITP) and Delta(RxITP) subfields received in the ITP to set the value of the PTM Bus Interval Counter at the time an ITP is received (tITUFP) using the following formula:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 309,
+      "topLeftY": 841,
+      "bottomRightX": 514,
+      "bottomRightY": 858,
+      "content": "$$PTM \\text{ Bus Interval Counter}_{(\\text{tITUFP})} =$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 155,
+      "topLeftY": 867,
+      "bottomRightX": 666,
+      "bottomRightY": 886,
+      "content": "$$\\text{Bus Interval Counter}_{(\\text{RxITP})} + \\text{ROUNDDOWN}((\\text{LDM Link Delay} + \\text{Delta}_{(\\text{RxITP})}) / 7500))$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-23",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

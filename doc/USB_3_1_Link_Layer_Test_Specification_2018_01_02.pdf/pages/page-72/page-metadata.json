@@ -1,0 +1,173 @@
+{
+  "index": 71,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 92,
+      "bottomRightX": 681,
+      "bottomRightY": 154,
+      "content": "c. The PUT interrupts a TS1 Ordered Set to transmit a SKP or SYNC Ordered Set (between TS2 Ordered Sets is OK).\nd. The PUT continues to transmit TS2 Ordered Sets after tPollingConfigurationTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 160,
+      "bottomRightX": 686,
+      "bottomRightY": 265,
+      "content": "16. The LVS transmits a single SDS Ordered Set and then data blocks with Idle Symbols.\n17. The test fails if upon entering U0, the PUT does not transmit the Header Sequence Number Advertisement and the Type 1 and Type 2 Rx Header Buffer Credit Advertisements before their respective timeouts, PENDING_HP_TIMER and Type 1 and Type 2 CREDIT_HP_TIMERs, expire.\n18. The LVS and PUT continue the Link Initialization Sequence starting at step two.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 302,
+      "bottomRightX": 250,
+      "bottomRightY": 317,
+      "content": "# Subtest 5 (TD 7.1.5)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 324,
+      "bottomRightX": 602,
+      "bottomRightY": 384,
+      "content": "1. The LVS waits to receive Polling.LFPS bursts (as components of the SCD1)\n2. The LVS transmits four regular Polling.LFPS bursts and transitions to Polling.RxEQ\n3. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 390,
+      "bottomRightX": 637,
+      "bottomRightY": 452,
+      "content": "a. The PUT does not switch to SuperSpeed operation and Polling.RxEQ state after tPollingSCDLFPSTimeout\nb. The PUT does not continue to send Polling.LFPS up until tPollingSCDLFPSTimeout.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 458,
+      "bottomRightX": 377,
+      "bottomRightY": 473,
+      "content": "4. Continue to Subtest 1 (TD 7.01.1) step 5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 540,
+      "bottomRightX": 450,
+      "bottomRightY": 556,
+      "content": "### TD.7.2 Link Commands Framings Robustness Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 559,
+      "bottomRightX": 664,
+      "bottomRightY": 590,
+      "content": "This test verifies that the PUT can tolerate link commands having one symbol error in the LCSTART framing. Here are the combinations to be tested:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 597,
+      "bottomRightX": 292,
+      "bottomRightY": 655,
+      "content": "A. ERR SLC SLC EPF\nB. SLC ERR SLC EPF\nC. SLC SLC ERR EPF\nD. SLC SLC SLC ERR",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 671,
+      "bottomRightX": 473,
+      "bottomRightY": 687,
+      "content": "The Port Configuration transaction will be used for this purpose.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 694,
+      "bottomRightX": 234,
+      "bottomRightY": 708,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 717,
+      "bottomRightX": 189,
+      "bottomRightY": 731,
+      "content": "7.3.4#1,2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 739,
+      "bottomRightX": 254,
+      "bottomRightY": 754,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 762,
+      "bottomRightX": 708,
+      "bottomRightY": 838,
+      "content": "1. Perform the Link Initialization Sequence, but transmit all LCRD_X or LCRD1_X with an error in the first LCSTART symbol.\n2. The test passes if the Link Initialization Sequence passes.\n3. Repeat the above steps with an error in the second, third, and fourth LCSTART symbols as shown above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "64",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "index": 95,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 264,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 712,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 122,
+      "bottomRightX": 462,
+      "bottomRightY": 139,
+      "content": "### TD.7.35 Exit U3 by Reset Test (Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 141,
+      "bottomRightX": 627,
+      "bottomRightY": 159,
+      "content": "This test verifies that a downstream port instructed to Reset during U3 initiates a Warm Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 165,
+      "bottomRightX": 235,
+      "bottomRightY": 179,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 186,
+      "bottomRightX": 217,
+      "bottomRightY": 202,
+      "content": "7.2.4.2.4#1,4,5",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 210,
+      "bottomRightX": 190,
+      "bottomRightY": 223,
+      "content": "7.5.9.2#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 232,
+      "bottomRightX": 254,
+      "bottomRightY": 248,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 253,
+      "bottomRightX": 645,
+      "bottomRightY": 384,
+      "content": "1. Perform the Link Initialization Sequence to bring the LVS and PUT link to U0.\n2. The LVS software prompts the test operator to Suspend the PUT to U3 through USB30CV.\n3. The LVS waits to receive an LGO_U3 from the PUT.\n4. The LVS sends an LAU when it receives an LGO_U3 from the PUT.\n5. The LVS waits to receive an LPMA from the PUT.\n6. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 390,
+      "bottomRightX": 614,
+      "bottomRightY": 452,
+      "content": "a. The LVS does not receive an LGO_U3\nb. The LVS does not receive an LPMA before PM_ENTRY_TIMER deadline.\nc. The PUT fails to transition to U3 after PM_ENTRY_TIMER expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 458,
+      "bottomRightX": 708,
+      "bottomRightY": 663,
+      "content": "7. The LVS prompts the test operator to Reset the PUT through USB30CV and then hit \"OK\" on the prompt.\n8. The LVS waits to receive a Warm Reset LFPS from PUT.\n9. The test fails if no Warm Reset LFPS is received by the LVS before the test operator hits \"OK\".\n10. When the LVS receives a Warm Reset LFPS the prompt is closed automatically.\n11. The LVS transitions to Rx.Detect.Reset for the duration of the Warm Reset LFPS.\n12. The LVS transitions to Rx.Detect and the LVS and PUT transition through Polling to U0.\n13. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n14. The test passes after the Port Configuration exchange is successful and the link stays in U0 for 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 721,
+      "bottomRightX": 436,
+      "bottomRightY": 738,
+      "content": "### TD.7.36 Exit U3 Test (Host Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 740,
+      "bottomRightX": 546,
+      "bottomRightY": 757,
+      "content": "This test verifies that a downstream port initiates U3 exit with a U3 exit LFPS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 763,
+      "bottomRightX": 695,
+      "bottomRightY": 809,
+      "content": "Note: This test is performed on host silicon only. This test is not performed on end products. The operator must install the Product-Specific host controller driver to perform this test. It cannot be tested with the Compliance driver. The LVS is configured to appear to the host controller as a device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 816,
+      "bottomRightX": 235,
+      "bottomRightY": 830,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 838,
+      "bottomRightX": 217,
+      "bottomRightY": 853,
+      "content": "7.2.4.2.4#1,4,5",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 860,
+      "bottomRightX": 198,
+      "bottomRightY": 876,
+      "content": "7.2.4.2.7#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 884,
+      "bottomRightX": 189,
+      "bottomRightY": 899,
+      "content": "7.5.9.1#4",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 905,
+      "bottomRightX": 189,
+      "bottomRightY": 921,
+      "content": "7.5.9.2#5",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "88",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

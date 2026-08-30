@@ -1,0 +1,120 @@
+{
+  "index": 136,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 414,
+      "bottomRightY": 148,
+      "content": "Figure 8-26. Clock Correction – Remove an SKP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 152,
+      "bottomRightX": 700,
+      "bottomRightY": 382,
+      "content": "![img-47.jpeg](img-47.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-47.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 395,
+      "bottomRightX": 364,
+      "bottomRightY": 417,
+      "content": "### 8.15 Error Detection",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 425,
+      "bottomRightX": 696,
+      "bottomRightY": 583,
+      "content": "The PHY is responsible for detecting receive errors of several types. These errors are signaled to the MAC layer using the receiver status signals (RxStatus[2:0]). Because of higher level error detection mechanisms (like CRC) built into the Data Link layer, there is no need to specifically identify symbols with errors, but reasonable timing information about when the error occurred in the data stream is important. When a receive error occurs, the appropriate error code is asserted for one clock cycle at the point in the data stream across the parallel interface closest to where the error actually occurred. There are four error conditions (five for SATA mode) that can be encoded on the RxStatus signals. If more than one error should happen to occur on a received byte (or set of bytes transferred across a 16-bit, 32-bit, or 64-bit interface), the errors should be signaled with the priority shown as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 588,
+      "bottomRightX": 627,
+      "bottomRightY": 685,
+      "content": "1. 8B/10B decode error or block decode error\n2. Elastic buffer overflow\n3. Elastic buffer underflow (Cannot occur in Nominal Empty buffer model)\n4. Disparity errors\n5. Misalign (SATA mode only)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 692,
+      "bottomRightX": 695,
+      "bottomRightY": 735,
+      "content": "If an error occurs during an SKP ordered set or ALIGN, such that the error signaling and SKP or ALIGN added and removed signaling on RxStatus would occur on the same PCLK, then the error signaling has precedence.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 741,
+      "bottomRightX": 693,
+      "bottomRightY": 786,
+      "content": "Note that the PHY does not signal 128/130B (PCIe) or 128/132B (USB) header errors. The raw received header bits are passed across the interface and the controller is responsible for any block header error detection and handling.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 807,
+      "bottomRightX": 417,
+      "bottomRightY": 827,
+      "content": "### 8.15.1 8B/10B Decode Errors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 835,
+      "bottomRightX": 695,
+      "bottomRightY": 894,
+      "content": "For a detected 8B/10B decode error, the PHY should place an End Bad (EDB) symbol (for PCIe or SATA) or SUB symbol (for USB) in the data stream in place of the bad byte, and encode RxStatus with a decode error during the clock cycle when the affected byte is transferred across the parallel interface. In the following example, the receiver",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 965,
+      "content": "137",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

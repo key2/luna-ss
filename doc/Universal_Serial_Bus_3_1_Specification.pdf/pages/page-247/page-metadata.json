@@ -1,0 +1,182 @@
+{
+  "index": 246,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 690,
+      "bottomRightY": 126,
+      "content": "handling also needs to be specified such that any errors that will invalidate or corrupt a packet or a link command can be detected and a link error can be recovered.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 697,
+      "bottomRightY": 200,
+      "content": "There are various types of errors at the link layer. This includes an error on a packet or a link command, or an error during the link training process, or an error when a link is in transition from one state to another. The detection and recovery from those link errors are described with details in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 214,
+      "bottomRightX": 360,
+      "bottomRightY": 235,
+      "content": "### 7.3.3 Link Error Statistics",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 241,
+      "bottomRightX": 700,
+      "bottomRightY": 274,
+      "content": "To facilitate the quality of the link operation, two counts of link error statistics are implemented and accessible by the upper layer for its decision if port re-configuration is needed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 289,
+      "bottomRightX": 311,
+      "bottomRightY": 307,
+      "content": "#### 7.3.3.1 Link Error Count",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 313,
+      "bottomRightX": 697,
+      "bottomRightY": 364,
+      "content": "The Link Error Count is defined to record the number of events when a port transitions from U0 to Recovery to recover an error event. Except for the upstream port in SuperSpeed operation, all ports shall implement the Link Error Count.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 369,
+      "bottomRightX": 523,
+      "bottomRightY": 386,
+      "content": "The operation of Link Error count shall adhere to the following rules.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 389,
+      "bottomRightX": 682,
+      "bottomRightY": 459,
+      "content": "- A port in SuperSpeedPlus operation shall implement the Link Error Count that counts up to 65,535 error events. The Link Error Count shall saturate if it has reached its maximum count value.\n- The Link Error Count shall be reset to zero in any one of the following conditions.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 464,
+      "bottomRightX": 291,
+      "bottomRightY": 544,
+      "content": "1. PowerOn Reset\n2. Entry to Polling.Idle\n3. Directed\n4. Hot Reset",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 551,
+      "bottomRightX": 663,
+      "bottomRightY": 585,
+      "content": "- The Link Error Count shall be incremented by one each time a port transitions from U0 to Recovery to recover an error event.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 599,
+      "bottomRightX": 309,
+      "bottomRightY": 616,
+      "content": "#### 7.3.3.2 Soft Error Count",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 623,
+      "bottomRightX": 682,
+      "bottomRightY": 673,
+      "content": "The Soft Error Count is defined to record the number of error events that are either correctable or detectable and do not require the link to recover through transition to Recovery. Only a port in SuperSpeedPlus operation may optionally implement the Soft Error Count.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 678,
+      "bottomRightX": 544,
+      "bottomRightY": 695,
+      "content": "The operation of the Soft Error Count shall adhere to the following rules.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 699,
+      "bottomRightX": 662,
+      "bottomRightY": 752,
+      "content": "- A port in SuperSpeedPlus operation shall count up to 65,535 error events. The Soft Error Count shall saturate if it has reached its maximum count value\n- The Soft Error Count shall be reset to zero in any one of the following conditions.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 757,
+      "bottomRightX": 291,
+      "bottomRightY": 839,
+      "content": "1. PowerOn Reset\n2. Entry to Polling.Idle\n3. Directed\n4. Hot Reset",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 844,
+      "bottomRightX": 641,
+      "bottomRightY": 861,
+      "content": "- The Soft Error Count shall increment by one if any of the following errors is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 866,
+      "bottomRightX": 380,
+      "bottomRightY": 904,
+      "content": "1. Single-bit error in the block header.\n2. CRC-5 or CRC-16 or CRC-32 error.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "7-35",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+|  Name | Active Level | Description | Relevant Protocols  |
+| --- | --- | --- | --- |
+|  CLK | Edge | This differential input is used to generate the bit-rate clock for the PHY transmitter and receiver. Specifications for this clock signal (frequency, jitter, and so forth) are implementation-dependent and must be specified for each implementation. This clock may have a spread spectrum modulation. | PCIe, SATA, USB, DisplayPort, and USB4  |
+|  PCLK | Rising Edge | **This signal is relevant for the "PCLK as PHY Input" mode only.** All data movement across the parallel interface is synchronized to this clock. This clock operates at a frequency set by the **PCLK rate**. The rising edge of the clock is the reference for all signals. Spread spectrum modulation on this clock is allowed. | PCIe, SATA, USB, DisplayPort, USB4  |

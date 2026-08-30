@@ -1,0 +1,110 @@
+{
+  "index": 433,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 403 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 678,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 95,
+      "bottomRightX": 671,
+      "bottomRightY": 254,
+      "content": "- The port's link shall accept all U1 entry requests by the link partner unless the hub has one or more packets/link commands to transmit on the port or one or more of the hub downstream ports has a link in U0 or recovery.\n- The port's link shall accept U2 entry requests by its link partner unless the hub has one or more packets/link commands to transmit on the port or one or more of the hub downstream ports has a link in U0, U1, or recovery.\n- The PM timer may be disabled and the PM timer values shall be ignored.\n- The port's link shall initiate a transition to U2 if all the hub downstream ports are in U2 or a lower link state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 273,
+      "bottomRightX": 311,
+      "bottomRightY": 290,
+      "content": "U1_ENABLE = 1, U2_ENABLE = 1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 302,
+      "bottomRightX": 675,
+      "bottomRightY": 519,
+      "content": "- The port's link shall accept U1 or U2 entry requests by its link partner unless the hub has one or more packets/link commands to transmit on the port.\n  A U1 entry request shall not be accepted if one or more of the hub downstream ports has a link in U0 or recovery.\n  A U2 entry request shall not be accepted if one or more of the hub downstream ports has a link in U0, U1, or recovery.\n- The port's link shall initiate a transition to U1 if all the hub downstream ports are in U1 or a lower link state unless the conditions for U2 entry are satisfied.\n- The port's link shall initiate a transition to U2 if all the hub downstream ports are in U2 or a lower link state. Note that if the port is already in U1, then the port shall transition to U0 before transitioning to U2.\n- The PM timer may be disabled and the PM timer values shall be ignored.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 539,
+      "bottomRightX": 637,
+      "bottomRightY": 571,
+      "content": "A port transitions to one of the Enabled U0 states (depending on the U1 and U2 Enable values) in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 583,
+      "bottomRightX": 671,
+      "bottomRightY": 846,
+      "content": "- From U1 if the link partner successfully initiates a transition to U0.\n- From U2 if the link partner successfully initiates a transition to U0.\n- From U1 if there is a status change on a downstream port.\n- From U2 if there is a status change on a downstream port.\n- From U1 if a hub downstream port's link initiates a transition to U0.\n- From U2 if a hub downstream port's link initiates a transition to U0.\n- From an attempt to transition from the U0 to the U1 state if the upstream port's link partner rejects the transition attempt\n- From an attempt to transition from the U0 to the U2 state if the upstream port's link partner rejects the transition attempt\n- From U3 if the upstream port of the hub receives wakeup signaling.\n- From U3 if there is a status change on a downstream port or a local power status change and remote wakeup is enabled for the corresponding event type.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 866,
+      "bottomRightX": 373,
+      "bottomRightY": 883,
+      "content": "#### 10.6.2.2 Attempt U0 – U1 Transition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 887,
+      "bottomRightX": 623,
+      "bottomRightY": 904,
+      "content": "In this state the port attempts to transition its link from the U0 state to the U1 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "index": 220,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 345,
+      "bottomRightY": 111,
+      "content": "### 7.2.1.2.2 Data Packet Payload",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 115,
+      "bottomRightX": 642,
+      "bottomRightY": 132,
+      "content": "The DPP section consists of 0 to 1024 bytes of data payload followed by 4 bytes CRC-32.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 137,
+      "bottomRightX": 573,
+      "bottomRightY": 154,
+      "content": "CRC-32 protects the data integrity of the data payload. CRC-32 is as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 158,
+      "bottomRightX": 688,
+      "bottomRightY": 300,
+      "content": "- The CRC-32 polynomial shall be 04C1 1DB7h.\n- The CRC-32 Initial value shall be FFFF FFFFh.\n- CRC-32 shall be calculated for all bytes of the DPP, not inclusive of any packet framing symbols.\n- CRC-32 calculation shall begin at byte 0, bit 0 and continue to bit 7 of each of the bytes of the DPP.\n- The remainder of CRC-32 shall be complemented.\n- The residual of CRC-32 shall be C704DD7Bh.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 304,
+      "bottomRightX": 692,
+      "bottomRightY": 338,
+      "content": "Note: The inversion of the CRC-32 remainder adds an offset of FFFF FFFFh that will create a constant CRC-32 residual of C704DD7Bh at the receiver side.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 343,
+      "bottomRightX": 688,
+      "bottomRightY": 377,
+      "content": "Figure 7-10 is an illustration of CRC-32 remainder generation. The output bit ordering is listed in Table 7-2.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 130,
+      "topLeftY": 394,
+      "bottomRightX": 696,
+      "bottomRightY": 704,
+      "content": "![img-172.jpeg](img-172.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-172.jpeg"
+    },
+    {
+      "topLeftX": 275,
+      "topLeftY": 713,
+      "bottomRightX": 549,
+      "bottomRightY": 730,
+      "content": "Figure 7-10. CRC-32 Remainder Generation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-9",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

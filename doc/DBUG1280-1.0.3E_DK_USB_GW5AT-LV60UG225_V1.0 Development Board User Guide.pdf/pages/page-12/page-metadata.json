@@ -1,0 +1,103 @@
+{
+  "index": 11,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 35,
+      "bottomRightX": 241,
+      "bottomRightY": 49,
+      "content": "2 Development Board Introduction",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 537,
+      "topLeftY": 35,
+      "bottomRightX": 645,
+      "bottomRightY": 49,
+      "content": "2.3 PCB Components",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 95,
+      "bottomRightX": 280,
+      "bottomRightY": 121,
+      "content": "## 2.3 PCB Components",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 136,
+      "bottomRightX": 336,
+      "bottomRightY": 153,
+      "content": "Figure 2-3 PCB Components",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 161,
+      "bottomRightX": 648,
+      "bottomRightY": 505,
+      "content": "![img-4.jpeg](img-4.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-4.jpeg"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 526,
+      "bottomRightX": 330,
+      "bottomRightY": 552,
+      "content": "## 2.4 System Block Diagram",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 566,
+      "bottomRightX": 366,
+      "bottomRightY": 583,
+      "content": "Figure 2-4 System Block Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 595,
+      "bottomRightX": 639,
+      "bottomRightY": 869,
+      "content": "![img-5.jpeg](img-5.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-5.jpeg"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 617,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "5(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

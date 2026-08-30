@@ -1,0 +1,164 @@
+{
+  "index": 513,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 111,
+      "bottomRightX": 691,
+      "bottomRightY": 159,
+      "content": "## 10.7 SuperSpeed Hub Header Packet Forwarding and Data Repeater",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 166,
+      "bottomRightX": 684,
+      "bottomRightY": 201,
+      "content": "The SuperSpeed Hub uses a store and forward model for header packets and a repeater model for data that combined provide the following general functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 204,
+      "bottomRightX": 295,
+      "bottomRightY": 221,
+      "content": "In the downstream direction:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 226,
+      "bottomRightX": 484,
+      "bottomRightY": 317,
+      "content": "- Validates header packets\n- Sets up connection to selected downstream port\n- Forwards header packets to downstream ports\n- Forwards data payload to downstream port if present\n- Sets up and tears down connectivity on packet boundaries",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 322,
+      "bottomRightX": 277,
+      "bottomRightY": 339,
+      "content": "In the upstream direction:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 344,
+      "bottomRightX": 484,
+      "bottomRightY": 435,
+      "content": "- Validates header packets\n- Sets up connection to upstream port\n- Forwards header packets to the upstream port\n- Forwards data packet payload to upstream port if present\n- Sets up and tears down connectivity on packet boundaries",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 450,
+      "bottomRightX": 477,
+      "bottomRightY": 472,
+      "content": "### 10.7.1 SuperSpeed Hub Elasticity Buffer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 476,
+      "bottomRightX": 676,
+      "bottomRightY": 544,
+      "content": "There are no direct specifications for elasticity buffer behavior in a SuperSpeed hub. However, note that a SuperSpeed hub must meet the requirements in Section 10.7.3 for the maximum variation in propagation delay for header packets that are forwarded from the upstream port to a downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 558,
+      "bottomRightX": 344,
+      "bottomRightY": 579,
+      "content": "### 10.7.2 SKP Ordered Sets",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 585,
+      "bottomRightX": 695,
+      "bottomRightY": 619,
+      "content": "A SuperSpeed hub transmits SKP ordered sets, following the rules for all transmitters in Chapter 6, for all transmissions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 633,
+      "bottomRightX": 360,
+      "bottomRightY": 655,
+      "content": "### 10.7.3 Interpacket Spacing",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 660,
+      "bottomRightX": 660,
+      "bottomRightY": 695,
+      "content": "When a SuperSpeed hub originates or forwards packets, Data packet headers and data packet payloads shall be sent as required in Section 7.2.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 700,
+      "bottomRightX": 688,
+      "bottomRightY": 750,
+      "content": "When a SuperSpeed hub forwards a header packet downstream and the downstream port link is in U0 when the header packet is received on the hub upstream port the propagation delay variation shall not be more than tPropagationDelayJitterLimit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 764,
+      "bottomRightX": 595,
+      "bottomRightY": 786,
+      "content": "### 10.7.4 SuperSpeed Header Packet Buffer Architecture",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 791,
+      "bottomRightX": 681,
+      "bottomRightY": 892,
+      "content": "The specification does not require a specific architecture for the header packet buffers in a SuperSpeed hub. An example architecture that meets the functional requirements of this specification is shown in Figure 10-15 and Figure 10-16 to illustrate the functional behavior of a SuperSpeed hub. Figure 10-15 shows a SuperSpeed hub with a four header packet Rx buffer for the upstream port and a four header packet Tx buffer for each of the downstream ports. Figure 10-16 shows a four header packet Rx buffer for each of the downstream ports and a four header",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 981,
+      "bottomRightX": 126,
+      "bottomRightY": 996,
+      "content": "10-36",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+|  Name | Active Level | Description | Relevant Protocols  |
+| --- | --- | --- | --- |
+|  RxCLK | Rising Edge | **This clock signal is only used in the SerDes architecture.** Recovered clock is used for RxData in the SerDes architecture. When RxValid deasserts, the PHY must keep the RxCLK running for at least eight clocks to enable the MAC to latch the deassertion of RxValid. The PHY must advertise a maximum RxCLK value in its datasheet (MaxRxClkFrequency) that it guarantees not to exceed even when RxValid is deasserted. | PCIe, USB, DisplayPort Rx, and USB4  |
+|  RxCLK2 | Rising Edge | **This clock signal is only used in the SerDes architecture.** Recovered clock is used for RxData2 in the SerDes architecture. | DisplayPort Rx  |

@@ -1,0 +1,57 @@
+{
+  "index": 103,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 92,
+      "bottomRightX": 668,
+      "bottomRightY": 539,
+      "content": "![img-42.jpeg](img-42.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-42.jpeg"
+    },
+    {
+      "topLeftX": 298,
+      "topLeftY": 559,
+      "bottomRightX": 584,
+      "bottomRightY": 595,
+      "content": "PCB LAYOUT (REF.)\n(REVERSE MOUNT TYPE)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 132,
+      "topLeftY": 606,
+      "bottomRightX": 694,
+      "bottomRightY": 639,
+      "content": "Figure 5-5. Example Footprint for the USB 3.1 Standard-A Receptacle - Through-Hole with Back-Shield",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-16",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

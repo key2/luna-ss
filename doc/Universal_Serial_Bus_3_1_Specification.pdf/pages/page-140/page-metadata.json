@@ -1,0 +1,121 @@
+{
+  "index": 139,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 234,
+      "topLeftY": 116,
+      "bottomRightX": 580,
+      "bottomRightY": 400,
+      "content": "![img-105.jpeg](img-105.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-105.jpeg"
+    },
+    {
+      "topLeftX": 258,
+      "topLeftY": 416,
+      "bottomRightX": 565,
+      "bottomRightY": 432,
+      "content": "Figure 5-25. Example of Insertion Loss Deviation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 447,
+      "bottomRightX": 561,
+      "bottomRightY": 466,
+      "content": "The integrated multi-reflection, IMR, is calculated with the equation below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 472,
+      "bottomRightX": 682,
+      "bottomRightY": 525,
+      "content": "$$IMR = \\sqrt{\\int_{0}^{f_{\\max}} |ILD(f)|^2 |V_{in}(f)|^2 df / f_{Nq}} * 1000 \\text{ (in mV)}, \\tag{5-3}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 531,
+      "bottomRightX": 669,
+      "bottomRightY": 567,
+      "content": "where $f_{Nq}$ is the Nyquist frequency (5 GHz), $f_{\\max}$ is chosen as the 2 times the Nyquist frequency (10 GHz), and $V_{in}(f)$ is the input trapezoidal pulse spectrum, defined as:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 579,
+      "bottomRightX": 304,
+      "bottomRightY": 680,
+      "content": "![img-106.jpeg](img-106.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-106.jpeg"
+    },
+    {
+      "topLeftX": 327,
+      "topLeftY": 599,
+      "bottomRightX": 570,
+      "bottomRightY": 693,
+      "content": "$$|V_{in}(\\omega)| = \\left| \\frac{\\sin\\left(\\frac{\\omega T_r}{2}\\right)}{\\frac{\\omega T_r}{2}} \\cdot \\frac{\\sin\\left(\\frac{\\omega T_b}{2}\\right)}{\\frac{\\omega T_b}{2}} \\right|$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 706,
+      "bottomRightX": 414,
+      "bottomRightY": 769,
+      "content": "$$\\begin{array}{l} T_b = \\text{Unit Interval} = 100 \\text{ ps} \\\\ T_c = \\text{Rise time (0-100\\%)} = 0.2 T_b \\\\ \\omega = 2\\pi f \\end{array}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 802,
+      "bottomRightX": 380,
+      "bottomRightY": 818,
+      "content": "The integrated crosstalk, IXT, is defined as:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 826,
+      "bottomRightX": 682,
+      "bottomRightY": 880,
+      "content": "$$IXT = \\sqrt{\\int_{0}^{f_{\\max}} |NEXT(f)|^2 |V_{in}(f)|^2 df / f_{Nq}} * 1000 \\text{ (in mV)}, \\tag{5-4}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 994,
+      "content": "5-52",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

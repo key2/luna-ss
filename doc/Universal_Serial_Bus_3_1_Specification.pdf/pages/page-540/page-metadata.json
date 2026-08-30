@@ -1,0 +1,147 @@
+{
+  "index": 539,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 113,
+      "bottomRightX": 279,
+      "bottomRightY": 136,
+      "content": "## 10.15 Descriptors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 143,
+      "bottomRightX": 686,
+      "bottomRightY": 195,
+      "content": "Hub descriptors are derived from the general USB device framework. Hub descriptors describe a hub device and the ports on that hub. The host accesses hub descriptors through the hub's default control pipe.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 197,
+      "bottomRightX": 565,
+      "bottomRightY": 215,
+      "content": "The USB specification (refer to Chapter 8) defines the following descriptors:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 220,
+      "bottomRightX": 298,
+      "bottomRightY": 310,
+      "content": "- Device Level Descriptors\n- Configuration\n- Interface\n- Endpoint\n- String (optional)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 315,
+      "bottomRightX": 694,
+      "bottomRightY": 367,
+      "content": "The hub class defines additional descriptors (refer to Section 10.15.2). In addition, vendor-specific descriptors are allowed in the USB device framework. Hubs support standard USB device commands as defined in Chapter 8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 372,
+      "bottomRightX": 679,
+      "bottomRightY": 421,
+      "content": "A hub is the only device that is allowed to function at high-speed and a Gen X speed at the same time. This specification only defines the descriptors a hub shall report on the Enhanced SuperSpeed bus.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 426,
+      "bottomRightX": 674,
+      "bottomRightY": 461,
+      "content": "Note that an Enhanced SuperSpeed hub shall always support the Get Descriptor (BOS) (refer to Section 9.6.2) when operating at either the Gen X speed or at USB 2.0 speeds.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 476,
+      "bottomRightX": 494,
+      "bottomRightY": 497,
+      "content": "### 10.15.1 Standard Descriptors for Hub Class",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 502,
+      "bottomRightX": 651,
+      "bottomRightY": 536,
+      "content": "The hub class pre-defines certain fields in standard USB descriptors. Other fields are either implementation-dependent or not applicable to this class.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 541,
+      "bottomRightX": 694,
+      "bottomRightY": 573,
+      "content": "A hub has a device descriptor with a bDeviceProtocol field set to 3 and an interface descriptor with a bInterfaceProtocol field set to 0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 580,
+      "bottomRightX": 464,
+      "bottomRightY": 597,
+      "content": "**Hub Descriptors for USB hub operating at Gen 1 speed**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 602,
+      "bottomRightX": 384,
+      "bottomRightY": 619,
+      "content": "Device Descriptor (SuperSpeed information)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 621,
+      "bottomRightX": 502,
+      "bottomRightY": 767,
+      "content": "|  bLength | 18  |\n| --- | --- |\n|  bDescriptorType | DEVICE Descriptor type  |\n|  bcdUSB | 310H  |\n|  bDeviceClass | HUB_CLASSCODE (9)  |\n|  bDeviceSubClass | 0  |\n|  bDeviceProtocol | 3  |\n|  bMaxPacketSize0 | 9  |\n|  bNumConfigurations | 1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-206.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-62",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

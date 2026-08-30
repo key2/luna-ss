@@ -1,0 +1,93 @@
+{
+  "index": 235,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 61,
+      "content": "Revision 1.1",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 62,
+      "bottomRightX": 177,
+      "bottomRightY": 77,
+      "content": "June 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 205 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 61,
+      "content": "Universal Serial Bus 3.2",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 62,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 261,
+      "topLeftY": 92,
+      "bottomRightX": 528,
+      "bottomRightY": 110,
+      "content": "Figure 7-27. Hot Reset Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 121,
+      "bottomRightX": 676,
+      "bottomRightY": 432,
+      "content": "![img-93.jpeg](img-93.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-93.jpeg"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 435,
+      "bottomRightX": 484,
+      "bottomRightY": 449,
+      "content": "Note: Transition conditions are illustrative only. Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

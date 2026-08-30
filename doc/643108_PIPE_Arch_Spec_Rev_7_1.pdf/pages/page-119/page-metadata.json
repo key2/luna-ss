@@ -1,0 +1,120 @@
+{
+  "index": 118,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 122,
+      "bottomRightX": 694,
+      "bottomRightY": 181,
+      "content": "may eliminate the need to do a handshake with AsyncPowerChangeAck. The PHY may support either mechanism or both; this capability must be advertised in the PHY datasheet. The sideband mechanism of L1 substate management via RxEIDetectDisable and TxCommonModeDisable requires PCLK as PHY input mode.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 190,
+      "bottomRightX": 537,
+      "bottomRightY": 207,
+      "content": "Figure 8-10. L1 SubState Entry and Exit with PCLK as PHY Output",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 210,
+      "bottomRightX": 696,
+      "bottomRightY": 360,
+      "content": "![img-31.jpeg](img-31.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-31.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 376,
+      "bottomRightX": 518,
+      "bottomRightY": 397,
+      "content": "### 8.3.2 Power Management – USB Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 404,
+      "bottomRightX": 692,
+      "bottomRightY": 462,
+      "content": "The power management signals allow the PHY to minimize power consumption. The PHY must meet all timing constraints provided in the USB 3.2 Specification regarding clock recovery and link training for the various power states. The PHY must also meet all termination requirements for transmitters and receivers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 469,
+      "bottomRightX": 689,
+      "bottomRightY": 513,
+      "content": "Four power states are defined: P0, P1, P2, and P3. The P0 state is the normal operational state for the PHY. When directed from P0 to a lower power state, the PHY can immediately take whatever power saving measures are appropriate.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 519,
+      "bottomRightX": 697,
+      "bottomRightY": 605,
+      "content": "In the states P0, P1 and P2, the PCLK must be kept operational. For all state transitions between these three states, the PHY indicates successful transition into the designated power state by a single cycle assertion of PhyStatus. Transitions into and out of P3 are described in following subsections. For all power state transitions, the MAC must not begin any operational sequences or further power state transitions until the PHY has indicated that the initial state transition is completed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 612,
+      "bottomRightX": 696,
+      "bottomRightY": 656,
+      "content": "Mapping of PHY power states to states in the LTSSM found in the USB Specification are included in following subsections. A MAC may alternately use PHY-specific states as long as the base specification requirements are still met:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 660,
+      "bottomRightX": 696,
+      "bottomRightY": 888,
+      "content": "- P0 state: All internal clocks in the PHY are operational. P0 is the only state where the PHY transmits and receives USB signaling.\n- P0 is the appropriate PHY power management state for all cases where the link is in U0 and all other link state except those listed in following entries for P1, P2, and P3.\n- P1 state: PCLK must stay operational. The MAC will move the PHY to this state only when the PHY is transmitting idles and receiving idles. The P1 state can be used for the U1 link state.\n- P2 state: Selected internal clocks in the PHY can be turned off. PCLK must stay operational. The MAC will move the PHY to this state only when both transmit and receive channels are idle. The PHY must not indicate successful entry into P2 (by asserting PhyStatus) until PCLK is stable and the operating DC common mode voltage is stable and within specification (as per the base specification).\n- P2 can be used for the U2, Rx.Detect, and SS.Inactive.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 965,
+      "content": "119",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

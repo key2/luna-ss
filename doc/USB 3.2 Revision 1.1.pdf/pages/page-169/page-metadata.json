@@ -1,0 +1,101 @@
+{
+  "index": 168,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 138 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 678,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 95,
+      "bottomRightX": 641,
+      "bottomRightY": 125,
+      "content": "shall then ignore the corresponding DPPEND or DPPABORT ordered set associated with the DPP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 131,
+      "bottomRightX": 664,
+      "bottomRightY": 207,
+      "content": "3. A DPP of length exceeding sDataSymbolsBabble (see Table 10-19) has been reached and no valid DPPEND or DPPABORT ordered set is detected.\n- A DPP shall be dropped if its DPH is corrupted.\n- A DPP shall be dropped when it does not immediately follow its DPH.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 228,
+      "bottomRightX": 580,
+      "bottomRightY": 245,
+      "content": "In Gen 2 operation, the processing of DPP shall adhere to the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 256,
+      "bottomRightX": 672,
+      "bottomRightY": 508,
+      "content": "- A DPP processing shall be started if the following conditions are met.\n  1. A DPH is received properly or a DPH is not received properly but a valid DPP length field replica is declared.\n  2. A DPPSTART ordered set or DPPABORT ordered set is received immediately after its DPH.\n- The DPP processing shall adhere to the following rules:\n  1. The DPP processing shall be completed when a valid DPPEND OS or DPPABORT OS is detected at the expected end of DPP indicated by valid length field plus 4.\n  2. The DPP processing shall be aborted if a DPPEND ordered set or a DPPABORT ordered set is not detected at the expected end of DPP indicated by valid length field plus 4. The port shall transition to Recovery.\n  3. The DPP processing shall be completed if a DPPABORT ordered set is detected immediately after DPH without DPPSTART ordered set.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 528,
+      "bottomRightX": 326,
+      "bottomRightY": 545,
+      "content": "#### 7.2.4.1.10 Receiving LGOOD_n",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 551,
+      "bottomRightX": 675,
+      "bottomRightY": 896,
+      "content": "- A port shall maintain every header packet transmitted within its Tx Header Buffer or Type 1/Type 2 Tx Header Buffer until it receives an LGOOD_n. Upon receiving LGOOD_n, a port shall do one of the following:\n  1. If LGOOD_n is the Header Sequence Number Advertisement and a port is entering U0 from Recovery, a port shall flush all the header packets retained in its Tx Header Buffers or Type 1/Type 2 Tx Header Buffers that have their Header Sequence Numbers equal to or less than the received Header Sequence Number, and initialize its ACK Tx Header Sequence Number to be the received Header Sequence Number plus one.\n     Note: The comparison and increment are based on modulo-8 operation in SuperSpeed operation, and modulo-16 in SuperSpeedPlus operation.\n  2. If a port receives an LGOOD_n and this LGOOD_n is not Header Sequence Number Advertisement, it shall flush the header packet in its Tx Header Buffer or Type 1/Type 2 Tx Header Buffer with its Header Sequence Number matching the received Header Sequence Number and increment the ACK Tx Header Sequence Number by one based on modulo-8 operation in SuperSpeed operation, and modulo-16 in SuperSpeedPlus operation.\n  3. If a port receives an LGOOD_n and this LGOOD_n is not Header Sequence Number Advertisement, it shall transition to Recovery if the received Header Sequence Number does not match the ACK Tx Header Sequence Number. The ACK Tx Header Sequence Number shall be unchanged.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

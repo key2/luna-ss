@@ -1,0 +1,111 @@
+{
+  "index": 55,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 93,
+      "bottomRightX": 449,
+      "bottomRightY": 115,
+      "content": "### 3.1.3 USB 3.1 System Configuration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 689,
+      "bottomRightY": 204,
+      "content": "USB 3.1 supports USB devices (all speeds) attaching and detaching from the USB 3.1 at any time. Consequently, system software must accommodate dynamic changes in the physical bus topology. The architectural elements for the discovery of attachment and removal of devices on USB 3.1 are identical to those in USB 2.0. There are enhancements provided to manage the specifics of the Enhanced SuperSpeed bus for configuration and power management.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 207,
+      "bottomRightX": 697,
+      "bottomRightY": 242,
+      "content": "The independent, dual-bus architecture allows for activation of each of the buses independently and provides for the attachment of USB devices to the highest speed bus available for the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 256,
+      "bottomRightX": 456,
+      "bottomRightY": 279,
+      "content": "### 3.1.4 USB 3.1 Architecture Summary",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 282,
+      "bottomRightX": 698,
+      "bottomRightY": 333,
+      "content": "USB 3.1 is a dual-bus architecture that incorporates USB 2.0 and an Enhanced SuperSpeed bus. Table 3-1 summarizes the key architectural differences between an Enhanced SuperSpeed bus and a USB 2.0 bus.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 347,
+      "bottomRightX": 532,
+      "bottomRightY": 365,
+      "content": "Table 3-1. Comparing Enhanced SuperSpeed Bus to USB 2.0 Bus",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 367,
+      "bottomRightX": 689,
+      "bottomRightY": 707,
+      "content": "|  Characteristic | Enhanced SuperSpeed USB | USB 2.0  |\n| --- | --- | --- |\n|  Data Rate | Gen 1 (5.0 Gbps), Gen 2 (10 Gbps) | low-speed (1.5 Mbps), full-speed (12 Mbps), and high-speed (480 Mbps)  |\n|  Data Interface | Dual-simplex, four-wire differential signaling separate from USB 2.0 signaling Simultaneous bi-directional data flows | Half-duplex two-wire differential signaling Unidirectional data flow with negotiated directional bus transitions  |\n|  Cable signal count | Six: Four for Enhanced SuperSpeed data path, two for USB 2.0 data path | Two: Two for low-speed/full-speed/high-speed (USB 2.0) data path  |\n|  Bus transaction protocol | Host directed, asynchronous traffic flow Packet traffic is explicitly routed | Host directed, polled traffic flow Packet traffic is broadcast to all devices.  |\n|  Power management | Multi-level link power management supporting idle, sleep, and suspend states. Link-, Device-, and Function-level power management. | Port-level suspend with two levels of entry/exit latency Device-level power management  |\n|  Bus power | Same as for USB 2.0 with a 50% increase for unconfigured power and an 80% increase for configured power | Support for low/high bus-powered devices with lower power limits for un-configured and suspended devices  |\n|  Port State | Port hardware detects connect events and brings the port into operational state ready for Enhanced SuperSpeed data communication. | Port hardware detects connect events. System software uses port commands to transition the port into an enabled state (i.e., can do USB data communication flows).  |\n|  Data transfer types | USB 2.0 types with Enhanced SuperSpeed constraints. Bulk has streams capability (refer to Section 3.3) | Four data transfer types: control, bulk, Interrupt, and Isochronous  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-32.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 729,
+      "bottomRightX": 561,
+      "bottomRightY": 753,
+      "content": "## 3.2 Enhanced SuperSpeed Bus Architecture",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 759,
+      "bottomRightX": 595,
+      "bottomRightY": 777,
+      "content": "Figure 3-3 illustrates the reference model for the terminology in this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 964,
+      "bottomRightX": 111,
+      "bottomRightY": 977,
+      "content": "3-4",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

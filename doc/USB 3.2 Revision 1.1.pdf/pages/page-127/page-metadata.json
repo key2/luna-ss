@@ -1,0 +1,165 @@
+{
+  "index": 126,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 48,
+      "bottomRightX": 413,
+      "bottomRightY": 62,
+      "content": "- 96 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 94,
+      "bottomRightX": 274,
+      "bottomRightY": 109,
+      "content": "### 6.8.4 Receiver Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 115,
+      "bottomRightX": 595,
+      "bottomRightY": 131,
+      "content": "The entry and exit process for receiver loopback is described in Chapter 7.5.11.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 143,
+      "bottomRightX": 675,
+      "bottomRightY": 281,
+      "content": "Receiver loopback must be retimed. Direct connection from the Rx amplifier to the transmitter is not allowed for loopback mode. The receiver shall continue to process SKP Ordered Sets as appropriate. For Gen 1 operation, SKP symbols shall be consumed or inserted as required for proper clock tolerance compensation. For Gen 2 operation, the receiver can either add 4 SKPs, remove 4 SKPs or make no adjustment to the received SKP Ordered Set. The modified SKP Ordered Set shall meet the requirements specified in Section 6.4.3.2 (i.e. must contain between 4 and 36 SKPs followed by the SKPEND Symbol and 3 Symbols that proceed the SKPEND.) Over runs or under runs of the clock tolerance buffers will reset the buffers to the neutral position.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 293,
+      "bottomRightX": 676,
+      "bottomRightY": 338,
+      "content": "During loopback the receiver may process the Bit Error Rate Test (BERT) commands. The processing of BERT commands is optional for Gen 1 loopback. There are no BERT commands in Gen 2 operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 351,
+      "bottomRightX": 672,
+      "bottomRightY": 396,
+      "content": "Loopback shall occur in the 10-bit domain for Gen 1 operation and in the 132-bit domain for Gen 2 operation. No error correction is allowed. All symbols shall be transmitted as received with the exception of SKP and BERT commands.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 410,
+      "bottomRightX": 373,
+      "bottomRightY": 425,
+      "content": "#### 6.8.4.1 Loopback BERT for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 432,
+      "bottomRightX": 672,
+      "bottomRightY": 522,
+      "content": "During loopback the receiver processes the BERT ordered sets BRST, BDAT, and BERC. These ordered sets are described in Table 6-24 through Table 6-27. BRST and BDAT are looped back as received. BERC ordered sets are not looped back but are replaced with BCNT ordered sets. Any time a BRST is received, the error count register EC is set to 0 and the scrambling LFSR is set to 0FFFFh. Any number of consecutive BRST ordered sets may be received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 535,
+      "bottomRightX": 672,
+      "bottomRightY": 596,
+      "content": "BRST followed by BDAT starts the bit error rate test. The BDAT sequence is the output of the scrambler and is equivalent to the logical idle sequence. It consists of scrambled 0 as described in Appendix B. As listed in Appendix B, the first 16 characters of the sequence are reprinted here:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 615,
+      "bottomRightX": 672,
+      "bottomRightY": 637,
+      "content": "|  FF | 17 | C0 | 14 | B2 | E7 | 02 | 82 | 72 | 6E | 28 | A6 | BE | 6D | BF | 8D  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-63.md"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 652,
+      "bottomRightX": 659,
+      "bottomRightY": 714,
+      "content": "The receiver shall compare the received data to the BDAT sequence. Errors increment the error count register (EC) by 1. EC may not roll over but shall be held at FFh. The LFSR is advanced once for every character except SKPs. The LFSR rolls over after $2^{16}$-1 symbols. SKPs shall be inserted or deleted as necessary for clock tolerance compensation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 726,
+      "bottomRightX": 676,
+      "bottomRightY": 802,
+      "content": "The BERC command does not increment the error count register. The LFSR is advanced. The BERC ordered set is replaced by the BCNT ordered set. The BCNT ordered set includes the non-scrambled 8b/10b encoded error count (EC) register based on the running disparity. Following the return of the BCNT ordered set, the loopback slave shall continue to repeat symbols as received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 814,
+      "bottomRightX": 639,
+      "bottomRightY": 830,
+      "content": "BERC may be sent multiple times. The EC register is not cleared by BERC ordered sets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 842,
+      "bottomRightX": 605,
+      "bottomRightY": 858,
+      "content": "BERT continues until the loopback mode is terminated as described in Chapter 7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "index": 113,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 83 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 128,
+      "topLeftY": 91,
+      "bottomRightX": 664,
+      "bottomRightY": 120,
+      "content": "|  Symbol | Parameter | Gen 1 (5.0 GT/s) | Gen 2 (10 GT/s) | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-55.md"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 120,
+      "bottomRightX": 654,
+      "bottomRightY": 143,
+      "content": "Note 2: The DC ground offset between a DFP and UFP does not contribute to VTX-DC+AC-CONN. The AC ground offset is not included.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 144,
+      "bottomRightX": 641,
+      "bottomRightY": 195,
+      "content": "Note 3: There may exist a scenario where an un-powered transmitter may also be exposed to a large common mode voltage excursion when a receiver of its link partner powers up or powers down. It is system implementation's responsibility to address these potential EOS issues and is out of the scope of the specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 203,
+      "bottomRightX": 671,
+      "bottomRightY": 310,
+      "content": "The values in Table 6-19 are informative and not normative. They are included in this document to provide some guidance beyond the normative requirements in Table 6-18 for transmitter design and development. A transmitter can be fully compliant with the normative requirements of the specification and not meet all the values in this table (many of which are immeasurable in a finished product). Similarly, a transmitter that meets all the values in this table is not guaranteed to be in full compliance with the normative part of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 321,
+      "bottomRightX": 667,
+      "bottomRightY": 354,
+      "content": "Table 6-19. Transmitter Informative Electrical Parameters at TP1 (unless otherwise specified)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 361,
+      "bottomRightX": 676,
+      "bottomRightY": 884,
+      "content": "|  Symbol | Parameter | 5.0 GT/s | 10 GT/s | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  t_{MIN-PULSE-Dj} | Deterministic min pulse | 0.96 | 0.96 | UI | Tx pulse width variation that is deterministic  |\n|  t_{MIN-PULSE-Tj} | Tx min pulse | 0.90 | 0.90 | UI | Min Tx pulse at 10^{-12} including Dj and Rj  |\n|  t_{TX-EYE} | Transmitter Eye | 0.625 (min) | 0.646 (min) | UI | Includes all jitter sources  |\n|  t_{TX-Dj-DD} | Tx deterministic jitter | 0.205 (max) | 0.170 (max) | UI | Deterministic jitter only assuming the Dual Dirac distribution  |\n|  C_{TX-PARASITIC} | Tx input capacitance for return loss | 1.25 (max) | 1.1 (max) | pf | Parasitic capacitance to ground  |\n|  R_{TX-DC} | Transmitter DC common mode impedance | 18 (min) 30 (max) | 18 (min) 30 (max) | Ω | DC impedance limits to guarantee Receiver detect behavior. Measured with respect to AC ground over a voltage of 0-500 mV.  |\n|  I_{TX-SHORT} | Transmitter short-circuit current limit | 60 (max) | 60 (max) | mA | The total current Transmitter can supply when shorted to ground.  |\n|  V_{TX-CM-AC-PP_ACTIVE} | Tx AC common mode voltage active | 100 | 100 (max) | mV (p-p) | Maximum mismatch from Txp + Txn for both time and amplitude.  |\n|  V_{TX-CM-DC-ACTIVE-IDLE-DELTA} | Absolute DC Common Mode Voltage between U1 and U0 | 200 (max) | 200 (max) | mV |   |\n|  V_{TX-IDLE-DIFF-AC-PP} | Electrical Idle Differential Peak -Peak Output Voltage | 0 (min) 10 (max) | 0 (min) 10 (max) | mV |   |\n|  V_{TX-IDLE-DIFF-DC} | DC Electrical Idle Differential Output Voltage | 0 (min) 10 (max) | 0 (min) 10 (max) | mV | Voltage shall be low pass filtered to remove any AC component. This limits the common mode error when resuming U1 to U0.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-56.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "index": 90,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 391,
+      "bottomRightY": 111,
+      "content": "### 5.2.1.3 USB 3.1 Micro-B Connector",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 118,
+      "bottomRightX": 698,
+      "bottomRightY": 203,
+      "content": "The USB 3.1 Micro-B plug and USB 3.1 Micro-B receptacle connectors are defined for small handheld devices and other applications where a small connector size may be used. It is defined so that the USB 3.1 Micro-B receptacle accepts either a USB 3.1 Micro-B plug, or a USB 2.0 Micro-B plug. Inserting a USB 3.1 Micro-B plug into a USB 2.0 Micro-B receptacle or USB 2.0 Micro-AB receptacle is physically disallowed by the implementation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 216,
+      "bottomRightX": 569,
+      "bottomRightY": 235,
+      "content": "### 5.2.1.4 USB 3.1 Micro-AB and USB 3.1 Micro-A Connectors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 240,
+      "bottomRightX": 698,
+      "bottomRightY": 326,
+      "content": "The USB 3.1 Micro-AB receptacle is similar to the USB 3.1 Micro-B receptacle except for different keying. It accepts a USB 3.1 Micro-A plug, a USB 3.1 Micro-B plug, a USB 2.0 Micro-A plug, or a USB 2.0 Micro-B plug. The USB 3.1 Micro-AB receptacle is only allowed on OTG products which may function as either a host or device. All other uses of the USB 3.1 Micro-AB receptacle are prohibited.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 329,
+      "bottomRightX": 700,
+      "bottomRightY": 381,
+      "content": "The USB 3.1 Micro-A plug is similar to the USB 3.1 Micro-B plug except for different keying and ID pin connections. Similar to the USB 2.0 Micro-A plug, the USB 3.1 Micro-A plug is defined for OTG applications only. Section 5.3.3 defines the USB 3.1 Micro connector family",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 395,
+      "bottomRightX": 417,
+      "bottomRightY": 417,
+      "content": "### 5.2.2 Allowed Cable Assemblies",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 423,
+      "bottomRightX": 508,
+      "bottomRightY": 440,
+      "content": "The USB 3.1 specification defines the following cable assemblies:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 444,
+      "bottomRightX": 465,
+      "bottomRightY": 573,
+      "content": "- USB 3.1 Standard-A plug to USB 3.1 Standard-B plug\n- USB 3.1 Standard-A plug to USB 3.1 Micro-B plug\n- USB 3.1 Standard-A plug to USB 3.1 Standard-A plug\n- USB 3.1 Micro-A plug to USB 3.1 Micro-B plug\n- USB 3.1 Micro-A plug to USB 3.1 Standard-B plug\n- Captive cable with USB 3.1 Standard-A plug\n- Captive cable with USB 3.1 Micro-A plug",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 579,
+      "bottomRightX": 694,
+      "bottomRightY": 646,
+      "content": "A captive cable is a cable assembly that has a Standard-A plug on one end and that is either hardwired or has a vendor-specific connector on the other end. A hardwired cable is directly wired to the device and it is not detachable from the device. This specification does not define how the vendor-specific connector or hardwired attachment is done on the device side.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 650,
+      "bottomRightX": 676,
+      "bottomRightY": 685,
+      "content": "For electrical compliance purposes, a USB 3.1 captive cable (hardwired or with vendor-specific connector on the device end) shall be considered part of the USB 3.1 device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 689,
+      "bottomRightX": 692,
+      "bottomRightY": 723,
+      "content": "No other types of cable assemblies are allowed by this specification. Section 5.5 provides detailed discussion on USB 3.1 cable assemblies.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 738,
+      "bottomRightX": 290,
+      "bottomRightY": 758,
+      "content": "### 5.2.3 Raw Cables",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 766,
+      "bottomRightX": 665,
+      "bottomRightY": 834,
+      "content": "Due to EMI, RFI, and signal integrity requirements, each cable differential pair used for the SuperSpeed lines in a USB 3.1 cable assembly shall be shielded; the Unshielded Twisted Pair (UTP) used for USB 2.0 is not allowed for SuperSpeed lines. Section 5.4 defines the cable construction for USB 3.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 676,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-3",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

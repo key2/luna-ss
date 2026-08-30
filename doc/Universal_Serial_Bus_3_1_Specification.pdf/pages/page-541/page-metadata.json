@@ -1,0 +1,114 @@
+{
+  "index": 540,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 95,
+      "bottomRightX": 222,
+      "bottomRightY": 112,
+      "content": "BOS Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 114,
+      "bottomRightX": 501,
+      "bottomRightY": 188,
+      "content": "|  bLength | 5  |\n| --- | --- |\n|  bDescriptorType | BOS Descriptor type  |\n|  wTotalLength | 73  |\n|  bNumDeviceCaps | 3  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-207.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 214,
+      "bottomRightX": 240,
+      "bottomRightY": 229,
+      "content": "USB 2.0 Extension",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 233,
+      "bottomRightX": 501,
+      "bottomRightY": 313,
+      "content": "|  bLength | 7  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | USB 2.0 EXTENSION  |\n|  bmAttributes | 2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-208.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 339,
+      "bottomRightX": 335,
+      "bottomRightY": 356,
+      "content": "SuperSpeed USB Device Capability",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 358,
+      "bottomRightX": 501,
+      "bottomRightY": 514,
+      "content": "|  bLength | 10  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | SUPERSPEED_USB  |\n|  bmAttributes | Implementation-dependent  |\n|  wSpeedsSupported | 14  |\n|  bFunctionalitySupport | 1  |\n|  bU1DevExitLat | Implementation-dependent  |\n|  wU2DevExitLat | Implementation-dependent  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-209.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 540,
+      "bottomRightX": 200,
+      "bottomRightY": 554,
+      "content": "ContainerID",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 558,
+      "bottomRightX": 501,
+      "bottomRightY": 657,
+      "content": "|  bLength | 20  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | CONTAINER_ID  |\n|  bReserved | 0  |\n|  ContainerID | Implementation-dependent  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-210.md"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 669,
+      "bottomRightX": 655,
+      "bottomRightY": 707,
+      "content": "The hub shall also return SuperSpeedPlus USB Device Capability and Precision Time Measurement capability as defined for a hub operating at Gen 2 speeds.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-63",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

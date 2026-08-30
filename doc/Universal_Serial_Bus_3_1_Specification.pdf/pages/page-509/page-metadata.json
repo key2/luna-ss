@@ -1,0 +1,146 @@
+{
+  "index": 508,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 29,
+      "bottomRightX": 701,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 92,
+      "bottomRightX": 442,
+      "bottomRightY": 111,
+      "content": "### 10.5.2.3 HCONNECT.Attempt ESS Connect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 116,
+      "bottomRightX": 562,
+      "bottomRightY": 133,
+      "content": "A hub shall transition into this state if any of the following situations occur:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 138,
+      "bottomRightX": 698,
+      "bottomRightY": 190,
+      "content": "- From the HCONNECT-Powered-off state when VBUS becomes valid (and local power is valid if required).\n- From the HCONNECT.Connected on ESS state if Rx.Detect or Link Training time out.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 195,
+      "bottomRightX": 647,
+      "bottomRightY": 212,
+      "content": "In this state, the hub's upstream port Enhanced SuperSpeed link is in Rx.Detect or Polling.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 226,
+      "bottomRightX": 420,
+      "bottomRightY": 244,
+      "content": "### 10.5.2.4 HCONNECT.Connected on ESS",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 250,
+      "bottomRightX": 523,
+      "bottomRightY": 267,
+      "content": "A port shall transition into this state if the following situation occurs:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 272,
+      "bottomRightX": 674,
+      "bottomRightY": 289,
+      "content": "- From the HCONNECT.Attempt ESS Connect when the link transitions from polling to U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 293,
+      "bottomRightX": 670,
+      "bottomRightY": 327,
+      "content": "In this state the hub's upstream port Enhanced SuperSpeed link is in U0, U1, U2, U3, Inactive, Rx.Detect, Recovery, or Polling.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 350,
+      "bottomRightX": 581,
+      "bottomRightY": 374,
+      "content": "## 10.6 Upstream Facing Port Power Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 381,
+      "bottomRightX": 695,
+      "bottomRightY": 414,
+      "content": "The following sections provide a functional description of a state machine that exhibits correct link power management behavior for a hub upstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 419,
+      "bottomRightX": 701,
+      "bottomRightY": 503,
+      "content": "Figure 10-14 is an illustration of the upstream facing port power management state machine. Each of the states is described in Section 10.6.2. In Figure 10-14, some of the entry conditions into states are shown without origin. These conditions have multiple origin states and the individual transitions lines are not shown so that the diagram can be simplified. The description of the entered state indicates from which states the transition is applicable.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 508,
+      "bottomRightX": 645,
+      "bottomRightY": 542,
+      "content": "If there is a status change on any downstream port, the hub shall initiate a transition on the upstream port's link to U0 if the upstream port is in U1 or U2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 547,
+      "bottomRightX": 695,
+      "bottomRightY": 597,
+      "content": "If there is a status change on any downstream port and the hub upstream port's link is in U3, the hub behavior is specified by the current remote wakeup mask settings. Refer to Section 10.16.2.10 for more details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 664,
+      "topLeftY": 981,
+      "bottomRightX": 699,
+      "bottomRightY": 996,
+      "content": "10-31",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

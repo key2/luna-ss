@@ -1,0 +1,191 @@
+{
+  "index": 440,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- 410 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 92,
+      "bottomRightX": 659,
+      "bottomRightY": 123,
+      "content": "For example, a port link operating at 5 Gb/s will have an AW of 4. A port link operating at 10 Gb/s will have an AW of 8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 136,
+      "bottomRightX": 443,
+      "bottomRightY": 152,
+      "content": "#### **10.8.6.2 Direction Independent Packet Selection**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 158,
+      "bottomRightX": 655,
+      "bottomRightY": 189,
+      "content": "When there are multiple packets buffered that are ready to be transmitted out of the hub, the SuperSpeedPlus hub has to select which packet to transmit next.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 201,
+      "bottomRightX": 609,
+      "bottomRightY": 217,
+      "content": "There are several selection rules that are independent of direction of packet flow.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 229,
+      "bottomRightX": 674,
+      "bottomRightY": 260,
+      "content": "The SuperSpeedPlus hub has additional rules that are specific for upstream and downstream flowing packet reception and selection (see the next two sections).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 272,
+      "bottomRightX": 649,
+      "bottomRightY": 302,
+      "content": "A TP shall only be considered as a possible candidate after it has been fully received and validated.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 314,
+      "bottomRightX": 672,
+      "bottomRightY": 377,
+      "content": "A buffered TP shall be selected for transmission before any buffered DPs. TPs shall be selected in the order in which they were buffered for a port (e.g. FIFO). When selecting a TP to transmit on the hub upstream facing port, there is no specific ordering requirement for TPs buffered from different downstream ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 389,
+      "bottomRightX": 626,
+      "bottomRightY": 420,
+      "content": "A buffered Interrupt or Isochronous DP shall be selected for transmission before any buffered Control or Bulk DPs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 432,
+      "bottomRightX": 665,
+      "bottomRightY": 493,
+      "content": "Once a hub starts transmitting a packet on a port, it shall continue transmitting that packet until the packet transmission is complete. With respect to the following arbitration rules, there is no “pre-emption” of the transmission of one packet for the transmission of another packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 506,
+      "bottomRightX": 633,
+      "bottomRightY": 582,
+      "content": "If a DP is being received on a port and the port to which it is to be routed has no other packets buffered nor has a packet currently being transmitted, the hub shall begin transmitting the packet on the destination port before the DP is fully received. Transmission of the DP shall not begin transmission until sufficient bytes have been received, so that transmitter under-run is avoided.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 594,
+      "bottomRightX": 522,
+      "bottomRightY": 610,
+      "content": "#### **10.8.6.3 Downstream Flowing Packet Reception and Selection**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 616,
+      "bottomRightX": 656,
+      "bottomRightY": 724,
+      "content": "For downstream flowing traffic, buffered Isochronous and Interrupt DPs destined to be transmitted on the same downstream port shall be selected to be transmitted in the same order as they were received on the upstream port. Control and Bulk DPs buffered for transmission on the same downstream port shall be selected for transmission in the same order as they were received on the upstream port. TPs buffered for transmission on the same downstream port shall be selected for transmission in the same order as they were received on the upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 736,
+      "bottomRightX": 505,
+      "bottomRightY": 752,
+      "content": "#### **10.8.6.4 Upstream Flowing Packet Reception and Selection**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 758,
+      "bottomRightX": 652,
+      "bottomRightY": 819,
+      "content": "When the Upstream Controller needs to select a packet to transmit on the upstream port, any fully buffered packets from downstream ports are candidates for the next packet to transmit. However, some packets still being received and not fully buffered can also be candidates.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 832,
+      "bottomRightX": 662,
+      "bottomRightY": 862,
+      "content": "To select the next DP for transmission on the upstream port, the Upstream Controller shall use:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 875,
+      "bottomRightX": 642,
+      "bottomRightY": 906,
+      "content": "- A weighted round robin arbitration behavior to select the next Control/Bulk DP buffered from the hub downstream ports.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

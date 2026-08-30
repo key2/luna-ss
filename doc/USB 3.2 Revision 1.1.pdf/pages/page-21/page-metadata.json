@@ -1,0 +1,56 @@
+{
+  "index": 20,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 46,
+      "bottomRightX": 414,
+      "bottomRightY": 61,
+      "content": "- xxi -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 922,
+      "content": "10.16.2.1 Clear Hub Feature ... 441\n10.16.2.2 Clear Port Feature ... 441\n10.16.2.3 Get Hub Descriptor ... 442\n10.16.2.4 Get Hub Status ... 443\n10.16.2.5 Get Port Error Count ... 444\n10.16.2.6 Get Port Status ... 444\n10.16.2.7 Set Hub Descriptor ... 451\n10.16.2.8 Set Hub Feature ... 451\n10.16.2.9 Set Hub Depth ... 451\n10.16.2.10 Set Port Feature ... 452\n10.17 Host Root (Downstream) Ports ... 455\n10.18 Peripheral Device Upstream Ports ... 456\n10.18.1 Peripheral Device Upstream Ports ... 456\n10.18.2 Peripheral Device Upstream Port State Machine ... 457\n10.18.2.1 USDPORT-Powered-off ... 457\n10.18.2.2 USDPORT-Powered on ... 457\n10.18.2.3 USDPORT.Training ... 458\n10.18.2.4 USDPORT.Connected/Enabled ... 458\n10.18.2.5 USDPORT.Error ... 458\n10.18.2.6 USDPORT.Disabled ... 458\n10.18.2.7 USDPORT.Disabled_Error ... 459\n10.19 Hub Chapter Parameters ... 459\n11 Interoperability and Power Delivery ... 462\n11.1 USB 3.2 Host Support for USB 2.0 ... 462\n11.2 USB 3.2 Hub Support for USB 2.0 ... 462\n11.3 USB 3.2 Device Support for USB 2.0 ... 463\n11.4 Power Distribution ... 463\n11.4.1 Classes of Devices and Connections ... 463\n11.4.1.1 Self-powered Hubs ... 464\n11.4.1.2 Low-power Bus-powered Devices ... 465\n11.4.1.3 High-power Bus-powered Devices ... 466\n11.4.1.4 Self-powered Devices ... 466\n11.4.2 Steady-State Voltage Drop Budget ... 467\n11.4.3 Power Control During Suspend/Resume ... 468\n11.4.4 Dynamic Attach and Detach ... 469\n11.4.4.1 Inrush Current Limiting ... 469\n11.4.4.2 Dynamic Detach ... 470\n11.4.5 VBUS Electrical Characteristics ... 470\nA Gen 1 Symbol Encoding ... 471",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "index": 0,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 65,
+      "topLeftY": 92,
+      "bottomRightX": 282,
+      "bottomRightY": 172,
+      "content": "![img-0.jpeg](img-0.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-0.jpeg"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 479,
+      "bottomRightX": 544,
+      "bottomRightY": 512,
+      "content": "DK_USB_GW5AT-LV60UG225_V1.0",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 528,
+      "bottomRightX": 237,
+      "bottomRightY": 559,
+      "content": "## User Guide",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 812,
+      "bottomRightX": 262,
+      "bottomRightY": 832,
+      "content": "DBUG1280-1.0.3E, 03/13/2026",
+      "confidenceScores": null,
+      "type": "text"
+    }
+  ]
+}

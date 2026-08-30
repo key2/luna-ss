@@ -1,0 +1,85 @@
+{
+  "index": 106,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 76 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 92,
+      "bottomRightX": 642,
+      "bottomRightY": 110,
+      "content": "Figure 6-14. \"Golden PLL\" and Jitter Transfer Functions for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 124,
+      "bottomRightX": 602,
+      "bottomRightY": 479,
+      "content": "![img-25.jpeg](img-25.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-25.jpeg"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 494,
+      "bottomRightX": 642,
+      "bottomRightY": 512,
+      "content": "Figure 6-15. \"Golden PLL\" and Jitter Transfer Functions for Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 529,
+      "bottomRightX": 588,
+      "bottomRightY": 849,
+      "content": "![img-26.jpeg](img-26.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-26.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

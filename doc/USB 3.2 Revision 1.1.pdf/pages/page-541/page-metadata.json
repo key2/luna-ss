@@ -1,0 +1,110 @@
+{
+  "index": 540,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 510 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 670,
+      "bottomRightY": 379,
+      "content": "○ For SSP operation, it shall perform the clock offset compensation as defined in Section 6.4.3.\n- A bit-level re-timer shall perform its link training and complete its clock and OS switching based on Section E.3.4.4.1.\n- The re-timer in SSP operation shall monitor and forward LBPMs upon detection. Note that this situation may happen when the host or device fail the training and timeout to Polling.PortMatch to re-negotiate the next link speed.\n- The re-timer shall start the tPollingActiveTimeout timer upon entry to this substate. This timer shall be reset and disabled upon observing successful exit handshake from Polling.Active. Note that the re-timer shall also disable this timer and progress forward if it has observed TS2 OS from both ports but has not observed a successful TS1 OS exit handshake. This may be a corner case where a decoding error could happen within the re-timer.\n- The re-timer shall start the tPollingConfigurationTimeout timer upon observing TS2 OS at both ports. Note that a host and device may not exit from Polling.Active simultaneously. For re-timers, observing TS2 OS at both ports is an indication that both the host and device have entered Polling.Configuration.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 391,
+      "bottomRightX": 331,
+      "bottomRightY": 407,
+      "content": "##### E.3.4.4.3 Exit from Polling.TSx",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 414,
+      "bottomRightX": 650,
+      "bottomRightY": 711,
+      "content": "- The re-timer shall transition to Polling.Idle upon observing successful TS2 handshake.\n- The re-timer in SSP operation shall disable its eSS transceivers and transition to Polling.SpeedDetect if either one of the following conditions is met.\n  ○ Upon the expiration of the tPollingActiveTimeout timer and no successful TS1 OS handshakes have been observed.\n  ○ Upon the expiration of the tPollingConfigurationTimeout timer and no successful TS2 OS handshakes have been observed.\n  ○ LBPM is detected at both ports.\n- The re-timer in SS operation shall disable its SS transceivers and transition to Rx.Detect if either one of the following two conditions is met.\n  ○ Upon the expiration of the tPollingActiveTimeout timer and no successful TS1 OS handshake has been observed.\n  ○ Upon the expiration of the tPollingConfigurationTimeout timer and no successful TS2 OS handshake has been observed.\n- The re-timer shall transition to Rx.Detect if Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 724,
+      "bottomRightX": 229,
+      "bottomRightY": 739,
+      "content": "##### E.3.4.5 Polling.Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 747,
+      "bottomRightX": 622,
+      "bottomRightY": 777,
+      "content": "Polling.Idle is a substate where the re-timer decodes TS2 OS and determines its next operation state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 790,
+      "bottomRightX": 361,
+      "bottomRightY": 805,
+      "content": "##### E.3.4.5.1 Polling.Idle Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 812,
+      "bottomRightX": 667,
+      "bottomRightY": 902,
+      "content": "- The re-timer shall decode the link configuration field in TS2 OS and configure itself to the corresponding operation state.\n- The re-timer in SSP operation shall monitor and forward LBPMs upon detection.\n- The re-timer shall start the tPollingIdleTimeout timer to monitor the progression of LTSSM.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

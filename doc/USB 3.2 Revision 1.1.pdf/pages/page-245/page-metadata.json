@@ -1,0 +1,130 @@
+{
+  "index": 244,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 214 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 261,
+      "bottomRightY": 109,
+      "content": "### 8.4.5 Port Capabilities",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 671,
+      "bottomRightY": 238,
+      "content": "The Port Capability LMP describes each port's link capabilities and is sent by both link partners after the successful completion of training and link initialization. After the port enters U0 from Polling, the port shall send Port Capability LMP within tPortConfiguration time once link initialization (refer to Section 7.2.4.1.1) is completed. Note the port may not always transition directly from Polling to U0, but may transition through other intermediate states (e.g., Recovery or Hot Reset) before entering U0. Regardless of states passed through between Polling and entry into U0, the device shall send a Port Capability LMP immediately upon entering U0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 249,
+      "bottomRightX": 593,
+      "bottomRightY": 266,
+      "content": "If a link partner does not receive this LMP within tPortConfiguration time then:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 278,
+      "bottomRightX": 667,
+      "bottomRightY": 348,
+      "content": "- If the link partner has downstream capability, it shall signal an error as described in Section 10.16.2.6.\n- If the link partner only supports upstream capability, see Sections 10.5 and 10.18 which define the hub and peripheral upstream port connect states.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 290,
+      "topLeftY": 367,
+      "bottomRightX": 498,
+      "bottomRightY": 385,
+      "content": "Figure 8-8. Port Capability LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 394,
+      "bottomRightX": 652,
+      "bottomRightY": 502,
+      "content": "![img-101.jpeg](img-101.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-101.jpeg"
+    },
+    {
+      "topLeftX": 624,
+      "topLeftY": 508,
+      "bottomRightX": 650,
+      "bottomRightY": 519,
+      "content": "U-097",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 267,
+      "topLeftY": 546,
+      "bottomRightX": 521,
+      "bottomRightY": 562,
+      "content": "Table 8-7. Port Capability LMP Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 105,
+      "topLeftY": 570,
+      "bottomRightX": 686,
+      "bottomRightY": 867,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | **SubType.** This field shall be set to *Port Capability*.  |\n|  7 | 0:9 | **Link speed.** When operating at Gen 1x1 speed, this field is a bitmask that describes the link speeds supported by this device. **Bits****Description** 0 This bit shall be set to 1 to indicate this device supports signaling at LANE_SPEED_MANTISSA_GEN1. 6:1 **Reserved.** When not operating at Gen 1x1 speed, this field is Reserved and shall be set to zero.  |\n|  16 | 0:16 | **Reserved (R).**  |\n|  8 | 1:0 | **Num HP Buffers.** When operating at Gen 1x1 speed this field specifies the number of header packet buffers (in each direction Transmit or Receive) this device supports. All devices that are compliant to this revision of the specification shall return a value of 4 in this field. All other values are reserved. When not operating at Gen 1x1 speed, this field is Reserved and shall be set to zero.  |\n|  8 | 1:8 | **Reserved (R).**  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-103.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

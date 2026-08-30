@@ -1,0 +1,201 @@
+{
+  "index": 564,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 534 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 674,
+      "bottomRightY": 169,
+      "content": "For the baseline measurement, the LRD S-parameter or transfer function for the specific LRD EQ setting, with fixture effect de-embedded, shall be embedded in the oscilloscope. This will ensure the baseline testing and LRD measurement be done with about the same dynamic range to ensure accuracy. DC blocking capacitors shall be used if they are not part of the EVB.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 181,
+      "bottomRightX": 671,
+      "bottomRightY": 228,
+      "content": "For the LRD measurement, set the LRD to the specific EQ and the rest of the steps are the same as in the baseline measurement, except that no LRD s-parameter be embedded into the oscilloscope.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 239,
+      "bottomRightX": 662,
+      "bottomRightY": 271,
+      "content": "The low and high signal levels can be obtained from the captured waveform. The averaged standard deviation for the low and high signal levels is reported as the noise.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 266,
+      "topLeftY": 283,
+      "bottomRightX": 521,
+      "bottomRightY": 299,
+      "content": "$$\\sigma_n = (\\sigma^2 \\text{LRD measurement} - \\sigma^2 \\text{Baseline})^{0.5}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 312,
+      "bottomRightX": 340,
+      "bottomRightY": 328,
+      "content": "$\\sigma_n$ shall be less or equal to 2 mV-rms.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 340,
+      "bottomRightX": 376,
+      "bottomRightY": 354,
+      "content": "### E.6.4.5 Integrated Return Loss Requirement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 361,
+      "bottomRightX": 658,
+      "bottomRightY": 437,
+      "content": "The integrated return loss is specified to manage the reflection from the LRD package and die termination. The differential return loss may be measured with a VNA using the LRD EVB, as part of the LRD transfer function characterization. The LRD EQ setting identified from the compliance eye testing shall be used and the fixture effect shall be de-embedded. The integrated return loss is calculated as:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 277,
+      "topLeftY": 451,
+      "bottomRightX": 511,
+      "bottomRightY": 512,
+      "content": "$$IRL = db \\left( \\sqrt{\\frac{\\int_0^{f_{max}} |V_{in}(f)|^2 |RL(f)|^2 df}{\\int_0^{f_{max}} |V_{in}(f)|^2 df}} \\right)$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 523,
+      "bottomRightX": 639,
+      "bottomRightY": 555,
+      "content": "where $f_{max} = 10$ GHz, $df <= 10$ MHz, $RL(f)$ is the measured differential return loss, referencing to an 85-ohm impedance, and $V_{in}(f)$ is the input pulse frequency spectrum:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 245,
+      "topLeftY": 566,
+      "bottomRightX": 542,
+      "bottomRightY": 583,
+      "content": "Figure E-28. Input Pulse Frequency Spectrum",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 598,
+      "bottomRightX": 359,
+      "bottomRightY": 666,
+      "content": "![img-223.jpeg](img-223.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-223.jpeg"
+    },
+    {
+      "topLeftX": 217,
+      "topLeftY": 669,
+      "bottomRightX": 359,
+      "bottomRightY": 696,
+      "content": "$T_b = \\text{Unit Interval} = 100 \\text{ ps}$\n$T_r = 0 \\text{ to } 100\\% \\text{ rise time} = 0.4T_b$",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 359,
+      "topLeftY": 629,
+      "bottomRightX": 578,
+      "bottomRightY": 671,
+      "content": "$$|V_{in}(f)| = \\left| \\frac{\\sin(\\pi f T_r)}{\\pi f T_r} \\cdot \\frac{\\sin(\\pi f T_b)}{\\pi f T_b} \\right|$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 716,
+      "bottomRightX": 498,
+      "bottomRightY": 731,
+      "content": "The integrated return loss, IRL, shall be less or equal to -17 dB.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 745,
+      "bottomRightX": 362,
+      "bottomRightY": 760,
+      "content": "### E.6.4.6 Integrated Crosstalk Requirement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 767,
+      "bottomRightX": 673,
+      "bottomRightY": 812,
+      "content": "The integrated crosstalk controls the crosstalk noise from the LRD among signal pairs. Crosstalk may be measured with a VNA using the LRD EVB. The integrated near-end and far-end crosstalk are calculated using the equations below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 259,
+      "topLeftY": 824,
+      "bottomRightX": 527,
+      "bottomRightY": 888,
+      "content": "$$INEXT = db \\left( \\sqrt{\\frac{\\int_0^{f_{max}} |V_{in}(f)|^2 |NEXT(f)|^2 df}{\\int_0^{f_{max}} |V_{in}(f)|^2 df}} \\right)$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

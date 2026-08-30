@@ -1,0 +1,236 @@
+{
+  "index": 434,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 404 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 678,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 95,
+      "bottomRightX": 612,
+      "bottomRightY": 111,
+      "content": "A port shall attempt to transition to the U1 state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 117,
+      "bottomRightX": 671,
+      "bottomRightY": 209,
+      "content": "- U1 entry is requested by the link partner and there is no pending traffic on the port and all the hub downstream port's links are in U1 or a lower state.\n- All the hub downstream ports are in U1 or a lower link state and there is no pending traffic to transmit on the upstream port and U1_ENABLE is set to one.\n- U1 entry is requested by the link partner and Force_LinkPM_Accept bit is set.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 222,
+      "bottomRightX": 641,
+      "bottomRightY": 254,
+      "content": "If the transition attempt fails (an LXU is received or the link goes to recovery), the port returns to the appropriate enabled U0 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 266,
+      "bottomRightX": 372,
+      "bottomRightY": 281,
+      "content": "#### **10.6.2.3 Attempt U0 – U2 Transition**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 288,
+      "bottomRightX": 630,
+      "bottomRightY": 304,
+      "content": "In this state, the port attempts to transition the link from the U0 state to the U2 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 315,
+      "bottomRightX": 612,
+      "bottomRightY": 332,
+      "content": "A port shall attempt to transition to the U2 state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 337,
+      "bottomRightX": 671,
+      "bottomRightY": 429,
+      "content": "- U2 entry is requested by the link partner and there is no pending traffic on the port and all the hub downstream port's links are in U2 or a lower state.\n- All the hub downstream ports are in U2 or a lower link state and there is no pending traffic to transmit on the upstream port and U2_ENABLE is set to one.\n- U2 entry is requested by the link partner and Force_LinkPM_Accept bit is set.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 443,
+      "bottomRightX": 641,
+      "bottomRightY": 475,
+      "content": "If the transition attempt fails (an LXU is received or the link goes to recovery), the port returns to the appropriate enabled U0 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 487,
+      "bottomRightX": 268,
+      "bottomRightY": 502,
+      "content": "#### **10.6.2.4 Link in U1**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 509,
+      "bottomRightX": 486,
+      "bottomRightY": 524,
+      "content": "The PM timer is reset when this state is entered and is active.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 537,
+      "bottomRightX": 264,
+      "bottomRightY": 552,
+      "content": "A port transitions to U1:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 559,
+      "bottomRightX": 669,
+      "bottomRightY": 611,
+      "content": "- After sending an LAU to accept a transition initiated by the link partner.\n- After receiving an LAU from the link partner after initiating an attempt to transition the link to U1",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 625,
+      "bottomRightX": 664,
+      "bottomRightY": 658,
+      "content": "If the U2 inactivity timeout is not 0xFF or 0x00, and the PM timer reaches the U2 inactivity timeout, the port's link shall initiate a transition from U1 to U2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 670,
+      "bottomRightX": 268,
+      "bottomRightY": 685,
+      "content": "#### **10.6.2.5 Link in U2**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 692,
+      "bottomRightX": 219,
+      "bottomRightY": 707,
+      "content": "The link is in U2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 720,
+      "bottomRightX": 264,
+      "bottomRightY": 736,
+      "content": "A port transitions to U2:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 742,
+      "bottomRightX": 669,
+      "bottomRightY": 795,
+      "content": "- After sending an LAU to accept a transition initiated by the link partner.\n- After receiving an LAU from the link partner after initiating an attempt to transition the link to U2",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 809,
+      "bottomRightX": 268,
+      "bottomRightY": 824,
+      "content": "#### **10.6.2.6 Link in U3**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 832,
+      "bottomRightX": 219,
+      "bottomRightY": 848,
+      "content": "The link is in U3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 860,
+      "bottomRightX": 264,
+      "bottomRightY": 877,
+      "content": "A port transitions to U3:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 882,
+      "bottomRightX": 595,
+      "bottomRightY": 899,
+      "content": "- After sending an LAU to accept a transition initiated by the link partner.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

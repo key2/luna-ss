@@ -1,0 +1,121 @@
+{
+  "index": 303,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 93,
+      "bottomRightX": 356,
+      "bottomRightY": 113,
+      "content": "### 8.4.4 Vendor Device Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 692,
+      "bottomRightY": 154,
+      "content": "Use of this LMP is intended for vendor-specific device testing and shall not be used during normal operation of the link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 177,
+      "bottomRightX": 662,
+      "bottomRightY": 301,
+      "content": "![img-193.jpeg](img-193.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-193.jpeg"
+    },
+    {
+      "topLeftX": 297,
+      "topLeftY": 314,
+      "bottomRightX": 527,
+      "bottomRightY": 332,
+      "content": "Figure 8-7. Vendor Device Test LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 360,
+      "bottomRightX": 430,
+      "bottomRightY": 377,
+      "content": "Table 8-6. Vendor-specific Device Test Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 380,
+      "bottomRightX": 700,
+      "bottomRightY": 478,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | **Subtype.** This field shall be set to *Vendor Device Test*.  |\n|  8 | 0:9 | **Vendor-specific device test.** The function of these 8 bits is vendor specific.  |\n|  64 | 1:0 | **Vendor-defined data.** This value is vendor-defined.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-109.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 499,
+      "bottomRightX": 330,
+      "bottomRightY": 520,
+      "content": "### 8.4.5 Port Capabilities",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 524,
+      "bottomRightX": 693,
+      "bottomRightY": 644,
+      "content": "The Port Capability LMP describes each port's link capabilities and is sent by both link partners after the successful completion of training and link initialization. After the port enters U0 from Polling, the port shall send Port Capability LMP within tPortConfiguration time once link initialization (refer to Section 7.2.4.1.1) is completed. Note the port may not always transition directly from Polling to U0, but may transition through other intermediate states (e.g., Recovery or Hot Reset) before entering U0. Regardless of states passed through between Polling and entry into U0, the device shall send a Port Capability LMP immediately upon entering U0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 651,
+      "bottomRightX": 584,
+      "bottomRightY": 669,
+      "content": "If a link partner does not receive this LMP within tPortConfiguration time then:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 673,
+      "bottomRightX": 694,
+      "bottomRightY": 743,
+      "content": "- If the link partner has downstream capability, it shall signal an error as described in Section 10.16.2.6.\n- If the link partner only supports upstream capability, see Sections 10.5 and 10.18 which define the hub and peripheral upstream port connect states.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-10",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

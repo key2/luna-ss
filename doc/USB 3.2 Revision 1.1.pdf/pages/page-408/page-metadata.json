@@ -1,0 +1,84 @@
+{
+  "index": 407,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 63,
+      "content": "- 377 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 678,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 95,
+      "bottomRightX": 667,
+      "bottomRightY": 125,
+      "content": "- The aggregate arbitration weight of the hub, for a SuperSpeedPlus hub as described in Section 10.8.7.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 146,
+      "bottomRightX": 666,
+      "bottomRightY": 239,
+      "content": "Figure 10-5 illustrates the use of route strings in an example topology with five levels of four port USB hubs. The hub depth value for each level of hub is illustrated in the figure. Each hub and each device in the topology contains the route string that would be used to route a packet to that device/hub. For each hub depth, the octet in the route string that determines the routing target at that hub depth is shown in bold and a larger font size than the rest of the route string. The host root port is not included in the 20-bit route string.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 280,
+      "topLeftY": 250,
+      "bottomRightX": 508,
+      "bottomRightY": 268,
+      "content": "**Figure 10-5 Route String Example**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 276,
+      "bottomRightX": 584,
+      "bottomRightY": 915,
+      "content": "![img-166.jpeg](img-166.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-166.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

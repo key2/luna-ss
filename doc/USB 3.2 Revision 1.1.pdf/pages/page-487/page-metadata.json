@@ -1,0 +1,146 @@
+{
+  "index": 486,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 456 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 96,
+      "bottomRightX": 678,
+      "bottomRightY": 231,
+      "content": "- A host shall have control mechanisms in the host interface that allow software to achieve equivalent behavior to hub downstream port behavior in response to SetPortFeature or ClearPortFeature requests documented in Section 10.3.\n- A host shall implement port status bits consistent with the downstream port state descriptions in Section 10.3.\n- A host is required to provide a mechanism to correlate each USB 2.0 port with any Enhanced SuperSpeed port that shares the same physical connector. Note that this is similar to the requirement for USB hubs in Section 10.3.3.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 252,
+      "bottomRightX": 663,
+      "bottomRightY": 284,
+      "content": "A host root port shall follow the requirements for a downstream facing hub port in Section 10.4 with the same general exceptions already noted in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 295,
+      "bottomRightX": 663,
+      "bottomRightY": 326,
+      "content": "A host shall implement port status bits through the host interface that are equivalent to all port status bit definitions in this chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 337,
+      "bottomRightX": 663,
+      "bottomRightY": 385,
+      "content": "A host shall have mechanisms to achieve equivalent control over its root ports as provided by the SetPortFeature, ClearPortFeature, and GetPortStatus requests documented in this chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 397,
+      "bottomRightX": 363,
+      "bottomRightY": 413,
+      "content": "#### **10.18 Peripheral Device Upstream Ports**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 418,
+      "bottomRightX": 675,
+      "bottomRightY": 465,
+      "content": "The upstream port of a USB peripheral device has similar functional requirements to the upstream port of a USB hub. This section summarizes which requirements also apply to the upstream port of a peripheral device and identifies any additional or different requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 477,
+      "bottomRightX": 363,
+      "bottomRightY": 493,
+      "content": "##### **10.18.1 Peripheral Device Upstream Ports**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 499,
+      "bottomRightX": 674,
+      "bottomRightY": 530,
+      "content": "A peripheral device shall follow the requirements for an upstream facing hub port in Section 10.5 with the following exceptions and additions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 543,
+      "bottomRightX": 672,
+      "bottomRightY": 732,
+      "content": "- A peripheral device shall not attempt to connect on the USB 2.0 interface when the port is in the USPORT.Connected state.\n- A peripheral device shall not attempt to connect on the USB 2.0 interface unless the port has entered the USPORT.Powered-off state and VBUS is still present as shown in Figure 10-12.\n- If a device is connected on the USB 2.0 interface and it receives a USB 2.0 bus reset, the device shall enter the USPORT.Powered-On state within tCheckSuperSpeedOnReset time.\n- After a USB 2.0 reset, if the Enhanced SuperSpeed port enters the USPORT.Training state, the device shall disconnect on the USB 2.0 interface within tUSB2SwitchDisconnect time.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 751,
+      "bottomRightX": 668,
+      "bottomRightY": 783,
+      "content": "A device shall follow the requirements for an upstream facing hub port in Section 10.6 with the following exceptions and additions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 795,
+      "bottomRightX": 666,
+      "bottomRightY": 850,
+      "content": "- None of the conditions related to downstream port apply.\n- A peripheral device initiates transitions to U1 or U2 when otherwise allowed based on vendor specific algorithms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

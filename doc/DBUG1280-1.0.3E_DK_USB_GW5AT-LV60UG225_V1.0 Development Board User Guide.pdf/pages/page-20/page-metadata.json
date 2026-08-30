@@ -1,0 +1,149 @@
+{
+  "index": 19,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 532,
+      "topLeftY": 35,
+      "bottomRightX": 646,
+      "bottomRightY": 48,
+      "content": "3.6 HDMI-RX Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 86,
+      "bottomRightX": 652,
+      "bottomRightY": 244,
+      "content": "|  Signal Name | FPGA (U1) Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  DDR3_LDQS0_P | R8 | 9 | 1.5V | Data Clock  |\n|  DDR3_LDQS0_N | R9 | 9 | 1.5V | Data Clock  |\n|  DDR3_UDQS0_P | R3 | 9 | 1.5V | Data Clock  |\n|  DDR3_UDQS0_N | P3 | 9 | 1.5V | Data Clock  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 258,
+      "bottomRightX": 301,
+      "bottomRightY": 279,
+      "content": "## 3.6 HDMI-RX Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 307,
+      "bottomRightX": 216,
+      "bottomRightY": 325,
+      "content": "### 3.6.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 343,
+      "bottomRightX": 635,
+      "bottomRightY": 401,
+      "content": "The development board provides an HDMI receiver interface for the reception of HDMI signals through an internal FPGA IP. The connection diagram of the DP interfaces is as follows.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 412,
+      "bottomRightX": 206,
+      "bottomRightY": 426,
+      "content": "Note!",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 436,
+      "bottomRightX": 587,
+      "bottomRightY": 451,
+      "content": "This HDMI-RX interface circuit can also be used for HDMI-TX communication.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 459,
+      "bottomRightX": 488,
+      "bottomRightY": 475,
+      "content": "Figure 3-5 Connection Diagram of HDMI-RX Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 485,
+      "bottomRightX": 533,
+      "bottomRightY": 685,
+      "content": "![img-10.jpeg](img-10.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-10.jpeg"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 710,
+      "bottomRightX": 249,
+      "bottomRightY": 729,
+      "content": "### 3.6.2 Pin Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 749,
+      "bottomRightX": 437,
+      "bottomRightY": 764,
+      "content": "Table 3-5 Pin Distribution of DP-RX Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 768,
+      "bottomRightX": 652,
+      "bottomRightY": 907,
+      "content": "|  Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  HDMI_RXCP | D13 | 2 | 2.5V | HDMI differential clock  |\n|  HDMI_RXCN | C14 | 2 | 2.5V | HDMI differential clock  |\n|  HDMI_RX0P | B14 | 2 | 2.5V | HDMI receiving data  |\n|  HDMI_RX0N | A14 | 2 | 2.5V | HDMI receiving data  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-9.md"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 168,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 611,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "13(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

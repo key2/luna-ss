@@ -1,0 +1,93 @@
+{
+  "index": 532,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 247,
+      "topLeftY": 98,
+      "bottomRightX": 580,
+      "bottomRightY": 411,
+      "content": "![img-278.jpeg](img-278.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-278.jpeg"
+    },
+    {
+      "topLeftX": 249,
+      "topLeftY": 421,
+      "bottomRightX": 573,
+      "bottomRightY": 439,
+      "content": "Figure 10-21. Example Hub Controller Organization",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 453,
+      "bottomRightX": 381,
+      "bottomRightY": 474,
+      "content": "### 10.13.1 Endpoint Organization",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 478,
+      "bottomRightX": 695,
+      "bottomRightY": 632,
+      "content": "The Hub Class defines one additional endpoint beyond the default control pipe, which is required for all hubs: the Status Change endpoint. This endpoint has the maximum burst size set to one. The host system receives port and hub status change notifications through the Status Change endpoint. The Status Change endpoint is an interrupt endpoint. If no hub or port status change bits are set, then the hub returns an NRDY when the Status Change endpoint receives an IN (via an ACK TP) request. When a status change bit is set, the hub will send an ERDY TP to the host. The host will subsequently ask the Status Change endpoint for the data, which will indicate the entity (hub or port) with a change bit set. The USB system software can use this data to determine which status registers to access in order to determine the exact cause of the status change interrupt.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 645,
+      "bottomRightX": 567,
+      "bottomRightY": 667,
+      "content": "### 10.13.2 Hub Information Architecture and Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 672,
+      "bottomRightX": 693,
+      "bottomRightY": 755,
+      "content": "Figure 10-22 shows how status, status change, and control information relate to device states. Hub descriptors and Hub/Port Status and Control are accessible through the default control pipe. The Hub descriptors may be read at any time. When a hub detects a change on a port or when the hub changes its own state, the Status Change endpoint transfers data to the host in the form specified in Section 10.13.4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 761,
+      "bottomRightX": 695,
+      "bottomRightY": 845,
+      "content": "Hub or port status change bits can be set because of hardware or software events. When set, these bits remain set until cleared directly by the USB system software through a ClearPortFeature() request or by a hub reset. While a change bit is set, the hub continues to report a status change when the Status Change endpoint is read until all change bits have been cleared by the USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "10-55",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

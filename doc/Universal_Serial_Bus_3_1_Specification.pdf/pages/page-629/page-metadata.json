@@ -1,0 +1,48 @@
+{
+  "index": 628,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 587,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 102,
+      "bottomRightX": 731,
+      "bottomRightY": 572,
+      "content": "|  Block Header 0011 Block #1 | 0th IS | 1st IS | 2nd IS | 3rd DPHP | 4th DPHP | 5th DPHP | 6th EPF | 7th DPH  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|   |  8th DPH | 9th DPH | 10th DPH | 11th DPH | 12th DPH | 13th DPH | 14th DPH | 15th DPH  |\n|  Block Header 0011 Block #2 | 0th DPH | 1st DPH | 2nd DPH | 3rd CRC | 4th CRC | 5th Link Command Word | 6th Link Command Word | 7th Length Field Replica  |\n|   |  8th Length Field Replica | 9th Length Field Replica | 10th Length Field Replica | 11th SDP | 12th SDP | 13th SDP | 14th EPF | 15th Data  |\n|  Block Header 0011 Block #3 | 0th Data | 1st Data | 2nd Data | 3rd Data | 4th Data | 5th CRC | 6th CRC | 7th CRC  |\n|   |  8th CRC | 9th END | 10th END | 11th END | 12th EPF | 13th IS | 14th IS | 15th DPHP  |\n|  Block Header 0011 Block #4 | 0th DPHP | 1st DPHP | 2nd EPF | 3rd DPH | 4th DPH | 5th DPH | 6th DPH | 7th DPH  |\n|   |  8th DPH | 9th DPH | 10th DPH | 11th DPH | 12th DPH | 13th DPH | 14th DPH | 15th CRC  |\n|  Block Header 0011 Block #5 | 0th CRC | 1st Link Command Word | 2nd Link Command Word | 3rd Length Field Replica | 4th Length Field Replica | 5th Length Field Replica | 6th Length Field Replica | 7th SDP  |\n|   |  8th SDP | 9th SDP | 10th EPF | 11th CRC | 12th CRC | 13th CRC | 14th CRC | 15th END  |\n|  Block Header 0011 Block #6 | 0th END | 1st END | 2nd EPF | 3rd IS | 4th IS | 5th IS | 6th IS | 7th IS  |\n|   |  8th IS | 9th IS | 10th IS | 11th IS | 12th IS | 13th IS | 14th IS | 15th IS  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-276.md"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 605,
+      "bottomRightX": 638,
+      "bottomRightY": 624,
+      "content": "Figure D-4. Example placement of Gen 2 Data Packets and Idle Symbols",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 678,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "D-3",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "index": 330,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 551,
+      "bottomRightY": 110,
+      "content": "Table 8-18. Device Notification TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 112,
+      "bottomRightX": 700,
+      "bottomRightY": 334,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | **SubType**. This field shall be set to *DEV_NOTIFICATION*.  |\n|  4 | 1:4 | **Notification Type**. The field identifies the type of the device notification. **Value****Type of Notification Packet** 0000b Reserved 0001b FUNCTION_WAKE 0010b LATENCY_TOLERANCE_MESSAGE 0011b BUS_INTERVAL_ADJUSTMENT_MESSAGE 0100b HOST_ROLE_REQUEST^{1} 0101b SUBLINK_SPEED^{2} 0110b – 1111b Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-122.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 354,
+      "bottomRightX": 443,
+      "bottomRightY": 374,
+      "content": "### 8.5.6.1 Function Wake Device Notification",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 394,
+      "bottomRightX": 662,
+      "bottomRightY": 518,
+      "content": "![img-210.jpeg](img-210.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-210.jpeg"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 531,
+      "bottomRightX": 561,
+      "bottomRightY": 550,
+      "content": "Figure 8-24. Function Wake Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 578,
+      "bottomRightX": 415,
+      "bottomRightY": 593,
+      "content": "Table 8-19. Function Wake Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 596,
+      "bottomRightX": 624,
+      "bottomRightY": 726,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | **SubType**. This field shall be set to *DEV_NOTIFICATION*.  |\n|  4 | 1:4 | **Notification Type**. FUNCTION_WAKE  |\n|  8 | 1:8 | **Interface**. This field identifies the first interface in the function that caused the device to perform a remote wake operation.  |\n|  48 | 1:16 | **Reserved**.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-123.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 810,
+      "bottomRightX": 691,
+      "bottomRightY": 845,
+      "content": "$^{1}$ This Notification Type value shall be reserved for OTG use. Refer to Section 5.5 of the USB 3.0 OTG and EH Supplement for the definition of the respective Device Notification TP.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 853,
+      "bottomRightX": 686,
+      "bottomRightY": 889,
+      "content": "$^{2}$ This Device Notification is required for devices not operating at Gen 1 Speed. This Device Notification is optional for devices operating at Gen 1 speed.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "8-37",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

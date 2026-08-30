@@ -1,0 +1,156 @@
+{
+  "index": 120,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 90 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 675,
+      "bottomRightY": 140,
+      "content": "During Gen 1 operation the TSEQ training sequence repeats 65,536 times to allow for testing many coefficient settings. Also during Gen 1 operation no SKPs are inserted during the TSEQ training sequence. The frequency spectrum of the TSEQ sequence is shown in Figure 6-26.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 152,
+      "bottomRightX": 668,
+      "bottomRightY": 274,
+      "content": "During Gen 2 operation, the training period is ~8ms. The training pattern is periodic with a period of 16,385 132-bit blocks (16,384 TSEQ blocks plus a SYNC OS block). The much longer pattern greatly increases the richness of the pattern compared to Gen 1. The Gen 2 training pattern spectrum is essentially white. A port shall transmit a SKP OS no more frequent than once every 128 TSEQ OS. For example, a port may transmit one SKP OS every 256 TSEQ OS, but is prohibited to transmit one SKP OS every 64 TSEQ OS. The longer interval between SKP OS helps preserve the richness of the data while training the receiver. Note that a port may also choose to not insert SKP OS while transmitting TSEQ OS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 285,
+      "bottomRightX": 462,
+      "bottomRightY": 302,
+      "content": "Receiver equalization training is implementation specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 257,
+      "topLeftY": 313,
+      "bottomRightX": 532,
+      "bottomRightY": 331,
+      "content": "Figure 6-26. Frequency Spectrum of TSEQ",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 215,
+      "topLeftY": 341,
+      "bottomRightX": 576,
+      "bottomRightY": 627,
+      "content": "![img-41.jpeg](img-41.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-41.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 642,
+      "bottomRightX": 371,
+      "bottomRightY": 657,
+      "content": "### 6.8.2 Informative Receiver CTLE Function",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 666,
+      "bottomRightX": 663,
+      "bottomRightY": 742,
+      "content": "USB 3.1 allows the use of receiver equalization to meet system timing and voltage margins. For long cables and channels the eye at the Rx is closed, and there is no meaningful eye without first applying an equalization function. The Rx equalizer may be required to adapt to different channel losses using the Rx EQ training period. The exact Rx equalizer and training method is implementation specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 754,
+      "bottomRightX": 290,
+      "bottomRightY": 768,
+      "content": "#### 6.8.2.1 Gen 1 Reference CTLE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 776,
+      "bottomRightX": 603,
+      "bottomRightY": 808,
+      "content": "The equation for the continuous time linear equalizer (CTLE) used to develop the specification is the compliance Rx EQ transfer function described below.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 822,
+      "bottomRightX": 406,
+      "bottomRightY": 866,
+      "content": "$$H(s) = \\frac{A_{dc} \\omega_{p1} \\omega_{p2}}{\\omega_z} \\cdot \\frac{s + \\omega_z}{(s + \\omega_{p1})(s + \\omega_{p2})}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 880,
+      "bottomRightX": 351,
+      "bottomRightY": 896,
+      "content": "where $A_{dc}$ is the DC gain",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 908,
+      "bottomRightX": 401,
+      "bottomRightY": 926,
+      "content": "$\\omega_z = 2\\pi f_z$ is the zero frequency",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

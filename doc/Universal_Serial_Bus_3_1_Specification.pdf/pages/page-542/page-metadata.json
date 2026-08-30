@@ -1,0 +1,105 @@
+{
+  "index": 541,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 94,
+      "bottomRightX": 424,
+      "bottomRightY": 112,
+      "content": "Configuration Descriptor (SuperSpeed information)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 113,
+      "bottomRightX": 501,
+      "bottomRightY": 284,
+      "content": "|  bLength | 9  |\n| --- | --- |\n|  bDescriptorType | CONFIGURATION Descriptor type  |\n|  wTotalLength | 31  |\n|  bNumInterfaces | 1  |\n|  bConfigurationValue | X  |\n|  iConfiguration | Y  |\n|  bmAttributes | Z  |\n|  bMaxPower | The maximum amount of bus power the hub will consume in this configuration  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-211.md"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 310,
+      "bottomRightX": 244,
+      "bottomRightY": 327,
+      "content": "Interface Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 328,
+      "bottomRightX": 501,
+      "bottomRightY": 505,
+      "content": "|  bLength | 9  |\n| --- | --- |\n|  bDescriptorType | INTERFACE Descriptor type  |\n|  bInterfaceNumber | 0  |\n|  bAlternateSetting | 0  |\n|  bNumEndpoints | 1  |\n|  bInterfaceClass | HUB_CLASSCODE (9)  |\n|  bInterfaceSubClass | 0  |\n|  bInterfaceProtocol | 0  |\n|  iInterface | 1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-212.md"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 529,
+      "bottomRightX": 415,
+      "bottomRightY": 547,
+      "content": "Endpoint Descriptor (for Status Change Endpoint)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 548,
+      "bottomRightX": 501,
+      "bottomRightY": 679,
+      "content": "|  bLength | 7  |\n| --- | --- |\n|  bDescriptorType | ENDPOINT Descriptor type  |\n|  bEndpointAddress | Implementation-dependent; Bit 7: Direction = In(1)  |\n|  bmAttributes | Transfer Type = Interrupt (19)  |\n|  wMaxPacketSize | 2  |\n|  bInterval | 8 (maximum allowable interval)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-213.md"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 705,
+      "bottomRightX": 485,
+      "bottomRightY": 722,
+      "content": "Endpoint Companion Descriptor (for Status Change Endpoint)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 723,
+      "bottomRightX": 501,
+      "bottomRightY": 838,
+      "content": "|  bLength | 6  |\n| --- | --- |\n|  bDescriptorType | SUPERSPEED_USB_ENDPOINT_COMPANION Descriptor type  |\n|  bMaxBurst | 0  |\n|  bmAttributes | 0  |\n|  wBytesPerInterval | 2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-214.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-64",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

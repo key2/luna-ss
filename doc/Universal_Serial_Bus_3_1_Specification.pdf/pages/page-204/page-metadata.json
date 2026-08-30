@@ -1,0 +1,129 @@
+{
+  "index": 203,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 94,
+      "bottomRightX": 676,
+      "bottomRightY": 124,
+      "content": "Essentially, t12-t10 of link partner 1 follows U1 Exit tBurst timing and t13-t11 of link partner 2 follows U2 Exit tBurst timing.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 141,
+      "bottomRightX": 293,
+      "bottomRightY": 162,
+      "content": "### 6.9.3 Warm Reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 169,
+      "bottomRightX": 694,
+      "bottomRightY": 218,
+      "content": "A Warm Reset is a reset generated only by a downstream port to an upstream port. A downstream port may issue a Warm Reset at any Link states except SS.Disabled. An upstream port is required to detect a Warm Reset at any link states except SS.Disabled.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 227,
+      "bottomRightX": 690,
+      "bottomRightY": 276,
+      "content": "Note: Warm Reset is defined to be able to reset a hardware failure of a device, such as the LTSSM hanging. Under this assumption, Warm Reset may be detected in any link states except SS.Disabled.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 287,
+      "bottomRightX": 688,
+      "bottomRightY": 337,
+      "content": "A Warm Reset shares the same continuous LFPS signal as a low power Link state exit handshake signal. In order for an upstream port to be able to differentiate between the two signals, the tBurst of a Warm Reset is extended, as is defined in Table 6-20.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 346,
+      "bottomRightX": 698,
+      "bottomRightY": 480,
+      "content": "The Warm Reset assertion is asynchronous between a downstream port and an upstream port since it has to take a certain period of time for an upstream port to declare that a Warm Reset is detected. However, the de-assertion of the Warm Reset between a downstream port and an upstream port shall be made synchronous. Figure 6-31 shows a timing diagram of Warm Reset generation and detection when a port is U3. Once a Warm Reset is issued by a downstream port, it will take at least tResetDelay for an upstream port to declare the detection of Warm Reset. Once a Warm Reset is detected, an upstream port shall continue to assert the Warm Reset until it no longer receives any LFPS signals from a downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 485,
+      "bottomRightX": 699,
+      "bottomRightY": 518,
+      "content": "- An upstream port shall declare the detection of Warm Reset within tResetDelay. The minimum tResetDelay shall be 18 ms; the maximum tResetDelay shall be 50 ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 132,
+      "topLeftY": 537,
+      "bottomRightX": 694,
+      "bottomRightY": 729,
+      "content": "![img-154.jpeg](img-154.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-154.jpeg"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 740,
+      "bottomRightX": 559,
+      "bottomRightY": 758,
+      "content": "Figure 6-31. Example of Warm Reset Out of U3",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 787,
+      "bottomRightX": 527,
+      "bottomRightY": 810,
+      "content": "### 6.9.4 SuperSpeedPlus Capability Declaration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 814,
+      "bottomRightX": 691,
+      "bottomRightY": 899,
+      "content": "SuperSpeedPlus Capability Declaration (SCD) is a step for a SuperSpeedPlus port, while in the Polling.LFPS substate, to identify itself as SuperSpeedPlus capable by transmitting Polling.LFPS signals with specific patterns unique to SuperSpeedPlus ports. This section defines SuperSpeedPlus specific patterns in SCD1 and SCD2. The use of SCD1 and SCD2 is described in Chapter 7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "6-48",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

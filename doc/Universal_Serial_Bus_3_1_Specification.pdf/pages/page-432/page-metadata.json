@@ -1,0 +1,102 @@
+{
+  "index": 431,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 117,
+      "bottomRightX": 380,
+      "bottomRightY": 141,
+      "content": "## 9.3 USB Device Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 152,
+      "bottomRightX": 694,
+      "bottomRightY": 219,
+      "content": "All devices respond to requests from the host on the device's Default Control Pipe. These requests are made using control transfers. The request and the request's parameters are sent to the device in the Setup packet. The host is responsible for establishing the values passed in the fields listed in Table 9-3. Every Setup packet has 8 bytes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 238,
+      "bottomRightX": 328,
+      "bottomRightY": 254,
+      "content": "Table 9-3. Format of Setup Data",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 256,
+      "bottomRightX": 682,
+      "bottomRightY": 662,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bmRequestType | 1 | Bitmap | Characteristics of request: D7: Data transfer direction 0 = Host-to-device 1 = Device-to-host D6...5: Type 0 = Standard 1 = Class 2 = Vendor 3 = Reserved D4...0: Recipient 0 = Device 1 = Interface 2 = Endpoint 3 = Other 4...30 = Reserved 31 = Vendor Specific  |\n|  1 | bRequest | 1 | Value | Specific request (refer to Table 9-4)  |\n|  2 | wValue | 2 | Value | Word-sized field that varies according to request  |\n|  4 | wIndex | 2 | Index or Offset | Word-sized field that varies according to request; typically used to pass an index or offset  |\n|  6 | wLength | 2 | Count | Number of bytes to transfer if there is a Data stage  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-147.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 683,
+      "bottomRightX": 329,
+      "bottomRightY": 706,
+      "content": "### 9.3.1 bmRequestType",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 710,
+      "bottomRightX": 684,
+      "bottomRightY": 760,
+      "content": "This bitmapped field identifies the characteristics of the specific request. In particular, this field identifies the direction of data transfer in the second stage of the control transfer. The state of the Direction bit is ignored if the wLength field is zero, signifying there is no Data stage.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 769,
+      "bottomRightX": 684,
+      "bottomRightY": 820,
+      "content": "USB defines a series of standard requests that all devices shall support. These are listed in Table 9-4. In addition, a device class may define additional requests. A device vendor may also define requests supported by the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 828,
+      "bottomRightX": 692,
+      "bottomRightY": 896,
+      "content": "Requests may be directed to the device, an interface on the device, or a specific endpoint on a device. This field also specifies the intended recipient of the request. When an interface is specified, the wIndex field identifies the interface. When an endpoint is specified, the wIndex field identifies the endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "9-14",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

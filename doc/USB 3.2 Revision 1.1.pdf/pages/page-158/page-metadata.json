@@ -1,0 +1,84 @@
+{
+  "index": 157,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 127 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 90,
+      "bottomRightX": 675,
+      "bottomRightY": 754,
+      "content": "|  Link Command | Definition - See Sections 7.2.4.1, 7.2.4.2, and 7.5.6 for detailed use and requirements.  |\n| --- | --- |\n|  LCRD_x LCRD1_x LCRD2_x | LCRD_x: Rx Header Buffer Credit Index for all SuperSpeed header packets. It is to signify that a single Rx Header Buffer Credit has been made available. LCRD1_x: Type 1 Rx Buffer Credit Index for all SuperSpeedPlus Type 1 traffic class. It is to signify that a single Type 1 Rx Buffer Credit has been made available LCRD2_x: Type 2 Rx Buffer Credit Index for all SuperSpeedPlus Type 2 traffic class. It is to signify that a single Type 2 Rx Buffer Credit has been made available. x (A, B, C, D, E, F, G): Rx Header Buffer Credit Index. For SuperSpeed USB, LCRD_x to be sent by a port after receiving a header packet that meets the following criteria: LGOOD_n has been or will be sent. The header packet has been processed, and an Rx Header Buffer Credit is available. For SuperSpeedPlus USB, LCRD1_x to be sent by a port after receiving a Type 1 packet that meets all the following criteria: LGOOD_n has been or will be sent. The packet (HP or DP) has been processed and a Type 1 Rx Buffer Credit is available. For SuperSpeedPlus USB, LCRD2_x to be sent by a port after receiving a DP of Type 2 traffic class that meets all the following criteria: LGOOD_n has been or will be sent. The data packet has been processed and a Type 2 Rx Buffer Credit is available. LCRD_x or LCRD1_x/LCRD2_x is sent in the alphabetical order of A, B, C, D, and back to A without skipping, or in Gen 2x2 operation, in the alphabetical order of A, B, C, D, E, F, G and back to A without skipping. Missing LCRD_x or LCRD1_x/LCRD2_x will cause the link to transition to Recovery. Refer to Section 7.2.4.1 for details.  |\n|  LRTY | Sent by a port before resending the first header packet in response to receipt of LBAD.  |\n|  LGO_U1 | Sent by a port requesting entry to U1.  |\n|  LGO_U2 | Sent by a port requesting entry to U2.  |\n|  LGO_U3 | Sent by a downstream port requesting entry to U3. An upstream port shall accept the request.  |\n|  LAU | Sent by a port accepting the request to enter U1, U2, or U3.  |\n|  LXU | Sent by a port rejecting the request to enter U1 or U2.  |\n|  LPMA | Sent by a port upon receiving L AU. Used in conjunction with LGO_Ux and LAU handshake to guarantee both ports are in the same state.  |\n|  LDN | Downstream port present in U0. Sent by a downstream port every 10 μs when there are no packets or other link commands to be transmitted. Refer to Section 7.5.6.1 for details.  |\n|  LUP | Device present in U0. Sent by an upstream port every 10 μs when there are no packets or other link commands to be transmitted. Refer to Section 7.5.6.1 for details.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-82.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 786,
+      "bottomRightX": 314,
+      "bottomRightY": 802,
+      "content": "### 7.2.2.3 Link Command Placement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 809,
+      "bottomRightX": 477,
+      "bottomRightY": 825,
+      "content": "The link command placement shall meet the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 838,
+      "bottomRightX": 637,
+      "bottomRightY": 912,
+      "content": "- Link commands shall not be placed inside header packet structures (i.e., within LMPs, TPs, ITPs, or DPHs).\n- Link commands shall not be placed within the DPP of a DP structure.\n- Link commands shall not be placed between the DPH and the DPP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

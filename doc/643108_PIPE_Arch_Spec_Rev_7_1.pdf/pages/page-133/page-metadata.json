@@ -1,0 +1,121 @@
+{
+  "index": 132,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 496,
+      "bottomRightY": 148,
+      "content": "Figure 8-22. LFPS Transmit for USB4 and DisplayPort Modes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 171,
+      "bottomRightX": 652,
+      "bottomRightY": 341,
+      "content": "![img-43.jpeg](img-43.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-43.jpeg"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 366,
+      "bottomRightX": 616,
+      "bottomRightY": 446,
+      "content": "t1 - MAC informs the PHY that the MAC plans to transmit LFPS\nt2 - MAC starts transmitting LFPS over the parallel data interface\nt3 - MAC stops transmitting LFPS over the parallel data interface\nt4 - MAC starts transmitting High Speed data over parallel data interface",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 454,
+      "bottomRightX": 695,
+      "bottomRightY": 512,
+      "content": "The transitional time window (t2-t1) allows the PHY time to adjust any parameters necessary for transmitting LFPS. The minimum time and maximum time must be specified in the PHY datasheet (MinTimeBeforeLFPS and MaxTimeBeforeLFPS) for each protocol.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 518,
+      "bottomRightX": 695,
+      "bottomRightY": 563,
+      "content": "The transitional time window (t4-t3) returns the link to Electrical Idle to allow the PHY time to restore parameters necessary for high-speed transmission. The minimum time must be specified in the PHY datasheet (MinTimeEIAfterLFPS) for each protocol.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 583,
+      "bottomRightX": 565,
+      "bottomRightY": 607,
+      "content": "### 8.11 Detecting a Beacon – PCIe Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 613,
+      "bottomRightX": 696,
+      "bottomRightY": 657,
+      "content": "The PHY receiver must monitor at all times (except during reset or when RxEIDetectDisable is set) for electrical idle. When the PHY is in the P2 power state, and RxElecIdle is deasserted, then a beacon is being detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 666,
+      "bottomRightX": 295,
+      "bottomRightY": 681,
+      "content": "Figure 8-23. Beacon Receive",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 721,
+      "bottomRightX": 663,
+      "bottomRightY": 853,
+      "content": "![img-44.jpeg](img-44.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-44.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 968,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 967,
+      "content": "133",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

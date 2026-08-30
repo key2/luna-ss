@@ -1,0 +1,94 @@
+{
+  "index": 514,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 681,
+      "bottomRightY": 128,
+      "content": "packet Tx buffer for the upstream port. The buffers shown in Figure 10-15 and Figure 10-16 are independent physical buffers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 226,
+      "topLeftY": 146,
+      "bottomRightX": 602,
+      "bottomRightY": 392,
+      "content": "![img-272.jpeg](img-272.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-272.jpeg"
+    },
+    {
+      "topLeftX": 140,
+      "topLeftY": 402,
+      "bottomRightX": 683,
+      "bottomRightY": 421,
+      "content": "Figure 10-15. Example SS Hub Header Packet Buffer Architecture - Downstream Traffic",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 225,
+      "topLeftY": 438,
+      "bottomRightX": 602,
+      "bottomRightY": 686,
+      "content": "![img-273.jpeg](img-273.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-273.jpeg"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 696,
+      "bottomRightX": 673,
+      "bottomRightY": 715,
+      "content": "Figure 10-16. Example SS Hub Header Packet Buffer Architecture - Upstream Traffic",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 727,
+      "bottomRightX": 687,
+      "bottomRightY": 778,
+      "content": "The following lists functional requirements for a SuperSpeed hub buffer architecture with the assumption in each case that only the indicated port on the hub is receiving or transmitting header packets:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 782,
+      "bottomRightX": 696,
+      "bottomRightY": 835,
+      "content": "- A SuperSpeed hub starting with all header packet buffers empty shall be able to receive at least eight header packets directed to the same downstream port that is not in U0 before its upstream port runs out of header packet flow control credits.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "10-37",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

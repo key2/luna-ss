@@ -1,0 +1,156 @@
+{
+  "index": 600,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 586,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 662,
+      "bottomRightY": 143,
+      "content": "System software configures and then enables each device to initiate U1 entry. The primary programming parameters involved in setting up hardware autonomous link state management include:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 153,
+      "bottomRightX": 700,
+      "bottomRightY": 187,
+      "content": "**U1DevExitLat** – Parameter used by devices to report their maximum U1 to U0 exit latency (refer to Chapter 9 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 195,
+      "bottomRightX": 679,
+      "bottomRightY": 247,
+      "content": "**PORT_U1_TIMEOUT** – Sets the value for the downstream port’s U1 inactivity timer. When specifying a value between the range 0x01-0xFE it also enables the downstream port to send U1 entry transition requests to its link partner (refer to Chapter 10 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 255,
+      "bottomRightX": 696,
+      "bottomRightY": 290,
+      "content": "**U1_Enable** – Enables an upstream port to initiate requests for transition into U1 (refer to Chapter 9 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 297,
+      "bottomRightX": 696,
+      "bottomRightY": 349,
+      "content": "The U1_Enable feature controls whether that particular upstream port may initiate U1 entry. Regardless of whether the upstream port is enabled for U1 entry initiation or not, it still responds to requests for U1 entry from its link partner, either accepting or rejecting the transition request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 357,
+      "bottomRightX": 697,
+      "bottomRightY": 424,
+      "content": "The following table illustrates the relationship between the downstream timeout and the upstream U1_Enable to configure the platform for any combination of port link state management. For example, if U1_Enable is enabled, and PORT_U1_TIMEOUT is set to FFH, then only the upstream port may initiate requests for transition to U1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 430,
+      "bottomRightX": 478,
+      "bottomRightY": 526,
+      "content": "|  PORT_U1_TIMEOUT | U1_Enable | Initiating Port  |\n| --- | --- | --- |\n|  01H-FEH | Disabled | Downstream Port only  |\n|  FFH | Enabled | Upstream Port only  |\n|  01H-FEH | Enabled | Either Port  |\n|  0H or FFH | Disabled | Neither Port  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-269.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 531,
+      "bottomRightX": 686,
+      "bottomRightY": 565,
+      "content": "For detailed information regarding the specifics of the U1 entry process, refer to Chapter 7 of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 576,
+      "bottomRightX": 340,
+      "bottomRightY": 594,
+      "content": "### C.1.1.3.2 Exiting the U1 State",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 603,
+      "bottomRightX": 647,
+      "bottomRightY": 637,
+      "content": "There are two ways to exit the U1 state. The link can return to the active U0 state or it can transition into a deeper power savings state (U2).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 645,
+      "bottomRightX": 307,
+      "bottomRightY": 663,
+      "content": "# **Transitioning from U1 → U0**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 671,
+      "bottomRightX": 692,
+      "bottomRightY": 757,
+      "content": "Either link partner can initiate a transition from U1 → U0. This transition is normally initiated when a packet needs to be transmitted, such as an IN message from the host, or an ERDY message from a device. The transition process is initiated by first signaling a Low Frequency Periodic Signaling (LFPS) handshake. This is followed by link recovery and training sequences. Refer to Chapter 6 and 7 respectively.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 765,
+      "bottomRightX": 307,
+      "bottomRightY": 782,
+      "content": "# **Transitioning from U1 → U2**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 790,
+      "bottomRightX": 700,
+      "bottomRightY": 859,
+      "content": "This transitions the link to an even lower power state and is triggered by a second inactivity timer (U2 inactivity timer). When a link enters U1, this starts the U2 inactivity timer. If the U2 inactivity timer expires while the link is still in U1, then both link partners transition silently from U1 → U2 without additional bus activity. The next sections discuss this in more detail.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 677,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "C-3",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

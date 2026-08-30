@@ -1,0 +1,19 @@
+Universal Serial Bus 3.1 Specification, Revision 1.0
+
+DPH(Deferred) - If a DPH with the Deferred (DF) flag set is received, then the device shall transition to the Deferred Prime Pipe state. This packet may be received when the link has transitioned to a U1 or U2 state and the host has attempted a transition to Prime Pipe or Move Data (a HIMD).
+
+### 8.12.1.4.3.5 Start Stream
+
+In the Start Stream state, the device is waiting for the host to accept or reject the Active and Ready Stream selection that it has proposed.
+
+DP(Stream n) - If a DP with a Stream ID equal to Stream n is received: the host has accepted the device's proposal for starting Stream n and provided the first packet of Stream n data, and the device shall transition to the Move Data state. Upon transitioning to the Move Data state the device sets CStream to the value of the received Stream ID (Stream n). The DPP shall contain the first data payload for CStream.
+
+DP(NoStream, PP=0) - If a DP with a Stream ID equal to NoStream is successfully received, the host has rejected the device's proposal for starting Stream n and the device shall transition to the Start Stream End state. The DPP shall contain a zero-length data payload. The host shall reject a proposal from a device if there is no Endpoint Data available for the Stream. The device shall set Stream n to Not Ready due to this transition. Note, if an error is detected in the DP data the device shall remain in the Start Stream state, and issue ACK(NoStream, NumP>0, Rty) packets, retrying until a DP(NoStream) is successfully received. This case is not illustrated in the Figure above.
+
+DP(Prime, PP=0) - If a DP with a Stream ID equal to Prime is received, a race condition has occurred. The host has entered the Prime Pipe state to inform the device that Endpoint Data for one or more Streams has been posted, at the same time that the device has attempted to initiate a Stream transfer, and their respective messages have passed each other on the link. The DPP shall contain a zero-length data payload. During this condition, the device is in the Start Stream state and the host is in the Prime Pipe state. To resolve this condition, the device shall transition to the Prime Pipe state. Note, if an error is detected in the DP data the device shall transition to the Prime Pipe state and perform any retries there.
+
+DP(Stream x) - If a DP with a Stream ID not equal to Stream n, Prime or NoStream (e.g., equal to Stream x) is received, a race condition has occurred. The host has entered the Move Data state to initiate a transfer on Stream x, at the same time that the device has attempted to initiate a transfer on Stream n, and their respective messages have passed each other on the link. During this condition, the device is in the Start Stream state and the host is in the Move Data state. To resolve this condition, the device shall transition to the Move Data state. The device shall set Stream x to Ready due to this transition. Upon transitioning to the Move Data state the device sets CStream to the value of the received Stream ID (Stream x). The DPP shall contain the first data payload for CStream. The device may accept or reject the Stream proposed by the host when in the Move Data state.
+
+DPH(Deferred) - If a DPH with the Deferred (DF) flag set is received, then the device shall transition the pipe to the Idle state. This packet is received when the link has transitioned to a U1 or U2 state while waiting for a host response to the Start Stream request. Note that this transition is highly unlikely because it can only occur if the tERDYTimeout has been exceeded. The device is expected to retry with an ERDY in this case. There is no DPP associated with a deferred DPH.
+
+8-78

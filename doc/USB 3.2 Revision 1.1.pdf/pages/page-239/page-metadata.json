@@ -1,0 +1,173 @@
+{
+  "index": 238,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 191,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 208 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 667,
+      "bottomRightY": 185,
+      "content": "Endpoints only respond to requests made by the host. The host is responsible for scheduling transactions on the bus and maintaining the priority and fairness of the data movement on the bus; it does this by the timing and ordering of IN and OUT requests. Transactions are not broadcast; packets traverse a direct path between the host and device. Any unused links may be placed into reduced power states making the bus amenable to aggressive power management.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 198,
+      "bottomRightX": 440,
+      "bottomRightY": 213,
+      "content": "### 8.1.2 Transactions on a SuperSpeedPlus Bus Instance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 219,
+      "bottomRightX": 673,
+      "bottomRightY": 250,
+      "content": "Transactions on a SuperSpeedPlus bus instance follow the rules defined in Section 8.1.1 with the following modifications:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 257,
+      "bottomRightX": 663,
+      "bottomRightY": 370,
+      "content": "- A SuperSpeedPlus host may issue simultaneous IN requests\n- A SuperSpeedPlus host should pipeline Isochronous IN transactions as described in Section 8.12.6.3.1\n- A SuperSpeedPlus device shall support simultaneous IN requests to different endpoints\n- Transactions may arrive/complete in a different order than they were initiated",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 385,
+      "bottomRightX": 337,
+      "bottomRightY": 399,
+      "content": "#### 8.1.2.1 Simultaneous IN Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 407,
+      "bottomRightX": 586,
+      "bottomRightY": 437,
+      "content": "A SuperSpeedPlus host may initiate simultaneous IN transactions. However, a SuperSpeedPlus host shall not initiate simultaneous IN transactions to:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 443,
+      "bottomRightX": 325,
+      "bottomRightY": 482,
+      "content": "- The same endpoint\n- A SuperSpeed bus instance",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 497,
+      "bottomRightX": 580,
+      "bottomRightY": 512,
+      "content": "Note: an ACK TP to continue a burst does not constitute a new IN transaction.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 525,
+      "bottomRightX": 301,
+      "bottomRightY": 541,
+      "content": "#### 8.1.2.2 Transaction Reordering",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 547,
+      "bottomRightX": 660,
+      "bottomRightY": 579,
+      "content": "Packets (DPs and TPs) may be delivered to the intended recipient in a different order than they were originated. This may happen due to the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 585,
+      "bottomRightX": 652,
+      "bottomRightY": 676,
+      "content": "- A SuperSpeedPlus hub may reorder due to the SuperSpeedPlus packet ordering rules. Refer to Section 10.8.6.\n- A SuperSpeedPlus device may reorder asynchronous and periodic IN requests.\n- SuperSpeedPlus devices and hubs will transmit TPs before DPs (for both periodic and asynchronous packets)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 691,
+      "bottomRightX": 240,
+      "bottomRightY": 707,
+      "content": "### 8.2 Packet Types",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 713,
+      "bottomRightX": 645,
+      "bottomRightY": 743,
+      "content": "Enhanced SuperSpeed USB uses four basic packet types each with one or more subtypes. The four packet types are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 750,
+      "bottomRightX": 667,
+      "bottomRightY": 908,
+      "content": "- Link Management Packets (LMP) only travel between a pair of links (e.g., a pair of directly connected ports) and is primarily used to manage that link.\n- Transaction Packets (TP) traverse all the links directly connecting the host to a device. They are used to control the flow of data packets, configure devices, and hubs, etc. Transaction Packets have no data payload.\n- Data Packets (DP) traverse all the links directly connecting the host to a device. Data Packets have two parts: a Data Packet Header (DPH) and a Data Packet Payload (DPP).\n- Isochronous Timestamp Packets (ITP) are multicast on all the active links.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

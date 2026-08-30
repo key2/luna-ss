@@ -1,0 +1,110 @@
+{
+  "index": 534,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 504 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 673,
+      "bottomRightY": 470,
+      "content": "- The re-timer shall monitor and forward the received LBPMs until a successful handshake is reached. Note that the forwarded LBPMs shall meet the electrical and timing requirements defined in Section 6.9.\n- The re-timer shall start the tPollingLBPMLFPSTimeout timer upon entry to this substate.\n- In x2 operation, the re-timer shall participate the re-timer presence announcement defined in Section E.3.4.2.1. A re-timer shall announce its presence by forwarding the received PHY Ready LBPM with bits [4:2] incremented by one. Note that the re-timer may determine the source of the PHY Ready LBPM based on bit 6. Refer to Table 7-13 for details.\n- In x2 operation, after completing the re-timer presence announcement, the re-timer shall perform one of the following based on bit 7 of the PHY Ready LBPM from the DFP.\n  - If it is asserted, it shall reset the tPollingLBPMLFPSTimeout timer, remain in this substate, forward the received LBPM message as is including the PHY Ready LBPM, and continue to monitor the PHY Ready LBPM handshake. Note that re-timer may observe LFPS electrical idle during the operation. The re-timer may store and forward one LBPM.\n  - If it is de-asserted, it shall participate the PHY Ready LBPM handshake and prepare to exit to Polling.RxEQ.\n- In x2 operation, the re-timer shall start a 60 µs LFPS EI timer to monitor the absence of LFPS after observing the successful PHY Ready LBPM handshake.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 483,
+      "bottomRightX": 373,
+      "bottomRightY": 499,
+      "content": "### E.3.4.2.3 Exit from Polling.PortConfig",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 506,
+      "bottomRightX": 667,
+      "bottomRightY": 655,
+      "content": "- In single-lane operation, the re-timer shall transition Polling.RxEQ if it has observed successful PHY Ready LBPM handshake.\n- In x2 operation, the re-timer shall transition Polling.RxEQ if it has observed successful PHY Ready LBPM handshake with bit-7 of the PHY Ready LBPM from DFP de-asserted and the 60 µs LFPS EI timer has expired.\n- The re-timer shall transition to Rx.Detect if one of the following conditions is met.\n  - Warm Reset is detected.\n  - The tPollingLBPMLFPSTimeout timer has expired.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 671,
+      "bottomRightX": 238,
+      "bottomRightY": 685,
+      "content": "### E.3.4.3 Polling.RxEQ",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 692,
+      "bottomRightX": 667,
+      "bottomRightY": 724,
+      "content": "Polling.RxEQ is a substate for eSS receiver equalization training. The training mechanism is the same as defined in LTSSM except the exit criteria.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 736,
+      "bottomRightX": 369,
+      "bottomRightY": 752,
+      "content": "### E.3.4.3.1 Polling.RxEQ Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 760,
+      "bottomRightX": 662,
+      "bottomRightY": 924,
+      "content": "- The lane polarity detection and correction for SS operation shall be enabled.\n- The re-timer shall transmit the number of TSEQ ordered set (OS) defined in Section 6.4 while performing its receiver equalization training and clock data recovery.\n- The re-timer shall be ready for TS1 OS detection upon completion of its receiver equalization training.\n- A bit-level re-timer shall transmit TSEQ OS with its transmitter meeting the electrical and timing requirements defined in Chapter 6. Note that a bit-level re-timer shall have its SSC disabled while transmitting TSEQ OS.\n- The re-timer shall forward the LFPS signal it has detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

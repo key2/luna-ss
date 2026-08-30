@@ -1,0 +1,48 @@
+{
+  "index": 12,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 606,
+      "topLeftY": 54,
+      "bottomRightX": 698,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 124,
+      "bottomRightX": 702,
+      "bottomRightY": 638,
+      "content": "|  Revision Number | Description | Date  |\n| --- | --- | --- |\n|  6.0 | • Updated Converged I/O nomenclature to USB4. Removed USB4 from the RxPolarity's applicable protocols as the RxPolarity is not applicable to SerDes. Added clarification to RxValid definition for SerDes mode, indicating the different values. Update to operational rules in Section 8.26.1 to indicate that LocalFS and LocalLF are updated before a PhyStatus deassertion. Clarified valid TxElecIdle[3:0] transition sequences in Section 8.20. Clarifications for configurable pairs definition, especially around Tx+Tx and Rx+Rx combinations. Updated Figure 3-2 and Figure 3-3 to show the second configurable pair for DisplayPort. Added RxData2 and TxData2 signal definitions for use in Rx+Rx and Tx+Tx diff pair combinations. Added Thunderbolt™ 3 signaling rate options of 10.3125 and 20.625 GT/s. Clarified that the actual Max PCLK rate is advertised in the PHY datasheet. Updated the following signals to apply to USB4: RxTermination, RxEIDetectDisable, Width, RxWidth, RxValid. Updated the following signals to apply to DisplayPort Rx: RxTermination, RxWidth. Width updated to apply to DisplayPort Tx. Support for PCI Express 6.0 (preliminary, version 0.5): Updated and added new register fields for four 8-bit coefficients for TxDeemph and LocalTxPresetCoefficients (assume 11 presets for now), 8-bit FS/LF values, ability to specify one of three eyes for timing margining, SerDes required and original PIPE not allowed for generation 6. Added a rate override option to the rate encoding for a DisplayPort. Figure 8-9 was corrupted in previous versions – fixed this. Added support for deep power management with optional asynchronous handshake signals DeepPMReq# and DeepPMAck# and optional Restore# signal for managing PHY context restoration after power rail restoration. Updated wording to be consistent that TxDataValid must be asserted when operating in modes that do not require. Any changes to PowerDown or RxStandby must cause IORecal, RxEqEval, or RxEqTraining operations to abort. RXTermination is required for PCIe. RefClkRequired# can deassert during P1. Added RxCLK2. Corrected typos in register names in Figure 9-4 and Figure 9-5. | June 2020  |\n|  5.2.1 | • Fixed typo in ShortChannelPowerControlSettingsSupported parameter's PowerControlSetting2 suggested description to reference <=10dB channel (rather than a <=5dB channel). Clarification that Table 3-1 is only a sample list of possible width and PCLK rate combinations (and added 4-symbol wide options at 1 GHz for 8 GT/s and 16 GT/s) | February 2020  |\n|  5.2 | • Added support for short reach for MCP applications (new signal ShortChannelPowerControl[1:0] and a new PHY parameter ShortChannelPowerControlSettings). Added 10, 13.5, and 20 GHz frequencies for DisplayPort 2.0. Added PCIe support for RxEqTraining, with new RxEqTrainDone acknowledgment and new PHY parameter PCIeRxEqTrainRequirement. Added support for PHY or controller-initiated Rx recalibration with PhyIORecalRequest, IORecal, and IORecalDone register fields and PHY parameter PhyRecalRequirement. Added clarification to Section 8.20 to specify for TxElecIdle[3:0] bits map into the table. Added clarification that the DisplayPort AUX signals are implemented on a per connector basis. Clarification that RxValid is synchronous to RxCLK in SerDes mode. Added email contact information for submitting feedback (pipespecification@intel.com). | February 2019  |\n|  5.1.1 | • Removed Rx Status0-3; the contents were moved to Tx Status3-6 in previous review of the specification, but the old registers were inadvertently left in the specification. | July 2018  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-2.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "13",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

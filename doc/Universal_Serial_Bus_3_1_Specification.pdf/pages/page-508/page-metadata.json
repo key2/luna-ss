@@ -1,0 +1,138 @@
+{
+  "index": 507,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 689,
+      "bottomRightY": 128,
+      "content": "- From the USPORT.Connected/Enabled state if the link enters Recovery and times out without recovering.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 133,
+      "bottomRightX": 672,
+      "bottomRightY": 164,
+      "content": "In this state, the port's link shall be in the eSS.Inactive state. The corresponding hub USB state shall be Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 171,
+      "bottomRightX": 664,
+      "bottomRightY": 204,
+      "content": "A port exits the Error state only if a Warm Reset is received on the link or if Far-end Receiver Terminations are removed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 242,
+      "bottomRightX": 426,
+      "bottomRightY": 262,
+      "content": "### 10.5.2 Hub Connect State Machine",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 268,
+      "bottomRightX": 697,
+      "bottomRightY": 369,
+      "content": "The following sections provide a functional description of a state machine that exhibits correct hub behavior for when to connect on the Enhanced SuperSpeed bus or the USB 2.0 bus. For a hub, the connection logic for the Enhanced SuperSpeed bus and the USB 2.0 bus are completely independent. The hub shall follow the USB 2.0 specification for connecting on USB 2.0. Figure 10-13 is an illustration of the hub connect state machine for an Enhanced SuperSpeed hub. Each of the states is described in Section 10.5.2.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 424,
+      "bottomRightX": 667,
+      "bottomRightY": 663,
+      "content": "![img-270.jpeg](img-270.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-270.jpeg"
+    },
+    {
+      "topLeftX": 237,
+      "topLeftY": 702,
+      "bottomRightX": 586,
+      "bottomRightY": 720,
+      "content": "Figure 10-13. Hub Connect (HCONNECT) State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 734,
+      "bottomRightX": 424,
+      "bottomRightY": 753,
+      "content": "### 10.5.2.1 Hub Connect State Descriptions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 767,
+      "bottomRightX": 370,
+      "bottomRightY": 784,
+      "content": "### 10.5.2.2 HCONNECT.Powered-off",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 791,
+      "bottomRightX": 655,
+      "bottomRightY": 824,
+      "content": "The HCONNECT.Powered-off state is the default state for a hub device. A hub device shall transition into this state if the following situation occurs:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 829,
+      "bottomRightX": 375,
+      "bottomRightY": 845,
+      "content": "- From any state when VBUS is removed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 851,
+      "bottomRightX": 554,
+      "bottomRightY": 867,
+      "content": "In this state, the hub upstream port's link shall be in the eSS.Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-30",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

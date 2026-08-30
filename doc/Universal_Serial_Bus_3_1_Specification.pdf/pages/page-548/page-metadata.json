@@ -1,0 +1,111 @@
+{
+  "index": 547,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 115,
+      "bottomRightX": 258,
+      "bottomRightY": 139,
+      "content": "## 10.16 Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 154,
+      "bottomRightX": 353,
+      "bottomRightY": 176,
+      "content": "### 10.16.1 Standard Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 181,
+      "bottomRightX": 690,
+      "bottomRightY": 248,
+      "content": "Hubs have tighter constraints on request processing timing than specified in Section 9.2.6 for standard devices because they are crucial to the “time to availability” of all devices attached to the USB. The worst case request timing requirements are listed below (they apply to both Standard and Hub Class requests):",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 252,
+      "bottomRightX": 485,
+      "bottomRightY": 346,
+      "content": "- Completion time for requests with no data stage: 50 ms\n- Completion times for standard requests with data stage(s):\n  Time from setup packet to first data stage: 50 ms\n  Time between each subsequent data stage: 50 ms\n  Time between last data stage and status stage: 50 ms",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 351,
+      "bottomRightX": 672,
+      "bottomRightY": 386,
+      "content": "Because hubs play such a crucial role in bus enumeration, it is recommended that hubs average response times be less than 5 ms for all requests.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 390,
+      "bottomRightX": 454,
+      "bottomRightY": 408,
+      "content": "Table 10-6 outlines the various standard device requests.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 421,
+      "bottomRightX": 485,
+      "bottomRightY": 438,
+      "content": "Table 10-6. Hub Responses to Standard Device Requests",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 439,
+      "bottomRightX": 590,
+      "bottomRightY": 711,
+      "content": "|  bRequest | Hub Response  |\n| --- | --- |\n|  CLEAR_FEATURE | Standard  |\n|  GET_CONFIGURATION | Standard  |\n|  GET_DESCRIPTOR | Standard  |\n|  GET_INTERFACE | Undefined. Hubs are allowed to support only one interface.  |\n|  GET_STATUS | Standard  |\n|  SET_ADDRESS | Standard  |\n|  SET_CONFIGURATION | Standard  |\n|  SET_DESCRIPTOR | Optional  |\n|  SET_FEATURE | Standard  |\n|  SET_INTERFACE | Undefined. Hubs are allowed to support only one interface.  |\n|  SET_ISOCH_DELAY | Standard  |\n|  SET_SEL | Standard  |\n|  SYNCH_FRAME | Undefined. Hubs are not allowed to have isochronous endpoints.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-228.md"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 719,
+      "bottomRightX": 683,
+      "bottomRightY": 787,
+      "content": "A hub is required to accept all “Standard” requests without error. A hub shall not respond with a request error to a well-formed SET_ISOCH_DELAY request. A hub is not required to retain or process the delay value. Optional requests that are not implemented shall return a STALL in the Data stage or Status stage of the request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 980,
+      "bottomRightX": 125,
+      "bottomRightY": 995,
+      "content": "10-70",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

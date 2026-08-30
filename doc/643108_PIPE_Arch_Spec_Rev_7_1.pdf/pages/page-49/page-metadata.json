@@ -1,0 +1,75 @@
+{
+  "index": 48,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 130,
+      "bottomRightX": 700,
+      "bottomRightY": 156,
+      "content": "1. For PCIe operating at 8 GT/s or higher link speed, USB4, and USB 10 GT/s link speed, the data bits are utilized as per the block encoded data description detailed in the previous tables. For all other modes, all the data bits are utilized.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 201,
+      "bottomRightX": 391,
+      "bottomRightY": 220,
+      "content": "#### 6.1.2 Command Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 239,
+      "bottomRightX": 513,
+      "bottomRightY": 256,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 1 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 258,
+      "bottomRightX": 699,
+      "bottomRightY": 863,
+      "content": "|  Name | Active Level | Description |   | Relevant Protocols  |\n| --- | --- | --- | --- | --- |\n|  PHY mode[3:0] | N/A | Selects the PHY operating mode. |   | PCIe, SATA, USB, DisplayPort, and USB4  |\n|   |   |  Value | Description  |   |\n|   |   |  0 | PCIe  |   |\n|   |   |  1 | USB  |   |\n|   |   |  2 | SATA  |   |\n|   |   |  3 | DisplayPort  |   |\n|   |   |  4 | Reserved  |   |\n|   |   |  5 | Reserved  |   |\n|   |   |  6 | Reserved  |   |\n|   |   |  7 | USB4  |   |\n|   |   |  All Others Reserved |   |   |\n|   |   |  Implementation of this signal is not required for PHYs that only support a single mode.The MAC is permitted to change this signal only during Reset# assertion. This signal is asynchronous.  |   |   |\n|  DP_mode_Tx_Rx | N/A | This signal is used to distinguish between DPTx and DPRx when PHY mode=0x3.A value of \"0\" specifies DPTx; a value of \"1\" specifies DPRx.The MAC is permitted to change this signal only during the Reset# assertion.This signal is asynchronous. |   | DisplayPort  |\n|  SerDesArch | High | This signal indicates whether the SerDes architecture is enabled. Displayport and USB4 must always set this to \"1\".The MAC is permitted to change this signal only during the Reset# assertion.This signal is asynchronous. |   | PCIe, SATA, USB, DisplayPort, and USB4  |\n|  SRISEnable | High | Used to tell the PHY to configure itself to support Separate Reference Clock (Refclk) with Independent Spread Spectrum Clocking (SRIS) for PCIe.SRISEnable must be set by the MAC before the first receiver detection. The PHY internally does sequencing and gates the exit to P0 with having setup for SRIS if SRISEnable is asserted.PHYs may have implementation-specific requirements for how early this signal must be stable, for example, before configuring the PLL. For PCIe Rev 5.0 and earlier MACs, this signal must not change after that point.For PCIe Rev 6.0 capable and newer MACs, this signal is permitted to change during link training in the Configuration LTSSM state. Specifically, this signal may be asserted initially and then deassert during link training. |   | PCIe  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-21.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "49",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

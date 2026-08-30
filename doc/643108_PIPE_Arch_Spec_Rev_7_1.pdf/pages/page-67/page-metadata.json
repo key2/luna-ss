@@ -1,0 +1,103 @@
+{
+  "index": 66,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 122,
+      "bottomRightX": 696,
+      "bottomRightY": 167,
+      "content": "that it takes to transfer the transaction across the message bus interface. The order in which the bits are transferred across the interface are illustrated in Table 6-11, Table 6-12, Table 6-13, and Table 6-14.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 172,
+      "bottomRightX": 691,
+      "bottomRightY": 247,
+      "content": "To address the case where multiple PIPE interface signals can change on the same PCLK, the concept of write_uncommitted and write_committed is introduced. A series of write_uncommitted transactions followed by one write_committed transaction provides a mechanism by which all the uncommitted writes and the final committed write are executed in an atomic manner, taking effect during the same PCLK cycle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 252,
+      "bottomRightX": 697,
+      "bottomRightY": 325,
+      "content": "To enable the write_uncommitted command, designs must implement a write buffer in the PHY and the MAC, where each write buffer entry can accommodate the three bytes worth of information associated with each write transaction. The minimum write buffer depth required is five, however, this number may increase in the future when new PIPE operations are mapped into the message bus interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 338,
+      "bottomRightX": 349,
+      "bottomRightY": 354,
+      "content": "Table 6-10. Message Bus Commands",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 356,
+      "bottomRightX": 699,
+      "bottomRightY": 777,
+      "content": "|  Encoding | Command | Description | Required Fields | Cycles to Transmit  |\n| --- | --- | --- | --- | --- |\n|  4'b0000 | NOP | Idle. See Table 6-11. | Command[3:0] | 1  |\n|  4'b0001 | write_uncommitted | The current write should be saved off into a write buffer and its associated data values are updated into the relevant PIPE register at a future time when a write_committed is received. This is useful for signals that must change in the same cycle but that are distributed among multiple registers. See Table 6-14. | Command[3:0], Address[11:0], Data[7:0] | 3  |\n|  4'b0010 | write_committed | The current write, as well as any previously uncommitted writes saved into the write buffer, should be committed, that is, their values should be updated into the PIPE registers. Once a write_committed is sent, no new writes, whether committed or uncommitted, may be sent until a write_ack is received. See Table 6-14. | Command[3:0], Address[11:0], Data[7:0] | 3  |\n|  4'b0011 | read | Used to read contents of a PIPE register. Only one read can be outstanding at a time in each direction. See Table 6-12. | Command[3:0], Address[11:0] | 2  |\n|  4 \"b0100 | read completion | Data response to a read. See Table 6-13. | Command[3:0], Data[7:0] | 2  |\n|  4'b0101 | write_ack | Used to acknowledge receipt of a write_committed and readiness to accept another write. The Ack is sent when the write buffer is flushed and the resulting PIPE operation is guaranteed to start in a deterministic amount of time. **Note:** This does not provide confirmation that the PIPE operation triggered by the write has completed. See Table 6-11. | Command[3:0] | 1  |\n|  All others | Reserved | N/A | N/A | N/A  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-42.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 797,
+      "bottomRightX": 622,
+      "bottomRightY": 813,
+      "content": "Table 6-11. Command Only Message Bus Transaction Timing (NOP, write_ack)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 815,
+      "bottomRightX": 699,
+      "bottomRightY": 885,
+      "content": "|   |  | M2P/P2M_MessageBus  |   |   |   |   |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  Time |  | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0  |\n|   |  t | Cmd[3:0] |   |   |   | 0000b  |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-43.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 968,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 967,
+      "content": "67",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "index": 148,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 92,
+      "bottomRightX": 668,
+      "bottomRightY": 130,
+      "content": "### 5.7.1.8 Wrenching Strength (Reference, USB 3.1 Micro Connector Family Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 135,
+      "bottomRightX": 697,
+      "bottomRightY": 218,
+      "content": "The wrenching strength test shall be performed using virgin parts. Perpendicular forces (Fp) are applied to a plug when inserted at a distance (L) of 15 mm from the edge of the receptacle. Testing conditions and method shall be agreed to by all parties. These forces shall be applied in all four directions (i.e., left, right, up, and down). Compliant connectors shall meet the following force thresholds:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 223,
+      "bottomRightX": 587,
+      "bottomRightY": 241,
+      "content": "- No plug or receptacle damage shall occur when a force of 0-25 N is applied.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 246,
+      "bottomRightX": 665,
+      "bottomRightY": 281,
+      "content": "The plug may be damaged, but only in such a way that the receptacle does not sustain damage when a force of 25-50 N is applied.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 294,
+      "bottomRightX": 320,
+      "bottomRightY": 313,
+      "content": "### 5.7.1.9 Lead Co-Planarity",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 318,
+      "bottomRightX": 489,
+      "bottomRightY": 337,
+      "content": "Co-planarity of all SMT leads shall be within a 0.08 mm range.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 349,
+      "bottomRightX": 281,
+      "bottomRightY": 369,
+      "content": "### 5.7.1.10 Solderability",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 376,
+      "bottomRightX": 636,
+      "bottomRightY": 409,
+      "content": "Solder shall cover a minimum of 95% of the surface being immersed, when soldered at a temperature 255 °C +/-5 °C for an immersion duration of 5 s.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 424,
+      "bottomRightX": 611,
+      "bottomRightY": 442,
+      "content": "### 5.7.1.11 Restriction of Hazardous Substances (RoHS) Compliance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 449,
+      "bottomRightX": 626,
+      "bottomRightY": 466,
+      "content": "It is recommended that components be RoHS compliant. Environmental Requirements",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 481,
+      "bottomRightX": 439,
+      "bottomRightY": 503,
+      "content": "### 5.7.2 Environmental Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 509,
+      "bottomRightX": 700,
+      "bottomRightY": 559,
+      "content": "The connector interface environmental tests shall follow EIA-364-1000.01, Environmental Test Methodology for Assessing the Performance of Electrical Connectors and Sockets Used in Business Office Applications.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 563,
+      "bottomRightX": 699,
+      "bottomRightY": 615,
+      "content": "Since the connector defined has far more than 0.127 mm wipe length, Test Group 6 in EIA 364-1000.01 is not required. The temperature life test duration and the mixed flowing gas test duration values are derived from EIA 364-1000.01 based on the field temperature per the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 629,
+      "bottomRightX": 394,
+      "bottomRightY": 644,
+      "content": "Table 5-17. Environmental Test Conditions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 647,
+      "bottomRightX": 599,
+      "bottomRightY": 706,
+      "content": "|  Temperature Life test temperature and duration | 105 °C for 120 hours  |\n| --- | --- |\n|  Temperature Life test temperature and duration for preconditioning | 105 °C for 72 hours  |\n|  Mixed flowing gas test duration | 7 days  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-51.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 711,
+      "bottomRightX": 687,
+      "bottomRightY": 743,
+      "content": "The pass/fail criterion for the low-level contact resistance (LLCR) is as defined in Section 5.6.2.1. The durability ratings are defined in Section 5.7.1.3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 697,
+      "bottomRightY": 993,
+      "content": "5-61",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "index": 571,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 31,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 707,
+      "content": "|  Name | Description | Min | Max | Units  |\n| --- | --- | --- | --- | --- |\n|  tHubDelay | When both the upstream and the downstream port are operating at the same speed this timing defines the maximum delay in nanoseconds a hub can introduce while forwarding packets in either direction. The time is measured from receipt of the first symbol of the packet by the receiving port until the transmitting port sends the first symbol of the packet, when both the receiving and transmitting links are in U0 and the following conditions are met: • No Link Commands are in flight. • Remote Rx Header Buffer Credit Count of the transmitting port is not zero. • Tx Header Buffer of the transmitting port is empty. A hub reports the actual delay via the wHubDelay field in Enhanced SuperSpeed Hub Descriptor. |  | 400 | ns  |\n|  tHubArbitrationDelay | When both the upstream and the downstream port are operating at the same speed this timing defines the maximum delay in nanoseconds a hub can introduce while forwarding packets in either direction. The time is measured from receipt of the last symbol of the packet by the receiving port until the transmitting port sends the first symbol of the packet, when both the receiving and transmitting links are in U0 and the following conditions are met: • No Link Commands are in flight. • Remote Rx Header Buffer Credit Count of the transmitting port is not zero. • Tx Header Buffer of the transmitting port is empty. A hub reports the actual delay via the wHubDelay field in Enhanced SuperSpeed Hub Descriptor. |  | 400 | ns  |\n|  tDSPortEnabledToU3 | Time from when a downstream port enters DSPORT.ENABLED when the upstream hub port is in U3 and remote wakeup is disabled to when the downstream port shall initiate a transition to the U3 link state. | 0 | 1 | s  |\n|  ArbitrationWeightBase | The value is used as the denominator to calculate the arbitration weight. See Section 10.8.6.1. | 1.25 | 1.25 | Gbps  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-253.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-94",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

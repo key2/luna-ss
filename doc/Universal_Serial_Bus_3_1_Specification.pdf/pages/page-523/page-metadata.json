@@ -1,0 +1,48 @@
+{
+  "index": 522,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 132,
+      "topLeftY": 109,
+      "bottomRightX": 688,
+      "bottomRightY": 834,
+      "content": "![img-276.jpeg](img-276.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-276.jpeg"
+    },
+    {
+      "topLeftX": 278,
+      "topLeftY": 846,
+      "bottomRightX": 547,
+      "bottomRightY": 863,
+      "content": "Figure 10-19. Port Transmit State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "10-45",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

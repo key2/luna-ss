@@ -1,0 +1,57 @@
+{
+  "index": 127,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 92,
+      "bottomRightX": 689,
+      "bottomRightY": 144,
+      "content": "Table 5-10 shows the wire connections for the USB 3.1 Standard-A to USB 3.1 Micro-B cable assembly. Note that the ID pin in the USB 3.1 Micro-B plug shall not be connected, but left in the open condition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 158,
+      "bottomRightX": 591,
+      "bottomRightY": 174,
+      "content": "Table 5-10. USB 3.1 Standard-A to USB 3.1 Micro-B Cable Assembly Wiring",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 177,
+      "bottomRightX": 707,
+      "bottomRightY": 428,
+      "content": "|  USB 3.1 Standard-A Plug |   | Wire |   | USB 3.1 Micro-B Plug  |   |\n| --- | --- | --- | --- | --- | --- |\n|  Pin Number | Signal Name | Wire Number | Signal Name | Pin Number | Signal Name  |\n|  1 | VBUS | 1 | PWR | 1 | VBUS  |\n|  2 | D- | 2 | D- | 2 | D-  |\n|  3 | D+ | 3 | D+ | 3 | D+  |\n|  4 | GND | 4 | GND_PWRrt | 5 | GND  |\n|  5 | StdA_SSRX- | 5 | P1- | 6 | MicB_SSTX-  |\n|  6 | StdA_SSRX+ | 6 | P1+ | 7 | MicB_SSTX+  |\n|  7 | GND_DRAIN | 7 and 10 | P1_Drain P2_Drain | 8 | GND_DRAIN  |\n|  8 | StdA_SSTX- | 8 | P2- | 9 | MicB_SSRX-  |\n|  9 | StdA_SSTX+ | 9 | P2+ | 10 | MicB_SSRX+  |\n|   |  |  |  | 4 | ID  |\n|  Shell | Shield | Braid | Shield | Shell | Shield  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-42.md"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 992,
+      "content": "5-40",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

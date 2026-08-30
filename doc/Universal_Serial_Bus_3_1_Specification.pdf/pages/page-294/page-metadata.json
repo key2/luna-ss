@@ -1,0 +1,29 @@
+{
+  "index": 293,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 31,
+      "bottomRightX": 301,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 993,
+      "content": "7-82",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

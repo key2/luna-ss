@@ -1,0 +1,212 @@
+{
+  "index": 561,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 686,
+      "bottomRightY": 144,
+      "content": "This request is optional. This request writes data to a class-specific descriptor. The host provides the data that is to be transferred to the hub during the data transfer stage of the control transaction. This request writes the entire hub descriptor at once.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 148,
+      "bottomRightX": 681,
+      "bottomRightY": 200,
+      "content": "Hubs shall buffer all the bytes received from this request to ensure that the entire descriptor has been successfully transmitted from the host. Upon successful completion of the bus transfer, the hub updates the contents of the specified descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 204,
+      "bottomRightX": 690,
+      "bottomRightY": 255,
+      "content": "It is a Request Error if wIndex is not zero or if wLength does not match the amount of data sent by the host. Hubs that do not support this request respond with a STALL during the Data stage of the request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 260,
+      "bottomRightX": 555,
+      "bottomRightY": 279,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 292,
+      "bottomRightX": 307,
+      "bottomRightY": 309,
+      "content": "### 10.16.2.8 Set Hub Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 315,
+      "bottomRightX": 419,
+      "bottomRightY": 332,
+      "content": "This request sets a value reported in the hub status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 334,
+      "bottomRightX": 699,
+      "bottomRightY": 391,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00100000B | SET_FEATURE | Feature Selector | Zero | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-246.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 396,
+      "bottomRightX": 674,
+      "bottomRightY": 430,
+      "content": "Setting a feature enables that feature; refer to Table 10-9 for the feature selector definitions that apply to the hub as recipient. Status changes may not be acknowledged using this request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 434,
+      "bottomRightX": 692,
+      "bottomRightY": 468,
+      "content": "It is a Request Error if wValue is not a feature selector listed in Table 10-9 or if wIndex or wLength are not as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 473,
+      "bottomRightX": 555,
+      "bottomRightY": 492,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 505,
+      "bottomRightX": 295,
+      "bottomRightY": 522,
+      "content": "### 10.16.2.9 Set Hub Depth",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 527,
+      "bottomRightX": 688,
+      "bottomRightY": 560,
+      "content": "This request sets the value that the hub uses to determine the index into the Route String Index for the hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 563,
+      "bottomRightX": 699,
+      "bottomRightY": 606,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00100000B | SET_HUB_DEPTH | Hub Depth | Zero | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-247.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 610,
+      "bottomRightX": 676,
+      "bottomRightY": 645,
+      "content": "wValue has the value of the Hub Depth. The Hub Depth left shifted by two is the offset into the Route String that identifies the lsb of the Route String Port Field for the hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 649,
+      "bottomRightX": 691,
+      "bottomRightY": 668,
+      "content": "It is a Request Error if wValue is greater than 4 or if wIndex or wLength are not as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 672,
+      "bottomRightX": 555,
+      "bottomRightY": 689,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 702,
+      "bottomRightX": 307,
+      "bottomRightY": 721,
+      "content": "### 10.16.2.10 Set Port Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 727,
+      "bottomRightX": 420,
+      "bottomRightY": 743,
+      "content": "This request sets a value reported in the port status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 745,
+      "bottomRightX": 699,
+      "bottomRightY": 858,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex |   | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  00100011B | SET_FEATURE | Feature Selector | Selector or Timeout Value or Remote Wake Mask | Port | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-248.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 864,
+      "bottomRightX": 698,
+      "bottomRightY": 900,
+      "content": "The port number shall be a valid port number for that hub, greater than zero. The port number is in the least significant byte (bits 7..0) of the wIndex field. The most significant byte of wIndex is zero,",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-84",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

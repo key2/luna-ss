@@ -1,0 +1,174 @@
+{
+  "index": 429,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 399 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 621,
+      "bottomRightY": 123,
+      "content": "A port exits the Error state only if a Warm Reset is received on the link or if Far-end Receiver Terminations are removed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 137,
+      "bottomRightX": 325,
+      "bottomRightY": 152,
+      "content": "### 10.5.2 Hub Connect State Machine",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 159,
+      "bottomRightX": 673,
+      "bottomRightY": 249,
+      "content": "The following sections provide a functional description of a state machine that exhibits correct hub behavior for when to connect on the Enhanced SuperSpeed bus or the USB 2.0 bus. For a hub, the connection logic for the Enhanced SuperSpeed bus and the USB 2.0 bus are completely independent. The hub shall follow the USB 2.0 specification for connecting on USB 2.0. Figure 10-13 is an illustration of the hub connect state machine for an Enhanced SuperSpeed hub. Each of the states is described in Section 10.5.2.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 215,
+      "topLeftY": 263,
+      "bottomRightX": 572,
+      "bottomRightY": 279,
+      "content": "Figure 10-13. Hub Connect (HCONNECT) State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 292,
+      "bottomRightX": 656,
+      "bottomRightY": 530,
+      "content": "![img-174.jpeg](img-174.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-174.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 553,
+      "bottomRightX": 396,
+      "bottomRightY": 568,
+      "content": "### 10.5.2.1 Hub Connect State Descriptions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 574,
+      "bottomRightX": 352,
+      "bottomRightY": 589,
+      "content": "### 10.5.2.2 HCONNECT-Powered-off",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 596,
+      "bottomRightX": 655,
+      "bottomRightY": 628,
+      "content": "The HCONNECT-Powered-off state is the default state for a hub device. A hub device shall transition into this state if the following situation occurs:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 635,
+      "bottomRightX": 393,
+      "bottomRightY": 650,
+      "content": "- From any state when VBUS is removed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 672,
+      "bottomRightX": 567,
+      "bottomRightY": 687,
+      "content": "In this state, the hub upstream port's link shall be in the eSS.Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 700,
+      "bottomRightX": 402,
+      "bottomRightY": 715,
+      "content": "### 10.5.2.3 HCONNECT.Attempt ESS Connect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 722,
+      "bottomRightX": 571,
+      "bottomRightY": 737,
+      "content": "A hub shall transition into this state if any of the following situations occur:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 743,
+      "bottomRightX": 673,
+      "bottomRightY": 798,
+      "content": "- From the HCONNECT-Powered-off state when VBUS becomes valid (and local power is valid if required).\n- From the HCONNECT.Connected on ESS state if Rx.Detect or Link Training time out.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 818,
+      "bottomRightX": 655,
+      "bottomRightY": 834,
+      "content": "In this state, the hub's upstream port Enhanced SuperSpeed link is in Rx.Detect or Polling.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

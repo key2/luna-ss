@@ -1,0 +1,57 @@
+{
+  "index": 22,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 36,
+      "bottomRightX": 215,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 556,
+      "topLeftY": 36,
+      "bottomRightX": 645,
+      "bottomRightY": 48,
+      "content": "3.7 MIPI Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 86,
+      "bottomRightX": 643,
+      "bottomRightY": 919,
+      "content": "|  J18 Pin No. | Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- | --- |\n|  27 | M0_D0P | J4 | MIPI | - | MIPI DPHY data signal  |\n|  28 | GND | - | - | - | GND  |\n|  29 | GND | - | - | - | GND  |\n|  30 | GND | - | - | - | GND  |\n|  31 | GND | - | - | - | GND  |\n|  32 | NC | - | - | - | Floating  |\n|  33 | GND | - | - | - | GND  |\n|  34 | NC | - | - | - | Floating  |\n|  35 | GND | - | - | - | GND  |\n|  36 | GND | - | - | - | GND  |\n|  37 | GND | - | - | - | GND  |\n|  38 | GND | - | - | - | GND  |\n|  39 | GND | - | - | - | GND  |\n|  40 | GND | - | - | - | GND  |\n|  41 | M1_D0A | D1 | MIPI | - | MIPI CPHY data signal  |\n|  42 | NC | - | - | - | Floating  |\n|  43 | M1_D0B | E2 | MIPI | - | MIPI CPHY data signal  |\n|  44 | NC | - | - | - | Floating  |\n|  45 | M1_D0C | E1 | MIPI | - | MIPI CPHY data signal  |\n|  46 | GND | - | - | - | GND  |\n|  47 | GND | - | - | - | GND  |\n|  48 | GND | - | - | - | GND  |\n|  49 | GND | - | - | - | GND  |\n|  50 | GND | - | - | - | GND  |\n|  51 | M1_D1A | F1 | MIPI | - | MIPI CPHY data signal  |\n|  52 | MIPI_GPIO1 | G5 | 11 | 3.3V | GPIO reserved  |\n|  53 | M1_D1B | G1 | MIPI | - | MIPI CPHY data signal  |\n|  54 | MIPI_GPIO2 | H12 | 4 | 3.3V | GPIO reserved  |\n|  55 | M1_D1C | G2 | MIPI | - | MIPI CPHY data signal  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-12.md"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 944,
+      "bottomRightX": 166,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 613,
+      "topLeftY": 944,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "16(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

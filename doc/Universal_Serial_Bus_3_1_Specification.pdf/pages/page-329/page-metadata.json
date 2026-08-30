@@ -1,0 +1,104 @@
+{
+  "index": 328,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 106,
+      "bottomRightX": 471,
+      "bottomRightY": 124,
+      "content": "Table 8-15. ERDY TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 128,
+      "bottomRightX": 700,
+      "bottomRightY": 370,
+      "content": "|  Width(bits) | Offset(DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to ERDY.  |\n|  3 | 1:4 | Reserved (Rsvd).  |\n|  4 | 1:12 | Reserved.  |\n|  5 | 1:16 | Number of Packets (NumP).For an OUT endpoint, refer to Table 8-13 for the description of this field.For an IN endpoint this field is set by the endpoint to the number of packets it can transmit when the host resumes transactions to it. This field shall not have a value greater than the maximum burst size supported by the endpoint as indicated by the value in the bMaxBurst field in the Endpoint Companion Descriptor. Note that the value reported in this field may be treated by the host as informative only.  |\n|  11 | 1:21 | Reserved.  |\n|  5 | 2:27 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-119.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 384,
+      "bottomRightX": 432,
+      "bottomRightY": 404,
+      "content": "#### 8.5.4 STATUS Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 411,
+      "bottomRightX": 668,
+      "bottomRightY": 461,
+      "content": "This TP can only be sent by the host. It is used to inform a control endpoint that the host has initiated the Status stage of a control transfer. This TP shall only be sent to a control endpoint. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 484,
+      "bottomRightX": 662,
+      "bottomRightY": 611,
+      "content": "![img-207.jpeg](img-207.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-207.jpeg"
+    },
+    {
+      "topLeftX": 282,
+      "topLeftY": 623,
+      "bottomRightX": 542,
+      "bottomRightY": 640,
+      "content": "Figure 8-21. STATUS Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 669,
+      "bottomRightX": 486,
+      "bottomRightY": 686,
+      "content": "Table 8-16. STATUS TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 688,
+      "bottomRightX": 700,
+      "bottomRightY": 785,
+      "content": "|  Width(bits) | Offset(DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to STATUS.  |\n|  3 | 1:4 | Reserved (Rsvd).  |\n|  52 | 1:12 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-120.md"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "8-35",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

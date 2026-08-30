@@ -1,0 +1,146 @@
+{
+  "index": 200,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 170 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 94,
+      "bottomRightX": 664,
+      "bottomRightY": 139,
+      "content": "2. If the tPollingSCDLFPSTimeout timer has expired, it shall switch to SuperSpeed operation in preparation to transition to Polling.RxEQ when all other exit conditions are met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 146,
+      "bottomRightX": 676,
+      "bottomRightY": 191,
+      "content": "Note: This may imply that its SuperSpeed link partner may enter Polling.LFPS first, can recognize the Polling.LFPS bursts with varying tRepeat in SCD1 or SCD2, and has met all of the exit conditions to Polling.RxEQ.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 199,
+      "bottomRightX": 676,
+      "bottomRightY": 259,
+      "content": "- A downstream port in SuperSpeedPlus operation shall transmit SCD1 defined in Table 6-33 if Compliance Mode is disabled. It shall perform in one of the following ways if no signature of SCD1 or SCD2 is detected within the received Polling.LFPS bursts.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 266,
+      "bottomRightX": 676,
+      "bottomRightY": 326,
+      "content": "1. If it has received sixteen or more consecutive Polling.LFPS bursts and the tPollingSCDLFPSTimeout timer has not expired, it shall switch to SuperSpeed operation and transmit Polling.LFPS with non-varying tRepeat after four SCD1 are transmitted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 332,
+      "bottomRightX": 669,
+      "bottomRightY": 377,
+      "content": "Note: This may include, but is not limited to, a scenario that its SuperSpeed link partner may not recognize the Polling.LFPS bursts with varying tRepeat in SCD1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 385,
+      "bottomRightX": 664,
+      "bottomRightY": 430,
+      "content": "2. If the tPollingSCDLFPSTimeout timer has expired, it shall switch to SuperSpeed operation in preparation to transition to Polling.RxEQ when all exit conditions are met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 436,
+      "bottomRightX": 676,
+      "bottomRightY": 482,
+      "content": "Note: This may imply that its SuperSpeed link partner may enter Polling.LFPS first, can recognize the Polling.LFPS bursts with varying tRepeat in SCD1 or SCD2, and has met all of the exit conditions to Polling.RxEQ.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 488,
+      "bottomRightX": 676,
+      "bottomRightY": 625,
+      "content": "- A downstream port in SuperSpeedPlus operation may transmit SCD1 or SCD2 if Compliance Mode is enabled.\n- A port in SuperSpeedPlus operation shall implement a 60 µs timer (tPollingSCDLFPSTimeout) to monitor the absence of LFPS signal after the completion of SuperSpeed Polling.LFPS handshake. During this period, the port shall continue the transmission of Polling.LFPS or SCD1 until its expiration.\n- A port in SuperSpeedPlus operation shall be ready for SuperSpeed operation if it has detected that its link partner operates at SuperSpeed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 630,
+      "bottomRightX": 671,
+      "bottomRightY": 707,
+      "content": "Note: There is no time allocated for a SuperSpeedPlus port to re-configure itself for SuperSpeed operation upon detection of its link partner operating at SuperSpeed. A SuperSpeedPlus port shall switch to SuperSpeed operation as quickly as possible for its receiver equalization training. Any time for configuration will result in receiving fewer TSEQ ordered sets from its link partner.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 713,
+      "bottomRightX": 669,
+      "bottomRightY": 841,
+      "content": "- A port shall disable its transition path to Compliance Mode when it has successfully completed Polling.LFPS handshake or has entered Compliance Mode.\n- A 360 ms timer (tPollingLFPSTimeout) shall be started upon entry to the substate.\n- The operating condition of an eSS PHY shall be established when a port is ready to exit to Polling.RxEQ.\n- An eSS receiver in SuperSpeed operation may optionally be enabled to receive TSEQ ordered sets for receiver equalizer training.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 846,
+      "bottomRightX": 667,
+      "bottomRightY": 908,
+      "content": "Note: The port first entering Polling.RxEQ will start transmitting TSEQ ordered sets while the other port is still in Polling.LFPS. Enabling a SuperSpeed receiver in Polling.LFPS will allow a port to start the receiver equalizer training while completing the requirement for Polling.LFPS exit handshake.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

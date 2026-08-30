@@ -1,0 +1,128 @@
+{
+  "index": 60,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 46,
+      "bottomRightX": 413,
+      "bottomRightY": 61,
+      "content": "- 30 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 92,
+      "bottomRightX": 652,
+      "bottomRightY": 109,
+      "content": "A SuperSpeedPlus hub is required to implement USB PTM (Precision Time Management).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 120,
+      "bottomRightX": 639,
+      "bottomRightY": 152,
+      "content": "SuperSpeedPlus hubs actively participate in the (end-to-end) protocol in several ways, including:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 164,
+      "bottomRightX": 673,
+      "bottomRightY": 467,
+      "content": "- Routes and preserves ordering (within an endpoint flow) of out-bound packets (TPs, DPs) from the upstream port to specific downstream ports\n- Routes in-bound packets and preserves ordering (within an endpoint flow) to the upstream port, via:\n  - Providing fair-service for simultaneously active, in-bound, asynchronous transfer type endpoint data flows, independent of device operating speed or location within the topology.\n  - Providing strict-priority for simultaneously active, in-bound, periodic transfer type endpoint data flows, independent of device operating speed or location within the topology.\n- SuperSpeedPlus hubs ensure compatibility with SuperSpeed devices connected to its downstream facing ports.\n- Detects when packets encounter a port that is in a low-power state. The hub transitions the targeted port out of the low-power state and notifies the host and device (in-band) that the packet encountered a port in a low-power state.\n- Updates the host timestamp packet based on the link delay and the delay in the hub before forwarding it to all downstream ports that are not in a low-power state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 480,
+      "bottomRightX": 197,
+      "bottomRightY": 496,
+      "content": "### 3.2.7 Hosts",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 502,
+      "bottomRightX": 662,
+      "bottomRightY": 564,
+      "content": "A USB 3.2 host interacts with USB devices through a host controller. To support the dual-bus architecture of USB 3.2, a host controller must include both Enhanced SuperSpeed and USB 2.0 elements, which can simultaneously manage control, status and information exchanges between the host and devices over each bus.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 576,
+      "bottomRightX": 621,
+      "bottomRightY": 608,
+      "content": "The host includes an implementation-specific number of root downstream ports for Enhanced SuperSpeed and USB 2.0. Through these ports the host:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 613,
+      "bottomRightX": 613,
+      "bottomRightY": 757,
+      "content": "- Detects the attachment and removal of USB devices\n- Manages control flow between the host and USB devices\n- Manages data flow between the host and USB devices\n- Collects status and activity statistics\n- Provides power to attached USB devices\n- A SuperSpeedPlus host is required to implement USB PTM (Precision Time Management).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 769,
+      "bottomRightX": 629,
+      "bottomRightY": 785,
+      "content": "USB System Software inherits its architectural requirements from USB 2.0, including:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 791,
+      "bottomRightX": 499,
+      "bottomRightY": 875,
+      "content": "- Device enumeration and configuration\n- Scheduling of periodic and asynchronous data transfers\n- Device and function power management\n- Device and bus management information",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

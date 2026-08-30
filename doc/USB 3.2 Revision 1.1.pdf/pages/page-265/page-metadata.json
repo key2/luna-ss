@@ -1,0 +1,84 @@
+{
+  "index": 264,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 234 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 90,
+      "bottomRightX": 679,
+      "bottomRightY": 743,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  1 | 2:24 | **Support Smart Isochronous (SSI).** This field is deprecated in this version of the specification and shall be Reserved. This field is only valid for ISO endpoints. For OUT endpoints, the **DBI, WPA** and **NBI** fields are valid only if this field is set to one and the **lpf** field is set to zero. In the case of IN endpoints, the host does not set the **lpf** field and hence it just has to set the SSI field if the host supports smart isochronous scheduling. It informs the device that this host controller supports advanced isochronous scheduling functionality that can be used by the device to drive its link to lower power states in between the times that the host is polling the ISO endpoint in its service interval. In the case the host is transferring data to an OUT endpoint, it is the responsibility of the host controller that it only sets this field to one when the **lpf** field is set to zero. Device response when both these fields are set to one is undefined. In the case the host is transferring data from an IN endpoint, then if the device responds with a DP that has the **lpf** field set to one, then it can ignore the value in this field (and other related fields) and simply wait for the host to PING the device again before the endpoint is serviced  |\n|  1 | 2:25 | **Will Ping Again (WPA/Reserved).** This field is deprecated in this version of the specification and shall be Reserved. This field is only valid for ISO endpoints and is only valid when the **SSI** field is set to one. If this field is set to one, then the host controller will send a PING TP before it services the endpoint again.  |\n|  1 | 2:26 | **Data in this Bus Interval is done (DBI/Reserved).** This field is deprecated in this version of the specification and shall be Reserved. This field is only valid for ISO endpoints and is only valid when the **SSI** field is set to one. If this field is set to one, then the host controller is done performing transactions to this endpoint in the current bus interval. Note: WPA has a higher priority than this field. When a host sets the WPA field, the device can safely ignore the value in this field as the host will PING the device before resuming transactions to this endpoint.  |\n|  1 | 2:27 | **Packets Pending (PP).** This field can only be set by the Host. If the field is set, then the host is ready to receive another DP from this endpoint/Stream. Where the endpoint is identified by the **Endpoint Number** and **Direction** fields, and if this is a Stream endpoint, then the Stream is identified by the **Stream ID** field. If this field is cleared, then the host is not ready to receive any more DPs for this Endpoint/Stream. If no endpoints on this device have packets pending, then the device can use this information to aggressively power manage its upstream link, e.g., set the link to a lower power U1 or U2 state.  |\n|  4 | 2:28 | **Number of Bus Intervals (NBI/Reserved).** This field is deprecated in this version of the specification and shall be Reserved. This field is only valid for ISO endpoints and is only valid when the **SSI** field is set to one, the **WPA** field is set to zero and the **DBI** field is set to one. The value in this field informs the device the number of bus intervals after which the host controller will perform transactions to the endpoint again. The value in this field indicates to the endpoint that the host controller will service the endpoint in the bus interval with a value equal to (current bus interval + value in **NBI** field + 1).  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-112.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 763,
+      "bottomRightX": 384,
+      "bottomRightY": 778,
+      "content": "### 8.5.2 Not Ready (NRDY) Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 784,
+      "bottomRightX": 665,
+      "bottomRightY": 848,
+      "content": "This TP can only be sent by a device for a non-isochronous endpoint. An OUT endpoint sends this TP to the host if it has no packet buffer space available to accept the DP sent by the host. An IN endpoint sends this TP to the host if it cannot return a DP in response to an ACK TP sent by the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 858,
+      "bottomRightX": 584,
+      "bottomRightY": 875,
+      "content": "Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

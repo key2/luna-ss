@@ -1,0 +1,92 @@
+{
+  "index": 223,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 193 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 677,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 94,
+      "bottomRightX": 650,
+      "bottomRightY": 110,
+      "content": "U3 does not contain any substates. Transitions to other states are shown in Figure 7-24.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 122,
+      "bottomRightX": 265,
+      "bottomRightY": 137,
+      "content": "#### 7.5.9.1 U3 Requirements",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 145,
+      "bottomRightX": 667,
+      "bottomRightY": 430,
+      "content": "- The transmitter DC common mode voltage does not need to be within specification (VTX-CM-DC-ACTIVE-IDLE-DELTA) defined in Table 6-19 on each negotiated lane.\n- The port shall maintain its low-impedance receiver termination (R$_{RX-DC}$) defined in Table 6-22. If the port is in x2 operation, it shall enable its low-impedance receiver termination (R$_{RX-DC}$) on the each negotiated lane.\n- LFPS Ping detection shall be disabled.\n- The port shall enable its U3 wakeup detect functionality as defined in Section 6.9.2. If the port is in x2 operation, it shall enable this functionality on the Configuration Lane.\n- The port shall enable its LFPS transmitter when it initiates the exit from U3. If the port is in x2 operation, it shall initiate the exit from U3 on the Configuration Lane.\n- A downstream port shall perform the far-end receiver termination detection every 100 ms (tU3RxdetDelay). Note that in x2 operation, a downstream port shall perform the far-end receiver termination detection on the Configuration Lane.\n- The port not able to respond to U3 LFPS wakeup within tNoLFPSResponseTimeout may initiate U3 LFPS wakeup when it is ready to return to U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 451,
+      "bottomRightX": 238,
+      "bottomRightY": 466,
+      "content": "#### 7.5.9.2 Exit from U3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 474,
+      "bottomRightX": 672,
+      "bottomRightY": 745,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect upon detection of a far-end high-impedance receiver termination (Z$_{RX-HIGH-IMP-DC-POS}$) defined in Table 6-22.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.\n- A self-powered upstream port shall transition to eSS.Disabled upon not detecting valid VBUS as defined in Section 11.4.5.\n- The port shall transition to Recovery upon successful completion of a LFPS handshake meeting the U3 wakeup signaling defined in Section 6.9.2.\n- The port shall remain in U3 when the 10 ms LFPS handshake timer times out (tNoLFPSResponseTimeout) and a successful LFPS handshake meeting the U3 wakeup handshake signaling in Section 6.9.2 is not achieved. 100 ms (tU3WakeupRetryDelay) after an unsuccessful LFPS handshake and the requirement to exit U3 still exists, then the port shall initiate the U3 wakeup LFPS Handshake signaling to wake up the host.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

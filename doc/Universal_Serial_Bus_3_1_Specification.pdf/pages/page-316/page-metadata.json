@@ -1,0 +1,182 @@
+{
+  "index": 315,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 92,
+      "bottomRightX": 694,
+      "bottomRightY": 177,
+      "content": "t3 - t2 is less than tLDMResponseDelay, the Responder shall form a LDM TS Response LMP by initializing the Response Delay field with the value t3 - t2, transmit the LDM TS Response LMP to the Requester, and transition to the Timestamp Request state. If the value t3 - t2 is equal to or greater than tLDMResponseDelay, then the Responder shall transition to the Timestamp Request state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 185,
+      "bottomRightX": 698,
+      "bottomRightY": 238,
+      "content": "A typical Trigger Event for the Responder Timestamp Response state would be the next opportunity to schedule a LDM TS Response LMP on its downstream link after a LDM TS Request LMP has been received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 246,
+      "bottomRightX": 666,
+      "bottomRightY": 279,
+      "content": "Note: The Timestamp t3 shall be adjusted for the TS Delay. Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 287,
+      "bottomRightX": 673,
+      "bottomRightY": 339,
+      "content": "Note: A Responder shall set the LCW Delayed (DL) flag and re-calculate CRC-5 if a LDM TS Response LMP is delayed if its adjusted Response Delay value exceeds tLDMRequestTimeout. Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 356,
+      "bottomRightX": 281,
+      "bottomRightY": 376,
+      "content": "### 8.4.8.4 LDM Link Delay",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 380,
+      "bottomRightX": 689,
+      "bottomRightY": 398,
+      "content": "LDM defines the set of PTM capabilities which support the measurement of the LDM Link Delay.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 407,
+      "bottomRightX": 692,
+      "bottomRightY": 474,
+      "content": "LDM Link Delay identifies the delay between the first symbol of a packet being transmitted on a Responder's downstream facing port and the first symbol of the same packet being received on the Requester's upstream facing port. In a hub or device the LDM Link Delay is derived from Timestamp Exchanges with its upstream Responder.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 482,
+      "bottomRightX": 666,
+      "bottomRightY": 517,
+      "content": "A Requester may execute multiple Timestamp Exchanges to refine its LDM Link Delay value through averaging.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 526,
+      "bottomRightX": 694,
+      "bottomRightY": 563,
+      "content": "Note: Field, or subfield names that reference a received ITP shall use the subscript (RxITP) and field, or subfield names that reference a transmitted ITP shall use the subscript (TxITP).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 577,
+      "bottomRightX": 241,
+      "bottomRightY": 594,
+      "content": "### 8.4.8.4.1 Calculation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 605,
+      "bottomRightX": 694,
+      "bottomRightY": 654,
+      "content": "The LDM Link Delay is calculated by the Requester when a Timestamp Exchange completes. The LDM Link Delay is the measured link delay adjusted to ensure compatibility with non-PTM aware software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 659,
+      "bottomRightX": 686,
+      "bottomRightY": 693,
+      "content": "The TP Transmission Time is the time it takes to transmit a TP including framing and encoding at UI nominal.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 702,
+      "bottomRightX": 314,
+      "bottomRightY": 719,
+      "content": "Where UI nominal is defined as:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 298,
+      "topLeftY": 727,
+      "bottomRightX": 527,
+      "bottomRightY": 765,
+      "content": "$$UI \\text{ nominal} = \\frac{(UI \\text{ max}) + (UI \\text{ min})}{2}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 771,
+      "bottomRightX": 475,
+      "bottomRightY": 787,
+      "content": "Refer to Section 6.7 for the definition of UI min and UI max.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 797,
+      "bottomRightX": 621,
+      "bottomRightY": 830,
+      "content": "The TP Transmission Time for a link operating at Gen 1 speed is 200 UI * UI nominal (i.e. 40 ns @ 5 Gbps).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 839,
+      "bottomRightX": 686,
+      "bottomRightY": 891,
+      "content": "It takes either 164 or 168 UI, depending on block alignment, to transfer a TP over a link operating at Gen 2 speed. The statistical average is 165 UI. Therefore, the TP Transmission Time for a link operating at Gen 2 speed is 165 UI * UI nominal (i.e. 16.5 ns @ 10 Gbps).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 981,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-22",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

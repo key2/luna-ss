@@ -1,0 +1,93 @@
+{
+  "index": 185,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 120,
+      "bottomRightX": 686,
+      "bottomRightY": 151,
+      "content": "# 10 Multi-Lane PIPE – PCIe Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 182,
+      "bottomRightX": 686,
+      "bottomRightY": 268,
+      "content": "This section describes a suggested method for combining multiple PIPEs together to form a multi-lane implementation. It describes which PIPE signals can be shared between each PIPE of a multi-lane implementation, and which signals should be unique for each PIPE. There are two types of PHY. \"Variable\" PHYs that are designed to support multiple links of variable maximum widths and \"Fixed\" PHYs that are designed to support a fixed number of links with fixed maximum widths.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 274,
+      "bottomRightX": 688,
+      "bottomRightY": 334,
+      "content": "The figure shows an example four-lane implementation of a multilane PIPE solution with PCLK as a PHY input. The signals that can be shared are shown in the figure as \"Shared Signals\" while signals that must be replicated for each lane are shown as \"Per-lane signals\".",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 343,
+      "bottomRightX": 389,
+      "bottomRightY": 358,
+      "content": "Figure 10-1. Four-Lane PIPE Implementation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 377,
+      "bottomRightX": 633,
+      "bottomRightY": 699,
+      "content": "![img-89.jpeg](img-89.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-89.jpeg"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 715,
+      "bottomRightX": 686,
+      "bottomRightY": 758,
+      "content": "The MAC layer is responsible for handling lane-to-lane deskew and it may be necessary to use the per-lane signaling of SKP insertion and removal to help perform this function.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "186",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

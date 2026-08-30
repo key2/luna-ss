@@ -1,0 +1,130 @@
+{
+  "index": 343,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 313 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 91,
+      "bottomRightX": 637,
+      "bottomRightY": 231,
+      "content": "|  No | No. (This should never happen for a compliant host implementation.) | Discard data  |\n| --- | --- | --- |\n|  No – Data Packet Has Expected Sequence Number | Yes | Accept data  |\n|  No – Data Packet Does Not Have Expected Sequence Number. | Yes | Discard data  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-139.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 259,
+      "bottomRightX": 518,
+      "bottomRightY": 274,
+      "content": "### 8.12.6.7 Device Response to an Isochronous OUT Data Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 281,
+      "bottomRightX": 639,
+      "bottomRightY": 327,
+      "content": "Table 8-35 lists the device processing of data from an OUT data packet. A device never returns a TP in response. In Table 8-35, DP Error may be due to one or more of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 339,
+      "bottomRightX": 633,
+      "bottomRightY": 467,
+      "content": "- CRC-32 incorrect\n- DPP aborted\n- DPP missing\n- DPH TT is not set to Isochronous (for a device operating in SuperSpeed Mode)\n- Data length in the DPH does not match the actual data payload length\n- Deferred bit set in the DPH",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 228,
+      "topLeftY": 487,
+      "bottomRightX": 558,
+      "bottomRightY": 503,
+      "content": "Table 8-35. Device Responses to OUT Data Packets",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 514,
+      "bottomRightX": 662,
+      "bottomRightY": 693,
+      "content": "|  Data Packet Error | Expected Sequence Number | Device Can Accept Data | Device Data Processing  |\n| --- | --- | --- | --- |\n|  Yes | Do not care | Do not care | Discard data  |\n|  No | Yes | Yes | Accept data  |\n|  No | Yes | No | Data discarded  |\n|  No | No | No | Data discarded. Device may discard any additional data for current service interval.  |\n|  No | No | Yes | Data discarded. Device may discard any additional data for current service interval.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-140.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 713,
+      "bottomRightX": 272,
+      "bottomRightY": 728,
+      "content": "### 8.13 Timing Parameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 734,
+      "bottomRightX": 645,
+      "bottomRightY": 811,
+      "content": "Table 8-36 lists the minimum and/or maximum times a device shall adhere to when responding to various types of packets it receives. It also lists the default and minimum times a device may set in Latency Tolerance messages as well as the minimum time after receipt of certain TPs and when it can initiate a U1 or U2 entry. In addition, it lists the maximum time between DPs a device must adhere to while bursting.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 822,
+      "bottomRightX": 667,
+      "bottomRightY": 870,
+      "content": "All txxxResponse (e.g., tNRDYResponse), tMaxBurstInterval and tGen2MaxBurstInterval times are all timings that a host/device shall meet when the host/device has nothing else to send on its downstream/upstream link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

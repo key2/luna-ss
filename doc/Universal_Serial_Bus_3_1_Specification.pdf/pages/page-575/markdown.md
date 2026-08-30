@@ -1,0 +1,20 @@
+Interoperability and Power Delivery
+
+### 11.4.1 Classes of Devices and Connections
+
+USB 3.1 provides power over two connectors: the Standard-A connector and the MicroAB connector (when the ID pin is connected to ground). The following sections focus on the power delivery requirements for the Standard-A connector.
+
+The power source and sink requirements of different device classes can be simplified with the introduction of the concept of a unit load. A unit load for Enhanced SuperSpeed has been redefined to be 150 mA. The number of unit loads a device can draw is an absolute maximum, not an average over time. A device may be either low-power at one unit load or high-power, consuming up to six unit loads. All devices default to low-power when first powered. The transition to high-power is under software control. It is the responsibility of software to ensure adequate power is available before allowing devices to consume high-power.
+
+The USB supports a range of power sourcing and power consuming agents; these include the following:
+
+- Root port hubs: Are directly attached to the USB Host Controller. Hub power is derived from the same source as the Host Controller. Systems that obtain operating power externally, either AC or DC, must be capable of supplying at least six unit loads to each port. Such ports are called high-power ports. Battery-powered systems may supply either one or six unit loads. Ports that can supply only one unit load are termed low-power ports.
+- Self-powered hubs: Power for the internal functions and downstream facing ports does not come from VBUS. However, the USB interface of the hub may draw up to one unit load from VBUS on its upstream facing port to allow the interface to function when the remainder of the hub is powered down. Hubs that obtain operating power externally (not from VBUS) must supply six unit loads to each port.
+- Low-power bus-powered devices: All power to these devices comes from VBUS. They may draw no more than one unit load at any time.
+- High-power bus-powered devices: All power to these devices comes from VBUS. They must draw no more than one unit load upon power-up and may draw up to six unit loads after being configured.
+- Ports may support the USB Charging Specification.
+- Self-powered devices: May draw up to one unit load from VBUS to allow the USB interface to function when the remainder of the function is powered down. All other power comes from an external (not from VBUS) source.
+
+No device shall supply (source) current on VBUS at its upstream facing port at any time. From VBUS on its upstream facing port, a device may only draw (sink) current. Devices must also ensure that the maximum operating current drawn by a device is one unit load until configured.
+
+11-3

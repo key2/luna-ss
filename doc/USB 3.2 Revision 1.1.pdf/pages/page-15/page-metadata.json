@@ -1,0 +1,56 @@
+{
+  "index": 14,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 46,
+      "bottomRightX": 413,
+      "bottomRightY": 61,
+      "content": "- xv -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 91,
+      "bottomRightX": 678,
+      "bottomRightY": 900,
+      "content": "8.5.6.6 Bus Interval Adjustment Message...240\n8.5.6.7 Sublink Speed Device Notification...242\n8.5.7 PING Transaction Packet...244\n8.5.8 PING_RESPONSE Transaction Packet...244\n8.6 Data Packet (DP)...245\n8.7 Isochronous Timestamp Packet (ITP)...247\n8.8 Addressing Triple...248\n8.9 Route String Field...248\n8.9.1 Route String Port Field...249\n8.9.2 Route String Port Field Width...249\n8.9.3 Port Number...249\n8.10 Transaction Packet Usages...249\n8.10.1 Flow Control Conditions...249\n8.10.2 Burst Transactions...250\n8.10.2.1 Enhanced SuperSpeed Burst Transactions...250\n8.10.2.2 SuperSpeedPlus Burst Transactions...251\n8.10.3 Short Packets...251\n8.10.4 SuperSpeedPlus Transaction Reordering...252\n8.11 TP or DP Responses...254\n8.11.1 Device Response to TP Requesting Data...255\n8.11.2 Host Response to Data Received from a Device...255\n8.11.3 Device Response to Data Received from the Host...256\n8.11.4 Device Response to a SETUP DP...257\n8.12 TP Sequences...258\n8.12.1 Bulk Transactions...258\n8.12.1.1 State Machine Notation Information...258\n8.12.1.2 Bulk IN Transactions...259\n8.12.1.3 Bulk OUT Transactions...260\n8.12.1.4 Bulk Streaming Protocol...262\n8.12.2 Control Transfers...288\n8.12.2.1 Reporting Status Results...291\n8.12.2.2 Variable-length Data Stage...292\n8.12.2.3 STALL TPs Returned by Control Pipes...292\n8.12.3 Bus Interval and Service Interval...292\n8.12.4 Interrupt Transactions...293\n8.12.4.1 Interrupt IN Transactions...293\n8.12.4.2 Interrupt OUT Transactions...296\n8.12.5 Host Timing Information...299\n8.12.6 Isochronous Transactions...300\n8.12.6.1 Enhanced SuperSpeed Isochronous Transactions...300",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

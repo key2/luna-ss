@@ -1,0 +1,121 @@
+{
+  "index": 554,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 189,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 524 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 92,
+      "bottomRightX": 616,
+      "bottomRightY": 110,
+      "content": "Table E-4. Bit-Level Re-timer Jitter Transfer Function Requirements",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 193,
+      "topLeftY": 119,
+      "bottomRightX": 597,
+      "bottomRightY": 231,
+      "content": "|  Term | Gen 1x1 | Notes  |\n| --- | --- | --- |\n|  Jitter Gain for f<500kHz | 0.15dB (max) | Normative requirement.  |\n|  Jitter Gain for f>500kHz | 0.0dB (max) | Normative requirement.  |\n|  JSF 3dB frequency | 2MHz (max) | Overall JTF is expected to meet a -20 dB/decade slope above the JSF 3 dB frequency.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-285.md"
+    },
+    {
+      "topLeftX": 245,
+      "topLeftY": 263,
+      "bottomRightX": 542,
+      "bottomRightY": 280,
+      "content": "Figure E-18. Jitter Transfer Reference Curves",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 208,
+      "topLeftY": 294,
+      "bottomRightX": 586,
+      "bottomRightY": 542,
+      "content": "![img-213.jpeg](img-213.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-213.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 573,
+      "bottomRightX": 462,
+      "bottomRightY": 589,
+      "content": "### E.6 Re-driver Architectural Overview and Requirement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 595,
+      "bottomRightX": 673,
+      "bottomRightY": 811,
+      "content": "As a re-timer is protocol aware and complies to the transmit and receive electrical specifications defined in Chapter 6, it ensures the interoperation with the host and device. As for a re-driver, it is protocol agnostic, and its transmit compliance to the specification depends not only on the re-driver's own performance, but also the quality of its input signals. This is especially true in Gen 2 operation, where linearity of the signal is critical to the success of clock and data recovery at the receiver. Furthermore, as a re-driver compensates for the input signal due to the channel loss, it may also inevitably inject various non-correctable noises to the output. These un-wanted noises may include random noise, noise due to signal distortion when passing through a re-driver, and additional power supply noise, etc. They are not accounted for by the receiver and must be constrained to ensure maximum interoperability. In this section, the behavioral and electrical requirement of a linear re-driver (LRD) are recommended for Gen 2 operation. The linearity of the LRD at Gen 1 operation may not be required. Additional re-driver place and route guideline and a system level validation methodology are also provided.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 822,
+      "bottomRightX": 303,
+      "bottomRightY": 838,
+      "content": "### E.6.1 Re-driver Link Topology",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 844,
+      "bottomRightX": 673,
+      "bottomRightY": 920,
+      "content": "It is assumed that a link in Gen 2 operation can accommodate for the maximum number of three re-drivers, one on-board with a hub DFP, and one on board with a device UFP, and one in an active cable. It is out of the scope of this specification if more than three re-drivers are employed. Shown in Figure E-19 is an example link topology with three re-drivers. Note that the placement of the re-driver in the active cable is only an illustration with a",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

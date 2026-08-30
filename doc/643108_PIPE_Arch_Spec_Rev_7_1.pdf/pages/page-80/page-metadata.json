@@ -1,0 +1,93 @@
+{
+  "index": 79,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 186,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 121,
+      "bottomRightX": 342,
+      "bottomRightY": 144,
+      "content": "## 7.1 PHY Registers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 151,
+      "bottomRightX": 655,
+      "bottomRightY": 180,
+      "content": "Table 7-1 lists the PHY registers and their associated address. The details of each register are provided in the following subsections.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 187,
+      "bottomRightX": 684,
+      "bottomRightY": 259,
+      "content": "To support configurable pairs, the same registers defined for RX1 are also defined for RX2, the same registers defined for TX1 are defined for TX2, and the same registers defined for CMN1 are defined for CMN2. Only two differential pairs are active at a time based on configuration; valid combinations correspond to registers defined in RX1+TX1+CMN1, RX1+RX2+CMN1+CMN2, or TX1+TX2+CMN1+CMN2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 266,
+      "bottomRightX": 676,
+      "bottomRightY": 295,
+      "content": "A PHY that does not support configurable pairs only implements registers defined for RX1, TX1, and CMN1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 309,
+      "bottomRightX": 364,
+      "bottomRightY": 325,
+      "content": "Table 7-1. PHY Registers (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 329,
+      "bottomRightX": 688,
+      "bottomRightY": 888,
+      "content": "|  Byte Address | Register Name | Notes  |\n| --- | --- | --- |\n|  12'h0 | RX1: Rx Margin Control0 | -  |\n|  12'h1 | RX1: Rx Margin Control1 | -  |\n|  12'h2 | RX1: Elastic buffer control | N/A for SerDes architecture  |\n|  12'h3 | RX1: PHY Rx Control0 | N/A for SerDes architecture  |\n|  12'h4 | RX1: PHY Rx Control1 | -  |\n|  12'h5 | RX1: PHY Rx Control2 | -  |\n|  12'h6 | RX1: PHY Rx Control3 | -  |\n|  12'h7 | RX1: Elastic buffer location update frequency | N/A for SerDes architecture  |\n|  12'h8 | RX1: PHY Rx Control4 | Some fields N/A for SerDes architecture  |\n|  12'h9 | RX1: PHY Rx Control 5 | -  |\n|  12'h10-12'h1FF | RX1: Reserved | -  |\n|  12'h200 to 12'h3FF | RX2: Same registers are defined in this region for RX2 as for RX1 above. | -  |\n|  12'h400 | TX1: PHY Tx Control0 | N/A for SerDes architecture  |\n|  12'h401 | TX1: PHY Tx Control1 | N/A for SerDes architecture  |\n|  12'h402 | TX1: PHY Tx Control2 | -  |\n|  12'h403 | TX1: PHY Tx Control3 | -  |\n|  12'h404 | TX1: PHY Tx Control4 | -  |\n|  12'h405 | TX1: PHY Tx Control5 | -  |\n|  12'h406 | TX1: PHY Tx Control6 | -  |\n|  12'h407 | TX1: PHY Tx Control7 | -  |\n|  12'h408 | TX1: PHY Tx Control8 | -  |\n|  12'h409 | TX1: PHY Tx Control9 | -  |\n|  12'h40A | TX1: PHY Tx Control10 | -  |\n|  12'h40B-12'h5FF | TX1: Reserved | -  |\n|  12'h600-12'h7FF | TX2: Same registers are defined in this region for TX2 as for TX1 in previous rows. | -  |\n|  12'h800 | CMN1: PHY Common Control0 | N/A for SerDes architecture  |\n|  12'h801 | PHY Near-end loopback control | -  |\n|  12'h802-12'h9FF | CMN1: Reserved | -  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-60.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "80",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

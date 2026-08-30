@@ -1,0 +1,137 @@
+{
+  "index": 499,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 106,
+      "bottomRightX": 388,
+      "bottomRightY": 125,
+      "content": "### 10.3.1.11 DSPORT.Powered-off-reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 130,
+      "bottomRightX": 698,
+      "bottomRightY": 247,
+      "content": "This state is entered when the downstream power state is logically off and an Enhanced SuperSpeed connection, rather than a USB 2.0 connection, is desired. To ensure that an Enhanced SuperSpeed connection is established, unlike the DSPORT.Powered-off state, the terminations are maintained while in this state, and to avoid a link training failure, which would allow the downstream device to drop into Compliance Mode or USB 2.0 operation, Warm Reset signaling shall be driven for tReset duration. This state shall drive Warm Reset with the link in the Rx.Detect.Reset substate, until the tReset duration is met.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 251,
+      "bottomRightX": 673,
+      "bottomRightY": 267,
+      "content": "This state is entered from DSPORT.Powered-off-detect whenever a far end receiver is detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 284,
+      "bottomRightX": 448,
+      "bottomRightY": 303,
+      "content": "### 10.3.2 Disconnect Detect Mechanism",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 309,
+      "bottomRightX": 477,
+      "bottomRightY": 326,
+      "content": "Disconnect detection mechanisms are covered in Section 7.5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 342,
+      "bottomRightX": 261,
+      "bottomRightY": 364,
+      "content": "### 10.3.3 Labeling",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 368,
+      "bottomRightX": 692,
+      "bottomRightY": 453,
+      "content": "USB system software uses port numbers to reference an individual port with a ClearPortFeature or SetPortFeature request. If a vendor provides a labeling to identify individual downstream facing ports, then each port connector shall be labeled with its respective port number. The port numbers assigned to a specific port by the hub shall be consistent between the USB 2.0 hub and Enhanced SuperSpeed hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 475,
+      "bottomRightX": 653,
+      "bottomRightY": 500,
+      "content": "### 10.4 Hub Downstream Facing Port Power Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 506,
+      "bottomRightX": 693,
+      "bottomRightY": 541,
+      "content": "The following sections provide a functional description of a state machine that exhibits correct link power management behavior for a downstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 545,
+      "bottomRightX": 698,
+      "bottomRightY": 630,
+      "content": "Figure 10-11 is an illustration of the downstream facing port power management state machine. Each of the states is described in Section 10.4.2. In Figure 10-11, some of the entry conditions into states are shown without origin. These conditions have multiple origin states and the individual transitions lines are not shown so that the diagram can be simplified. The description of the entered state indicates from which states the transition is applicable.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 643,
+      "bottomRightX": 496,
+      "bottomRightY": 665,
+      "content": "### 10.4.1 Downstream Facing Port PM Timers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 670,
+      "bottomRightX": 698,
+      "bottomRightY": 806,
+      "content": "Each downstream port maintains logical inactivity timers for keeping track of when U1 and U2 timeouts are exceeded. The U1 or U2 timeout values may be set by software with a SetPortFeature(PORT_U1_TIMEOUT) or SetPortFeature(PORT_U2_TIMEOUT) command at any time. The PM timers are reset to 0 every time a SetPortFeature(PORT_U1_TIMEOUT) or SetPortFeature(PORT_U2_TIMEOUT) request is received. The timers shall be reset every time a packet of any type except an isochronous timestamp packet is sent or received by the port's link. The U1 timer shall be accurate to +1/-0 μs. The U2 timer shall be accurate to +500/-0 μs. Other requirements for the timer are defined in the downstream port PM state machine descriptions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-22",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

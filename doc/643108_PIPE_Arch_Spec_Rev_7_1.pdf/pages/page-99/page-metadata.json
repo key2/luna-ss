@@ -1,0 +1,151 @@
+{
+  "index": 98,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 435,
+      "bottomRightY": 137,
+      "content": "Table 7-31. Address 5h: Rx Status0 (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 217,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [0] | 0h | 1-cycle | PCIe (optional) | **RxEqTrainDone:** This field is set to 1'b1 to indicate that receiver training is complete in response to an RxEqTraining request. This handshake is not applicable to RxEqTraining requests for USB as that is timer-based.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-102.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 233,
+      "bottomRightX": 435,
+      "bottomRightY": 253,
+      "content": "### 7.2.7 Address 6h: Rx Control0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 266,
+      "bottomRightX": 347,
+      "bottomRightY": 280,
+      "content": "Table 7-32. Address 6h: Rx Control0",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 284,
+      "bottomRightX": 699,
+      "bottomRightY": 404,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:1] | 0h | N/A | N/A | Reserved  |\n|  [0] | 0h | 1-cycle | PCIe (optional), USB (optional), and USB4 (optional) | **PhyIORecalRequest:** The PHY sets this to \"1\" to indicate that the controller should enter Recovery and request of an Rx recalibration via the IORecal bit. The PHY advertises in its datasheet via the PhyRecalRequirement parameter whether this functionality is required.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-103.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 423,
+      "bottomRightX": 502,
+      "bottomRightY": 445,
+      "content": "### 7.2.8 Address 7h: Rx Margin Status3",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 454,
+      "bottomRightX": 390,
+      "bottomRightY": 469,
+      "content": "Table 7-33. Address 7h: Rx Margin Status3",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 473,
+      "bottomRightX": 699,
+      "bottomRightY": 527,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:0] | 0h | Level | USB4 | Error Count[15:8]: Refer to Rx Margin Status2 in Section 7.2.3 for the definition of the Error Count field and the lower 8 bits.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-104.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 552,
+      "bottomRightX": 330,
+      "bottomRightY": 566,
+      "content": "Table 7-34. Address 8h: Reserved",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 571,
+      "bottomRightX": 699,
+      "bottomRightY": 615,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:0] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-105.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 636,
+      "bottomRightX": 330,
+      "bottomRightY": 650,
+      "content": "Table 7-35. Address 9h: Reserved",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 655,
+      "bottomRightX": 699,
+      "bottomRightY": 699,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:0] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-106.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "99",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

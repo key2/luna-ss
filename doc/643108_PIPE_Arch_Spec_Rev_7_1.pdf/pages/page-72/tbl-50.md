@@ -1,0 +1,4 @@
+|  Name | Active Level | Description | Relevant Protocols  |
+| --- | --- | --- | --- |
+|  MacCLK | Rising Edge | Clock from the PHY. The frequency of MacCLK is determined by MacCLKPHYMode and MacCLKRate or via a vendor specific mechanism if selected via MacCLKRate. | PCIe, SATA, USB, DisplayPort, USB4  |
+|  MacCLKAck | High | 4-way full handshake with MacCLKReq. The PHY sets this signal to "1" to indicate the MacCLK is valid and running at the desired frequency. The PHY sets this signal to "0" to indicate that it has or it is in the process of stopping the MacCLK. This signal is asynchronous. This signal defaults to "0" when MacCLKReset# deasserts. | PCIe, SATA, USB, DisplayPort, USB4  |

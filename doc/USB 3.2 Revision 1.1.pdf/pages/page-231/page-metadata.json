@@ -1,0 +1,173 @@
+{
+  "index": 230,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 200 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 350,
+      "bottomRightY": 108,
+      "content": "### 7.5.11.2 Loopback Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 115,
+      "bottomRightX": 666,
+      "bottomRightY": 244,
+      "content": "- There shall be one loopback master and one loopback slave. The loopback master is the port that has the Loopback bit asserted in TS2 ordered sets.\n- The port shall maintain its transmitter specifications defined in Table 6-18.\n- The port shall maintain its low-impedance receiver termination (R_RX-DC) defined in Table 6-22.\n- In x2 operation, the loopback operation is performed on a per lane basis. The transmitter lane-to-lane skew does not need to be maintained.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 264,
+      "bottomRightX": 305,
+      "bottomRightY": 279,
+      "content": "### 7.5.11.3 Loopback.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 286,
+      "bottomRightX": 668,
+      "bottomRightY": 333,
+      "content": "Loopback.Active is a substate where the loopback test is active. The loopback master is sending data/commands to its loopback slave. The loopback slave is either looping back the data or detecting/executing the commands it received from the loopback master.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 345,
+      "bottomRightX": 390,
+      "bottomRightY": 360,
+      "content": "#### 7.5.11.3.1 Loopback.Active Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 369,
+      "bottomRightX": 672,
+      "bottomRightY": 495,
+      "content": "- The loopback master shall send valid symbols with SKPs as necessary.\n- In addition, in BLR Compliance Mode, the loopback master shall transmit four consecutive SKP OS if it is to advance the compliance pattern. Refer to Section E.3.6.1 for details.\n- The loopback slave shall retransmit the received symbols.\n- In Gen 1 operation, the loopback slave shall retransmit the received data in one of the following methods.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 502,
+      "bottomRightX": 671,
+      "bottomRightY": 562,
+      "content": "○ Loopback in the 10b domain – The loopback slave shall retransmit the received 10b symbols exactly as they were received. It may perform the lane polarity inversion and add or remove SKP OS for clock offset compensation as necessary.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 563,
+      "bottomRightX": 659,
+      "bottomRightY": 594,
+      "content": "Note: This implies that the loopback slave should disable or bypass its own 8b/10b encoder/decoder and scrambler/descrambler.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 599,
+      "bottomRightX": 659,
+      "bottomRightY": 690,
+      "content": "○ Loopback in the 8b domain – The loopback slave shall retransmit the decoded 8b symbols exactly as they were received. It shall replace any invalid 10b symbol with K28.4 and maintain the running disparity in its transmitter as describes in section 6.3.1. The loopback slave shall perform the lane polarity inversion and add or remove SKP OS for clock offset compensation as necessary.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 691,
+      "bottomRightX": 642,
+      "bottomRightY": 736,
+      "content": "Note: This implies that the retransmitted symbol may not have the same disparity as the symbol received. In addition, for the loopback master a single bit error will appear as a whole symbol error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 743,
+      "bottomRightX": 667,
+      "bottomRightY": 803,
+      "content": "- In Gen 2 operation, the loopback slave shall retransmit all received blocks exactly as they were received without preforming any error corrections. It may perform the lane polarity inversion and add or remove SKP OS for clock offset compensation as necessary.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 804,
+      "bottomRightX": 612,
+      "bottomRightY": 834,
+      "content": "Note: This implies that the loopback slave should disable or bypass its own scrambler/descrambler.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 842,
+      "bottomRightX": 627,
+      "bottomRightY": 871,
+      "content": "- In Gen 1x1 operation, the loopback slave may process the BERT commands as defined in Section 0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 879,
+      "bottomRightX": 634,
+      "bottomRightY": 909,
+      "content": "- The LFPS receiver shall be enabled. In x2 operation, the LFPS receiver shall be enabled on the Configuration Lane.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

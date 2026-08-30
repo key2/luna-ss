@@ -1,0 +1,48 @@
+{
+  "index": 340,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 108,
+      "bottomRightX": 487,
+      "bottomRightY": 124,
+      "content": "Table 8-25. Data Packet Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 128,
+      "bottomRightX": 700,
+      "bottomRightY": 823,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  20 | 0:5 | When operating at Gen 1 speed: The definition of the **Route String/Arbitration Weight/Reserved** field is as defined in the ACK TP **Route String/Reserved** field and is only used by hubs. When not operating at Gen 1 speed:: The **Route String/Arbitration Weight/Reserved** field redefines the ACK TP **Route String/Reserved** field. For downstream flowing packets (packets from the host to a device), this field is interpreted as a Route String. Refer to Section 8.9 for details. For upstreaming flowing asynchronous packets (e.g. those sent by a device to a host) on SuperSpeedPlus bus segments, the lower 16-bits (bits 5 through 20) of this field indicate the Arbitration Weight. The remaining bits are **Reserved** and shall be set to zero. Refer to Section 10.8.6.1 for details.  |\n|  5 | 1:0 | **Sequence Number (Seq Num)**. This field is used to identify the sequence number of the DP. Note that the sequence number wraps around at 31.  |\n|  1 | 1:5 | **Reserved (R)**.  |\n|  1 | 1:6 | **End Of Burst (EOB)/Last Packet Flag (LPF)**. For non-isochronous endpoints, this field is referred to as EOB and for isochronous endpoints this field is referred to as LPF. For non-isochronous IN endpoints, this field is used to identify that this is the last packet of a burst. When a device is ready to continue the transfer, it shall send an ERDY TP to signal the host. Note that an endpoint shall re-evaluate the EOB value in a retried DP. The EOB field shall be set in the last packet of a burst if: • The device returns fewer than the number of packets requested in the NumP field of the last ACK TP it received and this packet is not a short packet. • If the device cannot meet tMaxBurstInterval for a device operating at Gen 1 speed, or tGen2MaxBurstInterval for device operating at Gen 2 speed and this packet is not a short packet. Note that a device is not required to set this field to a 1b when it transmits a short packet even if it will be returning fewer than the number of packets requested in the NumP field of the last ACK TP it received. It is only required to set this field to a 1b if it wants to enter the flow control state after completing the current transfer with this short packet. For non-isochronous OUT and control endpoints, this field shall be set to zero. For isochronous endpoints this field is used to identify that this is the last packet of the last burst in the current service interval. LPF can be set by a device and the host. Please refer to Section 8.12.6 for the usage of this field when the target or source of this DP is an isochronous endpoint.  |\n|  4 | 1:8 | **Endpoint Number (Ept Num)**. This field determines an endpoint within the device that is the source or recipient of this DP.  |\n|  1 | 1:15 | **Setup (S)**. This field is set by the host to indicate that this DP is a Setup data packet. This field can only be set by the host.  |\n|  16 | 1:16 | **Data Length**. This field is used to indicate the number of bytes in the DPP excluding the data CRC-32.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-130.md"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "8-47",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

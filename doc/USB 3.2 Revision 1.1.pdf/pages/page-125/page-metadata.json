@@ -1,0 +1,103 @@
+{
+  "index": 124,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 94 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 91,
+      "bottomRightX": 671,
+      "bottomRightY": 238,
+      "content": "|  Symbol | Parameter | Gen 1 (5.0 GT/s) | Gen 2 (10 GT/s) | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  T_{DISCHARGE} | Discharge Time | 250 (max) | 250 (max) | ms | Time to discharge the instantaneous voltage to 500 mV on SSRX at the connector. Tested with transmitter with maximum AC coupling capacitance. T_{DISCHARGE} shall be met if SSRX is AC coupled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-60.md"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 241,
+      "bottomRightX": 161,
+      "bottomRightY": 252,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 256,
+      "bottomRightX": 652,
+      "bottomRightY": 298,
+      "content": "1. Impedance is only specified for ΔV>0. ΔV<0 is not specified and could be as low at 0Ω.\n2. Steady-state is defined as no change voltage on Tx or Rx nodes and zero current flow through the AC cap.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 308,
+      "bottomRightX": 673,
+      "bottomRightY": 400,
+      "content": "The values in Table 6-23 are informative and not normative. They are included in this document to provide some guidance beyond the normative requirements in Table 6-22 for receiver design and development. A receiver can be fully compliant with the normative requirements of the specification and not meet all the values in this table (many of which are not measurable in a finished product). Similarly, a receiver that meets all the values in this table is not guaranteed to be in full compliance with the normative part of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 211,
+      "topLeftY": 411,
+      "bottomRightX": 574,
+      "bottomRightY": 426,
+      "content": "Table 6-23. Receiver Informative Electrical Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 103,
+      "topLeftY": 437,
+      "bottomRightX": 689,
+      "bottomRightY": 894,
+      "content": "|  Symbol | Parameter | Gen 1 (5.0 GT/s) | Gen 2 (10 GT/s) | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  V_{RX-DIFF-PP-POST-EQ} | Differential Rx peak-to-peak voltage | 30 (min) | 30 (min) | mV | Measured after the Rx EQ function (Section 6.8.2).  |\n|  t_{RX-TJ} | Max Rx inherent timing error | 0.45 (max) | 0.394 (max) | UI | Measured after the Rx EQ function (Section 6.8.2).  |\n|  t_{RX-DJ-DD} | Max Rx inherent deterministic timing error | 0.285 (max) | 0.21 (max) | UI | Maximum Rx inherent deterministic timing error  |\n|  C_{RX-PARASITIC} | Rx input capacitance for return loss | 1.1 (max) | 1.0 (max) | pF |   |\n|  V_{RX-CM-AC-P} | Rx AC common mode voltage | 150 (max) | 150 (max) | mV Peak | Measured at Rx pins into a pair of 50 Ω terminations into ground. Includes Tx and channel conversion, AC range up to 5 GHz  |\n|  V_{RX-CM-DC-ACTIVE-IDLE-DELTA_P} | Rx AC common mode voltage during the U1 to U0 transition | 200 (max) | 200 (max) | mV Peak | Measured at Rx pins into a pair of 50 Ω terminations into ground. Includes Tx and channel conversion, AC range up to 5 GHz  |\n|  V_{RX-CM-DC-CONN} (See notes 1 and 2) | Instantaneous DC common mode voltage coupled from the far-end Tx | -0.5 (min1) -0.3 (min2) 1.0 (max) | -0.5 (min1) -0.3 (min2) 1.0 (max) | V | Apply to all link states and during power-on, and power off. (min1, max) is observed at receiver side of the connector when Rx termination is equivalent of 200 KΩ, and (min2, max) when Rx termination is 50 Ω.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-61.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

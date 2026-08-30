@@ -1,0 +1,192 @@
+{
+  "index": 8,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 234,
+      "bottomRightY": 61,
+      "content": "Chapter 1: Introduction",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 94,
+      "bottomRightX": 245,
+      "bottomRightY": 113,
+      "content": "# 1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 118,
+      "bottomRightX": 705,
+      "bottomRightY": 179,
+      "content": "This document provides the compliance criteria and test descriptions for Enhanced SuperSpeed USB 3.1 Link Layer implementations. It is relevant for anyone building an Enhanced SuperSpeed host, hub or device. The document is divided into two major sections. The first section lists the compliance criteria and the second section lists the test descriptions used to verify a port's conformance to these criteria.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 185,
+      "bottomRightX": 707,
+      "bottomRightY": 246,
+      "content": "Compliance criteria are provided as a list of assertions that describe specific characteristics or behaviors that must be met. Each assertion provides a reference to the USB 3.1 specification or other documents from which the assertion was derived. In addition, each assertion provides a reference to the specific test description(s) where the assertion is tested.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 252,
+      "bottomRightX": 337,
+      "bottomRightY": 267,
+      "content": "Each test assertion is formatted as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 155,
+      "topLeftY": 294,
+      "bottomRightX": 621,
+      "bottomRightY": 334,
+      "content": "|  Assertion # | Assertion Description | Test #  |\n| --- | --- | --- |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-2.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 354,
+      "bottomRightX": 651,
+      "bottomRightY": 385,
+      "content": "Assertion#: Unique identifier for each spec requirement. The identifier is in the form USB31_SPEC_SECTION_NUMBER#X, where X is a unique integer for a requirement in that section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 391,
+      "bottomRightX": 473,
+      "bottomRightY": 408,
+      "content": "Assertion Description: Specific requirement from the specification",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 413,
+      "bottomRightX": 704,
+      "bottomRightY": 445,
+      "content": "Test #: A label for a specific test description in this specification that tests this requirement. Test # can have one of the following values:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 451,
+      "bottomRightX": 702,
+      "bottomRightY": 498,
+      "content": "NT This item is not explicitly tested in a test description. Items can be labeled NT for several reasons – including items that are not testable, not important to test for interoperability, or are indirectly tested by other operations performed by the compliance test.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 503,
+      "bottomRightX": 625,
+      "bottomRightY": 520,
+      "content": "X.X This item is covered by the test described in test description X.X in this specification.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 526,
+      "bottomRightX": 534,
+      "bottomRightY": 543,
+      "content": "IOP This assertion is verified by the USB 3.0 Interoperability Test Suite.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 549,
+      "bottomRightX": 547,
+      "bottomRightY": 566,
+      "content": "BC This assertion is applied as a background check in all test descriptions.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 594,
+      "bottomRightX": 692,
+      "bottomRightY": 640,
+      "content": "Test descriptions provide a high level overview of the tests that are performed to check the compliance criteria. The descriptions are provided with enough detail so that a reader can understand what the test does. The descriptions do not describe the actual step-by-step procedure to perform the test.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 646,
+      "bottomRightX": 702,
+      "bottomRightY": 693,
+      "content": "Host tests are performed with a Windows 8 machine with all the latest Microsoft updates. The Compliance driver is loaded for most of the Host tests. The Compliance Driver is provided with USB30CV from the usb.org website. One of the Host tests requires the vendor driver for the host controller to be loaded.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 698,
+      "bottomRightX": 693,
+      "bottomRightY": 745,
+      "content": "Some of the downstream port tests require USB30CV test supplements to perform the test. If a test requires USB30CV, it will be noted in the description later in this document. To run the LVS (Link Validation System) and USB30CV together, always start the USB30CV test prior to the LVS test.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 752,
+      "bottomRightX": 689,
+      "bottomRightY": 783,
+      "content": "For questions about this document, please contact ssusbcompliance@usb.org. For questions regarding the test matrix or equipment please contact techadmin@usb.org.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 408,
+      "topLeftY": 934,
+      "bottomRightX": 415,
+      "bottomRightY": 946,
+      "content": "1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

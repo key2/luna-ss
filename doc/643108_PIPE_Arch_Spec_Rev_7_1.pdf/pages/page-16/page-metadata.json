@@ -1,0 +1,65 @@
+{
+  "index": 15,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 53,
+      "bottomRightX": 188,
+      "bottomRightY": 94,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 119,
+      "bottomRightX": 311,
+      "bottomRightY": 151,
+      "content": "# 1 Preface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 197,
+      "bottomRightX": 434,
+      "bottomRightY": 222,
+      "content": "## 1.1 Scope of this Revision",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 226,
+      "bottomRightX": 683,
+      "bottomRightY": 328,
+      "content": "The PCI Express* (PCIe*), SATA, USB, DisplayPort*, and USB4* PHY Interface Specification has definitions of all functional blocks and signals. This revision includes support for PCIe implementations conforming to the *PCIe Base Specification, Revision 7.0*, SATA implementations conforming to the *SATA Specification, Revision 3.0*, USB implementations conforming to the *USB Specification, Revision 3.2*, DisplayPort implementations conforming to the *DisplayPort 2.0 Specification*, and USB4* implementations conforming to the *USB4* *Specification v2.0*.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 952,
+      "bottomRightX": 107,
+      "bottomRightY": 967,
+      "content": "---^{}[] 16",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 490,
+      "topLeftY": 952,
+      "bottomRightX": 690,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

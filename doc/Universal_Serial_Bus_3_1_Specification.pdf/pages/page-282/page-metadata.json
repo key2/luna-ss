@@ -1,0 +1,92 @@
+{
+  "index": 281,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 103,
+      "bottomRightX": 203,
+      "bottomRightY": 123,
+      "content": "### 7.5.7 U1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 117,
+      "topLeftY": 130,
+      "bottomRightX": 681,
+      "bottomRightY": 165,
+      "content": "U1 is a low power state where no packets are to be transmitted and both ports agree to enter a link state where an Enhanced SuperSpeed PHY can be placed into a low power state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 169,
+      "bottomRightX": 623,
+      "bottomRightY": 186,
+      "content": "U1 does not contain any substates. Transitions to other states are shown in Figure 7-19.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 200,
+      "bottomRightX": 310,
+      "bottomRightY": 219,
+      "content": "#### 7.5.7.1 U1 Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 220,
+      "bottomRightX": 698,
+      "bottomRightY": 434,
+      "content": "- The Enhanced SuperSpeed transmitter DC common mode voltage shall be within specification (VTX-CM-DC-ACTIVE-IDLE-DELTA) defined in Table 6-18.\n- The port shall maintain its low-impedance receiver termination (RRX-DC) defined in Table 6-21.\n- The port shall enable its U1 exit detect functionality as defined in Section 6.9.2.\n- The port shall enable its LFPS transmitter when it initiates the exit from U1.\n- The port shall enable its U2 inactivity timer upon entry to this state if the U2 inactivity timer has a non-zero timeout value.\n- A downstream port shall enable its Ping.LFPS detection.\n- A downstream port shall enable a 300-ms timer (tU1PingTimeout). This timer will be reset and restarted when a Ping.LFPS is received.\n- An upstream port shall transmit Ping.LFPS as defined in Table 6-29.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 449,
+      "bottomRightX": 271,
+      "bottomRightY": 466,
+      "content": "#### 7.5.7.2 Exit from U1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 469,
+      "bottomRightX": 697,
+      "bottomRightY": 717,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when the 300-ms timer (tU1PingTimeout) expires.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.\n- A self-powered upstream port shall transition to eSS.Disabled upon not detecting valid Vbus as defined in Section 11.4.5.\n- The port shall transition to U2 upon the timeout of the U2 inactivity timer defined in Sections 10.4.2.4 and 10.6.2.4.\n- The port shall transition to Recovery upon successful completion of a LFPS handshake meeting the U1 LFPS exit handshake signaling in Section 6.9.2.\n- The port shall transition to eSS.Inactive upon the 2-ms (tNoLFPSResponseTimeout) LFPS handshake timer timeout and a successful LFPS handshake meeting the U1 LFPS exit handshake signaling in Section 6.9.2 is not achieved.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-70",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

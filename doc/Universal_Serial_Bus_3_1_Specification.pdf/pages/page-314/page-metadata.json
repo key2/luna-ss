@@ -1,0 +1,137 @@
+{
+  "index": 313,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 92,
+      "bottomRightX": 321,
+      "bottomRightY": 109,
+      "content": "### 8.4.8.3.1.4 Timestamp Response",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 661,
+      "bottomRightY": 153,
+      "content": "Upon entering this state, the Requester shall start the Response Timer and wait for a LDM TS Response LMP or a timeout.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 158,
+      "bottomRightX": 698,
+      "bottomRightY": 242,
+      "content": "LDM TS Response LMP & DL=0 – If a LDM TS Response LMP is received and the LCW Delayed (DL) flag is zero, the Requester shall save timestamp t4 from the Local Time Source in the LDM Context to record the time that the LDM Response was received, then calculate the LDM Link Delay (refer to Section 8.4.8.4), set the LDM Valid flag to 1, and transition to the Timestamp Request state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 250,
+      "bottomRightX": 686,
+      "bottomRightY": 335,
+      "content": "LDM TS Response LMP & DL=1 – If a LDM TS Response LMP is received and the LCW Delayed (DL) flag is one, the Requester shall consider the Response Delay field of the LDM TS Response LMP invalid, invalidate the LDM Context t1, t2, t3 timestamps, immediately generate a Trigger Event to initiate another Timestamp Exchange, and transition to the Timestamp Request state. Refer to Sections 7.2.4.1.2 and 7.2.4.1.12 for the conditions that may set the Delayed bit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 343,
+      "bottomRightX": 682,
+      "bottomRightY": 393,
+      "content": "Response Timeout – If a Response Timeout occurs the Requester shall transition to the Init Request state, where the LDM state machine will attempt to retry the Timestamp Exchange with the Responder.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 402,
+      "bottomRightX": 639,
+      "bottomRightY": 435,
+      "content": "Note: Timestamp t4 shall be adjusted for the TS Delay. Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 452,
+      "bottomRightX": 272,
+      "bottomRightY": 467,
+      "content": "### 8.4.8.3.1.5 LDM Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 478,
+      "bottomRightX": 690,
+      "bottomRightY": 511,
+      "content": "Upon entering this state, the Requester shall clear the LDM_ENABLE flag and terminate all LDM protocol activity.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 134,
+      "topLeftY": 512,
+      "bottomRightX": 666,
+      "bottomRightY": 543,
+      "content": "CLEAR_FEATURE(LDM_ENABLE) – When this request is received by the device it shall transition from any other LDM state to the LDM Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 134,
+      "topLeftY": 545,
+      "bottomRightX": 692,
+      "bottomRightY": 578,
+      "content": "SET_FEATURE(LDM_ENABLE) – If this request is received by the device it shall transition to the Init Request state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 605,
+      "bottomRightX": 310,
+      "bottomRightY": 623,
+      "content": "### 8.4.8.3.2 Responder Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 632,
+      "bottomRightX": 696,
+      "bottomRightY": 667,
+      "content": "This section describes the operations that a Responder (i.e. the Downstream Facing Port of a hub or host controller) performs to participate in the LDM protocol.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-20",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

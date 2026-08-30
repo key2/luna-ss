@@ -1,0 +1,49 @@
+{
+  "index": 4,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 95,
+      "topLeftY": 92,
+      "bottomRightX": 375,
+      "bottomRightY": 411,
+      "content": "|  Eric Desmarchelier | Texas Instruments  |\n| --- | --- |\n|  Christophe Gautier | Texas Instruments  |\n|  Dan Harmon | Texas Instruments  |\n|  Will Harris | Texas Instruments  |\n|  Richard Hubbard | Texas Instruments  |\n|  Ivo Huber | Texas Instruments  |\n|  Scott Kim | Texas Instruments  |\n|  Grant Ley | Texas Instruments  |\n|  Karl Muth | Texas Instruments  |\n|  Lee Myers | Texas Instruments  |\n|  Julie Nirchi | Texas Instruments  |\n|  Wes Ray | Texas Instruments  |\n|  Matthew Rowley | Texas Instruments  |\n|  Bill Sherry | Texas Instruments  |\n|  Mitsuru Shimada | Texas Instruments  |\n|  James Skidmore | Texas Instruments  |\n|  Yoram Solomon | Texas Instruments.  |\n|  Sue Vining | Texas Instruments  |\n|  Jin-sheng Wang | Texas Instruments  |\n|  Roy Wojciechowski | Texas Instruments  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-3.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 437,
+      "bottomRightX": 302,
+      "bottomRightY": 456,
+      "content": "## Contributor Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 95,
+      "topLeftY": 462,
+      "bottomRightX": 498,
+      "bottomRightY": 903,
+      "content": "|  Glen Chandler | Acon  |\n| --- | --- |\n|  John Chen | Acon  |\n|  Roger Hou | Acon  |\n|  Charles Wang | Acon  |\n|  Norman Wu | Acon  |\n|  Steven Yang | Acon  |\n|  George Yee | Acon  |\n|  George Olear | Contech Research  |\n|  Sophia Liu | Electronics Testing Center, Taiwan (ETC)  |\n|  William Northey | FCI  |\n|  Tom Sultzer | FCI  |\n|  Garry Biddle | Foxconn  |\n|  Kuan-Yu Chen | Foxconn  |\n|  Jason Chou | Foxconn  |\n|  Gustavo Duenas | Foxconn  |\n|  Bob Hall | Foxconn  |\n|  Jiayong He | Foxconn  |\n|  Jim Koser | Foxconn  |\n|  Joe Ortega | Foxconn  |\n|  Ash Raheja | Foxconn  |\n|  James Sabo | Foxconn  |\n|  Pei Tsao | Foxconn  |\n|  Kevin Walker | Foxconn  |\n|  Tsuneki Watanabe | Foxconn  |\n|  Chong Yi | Foxconn  |\n|  Taro Hishinuma | Hirose Electric  |\n|  Kaz Ichikawa | Hirose Electric  |\n|  Ryozo Koyama | Hirose Electric  |\n|  Karl Kwiat | Hirose Electric  |\n|  Tadashi Sakaizawa | Hirose Electric  |\n|  Shinya Tono | Hirose Electric  |\n|  Eiji Wakatsuki | Hirose Electric  |\n|  Takashi Ehara | Japan Aviation Electronics Industry Ltd. (JAE)  |\n|  Ron Muir | Japan Aviation Electronics Industry Ltd. (JAE)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-4.md"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 981,
+      "bottomRightX": 701,
+      "bottomRightY": 995,
+      "content": "v",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

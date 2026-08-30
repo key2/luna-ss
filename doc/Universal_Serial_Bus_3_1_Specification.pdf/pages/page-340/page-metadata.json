@@ -1,0 +1,48 @@
+{
+  "index": 339,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 169,
+      "bottomRightX": 732,
+      "bottomRightY": 428,
+      "content": "![img-216.jpeg](img-216.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-216.jpeg"
+    },
+    {
+      "topLeftX": 305,
+      "topLeftY": 482,
+      "bottomRightX": 519,
+      "bottomRightY": 500,
+      "content": "Figure 8-30. Example Data Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "8-46",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

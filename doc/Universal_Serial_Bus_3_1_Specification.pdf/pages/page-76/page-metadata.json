@@ -1,0 +1,111 @@
+{
+  "index": 75,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 93,
+      "topLeftY": 30,
+      "bottomRightX": 379,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 698,
+      "bottomRightY": 144,
+      "content": "Note that even though the host is required to send an acknowledgement packet for every data packet received, the device can send up to the number of data packets requested without waiting for any acknowledgement packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 148,
+      "bottomRightX": 692,
+      "bottomRightY": 200,
+      "content": "The Enhanced SuperSpeed IN transaction protocol is illustrated in Figure 4-1. An IN transfer on the Enhanced SuperSpeed bus consists of one, or more, IN transactions consisting of one, or more, packets and completes when any one of the following conditions occurs:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 205,
+      "bottomRightX": 667,
+      "bottomRightY": 258,
+      "content": "- All the data for the transfer is successfully received.\n- The endpoint responds with a packet that is less than the endpoint's maximum packet size.\n- The endpoint responds with an error.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 280,
+      "bottomRightX": 639,
+      "bottomRightY": 612,
+      "content": "![img-9.jpeg](img-9.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-9.jpeg"
+    },
+    {
+      "topLeftX": 227,
+      "topLeftY": 623,
+      "bottomRightX": 596,
+      "bottomRightY": 640,
+      "content": "Figure 4-1. Enhanced SuperSpeed IN Transaction Protocol",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 654,
+      "bottomRightX": 313,
+      "bottomRightY": 675,
+      "content": "### 4.4.3 OUT Transfers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 681,
+      "bottomRightX": 692,
+      "bottomRightY": 698,
+      "content": "The host and device shall adhere to the constraints of the transfer type and endpoint characteristics.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 702,
+      "bottomRightX": 681,
+      "bottomRightY": 787,
+      "content": "A host initiates a transfer by sending a burst of data packets to the device. Each data packet contains the addressing information required to route the packet to the intended endpoint. It also includes the sequence number of the data packet. For a non-isochronous transaction, the device returns an acknowledgement packet including the sequence number for the next data packet and implicitly acknowledging the current data packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 792,
+      "bottomRightX": 673,
+      "bottomRightY": 844,
+      "content": "Note that even though the device is required to send an acknowledgement packet for every data packet received, the host can send up to the maximum burst size number of data packets to the device without waiting for an acknowledgement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 964,
+      "bottomRightX": 111,
+      "bottomRightY": 977,
+      "content": "4-6",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "index": 565,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 535 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 261,
+      "topLeftY": 93,
+      "bottomRightX": 527,
+      "bottomRightY": 155,
+      "content": "$$IFEXT = db \\left( \\sqrt{\\frac{\\int_{0}^{f_{max}} |V_{in}(f)|^2 |FEXT(f)|^2 df}{\\int_{0}^{f_{max}} |V_{in}(f)|^2 df}} \\right)$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 166,
+      "bottomRightX": 666,
+      "bottomRightY": 198,
+      "content": "where $NEXT(f)$ and $FEXT(f)$ are measured near-end and far-end crosstalk, respectively. The definitions of $f_{max}$, $df$, and $Vin(f)$ are the same as the integrated return loss formula above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 210,
+      "bottomRightX": 671,
+      "bottomRightY": 269,
+      "content": "The integrated near-end crosstalk INEXT shall be measured between pairs in1-out2 and in2-out1, as illustrated in Figure E-29. If the LRD supports two USB lanes, INEXT between the following pairs shall also be measured: in3-out2, in3-out4, in2-out3, and in4-out3. For an LRD with two USB lanes, IFEXT between pairs in1-out3 and in2-out4 shall be measured.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 283,
+      "bottomRightX": 666,
+      "bottomRightY": 329,
+      "content": "INEXT and IFEXT have a strong dependency on LRD gains, which amplify the crosstalk. The optimal LRD EQ setting used for the compliance eye testing shall be used for INEXT and IFEXT measurements. The fixture effect shall be de-embedded out.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 341,
+      "bottomRightX": 669,
+      "bottomRightY": 389,
+      "content": "The integrated near-end and far-end crosstalk between any two signal pairs shall be less or equal to -35 dB. If the LRD includes other high-speed signals, for example, DisplayPort, it is recommended to control the crosstalk within this spec.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 399,
+      "bottomRightX": 606,
+      "bottomRightY": 416,
+      "content": "Figure E-29. Integrated Near-End Crosstalk Measurement Points",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 283,
+      "topLeftY": 431,
+      "bottomRightX": 507,
+      "bottomRightY": 629,
+      "content": "![img-224.jpeg](img-224.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-224.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 674,
+      "bottomRightX": 335,
+      "bottomRightY": 689,
+      "content": "### E.6.4.7 Compliance Eye Requirement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 695,
+      "bottomRightX": 659,
+      "bottomRightY": 773,
+      "content": "The LRD compliance eye requirement and test setups follow the relevant USB 3.2 base specification and the compliance test specification (https://www.usb.org/document-library/electrical-compliance-test-specification-superspeed-usb-10-gbps-rev-10). Figure E-30 shows the Tx test path; it emulates the USB 3.2 transmitted Eye Test at 10 GT/s (TD 1.4), except that the transmitter is replaced with a pattern generator.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 251,
+      "topLeftY": 784,
+      "bottomRightX": 535,
+      "bottomRightY": 801,
+      "content": "Figure E-30. Compliance Eye Test - Tx Path",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 808,
+      "bottomRightX": 676,
+      "bottomRightY": 865,
+      "content": "![img-225.jpeg](img-225.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-225.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 899,
+      "bottomRightX": 675,
+      "bottomRightY": 931,
+      "content": "The Rx path, illustrated in Figure E-31, shall also be tested. The standard USB 3.2 long/short fixtures are identical to what used in the USB 3.2 Rx JTOL test; they are physical fixtures, not",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

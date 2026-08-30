@@ -1,0 +1,120 @@
+{
+  "index": 93,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 63 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 647,
+      "bottomRightY": 123,
+      "content": "For Gen 2x2 operation, both lanes use the LFSR in Figure 6-12. Details of scrambling for Gen 2x2 mode are contained in Section 6.13.5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 137,
+      "bottomRightX": 313,
+      "bottomRightY": 152,
+      "content": "#### 6.3.2.4 128b/132b Decode Errors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 159,
+      "bottomRightX": 428,
+      "bottomRightY": 173,
+      "content": "The Block Header decode error rules are as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 179,
+      "bottomRightX": 612,
+      "bottomRightY": 232,
+      "content": "1. Single bit errors in the Block Header shall be reported to the link layer and corrected.\n2. Double bit errors in the Block Header shall be reported to the link layer.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 248,
+      "bottomRightX": 461,
+      "bottomRightY": 263,
+      "content": "#### 6.3.3 Special Symbols for Framing and Link Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 269,
+      "bottomRightX": 660,
+      "bottomRightY": 408,
+      "content": "The 8b/10b encoding scheme provides Special Symbols that are distinct from the Data Symbols used to represent characters. These Special Symbols are used for various Link Management mechanisms described later. Table 6-2 lists the Special Symbols used and provides a brief description for each. Special Symbols shall follow the proper 8b/10b disparity rules. The compliance tests are defined in the USB SuperSpeed Compliance Methodology white paper. For Gen 2 operation the block header identifies whether the following 16 symbols have special meaning or if they represent data. In Gen 2 operation a receiver shall always perform single bit error correction on the special symbols when they are part of a control block. For Gen 1 and Gen 2 the following special symbols are defined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 305,
+      "topLeftY": 418,
+      "bottomRightX": 483,
+      "bottomRightY": 435,
+      "content": "Table 6-2. Special Symbols",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 444,
+      "bottomRightX": 688,
+      "bottomRightY": 930,
+      "content": "|  Symbol | Name | Gen 1 Symbol | Gen 2 Symbol | Description  |\n| --- | --- | --- | --- | --- |\n|  SKP | Skip | K28.1 | CCh | Compensates for different bit rates between two communicating ports. SKPs may be dynamically inserted or removed from the data stream. For Gen 2 operation, unscrambled.  |\n|  SKPEND | Skip End | Not applicable | 33h | Marks the boundary between SKP symbols and the remainder of the SKP OS. Unscrambled.  |\n|  SDP | Start Data Packet | K28.2 | 96h | Marks the start of a Data Packet Payload. For Gen 2 operation, scrambled and transmitted only in data block.  |\n|  EDB | End Bad | K28.3 | 69h | Marks the end of a nullified Packet. For Gen 2 operation, scrambled and transmitted only in data block.  |\n|  SUB | Decode Error Substitution | K28.4 | Not applicable | Symbol substituted by the 8b/10b decoder when a Decode error is detected.  |\n|  COM | Comma | K28.5 | Not applicable | Used for symbol alignment.  |\n|  --- | --- | K28.6 | Not applicable | Reserved  |\n|  SHP | Start Header Packet | K27.7 | 9Ah | Marks the start of a Data Packet (Gen 1 operation only), Transaction Packet or Link Management Packet. For Gen 2 operation, scrambled and transmitted only in data block.  |\n|  DPHP | Start Data Packet Header | Not applicable | 95h | Marks the start of a Data Packet (Gen 2 only). Scrambled and transmitted only in data block.  |\n|  END | End | K29.7 | 65h | Marks the end of a packet. For Gen 2 operation, scrambled and transmitted only in data block.  |\n|  SLC | Start Link Command | K30.7 | 4Bh | Marks the start of a Link Command. For Gen 2 operation, scrambled and transmitted only in data block.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-36.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

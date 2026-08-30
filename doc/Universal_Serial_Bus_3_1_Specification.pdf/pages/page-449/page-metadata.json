@@ -1,0 +1,193 @@
+{
+  "index": 448,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 593,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 297,
+      "bottomRightY": 128,
+      "content": "### 9.4.10 Set Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 135,
+      "bottomRightX": 602,
+      "bottomRightY": 153,
+      "content": "This request allows the host to select an alternate setting for the specified interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 164,
+      "bottomRightX": 700,
+      "bottomRightY": 223,
+      "content": "|  bmRequestType | bRequest | WValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000001B | SET_INTERFACE | Alternate Setting | Interface | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-169.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 238,
+      "bottomRightX": 688,
+      "bottomRightY": 322,
+      "content": "Some devices have configurations with interfaces that have mutually exclusive settings. This request allows the host to select the desired alternate setting. If a device only supports a default setting for the specified interface, then a STALL Transaction Packet may be returned in the Status stage of the request. This request cannot be used to change the set of configured interfaces (the SetConfiguration() request shall be used instead).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 341,
+      "bottomRightX": 696,
+      "bottomRightY": 375,
+      "content": "If the interface or the alternate setting does not exist, then the device responds with a Request Error. If wLength is non-zero, then the behavior of the device is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 382,
+      "bottomRightX": 665,
+      "bottomRightY": 417,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 422,
+      "bottomRightX": 523,
+      "bottomRightY": 440,
+      "content": "Address state: The device shall respond with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 445,
+      "bottomRightX": 628,
+      "bottomRightY": 463,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 480,
+      "bottomRightX": 384,
+      "bottomRightY": 502,
+      "content": "### 9.4.11 Set Isochronous Delay",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 507,
+      "bottomRightX": 693,
+      "bottomRightY": 540,
+      "content": "This request informs the device of the delay from the time a host transmits a packet to the time it is received by the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 552,
+      "bottomRightX": 700,
+      "bottomRightY": 597,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B | SET_ISOCH_DELAY | Delay in ns | Zero | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-170.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 610,
+      "bottomRightX": 684,
+      "bottomRightY": 662,
+      "content": "The wValue field specifies a delay from 0 to 65535 ns. This delay represents the time from when the host starts transmitting the first framing symbol of the packet to when the device receives the first framing symbol of that packet. The wValue field shall be calculated as follows.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 154,
+      "topLeftY": 681,
+      "bottomRightX": 669,
+      "bottomRightY": 698,
+      "content": "$$wValue = (sum \\ of \\ wHubDelay \\ values) + (tTPTransmissionDelay \\ * \\ (number \\ of \\ hubs \\ + \\ 1))$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 717,
+      "bottomRightX": 686,
+      "bottomRightY": 751,
+      "content": "Where, a wHubDelay value is provided by the Enhanced SuperSpeed Hub Descriptor of each hub in the path, respectively, and tTPTransmissionDelay is defined in Table 8-35.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 762,
+      "bottomRightX": 602,
+      "bottomRightY": 779,
+      "content": "If wIndex or wLength is non-zero, then the behavior of this request is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 786,
+      "bottomRightX": 607,
+      "bottomRightY": 804,
+      "content": "Default state: This is a valid request when the device is in the Default state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 810,
+      "bottomRightX": 609,
+      "bottomRightY": 826,
+      "content": "Address state: This is a valid request when the device is in the Address state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 833,
+      "bottomRightX": 628,
+      "bottomRightY": 850,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 697,
+      "bottomRightY": 994,
+      "content": "9-31",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

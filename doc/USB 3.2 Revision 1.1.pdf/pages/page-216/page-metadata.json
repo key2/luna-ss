@@ -1,0 +1,101 @@
+{
+  "index": 215,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 185 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 677,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 95,
+      "bottomRightX": 673,
+      "bottomRightY": 268,
+      "content": "- The port in Gen 2 operation may ignore SDS ordered set if corrupted and continue to process the following data block. The port may optionally choose to recover SDS ordered set if error is detected.\n- In x2 operation, the lane-to-lane de-skew shall be completed upon receiving SDS on each negotiated lane.\n- The port in Gen 2 operation shall disable the scrambling upon completion of SDS ordered set transmission if directed, or if the Disabling Scrambling bit is asserted in the TS2 ordered set received in Polling.Configuration.\n- The port that fails to achieve a successful training with its link partner shall reconfigure itself for the next capability it supports.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 273,
+      "bottomRightX": 650,
+      "bottomRightY": 319,
+      "content": "Note: An example of this is, when a port in Gen 1x2 operation fails to reach successful handshake with its link partner, it shall re-configure itself for Gen 1x1 operation. Refer to Section 7.5.4.5 for mechanism of PHY capability fallback.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 325,
+      "bottomRightX": 667,
+      "bottomRightY": 410,
+      "content": "- A 2 ms timer (tPollingIdleTimeout) shall be started upon entry to this state. In x2 operation, the timer shall continue until each lane has met the transition conditions to the next state.\n- The port shall be able to receive the Header Sequence Number Advertisement from its link partner.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 415,
+      "bottomRightX": 675,
+      "bottomRightY": 462,
+      "content": "Note: The exit time difference between the two ports will result in one port entering U0 first and starting the Header Sequence Number Advertisement while the other port is still in Polling.Idle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 482,
+      "bottomRightX": 334,
+      "bottomRightY": 497,
+      "content": "#### 7.5.4.10.2 Exit from Polling.Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 505,
+      "bottomRightX": 676,
+      "bottomRightY": 927,
+      "content": "- The port shall transition to Loopback when directed as a loopback master and the port is capable of being a loopback master. Refer to Section 7.5.11 for details.\n- The port shall transition to Loopback as a loopback slave if the Loopback bit is asserted in the TS2 ordered set received in Polling.Configuration. Refer to Section 7.5.4.9 for details.\n- A downstream port shall transition to Hot Reset when directed.\n- An upstream port shall transition to Hot Reset when the Reset bit is asserted in the TS2 ordered set received in Polling.Configuration.\n- The port shall transition to U0 when the following two conditions are met on each negotiated lane:\n  1. Eight consecutive Idle Symbols are received.\n  2. Sixteen Idle Symbols are sent after receiving one Idle Symbol.\n- A downstream port in SuperSpeed operation shall transition to eSS.Disabled when directed.\n- A downstream port in SuperSpeed operation shall transition to Rx.Detect upon the 2 ms timer timeout (tPollingIdleTimeout) and the following two conditions are met.\n  1. The conditions to transition to U0 are not met.\n  2. cPollingTimeout is less than two.\n- A downstream port in SuperSpeed operation shall transition to eSS.Inactive upon the 2 ms timer timeout (tPollingIdleTimeout) and the following two conditions are met.\n  1. The conditions to transition to U0 are not met.\n  2. cPollingTimeout is two.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

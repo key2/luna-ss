@@ -1,0 +1,156 @@
+{
+  "index": 472,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 442 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 667,
+      "bottomRightY": 123,
+      "content": "The port number shall be a valid port number for that hub, greater than zero. The port field is located in bits 7..0 of the wIndex field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 135,
+      "bottomRightX": 667,
+      "bottomRightY": 197,
+      "content": "Clearing a feature disables that feature or starts a process associated with the feature; refer to Table 10-9 for the feature selector definitions. If the feature selector is associated with a status change, clearing that status change acknowledges the change. This request format is used to clear the following features:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 210,
+      "bottomRightX": 313,
+      "bottomRightY": 382,
+      "content": "- PORT_POWER\n- C_PORT_CONNECTION\n- C_PORT_RESET\n- C_PORT_OVER_CURRENT\n- C_PORT_LINK_STATE\n- C_PORT_CONFIG_ERROR\n- C_BH_PORT_RESET\n- FORCE_LINKPM_ACCEPT",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 402,
+      "bottomRightX": 667,
+      "bottomRightY": 495,
+      "content": "Clearing the PORT_POWER feature causes the port to be placed in the DSPORT-Powered-off-reset state and may, subject to the constraints due to the hub's method of power switching, result in power being removed from the port. When in the DSPORT-Powered-off or the DSPORT-Powered-off-detect or the DSPORT-Powered-off-reset state, the only requests that are valid when this port is the recipient are Get Port Status (refer to Section 10.16.2.6) and Set Port Feature (PORT_POWER) (refer to Section 10.16.2.10).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 506,
+      "bottomRightX": 659,
+      "bottomRightY": 554,
+      "content": "Clearing the FORCE_LINKPM_ACCEPT feature causes the port to de-assert the Force_LinkPM_Accept bit in Set Link Function LMPs. If the Force_LinkPM_Accept bit is not asserted on the port, the hub shall treat this request as a functional no-operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 565,
+      "bottomRightX": 667,
+      "bottomRightY": 627,
+      "content": "It is a Request Error if wValue is not a feature selector listed in Table 10-9, if wIndex specifies a port that does not exist, or if wLength is not as specified above. It is not an error for this request to try to clear a feature that is already cleared (the hub shall treat this as a functional no-operation).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 638,
+      "bottomRightX": 569,
+      "bottomRightY": 654,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 667,
+      "bottomRightX": 322,
+      "bottomRightY": 682,
+      "content": "### 10.16.2.3 Get Hub Descriptor",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 690,
+      "bottomRightX": 357,
+      "bottomRightY": 706,
+      "content": "This request returns the hub descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 715,
+      "bottomRightX": 670,
+      "bottomRightY": 798,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10100000B | GET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero | Descriptor Length | Descriptor  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-241.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 817,
+      "bottomRightX": 655,
+      "bottomRightY": 880,
+      "content": "The GetDescriptor() request for the hub class descriptor follows the same usage model as that of the standard GetDescriptor() request (refer to Chapter 9). The standard hub descriptor is denoted by using the value bDescriptorType defined in Section 10.15.2.1. All hubs are required to implement one hub descriptor, with descriptor index zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 891,
+      "bottomRightX": 652,
+      "bottomRightY": 924,
+      "content": "If wLength is larger than the actual length of the descriptor, then only the actual length is returned. If wLength is less than the actual length of the descriptor, then only the first",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

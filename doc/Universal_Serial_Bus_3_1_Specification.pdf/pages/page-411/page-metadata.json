@@ -1,0 +1,75 @@
+{
+  "index": 410,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 106,
+      "bottomRightX": 571,
+      "bottomRightY": 124,
+      "content": "Table 8-32. ACK TP and DPs for Pipelined Isochronous IN Transactions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 126,
+      "bottomRightX": 710,
+      "bottomRightY": 356,
+      "content": "|  Host to Device | Device to Host  |\n| --- | --- |\n|  IN ACK TP (SeqN = 0, NumP = N) Where N <=M | DP (Seq0) DP (Seq1)  |\n|  IN ACK TP (SeqN = N, NumP = X) Where X <= M - N + Number of DPs received | DP (Seq2) DP (Seq3) DP (Seq4)  |\n|  IN ACK TP (SeqN = N + X, NumP = Y) Where Y <= M - X + Number of DPs received | . . . DP (SeqM) DP (SeqM+1)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-138.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 369,
+      "bottomRightX": 698,
+      "bottomRightY": 435,
+      "content": "As can be see in Table 8-32 the Seq Num field is updated in the same manner as it is SuperSpeedPlus Isochronous IN transactions however, they are \"Pipelined\". Pipelined refers to the ability of SuperSpeedPlus hosts to send the next IN ACK TP before the first one has completed. A SuperSpeedPlus host may continue to send Pipelined IN ACK TPs with the following three caveats:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 440,
+      "bottomRightX": 696,
+      "bottomRightY": 544,
+      "content": "- The number of outstanding packets requested from the endpoint cannot be greater than the Max Burst Size of the endpoint.\n- The number of outstanding packets requested from the endpoint cannot exceed the total amount of data expected from the endpoint in that Service Interval.\n- The SuperSpeedPlus host shall stop sending pipelined IN ACK TPs for the current service interval once it receives an end of data indication from the endpoint.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 550,
+      "bottomRightX": 698,
+      "bottomRightY": 617,
+      "content": "If at any time the endpoint returns a DP with the lpf bit set, the SuperSpeedPlus host shall not expect any more packets from the endpoint for this SI. The host shall treat this condition as the termination of Isochronous transactions for this SI for this endpoint. The endpoint shall discard any additional IN ACK TPs it had received or receives in this SI.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-117",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

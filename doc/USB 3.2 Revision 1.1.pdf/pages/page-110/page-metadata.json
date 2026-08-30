@@ -1,0 +1,102 @@
+{
+  "index": 109,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 79 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 667,
+      "bottomRightY": 169,
+      "content": "Figure 6-17 shows the eye mask used for all eye diagram measurements. Referring to the figure, the time is measured from the crossing points of Txp/Txn. The time is called the eye width, and the voltage is the eye height. The eye height is to be measured at the maximum opening (at the center of the eye width ± 0.05 UI). Specific eye mask requirements are defined in Table 6-20.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 182,
+      "bottomRightX": 667,
+      "bottomRightY": 228,
+      "content": "The eye diagrams are to be centered using the jitter transfer function (JTF). The recovered clock is obtained from the data and processed by the JTF. The center of the recovered clock is used to position the center of the data in the eye diagram.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 239,
+      "bottomRightX": 520,
+      "bottomRightY": 256,
+      "content": "The eye diagrams are to be measured into 50-Ω single-ended loads.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 317,
+      "topLeftY": 268,
+      "bottomRightX": 471,
+      "bottomRightY": 284,
+      "content": "Figure 6-17. Eye Masks",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 294,
+      "bottomRightX": 670,
+      "bottomRightY": 569,
+      "content": "![img-28.jpeg](img-28.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-28.jpeg"
+    },
+    {
+      "topLeftX": 343,
+      "topLeftY": 585,
+      "bottomRightX": 446,
+      "bottomRightY": 600,
+      "content": "Gen 1 eye mask",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

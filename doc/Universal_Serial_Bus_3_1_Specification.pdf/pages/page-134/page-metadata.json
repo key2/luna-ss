@@ -1,0 +1,130 @@
+{
+  "index": 133,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 301,
+      "bottomRightY": 110,
+      "content": "### 5.6.1.1.2 Intra-Pair Skew",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 118,
+      "bottomRightX": 679,
+      "bottomRightY": 169,
+      "content": "The intra-pair skew for the SDP pairs is recommended to be less than 15 ps/m. It should be measured with a Time Domain Transmission (TDT) in a differential mode using a 200 ps (10%-90%) rise time with a crossing at 50% of the input voltage.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 174,
+      "bottomRightX": 380,
+      "bottomRightY": 193,
+      "content": "### 5.6.1.1.3 Differential Insertion Loss",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 200,
+      "bottomRightX": 692,
+      "bottomRightY": 268,
+      "content": "Cable loss depends on wire gauges, plating and dielectric materials. Table 5-13 and Table 5-14 show examples of average differential insertion loss for the SDP pairs for Enhanced SuperSpeed Gen 2 speed. To meet the cable assembly differential insertion loss target, support of the Gen 2 speed requires better performance from the raw cable than required for support of the Gen 1 speed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 282,
+      "bottomRightX": 558,
+      "bottomRightY": 297,
+      "content": "Table 5-13. SDP Differential Insertion Loss Examples for Gen 2 speed",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 299,
+      "bottomRightX": 501,
+      "bottomRightY": 413,
+      "content": "|  Frequency | 34AWG | 32AWG | 30AWG | 28AWG  |\n| --- | --- | --- | --- | --- |\n|  0.625 GHz | -1.8 dB/m | -1.4 dB/m | -1.2 dB/m | -1.0 dB/m  |\n|  1.25 GHz | -2.5 dB/m | -2.0 dB/m | -1.7 dB/m | -1.4 dB/m  |\n|  2.50 GHz | -3.7 dB/m | -2.9 dB/m | -2.5 dB/m | -2.1 dB/m  |\n|  5.00 GHz | -5.5 dB/m | -4.5 dB/m | -3.9 dB/m | -3.1 dB/m  |\n|  7.50 GHz | -7.0 dB/m | -5.9 dB/m | -5.0 dB/m | -4.1 dB/m  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-45.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 425,
+      "bottomRightX": 638,
+      "bottomRightY": 456,
+      "content": "Table 5-14. SDP Differential Insertion Loss Examples for Gen 2 speed with Coaxial Construction",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 459,
+      "bottomRightX": 501,
+      "bottomRightY": 572,
+      "content": "|  Frequency | 34AWG | 32AWG | 30AWG | 28AWG  |\n| --- | --- | --- | --- | --- |\n|  0.625 GHz | -1.6 dB/m | -1.3 dB/m | -1.1 dB/m | -1.0 dB/m  |\n|  1.25 GHz | -2.3 dB/m | -1.8 dB/m | -1.5 dB/m | -1.3 dB/m  |\n|  2.50 GHz | -3.5 dB/m | -2.7 dB/m | -2.3 dB/m | -1.9 dB/m  |\n|  5.00 GHz | -5.3 dB/m | -4.2 dB/m | -3.5 dB/m | -3.1 dB/m  |\n|  7.50 GHz | -7.2 dB/m | -5.5 dB/m | -4.9 dB/m | -4.2 dB/m  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-46.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 586,
+      "bottomRightX": 400,
+      "bottomRightY": 605,
+      "content": "### 5.6.1.2 Mated Connector Impedance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 610,
+      "bottomRightX": 697,
+      "bottomRightY": 695,
+      "content": "SuperSpeed signal routing on the PCB should minimize the stub length and minimize impedance discontinuities in the signal path. It is recommended that the SuperSpeed signals be routed on the opposite side of the PCB from the side the lead is inserted for through-hole implementations. It is recommended that the SuperSpeed signals be routed on the same side of the PCB as the solder pads for SMT implementations.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 699,
+      "bottomRightX": 700,
+      "bottomRightY": 770,
+      "content": "For Enhanced SuperSpeed Gen 2 speed applications, electrical optimization is required to achieve the best performance. The PCB stack up, lead geometry, and solder pad geometry should be modeled in three dimensions. Example ground voids under pads shown in Figure 5-20 are based on pad geometry, mounting type, and PCB stack up.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-46",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

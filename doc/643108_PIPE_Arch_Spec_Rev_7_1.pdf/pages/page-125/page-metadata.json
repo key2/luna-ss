@@ -1,0 +1,103 @@
+{
+  "index": 124,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 526,
+      "bottomRightY": 150,
+      "content": "Figure 8-12. DeepPMReq#/DeepPMAck# Handshake Sequencing",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 165,
+      "bottomRightX": 684,
+      "bottomRightY": 299,
+      "content": "![img-33.jpeg](img-33.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-33.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 317,
+      "bottomRightX": 690,
+      "bottomRightY": 350,
+      "content": "### 8.3.6.2 Power Removal and PHY Context Restoration after Power is Restored",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 359,
+      "bottomRightX": 696,
+      "bottomRightY": 459,
+      "content": "Before power gating or a power rail removal in a deep power management state, a PHY may choose to save internal context to a location outside of the PHY as a power savings optimization. The MAC must guarantee that the PIPE interface is idle with no outstanding operations before the power removal. The mechanism for saving context is not part of the PIPE specification, however, the PIPE specification does define a restore window during which context is restored and specifies required MAC and PHY behavior during and immediately after the restore window.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 466,
+      "bottomRightX": 697,
+      "bottomRightY": 624,
+      "content": "The MAC notifies the PHY of entry to the restore window through the assertion of Restore#. The exit from the restore window is signaled via the deassertion of the Restore# signal. The Restore# must be asserted before a power rail ramp. During the restore window, all context that was saved off before a power gating or the power rail removal is restored; during this time, the MAC and the PHY must ignore any toggling of any input PIPE interface signals, except for PCLK and the Restore# signal. Upon an exit from the restore window, the MAC and the PHY must immediately resume monitoring of the input PIPE interface signals. After an exit from the restore window, the MAC and the PHY must wait for PCLK to become active and to toggle for a minimum of 32 cycles before toggling any PIPE signals that are synchronous to PCLK. Figure 8-13 illustrates the key requirements before a power removal and around the restore window.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 633,
+      "bottomRightX": 533,
+      "bottomRightY": 648,
+      "content": "Figure 8-13. PHY Context Restoration after the Power is Restored",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 665,
+      "bottomRightX": 670,
+      "bottomRightY": 846,
+      "content": "![img-34.jpeg](img-34.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-34.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "125",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

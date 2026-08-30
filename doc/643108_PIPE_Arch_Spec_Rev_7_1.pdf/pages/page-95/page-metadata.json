@@ -1,0 +1,94 @@
+{
+  "index": 94,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 588,
+      "bottomRightY": 137,
+      "content": "Table 7-24. Address 801h: PHY Near End Loopback Control (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 492,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [2:0] | 0h | Level | PCIe, USB, USB4, and SATA | **NELB Loopback Position** Encodings for the original PIPE: Refer to Figure 8-45. 0 - At PIPE interface boundary 1 - At Elastic Buffer Inlet 2 - At PIPE interface side of deserializer/serializer 3 - At die pad side of deserializer/serializer 4 - High Speed Digital / Analog Path 1 5 - PHY Specific Path 1 6 - PHY Specific Path 2 7 - PHY Specific Path 3 Encodings for SerDes architecture: Refer to Figure 8-46. 0 - At PIPE interface boundary 1 - Reserved 2 - Reserved 3 - At die edge side of de-serializer/serializer 4 - High Speed Digital / Analog Path 1 5 - PHY Specific Path 1 6 - PHY Specific Path 2 7 - PHY Specific Path 3 At least one of the positions 0, 1, or 2 must be support by PHYs that support the NELB feature. It is strongly recommended to support position 1 or 2 in Original PIPE architecture mode.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-92.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 508,
+      "bottomRightX": 356,
+      "bottomRightY": 531,
+      "content": "## 7.2 MAC Registers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 537,
+      "bottomRightX": 676,
+      "bottomRightY": 567,
+      "content": "Table 7-25 lists the MAC registers and their associated address. The details of each register are provided in the following subsections.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 581,
+      "bottomRightX": 376,
+      "bottomRightY": 597,
+      "content": "Table 7-25. MAC Registers (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 600,
+      "bottomRightX": 699,
+      "bottomRightY": 905,
+      "content": "|  Byte Address | Register Name | Notes  |\n| --- | --- | --- |\n|  12'h0 | RX1: Rx Margin Status0 | -  |\n|  12'h1 | RX1: Rx Margin Status1 | -  |\n|  12'h2 | RX1: Rx Margin Status2 | -  |\n|  12'h3 | RX1: Elastic Buffer Status | N/A for SerDes Architecture  |\n|  12'h4 | RX1: Elastic Buffer Location | N/A for SerDes Architecture  |\n|  12'h5 | RX1: Rx Status0 | -  |\n|  12'h6 | RX1: Rx Control0 | -  |\n|  12'h7 | RX1: Rx Margin Status3 | -  |\n|  12'h8-12'h9 | RX1: Reserved | -  |\n|  12'hA | RX1: Rx Link Evaluation Status0 | -  |\n|  12'hB | RX1: Rx Link Evaluation Status1 | -  |\n|  12'hC | RX1: Rx Status 4 | -  |\n|  12'hD | RX1: Rx Status 5 | -  |\n|  12'hE | RX1: Rx Link Evaluation Status2 | -  |\n|  12'hF | RX1: Rx Link Evaluation Status3 | -  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-93.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "95",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

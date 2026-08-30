@@ -1,0 +1,264 @@
+{
+  "index": 60,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 272,
+      "bottomRightY": 63,
+      "content": "Chapter 4: Timing Definitions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 659,
+      "topLeftY": 48,
+      "bottomRightX": 712,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 93,
+      "bottomRightX": 299,
+      "bottomRightY": 114,
+      "content": "## 4 Timing Definitions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 140,
+      "bottomRightX": 709,
+      "bottomRightY": 230,
+      "content": "The USB 3.1 Specification defines the timers used in the Link Layer. To accurately test timer implementations, there are several considerations beyond the simple timer definition that factor into this document's timing scheme. Section 7.5 of the USB 3.1 Specification defines the link layer timers to have an implementation tolerance of +50%. Chapter 6 details an SSC Tolerance of -5300/+300ppm, the lower limit of which could add 0.5% time to any interval. Consideration for Physical Layer and Link Layer processing time (Tx and Rx latency time) is also applied.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 260,
+      "bottomRightX": 655,
+      "bottomRightY": 275,
+      "content": "The following expression is used for determining each timer's high-end value used in this specification:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 165,
+      "topLeftY": 283,
+      "bottomRightX": 660,
+      "bottomRightY": 298,
+      "content": "$$\\text{Spec Defined Timer value} \\times \\text{Additional50pctTolerance} \\times \\text{SSCFactor} + \\text{tLinkTurnAround}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 305,
+      "bottomRightX": 521,
+      "bottomRightY": 321,
+      "content": "Spec Defined Timer value = the timer value defined in USB 3.1 specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 327,
+      "bottomRightX": 638,
+      "bottomRightY": 343,
+      "content": "Additional50pctTolerance = +50% tolerance defined in the Section 7.5 of the USB 3.1 specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 349,
+      "bottomRightX": 681,
+      "bottomRightY": 379,
+      "content": "SSCFactor = delay induced by SSC influenced clock with a maximum SSC of 5000ppm applied, equating to +0.5%.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 387,
+      "bottomRightX": 367,
+      "bottomRightY": 403,
+      "content": "tLinkTurnAround = tDHPResponse - tDPacket.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 410,
+      "bottomRightX": 703,
+      "bottomRightY": 455,
+      "content": "This is understood to be the maximum delay induced by the PHY and Link layers when a link event occurs, until the respective action is made, when there is no other packet processing occurring on the port. This is measured from the time a packet is received, until the time a response is generated on the transmit side.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 463,
+      "bottomRightX": 207,
+      "bottomRightY": 478,
+      "content": "For a Gen 1 port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 485,
+      "bottomRightX": 507,
+      "bottomRightY": 500,
+      "content": "tLinkTurnaround = tDHPResponse - tDPacket = 2540ns - 2140ns = 400ns",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 508,
+      "bottomRightX": 207,
+      "bottomRightY": 523,
+      "content": "For a Gen 2 port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 530,
+      "bottomRightX": 500,
+      "bottomRightY": 545,
+      "content": "tLinkTurnaround = tDHPResponse - tDPacket = 1610ns - 910ns = 700ns",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 553,
+      "bottomRightX": 708,
+      "bottomRightY": 583,
+      "content": "Note: Since captive re-timer delay is included in tDHPResponse and not factored out for tLinkTurnaround, a PUT that does not contain a captive re-timer can use the extra time for its Tx and Rx Data Paths.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 613,
+      "bottomRightX": 538,
+      "bottomRightY": 629,
+      "content": "Using their respective numerical values, the expression is presented again below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 246,
+      "topLeftY": 635,
+      "bottomRightX": 579,
+      "bottomRightY": 651,
+      "content": "$$\\text{Spec Defined Timer value} \\times 1.5 \\times 1.005 + \\text{tLinkTurnaround}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 658,
+      "bottomRightX": 417,
+      "bottomRightY": 674,
+      "content": "The expression above is applicable for Link Layer timers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 260,
+      "topLeftY": 681,
+      "bottomRightX": 565,
+      "bottomRightY": 696,
+      "content": "$$\\text{Spec Defined Timer value} \\times 1.005 + \\text{tLinkTurnaround}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 705,
+      "bottomRightX": 483,
+      "bottomRightY": 720,
+      "content": "The expression above is applicable for PHY and protocol layer timers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 726,
+      "bottomRightX": 672,
+      "bottomRightY": 757,
+      "content": "The following table lists the timers used in the Link Layer compliance tests and the window of compliant durations between the initial event that started the timer, and the expected response when the timer expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 764,
+      "bottomRightX": 665,
+      "bottomRightY": 794,
+      "content": "PORT_U2_TIMEOUT is not listed in the table because its value is programmable using the U2 Inactivity Timeout LMP. A calculation is needed as per the value programmed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 801,
+      "bottomRightX": 709,
+      "bottomRightY": 832,
+      "content": "tPollingLFPSEstablishedTimeout was created from USB 3.1 Specification section 7.5.4.3.1: A Port shall establish its LFPS operating condition within 80us.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 839,
+      "bottomRightX": 706,
+      "bottomRightY": 884,
+      "content": "tRecoveryTimeout was created as a replacement for tLinkTurnaround when an error occurs that should result in a quick transition to Recovery. This mechanism may be implemented separately from tLinkTurnaround logic. Both Gen 1 and Gen 2 PUTs are given 1us to enter recovery for TDs 7.13, 7.14, 7.15, and 7.30.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 170,
+      "topLeftY": 912,
+      "bottomRightX": 648,
+      "bottomRightY": 929,
+      "content": "|  Timer definition | Deadline | Expiration | Expiration  |\n| --- | --- | --- | --- |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-54.md"
+    },
+    {
+      "topLeftX": 403,
+      "topLeftY": 933,
+      "bottomRightX": 421,
+      "bottomRightY": 947,
+      "content": "53",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 310,
+      "bottomRightY": 969,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

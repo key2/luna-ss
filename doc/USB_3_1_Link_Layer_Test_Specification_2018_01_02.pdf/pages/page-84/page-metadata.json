@@ -1,0 +1,209 @@
+{
+  "index": 83,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 144,
+      "bottomRightX": 527,
+      "bottomRightY": 162,
+      "content": "### TD.7.18 Low Power initiation for U1 test (Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 165,
+      "bottomRightX": 389,
+      "bottomRightY": 179,
+      "content": "This test verifies that the PUT initiates U1 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 187,
+      "bottomRightX": 235,
+      "bottomRightY": 202,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 208,
+      "bottomRightX": 198,
+      "bottomRightY": 223,
+      "content": "7.2.4.2.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 228,
+      "bottomRightX": 250,
+      "bottomRightY": 244,
+      "content": "7.2.4.2.3#1,3,4,5,7,8",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 251,
+      "bottomRightX": 208,
+      "bottomRightY": 264,
+      "content": "7.2.4.2.7#2,3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 272,
+      "bottomRightX": 189,
+      "bottomRightY": 287,
+      "content": "7.5.7.1#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 295,
+      "bottomRightX": 189,
+      "bottomRightY": 309,
+      "content": "7.5.7.2#6",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 319,
+      "bottomRightX": 254,
+      "bottomRightY": 334,
+      "content": "#### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 340,
+      "bottomRightX": 701,
+      "bottomRightY": 522,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence.\n2. The LVS application prompts the test operator to enable and configure the U1 and U2 inactivity timers through USB30CV. CV will set the U1 Timeout field to 7Fh and the U2 Timeout field to 00h.\n3. The LVS waits to receive an LGO_U1 from the PUT. The LVS transmits an LXU, when it receives the LGO_U1.\n4. The test fails if the PUT sends an LPMA, or if recovery is entered.\n5. The LVS waits to receive an LGO_U1 from the PUT again.\n6. The LVS transmits an LAU when it receives the LGO_U1.\n7. The test fails if any of the following conditions occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 527,
+      "bottomRightX": 606,
+      "bottomRightY": 589,
+      "content": "a. The PUT does not transmit an LPMA before PM_ENTRY_TIMER deadline\nb. The PUT enters recovery\nc. The PUT does not transition to U1",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 596,
+      "bottomRightX": 701,
+      "bottomRightY": 627,
+      "content": "8. The LVS transmits the U1 Exit LFPS to transition to U0 and waits to receive U1 Exit LFPS to complete the U1 Exit LFPS handshake.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 633,
+      "bottomRightX": 705,
+      "bottomRightY": 649,
+      "content": "9. The test fails if the LFPS handshake does not conform to the following specifications from section 6.9.2:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 656,
+      "bottomRightX": 692,
+      "bottomRightY": 769,
+      "content": "a. Between 300ns - 2us elapses between the start of the LVS U1 Exit LFPS and the start of the PUT U1 Exit LFPS.\nb. The PUT U1 Exit LFPS duration is within 0.9us - 1.2us.\nc. The PUT enters U0 before Ux_EXIT_TIMER deadline.\nd. The PUT enters Recovery before tNoLFPSResponseTimeout deadline after the start of its U1 exit LFPS.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 776,
+      "bottomRightX": 694,
+      "bottomRightY": 807,
+      "content": "10. The test passes if all packets are successful, recovery is entered once, no extra packets or LFPS signals are received, and the PUT returns to U0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 814,
+      "bottomRightX": 624,
+      "bottomRightY": 832,
+      "content": "11. After the LVS completes this test case, clear the U1/U2 registers through the CV prompt.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 889,
+      "bottomRightX": 524,
+      "bottomRightY": 906,
+      "content": "### TD.7.19 Low Power initiation for U2 test (Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 908,
+      "bottomRightX": 389,
+      "bottomRightY": 924,
+      "content": "This test verifies that the PUT initiates U2 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "76",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "index": 248,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 218 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 365,
+      "bottomRightY": 131,
+      "content": "- PTM Delta Counter, 13 bits.\n- PTM Bus Interval Counter, 14 bits.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 152,
+      "bottomRightX": 509,
+      "bottomRightY": 169,
+      "content": "The PTM Clock has a period of tIsochTimestampGranularity units.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 181,
+      "bottomRightX": 665,
+      "bottomRightY": 243,
+      "content": "The PTM Delta Counter shall be incremented by the PTM Clock to measure the delay from present time to the previous bus interval boundary. The PTM Delta Counter is a modulus 7500 counter, wrapping on microframe boundaries, i.e. incrementing from 0 to 7499 (~125 μs), then wrapping back to 0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 253,
+      "bottomRightX": 668,
+      "bottomRightY": 300,
+      "content": "The PTM Bus Interval Counter shall be incremented when the PTM Delta Counter wraps. The PTM Bus Interval Counter is a modulus 16k counter, i.e. incrementing from 0 to 16,383, then wrapping back to 0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 313,
+      "bottomRightX": 666,
+      "bottomRightY": 344,
+      "content": "The time synchronization mechanism within the device of the PTM Clock to the bus interval boundary is implementation-specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 355,
+      "bottomRightX": 663,
+      "bottomRightY": 387,
+      "content": "Hosts shall implement a set of PTM Bus Interval Boundary Counters. The host is the source of the bus interval boundary for a PTM Domain.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 399,
+      "bottomRightX": 564,
+      "bottomRightY": 416,
+      "content": "Hubs are not required to implement PTM Bus Interval Boundary Counters.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 426,
+      "bottomRightX": 569,
+      "bottomRightY": 442,
+      "content": "PTM capable devices shall implement PTM Bus Interval Boundary Counters.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 456,
+      "bottomRightX": 243,
+      "bottomRightY": 469,
+      "content": "### 8.4.8.2 LDM Protocol",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 477,
+      "bottomRightX": 660,
+      "bottomRightY": 523,
+      "content": "The LDM protocol is executed with a series of Exchanges between a Requester and a Responder, and ITPs transmitted by Responders to measure the LDM Link Delay illustrates the LDM Timestamp Exchanges.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 536,
+      "bottomRightX": 489,
+      "bottomRightY": 551,
+      "content": "The following rules apply to LDM Requesters and Responders:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 564,
+      "bottomRightX": 552,
+      "bottomRightY": 625,
+      "content": "- A LDM Requester is an upstream facing port.\n- A LDM Responder is a downstream facing port.\n- A LDM Requester and a LDM Responder are paired on a USB link.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 645,
+      "bottomRightX": 547,
+      "bottomRightY": 662,
+      "content": "Figure 8-11. Link Delay Measurement Protocol",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 676,
+      "bottomRightX": 670,
+      "bottomRightY": 921,
+      "content": "![img-104.jpeg](img-104.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-104.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

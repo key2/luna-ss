@@ -1,0 +1,137 @@
+{
+  "index": 184,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 154 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 677,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 95,
+      "bottomRightX": 283,
+      "bottomRightY": 110,
+      "content": "### 7.3.11 Gen 1 8b/10b Errors",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 116,
+      "bottomRightX": 666,
+      "bottomRightY": 163,
+      "content": "There are two types of errors when a receiver decodes 8b/10b symbols. One is a disparity error that is declared when the running disparity of the received 8b/10b symbols is not +2, or 0, or -2. The other is a decode error when an unrecognized 8b/10b symbol is received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 175,
+      "bottomRightX": 402,
+      "bottomRightY": 191,
+      "content": "Upon receiving notification of an 8b/10b error:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 204,
+      "bottomRightX": 644,
+      "bottomRightY": 306,
+      "content": "- A port may optionally do the following:\n  1. If the link is receiving a header packet, it shall send LBAD.\n  2. If the link is receiving a link command, it shall ignore the link command.\n  3. If the link is receiving a DPP, it shall drop the DPP.\n- The Link Error Count shall remain unchanged.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 327,
+      "bottomRightX": 331,
+      "bottomRightY": 343,
+      "content": "### 7.3.12 Gen 2x1 Block Header Errors",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 349,
+      "bottomRightX": 675,
+      "bottomRightY": 380,
+      "content": "There are two types of block header errors, a correctable single bit block header error, and a detectable but not correctable two-bit block header error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 393,
+      "bottomRightX": 664,
+      "bottomRightY": 461,
+      "content": "- Upon detecting a single-bit block header error, the PHY shall correct it and report the error event to the link layer. The Soft Error Count shall be incremented by one.\n- Upon detecting two-bit block header error, the PHY shall report the error event to the link layer. The port shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 482,
+      "bottomRightX": 331,
+      "bottomRightY": 497,
+      "content": "### 7.3.13 Gen 2x2 Block Header Errors",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 504,
+      "bottomRightX": 668,
+      "bottomRightY": 581,
+      "content": "Refer to Section 6.13.4 regarding data striping in Gen 2x2 operation. BH0 is the block header transmitted on lane 0 and BH1 is the block header transmitted on lane 1. Since BH0 and BH1 are identical, further enhancement of the block header error detection and correction is possible if the PHY associates BH0 and BH1. The implementation of this association is optional.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 593,
+      "bottomRightX": 675,
+      "bottomRightY": 906,
+      "content": "- The PHY shall declare the reception of valid block headers if either of the following conditions is true.\n  - BH0 and BH1 are valid and identical. If single-bit error correction is performed, it shall report the error event to the link layer. The port shall increment the Soft Error Count accordingly by one.\n  - If the PHY associates BH0 and BH1, and if one block header is valid and the other block header is invalid. If single-bit error correction is performed, it shall report the error event accordingly to the link layer. The port shall increment the Soft Error Count by one.\n- The PHY shall declare the reception of invalid block headers if either of the following conditions is true.\n  - BH0 and BH1 are both invalid. The PHY shall report the error event to the link layer. The port shall transition to Recovery.\n  - BH0 and BH1 are both valid but not identical. The PHY shall report the error event to the link layer. The port shall transition to Recovery.\n  - If the PHY does not associate between BH0 and BH1, and if one of the block headers is invalid. The PHY shall report the error event to the link layer. The port shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "index": 95,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 65 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 667,
+      "bottomRightY": 140,
+      "content": "- No SKP Ordered Sets are to be transmitted during the entire TSEQ time (65,536 ordered sets). This means that the PHY must manage its elasticity buffer differently than during normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 155,
+      "bottomRightX": 657,
+      "bottomRightY": 171,
+      "content": "Additional rules for the use of TSEQ, TS1, and TS2 Ordered Sets can be found in Chapter 7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 182,
+      "bottomRightX": 451,
+      "bottomRightY": 198,
+      "content": "### 6.4.1.1.2 Training Control Bits for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 205,
+      "bottomRightX": 665,
+      "bottomRightY": 236,
+      "content": "The training control bits are found in the Link Functionality symbol within the TS1 and TS2 ordered sets. These bits are described in Table 6-6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 248,
+      "bottomRightX": 628,
+      "bottomRightY": 295,
+      "content": "Bit 0 and bit 2 of the link configuration field shall not be set to 1 simultaneously. If a receiver detects this condition in the received Link configuration field, then all of the training control bits shall be ignored.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 307,
+      "bottomRightX": 480,
+      "bottomRightY": 323,
+      "content": "### 6.4.1.1.3 Training Sequence Values for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 329,
+      "bottomRightX": 636,
+      "bottomRightY": 359,
+      "content": "The TSEQ training sequence repeats 65,536 times to allow for testing many coefficient settings.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 280,
+      "topLeftY": 371,
+      "bottomRightX": 509,
+      "bottomRightY": 387,
+      "content": "Table 6-3. Gen 1 TSEQ Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 189,
+      "topLeftY": 396,
+      "bottomRightX": 602,
+      "bottomRightY": 778,
+      "content": "|  Symbol Number | Name | Value  |\n| --- | --- | --- |\n|  0 | K28.5 | COM (Comma)  |\n|  1 | D31.7 | FFh  |\n|  2 | D23.0 | 17h  |\n|  3 | D0.6 | C0h  |\n|  4 | D20.0 | 14h  |\n|  5 | D18.5 | B2h  |\n|  6 | D7.7 | E7h  |\n|  7 | D2.0 | 02h  |\n|  8 | D2.4 | 82h  |\n|  9 | D18.3 | 72h  |\n|  10 | D14.3 | 6Eh  |\n|  11 | D8.1 | 28h  |\n|  12 | D6.5 | A6h  |\n|  13 | D30.5 | BEh  |\n|  14 | D13.3 | 6Dh  |\n|  15 | D31.5 | BFh  |\n|  16-31 | D10.2 | 4Ah  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-38.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

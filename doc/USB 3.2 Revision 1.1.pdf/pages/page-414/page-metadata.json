@@ -1,0 +1,192 @@
+{
+  "index": 413,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 61,
+      "content": "Revision 1.1",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 62,
+      "bottomRightX": 177,
+      "bottomRightY": 77,
+      "content": "June 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 383 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 61,
+      "content": "Universal Serial Bus 3.2",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 62,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 101,
+      "bottomRightX": 208,
+      "bottomRightY": 118,
+      "content": "# NOTE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 135,
+      "bottomRightX": 672,
+      "bottomRightY": 166,
+      "content": "For the root hub, the signals from the upstream facing port state machines are implementation dependent.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 205,
+      "topLeftY": 177,
+      "bottomRightX": 584,
+      "bottomRightY": 195,
+      "content": "Figure 10-10. Downstream Facing Hub Port State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 208,
+      "bottomRightX": 709,
+      "bottomRightY": 796,
+      "content": "![img-171.jpeg](img-171.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-171.jpeg"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 810,
+      "bottomRightX": 184,
+      "bottomRightY": 820,
+      "content": "Port Status Field:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 821,
+      "bottomRightX": 203,
+      "bottomRightY": 830,
+      "content": "Notation Field Name",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 832,
+      "bottomRightX": 219,
+      "bottomRightY": 841,
+      "content": "PP PORT_POWER",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 842,
+      "bottomRightX": 242,
+      "bottomRightY": 851,
+      "content": "CCS PORT_CONNECTION",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 852,
+      "bottomRightX": 214,
+      "bottomRightY": 861,
+      "content": "PR PORT_RESET",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 862,
+      "bottomRightX": 237,
+      "bottomRightY": 871,
+      "content": "PLS PORT_LINK_STATE",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 872,
+      "bottomRightX": 219,
+      "bottomRightY": 882,
+      "content": "PE PORT_ENABLE",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 298,
+      "topLeftY": 820,
+      "bottomRightX": 320,
+      "bottomRightY": 830,
+      "content": "Note:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 298,
+      "topLeftY": 832,
+      "bottomRightX": 631,
+      "bottomRightY": 851,
+      "content": "Clear Port Feature (PORT_ENABLED) and Set Port Feature (PORT_ENABLED) are not used for SS Ports",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 298,
+      "topLeftY": 860,
+      "bottomRightX": 610,
+      "bottomRightY": 882,
+      "content": "1 This direct transition may only occur from a DSPORT state whose link is in the SS.Inactive, Rx.Detect.Active (during DSPORT.RESETTING), U1, U2, or U3 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

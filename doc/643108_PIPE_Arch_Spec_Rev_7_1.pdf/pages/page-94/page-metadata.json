@@ -1,0 +1,94 @@
+{
+  "index": 93,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 519,
+      "bottomRightY": 137,
+      "content": "Table 7-23. Address 800h: PHY Common Control0 (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 688,
+      "bottomRightY": 461,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [0] | 0h | Level | PCIe (optional), USB (optional), SATA | **EncodeDecodeBypass:** This field controls whether the PHY performs 8b/10b (or 128b/130b) encode and decode. 0 – Encode/decode performed normally by the PHY. 1 – Encode/decode bypassed. The MAC can only change this signal during reset or in a power state other than POWER_STATE_0 (SATA Mode) or P0 (PCI Express Mode). SATA Mode: When EncodeDecodeBypass is one the TxDataK and RxDataK interfaces are not used and the data bus width is 10, 20, or 40 bits. PCIe Mode and USB Mode: When EncodeDecodeBypass is one the TxDataK and RxDataK interfaces are not used. The data bus width is 10, 20, or 40 bits if rate is 2.5 or 5.0 GT/s. The data bus width is 8, 16, or 32 bits if the rate is 8.0 GT/s, 16 GT/s, or 32 GT/s (PCIe) or 10 GT/s (USB). The TxStartBlock and RxStartBlock signals are not used. **Note:** This field is not used in the SerDes architecture.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-90.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 476,
+      "bottomRightX": 655,
+      "bottomRightY": 498,
+      "content": "### 7.1.23 Address 801h: PHY Near End Loopback Control",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 504,
+      "bottomRightX": 603,
+      "bottomRightY": 520,
+      "content": "This register is required for PHYs that support the optional NELB feature.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 534,
+      "bottomRightX": 580,
+      "bottomRightY": 549,
+      "content": "Table 7-24. Address 801h: PHY Near End Loopback Control (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 553,
+      "bottomRightX": 688,
+      "bottomRightY": 642,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7] | 0h | Level | PCIe, USB, USB4, and SATA | **NELB Enable** 0 – Normal Operation 1 – Loopback Operation  |\n|  [6:3] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-91.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "94",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

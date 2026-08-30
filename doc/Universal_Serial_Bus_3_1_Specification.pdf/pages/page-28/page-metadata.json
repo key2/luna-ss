@@ -1,0 +1,30 @@
+{
+  "index": 27,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 90,
+      "bottomRightX": 701,
+      "bottomRightY": 493,
+      "content": "|   | C.2.1.2 | Device Initiated Transition | C-17  |\n| --- | --- | --- | --- |\n|  C.2.2 |  | Device Connected Through a Hub | C-18  |\n|   | C.2.2.1 | Host Initiated Transition | C-18  |\n|   | C.2.2.2 | Device Initiated Transition | C-20  |\n|  C.3 |  | Device-Initiated Link Power Management Policies | C-21  |\n|   | C.3.1 | Overview and Background Information | C-21  |\n|   | C.3.2 | Entry Conditions for U1 and U2 | C-22  |\n|   | C.3.2.1 | Control Endpoints | C-22  |\n|   | C.3.2.2 | Bulk Endpoints | C-22  |\n|   | C.3.2.3 | Interrupt Endpoints | C-23  |\n|   | C.3.2.4 | Isochronous Endpoints | C-23  |\n|   | C.3.2.5 | Devices That Need Timestamp Packets | C-23  |\n|  C.4 |  | Latency Tolerance Message (LTM) Implementation Example | C-23  |\n|   | C.4.1 | Device State Machine Implementation Example | C-24  |\n|   | C.4.1.1 | LTM-Idle State BELT | C-24  |\n|   | C.4.1.2 | LTM-Active State BELT | C-24  |\n|   | C.4.1.3 | Transitioning Between LT-States | C-25  |\n|   | C.4.1.3.1 | Transitioning From LT-idle to LT-active | C-25  |\n|   | C.4.1.3.2 | Transitioning From LT-active to LT-idle | C-25  |\n|   | C.4.2 | Other Considerations | C-26  |\n|  C.5 |  | SuperSpeed vs. High Speed Power Management Considerations | C-26  |\n|  **D** |  | **Example Packets** | **D-1**  |\n|  **E** |  | **Repeaters** | **E-1**  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-22.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 981,
+      "bottomRightX": 120,
+      "bottomRightY": 995,
+      "content": "xxviii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

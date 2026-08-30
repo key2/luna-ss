@@ -1,0 +1,191 @@
+{
+  "index": 557,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 105,
+      "bottomRightX": 188,
+      "bottomRightY": 121,
+      "content": "# PORT_RESET",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 126,
+      "bottomRightX": 684,
+      "bottomRightY": 161,
+      "content": "This bit is set to one while the port is in the DSPORT.Resetting state. This bit is set to zero in all other downstream port states.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 164,
+      "bottomRightX": 591,
+      "bottomRightY": 198,
+      "content": "A SetPortFeature(PORT_RESET or BH_PORT_RESET) request will initiate the DSPORT.Resetting state if the conditions in Section 10.3.1.6 are met.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 203,
+      "bottomRightX": 682,
+      "bottomRightY": 238,
+      "content": "The ClearPortFeature(PORT_RESET) request shall not be used by the USB system software and may be treated as a no-operation request by hubs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 252,
+      "bottomRightX": 234,
+      "bottomRightY": 269,
+      "content": "# PORT_LINK_STATE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 273,
+      "bottomRightX": 390,
+      "bottomRightY": 290,
+      "content": "This field reflects the current state of the link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 295,
+      "bottomRightX": 686,
+      "bottomRightY": 330,
+      "content": "The SetPortFeature(PORT_LINK_STATE) request may be issued by the USB system software at any time but will have an effect only as specified in Section 10.16.2.10.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 334,
+      "bottomRightX": 655,
+      "bottomRightY": 369,
+      "content": "The ClearPortFeature(PORT_LINK_STATE) requests shall not be used by the USB System software and may be treated as no-operation requests by hubs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 383,
+      "bottomRightX": 196,
+      "bottomRightY": 399,
+      "content": "# PORT_POWER",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 404,
+      "bottomRightX": 659,
+      "bottomRightY": 439,
+      "content": "This bit reflects the current logical power state of a port. This bit is implemented on all ports whether or not actual port power switching devices are present.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 443,
+      "bottomRightX": 695,
+      "bottomRightY": 494,
+      "content": "While this bit is zero, the port is in the DSPORT.Powered-off state, the DSPORT.Powered-off-detect state, or the DSPORT.Powered-off-reset state. Similarly, anything that causes this port to go to any of these three states will cause this bit to be set to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 498,
+      "bottomRightX": 686,
+      "bottomRightY": 549,
+      "content": "A SetPortFeature(PORT_POWER) will set this bit to one unless both C_HUB_LOCAL_POWER and Local Power Status (in wHubStatus) are set to one in which case the request is treated as a functional no-operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 563,
+      "bottomRightX": 188,
+      "bottomRightY": 580,
+      "content": "# PORT_SPEED",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 585,
+      "bottomRightX": 690,
+      "bottomRightY": 635,
+      "content": "This value in this field is only valid when the PORT_ENABLE bit is set to one and the Port Status Type is set to PORT_STATUS. A value of zero in this field indicates that an Enhanced SuperSpeed device is attached. All other values in this field are reserved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 640,
+      "bottomRightX": 686,
+      "bottomRightY": 690,
+      "content": "System Software can determine the actual speed at which the device is operating by using the Get Port Status request with the Port Status Type set to EXT_PORT_STATUS (see Section 10.16.2.6.3).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 695,
+      "bottomRightX": 428,
+      "bottomRightY": 713,
+      "content": "This field can only be read by USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 727,
+      "bottomRightX": 369,
+      "bottomRightY": 744,
+      "content": "# 10.16.2.6.2 Port Status Change Bits",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 750,
+      "bottomRightX": 698,
+      "bottomRightY": 851,
+      "content": "Port status change bits are used to indicate changes in port status bits that are not the direct result of requests. Port status change bits can be cleared with a ClearPortFeature() request or by a hub reset. Hubs may allow setting of the status change bits with a SetPortFeature() request for diagnostic purposes. If a hub does not support setting of the status change bits, it may either treat the request as a Request Error or as a functional no-operation. Table 10-14 describes the various bits in the wPortChange field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-80",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+6.4.1.2.4 Informative Block Alignment for Gen 2 Operation ...6-17
+6.4.2 Lane Polarity Inversion...6-18
+6.4.2.1 Gen 1 Operation...6-18
+6.4.2.2 Gen 2 Operation...6-18
+6.4.3 Elasticity Buffer and SKP Ordered Set ...6-18
+6.4.3.1 SKP Rules (Host/Device/Hub) for Gen 1 Operation...6-19
+6.4.3.2 SKP Rules (Host/Device/Hub) for Gen 2 Operation:...6-19
+6.4.4 Compliance Pattern...6-21
+6.4.4.1 Gen 2 Compliance Pattern CP9 ...6-21
+6.5 Clock and Jitter...6-22
+6.5.1 Informative Jitter Budgeting...6-22
+6.5.2 Normative Clock Recovery Function...6-22
+6.5.3 Normative Spread Spectrum Clocking (SSC) ...6-25
+6.5.4 Normative Slew Rate Limit ...6-26
+6.6 Signaling...6-26
+6.6.1 Eye Diagrams...6-26
+6.6.2 Voltage Level Definitions ...6-28
+6.6.3 Tx and Rx Input Parasitics...6-29
+6.7 Transmitter Specifications...6-30
+6.7.1 Transmitter Electrical Parameters...6-30
+6.7.2 Low Power Transmitter...6-31
+6.7.3 Transmitter Eye...6-32
+6.7.4 Tx Compliance Reference Receiver Equalize Function ...6-32
+6.7.5 Informative Transmitter De-emphasis...6-33
+6.7.5.1 Gen 1 (5GT/s) ...6-33
+6.7.5.2 Gen 2 (10GT/s) ...6-33
+6.7.6 Entry into Electrical Idle, U1...6-35
+6.8 Receiver Specifications ...6-35
+6.8.1 Receiver Equalization Training ...6-35
+6.8.2 Informative Receiver CTLE Function...6-36
+6.8.2.1 Gen 1 Reference CTLE...6-36
+6.8.2.2 Gen 2 Reference Equalizer Function...6-37
+6.8.2.2.1 Reference CTLE...6-37
+6.8.2.2.2 Reference DFE...6-38
+6.8.3 Receiver Electrical Parameters ...6-39
+6.8.4 Receiver Loopback...6-40
+6.8.4.1 Loopback BERT for Gen 1 Operation...6-40
+6.8.5 Normative Receiver Tolerance Compliance Test...6-42
+6.9 Low Frequency Periodic Signaling (LFPS)...6-43
+6.9.1 LFPS Signal Definition...6-43
+6.9.2 Example LFPS Handshake for U1/U2 Exit, Loopback Exit, and U3
+Wakeup...6-46
+6.9.3 Warm Reset ...6-48
+6.9.4 SuperSpeedPlus Capability Declaration ...6-48
+6.9.4.1 Binary Representation of Polling.LFPS...6-49
+6.9.4.2 SCD1/SCD2 Definitions and Transmission...6-49
+6.9.5 SuperSpeedPlus LFPS Based PWM Message (LBPM)...6-51
+6.9.5.1 Introduction to LFPS Based PWM Signaling (LBPS) ...6-51
+6.9.5.2 LBPM Definition and Transmission...6-52
+
+xiv

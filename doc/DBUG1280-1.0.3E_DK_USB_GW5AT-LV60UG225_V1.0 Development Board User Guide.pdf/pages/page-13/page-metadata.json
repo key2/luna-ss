@@ -1,0 +1,263 @@
+{
+  "index": 12,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 72,
+      "topLeftY": 35,
+      "bottomRightX": 241,
+      "bottomRightY": 48,
+      "content": "2 Development Board Introduction",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 581,
+      "topLeftY": 35,
+      "bottomRightX": 645,
+      "bottomRightY": 48,
+      "content": "2.5 Features",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 96,
+      "bottomRightX": 186,
+      "bottomRightY": 116,
+      "content": "## 2.5 Features",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 136,
+      "bottomRightX": 406,
+      "bottomRightY": 153,
+      "content": "The key features are as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 160,
+      "bottomRightX": 285,
+      "bottomRightY": 175,
+      "content": "● FPGA Device",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 181,
+      "bottomRightX": 445,
+      "bottomRightY": 198,
+      "content": "- Gowin GW5AT-LV60UG225 FPGA",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 204,
+      "bottomRightX": 325,
+      "bottomRightY": 219,
+      "content": "● Download and Boot",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 224,
+      "bottomRightX": 597,
+      "bottomRightY": 281,
+      "content": "- Integrate USB download circuit on the development board, download through Mini USB-B interface\n- External SPI Flash for storing FPGA configuration file",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 285,
+      "bottomRightX": 239,
+      "bottomRightY": 300,
+      "content": "● Power",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 306,
+      "bottomRightX": 644,
+      "bottomRightY": 383,
+      "content": "- External DC12V/2A Power\n- The Power light is on after power on.\n- The board generates 5V, 3.3V, 2.5V, 1.8V, 1.5V, 1.2V, 0.9V, 0.75V power.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 387,
+      "bottomRightX": 285,
+      "bottomRightY": 404,
+      "content": "● Clock System",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 409,
+      "bottomRightX": 357,
+      "bottomRightY": 468,
+      "content": "- One 24MHz clock\n- One 148.5MHz clock\n- Two 200MHz clocks",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 473,
+      "bottomRightX": 298,
+      "bottomRightY": 490,
+      "content": "● Memory Device",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 495,
+      "bottomRightX": 357,
+      "bottomRightY": 532,
+      "content": "- 2Gbit DDR3 SDRAM\n- 128Mbit NOR Flash",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 538,
+      "bottomRightX": 295,
+      "bottomRightY": 553,
+      "content": "● HDMI Interface",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 558,
+      "bottomRightX": 375,
+      "bottomRightY": 575,
+      "content": "- One HDMI-RX interface",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 581,
+      "bottomRightX": 288,
+      "bottomRightY": 597,
+      "content": "● MIPI Interface",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 602,
+      "bottomRightX": 626,
+      "bottomRightY": 679,
+      "content": "- One CPHY hard core interface, including 3lane\n- One DPHY hard core interface, including 4 data (data) + 1 lane (clk)\n- Eight GPIOs reserved",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 683,
+      "bottomRightX": 305,
+      "bottomRightY": 700,
+      "content": "● Type-C Interface",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 705,
+      "bottomRightX": 481,
+      "bottomRightY": 722,
+      "content": "- Support USB 2.0 and USB 3.0 protocols",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 727,
+      "bottomRightX": 282,
+      "bottomRightY": 742,
+      "content": "● SDI Interface",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 748,
+      "bottomRightX": 443,
+      "bottomRightY": 808,
+      "content": "- Two SDI-IN interfaces\n- Two SDI-OUT interfaces\n- Support 3G and 6G SDI interfaces",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 812,
+      "bottomRightX": 280,
+      "bottomRightY": 828,
+      "content": "● I2C Interface",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 835,
+      "bottomRightX": 337,
+      "bottomRightY": 850,
+      "content": "- One I2C interface",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 855,
+      "bottomRightX": 296,
+      "bottomRightY": 872,
+      "content": "● Key & Indicator",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 877,
+      "bottomRightX": 322,
+      "bottomRightY": 914,
+      "content": "- 1 Key\n- 1 LED indicator",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 72,
+      "topLeftY": 943,
+      "bottomRightX": 166,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 617,
+      "topLeftY": 943,
+      "bottomRightX": 645,
+      "bottomRightY": 957,
+      "content": "6(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

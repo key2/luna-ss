@@ -1,0 +1,120 @@
+{
+  "index": 125,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 186,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 121,
+      "bottomRightX": 636,
+      "bottomRightY": 164,
+      "content": "## 8.4 Changing Signaling Rate, PCLK Rate, or Data Bus Width",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 186,
+      "bottomRightX": 287,
+      "bottomRightY": 207,
+      "content": "### 8.4.1 PCIe Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 214,
+      "bottomRightX": 686,
+      "bottomRightY": 430,
+      "content": "The signaling rate of the link, the PCLK rate, or the data bus width can be changed only when the PHY is in the P0 or P1 power state and TxElecIdle and RxStandby (P0 only) are asserted. When the MAC changes the Rate signal, and the Width signal, and/or the PCLK rate signal in the PCLK as the PHY Output mode, the PHY performs the rate change and the width change and the PCLK rate change and signals its completion with a single cycle assertion of PhyStatus. The MAC must not perform any operational sequences, power state transitions, deassert TxElecIdle or RxStandby, or further signaling rate changes until the PHY has indicated that the signaling rate change has completed. The sequence is the same in PCLK as PHY input mode except that the MAC needs to know when the input PCLK rate or rate, or potentially width, can be safely changed. After the MAC changes rate and either PCLK_Rate, data width, or both, any change to the PCLK can happen only after the PclkChangeOk output has been driven high by the PHY. The MAC changes the input PCLK, if necessary, and then handshakes by asserting PclkChangeAck. The PHY responds by asserting PhyStatus for one input PCLK cycle and deasserts PclkChangeOk on the trailing edge of PhyStatus.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 441,
+      "bottomRightX": 129,
+      "bottomRightY": 456,
+      "content": "Note:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 441,
+      "bottomRightX": 667,
+      "bottomRightY": 483,
+      "content": "PclkChangeOk is used by the PHY if the MAC changes PCLK_Rate and rate. The PHY datasheet indicates whether the same handshake is also required for every rate change.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 488,
+      "bottomRightX": 686,
+      "bottomRightY": 574,
+      "content": "Table 8-1 summarizes the handshake requirements. The MAC deasserts PclkChangeAck when PclkChangeOk is sampled low and may deassert TxElecIdle and/or RxStandby after PhyStatus is sampled high. There are instances where LTSSM state machine transitions indicate both a speed change or width or PCLK rate change and a power state change for the PHY. In these instances, the MAC must change (if necessary) the signaling rate, width and/or the PCLK rate before changing the power state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 588,
+      "bottomRightX": 474,
+      "bottomRightY": 604,
+      "content": "Table 8-3. PclkChangeOK/PclkChangeAck Requirements",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 607,
+      "bottomRightX": 687,
+      "bottomRightY": 725,
+      "content": "|  Rate | Width | PCLK Rate | PclkChangeOK / PclkChangeAck Handshake Required?  |\n| --- | --- | --- | --- |\n|  Stable | Don't care | Don't care | Not applicable  |\n|  Change | Stable | Stable | Optional (parameter)  |\n|  Change | Stable | Change | Required  |\n|  Change | Change | Stable | Optional (parameter)  |\n|  Change | Change | Change | Required  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-132.md"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 732,
+      "bottomRightX": 686,
+      "bottomRightY": 833,
+      "content": "Some PHY architectures may allow a speed change and a power state change to occur at the same time as a rate, width, or PCLK rate change. If a PHY supports this, the MAC must change the rate, width, PCLK rate at the same PCLK edge that it changes the PowerDown signals. This can happen when transitioning the PHY from P0 to either P1 or P2 states. The completion mechanisms are the same as previously defined for the power state changes and indicate not only that the power state change is complete, but also that the rate, width, or rate change is complete.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "126",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

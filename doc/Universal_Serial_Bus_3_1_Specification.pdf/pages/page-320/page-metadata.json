@@ -1,0 +1,84 @@
+{
+  "index": 319,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 259,
+      "bottomRightY": 126,
+      "content": "### 8.4.8.8 Performance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 686,
+      "bottomRightY": 217,
+      "content": "Figure 8-16 illustrates the various components of a LDM Exchange path that contribute to the overall performance of the LDM mechanism. The Requester to Responder and Responder to Requester paths apply to LDM TS Request and TS Response LMPs, respectively. The Requester Rx path applies to ITPs received by an upstream facing port and the Responder Tx path applies to ITPs transmitted by a downstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 249,
+      "bottomRightX": 700,
+      "bottomRightY": 586,
+      "content": "![img-202.jpeg](img-202.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-202.jpeg"
+    },
+    {
+      "topLeftX": 257,
+      "topLeftY": 627,
+      "bottomRightX": 565,
+      "bottomRightY": 644,
+      "content": "Figure 8-16. PTM Path Performance Contributors",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 664,
+      "bottomRightX": 668,
+      "bottomRightY": 681,
+      "content": "The following requirements should be met to achieve optimal propagation delay measurement:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 685,
+      "bottomRightX": 696,
+      "bottomRightY": 894,
+      "content": "- The Link Delay between Requester and Responder should be symmetric.\n- Timestamp values are assigned to ITPs and TS LMPs to capture when the packet was actually received or transmitted on the Link. LDM timestamp values are also captured in ITPs (Bus Interval Counter/Delta fields) and TS Response LMPs (Response Delay) when they are transmitted.\n- An implementation dependent TS Delay occurs between assigning Timestamp values to an ITP, or LDM LMP, and the packet actually being received or transmitted on the Link. Each Timestamp value should be adjusted for the respective TS Delay so that the Timestamp captured for a LDM LMP or ITP approximates the actual time that the last symbol of the respective packet crosses the boundary between a Requester or Responder and the Link.\n- A port may contain asymmetric delays in its timestamp mechanism or protocol path (e.g. Rx/Tx Asymmetry). If these asymmetries are not negligible:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-26",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

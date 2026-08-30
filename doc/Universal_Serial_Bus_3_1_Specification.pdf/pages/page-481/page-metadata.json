@@ -1,0 +1,75 @@
+{
+  "index": 480,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 687,
+      "bottomRightY": 128,
+      "content": "Figure 10-2 shows the SuperSpeed portion of a USB hub consisting of a Hub Repeater/Forwarder section and a Hub Controller section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 132,
+      "bottomRightX": 691,
+      "bottomRightY": 167,
+      "content": "The USB 2.0 portion of a USB hub shall meet all requirements of the USB 2.0 Specification unless specific exceptions are noted.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 172,
+      "bottomRightX": 688,
+      "bottomRightY": 258,
+      "content": "The SuperSpeed Hub Repeater/Forwarder is responsible for connectivity setup and tear-down. It also supports exception handling, such as bus fault detection and recovery and connect/disconnect detect. The SuperSpeed Hub Controller provides the mechanism for host-to-hub communication. Hub-specific status and control commands permit the host to configure a hub and to monitor and control its individual downstream facing ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 298,
+      "bottomRightX": 694,
+      "bottomRightY": 555,
+      "content": "![img-258.jpeg](img-258.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-258.jpeg"
+    },
+    {
+      "topLeftX": 217,
+      "topLeftY": 565,
+      "bottomRightX": 606,
+      "bottomRightY": 584,
+      "content": "Figure 10-2. SuperSpeed Portion of the USB Hub Architecture",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 673,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "10-3",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

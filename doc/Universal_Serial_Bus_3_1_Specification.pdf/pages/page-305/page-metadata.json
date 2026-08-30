@@ -1,0 +1,67 @@
+{
+  "index": 304,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 98,
+      "bottomRightX": 662,
+      "bottomRightY": 205,
+      "content": "![img-194.jpeg](img-194.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-194.jpeg"
+    },
+    {
+      "topLeftX": 312,
+      "topLeftY": 236,
+      "bottomRightX": 513,
+      "bottomRightY": 253,
+      "content": "Figure 8-8. Port Capability LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 283,
+      "bottomRightX": 369,
+      "bottomRightY": 299,
+      "content": "Table 8-7. Port Capability LMP Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 302,
+      "bottomRightX": 699,
+      "bottomRightY": 783,
+      "content": "|  Width(bits) | Offset(DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | SubType. This field shall be set to Port Capability.  |\n|  7 | 0:9 | Link speed. When operating at Gen 1 speed, this field is a bitmask that describes the link speeds supported by this device.Bits Description0 This bit shall be set to 1 to indicate this device supports signaling at 5 Gbps6:1 Reserved.When not operating at Gen 1 speed, this field is Reserved and shall be set to zero.  |\n|  16 | 0:16 | Reserved (R).  |\n|  8 | 1:0 | Num HP Buffers. When operating at Gen 1 speed this field specifies the number of header packet buffers (in each direction Transmit or Receive) this device supports. All devices that are compliant to this revision of the specification shall return a value of 4 in this field. All other values are reserved.When not operating at Gen 1 speed, this field is Reserved and shall be set to zero.  |\n|  8 | 1:8 | Reserved (R).  |\n|  2 | 1:16 | Direction (D). This field is used to identify the upstream or downstream capabilities of the port. All ports shall have at least one of these bits set.Bits Description0 If this bit is set to 1, then this port can be configured to be a downstream port.1 If this bit is set to 1, then this port can be configured to be an upstream port.  |\n|  1 | 1:18 | USB 3.0 OTG Capable (OTG). This field shall be set to 1 if the port supports the OTG Capability. Refer to Section 6.1 of the On-The-Go and Embedded Host Supplement to the USB 3.0 Specification (Revision 3.0) for more information.  |\n|  1 | 1:19 | Reserved (R).  |\n|  4 | 1:20 | Tiebreaker. This field is only valid when both bits 0 and 1 of the Direction field are set. This field is used to determine the port type when two devices with both upstream and downstream capability are connected to each other. See Table 8-8 for details.This field shall be set to zero in all other cases.  |\n|  40 | 1:24 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-110.md"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "8-11",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "index": 112,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 537,
+      "bottomRightY": 148,
+      "content": "Figure 8-3. PCLK as PHY Input with an External PLL and PHY PLL",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 208,
+      "topLeftY": 162,
+      "bottomRightX": 588,
+      "bottomRightY": 522,
+      "content": "![img-24.jpeg](img-24.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-24.jpeg"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "113",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

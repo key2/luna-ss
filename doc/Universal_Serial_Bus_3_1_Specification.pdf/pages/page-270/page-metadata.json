@@ -1,0 +1,137 @@
+{
+  "index": 269,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 301,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 94,
+      "bottomRightX": 659,
+      "bottomRightY": 128,
+      "content": "- A downstream port shall transition to Compliance Mode upon the 360-ms timer timeout (tPollingLFPSTimeout) if the following three conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 130,
+      "bottomRightX": 674,
+      "bottomRightY": 198,
+      "content": "1. The Compliance Mode is enabled.\n2. The port has never successfully completed Polling.LFPS handshake after Compliance Mode is enabled.\n3. The condition to transition to Polling.RxEQ or Polling.LFPSPlus is not met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 180,
+      "topLeftY": 201,
+      "bottomRightX": 669,
+      "bottomRightY": 251,
+      "content": "Note: In case Compliance mode is disabled, a downstream port may enter Rx.Detect attempting Polling.LFPS handshake again, or enter eSS.Inactive for SW intervention based on the count value of cPollingTimeout.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 253,
+      "bottomRightX": 689,
+      "bottomRightY": 482,
+      "content": "- A downstream port shall transition to Rx.Detect upon the 360-ms timer timeout (tPollingLFPSTimeout) if cPollingTimeout is less than two and Compliance Mode is disabled.\n- A downstream port shall transition to eSS.Inactive upon the 360-ms timer timeout (tPollingLFPSTimeout) and cPollingTimeout is two.\n- An upstream port of a hub shall transition to Rx.Detect upon the 360-ms timeout (tPollingLFPSTimeout) after having trained once since PowerOn Reset and the conditions to transition to Polling.RxEQ are not met.\n- A peripheral device shall transition to eSS.Disabled upon the 360-ms timeout (tPollingLFPSTimeout) after having trained once since PowerOn Reset and the conditions to transition to Polling.RxEQ are not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 497,
+      "bottomRightX": 316,
+      "bottomRightY": 516,
+      "content": "### 7.5.4.4 Polling.LFPSPlus",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 520,
+      "bottomRightX": 648,
+      "bottomRightY": 555,
+      "content": "Polling.LFPSPlus is a substate where the port SuperSpeedPlus operation performs SCD2 handshake, for additional confirmation of the SuperSpeedPlus capability of its link partner.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 560,
+      "bottomRightX": 423,
+      "bottomRightY": 579,
+      "content": "#### 7.5.4.4.1 Polling.LFPSPlus Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 583,
+      "bottomRightX": 680,
+      "bottomRightY": 632,
+      "content": "- The port in SuperSpeedPlus operation shall transmit SCD2 defined in Table 6-32. If SCD2 cannot be found in sixteen consecutive Polling.LFPS received, it shall transmit Polling.LFPS instead of SCD2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 635,
+      "bottomRightX": 679,
+      "bottomRightY": 669,
+      "content": "Note: This is an extreme case where a port in SuperSpeed operation transmits Polling.LFPS coinciding with SCD1 and remains in Polling.LFPS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 670,
+      "bottomRightX": 696,
+      "bottomRightY": 791,
+      "content": "- The operation of the 360-ms timer (tPollingLFPSTimeout) shall continue without reset upon entry to this substate from Polling.LFPS.\n- A port in SuperSpeedPlus operation shall be ready for SuperSpeed operation if it has detected that its link partner operates at SuperSpeed.\n- A port in SuperSpeedPlus operation shall implement a 60-us timer (tPollingSCDLFPSTimeout) to monitor the absence of LFPS signal after the completion of SuperSpeed Polling.LFPS handshake.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 798,
+      "bottomRightX": 389,
+      "bottomRightY": 816,
+      "content": "#### 7.5.4.4.2 Exit from Polling.LFPSPlus",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 819,
+      "bottomRightX": 693,
+      "bottomRightY": 890,
+      "content": "- The port in SuperSpeedPlus operation shall transition to Polling.PortMatch if two SCD2 are transmitted after one SCD2 as defined in Section 6.9.4.2 is received.\n- A port in SuperSpeedPlus operation shall transition to Polling.RxEQ and switch to SuperSpeed operation if the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-58",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "index": 153,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 123 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 662,
+      "bottomRightY": 123,
+      "content": "Additional details on how header packets are transmitted and received at the link level are described in Section 7.2.4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 137,
+      "bottomRightX": 304,
+      "bottomRightY": 152,
+      "content": "### 7.2.1.3 Gen 2 Packet Placement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 159,
+      "bottomRightX": 525,
+      "bottomRightY": 175,
+      "content": "In Gen 2 operation, packet placement shall meet the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 187,
+      "bottomRightX": 665,
+      "bottomRightY": 241,
+      "content": "- All packets shall be placed in data blocks.\n- The placement of a packet may start in any symbol position within a data block, and may cross over to the next consecutive data blocks.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 247,
+      "bottomRightX": 482,
+      "bottomRightY": 263,
+      "content": "Refer to Appendix D for examples of Gen 2 packet placement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 274,
+      "bottomRightX": 254,
+      "bottomRightY": 289,
+      "content": "### 7.2.2 Link Commands",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 297,
+      "bottomRightX": 637,
+      "bottomRightY": 372,
+      "content": "Link commands are used for link level data integrity, flow control and link power management. Link commands are a fixed length of eight symbols and contain repeated symbols to increase the error tolerance. Refer to Section 7.3 for more details. Link command names have the L-preface to differentiate their link level usage and to avoid confusion with packets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 385,
+      "bottomRightX": 306,
+      "bottomRightY": 399,
+      "content": "#### 7.2.2.1 Link Command Structure",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 408,
+      "bottomRightX": 668,
+      "bottomRightY": 437,
+      "content": "Link command shall be eight symbols long and constructed with the following format shown in",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 451,
+      "bottomRightX": 668,
+      "bottomRightY": 510,
+      "content": "Figure 7-12. The first four symbols, LCSTART, are the link command starting frame ordered set consisting of three consecutive SLCs followed by EPF. The second four symbols consist of a two-symbol link command word and its replica. Table 7-3 summarizes the link command structure.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 237,
+      "topLeftY": 523,
+      "bottomRightX": 550,
+      "bottomRightY": 539,
+      "content": "Table 7-3. Link Command Ordered Set Structure",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 549,
+      "bottomRightX": 526,
+      "bottomRightY": 700,
+      "content": "|  Symbol Number | Description  |\n| --- | --- |\n|  0 | SLC (Start Link Command)  |\n|  1 | SLC (Start Link Command)  |\n|  2 | SLC (Start Link Command)  |\n|  3 | EPF  |\n|  4~5 | Link Command Word  |\n|  6~7 | Link Command Word  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-78.md"
+    },
+    {
+      "topLeftX": 269,
+      "topLeftY": 733,
+      "bottomRightX": 518,
+      "bottomRightY": 750,
+      "content": "Figure 7-12. Link Command Structure",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 761,
+      "bottomRightX": 550,
+      "bottomRightY": 926,
+      "content": "![img-74.jpeg](img-74.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-74.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

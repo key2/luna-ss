@@ -1,0 +1,130 @@
+{
+  "index": 169,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 689,
+      "bottomRightY": 143,
+      "content": "- No SKP Ordered Sets are to be transmitted during the entire TSEQ time (65,536 ordered sets). This means that the PHY must manage its elasticity buffer differently than during normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 151,
+      "bottomRightX": 656,
+      "bottomRightY": 167,
+      "content": "Additional rules for the use of TSEQ, TS1, and TS2 Ordered Sets can be found in Chapter 7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 177,
+      "bottomRightX": 485,
+      "bottomRightY": 197,
+      "content": "### 6.4.1.1.2 Training Control Bits for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 203,
+      "bottomRightX": 656,
+      "bottomRightY": 238,
+      "content": "The training control bits are found in the Link Functionality symbol within the TS1 and TS2 ordered sets. They are described in Table 6-5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 246,
+      "bottomRightX": 679,
+      "bottomRightY": 297,
+      "content": "Bit 0 and bit 2 of the link configuration field shall not be set to 1 simultaneously. If a receiver detects this condition in the received Link configuration field, then all of the training control bits shall be ignored.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 307,
+      "bottomRightX": 520,
+      "bottomRightY": 326,
+      "content": "### 6.4.1.1.3 Training Sequence Values for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 334,
+      "bottomRightX": 675,
+      "bottomRightY": 351,
+      "content": "The TSEQ training sequence repeats 65,536 times to allow for testing many coefficient settings.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 369,
+      "bottomRightX": 348,
+      "bottomRightY": 384,
+      "content": "Table 6-2. Gen 1 TSEQ Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 388,
+      "bottomRightX": 607,
+      "bottomRightY": 737,
+      "content": "|  Symbol Number | Name | Value  |\n| --- | --- | --- |\n|  0 | K28.5 | COM (Comma)  |\n|  1 | D31.7 | FFh  |\n|  2 | D23.0 | 17h  |\n|  3 | D0.6 | C0h  |\n|  4 | D20.0 | 14h  |\n|  5 | D18.5 | B2h  |\n|  6 | D7.7 | E7h  |\n|  7 | D2.0 | 02h  |\n|  8 | D2.4 | 82h  |\n|  9 | D18.3 | 72h  |\n|  10 | D14.3 | 6Eh  |\n|  11 | D8.1 | 28h  |\n|  12 | D6.5 | A6h  |\n|  13 | D30.5 | BEh  |\n|  14 | D13.3 | 6Dh  |\n|  15 | D31.5 | BFh  |\n|  16-31 | D10.2 | 4Ah  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-55.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 751,
+      "bottomRightX": 337,
+      "bottomRightY": 765,
+      "content": "Table 6-3. Gen 1 TS1 Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 769,
+      "bottomRightX": 452,
+      "bottomRightY": 870,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0-3 | K28.5 | COM (Comma)  |\n|  4 | D0.0 | Reserved for future use  |\n|  5 | See Table 6-5 | Link Functionality  |\n|  6-15 | D10.2 | TS1 Identifier  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-56.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "6-14",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

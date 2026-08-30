@@ -1,0 +1,57 @@
+{
+  "index": 18,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 62,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 931,
+      "content": "|  7.2.4.1.4#1 | A port shall detect a header packet when receiving an HPSTART framing with at least three valid symbols out of four, and ignore the packet otherwise. | BC 7.5  |\n| --- | --- | --- |\n|  7.2.4.1.4#2 | A port receiving a header packet shall send a LGOOD_n when a valid HPSTART is detected, the CRC-5 is valid, the CRC-16 is valid, no K-symbol occurrence is detected and no 8b/10b error is detected. | BC  |\n|  7.2.4.1.4#3 | A port receiving a header packet shall send an LBAD when a valid HPSTART is detected and either CRC-5 or CRC-16 checks fail. | 7.7  |\n|  7.2.4.1.4#4 | A port receiving a header packet shall send an LBAD when a valid HPSTART is detected and any K-symbol occurrence is detected or any 8b/10b error is detected. | 7.7  |\n|  7.2.4.1.5#8 | A port shall transition directly to Recovery if it fails to receive a header packet three consecutive times. A port shall not issue the third LBAD upon the third error. | 7.30  |\n|  Subsection reference: 7.2.4.1.6 Receiving Data Packet Header in SuperSpeedPlus Operation  |   |   |\n|  7.2.4.1.6#1 | A port shall accept a DPP and issue an LGOOD_n when the CRC-5 and CRC-16 are valid, the Header Sequence Number matches, and an Rx Buffer is available to store the packet. In this case a port shall ignore the length field replica. | BC  |\n|  7.2.4.1.6#2 | A port shall consume one Type 1 or Type 2 Rx Buffer Credit until it has been processed and an Rx Buffer is available. | BC  |\n|  7.2.4.1.6#3 | If the DPH has one or more CRC-5 or CRC-16 errors, but the two length field replica are valid and identical, a port shall issue a single LBAD and track the associated DPP that immediately follows the DPH. After issuing the LBAD, a port shall ignore all subsequent packets until an LRTY has been received or the link has entered Recovery. | NT  |\n|  7.2.4.1.6#4 | If the header number in the received DPH does not match the Rx Header Sequence Number or the Rx Buffer does not have space to store the DP, or the two length field replica are not identical, the port shall enter Recovery. | NT  |\n|  7.2.4.1.6#5 | After transmitting LBAD, a port shall continue to issue LCRD1_x or LCRD2_x if its corresponding Type 1 or Type 2 Rx Buffer Credit is made available. | NT  |\n|  7.2.4.1.6#6 | A port shall transition directly to Recovery if it fails to receive a data packet header three consecutive times. A port shall not issue the third LBAD upon the third error. | NT  |\n|  Subsection reference: 7.2.4.1.7 SuperSpeed Rx Header Buffer Credit  |   |   |\n|  7.2.4.1.7#1 | A port shall consume one Local Rx Header Buffer Credit if a header packet is \"received properly\". The Local Rx Header Buffer Credit Count shall be decremented by one. | NT  |\n|  7.2.4.1.7#2 | Upon completion of a header packet processing, a port shall restore a Local Rx Header Buffer Credit by sending a single | BC  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-12.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 935,
+      "bottomRightX": 418,
+      "bottomRightY": 946,
+      "content": "11",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 955,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

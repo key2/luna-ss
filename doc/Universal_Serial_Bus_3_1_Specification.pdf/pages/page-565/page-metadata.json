@@ -1,0 +1,84 @@
+{
+  "index": 564,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 504,
+      "bottomRightY": 110,
+      "content": "Table 10-18. Downstream Port Remote Wake Mask Encoding",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 111,
+      "bottomRightX": 625,
+      "bottomRightY": 587,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0 | Conn_RWEnable **Value****Meaning** 0 The hub is disabled from signaling a remote wakeup due to a connect event on this port; connect events that occur during suspend must still be detected and reported after the resume process has completed (due to some other event) as a C_PORT_CONNECTION port status change. 1 The hub is enabled to signal a remote wakeup due to a connect event on the port and if Function Remote Wake is also enabled.  |\n|  1 | Disconn_RWEnable **Value****Meaning** 0 The hub is disabled from signaling a remote wakeup due to a disconnect event on this port; disconnect events that occur during suspend must still be detected and reported after the resume process has completed (due to some other event) as a C_PORT_CONNECTION port status change. 1 The hub is enabled to signal a remote wakeup due to a disconnect event on the port and if Function Remote Wake is also enabled.  |\n|  2 | OC_RWEnable **Value****Meaning** 0 The hub is disabled from signaling a remote wakeup due to an over-current event on this port; over-current events that occur during suspend must still be detected and reported after the resume process has completed (due to some other event) as a C_PORT_OVER_CURRENT port status change. Note that a hub that does not support per-port over current detection/reporting will signal remote-wakeup for an over-current event unless all ports have OC-RWEnable set to 0. 1 The hub is enabled to signal a remote wakeup due to an over-current event on the port and if Function Remote Wake is also enabled.  |\n|  3-7 | These bits are reserved and must be set to zero.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-251.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 592,
+      "bottomRightX": 696,
+      "bottomRightY": 625,
+      "content": "Note that after power on or after the hub is reset, the remote wake mask is set to zero (i.e., the mask is enabled).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 631,
+      "bottomRightX": 400,
+      "bottomRightY": 648,
+      "content": "The hub shall meet the following requirements:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 651,
+      "bottomRightX": 692,
+      "bottomRightY": 792,
+      "content": "- If the port is in the Powered-off state, the hub shall treat a SetPortFeature(PORT_RESET) request as a functional no-operation.\n- If the port is not in the Enabled state, the hub shall treat a SetPortFeature(PORT_LINK_STATE) U3 request as a functional no-operation.\n- If the port is not in the Powered-off state, the hub shall treat a SetPortFeature(PORT_POWER) request as a functional no-operation.\n- If the port is not in the Enabled state, the hub shall treat a SetPortFeature(FORCE_LINKPM_ACCEPT) request as a functional no-operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 797,
+      "bottomRightX": 684,
+      "bottomRightY": 881,
+      "content": "When the feature selector is BH_PORT_RESET, the hub shall initiate a warm reset (refer to Section 7.4.2) on the port that is identified by this command. The state of the port after this reset shall be the same as the state after a SetPortFeature(PORT_RESET). On completion of a BH_PORT_RESET, the hub shall set the C_BH_PORT_RESET field to one in the PortStatus for this port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "10-87",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

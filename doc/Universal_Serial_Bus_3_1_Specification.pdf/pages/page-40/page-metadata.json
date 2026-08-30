@@ -1,0 +1,119 @@
+{
+  "index": 39,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 686,
+      "bottomRightY": 177,
+      "content": "software interfaces, etc.). The specification is intended as an enhancement to the PC architecture, spanning portable, business desktop, and home environments, as well as simple device-to-device communications. It is intended that the specification allow system OEMs and peripheral developers adequate room for product versatility and market differentiation without the burden of carrying obsolete interfaces or losing compatibility.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 205,
+      "bottomRightX": 397,
+      "bottomRightY": 228,
+      "content": "### 1.3 Scope of the Document",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 240,
+      "bottomRightX": 679,
+      "bottomRightY": 306,
+      "content": "The specification is primarily targeted at peripheral developers and platform/adapter developers, but provides valuable information for platform operating system/ BIOS/ device driver, adapter IHVs/ISVs, and system OEMs. This specification can be used for developing new products and associated software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 315,
+      "bottomRightX": 691,
+      "bottomRightY": 399,
+      "content": "Product developers using this specification are expected to know and understand the USB 2.0 Specification. Specifically, USB 3.1 devices must implement device framework commands and descriptors as defined in the USB 2.0 Specification. Devices operating at the new 10Gbps (Gen 2) speed must implement the SuperSpeedPlus enhancements defined in this version of the specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 427,
+      "bottomRightX": 415,
+      "bottomRightY": 452,
+      "content": "### 1.4 USB Product Compliance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 462,
+      "bottomRightX": 697,
+      "bottomRightY": 580,
+      "content": "Adopters of the USB 3.1 specification have signed the USB 3.0 Adopters Agreement, which provides them access to a reasonable and nondiscriminatory (RANDZ) license from the Promoters and other Adopters to certain intellectual property contained in products that are compliant with the USB 3.1 specification. Adopters can demonstrate compliance with the specification through the testing program as defined by the USB Implementers Forum (USB-IF). Products that demonstrate compliance with the specification will be granted certain rights to use the USB-IF logos as defined in the logo license.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 589,
+      "bottomRightX": 700,
+      "bottomRightY": 655,
+      "content": "Starting with USB 3.1, product compliance requirements are being tightened up to prohibit non-certified cables and connectors. Use of any registered icons or logos on products, documentation or packaging will require a license and license requirements will include passing specific product certification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 683,
+      "bottomRightX": 397,
+      "bottomRightY": 708,
+      "content": "### 1.5 Document Organization",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 719,
+      "bottomRightX": 667,
+      "bottomRightY": 752,
+      "content": "Chapters 1 through 4 provide an overview for all readers, while Chapters 5 through 11 contain detailed technical information defining USB 3.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 761,
+      "bottomRightX": 647,
+      "bottomRightY": 795,
+      "content": "Readers should contact operating system vendors for operating system bindings specific to USB 3.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 111,
+      "bottomRightY": 994,
+      "content": "1-2",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

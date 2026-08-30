@@ -1,0 +1,57 @@
+{
+  "index": 75,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 138,
+      "bottomRightX": 427,
+      "bottomRightY": 154,
+      "content": "Table 6-25. External Output Signals (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 157,
+      "bottomRightX": 686,
+      "bottomRightY": 879,
+      "content": "|  Name | Active Level | Description |   | Relevant Protocols  |\n| --- | --- | --- | --- | --- |\n|  PCLK | Rising Edge | **This signal is relevant for \"PCLK as PHY Output\" mode only.** All data movement across the parallel interface is synchronized to this clock. This clock operates at a frequency set by PCLK Rate. The rising edge of the clock is the reference for all signals. The spread spectrum modulation on this clock is allowed. |   | PCIe, SATA, and USB  |\n|  Max PCLK | Rising Edge | Parallel interface data clock. This fixed rate clock operates at the rate advertised in the PHY datasheet subject to the following limitations: PCIe mode: |   | PCIe, SATA, USB, DisplayPort, and USB4  |\n|   |   |  **Max rate supported** | **Maximum Max PCLK**  |   |\n|   |   |  2.5 GT/s | 250 MHz  |   |\n|   |   |  5.0 GT/s | 500 MHz  |   |\n|   |   |  8.0 GT/s | 1000 MHz  |   |\n|   |   |  16.0 GT/s | 2000 MHz  |   |\n|   |   |  32.0 GT/s | 4000 MHz  |   |\n|   |   |  64.0 GT/s | 4000 MHz  |   |\n|   |   |  128 GT/s | 4000 MHz  |   |\n|   |   |  This clock is provided whenever PCLK is active. SATA mode:  |   |   |\n|   |   |  **Max rate supported** | **Maximum Max PCLK**  |   |\n|   |   |  1.5 GT/s | 150 MHz  |   |\n|   |   |  3.0 GT/s | 300 MHz  |   |\n|   |   |  6.0 GT/s | 600 MHz  |   |\n|   |   |  This clock is provided whenever PCLK is active. USB mode:  |   |   |\n|   |   |  **Max rate supported** | **Maximum Max PCLK**  |   |\n|   |   |  5.0 GT/s | 500 MHz  |   |\n|   |   |  10.0 GT/s | 1250 MHz  |   |\n|   |   |  This clock is provided whenever the PCLK is active. USB4 mode:  |   |   |\n|   |   |  **Max rate supported** | **Maximum Max PCLK**  |   |\n|   |   |  10 GT/s | 1250 MHz  |   |\n|   |   |  20 GT/s | 2500 MHz  |   |\n|   |   |  Spread spectrum modulation on this clock is allowed. This signal is optional for most cases in \"PCLK as PHY Output\" mode and required for \"PCLK as PHY Input\" mode.  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-58.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "76",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "index": 104,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 103,
+      "bottomRightX": 726,
+      "bottomRightY": 456,
+      "content": "![img-43.jpeg](img-43.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-43.jpeg"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 481,
+      "bottomRightX": 652,
+      "bottomRightY": 826,
+      "content": "![img-44.jpeg](img-44.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-44.jpeg"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 845,
+      "bottomRightX": 698,
+      "bottomRightY": 879,
+      "content": "Figure 5-6. Example Footprint for the USB 3.1 Standard-A Receptacle - Mid-Mount Standard Mount Through-Hole with Insertion Detect",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-17",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

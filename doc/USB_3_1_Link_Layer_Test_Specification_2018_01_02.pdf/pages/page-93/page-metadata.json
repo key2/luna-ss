@@ -1,0 +1,218 @@
+{
+  "index": 92,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 263,
+      "bottomRightY": 63,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 712,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 92,
+      "bottomRightX": 200,
+      "bottomRightY": 106,
+      "content": "7.2.4.1.4#5",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 114,
+      "bottomRightX": 204,
+      "bottomRightY": 128,
+      "content": "7.5.10.3.1#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 137,
+      "bottomRightX": 204,
+      "bottomRightY": 152,
+      "content": "7.5.10.3.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 159,
+      "bottomRightX": 204,
+      "bottomRightY": 173,
+      "content": "7.5.10.4.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 182,
+      "bottomRightX": 204,
+      "bottomRightY": 197,
+      "content": "7.5.10.5.1#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 205,
+      "bottomRightX": 204,
+      "bottomRightY": 219,
+      "content": "7.5.10.5.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 227,
+      "bottomRightX": 255,
+      "bottomRightY": 243,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 250,
+      "bottomRightX": 427,
+      "bottomRightY": 266,
+      "content": "1. Do steps 1 to 3 of the Link Initialization Sequence.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 271,
+      "bottomRightX": 670,
+      "bottomRightY": 303,
+      "content": "Note: LVS completes each step in a timely manner so as to not contribute to a tPortConfiguration timeout during steps 1-5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 309,
+      "bottomRightX": 682,
+      "bottomRightY": 340,
+      "content": "2. The LVS and the PUT will exchange Port Configuration transactions, but the first packet sent by the LVS will have an invalid CRC-5.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 346,
+      "bottomRightX": 625,
+      "bottomRightY": 521,
+      "content": "a. LVS waits for the PUT's Port Capability LMP.\nb. LVS verifies that the Port Capability LMP is valid.\nc. LVS transmits its Port Capability LMP with an invalid CRC-5.\nd. LVS verifies that the PUT replies with an LBAD.\ne. LVS transmits an LRTY and then retransmits the packet with an invalid CRC-5.\nf. LVS verifies that the PUT replies with an LBAD.\ng. LVS transmits an LRTY and then retransmits the packet with an invalid CRC-5.\nh. LVS verifies that the PUT initiates Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 527,
+      "bottomRightX": 386,
+      "bottomRightY": 544,
+      "content": "3. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 550,
+      "bottomRightX": 681,
+      "bottomRightY": 611,
+      "content": "a. The PUT does not reply with LBAD to the first two packets (which have invalid CRC-5s)\nb. The PUT does not initiate Recovery in step g within tRecoveryTransition.\nc. The PUT initiates Recovery before the third invalid packet is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 619,
+      "bottomRightX": 454,
+      "bottomRightY": 635,
+      "content": "4. The LVS and PUT transition through Recovery to U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 640,
+      "bottomRightX": 699,
+      "bottomRightY": 784,
+      "content": "5. The LVS and the PUT perform the Link Initialization Sequence and exchange all remaining Port Configuration transactions.\n6. The test fails if the PUT retransmits its Port Capability LMP.\n7. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n8. The test passes if the exchanges are successful, no timeout is detected, recovery is entered once, all packets are successfully received by the PUT except for the packet with invalid CRC-5, all credits are restored and the link stays in U0 for at least 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 843,
+      "bottomRightX": 468,
+      "bottomRightY": 860,
+      "content": "# TD.7.31 Hot Reset Failure Test (Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 862,
+      "bottomRightX": 573,
+      "bottomRightY": 879,
+      "content": "This test verifies that the PUT initiates a Warm Reset when Hot Reset training fails.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 885,
+      "bottomRightX": 235,
+      "bottomRightY": 899,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 908,
+      "bottomRightX": 206,
+      "bottomRightY": 923,
+      "content": "7.4.2#6,8,14",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "85",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

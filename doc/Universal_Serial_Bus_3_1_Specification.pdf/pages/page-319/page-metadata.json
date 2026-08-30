@@ -1,0 +1,56 @@
+{
+  "index": 318,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 666,
+      "bottomRightY": 128,
+      "content": "If an ITP is received by a PTM capable hub and the Delayed (DL) bit is set, then the hub shall apply the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 139,
+      "bottomRightX": 425,
+      "bottomRightY": 156,
+      "content": "- Forward the received ITP without modification.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 162,
+      "bottomRightX": 692,
+      "bottomRightY": 230,
+      "content": "The Isochronous Timestamp values used in the ITP being transmitted shall be the values present at the time of transmission; e.g., if other packets are queued for transmission at the time the ITP is queued, the values used shall not be the values present at the time of queuing, but adjusted for the actual time of transmission (tITPDFP). Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-25",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

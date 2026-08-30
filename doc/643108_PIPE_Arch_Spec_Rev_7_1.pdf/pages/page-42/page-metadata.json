@@ -1,0 +1,84 @@
+{
+  "index": 41,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 120,
+      "bottomRightX": 589,
+      "bottomRightY": 155,
+      "content": "# 5 SATA PHY Functionality",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 182,
+      "bottomRightX": 686,
+      "bottomRightY": 227,
+      "content": "Figure 4-1 shows the functional block diagram of a SATA PHY. The functional blocks shown are not intended to define the internal architecture or design of a compliant PHY but to serve as an aid for signal grouping.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 241,
+      "bottomRightX": 376,
+      "bottomRightY": 257,
+      "content": "Figure 5-1. PHY Functional Block Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 259,
+      "bottomRightX": 687,
+      "bottomRightY": 642,
+      "content": "![img-17.jpeg](img-17.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-17.jpeg"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 649,
+      "bottomRightX": 679,
+      "bottomRightY": 708,
+      "content": "The following sections provide descriptions of each of the blocks shown in Figure 5-1. These blocks represent high-level functionality that is required to exist in the PHY implementation. These descriptions and diagrams describe general architecture and behavioral characteristics. Different implementations are possible and acceptable.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 966,
+      "content": "42",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 689,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

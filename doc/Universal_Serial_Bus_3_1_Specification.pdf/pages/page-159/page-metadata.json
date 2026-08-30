@@ -1,0 +1,48 @@
+{
+  "index": 158,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 98,
+      "bottomRightX": 657,
+      "bottomRightY": 635,
+      "content": "![img-123.jpeg](img-123.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-123.jpeg"
+    },
+    {
+      "topLeftX": 281,
+      "topLeftY": 646,
+      "bottomRightX": 543,
+      "bottomRightY": 665,
+      "content": "Figure 6-3. Gen 1 Receiver Block Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "6-3",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

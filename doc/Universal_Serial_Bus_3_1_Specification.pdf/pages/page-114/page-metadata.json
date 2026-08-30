@@ -1,0 +1,117 @@
+{
+  "index": 113,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 99,
+      "bottomRightX": 438,
+      "bottomRightY": 307,
+      "content": "![img-64.jpeg](img-64.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-64.jpeg"
+    },
+    {
+      "topLeftX": 466,
+      "topLeftY": 106,
+      "bottomRightX": 684,
+      "bottomRightY": 272,
+      "content": "![img-65.jpeg](img-65.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-65.jpeg"
+    },
+    {
+      "topLeftX": 140,
+      "topLeftY": 346,
+      "bottomRightX": 425,
+      "bottomRightY": 570,
+      "content": "![img-66.jpeg](img-66.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-66.jpeg"
+    },
+    {
+      "topLeftX": 431,
+      "topLeftY": 285,
+      "bottomRightX": 684,
+      "bottomRightY": 592,
+      "content": "![img-67.jpeg](img-67.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-67.jpeg"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 614,
+      "bottomRightX": 411,
+      "bottomRightY": 829,
+      "content": "![img-68.jpeg](img-68.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-68.jpeg"
+    },
+    {
+      "topLeftX": 382,
+      "topLeftY": 616,
+      "bottomRightX": 526,
+      "bottomRightY": 748,
+      "content": "![img-69.jpeg](img-69.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-69.jpeg"
+    },
+    {
+      "topLeftX": 538,
+      "topLeftY": 619,
+      "bottomRightX": 684,
+      "bottomRightY": 748,
+      "content": "![img-70.jpeg](img-70.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-70.jpeg"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 857,
+      "bottomRightX": 628,
+      "bottomRightY": 875,
+      "content": "NOTE : General tolerance is +/- 0.05 mm, otherwise the specified tolerances apply.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 572,
+      "topLeftY": 884,
+      "bottomRightX": 698,
+      "bottomRightY": 899,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-26",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

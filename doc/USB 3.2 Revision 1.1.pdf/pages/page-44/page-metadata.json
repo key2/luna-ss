@@ -1,0 +1,57 @@
+{
+  "index": 43,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 47,
+      "bottomRightX": 191,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 47,
+      "bottomRightX": 413,
+      "bottomRightY": 61,
+      "content": "- 13 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 47,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 90,
+      "bottomRightX": 682,
+      "bottomRightY": 584,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  USB 3.1 Standard-A connector | USB 3.1 host connector, supporting both SuperSpeed and SuperSpeedPlus modes.  |\n|  USB 3.1 Standard-B connector | USB 3.1 standard Type-B device connector, supporting both SuperSpeed and SuperSpeedPlus modes.  |\n|  USB 3.1 Micro-A plug | Part of the USB 3.1 Micro connector family for OTG use; it can be plugged into a USB 3.1 Micro-AB receptacle; it differs from the USB 3.1 Micro-B plug only in keying and ID pin connection.  |\n|  USB 3.1 Micro-AB receptacle | Part of the USB 3.1 Micro connector family; it accepts either a USB 3.1 Micro-B plug or a USB 3.1 Micro-A plug.  |\n|  USB 3.1 Micro-B connector | USB 3.1 device connector, supporting both SuperSpeed and SuperSpeedPlus modes.  |\n|  USB 3.1 Micro connector family | All the receptacles and plugs supporting both SuperSpeed and SuperSpeedPlus modes that are used on devices, including the USB 3.1 Micro-B, USB 3.1 Micro-AB, and USB 3.1 Micro-A connectors.  |\n|  USB 2.0 Standard-A connector | The Type-A connector defined by the USB 2.0 specification.  |\n|  USB 2.0 Standard-B connector | The standard Type-B connector defined by the USB 2.0 specification.  |\n|  USB Type-C connector | This connector is defined by the USB Type-C specification; this connector is characterized by its flip-ability, applicability as either a host or device connector, and as the only USB connector supporting USB Power Delivery.  |\n|  USB-IF | USB Implementers Forum, Inc. is a nonprofit corporation formed to facilitate the development of USB compliant products and promote the technology.  |\n|  USDPORT | Notation indicating the state machine of the upstream facing port of a peripheral device. Refer to Section 10.16.  |\n|  USPORT | Notation indicating the state machine of the upstream facing port of a hub. Refer to Section 10.5.  |\n|  UTP | Unshielded Twisted Pair.  |\n|  Warm Reset | Reset mechanism using LFPS.  |\n|  WORD | A data element that is 2 bytes (16 bits) in size.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-29.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "index": 568,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 699,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 103,
+      "bottomRightX": 356,
+      "bottomRightY": 122,
+      "content": "### 10.18.2.2 USDPORT.Powered on",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 128,
+      "bottomRightX": 561,
+      "bottomRightY": 144,
+      "content": "A port shall transition into this state if any of the following situations occur:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 148,
+      "bottomRightX": 694,
+      "bottomRightY": 272,
+      "content": "- From the USDPORT.Powered-off state when VBUS becomes valid (and local power is valid if required).\n- From the USDPORT.Error state when the link receives a warm reset or Far-end terminations are removed.\n- From the USDPORT.Connected/Enabled state when the link receives a Warm Reset.\n- From the USDPORT.Disabled state if the port receives a USB 2.0 reset.\n- From the USDPORT.Training state when the link receives a Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 279,
+      "bottomRightX": 674,
+      "bottomRightY": 311,
+      "content": "In this state, the port's link shall be in the Rx.Detect state. The corresponding peripheral device USB state shall be Powered (Far-end Receiver Termination substate).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 317,
+      "bottomRightX": 694,
+      "bottomRightY": 351,
+      "content": "If the transition is from the USDPORT.Disabled state the USB 2.0 pull-up shall remain enabled. If the transition is from any other state the USB 2.0 pull-up shall not be enabled.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 366,
+      "bottomRightX": 329,
+      "bottomRightY": 385,
+      "content": "### 10.18.2.3 USDPORT.Training",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 389,
+      "bottomRightX": 684,
+      "bottomRightY": 422,
+      "content": "A port transitions to this state from the USDPORT.Powered-on state when Enhanced SuperSpeed Far-end Receiver Terminations are detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 428,
+      "bottomRightX": 688,
+      "bottomRightY": 462,
+      "content": "In this state, the port's link shall be in the Polling state. The corresponding peripheral device USB state shall be Powered (Link Training substate).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 467,
+      "bottomRightX": 603,
+      "bottomRightY": 500,
+      "content": "As noted in Figure 10-26, the peripheral device shall disconnect on USB 2.0 within tUSB2SwitchDisconnect after entering this state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 515,
+      "bottomRightX": 412,
+      "bottomRightY": 534,
+      "content": "### 10.18.2.4 USDPORT.Connected/Enabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 540,
+      "bottomRightX": 666,
+      "bottomRightY": 589,
+      "content": "A port transitions to this state from the USDPORT.Training state when its link enters U0 from Polling.Idle. A port remains in this state during hot reset. When a hot reset is completed, the corresponding peripheral device USB state shall transition to Default.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 594,
+      "bottomRightX": 698,
+      "bottomRightY": 645,
+      "content": "In this state, the Enhanced SuperSpeed link is in U0, U1, U2, U3 or Recovery and the USB 2.0 pull-up is not applied. The corresponding peripheral device USB state shall be Default, Address, or Configured.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 659,
+      "bottomRightX": 305,
+      "bottomRightY": 678,
+      "content": "### 10.18.2.5 USDPORT.Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 684,
+      "bottomRightX": 686,
+      "bottomRightY": 717,
+      "content": "A port transitions to this state when a serious error condition occurred while attempting to operate the link. A port transitions to this state if the following situation occurs:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 722,
+      "bottomRightX": 698,
+      "bottomRightY": 756,
+      "content": "- From the USDPORT.Connected/Enabled state if the link enters Recovery and times out without recovering.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 761,
+      "bottomRightX": 688,
+      "bottomRightY": 793,
+      "content": "In this state, the port's link shall be in the eSS.Inactive state. The corresponding peripheral device USB state shall be Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 800,
+      "bottomRightX": 678,
+      "bottomRightY": 832,
+      "content": "A port exits the USDPORT.Error state only if a Warm Reset is received on the link or if Far-end Receiver Terminations are removed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-91",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "index": 276,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 246 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 92,
+      "bottomRightX": 584,
+      "bottomRightY": 110,
+      "content": "Table 8-25. Data Packet Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 668,
+      "bottomRightY": 925,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  20 | 0:5 | When operating in SuperSpeed mode: The definition of the **Route String/Arbitration Weight/Reserved** field is as defined in the ACK TP **Route String/Reserved** field and is only used by hubs. When operating in SuperSpeedPlus mode: The **Route String/Arbitration Weight/Reserved** field redefines the ACK TP **Route String/Reserved** field. For downstream flowing packets (packets from the host to a device), this field is interpreted as a Route String. Refer to Section 8.9 for details. For upstreaming flowing asynchronous packets (e.g. those sent by a device to a host) on SuperSpeedPlus bus segments, the lower 16-bits (bits 5 through 20) of this field indicate the Arbitration Weight. The remaining bits are **Reserved** and shall be set to zero. Refer to Section 10.8.6.1 for details.  |\n|  5 | 1:0 | **Sequence Number (Seq Num)**. This field is used to identify the sequence number of the DP. Note that the sequence number wraps around at 31.  |\n|  1 | 1:5 | **Reserved (R)**.  |\n|  1 | 1:6 | **End Of Burst (EOB)/Last Packet Flag (LPF)**. For non-isochronous endpoints, this field is referred to as EOB and for isochronous endpoints this field is referred to as LPF. For non-isochronous IN endpoints, this field is used to identify that this is the last packet of a burst. When a device is ready to continue the transfer, it shall send an ERDY TP to signal the host. Note that an endpoint shall re-evaluate the EOB value in a retried DP. The EOB field shall be set in the last packet of a burst if: The device returns fewer than the number of packets requested in the NumP field of the last ACK TP it received and this packet is not a short packet. If the device cannot meet tMaxBurstInterval for a device operating at Gen 1 speed, or tGen2MaxBurstInterval for device operating at Gen 2 speed and this packet is not a short packet. Note that a device is not required to set this field to a 1b when it transmits a short packet even if it will be returning fewer than the number of packets requested in the NumP field of the last ACK TP it received. It is only required to set this field to a 1b if it wants to enter the flow control state after completing the current transfer with this short packet. For non-isochronous OUT and control endpoints, this field shall be set to zero. For isochronous endpoints this field is used to identify that this is the last packet of the last burst in the current service interval. LPF can be set by a device and the host. Please refer to Section 8.12.6 for the usage of this field when the target or source of this DP is an isochronous endpoint.  |\n|  4 | 1:8 | **Endpoint Number (Ept Num)**. This field determines an endpoint within the device that is the source or recipient of this DP.  |\n|  1 | 1:15 | **Setup (S)**. This field is set by the host to indicate that this DP is a Setup data packet. This field can only be set by the host.  |\n|  16 | 1:16 | **Data Length**. This field is used to indicate the number of bytes in the DPP excluding the data CRC-32.  |\n|  1 | 2:27 | **Packets Pending (PP)**. This field may only be set by the Host. If this field is set, then the host has one or more DPs available for transmission to this endpoint/Stream. Where the endpoint is identified by the **Endpoint Number** and **Direction** fields, and if this is a Stream endpoint then the Stream is identified by the **Stream ID** field. If the field is cleared, then this is the last DP that the host has available for transmission to the target endpoint/Stream. If no endpoints on this device have packets pending, then the device can use this information to aggressively power manage its upstream link, e.g., set the link to a lower power U1 or U2 state.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-128.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

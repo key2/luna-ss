@@ -1,0 +1,65 @@
+{
+  "index": 515,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 47,
+      "bottomRightX": 418,
+      "bottomRightY": 62,
+      "content": "- 485 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 47,
+      "bottomRightX": 678,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 94,
+      "bottomRightX": 295,
+      "bottomRightY": 112,
+      "content": "# **C Power Management**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 122,
+      "bottomRightX": 661,
+      "bottomRightY": 156,
+      "content": "This appendix has been removed from this version of the specification. Please refer to the USB 3.1 specification release if interested in viewing this content.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 590,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

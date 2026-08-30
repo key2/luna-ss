@@ -1,0 +1,75 @@
+{
+  "index": 414,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 117,
+      "bottomRightX": 350,
+      "bottomRightY": 141,
+      "content": "### 8.13 Timing Parameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 153,
+      "bottomRightX": 696,
+      "bottomRightY": 237,
+      "content": "Table 8-36 lists the minimum and/or maximum times a device shall adhere to when responding to various types of packets it receives. It also lists the default and minimum times a device may set in Latency Tolerance messages as well as the minimum time after receipt of certain TPs and when it can initiate a U1 or U2 entry. In addition, it lists the maximum time between DPs a device must adhere to while bursting.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 245,
+      "bottomRightX": 682,
+      "bottomRightY": 296,
+      "content": "All txxxResponse (e.g., tNRDYResponse), tMaxBurstInterval and tGen2MaxBurstInterval times are all timings that a host/device shall meet when the host/device has nothing else to send on its downstream/upstream link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 312,
+      "bottomRightX": 320,
+      "bottomRightY": 329,
+      "content": "Table 8-36. Timing Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 332,
+      "bottomRightX": 706,
+      "bottomRightY": 890,
+      "content": "|  Name | Description | Min | Max | Units  |\n| --- | --- | --- | --- | --- |\n|  tPortConfiguration | Maximum duration from when the port enters U0 to when it has completed the exchange of LMPs. In case of tiebreaker (refer to Table 8-7), both ports shall reset their timers and restart them for each LMP exchange until the tiebreaker is resolved. |  | 20 | μs  |\n|  tPingTimeout | Timeout after the device receives a ping from the host and when it can initiate or accept U1 or U2 requests. This parameter is measured in terms of the maximum of all the service intervals for all isochronous endpoints within the device. | 2 |  | Service intervals  |\n|  tPingResponse | Time between device reception of the last framing symbol of a ping and the first framing symbol of the PING_RESPONSE |  | 400 | ns  |\n|  tBELTDefault | Default for best effort latency tolerance | 1 |  | ms  |\n|  tBELTmin | Minimum value of best effort latency tolerance allowed in a Latency Tolerance Message | 125 |  | μs  |\n|  tNRDYorSTALLResponse | Time between device reception of the last framing symbol for an ACK TP or a DPP or a STATUS TP and the first framing symbol of the NRDY or STALL response |  | 400 | ns  |\n|  tDPResponse | Time between device reception of the last framing symbol for an ACK TP and the first framing symbol of the DP response |  | 400 | ns  |\n|  tACKResponse | Time between device reception of the last framing symbol for a DPP or a STATUS TP and the first framing symbol of the ACK response |  | 400 | ns  |\n|  tHostACKResponse | Time between host reception of the last framing symbol for a DPP and the first framing symbol of the ACK response |  | 3 | μs  |\n|  tERDYTimeout | Timeout after the device sends an ERDY to the host and when it can initiate or accept a U1 or U2 request if not serviced | 500 |  | ms  |\n|  tNotification | Period at which the device shall send a function wake notification if the device has not been accessed (since sending the last function wake notification) | 2500 |  | ms  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-142.md"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 995,
+      "content": "8-121",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "index": 32,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 643,
+      "topLeftY": 31,
+      "bottomRightX": 701,
+      "bottomRightY": 44,
+      "content": "Contents",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 715,
+      "bottomRightY": 844,
+      "content": "Figure 10-4. Simple USB Topology ...10-5\nFigure 10-5. Route String Example ...10-7\nFigure 10-6. SuperSpeed Hub Signaling Connectivity ...10-8\nFigure 10-7. Resume Connectivity ...10-10\nFigure 10-8. Typical SuperSpeed Hub Header Packet Buffer Architecture ...10-11\nFigure 10-9. SuperSpeed Hub Data Buffer Traffic (Header Packet Buffer Only Shown for\nDS Port 1) ...10-12\nFigure 10-10. Downstream Facing Hub Port State Machine ...10-15\nFigure 10-11. Downstream Facing Hub Port Power Management State Machine ...10-23\nFigure 10-12. Upstream Facing Hub Port State Machine ...10-28\nFigure 10-13. Hub Connect (HCONNECT) State Machine ...10-30\nFigure 10-14. Upstream Facing Hub Port Power Management State Machine ...10-32\nFigure 10-15. Example SS Hub Header Packet Buffer Architecture - Downstream Traffic 10-37\nFigure 10-16. Example SS Hub Header Packet Buffer Architecture - Upstream Traffic ... 10-37\nFigure 10-17. Logical Representation of Upstream Flowing Buffers ...10-39\nFigure 10-18. Logical Representation of Downstream Flowing Buffers ...10-40\nFigure 10-19. Port Transmit State Machine ...10-45\nFigure 10-20. Upstream Facing Port Rx State Machine ...10-47\nFigure 10-21. Example Hub Controller Organization ...10-55\nFigure 10-22. Relationship of Status, Status Change, and Control Information to Device\nStates ...10-56\nFigure 10-23. Port Status Handling Method ...10-57\nFigure 10-24. Hub and Port Status Change Bitmap ...10-58\nFigure 10-25. Example Hub and Port Change Bit Sampling ...10-59\nFigure 10-26. Peripheral Upstream Device Port State Machine ...10-90\nFigure 11-1. Compound Self-powered Hub ...11-4\nFigure 11-2. Low-power Bus-powered Function ...11-5\nFigure 11-3. High-power Bus-powered Function ...11-5\nFigure 11-4. Self-powered Function ...11-6\nFigure 11-5. Worst-case Voltage Drop Topology (Steady State) ...11-7\nFigure 11-6. Worst-case Voltage Drop Analysis Using Equivalent Resistance ...11-7\nFigure 11-7. Typical Suspend Current Averaging Profile ...11-8\nFigure C-1. Flow Diagram for Host Initiated Wakeup ...C-11\nFigure C-2. Device Total Intrinsic Latency Tolerance ...C-13\nFigure C-3. Host to Device Path Exit Latency Calculation Examples ...C-15\nFigure C-4. Device Connected Directly to a Host ...C-16\nFigure C-5. Device Connected Through a Hub ...C-18\nFigure C-6. Downstream Host to Device Path Exit Latency with Hub ...C-19\nFigure C-7. Upstream Device to Host Path Exit Latency with Hub ...C-20\nFigure C-8. LT State Diagram ...C-24\nFigure C-9. System Power during SuperSpeed and High Speed Device Data Transfers ..C-27\nFigure D-1. Sample ERDY Transaction Packet ...D-1\nFigure D-2. Sample Data Packet ...D-1\nFigure D-3. Example placement of Gen 2 SKP Block, Idle Symbols, Link Command and\nHeader Packet ...D-2\nFigure D-4. Example placement of Gen 2 Data Packets and Idle Symbols ...D-3",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 701,
+      "bottomRightY": 995,
+      "content": "xxxiii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

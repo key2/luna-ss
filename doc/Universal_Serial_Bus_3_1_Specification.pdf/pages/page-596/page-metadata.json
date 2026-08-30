@@ -1,0 +1,38 @@
+{
+  "index": 595,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 654,
+      "bottomRightY": 668,
+      "content": "int unscramble_byte(int inbyte)\n{\n    static int descrambit[8];\n    static int bit[16];\n    static int bit_out[16];\n    static unsigned short lfsr = 0xffff; // 16 bit short for polynomial\n    int outbyte, i;\n\n    if (inbyte == COMMA) // if this is a comma\n    {\n        lfsr = 0xffff; // reset the LFSR\n        return (COMMA); // and return the same data\n    }\n\n    if (inbyte == SKIP) // don't advance or encode on skip\n        return (SKIP);\n\n    for (i=0; i<16;i++) // convert the LFSR to bit array for legibility\n        bit[i] = (lfsr >> i) & 1;\n\n    for (i=0; i<8; i++) // convert byte to be de-scrambled for legibility\n        descrambit[i] = (inbyte >> i) & 1;\n\n    // apply the xor to the data\n    if (! (inbyte & 0x100) && // if not a KCODE, scramble the data\n        ! (TrainingSequence == TRUE)) // and if not in the middle of\n    { // a training sequence\n        descrambit[0] ^= bit[15];\n        descrambit[1] ^= bit[14];\n        descrambit[2] ^= bit[13];\n        descrambit[3] ^= bit[12];\n        descrambit[4] ^= bit[11];\n        descrambit[5] ^= bit[10];\n        descrambit[6] ^= bit[9];\n        descrambit[7] ^= bit[8];\n    }",
+      "confidenceScores": null,
+      "type": "code"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 112,
+      "bottomRightY": 994,
+      "content": "B-4",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

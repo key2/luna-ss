@@ -1,0 +1,75 @@
+{
+  "index": 125,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 95 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 103,
+      "topLeftY": 91,
+      "bottomRightX": 687,
+      "bottomRightY": 128,
+      "content": "|  Symbol | Parameter | Gen 1 (5.0 GT/s) | Gen 2 (10 GT/s) | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-62.md"
+    },
+    {
+      "topLeftX": 109,
+      "topLeftY": 131,
+      "bottomRightX": 359,
+      "bottomRightY": 144,
+      "content": "Note 1: Not including +/-250mV AC ground offset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 109,
+      "topLeftY": 146,
+      "bottomRightX": 677,
+      "bottomRightY": 171,
+      "content": "Note 2: The receiver designs must survive legacy implementations with VTX-DC+AC_CONN common mode transient up to 2.2V.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

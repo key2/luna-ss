@@ -1,0 +1,103 @@
+{
+  "index": 381,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 351 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 618,
+      "bottomRightY": 124,
+      "content": "for bDevCapabilityType are defined in Table 9-14 – Note: The most up-to-date Device Capability Type Codes will be listed on usb.org.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 222,
+      "topLeftY": 136,
+      "bottomRightX": 565,
+      "bottomRightY": 154,
+      "content": "Table 9-13. Format of a Device Capability Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 162,
+      "bottomRightX": 676,
+      "bottomRightY": 271,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of this descriptor.  |\n|  1 | bDescriptorType | 1 | Constant | Descriptor type: DEVICE CAPABILITY Type.  |\n|  2 | bDevCapabilityType | 1 | Number | Valid values are listed in Table 9-14.  |\n|  3 | Capability-Dependent | Var | Variable | Capability-specific format.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-182.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 290,
+      "bottomRightX": 657,
+      "bottomRightY": 338,
+      "content": "Device Capability descriptors are always returned as part of the BOS information returned by a GetDescriptor(BOS) request. A Device Capability cannot be directly accessed with a GetDescriptor() or SetDescriptor() request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 258,
+      "topLeftY": 349,
+      "bottomRightX": 529,
+      "bottomRightY": 366,
+      "content": "Table 9-14. Device Capability Type Codes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 375,
+      "bottomRightX": 676,
+      "bottomRightY": 901,
+      "content": "|  Capability Code | Value | Description  |\n| --- | --- | --- |\n|  Wireless_USB | 01H | Defines the set of Wireless USB-specific device level capabilities  |\n|  USB 2.0 EXTENSION | 02H | USB 2.0 Extension Descriptor  |\n|  SUPERSPEED_USB | 03H | Defines the set of SuperSpeed USB specific device level capabilities  |\n|  CONTAINER_ID | 04H | Defines the instance unique ID used to identify the instance across all operating modes  |\n|  PLATFORM | 05H | Defines a device capability specific to a particular platform/operating system  |\n|  POWER_DELIVERY_CAPABILITY | 06H | Defines the various PD Capabilities of this device  |\n|  BATTERY_INFO_CAPABILITY | 07H | Provides information on each battery supported by the device  |\n|  PD_CONSUMER_PORT_CAPABILITY | 08H | The consumer characteristics of a port on the device  |\n|  PD_PROVIDER_PORT_CAPABILITY | 09H | The provider characteristics of a port on the device  |\n|  SUPERSPEED_PLUS | 0AH | Defines the set of SuperSpeed Plus USB specific device level capabilities  |\n|  PRECISION_TIME_MEASUREMENT | 0BH | Precision Time Measurement (PTM) Capability Descriptor  |\n|  Wireless_USB_Ext | 0CH | Defines the set of Wireless USB 1.1-specific device level capabilities  |\n|  BILLBOARD | 0DH | Billboard capability  |\n|  AUTHENTICATION | 0EH | Authentication Capability Descriptor  |\n|  BILLBOARD_EX | 0FH | Billboard Ex capability  |\n|  CONFIGURATION SUMMARY | 10H | Summarizes configuration information for a function implemented by the device  |\n|  FWStatus Capability | 11H | Describes the capability to support FWStatus  |\n|  Reserved | 00H, 12H – FFH | Reserved for future use Note: The most up-to-date Device Capability Type Codes will be listed on usb.org.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-183.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

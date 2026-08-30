@@ -1,0 +1,113 @@
+{
+  "index": 96,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 46,
+      "bottomRightX": 413,
+      "bottomRightY": 61,
+      "content": "- 66 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 120,
+      "bottomRightX": 505,
+      "bottomRightY": 136,
+      "content": "**Table 6-4. Gen 1 TS1 Ordered Set**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 231,
+      "topLeftY": 146,
+      "bottomRightX": 553,
+      "bottomRightY": 253,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0-3 | K28.5 | COM (Comma)  |\n|  4 | D0.0 | Reserved for future use  |\n|  5 | See Table 6-6 | Link Functionality  |\n|  6-15 | D10.2 | TS1 Identifier  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-39.md"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 288,
+      "bottomRightX": 505,
+      "bottomRightY": 304,
+      "content": "**Table 6-5. Gen 1 TS2 Ordered Set**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 231,
+      "topLeftY": 314,
+      "bottomRightX": 553,
+      "bottomRightY": 421,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0-3 | K28.5 | COM (Comma)  |\n|  4 | D0.0 | Reserved  |\n|  5 | See Table 6-6 | Link Functionality  |\n|  6-15 | D5.2 | TS2 Identifier  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-40.md"
+    },
+    {
+      "topLeftX": 255,
+      "topLeftY": 456,
+      "bottomRightX": 534,
+      "bottomRightY": 473,
+      "content": "**Table 6-6. Gen 1/Gen 2 Link Configuration**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 482,
+      "bottomRightX": 655,
+      "bottomRightY": 845,
+      "content": "|  Field | TS1 and TS2 Symbol 5 | Description  |\n| --- | --- | --- |\n|  Bit 0 | 0 = Normal Training 1 = Reset | Reset is set by the Host only in order to reset the device.  |\n|  Bit 1 | Set to 0 | Reserved for future use.  |\n|  Bit 2 | 0 = Loopback de-asserted 1 = Loopback asserted | When set, the receiving component enters digital loopback. Upon assertion of bit 2 a re-timer shall be placed in pass through loopback mode.  |\n|  Bit 3 | 0 = Disable Scrambling de-asserted 1 = Disable Scrambling asserted | When set, the receiving component disables scrambling. When this is asserted during Gen 2 operation the training Ordered Sets are still scrambled and the disabling of scrambling begins with the first Data Block after the SDS.  |\n|  Bit 4 | 0 = Local loopback in repeater de-asserted 1 = Local loopback in repeater asserted | When set, the nearest repeater in the link is placed into local loopback mode.  |\n|  Bit 5 | 0 = Bit-level re-timer Tx compliance mode de-asserted 1 = Bit-level re-timer Tx compliance mode asserted | When set, a bit-level re-timer is placed into transmit compliance mode defined in Appendix E. All other components (hosts, devices, dual role devices, non-bit-level re-timers) ignore this bit.  |\n|  Bit 6:7 | Set to 0 | Reserved for future use.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-41.md"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 866,
+      "bottomRightX": 667,
+      "bottomRightY": 899,
+      "content": "Note: During dual-lane operation, any configurations selected in the link configuration field apply to all negotiated lanes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

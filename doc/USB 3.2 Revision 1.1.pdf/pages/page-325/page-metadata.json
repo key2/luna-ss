@@ -1,0 +1,112 @@
+{
+  "index": 324,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 294 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 673,
+      "bottomRightY": 184,
+      "content": "endpoint. This notifies the host about the endpoint's readiness to transmit data again. Once the host receives the ERDY TP, it shall send an IN request (via an ACK TP) to the endpoint no later than twice the service interval as determined by the value of the bInterval field in the interrupt endpoint descriptor. An interrupt endpoint responds by returning either the DP (the sequence number of the packet being one more than the sequence number of the last successful data sent) or, should it be unable to return data, an NRDY or a STALL TP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 197,
+      "bottomRightX": 666,
+      "bottomRightY": 259,
+      "content": "If a device receives a deferred interrupt IN TP, and the device needs to send interrupt IN data, the device shall respond with an ERDY TP and keep its link in U0 until it receives the subsequent interrupt transaction from the host, or until tPingTimeout (refer to Table 8-36) time elapses.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 269,
+      "bottomRightX": 666,
+      "bottomRightY": 315,
+      "content": "As in the case of Bulk transactions, the sequence number is continually incremented with each packet sent by an interrupt endpoint. When the sequence number reaches 31 it wraps around to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 155,
+      "topLeftY": 329,
+      "bottomRightX": 632,
+      "bottomRightY": 344,
+      "content": "Figure 8-49. Host Sends Interrupt IN Transaction in Each Service Interval",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 355,
+      "bottomRightX": 550,
+      "bottomRightY": 683,
+      "content": "![img-140.jpeg](img-140.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-140.jpeg"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 704,
+      "bottomRightX": 660,
+      "bottomRightY": 721,
+      "content": "Figure 8-50. Host Stops Servicing Interrupt IN Transaction Once NRDY is Received",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 257,
+      "topLeftY": 731,
+      "bottomRightX": 532,
+      "bottomRightY": 918,
+      "content": "![img-141.jpeg](img-141.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-141.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

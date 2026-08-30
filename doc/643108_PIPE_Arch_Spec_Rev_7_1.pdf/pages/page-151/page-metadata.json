@@ -1,0 +1,57 @@
+{
+  "index": 150,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 550,
+      "bottomRightY": 137,
+      "content": "Table 8-4. Parameters Advertised in PHY Datasheet (Sheet 6 of 7)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 696,
+      "bottomRightY": 899,
+      "content": "|  Parameter | Description  |\n| --- | --- |\n|  EnhancedPTMTimingSupport | The PHY indicates whether it supports optional elasticity buffer location information through the ElasticBufferLocation control signals to allow more accurate timing of received packets within the MAC. The support value is encoded as follows: 0 – No support. 1 – Support.  |\n|  L1PMSubStatesSupport | The PHY indicates whether it supports optional L1 PM Substates. A PHY that supports L1 PM Substates must support asynchronous power state transitions. The support value is encoded as follows: 0 – No support. 1 – Support.  |\n|  RXMarginingVoltageSupported^{1} | The PHY indicates whether it supports voltage margining, encoded as follows: 0 – No Support 1 – Support. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingSamplingRateVoltage[5:0]^{1} | Percentage of bits margined during voltage margining mode is calculated as 1/64×(Sampling_Rate[5:0]+1). Allowable values: 0-63. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingSamplingRateTiming[5:0]^{1} | Percentage of bits margined during timing margining mode is calculated as 1/64×(Sampling_Rate[5:0]+1). Allowable values: 0-63. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingIndependentLeftRight^{1} | The PHY indicates whether it supports independent left and right time margining. The support value is encoded as follows: 0 – No Support 1 – Support. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingIndependentUpDown^{1} | The PHY indicates whether it supports independent up and down voltage margining. The support value is encoded as follows: 0 – No Support 1 – Support. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingIndependentErrorSampler^{1} | The PHY indicates whether it supports an error sampler independent from the main sampler to allow higher BER's to be measured. The support value is encoded as follows: 0 – No Support 1 – Support. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingVoltageSteps[6:0]^{1} | Total number of voltage steps, minimum range +/- 50 mV. A value of zero indicates that voltage margining is not supported. Allowable non-zero values: 32-127. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingTimingSteps[5:0]^{1} | Total number of timing steps, minimum range +/-0.2UI. Allowable values: 8-63. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingMaxVoltageOffset[6:0]^{1} | Offset at maximum step value as percentage of one volt. Allowable values: 5-50. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-139.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "151",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

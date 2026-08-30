@@ -1,0 +1,112 @@
+{
+  "index": 476,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 593,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 240,
+      "bottomRightY": 130,
+      "content": "### 9.6.9 String",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 135,
+      "bottomRightX": 696,
+      "bottomRightY": 184,
+      "content": "String descriptors are optional. As noted previously, if a device does not support string descriptors, all references to string descriptors within device, configuration, and interface descriptors shall be reset to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 194,
+      "bottomRightX": 697,
+      "bottomRightY": 360,
+      "content": "String descriptors use UNICODE UTF16LE encodings as defined by The Unicode Standard, Worldwide Character Encoding, Version 5.0, The Unicode Consortium, Addison-Wesley Publishing Company, Reading, Massachusetts (http://www.unicode.org). The strings in a device may support multiple languages. When requesting a string descriptor, the requester specifies the desired language using a 16-bit language ID (LANGID) defined by the USB-IF. The list of currently defined USB LANGIDs can be found at http://www.usb.org/developers/docs.html. String index zero for all languages returns a string descriptor that contains an array of 2-byte LANGID codes supported by the device. Table 9-28 shows the LANGID code array. A device may omit all string descriptors. Devices that omit all string descriptors shall not return an array of LANGID codes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 371,
+      "bottomRightX": 695,
+      "bottomRightY": 406,
+      "content": "The array of LANGID codes is not NULL-terminated. The size of the array (in bytes) is computed by subtracting two from the value of the first byte of the descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 423,
+      "bottomRightX": 640,
+      "bottomRightY": 439,
+      "content": "Table 9-28. String Descriptor Zero, Specifying Languages Supported by the Device",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 442,
+      "bottomRightX": 703,
+      "bottomRightY": 563,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | N+2 | Size of this descriptor in bytes  |\n|  1 | bDescriptorType | 1 | Constant | STRING Descriptor Type  |\n|  2 | wLANGID[0] | 2 | Number | LANGID code zero  |\n|  ... | ... | ... | ... | ...  |\n|  N | wLANGID[x] | 2 | Number | LANGID code x  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-198.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 576,
+      "bottomRightX": 696,
+      "bottomRightY": 610,
+      "content": "The UNICODE string descriptor (shown in Table 9-29) is not NULL-terminated. The string length is computed by subtracting two from the value of the first byte of the descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 628,
+      "bottomRightX": 372,
+      "bottomRightY": 644,
+      "content": "Table 9-29. UNICODE String Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 647,
+      "bottomRightX": 700,
+      "bottomRightY": 729,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of this descriptor in bytes  |\n|  1 | bDescriptorType | 1 | Constant | STRING Descriptor Type  |\n|  2 | bString | N | Number | UNICODE encoded string  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-199.md"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "9-59",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

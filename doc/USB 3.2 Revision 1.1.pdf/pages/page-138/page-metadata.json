@@ -1,0 +1,149 @@
+{
+  "index": 137,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 107 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 254,
+      "topLeftY": 92,
+      "bottomRightX": 535,
+      "bottomRightY": 110,
+      "content": "Figure 6-37. Logic Representation of LBPS",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 122,
+      "bottomRightX": 630,
+      "bottomRightY": 322,
+      "content": "![img-55.jpeg](img-55.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-55.jpeg"
+    },
+    {
+      "topLeftX": 221,
+      "topLeftY": 338,
+      "bottomRightX": 569,
+      "bottomRightY": 355,
+      "content": "Table 6-33. LBPS Transmit and Receive Specification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 364,
+      "bottomRightX": 679,
+      "bottomRightY": 474,
+      "content": "|   | Unit | Transmit |   |   | Receive  |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|   |   |  Min | TYP | Max | Min | TYP | Max  |\n|  tPWM | μs | 2 | 2.2 | 2.4 |  |  |   |\n|  tLFPS-0 | μs | 0.5 |  | 0.80 | 0.45 |  | 0.85  |\n|  tLFPS-1 | μs | 1.33 |  | 1.80 | 1.28 |  | 1.85  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-74.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 507,
+      "bottomRightX": 364,
+      "bottomRightY": 521,
+      "content": "### 6.9.5.2 LBPM Definition and Transmission",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 528,
+      "bottomRightX": 652,
+      "bottomRightY": 559,
+      "content": "LBPM is byte based with LSb transmitted first. A port may transmit a single LBPM, or consecutive LBPMs. The transmission of LBPM shall adhere to the following conventions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 572,
+      "bottomRightX": 657,
+      "bottomRightY": 691,
+      "content": "- A LBPM delimiter is defined with one tPWM of LFPS followed by one tPWM of EI.\n- The LPBM transmission shall start with a LBPM delimiter.\n- The LBPM transmission shall end with a LBPM delimiter.\n- The transmission of LBPM shall be LSb first.\n- Consecutive LBPM transmission shall be LSB first with LBPM delimiter in between each LBPMs.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 698,
+      "bottomRightX": 467,
+      "bottomRightY": 715,
+      "content": "Examples of LBPM transmission are shown in Figure 6-38.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 726,
+      "bottomRightX": 534,
+      "bottomRightY": 743,
+      "content": "Figure 6-38. LBPM Transmission Examples",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 155,
+      "topLeftY": 753,
+      "bottomRightX": 635,
+      "bottomRightY": 894,
+      "content": "![img-56.jpeg](img-56.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-56.jpeg"
+    },
+    {
+      "topLeftX": 301,
+      "topLeftY": 911,
+      "bottomRightX": 487,
+      "bottomRightY": 928,
+      "content": "(a). Single LBPM Transmission",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

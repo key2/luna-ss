@@ -1,0 +1,196 @@
+{
+  "index": 134,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 191,
+      "topLeftY": 106,
+      "bottomRightX": 283,
+      "bottomRightY": 123,
+      "content": "Example PTH",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 347,
+      "topLeftY": 106,
+      "bottomRightX": 469,
+      "bottomRightY": 124,
+      "content": "Example SMT pad",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 508,
+      "topLeftY": 106,
+      "bottomRightX": 658,
+      "bottomRightY": 124,
+      "content": "Example PCB stack-up",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 124,
+      "bottomRightX": 639,
+      "bottomRightY": 154,
+      "content": "Note: See Section 5.6.1.3 for recommended electrical requirements in determining void dimensions",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 183,
+      "bottomRightX": 333,
+      "bottomRightY": 201,
+      "content": "PTH for Standard A and B",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 221,
+      "bottomRightX": 305,
+      "bottomRightY": 308,
+      "content": "![img-98.jpeg](img-98.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-98.jpeg"
+    },
+    {
+      "topLeftX": 149,
+      "topLeftY": 319,
+      "bottomRightX": 318,
+      "bottomRightY": 383,
+      "content": "|  a | Finished hole radius | 0.35  |\n| --- | --- | --- |\n|  b | Annular ring radius | 0.50  |\n|  R | Antipad radius to center | 0.75  |\n|  p | Antipad center to center distance | 2.00 (Std-A) 1.75 (Std-B)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-47.md"
+    },
+    {
+      "topLeftX": 363,
+      "topLeftY": 183,
+      "bottomRightX": 476,
+      "bottomRightY": 201,
+      "content": "SMT for Micro-B",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 359,
+      "topLeftY": 208,
+      "bottomRightX": 477,
+      "bottomRightY": 343,
+      "content": "![img-99.jpeg](img-99.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-99.jpeg"
+    },
+    {
+      "topLeftX": 363,
+      "topLeftY": 348,
+      "bottomRightX": 471,
+      "bottomRightY": 377,
+      "content": "|  L | Ground void length | 1.35  |\n| --- | --- | --- |\n|  W | Ground void width | 1.55  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-48.md"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 184,
+      "bottomRightX": 655,
+      "bottomRightY": 203,
+      "content": "Generic Stack-ups",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 534,
+      "topLeftY": 211,
+      "bottomRightX": 678,
+      "bottomRightY": 342,
+      "content": "![img-100.jpeg](img-100.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-100.jpeg"
+    },
+    {
+      "topLeftX": 523,
+      "topLeftY": 354,
+      "bottomRightX": 676,
+      "bottomRightY": 370,
+      "content": "Total thickness: 0.8 ~ 1.8 mm",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 386,
+      "topLeftY": 388,
+      "bottomRightX": 450,
+      "bottomRightY": 404,
+      "content": "Unit: mm",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 149,
+      "topLeftY": 410,
+      "bottomRightX": 675,
+      "bottomRightY": 427,
+      "content": "Figure 5-20. Recommended Ground Void Dimension for USB Standard-A Receptacle",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 440,
+      "bottomRightX": 523,
+      "bottomRightY": 460,
+      "content": "### 5.6.1.2.1 Mated Connector Impedance for Gen 2 Speed",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 466,
+      "bottomRightX": 697,
+      "bottomRightY": 584,
+      "content": "The recommended mated connector impedance is needed to maintain signal integrity. The differential impedance of a mated connector should be 90 Ω +/-10 Ω, as seen from a 40 ps (20%-80%) risetime of a differential TDR. The impedance profile of a mated connector should fall within the limits shown in Figure 5-21. The impedance profile of the mated connector is defined from the receptacle footprints through the plug cable termination area. In a case where the plug is directly attached to a device PCB, the mated connector impedance profile includes the path from the receptacle footprints to the plug footprints.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 588,
+      "bottomRightX": 573,
+      "bottomRightY": 605,
+      "content": "The normative cable assembly requirements are specified in Section 5.6.1.3.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-47",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

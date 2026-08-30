@@ -1,0 +1,146 @@
+{
+  "index": 569,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 103,
+      "bottomRightX": 333,
+      "bottomRightY": 122,
+      "content": "### 10.18.2.6 USDPORT.Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 129,
+      "bottomRightX": 298,
+      "bottomRightY": 144,
+      "content": "A port transitions to this state",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 148,
+      "bottomRightX": 696,
+      "bottomRightY": 182,
+      "content": "- From the USDPORT.Powered on state when Far-end Receiver Terminations are not detected as per the rules described below:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 187,
+      "bottomRightX": 682,
+      "bottomRightY": 238,
+      "content": "If USDPORT.Powered on was entered from any state except USDPORT.Disabled then this transition shall take place if Far-end Receiver Terminations (RRX-DC) are not detected after eight successive Rx.Detect.Quiet to Rx.Detect.Active transitions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 244,
+      "bottomRightX": 689,
+      "bottomRightY": 292,
+      "content": "If USDPORT.Powered on was entered from the USDPORT.Disabled state, then this transition shall take place the first time that Far-end Receiver Terminations are not detected in the Rx.Detect.Active substate.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 296,
+      "bottomRightX": 691,
+      "bottomRightY": 347,
+      "content": "- From the USDPort.Training state if a timeout occurs on any Polling substate (see Figure 7-18).\n- From the USDPort.Connected state, if the Port Configuration process times out (see Section 8.4.6).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 356,
+      "bottomRightX": 657,
+      "bottomRightY": 373,
+      "content": "A count (Disabled_count) shall be maintained of each entry into the USDPort.Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 379,
+      "bottomRightX": 657,
+      "bottomRightY": 476,
+      "content": "- Count is initialized to \"0\" upon power on reset.\n- The count is incremented upon each entry into the USDPort.Disabled state from the USDPORT.Training Initiated state.\n- If the count equals 3, the port transitions to the Disabled.Error state.\n- The count is reset to \"0\" upon a successful completion of the Port Configuration process.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 481,
+      "bottomRightX": 691,
+      "bottomRightY": 512,
+      "content": "In this state, the port's link shall be in the eSS.Disabled state. The corresponding peripheral device USB state shall be USB 2.0 Device States.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 528,
+      "bottomRightX": 378,
+      "bottomRightY": 548,
+      "content": "### 10.18.2.7 USDPORT.Disabled_Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 553,
+      "bottomRightX": 644,
+      "bottomRightY": 569,
+      "content": "A port transitions to this state from the USDPort.Disabled state when Disabled_Count = 3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 573,
+      "bottomRightX": 686,
+      "bottomRightY": 605,
+      "content": "- The port shall remain in USDPORT.Disabled_Error state if the port's link receives a USB 2.0 reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 612,
+      "bottomRightX": 657,
+      "bottomRightY": 662,
+      "content": "In this state, a fatal error has been detected on the port's link and the link shall be in the eSS.Disabled state. The corresponding peripheral device USB state shall be USB 2.0 Device States.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-92",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

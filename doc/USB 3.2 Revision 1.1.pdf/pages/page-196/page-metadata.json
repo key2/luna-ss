@@ -1,0 +1,156 @@
+{
+  "index": 195,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 165 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 477,
+      "bottomRightY": 108,
+      "content": "### 7.5.2.4.1 eSS.Inactive.Disconnect.Detect Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 631,
+      "bottomRightY": 146,
+      "content": "The transmitter shall perform the far-end receiver termination detection described in Section 6.11.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 159,
+      "bottomRightX": 450,
+      "bottomRightY": 172,
+      "content": "### 7.5.2.4.2 Exit from eSS.Inactive.Disconnect.Detect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 182,
+      "bottomRightX": 671,
+      "bottomRightY": 251,
+      "content": "- The port shall transition to Rx.Detect when a far-end low-impedance receiver termination (R$_{RX-DC}$) meeting specification defined in Table 6-22 is not detected.\n- The port shall transition to eSS.Inactive.Quiet when a far-end low-impedance receiver termination (R$_{RX-DC}$) meeting specification defined in Table 6-22 is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 269,
+      "bottomRightX": 537,
+      "bottomRightY": 287,
+      "content": "Figure 7-16. eSS.Inactive Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 134,
+      "topLeftY": 300,
+      "bottomRightX": 657,
+      "bottomRightY": 589,
+      "content": "![img-78.jpeg](img-78.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-78.jpeg"
+    },
+    {
+      "topLeftX": 132,
+      "topLeftY": 590,
+      "bottomRightX": 485,
+      "bottomRightY": 602,
+      "content": "Note: Transition conditions are illustrative only. Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 648,
+      "bottomRightX": 222,
+      "bottomRightY": 662,
+      "content": "### 7.5.3 Rx.Detect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 670,
+      "bottomRightX": 671,
+      "bottomRightY": 822,
+      "content": "Rx.Detect is the power on state of the LTSSM for both a downstream port and an upstream port. It is also the state for a downstream port upon issuing a Warm Reset, and the state for an upstream port upon detecting a Warm Reset from any other link state except eSS.Disabled. The purpose of Rx.Detect is to detect the impedance of far-end receiver termination to ground. Rx.Detect.Reset is a default reset state used by the two ports to synchronize the operation after a Warm Reset; this substate exits immediately if Warm Reset is not present. Rx.Detect.Active is a substate for far-end receiver termination detection. Rx.Detect.Quiet is a power saving substate in which the function of a far-end receiver termination detection is disabled. A port will perform the far-end receiver termination detection periodically during Rx.Detect.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 836,
+      "bottomRightX": 335,
+      "bottomRightY": 849,
+      "content": "### 7.5.3.1 Rx.Detect Substate Machines",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 857,
+      "bottomRightX": 655,
+      "bottomRightY": 872,
+      "content": "Rx.Detect contains a substate machine shown in Figure 7-17 with the following substates:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 886,
+      "bottomRightX": 261,
+      "bottomRightY": 922,
+      "content": "- Rx.Detect.Reset\n- Rx.Detect.Active",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "index": 371,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 341 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 265,
+      "bottomRightY": 109,
+      "content": "### 9.4.7 Set Configuration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 115,
+      "bottomRightX": 370,
+      "bottomRightY": 131,
+      "content": "This request sets the device configuration.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 141,
+      "bottomRightX": 676,
+      "bottomRightY": 186,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B | SET_CONFIGURATION | Configuration Value | Zero | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-166.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 191,
+      "bottomRightX": 660,
+      "bottomRightY": 253,
+      "content": "The lower byte of the wValue field specifies the desired configuration. This configuration value shall be zero or match a configuration value from a configuration descriptor. If the configuration value is zero, the device is placed in its Address state. The upper byte of the wValue field is reserved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 264,
+      "bottomRightX": 628,
+      "bottomRightY": 297,
+      "content": "If wIndex, wLength, or the upper byte of wValue is non-zero, then the behavior of this request is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 308,
+      "bottomRightX": 673,
+      "bottomRightY": 341,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 350,
+      "bottomRightX": 663,
+      "bottomRightY": 428,
+      "content": "Address state: If the specified configuration value is zero, then the device remains in the Address state. If the specified configuration value matches the configuration value from a configuration descriptor, then that configuration is selected and the device enters the Configured state. Otherwise, the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 439,
+      "bottomRightX": 660,
+      "bottomRightY": 517,
+      "content": "Configured state: If the specified configuration value is zero, then the device enters the Address state. If the specified configuration value matches the configuration value from a configuration descriptor, then that configuration is selected and the device remains in the Configured state. Otherwise, the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 529,
+      "bottomRightX": 246,
+      "bottomRightY": 545,
+      "content": "### 9.4.8 Set Descriptor",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 551,
+      "bottomRightX": 663,
+      "bottomRightY": 582,
+      "content": "This request is optional and may be used to update existing descriptors or new descriptors may be added.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 593,
+      "bottomRightX": 676,
+      "bottomRightY": 675,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B | SET_DESCRIPTOR | Descriptor Type and Descriptor Index | Language ID (refer to Section 9.6.7) or zero | Descriptor Length | Descriptor  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-167.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 680,
+      "bottomRightX": 671,
+      "bottomRightY": 803,
+      "content": "The wValue field specifies the descriptor type in the high byte (refer to Table 9-6) and the descriptor index in the low byte. The descriptor index is used to select a specific descriptor (only for configuration and string descriptors) when several descriptors of the same type are implemented in a device. For example, a device can implement several configuration descriptors. For other standard descriptors that can be set via a SetDescriptor() request, a descriptor index of zero shall be used. The range of values used for a descriptor index is from 0 to one less than the number of descriptors of that type (excluding string descriptors) implemented by the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 814,
+      "bottomRightX": 673,
+      "bottomRightY": 859,
+      "content": "The wIndex field specifies the Language ID for string descriptors or is reset to zero for other descriptors. The wLength field specifies the number of bytes to transfer from the host to the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 872,
+      "bottomRightX": 666,
+      "bottomRightY": 904,
+      "content": "The only allowed values for descriptor type are device, configuration, and string descriptor types.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

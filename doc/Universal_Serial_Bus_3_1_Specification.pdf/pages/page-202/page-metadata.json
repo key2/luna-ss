@@ -1,0 +1,129 @@
+{
+  "index": 201,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 92,
+      "bottomRightX": 677,
+      "bottomRightY": 136,
+      "content": "### 6.9.2 Example LFPS Handshake for U1/U2 Exit, Loopback Exit, and U3 Wakeup",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 138,
+      "bottomRightX": 689,
+      "bottomRightY": 223,
+      "content": "The LFPS signal used for U1/U2 exit, Loopback exit, and U3 wakeup is defined the same as continuous LFPS signals with the exception of timeout values defined in Table 6-30. The handshake process for U1/U2 exit and U3 wakeup is illustrated in Figure 6-30. The timing requirements are different for U1 exit, U2 exit, Loopback exit, and U3 wakeup. They are listed in Table 6-30.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 164,
+      "topLeftY": 289,
+      "bottomRightX": 637,
+      "bottomRightY": 489,
+      "content": "![img-153.jpeg](img-153.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-153.jpeg"
+    },
+    {
+      "topLeftX": 164,
+      "topLeftY": 500,
+      "bottomRightX": 677,
+      "bottomRightY": 602,
+      "content": "t10 – When Link Partner 1 starts to transmit LFPS, in initiating exit from either U1/U2/U3/Loopback.\nt11 – When Link Partner 2 validates the received LFPS for the required t11-t10 duration and starts to transmit LFPS in response.\nt12 – When Link Partner 1 validates the received LFPS of the required t12-t11 and t12-t10 durations and starts to transmit SS signaling.\nt13 – When Link Partner 2 transmits LFPS of meeting the required t13-t11 duration and starts to transmit SS signaling.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 645,
+      "topLeftY": 605,
+      "bottomRightX": 677,
+      "bottomRightY": 616,
+      "content": "U-033A",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 164,
+      "topLeftY": 635,
+      "bottomRightX": 659,
+      "bottomRightY": 653,
+      "content": "Figure 6-30. U1 Exit, U2 Exit, and U3 Wakeup LFPS Handshake Timing Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 672,
+      "bottomRightX": 671,
+      "bottomRightY": 689,
+      "content": "Note: the timing diagram in Figure 6-22 is for illustration of the LFPS handshake process only.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 697,
+      "bottomRightX": 340,
+      "bottomRightY": 715,
+      "content": "The handshake process is as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 719,
+      "bottomRightX": 694,
+      "bottomRightY": 840,
+      "content": "- Link partner 1 initiates exit by transmitting LFPS at time t10 (see Figure 6-30). LFPS transmission shall continue until the handshake is declared either successful or failed.\n- Link partner 2 detects valid LFPS on its receiver and responds by transmitting LFPS at time t11. LFPS transmission shall continue until the handshake is declared either successful or failed.\n- A successful handshake is declared for link partner 1 if the following conditions are met within “tNoLFPSResponseTimeout” after t10 (see Figure 6-30 and Table 6-30):",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 148,
+      "topLeftY": 842,
+      "bottomRightX": 424,
+      "bottomRightY": 858,
+      "content": "1. Valid LFPS is received from link partner 2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 859,
+      "bottomRightX": 694,
+      "bottomRightY": 893,
+      "content": "Note: in case of concurrent U1 exit, where both ports initiate U1 exit simultaneously, both ports will assume to be Link partner 1. Both ports will start receiving LFPS signal before",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 981,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "6-46",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "index": 224,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 419,
+      "bottomRightY": 111,
+      "content": "### 7.2.2.2 Link Command Word Definition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 116,
+      "bottomRightX": 692,
+      "bottomRightY": 167,
+      "content": "Link command word is 16 bits long with the 11-bit link command information protected by a 5-bit CRC-5 (see Figure 7-13). The 11-bit link command information is defined in Table 7-4. The calculation of CRC-5 is the same as Link Control Word illustrated in Figure 7-7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 250,
+      "topLeftY": 187,
+      "bottomRightX": 573,
+      "bottomRightY": 336,
+      "content": "![img-176.jpeg](img-176.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-176.jpeg"
+    },
+    {
+      "topLeftX": 274,
+      "topLeftY": 346,
+      "bottomRightX": 550,
+      "bottomRightY": 365,
+      "content": "Figure 7-13. Link Command Word Structure",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "7-13",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

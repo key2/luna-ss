@@ -1,0 +1,148 @@
+{
+  "index": 170,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 337,
+      "bottomRightY": 108,
+      "content": "Table 6-4. Gen 1 TS2 Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 111,
+      "bottomRightX": 446,
+      "bottomRightY": 212,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0-3 | K28.5 | COM (Comma)  |\n|  4 | D0.0 | Reserved  |\n|  5 | See Table 6-5 | Link Functionality  |\n|  6-15 | D5.2 | TS2 Identifier  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-57.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 225,
+      "bottomRightX": 393,
+      "bottomRightY": 242,
+      "content": "Table 6-5. Gen 1/Gen 2 Link Configuration",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 243,
+      "bottomRightX": 700,
+      "bottomRightY": 498,
+      "content": "|  Field | TS1 Symbol 5 | Description  |\n| --- | --- | --- |\n|  Bit 0 | 0 = Normal Training 1 = Reset | Reset is set by the Host only in order to reset the device.  |\n|  Bit 1 | Set to 0 | Reserved for future use.  |\n|  Bit 2 | 0 = Loopback de-asserted 1 = Loopback asserted | When set, the receiving component enters digital loopback.  |\n|  Bit 3 | 0 = Disable Scrambling de-asserted 1 = Disable Scrambling asserted | When set, the receiving component disables scrambling. When this is asserted during Gen 2 operation the training Ordered Sets are still scrambled and the disabling of scrambling begins with the first Data Block after the SDS.  |\n|  Bit 4 | 0 = Local loopback in repeater de-asserted 1 = Local loopback in repeater asserted | When set, the nearest repeater in the link is placed into local loopback mode.  |\n|  Bit 5:7 | Set to 0 | Reserved for future use.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-58.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 512,
+      "bottomRightX": 309,
+      "bottomRightY": 529,
+      "content": "### 6.4.1.2 Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 535,
+      "bottomRightX": 660,
+      "bottomRightY": 586,
+      "content": "This section defines the sequences that are used for configuration and initialization of a link operating at Gen 2 rates. The sequences are used by the Initialization State Machine (refer to Chapter 7) for the following functions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 590,
+      "bottomRightX": 359,
+      "bottomRightY": 681,
+      "content": "- Configuring and initializing the link\n- Bit-lock and symbol lock\n- Rx equalization training\n- Lane polarity inversion\n- Block alignment",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 687,
+      "bottomRightX": 660,
+      "bottomRightY": 723,
+      "content": "Training sequences are composed of Ordered Sets used for initializing bit alignment, Symbol alignment, block alignment and optimizing the equalization.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 734,
+      "bottomRightX": 668,
+      "bottomRightY": 785,
+      "content": "Bit lock refers to the ability of the Clock/Data Recovery (CDR) circuit to extract the phase and frequency information from the incoming data stream. Bit lock is accomplished by sending a pattern sufficiently rich in transitions so that the CDR roughly centers the clock within the bit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 795,
+      "bottomRightX": 588,
+      "bottomRightY": 814,
+      "content": "#### 6.4.1.2.1 Normative Training Sequence Rules for Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 822,
+      "bottomRightX": 657,
+      "bottomRightY": 857,
+      "content": "Training sequences are composed of Ordered Sets used for initializing bit alignment, symbol alignment, block alignment, scrambler synchronization and receiver equalization.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 865,
+      "bottomRightX": 425,
+      "bottomRightY": 883,
+      "content": "The following rules apply to the training sequences:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 885,
+      "bottomRightX": 652,
+      "bottomRightY": 902,
+      "content": "1. Training sequence Ordered Sets shall comprise 16 Symbols and be 128b/132b encoded.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "6-15",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

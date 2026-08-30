@@ -1,0 +1,66 @@
+{
+  "index": 0,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 448,
+      "topLeftY": 151,
+      "bottomRightX": 676,
+      "bottomRightY": 239,
+      "content": "![img-0.jpeg](img-0.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-0.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 260,
+      "bottomRightX": 681,
+      "bottomRightY": 352,
+      "content": "# PHY Interface for the PCI Express*, SATA, USB 3.2, DisplayPort*, and USB4* Architectures",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 368,
+      "bottomRightX": 218,
+      "bottomRightY": 389,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 408,
+      "bottomRightX": 238,
+      "bottomRightY": 428,
+      "content": "September 2025",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 435,
+      "bottomRightX": 212,
+      "bottomRightY": 454,
+      "content": "Revision 7.1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 546,
+      "topLeftY": 925,
+      "bottomRightX": 704,
+      "bottomRightY": 942,
+      "content": "Reference Number: 643108",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

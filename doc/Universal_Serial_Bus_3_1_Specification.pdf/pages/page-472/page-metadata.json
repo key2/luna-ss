@@ -1,0 +1,66 @@
+{
+  "index": 471,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 105,
+      "bottomRightX": 524,
+      "bottomRightY": 124,
+      "content": "The endpoint numbers can be intertwined as illustrated in Figure 9-8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 145,
+      "bottomRightX": 652,
+      "bottomRightY": 386,
+      "content": "![img-256.jpeg](img-256.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-256.jpeg"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 396,
+      "bottomRightX": 591,
+      "bottomRightY": 416,
+      "content": "Figure 9-8. Example of Feedback Endpoint Relationships",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 433,
+      "bottomRightX": 687,
+      "bottomRightY": 471,
+      "content": "For high-speed bulk and control OUT endpoints, the bInterval field is only used for compliance purposes; the host controller is not required to change its behavior based on the value in this field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 995,
+      "content": "9-54",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

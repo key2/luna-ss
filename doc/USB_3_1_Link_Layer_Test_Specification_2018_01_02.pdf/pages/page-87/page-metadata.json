@@ -1,0 +1,245 @@
+{
+  "index": 86,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 235,
+      "bottomRightY": 108,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 115,
+      "bottomRightX": 208,
+      "bottomRightY": 129,
+      "content": "7.2.4.1.1#7,9",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 136,
+      "bottomRightX": 198,
+      "bottomRightY": 150,
+      "content": "7.2.4.2.1#4",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 157,
+      "bottomRightX": 208,
+      "bottomRightY": 171,
+      "content": "7.2.4.2.2#2,3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 177,
+      "bottomRightX": 217,
+      "bottomRightY": 193,
+      "content": "7.2.4.2.3#2,8,9",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 200,
+      "bottomRightX": 208,
+      "bottomRightY": 213,
+      "content": "7.2.4.2.7#2,3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 220,
+      "bottomRightX": 189,
+      "bottomRightY": 232,
+      "content": "7.5.5.1#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 242,
+      "bottomRightX": 189,
+      "bottomRightY": 254,
+      "content": "7.5.5.2#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 262,
+      "bottomRightX": 189,
+      "bottomRightY": 276,
+      "content": "7.5.7.1#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 284,
+      "bottomRightX": 189,
+      "bottomRightY": 297,
+      "content": "7.5.7.2#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 304,
+      "bottomRightX": 177,
+      "bottomRightY": 318,
+      "content": "8.4.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 328,
+      "bottomRightX": 254,
+      "bottomRightY": 343,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 349,
+      "bottomRightX": 704,
+      "bottomRightY": 567,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence.\n2. The LVS transmits the Set Link Function LMP with the Force_LinkPM_Accept bit asserted.\n3. The LVS transmits an LGO_U1 and waits to receive an LAU from the PUT.\n4. The test fails if the PUT does not transmit an LAU before PM_LC_TIMER deadline, or recovery is entered.\n5. The LVS transmits an LPMA and then transition to U1.\n6. The test fails if the PUT does not transition to U1 when the PM_ENTRY_TIMER expires, if recovery is entered, or if the PUT sends any packet.\n7. The LVS transmits a U1 Exit LFPS to transition to U0 and waits to receive U1 Exit LFPS to complete the U1 Exit LFPS handshake.\n8. The test fails if the LFPS handshake does not conform to the following specifications from section 6.9.2:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 574,
+      "bottomRightX": 691,
+      "bottomRightY": 687,
+      "content": "a. Between 300ns - 2us elapses between the start of the LVS U1 Exit LFPS and the start of the PUT U1 Exit LFPS.\nb. The PUT U1 Exit LFPS duration is within 0.9us - 1.2us.\nc. The PUT enters Recovery before tNoLFPSResponseTimeout deadline after the start of its U1 exit LFPS.\nd. The PUT enters U0 before Ux_EXIT_TIMER deadline.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 694,
+      "bottomRightX": 694,
+      "bottomRightY": 725,
+      "content": "9. The test passes if all packets are successful, recovery is entered once, no extra packets or LFPS signals are received, and the PUT returns to U0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 783,
+      "bottomRightX": 644,
+      "bottomRightY": 801,
+      "content": "# TD.7.24 Accepted Power Management Transaction for U2 Test (Upstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 804,
+      "bottomRightX": 523,
+      "bottomRightY": 819,
+      "content": "This test verifies that the PUT transitions to U2 if it receives an LGO_U2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 827,
+      "bottomRightX": 235,
+      "bottomRightY": 841,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 848,
+      "bottomRightX": 208,
+      "bottomRightY": 862,
+      "content": "7.2.4.1.1#7,9",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 869,
+      "bottomRightX": 198,
+      "bottomRightY": 883,
+      "content": "7.2.4.2.1#4",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 890,
+      "bottomRightX": 208,
+      "bottomRightY": 904,
+      "content": "7.2.4.2.2#2,3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 912,
+      "bottomRightX": 217,
+      "bottomRightY": 926,
+      "content": "7.2.4.2.3#2,8,9",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "79",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

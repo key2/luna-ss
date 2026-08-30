@@ -1,0 +1,147 @@
+{
+  "index": 450,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 592,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 302,
+      "bottomRightY": 115,
+      "content": "### 9.4.13 Synch Frame",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 119,
+      "bottomRightX": 580,
+      "bottomRightY": 136,
+      "content": "This request is used to set and then report an endpoint's synchronization frame.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 148,
+      "bottomRightX": 700,
+      "bottomRightY": 207,
+      "content": "|  bmRequestType | bRequest | WValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10000010B | synch_frame | Zero | Endpoint | Two | Frame Number  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-173.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 222,
+      "bottomRightX": 698,
+      "bottomRightY": 289,
+      "content": "When an endpoint supports isochronous transfers, the endpoint may also require per-frame transfers to vary in size according to a specific pattern. The host and the endpoint must agree on which frame the repeating pattern begins. The number of the frame in which the pattern began is returned to the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 298,
+      "bottomRightX": 695,
+      "bottomRightY": 366,
+      "content": "If an Enhanced SuperSpeed device supports the Synch Frame request, it shall internally synchronize itself to the zero$^{th}$ microframe and have a time notion of classic frame. Only the frame number is used to synchronize and reported by the device endpoint (i.e., no microframe number). The endpoint must synchronize to the zero$^{th}$ microframe.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 374,
+      "bottomRightX": 674,
+      "bottomRightY": 409,
+      "content": "This value is only used for isochronous data transfers using implicit pattern synchronization. If wValue is non-zero or wLength is not two, then the behavior of the device is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 417,
+      "bottomRightX": 690,
+      "bottomRightY": 451,
+      "content": "If the specified endpoint does not support this request, then the device will respond with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 458,
+      "bottomRightX": 665,
+      "bottomRightY": 493,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 499,
+      "bottomRightX": 523,
+      "bottomRightY": 514,
+      "content": "Address state: The device shall respond with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 520,
+      "bottomRightX": 628,
+      "bottomRightY": 538,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 556,
+      "bottomRightX": 584,
+      "bottomRightY": 576,
+      "content": "### 9.4.14 Events and Their Effect on Device Parameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 582,
+      "bottomRightX": 692,
+      "bottomRightY": 650,
+      "content": "This section lists the various parameters and the effect on those parameters when the device receives a control transfer command or when it observes a bus reset on the bus. An X denotes that the parameter is reset to its default value when the said event occurs. A Y denotes that the particular Parameter is modified by the event.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 657,
+      "bottomRightX": 662,
+      "bottomRightY": 691,
+      "content": "Control transfers and events not identified in the table shall not affect the value of parameters shown in Table 9-10.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "9-33",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

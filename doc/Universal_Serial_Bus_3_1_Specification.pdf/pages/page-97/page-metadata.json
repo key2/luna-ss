@@ -1,0 +1,95 @@
+{
+  "index": 96,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 97,
+      "bottomRightX": 630,
+      "bottomRightY": 389,
+      "content": "![img-24.jpeg](img-24.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-24.jpeg"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 394,
+      "bottomRightX": 568,
+      "bottomRightY": 433,
+      "content": "BOTTOM VIEW (SIDE OPPOSITE SUPERSPEED CONTACTS)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 440,
+      "bottomRightX": 283,
+      "bottomRightY": 461,
+      "content": "USB 3.1 PLUG",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 337,
+      "topLeftY": 445,
+      "bottomRightX": 657,
+      "bottomRightY": 613,
+      "content": "![img-25.jpeg](img-25.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-25.jpeg"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 636,
+      "bottomRightX": 314,
+      "bottomRightY": 655,
+      "content": "USB 3.1 PD PLUG",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 337,
+      "topLeftY": 653,
+      "bottomRightX": 657,
+      "bottomRightY": 823,
+      "content": "![img-26.jpeg](img-26.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-26.jpeg"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 834,
+      "bottomRightX": 696,
+      "bottomRightY": 865,
+      "content": "Figure 5-2. Example USB 3.1 Standard-A Receptacle with Grounding Springs and Required contact zones on the Standard-A Plug.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 676,
+      "topLeftY": 980,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-9",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

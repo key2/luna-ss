@@ -1,0 +1,57 @@
+{
+  "index": 37,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 382,
+      "topLeftY": 47,
+      "bottomRightX": 407,
+      "bottomRightY": 60,
+      "content": "- 7 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 90,
+      "bottomRightX": 688,
+      "bottomRightY": 900,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  device software | Software that is responsible for using a USB device. This software may or may not also be responsible for configuring the device for use.  |\n|  DFP | Downstream Facing Port (aka downstream port). See Figure 2-1.  |\n|  disconnected (unconnected) | A downstream device is disconnected from an upstream device when it is attached to the upstream device, and when the downstream device has not asserted Rx terminations for SuperSpeed signaling or has not asserted either the D+ or D- data line in order to enter low-speed, full-speed, or high-speed signaling.  |\n|  downstream | The direction of data flow from the host or away from the host. A downstream port is the port on a hub electrically farthest from the host that generates downstream data traffic from the hub. Downstream ports receive upstream data traffic.  |\n|  downstream port | The port on a host or a hub to which a device is connected. For example, a system's root ports are downstream ports.  |\n|  downstream sublink | The collection of lanes between the DFP Tx and the UFP Rx. See Figure 2-1.  |\n|  DP | Data Packet which consists of a Data Packet Header followed by a Data Packet Payload.  |\n|  DPH | Data Packet Header. Contains the data packet's address, route string, length, and other information about the packet.  |\n|  DPP | Data Packet Payload. Contains the data packet's data and a 32-bit CRC.  |\n|  DPPABORT | Frame ordered set used to abort a data packet payload.  |\n|  DPPEND | Frame ordered set used to denote the end of a data packet payload.  |\n|  DPPSTART | Frame ordered set used to denote the start of a data packet payload.  |\n|  driver | When referring to hardware, an I/O pad that drives an external load. When referring to software, a program responsible for interfacing to a hardware device, that is, a device driver.  |\n|  DSPORT | Notation indicating the state machine of a downstream facing port of a hub. Refer to Section 10.3.  |\n|  dual simplex | Two data paths that independently carry traffic in each direction.  |\n|  DWORD | Double word. A data element that is two words (i.e., 4 bytes or 32 bits) in size.  |\n|  dynamic insertion and removal | The ability to attach and remove devices while the host is in operation.  |\n|  endpoint | See device endpoint.  |\n|  endpoint address | The combination of an endpoint number and an endpoint direction on a USB device. Each endpoint address supports data transfer in one direction.  |\n|  endpoint direction | The direction of data transfer on the USB. The direction can be either IN or OUT. IN refers to transfers to the host; OUT refers to transfers from the host.  |\n|  endpoint number | A four-bit value between 0H and FH, inclusive, associated with an endpoint on a USB device.  |\n|  Enhanced SuperSpeed | An adjective referring to any valid collection of USB defined features defined for the bus that runs over the SSRx and SSTx differential pairs in a USB 3.x system. It is used in place of phrases like SuperSpeed/SuperSpeedPlus.  |\n|  external port | See port.  |\n|  frame number | The bus interval counter value within the ITP divided by 8 (integer division).  |\n|  full-duplex | Computer data transmission occurring in both directions simultaneously.  |\n|  full-speed | USB operation at 12 Mbps. See also low-speed and high-speed.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-23.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

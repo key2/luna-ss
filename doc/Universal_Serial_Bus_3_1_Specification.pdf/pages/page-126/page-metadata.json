@@ -1,0 +1,85 @@
+{
+  "index": 125,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 607,
+      "bottomRightY": 109,
+      "content": "Table 5-8. USB 3.1 Standard-A to USB 3.1 Standard-B Cable Assembly Wiring",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 111,
+      "bottomRightX": 707,
+      "bottomRightY": 344,
+      "content": "|  USB 3.1 Standard-A Plug |   | Wire |   | USB 3.1 Standard-B Plug  |   |\n| --- | --- | --- | --- | --- | --- |\n|  Pin Number | Signal Name | Wire Number | Signal Name | Pin Number | Signal Name  |\n|  1 | VBUS | 1 | PWR | 1 | VBUS  |\n|  2 | D- | 2 | D- | 2 | D-  |\n|  3 | D+ | 3 | D+ | 3 | D+  |\n|  4 | GND | 4 | GND_PWRrt | 4 | GND  |\n|  5 | StdA_SSRX- | 5 | P1- | 5 | StdB_SSTX-  |\n|  6 | StdA_SSRX+ | 6 | P1+ | 6 | StdB_SSTX+  |\n|  7 | GND_DRAIN | 7 and 10 | P1_Drain P2_Drain | 7 | GND_DRAIN  |\n|  8 | StdA_SSTX- | 8 | P2- | 8 | StdB_SSRX-  |\n|  9 | StdA_SSTX+ | 9 | P2+ | 9 | StdB_SSRX+  |\n|  Shell | Shield | Braid | Shield | Shell | Shield  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-40.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 349,
+      "bottomRightX": 699,
+      "bottomRightY": 372,
+      "content": "### 5.5.2 USB 3.1 Standard-A to USB 3.1 Standard-A Cable Assembly",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 377,
+      "bottomRightX": 681,
+      "bottomRightY": 444,
+      "content": "The USB 3.1 Standard-A to USB 3.1 Standard-A cable assembly is defined for operating system debugging and other host-to-host connection applications. Table 5-9 shows wire connections for such a cable assembly. Refer to Figure 5-16 for the USB 3.1 Standard-A plug cable overmold dimensions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 459,
+      "bottomRightX": 607,
+      "bottomRightY": 476,
+      "content": "Table 5-9. USB 3.1 Standard-A to USB 3.1 Standard-A Cable Assembly Wiring",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 478,
+      "bottomRightX": 707,
+      "bottomRightY": 712,
+      "content": "|  USB 3.1 Standard-A Plug #1 |   | Wire |   | USB 3.1 Standard-A Plug #2  |   |\n| --- | --- | --- | --- | --- | --- |\n|  Pin Number | Signal Name | Wire Number | Signal Name | Pin Number | Signal Name  |\n|  1 | VBUS | No connect |   | 1 | VBUS  |\n|  2 | D- | No connect |   | 2 | D-  |\n|  3 | D+ | No connect |   | 3 | D+  |\n|  4 | GND | 4 | GND_PWRrt | 4 | GND  |\n|  5 | StdA_SSRX- | 5 | P1- | 8 | StdA_SSTX-  |\n|  6 | StdA_SSRX+ | 6 | P1+ | 9 | StdA_SSTX+  |\n|  7 | GND_DRAIN | 7 & 10 | P1_Drain P2_Drain | 7 | GND_DRAIN  |\n|  8 | StdA_SSTX- | 8 | P2- | 5 | StdA_SSRX-  |\n|  9 | StdA_SSTX+ | 9 | P2+ | 6 | StdA_SSRX+  |\n|  Shell | Shield | Braid | Shield | Shell | Shield  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-41.md"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 979,
+      "bottomRightX": 154,
+      "bottomRightY": 993,
+      "content": "5-38",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

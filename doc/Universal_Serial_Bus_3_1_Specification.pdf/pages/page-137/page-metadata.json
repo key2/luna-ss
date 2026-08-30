@@ -1,0 +1,121 @@
+{
+  "index": 136,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 297,
+      "bottomRightY": 110,
+      "content": "Table 5-15. Design Targets",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 112,
+      "bottomRightX": 700,
+      "bottomRightY": 305,
+      "content": "|  Components | Items | Design Targets  |\n| --- | --- | --- |\n|  Raw Cable | Differential impedance | Section 5.6.1.1.1.  |\n|   |  Intra-pair skew | Section 5.6.1.1.2.  |\n|   |  Differential insertion loss | Section 5.6.1.1.3.  |\n|  Mated Connector | Mated connector impedance | Section 5.6.1.2.1  |\n|  Mated Cable Assembly | Differential insertion loss | ≥ -6 dB from DC to 5 GHz and no strong resonance within DC to 5 GHz.  |\n|   |  Differential near-end crosstalk between SuperSpeed Gen 2 signal pairs | ≤ -34 dB to 5 GHz.  |\n|   |  Differential near-end and far-end crosstalk between D+/D- pair and SuperSpeed Gen2 pairs | ≤-30 dB to 5 Ghz.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-49.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 311,
+      "bottomRightX": 372,
+      "bottomRightY": 332,
+      "content": "### 5.6.1.3.2 Normative Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 337,
+      "bottomRightX": 695,
+      "bottomRightY": 371,
+      "content": "The normative requirements manage the impact of insertion loss, multi-reflection, and crosstalk for the end-to-end link performance and mode conversion for EMI/RFI purposes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 374,
+      "bottomRightX": 285,
+      "bottomRightY": 392,
+      "content": "#### 5.6.1.3.2.1 Test Fixtures",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 400,
+      "bottomRightX": 689,
+      "bottomRightY": 503,
+      "content": "The mated cable assembly electrical requirements for Gen 2 speed are mostly specified in the frequency domain. To accurately measure the frequency response of the Gen 2 speed mated cable assembly, the fixture design and its performance characteristics are critical items. Common fixtures defined by the USB-IF or equivalent shall be used. Refer to USB 3.1 Connectors and Cable Assemblies Compliance Document for detailed descriptions of test fixtures. Figure 5-22 illustrates an example of a cable assembly mounted on a text fixture.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 265,
+      "topLeftY": 525,
+      "bottomRightX": 569,
+      "bottomRightY": 644,
+      "content": "![img-102.jpeg](img-102.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-102.jpeg"
+    },
+    {
+      "topLeftX": 199,
+      "topLeftY": 668,
+      "bottomRightX": 625,
+      "bottomRightY": 686,
+      "content": "Figure 5-22. Illustration of Cable Assembly Mounted on Test Fixture",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 699,
+      "bottomRightX": 405,
+      "bottomRightY": 717,
+      "content": "#### 5.6.1.3.2.2 Reference Hosts and Devices",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 725,
+      "bottomRightX": 700,
+      "bottomRightY": 777,
+      "content": "To avoid channel margin loss associated with assigning interconnect budgets to the host, cable assembly, and device, the compliance of a Gen 2 speed cable assembly is established with reference hosts and reference devices to emulate the end-to-end condition as illustrated in Figure 5-23.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "5-49",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

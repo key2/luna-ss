@@ -1,0 +1,111 @@
+{
+  "index": 523,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 493 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 299,
+      "bottomRightY": 108,
+      "content": "### E.2.1 Architectural Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 673,
+      "bottomRightY": 237,
+      "content": "Shown in Figure E-5 are two high level re-timer architectural examples. In concept, each re-timer consists of a downstream port and an upstream port to perform clock data recovery at its receivers and data transmission at its transmitters. Each port may have its own LTSSM to manage the operation in various link states, and both LTSSMs are very similar to LTSSM defined in Chapter 7, but with differences unique to re-timer operation that are described in Section E.1. A re-timer state machine (RTSM) is employed to coordinate the operation between its upstream port and downstream port. In addition, RTSM is also responsible for, but is not limited to, serve the following management functions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 244,
+      "bottomRightX": 489,
+      "bottomRightY": 304,
+      "content": "- Link state detection and re-timer power management.\n- Data path management and clock offset compensation.\n- Packet/link command detection.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 316,
+      "bottomRightX": 663,
+      "bottomRightY": 363,
+      "content": "A practical implementation of a re-timer may be architected with a single re-timer training and status state machine (RTSSM) to perform the link operation carried by LTSSM and RTSM.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 249,
+      "topLeftY": 374,
+      "bottomRightX": 538,
+      "bottomRightY": 391,
+      "content": "Figure E-5. Example Re-timer Architectures",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 398,
+      "bottomRightX": 630,
+      "bottomRightY": 711,
+      "content": "![img-198.jpeg](img-198.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-198.jpeg"
+    },
+    {
+      "topLeftX": 202,
+      "topLeftY": 722,
+      "bottomRightX": 586,
+      "bottomRightY": 739,
+      "content": "(a) Example Block Diagram of a SRIS Re-timer Architecture",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

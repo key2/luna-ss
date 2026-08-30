@@ -1,0 +1,174 @@
+{
+  "index": 542,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 512 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 325,
+      "bottomRightY": 108,
+      "content": "### E.3.5.2 Exit from Compliance Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 115,
+      "bottomRightX": 648,
+      "bottomRightY": 130,
+      "content": "- The re-timer shall transition to Rx.Detect if WarmReset is detected or if directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 144,
+      "bottomRightX": 293,
+      "bottomRightY": 159,
+      "content": "### E.3.6 BLR Compliance Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 165,
+      "bottomRightX": 672,
+      "bottomRightY": 318,
+      "content": "BLR Compliance Mode is a bit-level re-timer specific test mode for transmitter compliance test. It applies to Gen 1x1 operation only. Shown in Figure E-13 is a test setup for a standalone bit-level re-timer Compliance Mode. Note that the loopback master may be the compliance test handler capable of sending the bit-level re-timer into transmitter compliance test, directing the bit-level re-timer to advance compliance patterns, and analyzing compliance patterns. The loopback slave can either be a compliant host or device, or another compliance test handler. Also note that this configuration applies to transmitter compliance test of a re-timer in the captive environment. For transmitter compliance test of the re-timers in an active cable, it is implementation specific to configure the re-timers, with one under test in BLR Compliance Mode, and the other in PassThrough Loopback.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 330,
+      "bottomRightX": 610,
+      "bottomRightY": 347,
+      "content": "Figure E-13. Standalone Bit-Level Re-timer Compliance Test Setup",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 165,
+      "topLeftY": 356,
+      "bottomRightX": 625,
+      "bottomRightY": 491,
+      "content": "![img-208.jpeg](img-208.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-208.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 529,
+      "bottomRightX": 378,
+      "bottomRightY": 545,
+      "content": "### E.3.6.1 BLR Compliance Mode Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 553,
+      "bottomRightX": 654,
+      "bottomRightY": 710,
+      "content": "- A bit-level re-timer shall monitor the LFPS signal at both ports.\n- It shall set its data path from the loopback master to the loopback slave in PassThrough Loopback.\n- It shall set its data path from the loopback slave to the loopback master in transmitter compliance test by transmitting the locally generated compliance pattern based on the recovered clock from the loopback slave.\n- It shall advance the compliance pattern if four consecutive SKP OS are detected at forwarding data path. It shall advance sequentially from CP0 to CP8, and back to CP0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 727,
+      "bottomRightX": 350,
+      "bottomRightY": 741,
+      "content": "### E.3.6.2 Exit from BLR Compliance Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 750,
+      "bottomRightX": 648,
+      "bottomRightY": 764,
+      "content": "- The re-timer shall transition to Rx.Detect if WarmReset is detected or if directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 778,
+      "bottomRightX": 180,
+      "bottomRightY": 792,
+      "content": "### E.3.7 U0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 800,
+      "bottomRightX": 641,
+      "bottomRightY": 829,
+      "content": "U0 is the normal operational state where packets are forwarded by the re-timer in both directions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 843,
+      "bottomRightX": 264,
+      "bottomRightY": 858,
+      "content": "### E.3.7.1 U0 Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 865,
+      "bottomRightX": 659,
+      "bottomRightY": 897,
+      "content": "- The re-timer shall monitor and decode the link command to participate in re-timer and link power management.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

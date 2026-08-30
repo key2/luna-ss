@@ -1,0 +1,227 @@
+{
+  "index": 477,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 447 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 92,
+      "bottomRightX": 209,
+      "bottomRightY": 108,
+      "content": "# PORT_ENABLE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 121,
+      "bottomRightX": 667,
+      "bottomRightY": 153,
+      "content": "This bit is set to one when the downstream port is in the DSPORT.Enabled state and is set to zero otherwise.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 164,
+      "bottomRightX": 652,
+      "bottomRightY": 197,
+      "content": "Note that the USB 2.0 ClearPortFeature (PORT_ENABLE) request is not supported by Enhanced SuperSpeed hubs and cannot be used by USB system software to disable a port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 208,
+      "bottomRightX": 260,
+      "bottomRightY": 223,
+      "content": "# PORT_OVER_CURRENT",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 237,
+      "bottomRightX": 633,
+      "bottomRightY": 266,
+      "content": "This bit is set to one while an over-current condition exists on the port and set to zero otherwise.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 280,
+      "bottomRightX": 673,
+      "bottomRightY": 340,
+      "content": "If the voltage on this port is affected by an over-current condition on another port, this bit is set to one and remains set to one until the over-current condition on the affecting port is removed. When the over-current condition on the affecting port is removed, this bit is set to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 352,
+      "bottomRightX": 649,
+      "bottomRightY": 384,
+      "content": "Over-current protection is required on self-powered hubs (it is optional on bus-powered hubs) as outlined in Section 10.12.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 396,
+      "bottomRightX": 661,
+      "bottomRightY": 442,
+      "content": "The SetPortFeature(PORT_OVER_CURRENT) and ClearPortFeature(PORT_OVER_CURRENT) requests shall not be used by the USB system software and may be treated as no-operation requests by hubs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 455,
+      "bottomRightX": 199,
+      "bottomRightY": 469,
+      "content": "# PORT_RESET",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 482,
+      "bottomRightX": 673,
+      "bottomRightY": 513,
+      "content": "This bit is set to one while the port is in the DSPORT.Resetting state. This bit is set to zero in all other downstream port states.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 524,
+      "bottomRightX": 574,
+      "bottomRightY": 556,
+      "content": "A SetPortFeature(PORT_RESET or BH_PORT_RESET) request will initiate the DSPORT.Resetting state if the conditions in Section 10.3.1.6 are met.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 568,
+      "bottomRightX": 657,
+      "bottomRightY": 600,
+      "content": "The ClearPortFeature(PORT_RESET) request shall not be used by the USB system software and may be treated as a no-operation request by hubs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 611,
+      "bottomRightX": 236,
+      "bottomRightY": 627,
+      "content": "# PORT_LINK_STATE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 639,
+      "bottomRightX": 393,
+      "bottomRightY": 654,
+      "content": "This field reflects the current state of the link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 668,
+      "bottomRightX": 665,
+      "bottomRightY": 698,
+      "content": "The SetPortFeature(PORT_LINK_STATE) request may be issued by the USB system software at any time but will have an effect only as specified in Section 10.16.2.10.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 711,
+      "bottomRightX": 645,
+      "bottomRightY": 741,
+      "content": "The ClearPortFeature(PORT_LINK_STATE) requests shall not be used by the USB System software and may be treated as no-operation requests by hubs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 754,
+      "bottomRightX": 206,
+      "bottomRightY": 769,
+      "content": "# PORT_POWER",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 781,
+      "bottomRightX": 641,
+      "bottomRightY": 814,
+      "content": "This bit reflects the current logical power state of a port. This bit is implemented on all ports whether or not actual port power switching devices are present.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 825,
+      "bottomRightX": 670,
+      "bottomRightY": 871,
+      "content": "While this bit is zero, the port is in the DSPORT-Powered-off state, the DSPORT-Powered-off-detect state, or the DSPORT-Powered-off-reset state. Similarly, anything that causes this port to go to any of these three states will cause this bit to be set to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 884,
+      "bottomRightX": 661,
+      "bottomRightY": 930,
+      "content": "A SetPortFeature(PORT_POWER) will set this bit to one unless both C_HUB_LOCAL_POWER and Local Power Source (in wHubStatus) are set to one in which case the request is treated as a functional no-operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

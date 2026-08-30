@@ -1,0 +1,209 @@
+{
+  "index": 85,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 254,
+      "bottomRightY": 109,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 116,
+      "bottomRightX": 696,
+      "bottomRightY": 259,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence.\n2. The LVS application prompts the test operator to enable and configure the U1 and U2 inactivity timers through USB30CV. CV will set the U1 Timeout field to 7Fh and the U2 Timeout field to 00h.\n3. The LVS waits to receive an LGO_U1 from the PUT.\n4. The LVS transmits an LAU tLinkTurnAround before the PM_LC_TIMER deadline.\n5. The test fails if the PUT does not transmit an LPMA after receiving the LAU.\n6. After the LVS completes this test case, clear the U1/U2 registers through the CV prompt.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 318,
+      "bottomRightX": 506,
+      "bottomRightY": 334,
+      "content": "# TD.7.21 PM_LC_TIMER Timeout Test (Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 338,
+      "bottomRightX": 603,
+      "bottomRightY": 354,
+      "content": "This test verifies that the PUT transitions to Recovery when the PM_LC_TIMER expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 360,
+      "bottomRightX": 234,
+      "bottomRightY": 375,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 382,
+      "bottomRightX": 198,
+      "bottomRightY": 396,
+      "content": "7.2.4.2.1#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 406,
+      "bottomRightX": 198,
+      "bottomRightY": 420,
+      "content": "7.2.4.2.3#6",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 427,
+      "bottomRightX": 179,
+      "bottomRightY": 441,
+      "content": "7.3.4#6",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 451,
+      "bottomRightX": 254,
+      "bottomRightY": 466,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 473,
+      "bottomRightX": 638,
+      "bottomRightY": 556,
+      "content": "1. Do steps 1 to 3 of TD.7.18.\n2. The LVS does not transmit LAU when it receives the LGO_U1.\n3. The test fails if the PUT does not transition to Recovery when the PM_LC_TIMER expires.\n4. After the LVS completes this test case, clear the U1/U2 registers through the CV prompt.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 615,
+      "bottomRightX": 515,
+      "bottomRightY": 633,
+      "content": "# TD.7.22 PM_ENTRY_TIMER Timeout Test (Upstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 635,
+      "bottomRightX": 671,
+      "bottomRightY": 651,
+      "content": "This test verifies that the PUT transitions to a low power state when the PM_ENTRY_TIMER expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 657,
+      "bottomRightX": 234,
+      "bottomRightY": 672,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 680,
+      "bottomRightX": 290,
+      "bottomRightY": 695,
+      "content": "7.2.4.2.1#37.2.4.2.3#8,10,12",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 702,
+      "bottomRightX": 254,
+      "bottomRightY": 719,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 725,
+      "bottomRightX": 705,
+      "bottomRightY": 802,
+      "content": "1. Do steps 1 to 4 of TD.7.23.\n2. The LVS does not transmit LPMA when it receives LAU.\n3. The test fails if the PUT does not transition to U1 when the PM_ENTRY_TIMER expires, the PUT does not transmit LAU, or if the PUT sends any packet or LFPS.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 861,
+      "bottomRightX": 644,
+      "bottomRightY": 878,
+      "content": "# TD.7.23 Accepted Power Management Transaction for U1 Test (Upstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 880,
+      "bottomRightX": 507,
+      "bottomRightY": 895,
+      "content": "This test verifies that the PUT transitions to U1 if it receives LGO_U1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "78",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

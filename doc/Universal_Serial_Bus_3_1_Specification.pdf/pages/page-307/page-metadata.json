@@ -1,0 +1,121 @@
+{
+  "index": 306,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 106,
+      "bottomRightX": 629,
+      "bottomRightY": 124,
+      "content": "Table 8-9. Port Configuration LMP Format (Differences with Port Capability LMP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 128,
+      "bottomRightX": 696,
+      "bottomRightY": 323,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | **SubType.** This field shall be set to *Port Configuration*.  |\n|  7 | 0:9 | **Link speed.** When operating at Gen 1 speed, this field describes the link speed at which the upstream port shall operate. Only one of the bits in this field shall be set in the Port Configuration LMP sent by the link partner configured in the downstream mode. **Bits****Description** 0 If this bit is set to 1, then this device shall operate at 5 Gbps. 6:1 Reserved. When not operating at Gen 1 speed, this field is Reserved and shall be set to zero.  |\n|  80 | 0:16b | **Reserved.**  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-112.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 329,
+      "bottomRightX": 691,
+      "bottomRightY": 379,
+      "content": "A port configured in the downstream mode shall send the Port Configuration LMP to the upstream port. The port sending this LMP shall select only one bit for the **Link Speed** field. The **Link Speed** field shall only be used when the port is operating at Gen 1 speed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 387,
+      "bottomRightX": 686,
+      "bottomRightY": 422,
+      "content": "If a downstream capable port cannot work with its link partner, then the downstream capable port shall signal an error as described in Section 10.16.2.6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 439,
+      "bottomRightX": 439,
+      "bottomRightY": 462,
+      "content": "### 8.4.7 Port Configuration Response",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 467,
+      "bottomRightX": 687,
+      "bottomRightY": 517,
+      "content": "This LMP is sent by the upstream port in response to a Port Configuration. It is used to indicate acceptance or rejection of the Port Configuration LMP. Only the fields that are different from the Port Capability LMP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 524,
+      "bottomRightX": 682,
+      "bottomRightY": 558,
+      "content": "All Enhanced SuperSpeed ports that support upstream port capability shall be capable of sending this LMP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 567,
+      "bottomRightX": 692,
+      "bottomRightY": 601,
+      "content": "If the downstream port does not receive this LMP within tPortConfiguration time, it shall signal an error as described in Section 10.16.2.6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 625,
+      "bottomRightX": 662,
+      "bottomRightY": 752,
+      "content": "![img-196.jpeg](img-196.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-196.jpeg"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 764,
+      "bottomRightX": 561,
+      "bottomRightY": 782,
+      "content": "Figure 8-10. Port Configuration Response LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "8-13",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

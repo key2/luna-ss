@@ -1,0 +1,57 @@
+{
+  "index": 254,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 90,
+      "bottomRightX": 705,
+      "bottomRightY": 735,
+      "content": "|  Error Type | Description/Example | Error Recovery Path | Update Link Error Count? | Update Soft Error Count? (SuperSpeedPlus USB)  |\n| --- | --- | --- | --- | --- |\n|  Training Sequence Error | 1. Timeout from Polling to Rx.Detect or eSS.Disabled without reaching U0. 2. Timeout from Recovery to eSS.Inactive without reaching U0. 3. Timeout from Recovery to Rx.Detect without reaching U0. 4. Timeout from Polling.Active or Polling.Configuration to Polling.PortMatch (SuperSpeedPlus USB only) | Timeout from Recovery to eSS.Inactive requires software intervention. | No | No  |\n|  Invalid link command | Valid link command framing but invalid link command word. | Ignored | No | Yes  |\n|  Missing link command | No valid link command framing is detected. | Delayed transition to Recovery if missing LGOOD_n or LCRD_x or LCRD1_x/LCRD2_x | Yes | No  |\n|  8b/10b Error (SuperSpeed USB) | Detected in the PHY layer | N.A. | No | N.A.  |\n|  128b/132b Soft Error (SuperSpeedPlus USB) | Detected and corrected in PHY layer | Correctable | No | Yes  |\n|  128b/132b Two-bit Error (SuperSpeedPlus USB) | Detectable | Recovery | Yes | No  |\n|  Single Bit SKP/SKPEND Error (SuperSpeedPlus USB) | Detectable | Correctable | No | Yes  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-99.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 755,
+      "bottomRightX": 496,
+      "bottomRightY": 777,
+      "content": "## 7.4 PowerOn Reset and Inband Reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 785,
+      "bottomRightX": 700,
+      "bottomRightY": 888,
+      "content": "There are two categories of reset associated with a link. The first, PowerOn Reset, restores storage elements, registers, or memories to predetermined states when power is applied. Upon PowerOn Reset, the LTSSM (described in Section 7.5) shall enter Rx.Detect. The second, Inband Reset, uses Enhanced SuperSpeed or LFPS signaling to propagate the reset across the link. There are two mechanisms to complete an Inband Reset, Hot Reset and Warm Reset. Upon completion of either a PowerOn Reset or an Inband Reset, the link shall transition to U0 as described in Section 7.4.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "7-43",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "index": 282,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 100,
+      "bottomRightX": 637,
+      "bottomRightY": 291,
+      "content": "![img-182.jpeg](img-182.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-182.jpeg"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 292,
+      "bottomRightX": 561,
+      "bottomRightY": 305,
+      "content": "Note: Transition conditions are illustrative only. Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 605,
+      "topLeftY": 306,
+      "bottomRightX": 628,
+      "bottomRightY": 315,
+      "content": "U-051",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 358,
+      "topLeftY": 329,
+      "bottomRightX": 459,
+      "bottomRightY": 346,
+      "content": "Figure 7-19. U1",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 359,
+      "bottomRightX": 207,
+      "bottomRightY": 380,
+      "content": "### 7.5.8 U2",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 117,
+      "topLeftY": 386,
+      "bottomRightX": 677,
+      "bottomRightY": 421,
+      "content": "U2 is a link state where more power saving opportunities are allowed compare to U1, but with an increased exit latency.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 425,
+      "bottomRightX": 645,
+      "bottomRightY": 442,
+      "content": "U2 does not contain any substates. The transitions to other states are shown in Figure 7-20.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 457,
+      "bottomRightX": 310,
+      "bottomRightY": 475,
+      "content": "#### 7.5.8.1 U2 Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 476,
+      "bottomRightX": 689,
+      "bottomRightY": 670,
+      "content": "- The Enhanced SuperSpeed transmitter DC common mode voltage does not need to be within specification (VTX-CM-DC-ACTIVE-IDLE-DELTA) defined in Table 6-18.\n- The port shall maintain its low-impedance receiver termination (RRX-DC) defined in Table 6-21.\n- When a downstream port is in U2, its upstream port may be in U1 or U2. If the upstream port is in U1, it will send Ping.LFPS periodically. A downstream port shall differentiate between Ping.LFPS and U1 LFPS exit handshake signaling.\n- The port shall enable its U2 exit detect functionality as defined in Section 6.9.2.\n- The port shall enable its LFPS transmitter when it initiates the exit from U2.\n- A downstream port shall perform a far-end receiver termination detection every 100 ms (tU2RxdetDelay).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 685,
+      "bottomRightX": 274,
+      "bottomRightY": 702,
+      "content": "#### 7.5.8.2 Exit from U2",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 704,
+      "bottomRightX": 697,
+      "bottomRightY": 864,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect upon detection of a far-end high-impedance receiver termination (ZRX-HIGH-IMP-DC-POS) defined in Table 6-21.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.\n- A self-powered upstream port shall transition to eSS.Disabled upon not detecting valid Vbus as defined in Section 11.4.5.\n- The port shall transition to Recovery upon successful completion of a LFPS handshake meeting the U2 LFPS exit signaling defined in Section 6.9.2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 697,
+      "bottomRightY": 994,
+      "content": "7-71",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

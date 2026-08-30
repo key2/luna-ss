@@ -1,0 +1,130 @@
+{
+  "index": 150,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 120 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 205,
+      "topLeftY": 92,
+      "bottomRightX": 584,
+      "bottomRightY": 110,
+      "content": "Figure 7-9. Data Packet Payload with CRC-32 and Framing",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 121,
+      "bottomRightX": 598,
+      "bottomRightY": 239,
+      "content": "![img-70.jpeg](img-70.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-70.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 254,
+      "bottomRightX": 330,
+      "bottomRightY": 269,
+      "content": "### 7.2.1.2.2 Data Packet Payload",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 276,
+      "bottomRightX": 645,
+      "bottomRightY": 314,
+      "content": "The DPP section consists of 0 to 1024 bytes of data payload followed by 4 bytes CRC-32.\nCRC-32 protects the data integrity of the data payload. CRC-32 is as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 328,
+      "bottomRightX": 645,
+      "bottomRightY": 482,
+      "content": "- The CRC-32 polynomial shall be 04C1 1DB7h.\n- The CRC-32 Initial value shall be FFFF FFFFh.\n- CRC-32 shall be calculated for all bytes of the DPP, not inclusive of any packet framing symbols.\n- CRC-32 calculation shall begin at byte 0, bit 0 and continue to bit 7 of each of the bytes of the DPP.\n- The remainder of CRC-32 shall be complemented.\n- The residual of CRC-32 shall be C704DD7Bh.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 489,
+      "bottomRightX": 666,
+      "bottomRightY": 520,
+      "content": "Note: The inversion of the CRC-32 remainder adds an offset of FFFF FFFFh that will create a constant CRC-32 residual of C704DD7Bh at the receiver side.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 542,
+      "bottomRightX": 652,
+      "bottomRightY": 572,
+      "content": "Figure 7-10 is an illustration of CRC-32 remainder generation. The output bit ordering is listed in Table 7-2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 251,
+      "topLeftY": 585,
+      "bottomRightX": 535,
+      "bottomRightY": 601,
+      "content": "Figure 7-10. CRC-32 Remainder Generation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 610,
+      "bottomRightX": 679,
+      "bottomRightY": 904,
+      "content": "![img-71.jpeg](img-71.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-71.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "index": 63,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 61,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 92,
+      "bottomRightX": 581,
+      "bottomRightY": 132,
+      "content": "e. LVS waits for the PUT Port Configuration Response LMP.\nf. LVS verifies that the Port Configuration Response LMP is valid.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 137,
+      "bottomRightX": 462,
+      "bottomRightY": 154,
+      "content": "■ If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 161,
+      "bottomRightX": 586,
+      "bottomRightY": 289,
+      "content": "a. LVS waits for the PUT's Port Capability LMP.\nb. LVS verifies that the Port Capability LMP is valid.\nc. LVS transmits its Port Capability LMP.\nd. LVS waits for the PUT to transmit the Port Configuration LMP.\ne. LVS verifies that the Port Configuration LMP is valid.\nf. LVS transmits a Port Configuration Response LMP to the device.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 295,
+      "bottomRightX": 708,
+      "bottomRightY": 416,
+      "content": "5. The test fails if the Port Configuration transaction is not completed before tPortConfiguration expires.\n6. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n7. The Link Initialization Sequence passes if the exchanges are successful, no timeout is detected, no recovery is entered, all packets are successfully received, all credits are restored and the link stays in U0 for at least 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 476,
+      "bottomRightX": 264,
+      "bottomRightY": 495,
+      "content": "### 5.2 Physical Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 509,
+      "bottomRightX": 348,
+      "bottomRightY": 524,
+      "content": "#### TD.6.1 Lane Polarity Inversion Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 528,
+      "bottomRightX": 607,
+      "bottomRightY": 544,
+      "content": "This test verifies that the PUT can successfully handle reception of lane polarity inversion.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 551,
+      "bottomRightX": 234,
+      "bottomRightY": 564,
+      "content": "##### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 573,
+      "bottomRightX": 344,
+      "bottomRightY": 590,
+      "content": "(No Physical Layer assertions defined)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 597,
+      "bottomRightX": 198,
+      "bottomRightY": 610,
+      "content": "7.5.4.4.1#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 619,
+      "bottomRightX": 254,
+      "bottomRightY": 634,
+      "content": "##### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 642,
+      "bottomRightX": 470,
+      "bottomRightY": 702,
+      "content": "1. Invert the LVS TX lane polarity.\n2. Bring the link to U0 using the Link Initialization Sequence.\n3. The test passes if the Link Initialization Sequence passes.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 762,
+      "bottomRightX": 230,
+      "bottomRightY": 776,
+      "content": "#### TD.6.2 SKP Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 780,
+      "bottomRightX": 539,
+      "bottomRightY": 797,
+      "content": "This test verifies that the PUT supports all possible skip (SKP) combinations.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 804,
+      "bottomRightX": 359,
+      "bottomRightY": 818,
+      "content": "Combinations to be tested for Gen 1 PUT:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 826,
+      "bottomRightX": 615,
+      "bottomRightY": 917,
+      "content": "A. Repetition of one skip ordered set followed by 354 symbols (word aligned)\nB. Repetition of one skip ordered set followed by 353 symbols (word misaligned)\nC. Repetition of two skip ordered sets followed by 708 symbols (word aligned)\nD. Repetition of two skip ordered sets followed by 707 symbols (word misaligned)\nE. Repetition of three skip ordered sets followed by 1,062 symbols (word aligned)\nF. Repetition of three skip ordered sets followed by 1,061 symbols (word misaligned)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 935,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "56",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 969,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

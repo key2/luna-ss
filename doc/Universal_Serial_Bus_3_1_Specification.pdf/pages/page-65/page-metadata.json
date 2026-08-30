@@ -1,0 +1,122 @@
+{
+  "index": 64,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 521,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "USB 3.1 Architectural Overview",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 215,
+      "topLeftY": 100,
+      "bottomRightX": 609,
+      "bottomRightY": 349,
+      "content": "![img-5.jpeg](img-5.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-5.jpeg"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 365,
+      "bottomRightX": 652,
+      "bottomRightY": 382,
+      "content": "Figure 3-5. Examples of Supported USB 3.1 USB Physical Device Topologies",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 396,
+      "bottomRightX": 675,
+      "bottomRightY": 431,
+      "content": "An Enhanced SuperSpeed portion of a peripheral device may only be assembled into one of the following configurations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 435,
+      "bottomRightX": 692,
+      "bottomRightY": 471,
+      "content": "- SuperSpeed Only Peripheral Device. This device implementation is comprised of a Gen 1 only PHY and conforms to the SuperSpeed link, protocol and device specifications; see Figure 3-6.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 319,
+      "topLeftY": 488,
+      "bottomRightX": 510,
+      "bottomRightY": 604,
+      "content": "![img-6.jpeg](img-6.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-6.jpeg"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 619,
+      "bottomRightX": 677,
+      "bottomRightY": 637,
+      "content": "Figure 3-6. SuperSpeed Only Enhanced SuperSpeed Peripheral Device Configuration",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 650,
+      "bottomRightX": 684,
+      "bottomRightY": 685,
+      "content": "- Enhanced SuperSpeed Device. This is an attachable device that must implement both SuperSpeed and SuperSpeedPlus device architecture and at all Gen X speeds; see Figure 3-7.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 249,
+      "topLeftY": 706,
+      "bottomRightX": 573,
+      "bottomRightY": 828,
+      "content": "![img-7.jpeg](img-7.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-7.jpeg"
+    },
+    {
+      "topLeftX": 235,
+      "topLeftY": 842,
+      "bottomRightX": 589,
+      "bottomRightY": 860,
+      "content": "Figure 3-7. Enhanced SuperSpeed Device Configuration",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 873,
+      "bottomRightX": 518,
+      "bottomRightY": 891,
+      "content": "For additional information about USB 3.1 Hubs, see section 3.2.6.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "3-13",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

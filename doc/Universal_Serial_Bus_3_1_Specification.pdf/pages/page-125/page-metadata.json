@@ -1,0 +1,133 @@
+{
+  "index": 124,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 103,
+      "bottomRightX": 646,
+      "bottomRightY": 169,
+      "content": "![img-88.jpeg](img-88.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-88.jpeg"
+    },
+    {
+      "topLeftX": 211,
+      "topLeftY": 198,
+      "bottomRightX": 392,
+      "bottomRightY": 236,
+      "content": "STANDARD \"A\" PLUG\n(ALWAYS UPSTREAM TOWARDS\nTHE \"HOST\" SYSTEM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 481,
+      "topLeftY": 198,
+      "bottomRightX": 655,
+      "bottomRightY": 236,
+      "content": "STANDARD \"B\" PLUG\n(ALWAYS DOWNSTREAM\nTOWARDS THE USB DEVICE)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 268,
+      "bottomRightX": 340,
+      "bottomRightY": 348,
+      "content": "![img-89.jpeg](img-89.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-89.jpeg"
+    },
+    {
+      "topLeftX": 471,
+      "topLeftY": 279,
+      "bottomRightX": 546,
+      "bottomRightY": 358,
+      "content": "![img-90.jpeg](img-90.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-90.jpeg"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 426,
+      "bottomRightX": 344,
+      "bottomRightY": 673,
+      "content": "![img-91.jpeg](img-91.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-91.jpeg"
+    },
+    {
+      "topLeftX": 217,
+      "topLeftY": 686,
+      "bottomRightX": 347,
+      "bottomRightY": 700,
+      "content": "STANDARD \"A\" PLUG",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 471,
+      "topLeftY": 432,
+      "bottomRightX": 552,
+      "bottomRightY": 667,
+      "content": "![img-92.jpeg](img-92.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-92.jpeg"
+    },
+    {
+      "topLeftX": 448,
+      "topLeftY": 686,
+      "bottomRightX": 578,
+      "bottomRightY": 700,
+      "content": "STANDARD \"B\" PLUG",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 725,
+      "bottomRightX": 638,
+      "bottomRightY": 742,
+      "content": "Figure 5-16. USB 3.1 Standard-A to USB 3.1 Standard-B Cable Assembly",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 757,
+      "bottomRightX": 684,
+      "bottomRightY": 792,
+      "content": "Table 5-8 defines the wire connections for the USB 3.1 Standard-A to USB 3.1 Standard-B cable assembly.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-37",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

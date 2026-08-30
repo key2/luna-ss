@@ -1,0 +1,84 @@
+{
+  "index": 341,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 311 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 95,
+      "bottomRightX": 584,
+      "bottomRightY": 113,
+      "content": "**Figure 8-68. Sample Pipeline Isochronous IN Transactions**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 130,
+      "bottomRightX": 598,
+      "bottomRightY": 813,
+      "content": "![img-159.jpeg](img-159.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-159.jpeg"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 843,
+      "bottomRightX": 632,
+      "bottomRightY": 860,
+      "content": "**8.12.6.4 Host Flexibility in Performing SuperSpeedPlus Isochronous Transactions**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 863,
+      "bottomRightX": 661,
+      "bottomRightY": 912,
+      "content": "A host targeting an endpoint on a SuperSpeedPlus bus instance may transfer all the DPs to or from an endpoint in bursts of any size as long as the number of outstanding packets is less than or equal to the max burst size advertised by the endpoint in its descriptors.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

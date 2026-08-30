@@ -1,0 +1,39 @@
+{
+  "index": 47,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 904,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  LSB | Least significant byte.  |\n|  LTSSM | Link Training and Status State Machine.  |\n|  message pipe | A bi-directional pipe that transfers data using a request/data/status paradigm. The data has an imposed structure that allows requests to be reliably identified and communicated.  |\n|  MOD | The modulus function MOD(Number, Divisor) returns the remainder portion of dividing the Number by the Divisor.  |\n|  MSb | Most significant bit.  |\n|  MSB | Most significant byte.  |\n|  normative | Required by the specification. See also informative.  |\n|  NRDY | Handshake packet indicating a negative acknowledgment.  |\n|  packet | A bundle of data organized in a group for transmission. Packets typically contain three elements: control information (e.g., source, destination, and length), the data to be transferred, and error detection and correction bits.  |\n|  peripheral | A physical entity that is attached to a USB cable and is currently operating as a \"device\" as defined in this specification.  |\n|  peripheral device | A non-hub USB device that provides one or more functions to the host, such as a mass storage device.  |\n|  persistent | State information (e.g., a descriptor field) that is retained and persistent through entry into and exit from D3.  |\n|  Phase Locked Loop | A circuit that acts as a phase detector to keep an oscillator in phase with an incoming frequency.  |\n|  physical device | A device that has a physical implementation; e.g., speakers, microphones, and CD players.  |\n|  pipe | A logical abstraction representing the association between an endpoint on a device and software on the host. A pipe has several attributes; for example, a pipe may transfer data as streams (stream pipe) or messages (message pipe). See also stream pipe and message pipe.  |\n|  PLL | See Phase Locked Loop.  |\n|  plug | Connector attached to the cable, to be mated with the receptacle  |\n|  port | Point of access to or from a system or circuit. Consists of a Tx port and an Rx port. For the USB, the point where a USB device is attached. See Figure 2-1.  |\n|  PowerOn Reset (POR) | An event to restore a device to its initial state.  |\n|  PPM | Parts Per Million.  |\n|  Precision Time Measurement | A protocol for determining propagation delays through the USB topology with a high degree of accuracy.  |\n|  PRBS | Pseudo-Random Bit Stream.  |\n|  protocol | A specific set of rules, procedures, or conventions relating to format and timing of data transmission between two devices.  |\n|  PTM | Refer to Precision Time Measurement.  |\n|  PTM Clock | A signal source with a period of tlsocTimestampGranularity units, used to advance various PTM time clocks and time sources.  |\n|  PTM Domain | The set of LDM Responders associated with a PTM Root.  |\n|  PTM Local Time Source | The time clock associated with a LDM Requester or Responder which is advanced by PTM Clock transitions.  |\n|  PTM Root | A PTM Root is a LDM Responder and the source of the bus interval boundary for a PTM Domain, i.e. the USB host controller.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-28.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 982,
+      "bottomRightX": 111,
+      "bottomRightY": 994,
+      "content": "2-6",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

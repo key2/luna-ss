@@ -1,0 +1,218 @@
+{
+  "index": 445,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 415 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 95,
+      "bottomRightX": 355,
+      "bottomRightY": 110,
+      "content": "### 10.9.2 Port Transmit State Descriptions",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 116,
+      "bottomRightX": 253,
+      "bottomRightY": 131,
+      "content": "#### 10.9.2.1 Tx IDLE",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 139,
+      "bottomRightX": 634,
+      "bottomRightY": 170,
+      "content": "In the Tx IDLE state, the port transmitter is actively transmitting idle symbols. A port transmitter shall transition to the Tx IDLE state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 183,
+      "bottomRightX": 665,
+      "bottomRightY": 273,
+      "content": "- From the Tx Data, Tx Data Abort, or Tx Header state after packet transmission is completed.\n- From the Tx Link Command state after a link command is transmitted and there are no other link commands awaiting transmission.\n- As the default state when the link enters U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 294,
+      "bottomRightX": 270,
+      "bottomRightY": 308,
+      "content": "#### 10.9.2.2 Tx Header",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 316,
+      "bottomRightX": 623,
+      "bottomRightY": 332,
+      "content": "In the Tx Header state, the port transmitter is actively transmitting a header packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 344,
+      "bottomRightX": 664,
+      "bottomRightY": 360,
+      "content": "A port transmitter shall transition to the Tx Header state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 372,
+      "bottomRightX": 637,
+      "bottomRightY": 403,
+      "content": "- From the Tx IDLE state when there are one or more header packets queued for transmission and there are no link commands queued for transmission.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 425,
+      "bottomRightX": 256,
+      "bottomRightY": 439,
+      "content": "#### 10.9.2.3 Tx Data",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 447,
+      "bottomRightX": 663,
+      "bottomRightY": 493,
+      "content": "In the Tx Data state, the port transmitter is actively transmitting a DPP. After transmitting the DPP, the port transmitter may remove the DPP from hub storage. A hub shall not retransmit a DPP under any circumstances.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 505,
+      "bottomRightX": 667,
+      "bottomRightY": 551,
+      "content": "A port transmitter shall transition to the Tx Data state from the Tx Header state when there is a DPP associated with the DPH that was transmitted. The DPP transmission shall begin immediately after transmission of the last symbol of the DPH.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 564,
+      "bottomRightX": 292,
+      "bottomRightY": 578,
+      "content": "#### 10.9.2.4 Tx Data Abort",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 585,
+      "bottomRightX": 663,
+      "bottomRightY": 632,
+      "content": "In the Tx Data abort state, the port transmitter aborts the normal transmission of a DPP by performing speed specific abort processing (see Section 7.2.1.2.2). The port transmitter then removes the DPP from hub storage.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 644,
+      "bottomRightX": 659,
+      "bottomRightY": 675,
+      "content": "In the case where the hub is simultaneously receiving a DPP into the hub and transmitting the same DPP out of the hub:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 688,
+      "bottomRightX": 669,
+      "bottomRightY": 786,
+      "content": "- An upstream port transmitter shall transition to the Tx Data Abort state from the Tx Data state when the downstream port receiving the DPP detects a speed specific abort indication.\n- A downstream port transmitter shall transition to the Tx Data Abort state from the Tx Data state when the upstream port receiving the DPP detects a speed specific abort indication.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 807,
+      "bottomRightX": 314,
+      "bottomRightY": 822,
+      "content": "#### 10.9.2.5 Tx Link Command",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 830,
+      "bottomRightX": 669,
+      "bottomRightY": 846,
+      "content": "In the Tx Link Command state, the port transmitter is actively transmitting a link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 858,
+      "bottomRightX": 644,
+      "bottomRightY": 888,
+      "content": "A port transmitter shall transition to the Tx Link Command state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 895,
+      "bottomRightX": 637,
+      "bottomRightY": 925,
+      "content": "- From the Tx IDLE state when there are one or more link commands queued for transmission.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

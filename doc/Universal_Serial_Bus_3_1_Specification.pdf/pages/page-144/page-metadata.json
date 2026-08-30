@@ -1,0 +1,85 @@
+{
+  "index": 143,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 100,
+      "bottomRightX": 652,
+      "bottomRightY": 484,
+      "content": "![img-112.jpeg](img-112.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-112.jpeg"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 498,
+      "bottomRightX": 655,
+      "bottomRightY": 514,
+      "content": "Figure 5-28. Differential-to-Common-Mode Conversion Requirement for Gen 2",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 527,
+      "bottomRightX": 409,
+      "bottomRightY": 547,
+      "content": "### 5.6.1.3.2.7 Cable Shielding Effectiveness",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 554,
+      "bottomRightX": 689,
+      "bottomRightY": 640,
+      "content": "The cable assembly shielding effectiveness (SE) test measures the radio frequency interference (RFI) level from the cable assembly. To perform the measurement, the cable assembly shall be installed in the cable SE test fixture as shown in Figure 5-29. The coupling factors from the cable to the fixture are characterized. The Cable SE test fixtures and specification values are under development and are to be included in future updates to this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 149,
+      "topLeftY": 645,
+      "bottomRightX": 671,
+      "bottomRightY": 752,
+      "content": "![img-113.jpeg](img-113.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-113.jpeg"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 763,
+      "bottomRightX": 622,
+      "bottomRightY": 780,
+      "content": "Figure 5-29. Set Up For Cable SE Measurement (subject to change)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-56",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

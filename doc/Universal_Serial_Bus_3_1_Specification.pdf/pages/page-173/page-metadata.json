@@ -1,0 +1,169 @@
+{
+  "index": 172,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 337,
+      "bottomRightY": 108,
+      "content": "Table 6-6. Gen 2 TS1 Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 111,
+      "bottomRightX": 664,
+      "bottomRightY": 231,
+      "content": "|  Symbol Number | Symbol | Description  |\n| --- | --- | --- |\n|  0-3 | 1Eh | TS1 Identifier  |\n|  4 | 00h | Reserved  |\n|  5 | See Table 6-5 | Link Functionality  |\n|  6-13 | 1Eh | TS1 Identifier  |\n|  14-15 | TS1 Identifier (1Eh) or a DC Balance Symbol | TS1 Identifier or DC balance  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-59.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 243,
+      "bottomRightX": 337,
+      "bottomRightY": 259,
+      "content": "Table 6-7. Gen 2 TS2 Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 263,
+      "bottomRightX": 664,
+      "bottomRightY": 383,
+      "content": "|  Symbol Number | Symbol | Description  |\n| --- | --- | --- |\n|  0-3 | 2Dh | TS2 Identifier  |\n|  4 | 00h | Reserved  |\n|  5 | See Table 6-5 | Link Functionality  |\n|  6-13 | 2Dh | TS2 Identifier  |\n|  14-15 | TS2 Identifier (2Dh) or a DC Balance Symbol | TS2 Identifier or DC balance  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-60.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 395,
+      "bottomRightX": 349,
+      "bottomRightY": 411,
+      "content": "Table 6-8. Gen 2 TSEQ Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 415,
+      "bottomRightX": 664,
+      "bottomRightY": 516,
+      "content": "|  Symbol Number | Symbol | Description  |\n| --- | --- | --- |\n|  0-3 | 87h | TSEQ Identifier  |\n|  4-5 | 00h | Reserved  |\n|  6-13 | 87h | TSEQ Identifier  |\n|  14-15 | TSEQ Identifier (87h) or a DC Balance Symbol | TSEQ Identifier or DC balance  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-61.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 528,
+      "bottomRightX": 349,
+      "bottomRightY": 544,
+      "content": "Table 6-9. Gen 2 SYNC Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 548,
+      "bottomRightX": 413,
+      "bottomRightY": 611,
+      "content": "|  Symbol Number | Symbol | Description  |\n| --- | --- | --- |\n|  0,2,4,6,8,10,12,14 | 00h | Symbol 0 SYNC identifier  |\n|  1,3,5,7,9,11,13,15 | FFh |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-62.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 624,
+      "bottomRightX": 307,
+      "bottomRightY": 639,
+      "content": "Table 6-10. SDS Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 643,
+      "bottomRightX": 419,
+      "bottomRightY": 706,
+      "content": "|  Symbol Number | Symbol | Description  |\n| --- | --- | --- |\n|  0 | E1h | SDS Ordered Set Identifier  |\n|  2 through 15 | 55h | Body of SDS Ordered Set  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-63.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 711,
+      "bottomRightX": 485,
+      "bottomRightY": 730,
+      "content": "### 6.4.1.2.3 Training Control Bits for Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 737,
+      "bottomRightX": 657,
+      "bottomRightY": 772,
+      "content": "The training control bits are found in the Link Functionality symbol within the TS1 and TS2 ordered sets. They are described in Table 6-5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 780,
+      "bottomRightX": 680,
+      "bottomRightY": 832,
+      "content": "Bit 0 and bit 2 of the link configuration field shall not be set to 1 simultaneously. If a receiver detects this condition in the received Link configuration field, then all of the training control bits shall be ignored.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 841,
+      "bottomRightX": 537,
+      "bottomRightY": 860,
+      "content": "### 6.4.1.2.4 Informative Block Alignment for Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 867,
+      "bottomRightX": 692,
+      "bottomRightY": 903,
+      "content": "During Link training, the 132 bits of the SYNC block are a unique bit pattern that Receivers use to determine the location of the Block Headers in the received bit stream. Conceptually, Receivers",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "6-17",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "index": 183,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 402,
+      "bottomRightY": 115,
+      "content": "### 6.6.2 Voltage Level Definitions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 119,
+      "bottomRightX": 692,
+      "bottomRightY": 170,
+      "content": "Referring to Figure 6-17, the differential voltage, $V_{DIFF}$, is the voltage on Txp (Rxp at the receiver) with respect to Txn (Rxn at the receiver). $V_{DIFF}$ is the same voltage as the swing on the single signal of one conductor. The differential voltage is",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 179,
+      "bottomRightX": 291,
+      "bottomRightY": 197,
+      "content": "(4) $V_{DIFF} = Txp - Txn$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 203,
+      "bottomRightX": 684,
+      "bottomRightY": 238,
+      "content": "The total differential voltage swing is the peak to peak differential voltage, $V_{DIFF-PP}$. This is twice the differential voltage. The peak to peak differential voltage is",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 247,
+      "bottomRightX": 290,
+      "bottomRightY": 264,
+      "content": "(5) $V_{DIFF-PP} = 2 * V_{DIFF}$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 273,
+      "bottomRightX": 695,
+      "bottomRightY": 307,
+      "content": "The Common Mode Voltage ($V_{CM}$) is the average voltage present on the same differential pair with respect to ground. This is measured, with respect to ground, as",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 315,
+      "bottomRightX": 311,
+      "bottomRightY": 334,
+      "content": "(6) $V_{CM} = (Txp + Txn) / 2.$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 340,
+      "bottomRightX": 676,
+      "bottomRightY": 391,
+      "content": "DC is defined as all frequency components below $F_{DC} = 30$ kHz. AC is defined as all frequency components at or above $F_{DC} = 30$ kHz. These definitions pertain to all voltage and current specifications.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 400,
+      "bottomRightX": 692,
+      "bottomRightY": 518,
+      "content": "An example waveform is shown in Figure 6-17. In this waveform, the peak-to-peak differential voltage, $V_{DIFF-PP}$ is 800 mV. The differential voltage, $V_{DIFF}$, is 400 mVPP. Note that while the center crossing point for both Txp and Txn is shown at 300 mV, the corresponding crossover point for the differential voltage is at 0.0 V. The center crossing point at 300 mV is also the common mode voltage, $V_{CM}$. Note these waveforms include de-emphasis. The actual amount of de-emphasis can vary depending on the transmitter setting according to the allowed ranges in Table 6-17.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 587,
+      "bottomRightX": 637,
+      "bottomRightY": 863,
+      "content": "![img-140.jpeg](img-140.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-140.jpeg"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 878,
+      "bottomRightX": 591,
+      "bottomRightY": 895,
+      "content": "Figure 6-17. Single-ended and Differential Voltage Levels",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "6-28",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

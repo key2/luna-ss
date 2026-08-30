@@ -1,0 +1,173 @@
+{
+  "index": 34,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 380,
+      "topLeftY": 48,
+      "bottomRightX": 409,
+      "bottomRightY": 63,
+      "content": "- 4 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 95,
+      "bottomRightX": 188,
+      "bottomRightY": 110,
+      "content": "### 1.8.2.3 N/A",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 116,
+      "bottomRightX": 647,
+      "bottomRightY": 148,
+      "content": "N/A is a keyword that indicates that a field or value is not applicable and has no defined value and shall not be checked or used by the recipient.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 161,
+      "bottomRightX": 226,
+      "bottomRightY": 176,
+      "content": "### 1.8.2.4 Normative",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 182,
+      "bottomRightX": 644,
+      "bottomRightY": 199,
+      "content": "Normative is a keyword that describes features that are mandated by this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 211,
+      "bottomRightX": 215,
+      "bottomRightY": 226,
+      "content": "### 1.8.2.5 Optional",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 232,
+      "bottomRightX": 668,
+      "bottomRightY": 279,
+      "content": "Optional is a keyword that describes features not mandated by this specification. However, if an optional feature is implemented, the feature shall be implemented as defined by this specification (optional normative).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 291,
+      "bottomRightX": 218,
+      "bottomRightY": 306,
+      "content": "### 1.8.2.6 Reserved",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 312,
+      "bottomRightX": 678,
+      "bottomRightY": 404,
+      "content": "Reserved is a keyword indicating reserved bits, bytes, words, fields, and code values that are set-aside for future standardization. The use and interpretation of these may be specified by future extensions to this specification and, unless otherwise stated, shall not be utilized or adapted by vendor implementation. A reserved bit, byte, work or field shall be set to zero by the sender and shall be ignored by the receiver. Reserved field values shall not be sent by the sender and, if received, shall be ignored by the receiver.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 417,
+      "bottomRightX": 193,
+      "bottomRightY": 432,
+      "content": "### 1.8.2.7 Shall",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 438,
+      "bottomRightX": 621,
+      "bottomRightY": 484,
+      "content": "Shall is a keyword indicating a mandatory (normative) requirement. Designers are mandated to implement all such requirements to ensure interoperability with other compliant devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 497,
+      "bottomRightX": 204,
+      "bottomRightY": 513,
+      "content": "### 1.8.2.8 Should",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 518,
+      "bottomRightX": 668,
+      "bottomRightY": 551,
+      "content": "Should is a keyword indicating flexibility of choice with a preferred alternative. Equivalent to the phrase “it is recommended that”.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 563,
+      "bottomRightX": 230,
+      "bottomRightY": 579,
+      "content": "### 1.8.2.9 Numbering",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 584,
+      "bottomRightX": 668,
+      "bottomRightY": 645,
+      "content": "Numbers that are immediately followed by a lowercase “b” (e.g., 01b) are binary values. Numbers that are immediately followed by an uppercase “B” are byte values. Numbers that are immediately followed by a lowercase “h” (e.g., 3Ah) are hexadecimal values. Numbers not immediately followed by either a “b”, “B”, or “h” are decimal values.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

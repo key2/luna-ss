@@ -1,0 +1,128 @@
+{
+  "index": 267,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 301,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 660,
+      "bottomRightY": 144,
+      "content": "- A downstream port shall implement a counter (cPollingTimeout) to count the number of consecutive transition events from any Polling substate to Rx.Detect due to timeout. The operation of cPollingTimeout shall adhere to the following rules.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 146,
+      "bottomRightX": 533,
+      "bottomRightY": 162,
+      "content": "1. It shall be reset to zero upon any of the following conditions.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 165,
+      "bottomRightX": 671,
+      "bottomRightY": 251,
+      "content": "i. PowerOn Reset.\nii. Warm Reset on the upstream port.\niii. Upon exit to eSS.Disabled, or eSS.Inactive, or U0.\niv. Upon detection of the removal of far-end low-impedance receiver termination (R_RX-DC) defined in Table 6-21.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 253,
+      "bottomRightX": 673,
+      "bottomRightY": 287,
+      "content": "2. It shall be incremented by one or saturated at two if a transition to Rx.Detect is due to timeout in any of the Polling substates.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 300,
+      "bottomRightX": 283,
+      "bottomRightY": 319,
+      "content": "### 7.5.4.3 Polling.LFPS",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 325,
+      "bottomRightX": 692,
+      "bottomRightY": 375,
+      "content": "Polling.LFPS is a substate designed to establish the PHY's DC operating point, and to synchronize the operations between the two link partners after exiting from Rx.Detect. This is also a substate for a port to identify itself based on various Polling.LFPS signatures.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 381,
+      "bottomRightX": 392,
+      "bottomRightY": 400,
+      "content": "#### 7.5.4.3.1 Polling.LFPS Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 404,
+      "bottomRightX": 687,
+      "bottomRightY": 719,
+      "content": "- Upon entry, a LFPS receiver shall be enabled to receive the Polling.LFPS signals defined in Section 6.9.1.\n- Upon entry, a port shall establish its LFPS operating condition within 80 μs.\n- A downstream port shall disable its transition path to Compliance Mode upon PowerOn Reset or Warm Reset.\n- A downstream port shall enable its transition path to Compliance Mode, if directed.\n- An upstream port always has its transition path to Compliance Mode enabled upon PowerOn Reset.\n- A port in SuperSpeed operation shall transmit Polling.LFPS.\n- An upstream port in SuperSpeedPlus operation shall transmit SCD1 defined in Table 6-32. If no signature of SCD1 is found in sixteen consecutive Polling.LFPS received, the port shall switch to SuperSpeed operation and transmit Polling.LFPS instead of SCD1.\n- A downstream port in SuperSpeedPlus operation shall transmit SCD1 defined in Table 6-32 if Compliance Mode is disabled. If no signature of SCD1 is found in sixteen consecutive Polling.LFPS received, the port shall switch to SuperSpeed operation and transmit Polling.LFPS instead of SCD1.\n- A downstream port in SuperSpeedPlus operation shall transmit SCD2 if Compliance Mode is enabled.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 157,
+      "topLeftY": 722,
+      "bottomRightX": 677,
+      "bottomRightY": 756,
+      "content": "Note: In case a retimer is connected to the downstream port, SCD2 is used for the retimer to enable Compliance Mode. Refer to Appendix E for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 757,
+      "bottomRightX": 696,
+      "bottomRightY": 844,
+      "content": "- A port in SuperSpeedPlus operation shall implement a 60-us timer (tPollingSCDLFPSTimeout) to monitor the absence of LFPS signal after the completion of SuperSpeed Polling.LFPS handshake.\n- A port in SuperSpeedPlus operation shall be ready for SuperSpeed operation if it has detected that its link partner operates at SuperSpeed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 157,
+      "topLeftY": 847,
+      "bottomRightX": 661,
+      "bottomRightY": 899,
+      "content": "Note: There is no time allocated for a SuperSpeedPlus port to re-configure itself for SuperSpeed operation upon detection of its link partner operating at SuperSpeed. A SuperSpeedPlus port shall switch to SuperSpeed operation as quickly as possible for its",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "7-56",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

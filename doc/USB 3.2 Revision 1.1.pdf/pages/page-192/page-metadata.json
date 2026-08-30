@@ -1,0 +1,112 @@
+{
+  "index": 191,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 161 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 103,
+      "topLeftY": 91,
+      "bottomRightX": 687,
+      "bottomRightY": 220,
+      "content": "|  Name | Initial State | Timeout to Next State | Timeout Values  |\n| --- | --- | --- | --- |\n|  Notes: 1. Implementations are recommended to consider system states when choosing when to use a larger value of the tRxDetectQuietTimeoutDFP timer. Using a smaller value when the system is active and a larger value when the system is in a standby/sleep or other idle state allows for higher responsiveness to connect events during active states while enabling power savings in an idle system state. 2. Upon Polling timeout, a port shall transition to different states. Refer to Section 7.5.4.3 for details. 3. The accuracy of U2 inactivity timer is specified in Section 10.4.1.  |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-92.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 241,
+      "bottomRightX": 668,
+      "bottomRightY": 288,
+      "content": "All state machines diagrams have descriptions for transition conditions. These descriptions are informative only. The exact implementation of the state transitions shall follow the description in each section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 155,
+      "topLeftY": 299,
+      "bottomRightX": 632,
+      "bottomRightY": 315,
+      "content": "Figure 7-14. State Diagram of the Link Training and Status State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 325,
+      "bottomRightX": 667,
+      "bottomRightY": 811,
+      "content": "![img-76.jpeg](img-76.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-76.jpeg"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 818,
+      "bottomRightX": 481,
+      "bottomRightY": 832,
+      "content": "Note: Transition conditions are illustrative only. Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 866,
+      "bottomRightX": 240,
+      "bottomRightY": 880,
+      "content": "### 7.5.1 eSS.Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 888,
+      "bottomRightX": 662,
+      "bottomRightY": 920,
+      "content": "eSS.Disabled is a state with a port's low-impedance receiver termination removed. It is a state where a port's Enhanced SuperSpeed connectivity is disabled. Refer to Section 10.18",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

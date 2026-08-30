@@ -1,0 +1,111 @@
+{
+  "index": 218,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 331,
+      "bottomRightY": 109,
+      "content": "### 7.2.1.1.3 Link Control Word",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 115,
+      "bottomRightX": 681,
+      "bottomRightY": 148,
+      "content": "The 2-byte Link Control Word is formatted as shown in Figure 7-7. It is used for both link level and end-to-end flow control.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 153,
+      "bottomRightX": 698,
+      "bottomRightY": 187,
+      "content": "The Link Control Word shall contain a 3-bit Header Sequence Number, 3-bit Reserved, a 3-bit Hub Depth Index, a Delayed bit (DL), a Deferred bit (DF), and a 5-bit CRC-5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 218,
+      "topLeftY": 208,
+      "bottomRightX": 607,
+      "bottomRightY": 414,
+      "content": "![img-169.jpeg](img-169.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-169.jpeg"
+    },
+    {
+      "topLeftX": 317,
+      "topLeftY": 421,
+      "bottomRightX": 508,
+      "bottomRightY": 438,
+      "content": "Figure 7-7. Link Control Word",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 453,
+      "bottomRightX": 666,
+      "bottomRightY": 485,
+      "content": "CRC-5 protects the data integrity of the Link Control Word. The implementation of CRC-5 is defined below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 492,
+      "bottomRightX": 698,
+      "bottomRightY": 616,
+      "content": "- The CRC-5 polynomial shall be 00101b.\n- The Initial value for the CRC-5 shall be 11111b.\n- CRC-5 is calculated for the remaining 11 bits of the Link Control Word.\n- CRC-5 calculation shall begin at bit 0 and proceed to bit 10.\n- The remainder of CRC-5 shall be complemented, with the MSb mapped to bit 11, the next MSb mapped to bit 12, and so on, until the LSb mapped to bit 15 of the Link Control Word.\n- The residual of CRC-5 shall be 01100b.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 621,
+      "bottomRightX": 655,
+      "bottomRightY": 653,
+      "content": "Note: The inversion of the CRC-5 remainder adds an offset of 11111b that will create a constant CRC-5 residual of 01100b at the receiver side.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 658,
+      "bottomRightX": 473,
+      "bottomRightY": 676,
+      "content": "Figure 7-8 is an illustration of CRC-5 remainder generation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "7-7",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

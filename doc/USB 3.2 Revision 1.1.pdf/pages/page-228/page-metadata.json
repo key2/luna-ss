@@ -1,0 +1,128 @@
+{
+  "index": 227,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 197 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 92,
+      "bottomRightX": 525,
+      "bottomRightY": 145,
+      "content": "1. Either the Ux_EXIT_TIMER or the 6 ms timer (tRecoveryConfigurationTimeout) times out.\n2. The transition to Recovery is to attempt a Hot Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 152,
+      "bottomRightX": 667,
+      "bottomRightY": 212,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 233,
+      "bottomRightX": 290,
+      "bottomRightY": 249,
+      "content": "### 7.5.10.5 Recovery.Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 256,
+      "bottomRightX": 660,
+      "bottomRightY": 287,
+      "content": "Recovery.Idle is a substate where a port decodes the link configuration field defined in the TS2 ordered set received during Recovery.Configuration and determines the next state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 299,
+      "bottomRightX": 375,
+      "bottomRightY": 314,
+      "content": "#### 7.5.10.5.1 Recovery.Idle Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 321,
+      "bottomRightX": 668,
+      "bottomRightY": 614,
+      "content": "- A 2 ms timer (tRecoveryIdleTimeout) shall be started upon entry to this substate. Note that in x2 operation, the timer shall continue until each lane has met the exit conditions to the next designated link state.\n- The port in Gen 1 operation shall transmit Idle Symbols if the next state is U0. The port may transmit Idle Symbols if the next state is Loopback or Hot Reset.\n- The port shall decode the link configuration field defined in the TS2 ordered sets received during Recovery.Configuration and proceed to the next state.\n- The port in Gen 1 operation shall enable the scrambling by default if the Disabling Scrambling bit is not asserted in the TS2 ordered set received in Recovery.Configuration.\n- The port in Gen 1 operation shall disable the scrambling if directed, or if the Disabling Scrambling bit is asserted in the TS2 ordered set received in Recovery.Configuration.\n- The port in Gen 2 operation shall transmit a single SDS ordered set on each negotiated lane before the start of the data blocks with Idle Symbols if the next state is U0. The port may transmit SDS ordered set if the next state is Loopback or Hot Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 622,
+      "bottomRightX": 649,
+      "bottomRightY": 651,
+      "content": "Note: Under situation where a SKP ordered set is also scheduled at the same time with SDS ordered set, SKP ordered set shall be transmitted first.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 658,
+      "bottomRightX": 670,
+      "bottomRightY": 833,
+      "content": "- In x2 operation, the lane-to-lane de-skew shall be completed upon receiving SDS on each negotiated lane.\n- The port in Gen 2 operation shall disable the scrambling upon completion of SDS ordered set transmission if directed, or if the Disabling Scrambling bit is asserted in the TS2 ordered set received in Recovery.Configuration.\n- The port in Gen 2 operation may ignore SDS ordered set if corrupted and continue to process the following data block. The port may optionally choose to recover SDS ordered set if error is detected.\n- The port shall be able to receive the Header Sequence Number Advertisement from its link partner.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 839,
+      "bottomRightX": 672,
+      "bottomRightY": 885,
+      "content": "Note: The exit time difference between the two ports will result in one port entering U0 first and starting the Header Sequence Number Advertisement while the other port is still in Recovery.Idle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

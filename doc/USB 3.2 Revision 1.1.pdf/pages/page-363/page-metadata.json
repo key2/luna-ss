@@ -1,0 +1,85 @@
+{
+  "index": 362,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 332 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 270,
+      "topLeftY": 90,
+      "bottomRightX": 519,
+      "bottomRightY": 450,
+      "content": "|  SET_INTERFACE | 11  |\n| --- | --- |\n|  SYNCH_FRAME | 12  |\n|  SET_ENCRYPTION | 13  |\n|  GET_ENCRYPTION | 14  |\n|  SET_HANDSHAKE | 15  |\n|  GET_HANDSHAKE | 16  |\n|  SET_CONNECTION | 17  |\n|  SET_SECURITY_DATA | 18  |\n|  GET_SECURITY_DATA | 19  |\n|  SET_WUSB_DATA | 20  |\n|  LOOPBACK_DATA_WRITE | 21  |\n|  LOOPBACK_DATA_READ | 22  |\n|  SET_INTERFACE_DS | 23  |\n|  GET_FW_STATUS | 26  |\n|  SET_FW_STATUS | 27  |\n|  SET_SEL | 48  |\n|  SET_ISOCH_DELAY | 49  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-151.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 469,
+      "bottomRightX": 673,
+      "bottomRightY": 548,
+      "content": "Descriptor types are used to determine the type of descriptor being queried from a device or being set to a device. The existing standard descriptor types are listed in Table 9-6. All these values shall not be redefined and used in any USB class specification. In addition, this specification reserves the highest bit (Bit 7) of the descriptor type as a value that shall only be used by base USB specifications when defining new descriptor types.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 301,
+      "topLeftY": 558,
+      "bottomRightX": 487,
+      "bottomRightY": 576,
+      "content": "Table 9-6. Descriptor Types",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 584,
+      "bottomRightX": 613,
+      "bottomRightY": 924,
+      "content": "|  Descriptor Types | Value  |\n| --- | --- |\n|  DEVICE | 1  |\n|  CONFIGURATION | 2  |\n|  STRING | 3  |\n|  INTERFACE | 4  |\n|  ENDPOINT | 5  |\n|  Reserved | 6  |\n|  Reserved | 7  |\n|  INTERFACE_POWER\\( ^{1} \\) | 8  |\n|  OTG | 9  |\n|  DEBUG | 10  |\n|  INTERFACE_ASSOCIATION | 11  |\n|  BOS | 15  |\n|  DEVICE CAPABILITY | 16  |\n|  SUPERSPEED_USB_ENDPOINT_COMPANION | 48  |\n|  SUPERSPEEDPLUS_ISOCHRONOUS_ENDPOINT_COMPANION | 49  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-152.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

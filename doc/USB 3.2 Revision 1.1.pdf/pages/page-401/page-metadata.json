@@ -1,0 +1,130 @@
+{
+  "index": 400,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 370 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 92,
+      "bottomRightX": 634,
+      "bottomRightY": 110,
+      "content": "Table 9-29. SuperSpeedPlus Isochronous Endpoint Companion Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 119,
+      "bottomRightX": 679,
+      "bottomRightY": 369,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of this descriptor in bytes  |\n|  1 | bDescriptorType | 1 | Constant | SUPERSPEEDPLUS_ISOCHRONOUS_ENDPOINT_COMPANION Descriptor Type  |\n|  2 | wReserved | 2 | Number | Reserved. Shall be set to zero.  |\n|  4 | dwBytesPerInterval | 4 | Number | The total number of bytes this endpoint will transfer every service interval (SI). This value is used to reserve the bus time in the schedule, required for the frame data payloads per SI. The pipe may, on an ongoing basis, actually use less bandwidth than that reserved. The device reports, if necessary, the actual bandwidth used via its normal, non-USB defined mechanisms. The value in this field shall be less than (MAX_ISO_BYTES_PER_BI_GEN1 x Number of Lanes x Lane Speed Mantissa/LANE_SPEED_MANTISSA_GEN1)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-204.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 389,
+      "bottomRightX": 198,
+      "bottomRightY": 404,
+      "content": "### 9.6.9 String",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 411,
+      "bottomRightX": 657,
+      "bottomRightY": 458,
+      "content": "String descriptors are optional. As noted previously, if a device does not support string descriptors, all references to string descriptors within device, configuration, and interface descriptors shall be reset to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 469,
+      "bottomRightX": 668,
+      "bottomRightY": 623,
+      "content": "String descriptors use UNICODE UTF16LE encodings as defined by The Unicode Standard, Worldwide Character Encoding, Version 5.0, The Unicode Consortium, Addison-Wesley Publishing Company, Reading, Massachusetts (http://www.unicode.org). The strings in a device may support multiple languages. When requesting a string descriptor, the requester specifies the desired language using a 16-bit language ID (LANGID) defined by the USB-IF. The list of currently defined USB LANGIDs can be found at http://www.usb.org/developers/docs.html. String index zero for all languages returns a string descriptor that contains an array of 2-byte LANGID codes supported by the device. Table 9-30 shows the LANGID code array. A device may omit all string descriptors. Devices that omit all string descriptors shall not return an array of LANGID codes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 633,
+      "bottomRightX": 633,
+      "bottomRightY": 666,
+      "content": "The array of LANGID codes is not NULL-terminated. The size of the array (in bytes) is computed by subtracting two from the value of the first byte of the descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 676,
+      "bottomRightX": 659,
+      "bottomRightY": 694,
+      "content": "Table 9-30. String Descriptor Zero, Specifying Languages Supported by the Device",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 702,
+      "bottomRightX": 676,
+      "bottomRightY": 833,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | N+2 | Size of this descriptor in bytes  |\n|  1 | bDescriptorType | 1 | Constant | STRING Descriptor Type  |\n|  2 | wLANGID[0] | 2 | Number | LANGID code zero  |\n|  ... | ... | ... | ... | ...  |\n|  N | wLANGID[x] | 2 | Number | LANGID code x  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-205.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 852,
+      "bottomRightX": 659,
+      "bottomRightY": 885,
+      "content": "The UNICODE string descriptor (shown in Table 9-31) is not NULL-terminated. The string length is computed by subtracting two from the value of the first byte of the descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

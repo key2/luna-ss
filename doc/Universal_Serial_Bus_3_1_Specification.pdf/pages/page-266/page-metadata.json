@@ -1,0 +1,128 @@
+{
+  "index": 265,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 691,
+      "bottomRightY": 161,
+      "content": "- An upstream port of a hub shall transition to Rx.Detect.Quiet when a far-end low-impedance receiver termination (R_RX-DC) defined in Table 6-21 is not detected.\n- An upstream port of a peripheral device shall transition to Rx.Detect.Quiet when the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 163,
+      "bottomRightX": 663,
+      "bottomRightY": 215,
+      "content": "1. A far-end low-impedance receiver termination (R_RX-DC) defined in Table 6-21 is not detected.\n2. The number of far-end receiver termination detection events is less than eight.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 217,
+      "bottomRightX": 674,
+      "bottomRightY": 250,
+      "content": "- An upstream port of a peripheral device shall transition to eSS.Disabled when the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 252,
+      "bottomRightX": 663,
+      "bottomRightY": 304,
+      "content": "1. A far-end low-impedance receiver termination (R_RX-DC) defined in Table 6-21 is not detected.\n2. The number of far-end receiver termination detection events has reached eight.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 306,
+      "bottomRightX": 683,
+      "bottomRightY": 355,
+      "content": "Note: This limit on the number of the far-end receiver termination detections is to allow an Enhanced SuperSpeed peripheral device on a legacy platform to transition to USB 2.0 after 80 ms.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 372,
+      "bottomRightX": 302,
+      "bottomRightY": 389,
+      "content": "### 7.5.3.7 Rx.Detect.Quiet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 395,
+      "bottomRightX": 679,
+      "bottomRightY": 412,
+      "content": "Rx.Detect.Quiet is a substate where a port has disabled its far-end receiver termination detection.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 419,
+      "bottomRightX": 410,
+      "bottomRightY": 436,
+      "content": "#### 7.5.3.7.1 Rx.Detect.Quiet Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 440,
+      "bottomRightX": 697,
+      "bottomRightY": 527,
+      "content": "- The far-end receiver termination detection shall be disabled.\n- A downstream port shall start a timer (tRxDetectQuietTimeoutDFP) with a timeout between 12ms and 120ms upon entry to the substate.\n- An upstream port shall start a timer (tRxDetectQuietTimeoutUFP) with a timeout of 12ms upon entry to the substate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 535,
+      "bottomRightX": 377,
+      "bottomRightY": 551,
+      "content": "#### 7.5.3.7.2 Exit from Rx.Detect.Quiet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 557,
+      "bottomRightX": 602,
+      "bottomRightY": 645,
+      "content": "- A downstream port shall transition to Rx.Detect.Active upon the timeout of the tRxDetectQuietTimeoutDFP timer (12 ms to 120ms).\n- An upstream port shall transition to Rx.Detect.Active upon the timeout of the tRxDetectQuietTimeoutUFP timer (12 ms).\n- A downstream port shall transition to eSS.Disabled when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "7-54",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "index": 8,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 35,
+      "bottomRightX": 169,
+      "bottomRightY": 48,
+      "content": "1 About This Guide",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 476,
+      "topLeftY": 35,
+      "bottomRightX": 646,
+      "bottomRightY": 49,
+      "content": "1.3 Terminology and Abbreviations",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 95,
+      "bottomRightX": 423,
+      "bottomRightY": 121,
+      "content": "### 1.3 Terminology and Abbreviations",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 136,
+      "bottomRightX": 643,
+      "bottomRightY": 171,
+      "content": "The terminology and abbreviations used in this manual are as shown in Table 1-1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 181,
+      "bottomRightX": 416,
+      "bottomRightY": 198,
+      "content": "Table 1-1 Terminology and Abbreviations",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 201,
+      "bottomRightX": 653,
+      "bottomRightY": 430,
+      "content": "|  Terminology and Abbreviations | Meaning  |\n| --- | --- |\n|  DDR | Double Data Rate  |\n|  FPGA | Field Programmable Gate Array  |\n|  GPIO | Gowin Programmable Input/Output  |\n|  I2C | Inter-Integrated Circuit  |\n|  JTAG | Joint Test Action Group  |\n|  LDO | Low Dropout Regulator  |\n|  MIPI | Mobile Industry Processor Interface  |\n|  SDI | Serial Digital Interface  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-2.md"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 444,
+      "bottomRightX": 326,
+      "bottomRightY": 471,
+      "content": "### 1.4 Support and Feedback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 484,
+      "bottomRightX": 650,
+      "bottomRightY": 541,
+      "content": "Gowin Semiconductor provides customers with comprehensive technical support. If you have any questions, comments, or suggestions, please feel free to contact us directly using the information provided below.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 553,
+      "bottomRightX": 396,
+      "bottomRightY": 571,
+      "content": "Website: www.gowinsemi.com",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 582,
+      "bottomRightX": 414,
+      "bottomRightY": 600,
+      "content": "E-mail: support@gowinsemi.com",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 617,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "2(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

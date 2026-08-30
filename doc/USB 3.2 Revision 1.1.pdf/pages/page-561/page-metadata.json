@@ -1,0 +1,147 @@
+{
+  "index": 560,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 530 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 655,
+      "bottomRightY": 167,
+      "content": "- It shall maintain its low-impedance receiver termination (R_RX-DC).\n- It shall perform the far-end receiver termination detection upon entry to the state and in at least every 100 ms tSLRxdetDelay interval afterwards, regardless its orientation towards a hub DPF or device UFP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 181,
+      "bottomRightX": 542,
+      "bottomRightY": 197,
+      "content": "The re-driver shall perform the state transition based on the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 210,
+      "bottomRightX": 666,
+      "bottomRightY": 283,
+      "content": "- The next state is Disabled if Directed.\n- The next state is Connect if the far-end receiver termination (R_RX-DC) is not detected.\n- The next state is Active if an input LFPS signal is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 297,
+      "bottomRightX": 328,
+      "bottomRightY": 310,
+      "content": "### E.6.4 LRD Electrical Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 318,
+      "bottomRightX": 666,
+      "bottomRightY": 365,
+      "content": "LRD electrical requirements govern the performance of an LRD as a stand-alone component and its performance in emulated system environments. This section specifies those requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 376,
+      "bottomRightX": 238,
+      "bottomRightY": 390,
+      "content": "#### E.6.4.1 Test Fixtures",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 397,
+      "bottomRightX": 671,
+      "bottomRightY": 443,
+      "content": "Fixtures shown in Figure E-24 are needed to evaluate LRD electrical performance include the LRD Electrical Evaluation Board (EVB), Pre- and Post-channel Fixtures, and the standard USB 3.2 test fixtures.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 245,
+      "topLeftY": 456,
+      "bottomRightX": 541,
+      "bottomRightY": 472,
+      "content": "Figure E-24. Illustration of LRD Test Fixtures",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 492,
+      "bottomRightX": 630,
+      "bottomRightY": 614,
+      "content": "![img-219.jpeg](img-219.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-219.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 652,
+      "bottomRightX": 671,
+      "bottomRightY": 774,
+      "content": "An LRD EVB is a small PCB mounted with an LRD as the DUT. The EVB includes SMA or SMP connectors to connect with measurement instruments or the pre- and post-channel fixtures to evaluate LRD performance. The insertion loss of the trace between the LRD and SMA/SMP in the EVB shall be controlled within 1.5 +/- 0.5 dB. There shall be a calibration structure in the EVB to remove the fixture effect in the LRD S-parameter or transfer function measurements. This calibration structure may also be used to measure the baseline jitter (without the LRD), which will be discussed in Section E.6.4.3. All the high-speed differential pairs shall be routed out to SMA's/SMP's to allow crosstalk measurements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 786,
+      "bottomRightX": 663,
+      "bottomRightY": 848,
+      "content": "The pre-channel fixture emulates the interconnect of a USB 3.2 host or device between the transmitter/receiver and the LRD, while the post-channel fixture mimics the interconnect between the LRD and a USB connector, as illustrated in Figure E-25. A USB 3.2 host or device is emulated when the pre- and post-channel fixtures are connected via the LRD EVB.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

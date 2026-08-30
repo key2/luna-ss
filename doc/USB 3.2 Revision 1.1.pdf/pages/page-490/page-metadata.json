@@ -1,0 +1,156 @@
+{
+  "index": 489,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 459 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 93,
+      "bottomRightX": 664,
+      "bottomRightY": 266,
+      "content": "- If USDPORT-Powered on was entered from any state except USDPORT.Disabled then this transition shall take place if Far-end Receiver Terminations (R_RX-DC) are not detected after eight successive Rx.Detect.Quiet to Rx.Detect.Active transitions.\n- If USDPORT-Powered on was entered from the USDPORT.Disabled state, then this transition shall take place the first time that Far-end Receiver Terminations are not detected in the Rx.Detect.Active substate.\n- From the USDPort.Training state if a timeout occurs on any Polling substate (see Figure 7-21).\n- From the USDPort.Connected state, if the Port Configuration process times out (see Section 8.4.6).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 288,
+      "bottomRightX": 662,
+      "bottomRightY": 304,
+      "content": "A count (Disabled_count) shall be maintained of each entry into the USDPort.Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 316,
+      "bottomRightX": 662,
+      "bottomRightY": 428,
+      "content": "- Count is initialized to \"0\" upon power on reset.\n- The count is incremented upon each entry into the USDPort.Disabled state from the USDPORT.Training Initiated state.\n- If the count equals 3, the port transitions to the Disabled.Error state.\n- The count is reset to \"0\" upon a successful completion of the Port Configuration process.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 451,
+      "bottomRightX": 668,
+      "bottomRightY": 480,
+      "content": "In this state, the port's link shall be in the eSS.Disabled state. The corresponding peripheral device USB state shall be USB 2.0 Device States.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 494,
+      "bottomRightX": 356,
+      "bottomRightY": 509,
+      "content": "### 10.18.2.7 USDPORT.Disabled_Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 516,
+      "bottomRightX": 645,
+      "bottomRightY": 531,
+      "content": "A port transitions to this state from the USDPort.Disabled state when Disabled_Count = 3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 545,
+      "bottomRightX": 657,
+      "bottomRightY": 574,
+      "content": "- The port shall remain in USDPORT.Disabled_Error state if the port's link receives a USB 2.0 reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 596,
+      "bottomRightX": 659,
+      "bottomRightY": 642,
+      "content": "In this state, a fatal error has been detected on the port's link and the link shall be in the eSS.Disabled state. The corresponding peripheral device USB state shall be USB 2.0 Device States.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 656,
+      "bottomRightX": 306,
+      "bottomRightY": 671,
+      "content": "### 10.19 Hub Chapter Parameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 678,
+      "bottomRightX": 591,
+      "bottomRightY": 694,
+      "content": "Table 10-19 includes a complete list of the parameters used in the hub chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 295,
+      "topLeftY": 706,
+      "bottomRightX": 492,
+      "bottomRightY": 721,
+      "content": "Table 10-19. Hub Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 731,
+      "bottomRightX": 676,
+      "bottomRightY": 867,
+      "content": "|  Name | Description | Min | Max | Units  |\n| --- | --- | --- | --- | --- |\n|  tDownLinkStateChange | Time from receiving the first symbol of a header packet directed to a downstream port that is in a low power link state to initiating a return to U0 on the downstream link. A hub reports the actual delay via the wHubDelay field in Enhanced SuperSpeed Hub Descriptor. | 0 | 400 | ns  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-263.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

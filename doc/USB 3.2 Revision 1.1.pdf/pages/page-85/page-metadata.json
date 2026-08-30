@@ -1,0 +1,66 @@
+{
+  "index": 84,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 81,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 375,
+      "topLeftY": 48,
+      "bottomRightX": 413,
+      "bottomRightY": 63,
+      "content": "- 54 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 81,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 256,
+      "topLeftY": 93,
+      "bottomRightX": 531,
+      "bottomRightY": 113,
+      "content": "Figure 6-4. Gen 2 Receiver Block Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 131,
+      "bottomRightX": 590,
+      "bottomRightY": 663,
+      "content": "![img-15.jpeg](img-15.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-15.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

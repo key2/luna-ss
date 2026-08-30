@@ -1,0 +1,174 @@
+{
+  "index": 94,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 64 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 91,
+      "bottomRightX": 687,
+      "bottomRightY": 206,
+      "content": "|  Symbol | Name | Gen 1 Symbol | Gen 2 Symbol | Description  |\n| --- | --- | --- | --- | --- |\n|  EPF | End Packet Framing | K23.7 | 36h | Marks the end of a packet framing. For Gen 2 operation, scrambled and transmitted only in data block.  |\n|  SDS | Start of Data Stream | Not applicable | E1h | Marks the start of an SDS Ordered Set. Unscrambled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-37.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 226,
+      "bottomRightX": 341,
+      "bottomRightY": 242,
+      "content": "### 6.4 Link Initialization and Training",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 249,
+      "bottomRightX": 240,
+      "bottomRightY": 264,
+      "content": "#### 6.4.1 Link Training",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 270,
+      "bottomRightX": 260,
+      "bottomRightY": 286,
+      "content": "##### 6.4.1.1 Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 292,
+      "bottomRightX": 667,
+      "bottomRightY": 338,
+      "content": "This section defines the sequences that are used for configuration and initialization. The sequences are used by the Initialization State Machine (refer to Chapter 7) for the following functions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 345,
+      "bottomRightX": 376,
+      "bottomRightY": 428,
+      "content": "- Configuring and initializing the link\n- Bit-lock and symbol lock\n- Rx equalization training\n- Lane polarity inversion",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 443,
+      "bottomRightX": 671,
+      "bottomRightY": 489,
+      "content": "Training sequences are composed of Ordered Sets used for initializing bit alignment, Symbol alignment and optimizing the equalization. Training sequence Ordered Sets are never scrambled but are always 8b/10b encoded.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 501,
+      "bottomRightX": 666,
+      "bottomRightY": 563,
+      "content": "Bit lock refers to the ability of the Clock/Data Recovery (CDR) circuit to extract the phase and frequency information from the incoming data stream. Bit lock is accomplished by sending a sufficiently long sequence of bits (D10.2 symbol containing alternating 0s and 1s) so the CDR roughly centers the clock within the bit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 576,
+      "bottomRightX": 674,
+      "bottomRightY": 667,
+      "content": "Once the CDR is properly recovering data bits, the next step is to locate the start and end of a 10-bit symbol. For this purpose, the special K-Code called COMMA is selected from the 8b/10b codes. The bit pattern of the COMMA code is unique, so that it is never found in other data patterns, including any combination of a D-Code appended to any other D-Code or appended to any K-Code. This applies to any polarity of code. The only exception is for various bit patterns that include a bit error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 679,
+      "bottomRightX": 666,
+      "bottomRightY": 726,
+      "content": "Training sequences (TS1 or TS2) are transmitted consecutively and can only be interrupted by SKP Ordered Sets occurring between Ordered Sets (between consecutive TS1 sets, consecutive TS2 sets, or when TS1 is followed by TS2).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 738,
+      "bottomRightX": 538,
+      "bottomRightY": 754,
+      "content": "###### 6.4.1.1.1 Normative Training Sequence Rules for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 760,
+      "bottomRightX": 671,
+      "bottomRightY": 791,
+      "content": "Training sequences are composed of Ordered Sets used for initializing bit alignment, symbol alignment, and receiver equalization.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 803,
+      "bottomRightX": 428,
+      "bottomRightY": 819,
+      "content": "The following rules apply to the training sequences:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 825,
+      "bottomRightX": 656,
+      "bottomRightY": 893,
+      "content": "- Training sequence Ordered Sets shall be 8b/10b encoded.\n- Transmission of a TS1 or TS2 Ordered Set shall not be interrupted by SKP Ordered Sets. SKP Ordered Sets shall be inserted before, or after, completion of any TS1 or TS2 Ordered Set.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

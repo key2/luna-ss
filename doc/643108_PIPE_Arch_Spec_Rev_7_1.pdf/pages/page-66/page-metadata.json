@@ -1,0 +1,130 @@
+{
+  "index": 65,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 480,
+      "bottomRightY": 138,
+      "content": "Table 6-8. Status Interface Output Signals (Sheet 3 of 3)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 679,
+      "bottomRightY": 382,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  DeepPMAck# | Low | Deep Power Management Ack. This is an asynchronous signal used to acknowledge transitions on DeepPMReq#. This signal is only required on a PHY that implements DeepPMReq#. A value of \"0\" indicates that PHY has acknowledged a request on DeepPMReq# to enter a deep power management state; however, it does not indicate that the PHY has actually entered a deep power management state. A value of \"1\" indicates that the PHY acknowledged a request on DeepPMReq# to exit a deep power management state. The PHY must first exit any deep power management state before returning this handshake. See Section 8.3.4 for more details. | PCIe, SATA, USB, USB4, and DisplayPort  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-40.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 385,
+      "bottomRightX": 478,
+      "bottomRightY": 397,
+      "content": "1. Disparity errors are not reported when the rate is 8.0 GT/s, 16 GT/s, or 32 GT/s.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 417,
+      "bottomRightX": 409,
+      "bottomRightY": 438,
+      "content": "### 6.1.4 Message Bus Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 445,
+      "bottomRightX": 686,
+      "bottomRightY": 588,
+      "content": "The message bus interface provides a way to initiate and participate in non-latency sensitive PIPE operations using a small number of wires, it also enables future PIPE operations to be added without adding additional wires. The use of this interface requires the device to be in a power state with PCLK running. Control and status bits used for PIPE operations are mapped into 8-bit registers that are hosted in 12-bit address spaces in the PHY and the MAC. The registers are accessed via read and write commands driven over the signals listed in Table 6-9. These signals are synchronous with the PCLK and are reset with Reset#. The specific commands and framing of the transactions sent over the message bus interface are described in the following subsections.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 603,
+      "bottomRightX": 378,
+      "bottomRightY": 619,
+      "content": "Table 6-9. Message Bus Interface Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 622,
+      "bottomRightX": 688,
+      "bottomRightY": 748,
+      "content": "|  Name | Direction | Description  |\n| --- | --- | --- |\n|  M2P_MessageBus[7:0] | Input | The MAC multiplexes command, any required address, and any required data for sending read and write requests to access the PHY PIPE registers and for sending read completion responses and write ack responses to PHY initiated requests.  |\n|  P2M_MessageBus[7:0] | Output | The PHY multiplexes command, any required address, and any required data for sending read and write requests to access MAC PIPE registers and for sending read completion responses and write ack responses to MAC initiated requests.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-41.md"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 754,
+      "bottomRightX": 684,
+      "bottomRightY": 798,
+      "content": "Errors in SKP ordered sets must be reported by the PHY as 128/130 decode errors. An error in an SKP ordered set must be reported if there is an error in the first 4N+1 symbols of the skip ordered set.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 816,
+      "bottomRightX": 478,
+      "bottomRightY": 835,
+      "content": "#### 6.1.4.1 Message Bus Interface Commands",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 840,
+      "bottomRightX": 686,
+      "bottomRightY": 885,
+      "content": "The 4-bit commands used for accessing the PIPE registers across the message bus are defined in Table 6-10. A transaction consists of a command and any associated address and data, as specified in the table. The table also specifies the number of PCLK cycles",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 966,
+      "content": "66",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 688,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

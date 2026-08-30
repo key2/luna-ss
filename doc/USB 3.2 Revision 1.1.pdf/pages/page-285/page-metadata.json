@@ -1,0 +1,84 @@
+{
+  "index": 284,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 63,
+      "content": "- 254 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 93,
+      "bottomRightX": 629,
+      "bottomRightY": 111,
+      "content": "**Figure 8-34. Sample Concurrent BULK and Isochronous IN Transactions**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 128,
+      "bottomRightX": 598,
+      "bottomRightY": 812,
+      "content": "![img-125.jpeg](img-125.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-125.jpeg"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 858,
+      "bottomRightX": 279,
+      "bottomRightY": 875,
+      "content": "**8.11 TP or DP Responses**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 879,
+      "bottomRightX": 678,
+      "bottomRightY": 927,
+      "content": "Transmitting and receiving devices shall return DPs or TPs as detailed in Table 8-27 through Table 8-29. Not all TPs are allowed, depending on the transfer type and depending on the direction of flow of the TP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

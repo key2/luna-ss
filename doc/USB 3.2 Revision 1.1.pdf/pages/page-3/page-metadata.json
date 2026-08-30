@@ -1,0 +1,235 @@
+{
+  "index": 2,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 46,
+      "bottomRightX": 411,
+      "bottomRightY": 61,
+      "content": "- iii -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 93,
+      "bottomRightX": 402,
+      "bottomRightY": 110,
+      "content": "# Acknowledgement of Technical Contribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 360,
+      "topLeftY": 135,
+      "bottomRightX": 430,
+      "bottomRightY": 151,
+      "content": "# Dedication",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 156,
+      "bottomRightX": 591,
+      "bottomRightY": 204,
+      "content": "Dedicated to the memory of Brad Hosler, the impact of whose accomplishments made the Universal Serial Bus one of the most successful technology innovations of the Personal Computer era.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 227,
+      "bottomRightX": 673,
+      "bottomRightY": 289,
+      "content": "The authors of this specification would like to recognize the following people who participated in the USB 3.2 Bus Specification technical work group. We would also like to acknowledge the many unnamed others throughout the industry who provided feedback and contributed to the development of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 303,
+      "bottomRightX": 349,
+      "bottomRightY": 318,
+      "content": "# Apple Inc. – Promoter Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 319,
+      "bottomRightX": 629,
+      "bottomRightY": 382,
+      "content": "|  Sree Anantharaman | Brian Baek | Jason Chung | David Conroy  |\n| --- | --- | --- | --- |\n|  Bill Cornelius | Scott Deandrea | William Ferry | Rhoads Hollowell  |\n|  Derek Iwamoto | Scott Jackson | Reese Schreiber | Jennifer Tsai  |\n|  Colin Whitby-Strevens | Jeff Wilcox | Dan Wilson |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 391,
+      "bottomRightX": 407,
+      "bottomRightY": 407,
+      "content": "# Hewlett-Packard Inc. – Promoter Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 407,
+      "bottomRightX": 487,
+      "bottomRightY": 422,
+      "content": "|  Alan Berkema | Norton Ewart | Rahul Lakdawala  |\n| --- | --- | --- |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 432,
+      "bottomRightX": 389,
+      "bottomRightY": 447,
+      "content": "# Intel Corporation – Promoter Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 447,
+      "bottomRightX": 637,
+      "bottomRightY": 543,
+      "content": "|  Huimin Chen | Kuan-Yu Chen | John Crouter | Benjamin Graniello  |\n| --- | --- | --- | --- |\n|  Raul Gutierrez | Howard Heck | Danny Hofshi | John Howard  |\n|  Rahman Ismail | James Jaussi | Vijaykumar Kadgi | Issy Kipnis  |\n|  Lev Kolomiets | Christine Krause | Yun Ling | Viji Ramachandran  |\n|  Kaleb Ruof | Zeeshan Sarwar | Brad Saunders | Sarah Sharp  |\n|  Amit Srivastava | Shankar Subramani | David Thompson | Karthi Vadivelu  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 553,
+      "bottomRightX": 413,
+      "bottomRightY": 568,
+      "content": "# Microsoft Corporation – Promoter Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 568,
+      "bottomRightX": 612,
+      "bottomRightY": 599,
+      "content": "|  Randy Aull | Anthony Chen | Vivek Gupta | Robbie Harris  |\n| --- | --- | --- | --- |\n|  Jayson Kastens | Toby Nixon | Rahul Ramadas | Yang You  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 609,
+      "bottomRightX": 407,
+      "bottomRightY": 624,
+      "content": "# Renesas Corporation – Promoter Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 624,
+      "bottomRightX": 606,
+      "bottomRightY": 655,
+      "content": "|  Tam Do | Bob Dunstan | Masami Katagiri | Philip Leung  |\n| --- | --- | --- | --- |\n|  Kiichi Muto | Hajime Nozaki |  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 666,
+      "bottomRightX": 402,
+      "bottomRightY": 681,
+      "content": "# STMicroelectronics – Promoter Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 681,
+      "bottomRightX": 631,
+      "bottomRightY": 696,
+      "content": "|  Jerome Deroo | Abdelaziz Goulahsen | Benoit Mercier | Richard O'Connor  |\n| --- | --- | --- | --- |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 706,
+      "bottomRightX": 394,
+      "bottomRightY": 721,
+      "content": "# Texas Instruments – Promoter Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 721,
+      "bottomRightX": 622,
+      "bottomRightY": 753,
+      "content": "|  Mike Campbell | Grant Ley | Anwar Sadat | James Skidmore  |\n| --- | --- | --- | --- |\n|  Sue Vining |  |  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 764,
+      "bottomRightX": 298,
+      "bottomRightY": 779,
+      "content": "# Contributor Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 792,
+      "bottomRightX": 618,
+      "bottomRightY": 907,
+      "content": "|  **Aces Electronics Co., Ltd.** | Jason Chen | Andy Feng |   |\n| --- | --- | --- | --- |\n|  **Acon** | Glen Chandler | Vicky Chuang | Sharon Hsiao  |\n|  **Advanced Micro Devices** | Shadi Barakat | Walter Fry | Will Harris  |\n|   | Jason Hawken | Yufei Ma | Joseph Scanlon  |\n|   | Peter Teng | Vishant Tyagi |   |\n|   | Min Wang |  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

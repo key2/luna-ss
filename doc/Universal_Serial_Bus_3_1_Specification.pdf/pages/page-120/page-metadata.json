@@ -1,0 +1,85 @@
+{
+  "index": 119,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 234,
+      "topLeftY": 100,
+      "bottomRightX": 615,
+      "bottomRightY": 415,
+      "content": "![img-85.jpeg](img-85.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-85.jpeg"
+    },
+    {
+      "topLeftX": 258,
+      "topLeftY": 420,
+      "bottomRightX": 591,
+      "bottomRightY": 440,
+      "content": "Standard-Surface Mount-Version Drawing",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 443,
+      "bottomRightX": 637,
+      "bottomRightY": 761,
+      "content": "![img-86.jpeg](img-86.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-86.jpeg"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 767,
+      "bottomRightX": 248,
+      "bottomRightY": 780,
+      "content": "# NOTES :",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 783,
+      "bottomRightX": 637,
+      "bottomRightY": 866,
+      "content": "1. Critical Dimensions are TOLERANCED and shall not be deviated.\n2. Dimensions that labeled REF are typical dimensions and may vary from manufacturer to manufacturer.\n3. General tolerance is +/- 0.05 mm, otherwise the specified tolerances apply.\n4. Chamfer metals are optional with no sharp edges.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 880,
+      "bottomRightX": 664,
+      "bottomRightY": 897,
+      "content": "Figure 5-14. Reference Footprint for the USB 3.1 Micro-B or Micro-AB Receptacle",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-32",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "index": 77,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 704,
+      "bottomRightY": 176,
+      "content": "3. The LVS will keep the link active by sending Link Pollings (LUP when it was configured as an Upstream Port, LDN when it was configured as a Downstream Port) for 50ms.\n4. The test passes if the exchanges are successful, no timeout is detected, no recovery is entered, the packet that the LVS responded to with an LBAD is retransmitted correctly, all other packets are received successfully, all credits are restored and the link stays in U0 for at least 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 233,
+      "bottomRightX": 398,
+      "bottomRightY": 252,
+      "content": "### TD.7.9 PENDING_HP_TIMER Deadline Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 254,
+      "bottomRightX": 253,
+      "bottomRightY": 268,
+      "content": "This test verifies that:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 276,
+      "bottomRightX": 702,
+      "bottomRightY": 324,
+      "content": "1) The PUT will accept an LGOOD_N sent at the maximum link delay budget before PENDING_HP_TIMER deadline. The Port Configuration transaction will be used for this purpose.\n2) The PUT adheres to tLinkTurnaround as defined in Ch 7 and Appendix E.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 330,
+      "bottomRightX": 234,
+      "bottomRightY": 344,
+      "content": "Covered Assertions",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 350,
+      "bottomRightX": 206,
+      "bottomRightY": 365,
+      "content": "7.2.4.1.10#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 374,
+      "bottomRightX": 256,
+      "bottomRightY": 389,
+      "content": "Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 395,
+      "bottomRightX": 705,
+      "bottomRightY": 554,
+      "content": "1. Perform the Link Initialization Sequence, but transmit LGOOD_N responses for Port Capability LMP 200ns prior to the PENDING_HP_TIMER deadline.\n2. The LVS verifies that for each LGOOD_n received from the PUT, the first symbol of the LGOOD_n is received within tLinkTurnaround of the last symbol of the Header Packet that is acknowledged by the LGOOD_n.\n3. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n4. The test passes if the exchanges are successful, no timeout is detected, no recovery is entered, all packets are successfully received, all credits are restored and the link stays in U0 for at least 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 612,
+      "bottomRightX": 388,
+      "bottomRightY": 629,
+      "content": "### TD.7.10 CREDIT_HP_TIMER Deadline Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 631,
+      "bottomRightX": 645,
+      "bottomRightY": 663,
+      "content": "This test verifies that the PUT will accept an LCRD_X, LCRD1_X or LCRD2_X sent at the CREDIT_HP_TIMER deadline. The Port Configuration transaction will be used for this purpose.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 670,
+      "bottomRightX": 234,
+      "bottomRightY": 684,
+      "content": "Covered Assertions",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 690,
+      "bottomRightX": 206,
+      "bottomRightY": 705,
+      "content": "7.2.4.1.10#7",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 713,
+      "bottomRightX": 254,
+      "bottomRightY": 728,
+      "content": "Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 735,
+      "bottomRightX": 698,
+      "bottomRightY": 847,
+      "content": "1. Perform the Link Initialization Sequence but transmit all LCRD_X or LCRD1_X responses tLinkTurnAround prior to the CREDIT_HP_TIMER or type 1 CREDIT_HP_TIMER deadline.\n2. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n3. For a Gen 1 PUT continue to step 6.\n4. For a Gen 2 PUT:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 855,
+      "bottomRightX": 433,
+      "bottomRightY": 871,
+      "content": "If the LVS is configured as a Downstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 879,
+      "bottomRightX": 698,
+      "bottomRightY": 917,
+      "content": "a. LVS issues a GetDeviceDescriptor() request for the PUT.\nb. LVS transmits all LCRD2_X responses 200ns prior to the CREDIT_HP_TIMER deadline.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "70",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

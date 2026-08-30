@@ -1,0 +1,111 @@
+{
+  "index": 297,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 117,
+      "bottomRightX": 297,
+      "bottomRightY": 141,
+      "content": "## 8.2 Packet Types",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 152,
+      "bottomRightX": 696,
+      "bottomRightY": 186,
+      "content": "Enhanced SuperSpeed USB uses four basic packet types each with one or more subtypes. The four packet types are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 190,
+      "bottomRightX": 692,
+      "bottomRightY": 330,
+      "content": "- Link Management Packets (LMP) only travel between a pair of links (e.g., a pair of directly connected ports) and is primarily used to manage that link.\n- Transaction Packets (TP) traverse all the links directly connecting the host to a device. They are used to control the flow of data packets, configure devices, and hubs, etc. Transaction Packets have no data payload.\n- Data Packets (DP) traverse all the links directly connecting the host to a device. Data Packets have two parts: a Data Packet Header (DPH) and a Data Packet Payload (DPP).\n- Isochronous Timestamp Packets (ITP) are multicast on all the active links.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 336,
+      "bottomRightX": 697,
+      "bottomRightY": 404,
+      "content": "All packets consist of a 14-byte header, followed by a 2-byte Link Control Word at the end of the packet (16 bytes total). All headers have a Type field that is used by the receiving entity (e.g., host, hub, or device) to determine how to process the packet. All headers include a 2-byte CRC (CRC-16).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 412,
+      "bottomRightX": 552,
+      "bottomRightY": 430,
+      "content": "All devices (including hubs) and the host consume the LMPs they receive.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 438,
+      "bottomRightX": 689,
+      "bottomRightY": 539,
+      "content": "If the value of the Type field is Transaction Packet or Data Packet Header, the Route String and Device Address fields follow the Type field. The Route String field is used by hubs to route packets which appear on their upstream port to the appropriate downstream port. Packets flowing from a device to the host are always routed from a downstream port on a hub to its upstream port. The Device Address field is provided to the host so that it can identify the source of a packet. All other fields are discussed further in this chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 154,
+      "topLeftY": 563,
+      "bottomRightX": 664,
+      "bottomRightY": 670,
+      "content": "![img-189.jpeg](img-189.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-189.jpeg"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 689,
+      "bottomRightX": 538,
+      "bottomRightY": 707,
+      "content": "Figure 8-2. Example Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 726,
+      "bottomRightX": 686,
+      "bottomRightY": 777,
+      "content": "Data Packets include additional information in the header that describes the data block. The Data Block is always followed by a 4-byte CRC-32 used to determine the correctness of the data. The Data Block and the CRC-32 together are referred to as the Data Packet Payload.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 111,
+      "bottomRightY": 994,
+      "content": "8-4",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

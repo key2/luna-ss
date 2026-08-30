@@ -1,0 +1,85 @@
+{
+  "index": 74,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 138,
+      "bottomRightX": 524,
+      "bottomRightY": 154,
+      "content": "Table 6-23. Original PIPE Only: Status Interface Output Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 157,
+      "bottomRightX": 696,
+      "bottomRightY": 606,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  AlignDetect | High | **This signal is not used in the SerDes architecture.** Indicates the receiver detection of an ALIGN. A PHY is only required to assert this signal when the elasticity buffer is running in nominal empty mode. The PHY must only toggle this signal after obtaining the bit and symbol lock. Each ALIGN received must map to AlignDetect being asserted for one PCLK. The spacing between PCLK pulses for ALIGNs should map the analog spacing of the received ALIGNs as closely as possible. However, there is no guarantee to have a PCLK domain spacing between back to back AlignDetect pulses that match the analog spacing exactly due to differences in the receive clock domain and the PCLK domain. For example: 1.5 GT/s with 8-bit data path PCLK=150 MHz, the nominal spacing is 4 PCLKs. 3.0 GT/s with 8-bit data path PCLK=300 MHz, the nominal spacing is 4 PCLKs. 6.0 GT/s with 16-bit data path PCLK=300 MHz, the nominal spacing is every other PCLK. Due to differences in the PCLK and receive clocks, the nominal spacing can be off by one PCLK in either direction. In the example with the PCLK rate being equals to Gen3 received clock rate, clock domain crossing could lead to AlignDetect being asserted for consecutive PCLK cycles without gap. | SATA  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-56.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 621,
+      "bottomRightX": 686,
+      "bottomRightY": 666,
+      "content": "## 6.4 External Signals – Common for SerDes and Original PIPE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 683,
+      "bottomRightX": 335,
+      "bottomRightY": 698,
+      "content": "Table 6-24. External Input Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 701,
+      "bottomRightX": 699,
+      "bottomRightY": 884,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  CLK | Edge | This differential input is used to generate the bit-rate clock for the PHY transmitter and receiver. Specifications for this clock signal (frequency, jitter, and so forth) are implementation-dependent and must be specified for each implementation. This clock may have a spread spectrum modulation. | PCIe, SATA, USB, DisplayPort, and USB4  |\n|  PCLK | Rising Edge | **This signal is relevant for the \"PCLK as PHY Input\" mode only.** All data movement across the parallel interface is synchronized to this clock. This clock operates at a frequency set by the **PCLK rate**. The rising edge of the clock is the reference for all signals. Spread spectrum modulation on this clock is allowed. | PCIe, SATA, USB, DisplayPort, USB4  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-57.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "75",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "index": 541,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 511 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 93,
+      "bottomRightX": 333,
+      "bottomRightY": 108,
+      "content": "# E.3.4.5.2 Exit from Polling.Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 116,
+      "bottomRightX": 654,
+      "bottomRightY": 131,
+      "content": "- The re-timer shall transition to U0 if either one of the following conditions is met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 138,
+      "bottomRightX": 486,
+      "bottomRightY": 173,
+      "content": "o Successful idle symbol handshake is observed.\no A link command is observed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 181,
+      "bottomRightX": 664,
+      "bottomRightY": 227,
+      "content": "- The re-timer shall transition to PassThrough Loopback if the Loopback bit (bit 2) in the link configuration field is asserted and the Compliance bit (bit 5) in the link configuration field is de-asserted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 233,
+      "bottomRightX": 659,
+      "bottomRightY": 279,
+      "content": "- The re-timer shall transition to BLR Compliance Mode if the Loopback bit (bit 2) in the link configuration field and the Compliance bit (bit 5) in the link configuration field are both asserted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 286,
+      "bottomRightX": 672,
+      "bottomRightY": 347,
+      "content": "- The re-timer shall transition to Local Loopback as the loopback slave if the re-timer loopback bit (bit 4 in the link configuration field) is asserted. Note that it is illegal to have both bit4 and bit 2 asserted. If both bits are asserted, the re-timer shall give priority to PassThrough Loopback.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 354,
+      "bottomRightX": 572,
+      "bottomRightY": 370,
+      "content": "- The re-timer shall transition to Hot Reset if the Reset bit is asserted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 377,
+      "bottomRightX": 642,
+      "bottomRightY": 407,
+      "content": "- The re-timer in SSP operation shall disable its eSS transceivers and transition to Polling.SpeedDetect if either one of the following two conditions is met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 413,
+      "bottomRightX": 659,
+      "bottomRightY": 466,
+      "content": "o Upon the expiration of the tPollingIdleTimeout timer and no successful idle symbol handshake has been observed.\no LBPMs is detected at both of its ports.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 472,
+      "bottomRightX": 647,
+      "bottomRightY": 517,
+      "content": "- The re-timer in SS operation shall disable its SS transceivers and transition to Rx.Detect upon the expiration of the tPollingIdleTimeout timer and no successful idle symbol handshake has been observed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 524,
+      "bottomRightX": 569,
+      "bottomRightY": 539,
+      "content": "- The re-timer shall transition to Rx.Detect if Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 554,
+      "bottomRightX": 267,
+      "bottomRightY": 568,
+      "content": "# E.3.5 Compliance Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 576,
+      "bottomRightX": 664,
+      "bottomRightY": 605,
+      "content": "Compliance Mode is to test re-timer's transmitter characteristics based on a local reference clock.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 619,
+      "bottomRightX": 352,
+      "bottomRightY": 634,
+      "content": "# E.3.5.1 Compliance Mode Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 641,
+      "bottomRightX": 670,
+      "bottomRightY": 686,
+      "content": "- Upon entry to the substate, the re-timer shall transmit CP0 on its transmitter. An x2 capable re-timer shall meet the additional scrambler seed requirement on each lane as defined in Section 6.13.5.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 694,
+      "bottomRightX": 584,
+      "bottomRightY": 711,
+      "content": "- An x2 re-timer shall monitor the LFPS signal at its Configuration Lane.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 716,
+      "bottomRightX": 670,
+      "bottomRightY": 782,
+      "content": "o If the received signal is Ping.LFPS, it shall advance the compliance pattern accordingly. An x2 capable re-timer shall advance the compliance pattern on both lanes.\no If the received signal is WarmReset, it shall conclude the compliance test",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 790,
+      "bottomRightX": 670,
+      "bottomRightY": 836,
+      "content": "- The re-timer shall monitor the LFPS signal at both ports. Note that the re-timer may receive Ping.LFPS at the port in the compliance test, or WarmReset at either port if the compliance test is concluded.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 843,
+      "bottomRightX": 661,
+      "bottomRightY": 888,
+      "content": "- The re-timer shall configure the port not receiving Polling.LFPS in Rx.Detect for the transmitter compliance test and keep the transmitter at its port receiving Polling.LFPS in electrical idle.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "index": 22,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 122,
+      "bottomRightX": 681,
+      "bottomRightY": 243,
+      "content": "- Support of 1.62 Gbps, 2.16 Gbps (eDP), 2.43 Gbps (eDP), 2.7 Gbps, 3.24 Gbps (eDP), 4.32 Gbps (eDP), 5.4 Gbps, 8.1 Gbps, 10 Gbps, 13.5 Gbps, and 20 Gbps serial data transmission rates\n- Utilizes 10-bit, 20-bit, or 40-bit parallel interfaces to transmit and receive the DisplayPort data\n- Data and clock recovery from the serial stream on the DisplayPort bus\n- Holding registers to stage Tx and Rx data",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 263,
+      "bottomRightX": 609,
+      "bottomRightY": 305,
+      "content": "## 2.6 Low Pin Count Interface and SerDes Architecture",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 313,
+      "bottomRightX": 694,
+      "bottomRightY": 428,
+      "content": "To address the issue of increasing signal count, the message bus interface was introduced in PIPE 4.4 and utilized for PCIe lane margining at the receiver and elastic buffer depth control. In PIPE 5.0, all the legacy PIPE signals without critical timing requirements were mapped into message bus registers so that their associated functionality could be accessed via the message bus interface instead of implementing dedicated signals. Any new features added in PIPE 4.4 and onwards are available only via message bus accesses unless they have critical timing requirements that need dedicated signals.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 435,
+      "bottomRightX": 688,
+      "bottomRightY": 493,
+      "content": "To facilitate the design of general-purpose PHYs delivered as hard IPs, and to provide the MAC with more freedom to do latency optimizations, a SerDes architecture was defined in PIPE 5.0. This architecture simplifies the PHY and shifts much of the protocol-specific logic into the MAC.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 500,
+      "bottomRightX": 696,
+      "bottomRightY": 586,
+      "content": "To maximize interoperability between MAC and PHY IPs, PHY designs must adhere to the requirements stated in Table 2-1 to support the legacy pin interface versus the low pin count interface, and to support original PIPE architecture versus the SerDes architecture. For PCIe, the PCIe 6.0 in Table 2-1 heading refers to a PHY that is configured as PCIe 6.0 capable; the selection is done statically based on the capability and does not change with a rate change.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 593,
+      "bottomRightX": 694,
+      "bottomRightY": 693,
+      "content": "The legacy pin interface refers to a pin interface that utilizes all the applicable dedicated signals, as well as the message bus interface for features not supported through dedicated signals. The low pin count interface refers to a pin interface that utilizes the message bus interface for all features supported through the message bus, using dedicated signals only for features not supported through the message bus. The legacy pin interface dedicated signals are defined in PIPE 4.4.1 and earlier and have been deprecated in PIPE 5.0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 699,
+      "bottomRightX": 694,
+      "bottomRightY": 729,
+      "content": "The original PIPE architecture is represented in Figure 4-4, Figure 4-5, Figure 4-6, and Figure 4-7. The SerDes architecture is represented in Figure 4-8 and Figure 4-9.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 736,
+      "bottomRightX": 696,
+      "bottomRightY": 851,
+      "content": "The legacy pin interface and the low pin count interface are not simultaneously operational, except for the PCIe 4.0 lane margining at the receiver being controlled via the low pin count interface, while other operations are managed over the legacy interface. A PHY must be statically configured to utilize either the low pin count interface or the legacy pin interface, for instance, no dynamic switching between the interfaces based on operational rate is permitted. Finally, a SerDes architecture datapath must always utilize the low pin count interface, using the legacy pin interface with SerDes architecture is considered illegal.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "23",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

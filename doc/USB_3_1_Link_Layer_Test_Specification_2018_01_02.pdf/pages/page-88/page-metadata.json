@@ -1,0 +1,128 @@
+{
+  "index": 87,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 91,
+      "bottomRightX": 212,
+      "bottomRightY": 169,
+      "content": "7.2.4.2.7#2, 3\n7.5.8.1#2\n7.5.8.2#5\n8.4.2#1",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 178,
+      "bottomRightX": 254,
+      "bottomRightY": 194,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 200,
+      "bottomRightX": 704,
+      "bottomRightY": 577,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence.\n2. The LVS transmits the Set Link Function LMP with the Force_LinkPM_Accept bit asserted.\n3. The LVS transmits an LGO_U2 and waits to receive an LAU from the PUT.\n4. The test fails if the PUT does not transmit an LAU before PM_LC_TIMER deadline, or if recovery is entered.\n5. The LVS transmits an LPMA and then transitions to U2.\n6. The test fails if the PUT does not transition to U2 when the PM_ENTRY_TIMER expires, recovery is entered, or if the PUT sends any packet.\n7. The LVS transmits the U2 Exit LFPS to transition to U0 and waits to receive U2 Exit LFPS to complete the U2 Exit LFPS handshake.\n8. The test fails if the LFPS handshake does not conform to the following specifications from section 6.9.2:\n  a. Between 300ns – 2ms elapses between the start of the LVS U2 Exit LFPS and the start of the PUT U2 Exit LFPS.\n  b. The PUT U2 Exit LFPS duration is within 80us – 2ms.\n  c. The PUT enters Recovery before tNoLFPSResponseTimeout deadline after the start of its U2 exit LFPS.\n  d. The PUT enters U0 before Ux_EXIT_TIMER deadline\n9. The test passes if all packets are successful, recovery is entered once, no extra packets or LFPS signals are received, and the PUT enters Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 635,
+      "bottomRightX": 645,
+      "bottomRightY": 651,
+      "content": "### TD.7.25 Accepted Power Management Transaction for U3 Test (Upstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 654,
+      "bottomRightX": 523,
+      "bottomRightY": 671,
+      "content": "This test verifies that the PUT transitions to U3 if it receives an LGO_U3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 678,
+      "bottomRightX": 234,
+      "bottomRightY": 692,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 699,
+      "bottomRightX": 266,
+      "bottomRightY": 805,
+      "content": "7.2.4.1.1#7,97.2.4.2.1#4\n7.2.4.2.4#2,3,7\n7.2.4.2.7#2,3\n7.5.9.1#3\n7.5.9.2#5",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 813,
+      "bottomRightX": 254,
+      "bottomRightY": 828,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 836,
+      "bottomRightX": 688,
+      "bottomRightY": 910,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence.\n2. The LVS transmits an LGO_U3 and waits to receive an LAU from PUT.\n3. The test fails if the PUT does not transmit an LAU before PM_LC_TIMER deadline, or if recovery is entered..",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "80",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

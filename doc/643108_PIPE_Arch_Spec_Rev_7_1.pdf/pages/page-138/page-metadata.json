@@ -1,0 +1,103 @@
+{
+  "index": 137,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 122,
+      "bottomRightX": 686,
+      "bottomRightY": 223,
+      "content": "is receiving a stream of bytes Rx-a through Rx-z, and byte Rx-f has an 8B/10B decode error. In place of that byte, the PHY places an EDB (for PCIe or SATA) or SUB (for USB) on the parallel interface, and it sets RxStatus to the 8B/10B decode error code. Note that a byte that cannot be decoded may also have bad disparity, but the 8B/10B error has precedence. Also note that for greater than 8-bit interface, if the bad byte is on the lower byte lane, one of the other bytes may have bad disparity, but again, the 8B/10B error has precedence.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 231,
+      "bottomRightX": 321,
+      "bottomRightY": 247,
+      "content": "Figure 8-27. 8B/10B Decode Error",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 251,
+      "bottomRightX": 690,
+      "bottomRightY": 482,
+      "content": "![img-48.jpeg](img-48.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-48.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 497,
+      "bottomRightX": 337,
+      "bottomRightY": 517,
+      "content": "### 8.15.2 Disparity Errors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 523,
+      "bottomRightX": 686,
+      "bottomRightY": 639,
+      "content": "For a detected disparity error, the PHY should assert RxStatus with the disparity error code during the clock cycle when the affected byte is transferred across the parallel interface. For greater than 8-bit interfaces, it is not possible to discern which byte (or possibly both) had the disparity error. In the following example, the receiver detected a disparity error on either (or both) Rx-e or Rx-f data bytes, and it indicates this with the assertion of RxStatus. Optionally, the PHY can signal disparity errors as 8B/10B decode error (using code 0b100). (MACs often treat 8B/10B errors and disparity errors identically). When operating in the USB mode, signaling disparity errors is optional.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 647,
+      "bottomRightX": 280,
+      "bottomRightY": 664,
+      "content": "Figure 8-28. Disparity Error",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 667,
+      "bottomRightX": 690,
+      "bottomRightY": 898,
+      "content": "![img-49.jpeg](img-49.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-49.jpeg"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "138",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

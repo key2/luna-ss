@@ -1,0 +1,113 @@
+{
+  "index": 328,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 298 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 115,
+      "bottomRightX": 675,
+      "bottomRightY": 132,
+      "content": "Figure 8-56. Host Resumes Sending Interrupt OUT Transaction After Device Sent ERDY",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 268,
+      "topLeftY": 141,
+      "bottomRightX": 523,
+      "bottomRightY": 382,
+      "content": "![img-147.jpeg](img-147.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-147.jpeg"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 404,
+      "bottomRightX": 606,
+      "bottomRightY": 421,
+      "content": "Figure 8-57. Device Detects Error in Data and Host Resends Data",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 268,
+      "topLeftY": 431,
+      "bottomRightX": 523,
+      "bottomRightY": 668,
+      "content": "![img-148.jpeg](img-148.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-148.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 688,
+      "bottomRightX": 668,
+      "bottomRightY": 734,
+      "content": "Note: In Figure 8-57 the host retries the data packet received with an error in the same service interval. It is not required to do so and may retry the transaction in the next service interval.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 267,
+      "topLeftY": 747,
+      "bottomRightX": 520,
+      "bottomRightY": 763,
+      "content": "Figure 8-58. Endpoint Sends STALL TP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 773,
+      "bottomRightX": 526,
+      "bottomRightY": 918,
+      "content": "![img-149.jpeg](img-149.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-149.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

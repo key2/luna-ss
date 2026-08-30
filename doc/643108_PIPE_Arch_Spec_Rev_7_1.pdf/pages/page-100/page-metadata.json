@@ -1,0 +1,94 @@
+{
+  "index": 99,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 577,
+      "bottomRightY": 141,
+      "content": "### 7.2.9 Address Ah: Rx Link Evaluation Status0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 152,
+      "bottomRightX": 435,
+      "bottomRightY": 167,
+      "content": "Table 7-36. Address Ah: Rx Link Evaluation Status0",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 172,
+      "bottomRightX": 687,
+      "bottomRightY": 356,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:0] | 0h | Level | PCIe, USB4, and DisplayPort Rx (optional) | **LinkEvaluationFeedbackFigureMerit[7:0]:** This field provides the PHY link equalization evaluation Figure of Merit Value. The value is encoded as an unsigned integer from 0 to 255. An encoding of 0 is the worst, and an encoding of 255 is the best. A PHY does not update this field if it does not provide link equalization evaluation feedback using the Figure of Merit format. For PCIe, this field is only used at the 8.0 GT/s, 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s signaling rates. **Note:** The write_committed associated with an update to this field indicates that the RxEqEval has completed.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-107.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 375,
+      "bottomRightX": 576,
+      "bottomRightY": 395,
+      "content": "### 7.2.10 Address Bh: Rx Link Evaluation Status1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 406,
+      "bottomRightX": 434,
+      "bottomRightY": 420,
+      "content": "Table 7-37. Address Bh: Rx Link Evaluation Status1",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 425,
+      "bottomRightX": 688,
+      "bottomRightY": 884,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe (optional if FOM supported) | **LinkEvaluationFeedbackDirectionChange[5:0]:** This field provides the link equalization evaluation feedback in the direction change format. Feedback is provided for each coefficient: [1:0] C_{-1} [3:2] C_{0} [5:4] C_{1} The feedback value for each coefficient is encoded as follows: 00 - No change 01 - Increment 10 - Decrement 11 - Reserved A PHY does not update this field if it is does not provide link equalization evaluation feedback using the direction change format. **Note:** In 8.0 GT/s mode the MAC shall ignore the C_{0} value and use the correct value per the *PCIe Base Specification*. These signals are only used at the 8.0 GT/s, 16 GT/s, and 32 GT/s signaling rates. See Section 7.2.13 and Section 7.2.14 for 64 GT/s and 128 GT/s signaling rate. Note that C_{-1} and C_{1} are encoded as the absolute value of the actual FIR coefficient and thus incrementing or decrementing either value refers to the magnitude of the actual FIR coefficient. For example, if C_{-1} is 000001b the FIR coefficient is negative one and a request to increment C_{-1} will increase it in the direction of 000002b that decreases the FIR coefficient. **Note:** The write_committed associated with an update to this field indicates that the RxEqEval has completed.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-108.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "100",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

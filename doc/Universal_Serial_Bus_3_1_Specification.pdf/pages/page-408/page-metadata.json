@@ -1,0 +1,48 @@
+{
+  "index": 407,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 90,
+      "bottomRightX": 602,
+      "bottomRightY": 844,
+      "content": "![img-252.jpeg](img-252.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-252.jpeg"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 854,
+      "bottomRightX": 656,
+      "bottomRightY": 871,
+      "content": "Figure 8-66. Sample Smart Enhanced SuperSpeed Isochronous IN Transaction",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "8-114",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

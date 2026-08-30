@@ -1,0 +1,112 @@
+{
+  "index": 122,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 104,
+      "bottomRightX": 345,
+      "bottomRightY": 126,
+      "content": "### 5.4.2 Wire Assignments",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 132,
+      "bottomRightX": 515,
+      "bottomRightY": 150,
+      "content": "Table 5-6 defines the wire number, signal assignments of the wires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 164,
+      "bottomRightX": 348,
+      "bottomRightY": 179,
+      "content": "Table 5-6. Cable Wire Assignments",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 182,
+      "bottomRightX": 496,
+      "bottomRightY": 377,
+      "content": "|  Wire Number | Signal Name | Description  |\n| --- | --- | --- |\n|  1 | PWR | Power  |\n|  2 | D- | Unshielded twist pair, negative  |\n|  3 | D+ | Unshielded twist pair, positive  |\n|  4 | GND_PWRrt | Ground for power return  |\n|  5 | P1- | Shielded differential pair 1, negative  |\n|  6 | P1+ | Shielded differential pair 1, positive  |\n|  7 | P1_Drain | Drain wire for SDP1  |\n|  8 | P2- | Shielded differential pair 2, negative  |\n|  9 | P2+ | Shielded differential pair 2, positive  |\n|  10 | P2_Drain | Drain wire for SDP2  |\n|  Braid | Shield | Cable external braid to be 360° terminated on to plug metal shell  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-38.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 397,
+      "bottomRightX": 483,
+      "bottomRightY": 419,
+      "content": "### 5.4.3 Wire Gauges and Cable Diameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 425,
+      "bottomRightX": 684,
+      "bottomRightY": 494,
+      "content": "This specification does not specify wire gauges. Table 5-7 lists typical wire gauges for reference purposes only. A large gauge wire incurs less loss, but at the cost of cable flexibility. It is recommended to use the smallest possible wire gauges that meet the cable assembly electrical requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 498,
+      "bottomRightX": 689,
+      "bottomRightY": 549,
+      "content": "To maximize cable flexibility, all wires should be stranded and the cable outer diameter should be minimized as much as possible. A typical non-USB 3.1 Power Delivery capable cable outer diameter may range from 3 mm to 6 mm.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 562,
+      "bottomRightX": 341,
+      "bottomRightY": 579,
+      "content": "Table 5-7. Reference Wire Gauges",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 581,
+      "bottomRightX": 475,
+      "bottomRightY": 752,
+      "content": "|  Wire Number | Signal Name | Wire Gauge (AWG)  |\n| --- | --- | --- |\n|  1 | PWR | 20-28  |\n|  2 | D- | 28-34  |\n|  3 | D+ | 28-34  |\n|  4 | GND_PWRrt | 20-28  |\n|  5 | P1- | 26-34  |\n|  6 | SP1+ | 26-34  |\n|  7 | P1_Drain | 28-34  |\n|  8 | P2- | 26-34  |\n|  9 | P2+ | 26-34  |\n|  10 | P2_Drain | 28-34  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-39.md"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-35",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

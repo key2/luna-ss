@@ -1,0 +1,129 @@
+{
+  "index": 350,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 93,
+      "bottomRightX": 367,
+      "bottomRightY": 119,
+      "content": "### 8.11 TP or DP Responses",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 129,
+      "bottomRightX": 697,
+      "bottomRightY": 179,
+      "content": "Transmitting and receiving devices shall return DPs or TPs as detailed in Table 8-27 through Table 8-29. Not all TPs are allowed, depending on the transfer type and depending on the direction of flow of the TP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 199,
+      "bottomRightX": 535,
+      "bottomRightY": 220,
+      "content": "#### 8.11.1 Device Response to TP Requesting Data",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 224,
+      "bottomRightX": 700,
+      "bottomRightY": 273,
+      "content": "Table 8-27 shows the possible ways a device shall respond to a TP requesting data for bulk, control, and interrupt endpoints. A TP is considered to be invalid if one or more of the following conditions exist:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 280,
+      "bottomRightX": 667,
+      "bottomRightY": 370,
+      "content": "- It has an incorrect Device Address\n- Its endpoint number and direction does not refer to an endpoint that is part of the current configuration\n- It does not have the expected sequence number\n- Its TT does not match the endpoint type (for a device not operating at Gen 1 speed).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 384,
+      "bottomRightX": 636,
+      "bottomRightY": 416,
+      "content": "Table 8-27. Device Responses to TP Requesting Data (Bulk, Control, and Interrupt Endpoints)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 418,
+      "bottomRightX": 700,
+      "bottomRightY": 707,
+      "content": "|  Invalid TP Received | TP Received with Deferred Bit Set | Device Tx Endpoint Halt Feature Set | Device Ready to Transmit Data | Action Taken  |\n| --- | --- | --- | --- | --- |\n|  Yes | Do not care | Do not care | Do not care | The device shall ignore the TP.  |\n|  No | Yes | Yes | Do not care | The device shall send an ERDY TP.  |\n|  No | Yes | No | No | The device shall not respond. It shall send an ERDY TP when it is ready to resume.  |\n|  No | Yes | No | Yes | The device shall send an ERDY TP indicating that it is ready to send data.  |\n|  No | No | Yes | Do not care | Issue STALL TP  |\n|  No | No | No | No | Issue NRDY TP  |\n|  No | No | No | Yes | Start transmitting DPs with sequence numbers requested by the host  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-133.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 718,
+      "bottomRightX": 681,
+      "bottomRightY": 751,
+      "content": "An IN endpoint shall wait until it receives an ACK TP for the last DP it transmitted before it can send an STALL TP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 771,
+      "bottomRightX": 593,
+      "bottomRightY": 793,
+      "content": "#### 8.11.2 Host Response to Data Received from a Device",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 797,
+      "bottomRightX": 696,
+      "bottomRightY": 848,
+      "content": "Table 8-28 shows the host responses to data received from a device for bulk, control, and interrupt endpoints. The host is able to return only an ACK TP. A DPH is considered to be invalid if any of the following conditions exist:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 852,
+      "bottomRightX": 656,
+      "bottomRightY": 904,
+      "content": "- It has an incorrect Device Address\n- Its endpoint number and direction does not refer to an endpoint that is part of the current configuration",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-57",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

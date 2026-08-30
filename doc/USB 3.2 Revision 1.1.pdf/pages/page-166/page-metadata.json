@@ -1,0 +1,146 @@
+{
+  "index": 165,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 135 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 660,
+      "bottomRightY": 246,
+      "content": "- For SuperSpeed USB, the Remote Rx Header Buffer Credit Count shall be decremented by one if a header packet is sent for the first time after entering U0, including when it is re-sent following Recovery.\n- For SuperSpeedPlus USB, Remote Type 1 Rx Buffer Credit Count shall be decremented by one if a Type 1 packet is sent for the first time after entering U0, including when it is re-sent following Recovery. The same operation applies to Remote Type 2 Rx Buffer Credit Count with regard to Type 2 packet.\n- The Remote Rx Header Buffer Credit Count or the Remote Type 1/Type 2 Rx Buffer Credit Count shall not be changed when a header packet is retried following LRTY.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 251,
+      "bottomRightX": 291,
+      "bottomRightY": 265,
+      "content": "### 7.2.4.1.4 Deferred DPH",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 272,
+      "bottomRightX": 628,
+      "bottomRightY": 302,
+      "content": "The Deferred DPH shall be treated as a TP for buffering and credit purposes. Refer to Section 7.2.1.1.1 for deferred DPH format.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 316,
+      "bottomRightX": 359,
+      "bottomRightY": 332,
+      "content": "### 7.2.4.1.5 Receiving Header Packets",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 338,
+      "bottomRightX": 667,
+      "bottomRightY": 369,
+      "content": "This section covers receiving all header packets except for Gen 2 DPH, which is described in Section 7.2.4.1.6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 382,
+      "bottomRightX": 636,
+      "bottomRightY": 398,
+      "content": "- Upon receiving a header packet, the following verifications shall be performed:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 403,
+      "bottomRightX": 637,
+      "bottomRightY": 500,
+      "content": "1. CRC-5\n2. CRC-16\n3. Matching between the Header Sequence Number in the received header packet and the Rx Header Sequence Number\n4. The availability of an Rx Header Buffer to store a header packet",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 507,
+      "bottomRightX": 670,
+      "bottomRightY": 702,
+      "content": "- A header packet is defined as \"received properly\" when it has passed all four criteria described above.\n- When a header packet has been received properly, a port shall issue a single LGOOD_n with \"n\" corresponding to the Rx Header Sequence Number and increment the Rx Header Sequence Number by one (or roll over to 0 if the maximum Header Sequence Number is reached).\n- In SuperSpeed operation, a port shall consume one Rx Header Buffer until it has been processed.\n- In SuperSpeedPlus operation, a port shall consume one Type 1 Rx Buffer Credit until it has been processed.\n- When a header packet is not \"received properly\", one of the following shall occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 708,
+      "bottomRightX": 655,
+      "bottomRightY": 784,
+      "content": "1. If the header packet has one or more CRC-5 or CRC-16 errors, a port shall issue a single LBAD. A port shall ignore all the header packets received subsequently until an LRTY has been received, or the link has entered Recovery. Refer to Section 7.2.4.1.1 for additional rules applicable when a port enters U0 from Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 790,
+      "bottomRightX": 652,
+      "bottomRightY": 852,
+      "content": "2. If the Header Sequence Number in the received header packet does not match the Rx Header Sequence Number, or a port does not have an Rx Header Buffer available to store a header packet, a port shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 858,
+      "bottomRightX": 671,
+      "bottomRightY": 927,
+      "content": "- In SuperSpeed operation, after transmitting LBAD, a port shall continue to issue LCRD_x if an Rx Header Buffer Credit is made available.\n- In SuperSpeedPlus operation, after transmitting LBAD, a port shall continue to issue LCRD1_x/LCRD2_x if its respective Type 1/Type 2 Rx Buffer Credit is made available.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

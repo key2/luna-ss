@@ -1,0 +1,128 @@
+{
+  "index": 311,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 281 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 674,
+      "bottomRightY": 229,
+      "content": "DP(CStream, EOB=1) – If the host receives a DP with EOB = 1, it shall copy the DP data to the Endpoint Buffer associated with the Stream and transition to the INMvData Device Terminate state. The DPP shall contain a CStream data payload. This transition occurs when device returns IN data and has no more Function Data to send, e.g., it is terminating the Move Data operation because this DP exhausts the Function Data available for this Stream. Upon transitioning to the INMvData Device Terminate state the host sets LCStream to the value of CStream. This action updates LCStream with the value of CStream if the device accepts a HIMD, i.e., LCStream records the last Stream that was of interest to the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 242,
+      "bottomRightX": 652,
+      "bottomRightY": 302,
+      "content": "NRDY(CStream) – If the host receives an NRDY, it shall exit the HIMDSM and transition to the Idle state. This transition may occur upon initial entry into the HIMDSM when the device rejects a HIMD, or during a Stream transfer due to unexpected internal device conditions where it wants to flow control CStream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 314,
+      "bottomRightX": 673,
+      "bottomRightY": 438,
+      "content": "ACK(Deferred) – If the host receives an ACK with the Deferred (DF) flag set, then it shall exit the HIMDSM and transition to the Idle state. This packet shall be received if a link in the path between the host and the device has transitioned to a U1 or U2 state. There are two cases when this transition may occur: 1) the host has attempted a HIMD, and 2) between bursts. Case 1 is likely to occur if there has been a long host delay in obtaining buffers for the Stream. Case 2 may occur if there is a lot of endpoint activity on other devices delaying the time between bursts. The device treats this transition like a Prime Pipe and will send an ERDY to restart the stream when it receives the Deferred ACK forwarded to it by a hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 449,
+      "bottomRightX": 661,
+      "bottomRightY": 541,
+      "content": "ERDY() – If an ERDY is received, a race condition has occurred. During this condition, the device is in the Start Stream state and the host is in the Move Data state. The host has entered the Move Data state as the result of a HIMD, at the same time that the device has attempted to initiate a Stream transfer, and their respective messages have passed each other on the link. To resolve this condition, the host shall remain in the INMvData Device state and wait for a DP or an NRDY from the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 554,
+      "bottomRightX": 299,
+      "bottomRightY": 568,
+      "content": "### 8.12.1.4.4.7 INMvData Host",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 576,
+      "bottomRightX": 673,
+      "bottomRightY": 622,
+      "content": "In this state the host has received a DP from a device that has more Function Data available for CStream. The host responds with an acknowledgement after copying the received data to the Endpoint Buffer space associated with the Stream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 633,
+      "bottomRightX": 673,
+      "bottomRightY": 772,
+      "content": "ACK(CStream, NumP>0, PP=1) – If more Endpoint Buffer space is available for the Stream and the host is continuing the current burst to the device, then the host shall generate an ACK TP with NumP > 0 and PP = 1, and transition to the INMvData Device state. If the host detected an error on the last DP from the device, then the Rty flag shall be set. The host may continue the INMvData Host to INMvData Device loop until all retries are exhausted or a good packet is received by the device. If the current burst terminates before all retries are exhausted, the host may transition to the INMvData Burst End state (with Rty=1) and return to the INMvData Device state (with Rty=1) at the next available opportunity to continue the retry process within the constraints of the endpoint type.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 783,
+      "bottomRightX": 665,
+      "bottomRightY": 859,
+      "content": "ACK(CStream, NumP=0, PP=1) – If more Endpoint Buffer space is available for the Stream; however, the host must terminate the current burst to the device, then the host shall generate an ACK TP with NumP = 0 and PP = 1, and transition to the INMvData Burst End state. If the host detected an error on the last DP from the device, then the Rty flag shall be set.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 871,
+      "bottomRightX": 673,
+      "bottomRightY": 919,
+      "content": "ACK(CStream, NumP=0, PP=0) – If the host did not detect an error on the last DP received from the device and the Endpoint Buffer space available for the Stream is exhausted, then the host shall generate an ACK TP with NumP = 0 and PP = 0, and transition to the Idle state,",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

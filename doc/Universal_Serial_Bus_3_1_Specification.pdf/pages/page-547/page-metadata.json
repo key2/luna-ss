@@ -1,0 +1,39 @@
+{
+  "index": 546,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 117,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 824,
+      "content": "|  Offset | Field | Size | Description  |\n| --- | --- | --- | --- |\n|  7 | bHubHdrDecLat | 1 | Hub Packet Header Decode Latency. Worst case latency for hubs whose upstream link is in U0 to decode the header of a downstream flowing TP or DP packet and initiate a transition to U0 on the relevant downstream port. The time is measured from receipt of the last symbol of the header packet by the upstream port until the hubs starts LFPS on the intended downstream port. This field is used to calculate the total path exit latency through a hub. The following are permissible values: Value Meaning 00H Much less than 0.1 μs. 01H 0.1 μs 02H 0.2 μs 03H 0.3 μs 04H 0.4 μs 05H 0.5 μs 06H 0.6 μs 07H 0.7 μs 08H 0.8 μs 09H 0.9 μs 0AH 1.0 μs 0BH - FFH Reserved  |\n|  8 | wHubDelay | 2 | This field defines the maximum delay in nanoseconds a hub introduces while forwarding packets in either direction. Note that the maximum value a hub is allowed to report in this field is tHubDelay. See Section 10.19.  |\n|  10 | DeviceRemovable | 2 | Indicates if a port has a removable device attached. This field is reported on byte-granularity. Within a byte, if no port exists for a given location, the bit field representing the port characteristics shall be 0. Bit value definition: 0B - Device is removable. 1B - Device is non-removable. This is a bitmap corresponding to the individual ports on the hub: Bit 0: Reserved for future use Bit 1: Port 1 Bit 2: Port 2 ... Bit n: Port n (implementation-dependent, up to a maximum of 15 ports)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-227.md"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-69",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

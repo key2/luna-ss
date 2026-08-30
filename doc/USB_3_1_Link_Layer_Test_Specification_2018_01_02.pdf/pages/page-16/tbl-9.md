@@ -1,0 +1,14 @@
+|  7.2.4.1.1#28 | Upon entering U0 from Recovery and receiving the Header Sequence Number Advertisement, a port shall flush all the header packets in its (Type 1/Type 2) Tx Header Buffers that have been sent before Recovery except for those with the Header Sequence Number greater than (modulo 8) the Header Sequence Number received in the Header Sequence Number Advertisement. | NT  |
+| --- | --- | --- |
+|  7.2.4.1.1#29 | A port shall initiate the (Type 1/Type 2) Rx Header Buffer Credit Advertisement after sending LGOOD_n during Header Sequence Number Advertisement. | 5.1  |
+|  7.2.4.1.1#30 | A port shall initialize its (Type 1/Type 2) Tx Header Buffer Credit index to A before sending the Rx Header Buffer Credit. | 5.1  |
+|  7.2.4.1.1#31 | A port shall initialize its (Type 1/Type 2) Rx Header Buffer Credit index to A before sending the (Type 1/Type 2) Rx Header Buffer Credit. | 5.1  |
+|  7.2.4.1.1#32 | A port shall initialize its Remote (Type 1/Type 2) Rx Header Buffer Credit Count to zero before sending the (Type 1/Type 2) Rx Header Buffer Credit. | 5.1  |
+|  7.2.4.1.1#33 | A port shall continue to process header packets in its (Type 1/Type 2) Rx Header Buffers that have been either acknowledged with LGOOD_n prior to entry to Recovery, or validated during Recovery, and then update the Local (Type 1/Type 2) Rx Header Buffer Credit Count, before sending the (Type 1/Type 2) Rx Header Buffer Credit. | 5.1  |
+|  7.2.4.1.1#34 | When a port enters U0 from Polling or Hot Reset, a port shall set its Local (Type 1/Type 2) Rx Header Buffer Credit Count to 4. | 5.1 7.27 - 29  |
+|  7.2.4.1.1#35 | When a port enters U0 from Recovery, a port shall set its Local (Type 1/Type 2) Rx Header Buffer Credit Count to the number of (Type 1/Type 2) Rx Header Buffers available for incoming header packets. | NT  |
+|  7.2.4.1.1#36 | A port shall transmit LCRD_A when the Local (Type 1/Type 2) Rx Header Buffer Credit Count is one based on its Local (Type 1/Type 2) Rx Header Buffer Credit Count. | NT  |
+|  7.2.4.1.1#37 | A port shall transmit LCRD_A and LCRD_B when the Local (Type 1/Type 2) Rx Header Buffer Credit Count is two. | NT  |
+|  7.2.4.1.1#38 | A port shall transmit LCRD_A, LCRD_B and LCRD_C when the Local (Type 1/Type 2) Rx Header Buffer Credit Count is three. | NT  |
+|  7.2.4.1.1#39 | A port shall transmit LCRD_A, LCRD_B, LCRD_C, LCRD_D, when the Local (Type 1/Type 2) Rx Header Buffer Credit Count is four. | 5.1 7.27 - 29  |
+|  7.2.4.1.1#40 | A port receiving LCRD_x(/LCRD1_x/LCRD2_x) shall increment its Remote (Type 1/Type 2) Rx Header Buffer Credit Count by one each time an LCRD_x(/LCRD1_x/LCRD2_x) is received up to four. | NT  |

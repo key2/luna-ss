@@ -1,0 +1,75 @@
+{
+  "index": 111,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 115,
+      "bottomRightX": 623,
+      "bottomRightY": 478,
+      "content": "![img-63.jpeg](img-63.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-63.jpeg"
+    },
+    {
+      "topLeftX": 314,
+      "topLeftY": 496,
+      "bottomRightX": 476,
+      "bottomRightY": 512,
+      "content": "REFERENCE PCB LAYOUT",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 186,
+      "topLeftY": 536,
+      "bottomRightX": 636,
+      "bottomRightY": 553,
+      "content": "Figure 5-11. Reference Footprint for the USB 3.1 Standard-B Receptacle",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 567,
+      "bottomRightX": 673,
+      "bottomRightY": 617,
+      "content": "The USB 3.1 Standard-B receptacle interfaces have two portions: the USB 2.0 interface and the SuperSpeed interface. The USB 2.0 interface consists of pins 1 to 4, while the SuperSpeed interface consists of pins 5 to 9.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 623,
+      "bottomRightX": 697,
+      "bottomRightY": 725,
+      "content": "When a USB 2.0 Standard-B plug is inserted into the USB 3.1 Standard-B receptacle, only the USB 2.0 interface is engaged and the link will not take advantage of the Enhanced SuperSpeed capability. Since the USB 3.1 SuperSpeed portion is visibly not mated when a USB 2.0 Standard-B plug is inserted in the USB 3.1 Standard-B receptacle, users have the visual feedback that the cable plug is not matched with the receptacle. Only when a USB 3.1 Standard-B plug is inserted into the USB 3.1 Standard-B receptacle, is the interface completely visibly engaged.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-24",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

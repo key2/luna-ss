@@ -1,0 +1,138 @@
+{
+  "index": 492,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 92,
+      "bottomRightX": 719,
+      "bottomRightY": 693,
+      "content": "![img-267.jpeg](img-267.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-267.jpeg"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 708,
+      "bottomRightX": 197,
+      "bottomRightY": 718,
+      "content": "Port Status Field:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 719,
+      "bottomRightX": 215,
+      "bottomRightY": 728,
+      "content": "Notation Field Name",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 729,
+      "bottomRightX": 230,
+      "bottomRightY": 737,
+      "content": "PP PORT_POWER",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 738,
+      "bottomRightX": 253,
+      "bottomRightY": 748,
+      "content": "CCS PORT_CONNECTION",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 749,
+      "bottomRightX": 226,
+      "bottomRightY": 758,
+      "content": "PR PORT_RESET",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 759,
+      "bottomRightX": 248,
+      "bottomRightY": 768,
+      "content": "PLS PORT_LINK_STATE",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 769,
+      "bottomRightX": 232,
+      "bottomRightY": 778,
+      "content": "PE PORT_ENABLE",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 309,
+      "topLeftY": 718,
+      "bottomRightX": 331,
+      "bottomRightY": 727,
+      "content": "Note:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 309,
+      "topLeftY": 728,
+      "bottomRightX": 641,
+      "bottomRightY": 749,
+      "content": "Clear Port Feature (PORT_ENABLED) and Set Port Feature (PORT_ENABLED) are not used for SS Ports",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 309,
+      "topLeftY": 758,
+      "bottomRightX": 621,
+      "bottomRightY": 779,
+      "content": "1 This direct transition may only occur from a DSPORT state whose link is in the SS.Inactive, Rx.Detect.Active (during DSPORT.RESETTING), U1, U2, or U3 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 828,
+      "bottomRightX": 594,
+      "bottomRightY": 846,
+      "content": "Figure 10-10. Downstream Facing Hub Port State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-15",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "index": 243,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 588,
+      "bottomRightY": 127,
+      "content": "- A port that sends LAU shall enter the requested low power link state upon PM_ENTRY_TIMER timeout and if all of the following conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 129,
+      "bottomRightX": 360,
+      "bottomRightY": 162,
+      "content": "1. LPMA is not received.\n2. No TS1 ordered set is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 169,
+      "bottomRightX": 642,
+      "bottomRightY": 185,
+      "content": "Note: This implies LPMA is corrupted and the port issuing LGO_Ux has entered Ux.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 190,
+      "bottomRightX": 681,
+      "bottomRightY": 222,
+      "content": "- A port that has sent LAU shall enter Recovery before PM_ENTRY_TIMER timeout if a TS1 ordered set is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 228,
+      "bottomRightX": 681,
+      "bottomRightY": 246,
+      "content": "Note: This implies LAU was corrupted and the port issuing LGO_Ux has entered Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 251,
+      "bottomRightX": 674,
+      "bottomRightY": 284,
+      "content": "- A port that has sent LAU shall not respond with Ux LFPS exit handshake defined in Section 6.9.2 before PM_ENTRY_TIMER timeout and if LFPS Ux_Exit signal is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 289,
+      "bottomRightX": 684,
+      "bottomRightY": 339,
+      "content": "Note: This implies LPMA was corrupted and the port issuing LGO_Ux has initiated Ux exit. Under this situation, the port sending LAU shall complete the low power link state entry process and then respond to Ux exit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 344,
+      "bottomRightX": 562,
+      "bottomRightY": 361,
+      "content": "There also exists a situation where a port transitions from U1 to U2 directly.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 367,
+      "bottomRightX": 584,
+      "bottomRightY": 383,
+      "content": "- A port in U1 shall enter U2 directly if the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 385,
+      "bottomRightX": 599,
+      "bottomRightY": 419,
+      "content": "1. The port's U2 inactivity timer is enabled.\n2. The U2 inactivity timer times out and no U1 LFPS exit signal is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-32",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

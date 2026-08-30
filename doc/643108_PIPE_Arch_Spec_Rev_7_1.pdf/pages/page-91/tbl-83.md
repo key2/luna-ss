@@ -1,0 +1,4 @@
+|  Bit | Default | Attribute | Required | Description  |
+| --- | --- | --- | --- | --- |
+|  [7:6] | 0h | N/A | N/A | Reserved  |
+|  [5:0] | 0h | Level | PCIe | **LF[5:0]:** This field reflects the LF value advertised by the link partner. The MAC must only change this value when a new LF value is captured during link training or when there is a rate change. A PHY may optionally consider this value when deciding how long to evaluate Tx equalization settings of the link partner. The MAC must drive the relevant 8 GT/s values when the operational rate is 8 GT/s, it must drive the relevant 16 GT/s values when the operational rate is 16 GT/s, it must drive the relevant 32 GT/s values, when the operational rate is 32 GT/s, it must drive the relevant 64 GT/s values when the operational rate is 64 GT/s, and it must drive the relevant 128 GT/s values when the operational rate is 128 GT/s.  |

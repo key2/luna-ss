@@ -1,0 +1,103 @@
+{
+  "index": 300,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 117,
+      "bottomRightX": 474,
+      "bottomRightY": 141,
+      "content": "### 8.4 Link Management Packet (LMP)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 153,
+      "bottomRightX": 697,
+      "bottomRightY": 237,
+      "content": "Packets that have the Type field set to Link Management Packet are referred to as LMPs. These packets are used to manage a single link. They carry no addressing information and as such are not routable. They may be generated as the result of hub port commands. For example, a hub port command is used to set the U2 inactivity timeout. In addition, they are used to exchange port capability information and may be used for testing purposes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 176,
+      "topLeftY": 260,
+      "bottomRightX": 652,
+      "bottomRightY": 379,
+      "content": "![img-190.jpeg](img-190.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-190.jpeg"
+    },
+    {
+      "topLeftX": 265,
+      "topLeftY": 392,
+      "bottomRightX": 559,
+      "bottomRightY": 410,
+      "content": "Figure 8-4. Link Management Packet Structure",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 438,
+      "bottomRightX": 306,
+      "bottomRightY": 461,
+      "content": "#### 8.4.1 Subtype Field",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 465,
+      "bottomRightX": 574,
+      "bottomRightY": 482,
+      "content": "The value in the LMP Subtype field further identifies the content of the LMP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 500,
+      "bottomRightX": 442,
+      "bottomRightY": 517,
+      "content": "Table 8-3. Link Management Packet Subtype Field",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 519,
+      "bottomRightX": 699,
+      "bottomRightY": 775,
+      "content": "|  Width(bits) | Offset(DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | Subtype. These 4 bits identify the Link Packet Subtype.  |\n|   |   |  Value Type of LMP  |\n|   |   |  0000b Reserved  |\n|   |   |  0001b Set Link Function  |\n|   |   |  0010b U2 Inactivity Timeout  |\n|   |   |  0011b Vendor Device Test  |\n|   |   |  0100b Port Capability  |\n|   |   |  0101b Port Configuration  |\n|   |   |  0110b Port Configuration Response  |\n|   |   |  0111b-1111b Reserved  |\n|  16 | 3:0 | CRC-16. This field is the CRC calculated over the preceding 12 bytes. Refer to Section 7.2.1.1.2 for the polynomial used to calculate this value.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-106.md"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "8-7",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

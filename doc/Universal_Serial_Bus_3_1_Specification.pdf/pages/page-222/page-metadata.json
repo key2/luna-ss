@@ -1,0 +1,120 @@
+{
+  "index": 221,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 299,
+      "bottomRightY": 109,
+      "content": "Table 7-2. CRC-32 Mapping",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 111,
+      "bottomRightX": 386,
+      "bottomRightY": 616,
+      "content": "|  CRC-32 Result Bit | Position in CRC-32 Field  |\n| --- | --- |\n|  0 | 31  |\n|  1 | 30  |\n|  2 | 29  |\n|  3 | 28  |\n|  4 | 27  |\n|  5 | 26  |\n|  6 | 25  |\n|  7 | 24  |\n|  8 | 23  |\n|  9 | 22  |\n|  10 | 21  |\n|  11 | 20  |\n|  12 | 19  |\n|  13 | 18  |\n|  14 | 17  |\n|  15 | 16  |\n|  16 | 15  |\n|  17 | 14  |\n|  18 | 13  |\n|  19 | 12  |\n|  20 | 11  |\n|  21 | 10  |\n|  22 | 9  |\n|  23 | 8  |\n|  24 | 7  |\n|  25 | 6  |\n|  26 | 5  |\n|  27 | 4  |\n|  28 | 3  |\n|  29 | 2  |\n|  30 | 1  |\n|  31 | 0  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-88.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 629,
+      "bottomRightX": 684,
+      "bottomRightY": 662,
+      "content": "For SuperSpeed USB, any premature termination of a DPP shall end with a DPPABORT ordered set.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 668,
+      "bottomRightX": 686,
+      "bottomRightY": 719,
+      "content": "For SuperSpeedPlus USB, a port shall always preserve the DPP boundary by completing the DPP transmission meeting the length field specification defined in its associated DPH except for the following conditions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 724,
+      "bottomRightX": 470,
+      "bottomRightY": 740,
+      "content": "1. A downstream port is directed to issue a Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 745,
+      "bottomRightX": 673,
+      "bottomRightY": 778,
+      "content": "Note: An upstream port, before declaring the detection of Warm Reset, may already enter Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 784,
+      "bottomRightX": 370,
+      "bottomRightY": 801,
+      "content": "2. A port is directed to enter Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 806,
+      "bottomRightX": 671,
+      "bottomRightY": 822,
+      "content": "Note: A port may also complete the DPP transmission under any of the above conditions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 828,
+      "bottomRightX": 635,
+      "bottomRightY": 845,
+      "content": "In all other cases, a port in SuperSpeedPlus operation shall perform one of the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 850,
+      "bottomRightX": 665,
+      "bottomRightY": 885,
+      "content": "- It shall append DPPEND OS upon completing the transmission of DPP.\n- In the case of a nullified DPP, it shall append DPPABORT OS immediately after its DPH.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-10",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "index": 147,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 276,
+      "topLeftY": 134,
+      "bottomRightX": 553,
+      "bottomRightY": 817,
+      "content": "![img-114.jpeg](img-114.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-114.jpeg"
+    },
+    {
+      "topLeftX": 299,
+      "topLeftY": 827,
+      "bottomRightX": 526,
+      "bottomRightY": 846,
+      "content": "Figure 5-30. 4-Axes Continuity Test",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-60",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

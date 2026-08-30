@@ -1,0 +1,47 @@
+{
+  "index": 0,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 258,
+      "bottomRightX": 637,
+      "bottomRightY": 294,
+      "content": "# Universal Serial Bus 3.2 Specification",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 326,
+      "bottomRightX": 261,
+      "bottomRightY": 447,
+      "content": "Apple Inc.\nHewlett-Packard Inc.\nIntel Corporation\nMicrosoft Corporation\nRenesas Corporation\nSTMicroelectronics\nTexas Instruments",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 557,
+      "bottomRightX": 196,
+      "bottomRightY": 592,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 944,
+      "bottomRightX": 589,
+      "bottomRightY": 964,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

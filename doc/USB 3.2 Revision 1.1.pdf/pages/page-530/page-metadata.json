@@ -1,0 +1,155 @@
+{
+  "index": 529,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 499 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 251,
+      "topLeftY": 93,
+      "bottomRightX": 670,
+      "bottomRightY": 169,
+      "content": "24 ms timer. Note that this may be due to a temporary receiver termination mismatch between re-timers and their link partners, or due to the next transition path to Compliance Mode, or an error case. Note also that the tPollingLFPSTimeout timer shall continue while performing the far-end receiver termination detection.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 176,
+      "bottomRightX": 654,
+      "bottomRightY": 252,
+      "content": "- The re-timer shall forward and decode Warm Reset it may receive. The re-timer shall ensure the duration of forwarded Warm Reset meets the timing requirement defined in Section 6.9.3. Refer to Section E.3.1 for details. Note that the re-timer may also assign the port receiving Warm Reset as USP, and the port transmitting Warm Reset as DSP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 264,
+      "bottomRightX": 278,
+      "bottomRightY": 279,
+      "content": "### E.3.2.2 Exit from Rx.Detect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 287,
+      "bottomRightX": 622,
+      "bottomRightY": 340,
+      "content": "- A re-timer shall transition to Polling if Polling.LFPS is received at both ports.\n- The re-timer shall enter Compliance Mode upon the first timeout of the tPollingLFPSTimeout timer after power-on.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 352,
+      "bottomRightX": 238,
+      "bottomRightY": 367,
+      "content": "### E.3.3 eSS.Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 374,
+      "bottomRightX": 661,
+      "bottomRightY": 436,
+      "content": "eSS.Disabled is an optional state where no eSS activity is enabled. The re-timer is at its lowest possible power state. Note that there is no defined mechanism for entry to and exit from eSS.Disabled. It is the responsibility of the implementation to manage eSS.Disabled based on its capabilities.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 449,
+      "bottomRightX": 323,
+      "bottomRightY": 464,
+      "content": "### E.3.3.1 eSS.Disabled Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 471,
+      "bottomRightX": 659,
+      "bottomRightY": 525,
+      "content": "- The re-timer shall present high impedance to ground of ZRX-HIGH-IMP-DC-POS defined in Table 6-22 at both ports.\n- The re-timer shall be in its lowest power state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 537,
+      "bottomRightX": 295,
+      "bottomRightY": 551,
+      "content": "### E.3.3.2 Exit from eSS.Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 560,
+      "bottomRightX": 504,
+      "bottomRightY": 576,
+      "content": "- The re-timer shall transition to Rx.Detect upon direction.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 588,
+      "bottomRightX": 203,
+      "bottomRightY": 603,
+      "content": "### E.3.4 Polling",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 610,
+      "bottomRightX": 666,
+      "bottomRightY": 671,
+      "content": "Polling is a state for the re-timer to participate in speed negotiation, link training and to determine the state of operation upon exit from Polling. A simplified re-timer Polling substate machine is shown in Figure E-7. Note that the transition to Rx.Detect due to Warm Reset is not shown.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

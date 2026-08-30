@@ -1,0 +1,202 @@
+{
+  "index": 177,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 364,
+      "bottomRightY": 108,
+      "content": "Table 6-14. Gen 2 Compliance Pattern",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 111,
+      "bottomRightX": 694,
+      "bottomRightY": 212,
+      "content": "|  Symbol Number | Value | Description  |\n| --- | --- | --- |\n|  0-15 | SYNC ordered set | Compliance pattern starts with a SYNC to signal the beginning of the pattern and reset the scrambler  |\n|  16-65535 | 00h | Data symbol 00h that is scrambled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-67.md"
+    },
+    {
+      "topLeftX": 87,
+      "topLeftY": 232,
+      "bottomRightX": 320,
+      "bottomRightY": 255,
+      "content": "## 6.5 Clock and Jitter",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 87,
+      "topLeftY": 279,
+      "bottomRightX": 428,
+      "bottomRightY": 300,
+      "content": "### 6.5.1 Informative Jitter Budgeting",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 304,
+      "bottomRightX": 698,
+      "bottomRightY": 374,
+      "content": "The jitter for USB 3.1 is budgeted among the components that comprise the end to end connections: the transmitter, channel (including packaging, connectors, and cables), and the receiver. The jitter budget is derived at the silicon pads. The Dj distribution is the dual Dirac method. Table 6-15 lists Tx, Rx, and channel jitter budgets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 389,
+      "bottomRightX": 494,
+      "bottomRightY": 407,
+      "content": "Table 6-15. Informative Jitter Budgeting at the Silicon Pads",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 409,
+      "bottomRightX": 580,
+      "bottomRightY": 543,
+      "content": "|  Jitter Contribution (ps) | Gen 1 (5 GT/s) |   |   | Gen 2 (10 GT/s)  |   |   |\n| --- | --- | --- | --- | --- | --- | --- |\n|   |  Rj^{1,2} | Dj^{3} | Tj^{4} at 10^{-12} | Rj^{1,2} | Dj^{3} | Tj^{4} at 10^{-12}  |\n|  Tx^{6} | 2.42 | 41 | 75 | 1.31 | 17 | 35.4  |\n|  Media^{5} | 2.13 | 45 | 75 | 0.00 | 36 | 36.0  |\n|  Rx | 2.42 | 57 | 91 | 1.31 | 21 | 39.4  |\n|  Total: | 4.03 | 143 | 200 | 1.85 | 74 | 100  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-68.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 544,
+      "bottomRightX": 158,
+      "bottomRightY": 555,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 560,
+      "bottomRightX": 405,
+      "bottomRightY": 573,
+      "content": "1. Rj is the sigma value assuming a Gaussian distribution.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 578,
+      "bottomRightX": 510,
+      "bottomRightY": 592,
+      "content": "2. Rj Total is computed as the Root Sum Square of the individual Rj components.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 595,
+      "bottomRightX": 342,
+      "bottomRightY": 608,
+      "content": "3. Dj budget is using the Dual Dirac method.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 611,
+      "bottomRightX": 380,
+      "bottomRightY": 626,
+      "content": "4. Tj at a 10$^{-12}$ BER is calculated as 14.068 * Rj + Dj.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 629,
+      "bottomRightX": 588,
+      "bottomRightY": 643,
+      "content": "5. The media budget includes the cancellation of ISI from the appropriate Rx equalization function.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 646,
+      "bottomRightX": 350,
+      "bottomRightY": 659,
+      "content": "6. Tx is measured after application of the JTF.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 688,
+      "bottomRightX": 218,
+      "bottomRightY": 705,
+      "content": "# NOTE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 712,
+      "bottomRightX": 216,
+      "bottomRightY": 728,
+      "content": "# Captive Cables",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 736,
+      "bottomRightX": 672,
+      "bottomRightY": 803,
+      "content": "Captive cables must meet the mated connector requirements specified in Section 5.6.1.2. But a captive cable is not considered a stand-alone component. For electrical budgeting purposes, a captive cable is considered to be part of a device, and must meet the device jitter requirements listed in Table 6-15.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 87,
+      "topLeftY": 821,
+      "bottomRightX": 498,
+      "bottomRightY": 843,
+      "content": "### 6.5.2 Normative Clock Recovery Function",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 848,
+      "bottomRightX": 696,
+      "bottomRightY": 882,
+      "content": "The Tx Phase jitter measurement is performed using a standard clock recovery, shown in Figure 6-12. For information on the golden PLL measurement refer to the latest version of INCITS",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "6-22",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

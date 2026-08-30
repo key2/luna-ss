@@ -1,0 +1,38 @@
+{
+  "index": 0,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 382,
+      "topLeftY": 111,
+      "bottomRightX": 718,
+      "bottomRightY": 171,
+      "content": "# **Universal Serial Bus 3.1**## **Link Layer Test Specification**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 508,
+      "topLeftY": 675,
+      "bottomRightX": 693,
+      "bottomRightY": 694,
+      "content": "**Date:** January 2, 2018",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 482,
+      "topLeftY": 708,
+      "bottomRightX": 693,
+      "bottomRightY": 726,
+      "content": "**Revision:** 0.94",
+      "confidenceScores": null,
+      "type": "text"
+    }
+  ]
+}

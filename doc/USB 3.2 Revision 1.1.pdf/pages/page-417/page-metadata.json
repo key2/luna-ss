@@ -1,0 +1,147 @@
+{
+  "index": 416,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 386 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 573,
+      "bottomRightY": 109,
+      "content": "In the DSPORT-Powered-off state, the port's link is in the eSS.Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 120,
+      "bottomRightX": 675,
+      "bottomRightY": 226,
+      "content": "Table 10-2 shows the allowed state of VBUS for hub downstream USB Standard-A ports for possible states of the hub upstream port and logical port power for a downstream USB Standard-A port. The table covers the case where the hub has adequate power to provide power for the downstream ports (local power source is present). For a hub that does not implement per port power control, all downstream ports that will be affected by removing VBUS shall be in a state where power may be off (refer to Table 10-2) before the hub removes VBUS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 180,
+      "topLeftY": 239,
+      "bottomRightX": 607,
+      "bottomRightY": 256,
+      "content": "Table 10-2. Downstream USB Standard-A Port VBUS Requirements",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 265,
+      "bottomRightX": 673,
+      "bottomRightY": 461,
+      "content": "|  Hub Upstream Port Connection Status | Downstream Port Enhanced SuperSpeed Port Power Off (PORT_POWER = 0) USB 2.0 Port Power On (PORT_POWER = 1) | Downstream Port Enhanced SuperSpeed Port Power On (PORT_POWER = 1) Downstream Port USB 2.0 Port Power Off (PORT_POWER = 0) | Downstream Port USB 2.0 and Enhanced SuperSpeed Port Power Off (PORT_POWER = 0)  |\n| --- | --- | --- | --- |\n|  Enhanced SuperSpeed | On* | On | May be off  |\n|  USB 2.0 | On | May be off | May be off  |\n|  Enhanced SuperSpeed and USB 2.0 | On | On | May be off  |\n|  No VBUS | May be off | May be off | May be off  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-210.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 466,
+      "bottomRightX": 659,
+      "bottomRightY": 497,
+      "content": "* If the hub upstream port is unable to connect on the USB 2.0 bus, the downstream port VBUS may be off in this state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 509,
+      "bottomRightX": 517,
+      "bottomRightY": 525,
+      "content": "For downstream USB Type-C ports, the port power shall be on if:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 530,
+      "bottomRightX": 659,
+      "bottomRightY": 548,
+      "content": "((USB 2.0 Port Power On || USB 3.2 Port Power On) && (USB Type-C is in Attached.SRC))",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 559,
+      "bottomRightX": 673,
+      "bottomRightY": 636,
+      "content": "A hub may provide power to its downstream ports all of the time to support power applications from a USB port. Such hubs must ensure that Enhanced SuperSpeed devices on its downstream-facing ports attempt Enhanced SuperSpeed connection once upstream VBUS is seen by the hub. The recommended method to achieve this is to cycle VBUS off for a duration or by actively discharging so that it is seen to be off by the downstream device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 670,
+      "bottomRightX": 493,
+      "bottomRightY": 685,
+      "content": "### 10.3.1.2 DSPORT.Disconnected (Waiting for eSS Connect)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 691,
+      "bottomRightX": 501,
+      "bottomRightY": 708,
+      "content": "A port transitions to this state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 714,
+      "bottomRightX": 671,
+      "bottomRightY": 926,
+      "content": "- From the DSPORT-Powered-off state when the hub's Upstream Port link has detected far-end receiver terminations, Upstream Port VBUS is on (implied by receiver detection), no power-off condition is met and no Over-current condition exists.\n- From any state that can and does detect a disconnect, except from DSPORT-Powered-off-detect.\n- From the DSPORT-Powered-off-reset state when conditions for Repowering defined in Section 10.3.1.10 are met and the DSPORT-Powered-off-reset state has been maintained for tReset.\n- From the DSPORT-Powered-off-detect state when conditions for Repowering defined in Section 10.3.1.10 are met.\n- From the DSPORT.Resetting state when a port's link times out from Rx.Detect.Active during a reset. That is, it detects a disconnect.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

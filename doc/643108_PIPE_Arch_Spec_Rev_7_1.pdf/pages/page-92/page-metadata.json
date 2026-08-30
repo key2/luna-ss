@@ -1,0 +1,94 @@
+{
+  "index": 91,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 477,
+      "bottomRightY": 137,
+      "content": "Table 7-20. Address 408h: PHY Tx Control8 (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 687,
+      "bottomRightY": 659,
+      "content": "|  Bit | Default | Attribute | Required | Description  |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  [3] | 0h | Level | PCIe | **TxSwing:** This field controls transmitter voltage swing level.  |   |   |   |\n|   |   |   |   |  Value |   | Description  |   |\n|   |   |   |   |  0 |   | Full swing  |   |\n|   |   |   |   |  1 |   | Low swing (optional)  |   |\n|   |   |   |   |  Implementation of this signal is optional if only full swing is supported. This field is not used at the 8.0 GT/s or higher signaling rates.  |   |   |   |\n|  [2:0] | 0h | Level | PCIe | **TxMargin[2:0]:** This field selects transmitter voltage levels.  |   |   |   |\n|   |   |   |   |  [2] | [1] | [0] | Description  |\n|   |   |   |   |  0 | 0 | 0 | TxMargin value 0 = Normal operating range  |\n|   |   |   |   |  0 | 0 | 1 | TxMargin value 1 = 800–1200 mV for full swing OR 400-700 mV for Half swing  |\n|   |   |   |   |  0 | 1 | 0 | TxMargin value 2 = required and vendor-defined  |\n|   |   |   |   |  0 | 1 | 1 | TxMargin value 3 = required and vendor-defined  |\n|   |   |   |   |  1 | 0 | 0 | TxMargin value 4 = required and 200–400 mV for full swing OR 100–200 mV for Half swing if the last value or vendor-defined  |\n|   |   |   |   |  1 | 0 | 1 | TxMargin value 5 = optional and 200-400 mV for full swing OR 100-200 mV for Half swing if the last value or vendor-defined or reserved if no other values supported  |\n|   |   |   |   |  1 | 1 | 0 | TxMargin value 6 = optional and 200–400 mV for full swing OR 100–200 mV for Half swing if the last value or vendor-defined or reserved if no other values supported  |\n|   |   |   |   |  1 | 1 | 1 | TxMargin value 7 = optional and 200-400 mV for full swing or 100-200 mV for Half swing if the last value or reserved if no other values supported  |\n|   |   |   |   |  PIPE implementations that only support PCIe mode and the 2.5 GT/s signaling rate do not implement this field.  |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-85.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 676,
+      "bottomRightX": 496,
+      "bottomRightY": 695,
+      "content": "### 7.1.20 Address 409h: PHY Tx Control9",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 704,
+      "bottomRightX": 526,
+      "bottomRightY": 719,
+      "content": "This register is used to control the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 732,
+      "bottomRightX": 477,
+      "bottomRightY": 748,
+      "content": "Table 7-21. Address 409h: PHY Tx Control9 (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 752,
+      "bottomRightX": 687,
+      "bottomRightY": 796,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-86.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "92",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

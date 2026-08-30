@@ -1,0 +1,102 @@
+{
+  "index": 372,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 100,
+      "bottomRightX": 275,
+      "bottomRightY": 116,
+      "content": "### 8.12.1.4.3.6 Start Stream End",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 129,
+      "bottomRightX": 699,
+      "bottomRightY": 181,
+      "content": "In the **Start Stream End** state, the device has received a rejection of the Stream selection that it has proposed, and must respond to the DP from the host. The Bulk protocol requires an ACK or NRDY response for any DP sent. The Streams protocol specifies that an NRDY is sent.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 187,
+      "bottomRightX": 679,
+      "bottomRightY": 222,
+      "content": "NRDY(NoStream) - The device shall generate an NRDY with the Stream ID equal to *NoStream* and transition to the **Idle** state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 232,
+      "bottomRightX": 234,
+      "bottomRightY": 248,
+      "content": "### 8.12.1.4.3.7 Move Data",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 261,
+      "bottomRightX": 692,
+      "bottomRightY": 329,
+      "content": "In the Device OUT **Move Data** state, *CStream* is set to the same value at both ends of the pipe and the pipe may actively move data. The details of the bus transactions executed in the **Move Data** state and its exit conditions are defined in the Device OUT Move Data State Machine defined below.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 345,
+      "bottomRightX": 703,
+      "bottomRightY": 809,
+      "content": "![img-228.jpeg](img-228.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-228.jpeg"
+    },
+    {
+      "topLeftX": 217,
+      "topLeftY": 813,
+      "bottomRightX": 606,
+      "bottomRightY": 830,
+      "content": "Figure 8-42. Device OUT Move Data State Machine (DOMDSM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 849,
+      "bottomRightX": 695,
+      "bottomRightY": 884,
+      "content": "The Device OUT Move Data State Machine (DOMDSM) is entered from the **Start Stream** or **Idle** states as described above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "8-79",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

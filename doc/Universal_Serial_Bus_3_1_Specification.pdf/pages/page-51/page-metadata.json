@@ -1,0 +1,76 @@
+{
+  "index": 50,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 556,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Terms and Abbreviations",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 91,
+      "bottomRightX": 700,
+      "bottomRightY": 273,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  USB-IF | USB Implementers Forum, Inc. is a nonprofit corporation formed to facilitate the development of USB compliant products and promote the technology.  |\n|  USDPORT | Notation indicating the state machine of the upstream facing port of a peripheral device. Refer to Section 10.16.  |\n|  USPORT | Notation indicating the state machine of the upstream facing port of a hub. Refer to Section 10.5.  |\n|  UTP | Unshielded Twisted Pair.  |\n|  Warm Reset | Reset mechanism using LFPS.  |\n|  WORD | A data element that is 2 bytes (16 bits) in size.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-31.md"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 345,
+      "bottomRightX": 667,
+      "bottomRightY": 822,
+      "content": "![img-0.jpeg](img-0.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-0.jpeg"
+    },
+    {
+      "topLeftX": 304,
+      "topLeftY": 838,
+      "bottomRightX": 520,
+      "bottomRightY": 855,
+      "content": "Figure 2-1. Port and Link Pictorial",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 868,
+      "bottomRightX": 681,
+      "bottomRightY": 903,
+      "content": "Figure 2-1 illustrates the parts of a port and the connection between ports. The USB 3.1 specification only defines a port with a single Tx and Rx. The inclusion of more than one Rx/Tx",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 963,
+      "bottomRightX": 269,
+      "bottomRightY": 979,
+      "content": "For USB Contributor Review Only",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "2-9",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

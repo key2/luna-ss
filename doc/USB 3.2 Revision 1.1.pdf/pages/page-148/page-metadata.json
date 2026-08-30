@@ -1,0 +1,93 @@
+{
+  "index": 147,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 117 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 645,
+      "bottomRightY": 169,
+      "content": "- CRC-16 calculation shall begin at byte 0, bit 0 and continue to bit 7 of each of the 12 bytes.\n- The remainder of CRC-16 shall be complemented.\n- The residual of CRC-16 shall be F6AAh.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 175,
+      "bottomRightX": 673,
+      "bottomRightY": 205,
+      "content": "Note: The inversion of the CRC-16 remainder adds an offset of FFFFh that will create a constant CRC-16 residual of F6AAh at the receiver side.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 227,
+      "bottomRightX": 645,
+      "bottomRightY": 257,
+      "content": "Figure 7-6 is an illustration of CRC-16 remainder generation. The output bit ordering is listed in Table 7-1.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 256,
+      "topLeftY": 269,
+      "bottomRightX": 532,
+      "bottomRightY": 285,
+      "content": "Figure 7-6. CRC-16 Remainder Generation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 294,
+      "bottomRightX": 602,
+      "bottomRightY": 674,
+      "content": "![img-66.jpeg](img-66.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-66.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

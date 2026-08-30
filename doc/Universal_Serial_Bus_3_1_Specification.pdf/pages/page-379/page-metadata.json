@@ -1,0 +1,93 @@
+{
+  "index": 378,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 100,
+      "bottomRightX": 234,
+      "bottomRightY": 116,
+      "content": "### 8.12.1.4.4.5 Move Data",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 129,
+      "bottomRightX": 688,
+      "bottomRightY": 181,
+      "content": "In the Host IN Move Data state, CStream is set to the same value at both ends of the pipe and the pipe may actively move data. The details of the bus transactions executed in the Move Data state and its exit conditions are defined in the Host IN Move Data State Machine defined below.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 197,
+      "bottomRightX": 700,
+      "bottomRightY": 593,
+      "content": "![img-230.jpeg](img-230.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-230.jpeg"
+    },
+    {
+      "topLeftX": 234,
+      "topLeftY": 599,
+      "bottomRightX": 589,
+      "bottomRightY": 616,
+      "content": "Figure 8-44. Host IN Move Data State Machine (HIMDSM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 635,
+      "bottomRightX": 698,
+      "bottomRightY": 720,
+      "content": "The Host IN Move Data State Machine (HIMDSM) is entered from the Start Stream or Idle states as described above. The entry into the HIMDSM immediately transitions to the INMvData Device state. The HIMDSM allows either the device to terminate the Move Data operation because it has exhausted its Function Data associated with a Stream or the host to terminate the Move Data operation because it has exhausted its Endpoint Buffer space associated with a Stream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 728,
+      "bottomRightX": 691,
+      "bottomRightY": 763,
+      "content": "The HIMDSM always exits to the Idle state. The Retry (Rty=1) flag shall never be set in a packet that causes a HIMDSM exit. A Stream pipe remains in the Move Data state during packet retries.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 770,
+      "bottomRightX": 686,
+      "bottomRightY": 822,
+      "content": "Note: The Stream ID value shall be CStream for all packets exchanged in the Move Data state, except the INMvData Device substate ERDY transition. For the identified substates, if a Stream ID value other than CStream is detected while in the HIMDSM the host should halt the endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-85",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "index": 176,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 146 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 678,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 95,
+      "bottomRightX": 667,
+      "bottomRightY": 271,
+      "content": "1. The PM_LC_TIMER times out.\n2. LAU is not received.\n3. The number of consecutive U3 entry attempts is less than three.\n- An upstream port shall transition to U3 when one of the following two conditions is met:\n  1. LPMA is received\n  2. The PM_ENTRY_TIMER times out and LPMA is not received\n- A downstream port shall transition to eSS.Inactive when it fails U3 entry on three consecutive attempts.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 307,
+      "bottomRightX": 483,
+      "bottomRightY": 323,
+      "content": "#### 7.2.4.2.5 Concurrent Low Power Link Management Flow",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 328,
+      "bottomRightX": 675,
+      "bottomRightY": 360,
+      "content": "Concurrent low power link management flow applies to situations where a downstream port and an upstream port both issue a request to enter a low power link state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 372,
+      "bottomRightX": 672,
+      "bottomRightY": 561,
+      "content": "- If a downstream port has sent an LGO_U1, LGO_U2, or LGO_U3 and also received an LGO_U1 or LGO_U2, it shall send an LXU.\n- If an upstream port has sent an LGO_U1 or LGO_U2 and also received an LGO_U1, LGO_U2, it shall wait until receipt of an LXU and then send either an LAU or LXU.\n- If an upstream port has sent an LGO_U1 or LGO_U2 and also received an LGO_U3 from a downstream port, it shall wait until the reception of an LXU and then send an LAU.\n- If a downstream port is directed by a higher layer to initiate a transition to U3, and a transition to U1 or U2 has been initiated but not yet completed, the port shall first complete the in-process transition to U1 or U2, then return to U0 and request entry to U3.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 581,
+      "bottomRightX": 565,
+      "bottomRightY": 597,
+      "content": "#### 7.2.4.2.6 Concurrent Low Power Link Management and Recovery Flow",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 604,
+      "bottomRightX": 651,
+      "bottomRightY": 650,
+      "content": "Concurrent low power link management and Recovery flow applies to situations where a port issues a low power link state entry and another port issues Recovery. The port that issues the low power link state entry shall meet the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 662,
+      "bottomRightX": 672,
+      "bottomRightY": 747,
+      "content": "- Upon issuing LGO_Ux, the port shall transition to Recovery if a TS1 ordered set is received.\n- The port shall reinitiate low power link state entry process described in Section 7.2.4.2.3 and 7.2.4.2.4 upon re-entry to U0 from Recovery if the conditions to enter a low power link state are still valid.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 767,
+      "bottomRightX": 394,
+      "bottomRightY": 783,
+      "content": "#### 7.2.4.2.7 Low Power Link State Exit Flow",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 788,
+      "bottomRightX": 646,
+      "bottomRightY": 837,
+      "content": "Exit from a low power link state refers to exit from U1/U2, or wakeup from U3. It is accomplished by the LFPS Exit signaling defined in Section 6.9.2. A successful LFPS handshake process will lead both a downstream port and an upstream port to Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 846,
+      "bottomRightX": 659,
+      "bottomRightY": 880,
+      "content": "A Ux_EXIT_TIMER defined in Section 7.2.4.2.1 is only applied when a port is attempting an exit from U1 or U2. It shall not be applied when a port is initiating a U3 wakeup.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 889,
+      "bottomRightX": 672,
+      "bottomRightY": 923,
+      "content": "A U1_MIN_RESIDENCY_TIMER defined in Section 7.2.4.2.1 applies to a port in U1 only. For a port initiating U1 entry, it is measured at the connector side from when it sends LPMA to",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

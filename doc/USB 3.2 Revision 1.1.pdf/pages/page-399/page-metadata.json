@@ -1,0 +1,66 @@
+{
+  "index": 398,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 368 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 209,
+      "topLeftY": 92,
+      "bottomRightX": 578,
+      "bottomRightY": 110,
+      "content": "Table 9-28. SuperSpeed Endpoint Companion Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 119,
+      "bottomRightX": 676,
+      "bottomRightY": 858,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | *bLength* | 1 | Number | Size of this descriptor in bytes  |\n|  1 | *bDescriptorType* | 1 | Constant | SUPERSPEED_USB_ENDPOINT_COMPANION Descriptor Type  |\n|  2 | *bMaxBurst* | 1 | Number | The maximum number of packets the endpoint can send or receive as part of a burst. Valid values are from 0 to 15. A value of 0 indicates that the endpoint can only burst one packet at a time and a value of 15 indicates that the endpoint can burst up to 16 packets at a time. For endpoints of type control this shall be set to 0.  |\n|  3 | *bmAttributes* | 1 | Bitmap | If this is a Bulk Endpoint: BitsDescription 4:0 MaxStreams. The maximum number of streams this endpoint supports. Valid values are from 0 to 16, where a value of 0 indicates that the endpoint does not define streams. For the values 1 to 16, the number of streams supported equals 2^{MaxStream}. 7:5 Reserved. These bits are reserved and shall be set to zero. If this is a Control or Interrupt Endpoint: BitsDescription 7:0 Reserved. These bits are reserved and shall be set to zero. If this is an isochronous endpoint: BitsDescription 1:0 Mult. A zero based value that determines the maximum number of packets within a service interval that this endpoint supports. Maximum number of packets = (bMaxBurst + 1) x (Mult + 1) The maximum value that can be set in this field is 2. This field shall be set to zero if the bMaxBurst field is set to zero. 6:2 Reserved. These bits are reserved and shall be set to zero. 7 SSP ISO Companion. If this field is set to one then a SuperSpeedPlus Isochronous Endpoint Companion descriptor shall immediately follow this descriptor and the value in the Mult field shall be ignored. The actual Mult shall be determined as follows: dwBytesPerInterval/bMaxBurst/wMaxPacket Size rounded up to the nearest integer value..  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-202.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

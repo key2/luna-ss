@@ -1,0 +1,146 @@
+{
+  "index": 13,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 72,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 594,
+      "topLeftY": 35,
+      "bottomRightX": 648,
+      "bottomRightY": 48,
+      "content": "3.1 FPGA",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 208,
+      "topLeftY": 201,
+      "bottomRightX": 654,
+      "bottomRightY": 274,
+      "content": "# 3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 333,
+      "bottomRightX": 164,
+      "bottomRightY": 356,
+      "content": "## 3.1 FPGA",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 381,
+      "bottomRightX": 193,
+      "bottomRightY": 400,
+      "content": "### 3.1.1 Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 420,
+      "bottomRightX": 603,
+      "bottomRightY": 458,
+      "content": "For the resources of GW5AT series of FPGA Products, refer to DS981, GW5AT series of FPGA Products Data Sheet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 474,
+      "bottomRightX": 301,
+      "bottomRightY": 495,
+      "content": "### 3.1.2 I/O BANK Description",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 513,
+      "bottomRightX": 620,
+      "bottomRightY": 570,
+      "content": "For the I/O BANK, package, and pinout information, see UG983, GW5AT series of FPGA Products Package and Pinout User Guide for more details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 587,
+      "bottomRightX": 245,
+      "bottomRightY": 612,
+      "content": "## 3.2 Power Supply",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 635,
+      "bottomRightX": 216,
+      "bottomRightY": 653,
+      "content": "### 3.2.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 674,
+      "bottomRightX": 600,
+      "bottomRightY": 710,
+      "content": "The development board needs to be powered by a 12V power adapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 720,
+      "bottomRightX": 642,
+      "bottomRightY": 756,
+      "content": "The input parameter of the adapter is AC 100-240V~50/60MHz 0.6A, and the output parameter is DC 12V 2A.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 766,
+      "bottomRightX": 648,
+      "bottomRightY": 842,
+      "content": "The input 12V power is regulated by the PMIC on the development board to generate 5V, 3.3V, 2.5V, 1.8V, 1.5V, 1.2V, 0.9V, and 0.75V power supplies, thus meeting the power supply requirements of the development board.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 72,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 617,
+      "topLeftY": 943,
+      "bottomRightX": 648,
+      "bottomRightY": 957,
+      "content": "7(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

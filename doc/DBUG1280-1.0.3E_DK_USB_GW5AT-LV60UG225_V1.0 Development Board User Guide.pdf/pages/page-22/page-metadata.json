@@ -1,0 +1,75 @@
+{
+  "index": 21,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 36,
+      "bottomRightX": 216,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 556,
+      "topLeftY": 36,
+      "bottomRightX": 645,
+      "bottomRightY": 48,
+      "content": "3.7 MIPI Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 66,
+      "topLeftY": 97,
+      "bottomRightX": 247,
+      "bottomRightY": 116,
+      "content": "### 3.7.2 Pin Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 136,
+      "bottomRightX": 581,
+      "bottomRightY": 151,
+      "content": "Table 3-6 Pin Distribution of MIPI CPHY & DPHY Hard core Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 153,
+      "bottomRightX": 644,
+      "bottomRightY": 907,
+      "content": "|  J18 Pin No. | Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- | --- |\n|  1 | M0_D3N | C2 | MIPI | - | MIPI DPHY data signal  |\n|  2 | NC | - | - | - | Floating  |\n|  3 | M0_D3P | C1 | MIPI | - | MIPI DPHY data signal  |\n|  4 | NC | - | - | - | Floating  |\n|  5 | GND | - | - | - | GND  |\n|  6 | GND | - | - | - | GND  |\n|  7 | M0_D2N | E3 | MIPI | - | MIPI DPHY data signal  |\n|  8 | GND | - | - | - | GND  |\n|  9 | M0_D2P | F4 | MIPI | - | MIPI DPHY data signal  |\n|  10 | GND | - | - | - | GND  |\n|  11 | GND | - | - | - | GND  |\n|  12 | NC | - | - | - | Floating  |\n|  13 | M0_DCN | F3 | MIPI | - | MIPI DPHY clock signal  |\n|  14 | NC | - | - | - | Floating  |\n|  15 | M0_DCP | G3 | MIPI | - | MIPI DPHY clock signal  |\n|  16 | GND | - | - | - | GND  |\n|  17 | GND | - | - | - | GND  |\n|  18 | GND | - | - | - | GND  |\n|  19 | M0_D1N | H3 | MIPI | - | MIPI DPHY data signal  |\n|  20 | GND | - | - | - | GND  |\n|  21 | M0_D1P | H4 | MIPI | - | MIPI DPHY data signal  |\n|  22 | VCC1P8 | - | - | 1.8V | Power  |\n|  23 | GND | - | - | - | GND  |\n|  24 | VCC1P8 | - | - | 1.8V | Power  |\n|  25 | M0_D0N | J3 | MIPI | - | MIPI DPHY data signal  |\n|  26 | VCC1P8 | - | - | 1.8V | Power  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-11.md"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 612,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "15(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

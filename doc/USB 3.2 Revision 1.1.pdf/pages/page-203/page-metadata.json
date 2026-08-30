@@ -1,0 +1,102 @@
+{
+  "index": 202,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 61,
+      "content": "- 172 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 92,
+      "bottomRightX": 654,
+      "bottomRightY": 167,
+      "content": "1. The Compliance Mode is enabled.\n2. The port has never successfully completed Polling.LFPS handshake after Compliance Mode is enabled.\n3. The condition to transition to Polling.RxEQ or Polling.LFPSPlus is not met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 157,
+      "topLeftY": 172,
+      "bottomRightX": 664,
+      "bottomRightY": 219,
+      "content": "Note: In case Compliance mode is disabled, a downstream port may enter Rx.Detect attempting Polling.LFPS handshake again, or enter eSS.Inactive for SW intervention based on the count value of cPollingTimeout.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 225,
+      "bottomRightX": 667,
+      "bottomRightY": 481,
+      "content": "- A downstream port shall transition to Rx.Detect upon the 360 ms timer timeout (tPollingLFPSTimeout) if cPollingTimeout is less than two and Compliance Mode is disabled.\n- A downstream port shall transition to eSS.Inactive upon the 360 ms timer timeout (tPollingLFPSTimeout) and cPollingTimeout is two.\n- An upstream port of a hub shall transition to Rx.Detect upon the 360 ms timeout (tPollingLFPSTimeout) after having trained once since PowerOn Reset and the conditions to transition to Polling.RxEQ are not met.\n- A peripheral device shall transition to eSS.Disabled upon the 360 ms timeout (tPollingLFPSTimeout) after having trained once since PowerOn Reset and the conditions to transition to Polling.RxEQ are not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 502,
+      "bottomRightX": 648,
+      "bottomRightY": 519,
+      "content": "Figure 7-18. Example Timing Diagrams of a SSP Port Switching to SS Operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 178,
+      "topLeftY": 534,
+      "bottomRightX": 621,
+      "bottomRightY": 663,
+      "content": "![img-80.jpeg](img-80.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-80.jpeg"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 675,
+      "bottomRightX": 664,
+      "bottomRightY": 760,
+      "content": "(a). Example case 1: LP2 in Polling first and able to recognize Polling.LFPS bursts in SCD1 with varying tRepeat. The last condition to be met for LP1 before exit to Polling.RxEQ is to send at least four SCD1. Note that other scenarios may exist such as the tPollingSCDLFPSTimeout timer expiration being the last condition to be met. Under this condition, if four SCD1 has transmitted and the tPollingSCDLFPSTimeout timer has not expired, LP1 will switch from SCD1 to Polling.LFPS with non-varying tRepeat.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

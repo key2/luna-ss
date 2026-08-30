@@ -1,0 +1,75 @@
+{
+  "index": 44,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 46,
+      "bottomRightX": 413,
+      "bottomRightY": 62,
+      "content": "- 14 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 280,
+      "topLeftY": 92,
+      "bottomRightX": 508,
+      "bottomRightY": 110,
+      "content": "**Figure 2-1. Port and Link Pictorial**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 122,
+      "bottomRightX": 645,
+      "bottomRightY": 591,
+      "content": "![img-0.jpeg](img-0.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-0.jpeg"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 608,
+      "bottomRightX": 662,
+      "bottomRightY": 684,
+      "content": "Figure 2-1 illustrates the parts of a port and the connection between ports. The USB 3.1 specification only defines a port with a single Tx and Rx. The inclusion of more than one Rx/Tx pair in a port is for harmonization with the SSIC specification where multiple Rx/Tx pairs are defined. Note: The meanings of the terms used in this figure are not the same as used in PCIe.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "index": 101,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 690,
+      "bottomRightY": 167,
+      "content": "Figure 5-7 shows an example mid-mount reverse mount (mounted on the bottom of the PCB) with Insertion Detect. The reverse mount configuration locates the SuperSpeed signals between the USB 2.0 signals and the PCB edge, making the SuperSpeed signal routing more challenging. See Section 5.6.1.2 for target characteristic impedance.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 193,
+      "bottomRightX": 674,
+      "bottomRightY": 649,
+      "content": "![img-40.jpeg](img-40.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-40.jpeg"
+    },
+    {
+      "topLeftX": 294,
+      "topLeftY": 670,
+      "bottomRightX": 593,
+      "bottomRightY": 708,
+      "content": "PCB LAYOUT (REF.)\n(STANDARD MOUNT TYPE)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 571,
+      "topLeftY": 717,
+      "bottomRightX": 698,
+      "bottomRightY": 733,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-14",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

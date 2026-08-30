@@ -1,0 +1,111 @@
+{
+  "index": 133,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 103 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 92,
+      "bottomRightX": 664,
+      "bottomRightY": 184,
+      "content": "Note: There is no Near End Cross Talk (NEXT) specification for SuperSpeed transmitters and receivers. Therefore, when a port enters Recovery and starts transmitting TS1 Ordered Sets and its link partner is in electrical idle after successful LFPS handshake, a port may potentially train its receiver using its own TS1 Ordered Sets due to NEXT. The intention of adding the second exit condition is to prevent a port from electrical idle before transitioning to Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 190,
+      "bottomRightX": 673,
+      "bottomRightY": 437,
+      "content": "- A successful handshake is declared for link partner 2 if the following conditions are met:\n1. Link partner 2 has transmitted the minimum LFPS defined as (t13 - t11) in Table 6-31.\n2. For U1 exit, U2 exit, U3 Wakeup, and not Loopback exit, link partner 2 is ready to transmit the training sequences and the maximum time gap after an LFPS transmitter stops transmission and before a SuperSpeed transmitter starts transmission is 20 ns.\n- A U1 exit, U2 exit, Loopback exit, and U3 wakeup handshake failure shall be declared if the conditions for a successful handshake are not met.\n- Link partner 1 shall declare a failed handshake if it's successful handshake conditions were not met.\n- Link partner 2 shall declare a failed handshake if it's successful handshake conditions were not met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 443,
+      "bottomRightX": 649,
+      "bottomRightY": 536,
+      "content": "Note: Except for Ping.LFPS, when an upstream port in Ux or Loopback.Active receives an LFPS signal, it shall proceed with U1/U2 exit, or U3 wakeup, or Loopback exit handshake even if the LFPS is later determined to be a Warm Reset. If the LFPS is a Warm Reset, an upstream port, if in Ux, will enter Recovery and then times out to SS.Inactive, or if in Loopback Active, will enter Rx.Detect and then transitions to Polling.LFPS. When Warm Reset is detected, an upstream port will enter Rx.Detect.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 547,
+      "bottomRightX": 664,
+      "bottomRightY": 564,
+      "content": "Table 6-31. LFPS Handshake Timing for U1/U2 Exit, Loopback Exit, and U3 Wakeup",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 573,
+      "bottomRightX": 667,
+      "bottomRightY": 745,
+      "content": "|   | U1 Exit |   | U2/Loopback Exit |   | U3 Wakeup  |   |\n| --- | --- | --- | --- | --- | --- | --- |\n|   |  Min | Max | Min | Max | Min | Max  |\n|  t11 - t10 | 0.3 μs | 2.0 μs/2 ms^{1} | 0.3 μs | 2 ms | 0.3 μs | 10 ms  |\n|  t13 - t10 | 1.2 μs | 2 ms |  | 2 ms |  | 20 ms  |\n|  t12 - t11 | 0.6 μs | 2.0 μs^{1} | 0.6 μs | 2 ms | 0.6 μs | 10 ms  |\n|  t13 - t11 | 0.9 μs | 1.2^{1} μs | 80 μs | 2 ms | 80 μs | 10 ms  |\n|  t12 - t10 | 0.9 μs | 2 ms^{1} | 80 μs | 2 ms | 80 μs | 10 ms  |\n|  tNoLFPSResponseTimeout |  | 2 ms |  | 2 ms |  | 10 ms  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-72.md"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 748,
+      "bottomRightX": 158,
+      "bottomRightY": 759,
+      "content": "Note:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 762,
+      "bottomRightX": 654,
+      "bottomRightY": 902,
+      "content": "1. There are two sets of maximum timing requirements. The set with short timing requirement applies to normal operation when U2_Inactivity_Timer is disabled. The set with relaxed timing requirement applies to operation when U2_Inactivity_Timer is enabled. It also includes one corner case where U2_Inactivity_Timer is disabled and the port, upon entry to U1, initiating U1 exit immediately. Note that it is highly desired to implement the LFPS exit handshake with minimum delay for better quality of service.\n2. In a case where U2_Inactivity_Timer is enabled, it is the responsibility of each link partner to respond accordingly depending on its U1 or U2 state. For example, when link partner 1 initiates exit in U1 and link partner 2 is in U2, it is expected that both link partners will eventually enter U0 with respective timings starting from different U1/U2 states. Essentially, t12-t10 of link partner 1 follows U1 Exit tBurst timing and t13-t11 of link partner 2 follows U2 Exit tBurst timing.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

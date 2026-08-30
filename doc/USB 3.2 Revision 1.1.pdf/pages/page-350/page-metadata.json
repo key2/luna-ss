@@ -1,0 +1,75 @@
+{
+  "index": 349,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 319 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 216,
+      "topLeftY": 95,
+      "bottomRightX": 572,
+      "bottomRightY": 111,
+      "content": "**Table 9-1. Visible Enhanced SuperSpeed Device States**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 105,
+      "topLeftY": 120,
+      "bottomRightX": 681,
+      "bottomRightY": 830,
+      "content": "|  Attached | Powered | Default | Address | Configured | Suspended^{1} | Error | State  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  No | -- | -- | -- | -- | -- | -- | Device is not attached to the USB. Other attributes are not significant.  |\n|  Yes | No | -- | -- | -- | -- | -- | Device is attached to the USB, but is not powered. Other attributes are not significant.  |\n|  Yes | Yes | No | -- | -- | -- | -- | Device is attached to the USB and powered and its upstream link has not successfully completed training.  |\n|  Yes | Yes | Yes | No | -- | -- | -- | Device is attached to the USB and powered and has been reset, but has not been assigned a unique address. Device responds at the default address.  |\n|  Yes | Yes | Yes | Yes | No | -- | -- | Device is attached to the USB, powered, has been reset, and a unique device address has been assigned. Device is not configured.  |\n|  Yes | Yes | Yes | Yes | Yes | No | -- | Device is attached to the USB, powered, has been reset, has a unique address, is configured, and is not suspended. The host may now use the function provided by the device.  |\n|  Yes | Yes | Yes | -- | -- | Yes | -- | Device is, at minimum, in the Default state (attached to the USB, is powered and its upstream link has been successfully trained) and its upstream link has been set to U3 by its upstream link partner. It may also have a unique address and be configured for use. However, because the device is suspended, the host may not use the device's function.  |\n|  Yes | Yes |  |  |  |  | Yes | Device is attached to the USB, powered, and a link timeout error has occurred.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-144.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 836,
+      "bottomRightX": 470,
+      "bottomRightY": 854,
+      "content": "$^{1}$Suspended from the Default, Address, or Configured state.",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

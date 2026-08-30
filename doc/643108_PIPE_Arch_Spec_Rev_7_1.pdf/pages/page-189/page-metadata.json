@@ -1,0 +1,84 @@
+{
+  "index": 188,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 120,
+      "bottomRightX": 352,
+      "bottomRightY": 156,
+      "content": "# A Appendix",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 99,
+      "topLeftY": 217,
+      "bottomRightX": 435,
+      "bottomRightY": 239,
+      "content": "## A.1 DisplayPort AUX Signals",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 248,
+      "bottomRightX": 663,
+      "bottomRightY": 278,
+      "content": "The set of DisplayPort AUX signals listed in Table A-1 should be implemented per connector.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 293,
+      "bottomRightX": 347,
+      "bottomRightY": 309,
+      "content": "Table A-1. DisplayPort AUX Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 312,
+      "bottomRightX": 699,
+      "bottomRightY": 537,
+      "content": "|  Name | Direction | Active Level | Description  |\n| --- | --- | --- | --- |\n|  TxAuxData | Input | N/A | DisplayPort asynchronous transmit data for AUX CH  |\n|  TxAuxOE | Input | High | DisplayPort asynchronous data output enable for AUX CH. Assertion of this signal must be mutually exclusive with assertion of RxAuxIE.  |\n|  RxAuxIE | Input | High | DisplayPort asynchronous data input enable for AUX CH. Assertion of this signal must be mutually exclusive with assertion of TxAuxOE.  |\n|  RxAuxData | Output | N/A | DisplayPort asynchronous data output for AUX CH  |\n|  DCAux+ | Output | Low | Optional: DPRX asynchronous AUX+ pulldown status signal indicates a source is connected (DC voltage)  |\n|  DCAux- | Output | High | Optional: DPRX asynchronous AUX-pullup status signal indicates a connected source is powered up (DC voltage)  |\n|  AuxRxElecIdle | Output | High | Indicates whether differential signaling is detected.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-152.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 965,
+      "content": "189",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

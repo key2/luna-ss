@@ -1,0 +1,120 @@
+{
+  "index": 192,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 100,
+      "bottomRightX": 646,
+      "bottomRightY": 445,
+      "content": "![img-147.jpeg](img-147.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-147.jpeg"
+    },
+    {
+      "topLeftX": 225,
+      "topLeftY": 466,
+      "bottomRightX": 599,
+      "bottomRightY": 483,
+      "content": "Figure 6-24. Gen 1 Tx Compliance Rx EQ Transfer Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 513,
+      "bottomRightX": 453,
+      "bottomRightY": 532,
+      "content": "### 6.8.2.2 Gen 2 Reference Equalizer Function",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 539,
+      "bottomRightX": 317,
+      "bottomRightY": 556,
+      "content": "#### 6.8.2.2.1 Reference CTLE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 564,
+      "bottomRightX": 686,
+      "bottomRightY": 616,
+      "content": "Equation (11) describes the frequency response for the Gen 2 reference continuous time linear equalizer (CTLE) that is used for compliance testing. The equation describes the same first order CTLE as contained in equation (10).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 652,
+      "bottomRightX": 398,
+      "bottomRightY": 718,
+      "content": "$$H(s) = A_{ac} \\omega_{p2} \\frac{s + \\frac{A_{dc}}{A_{ac}} \\omega_{p1}}{(s + \\omega_{p1})(s + \\omega_{p2})}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 753,
+      "bottomRightX": 425,
+      "bottomRightY": 771,
+      "content": "where $A_{ac}$ is the high frequency peak gain",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 776,
+      "bottomRightX": 330,
+      "bottomRightY": 795,
+      "content": "$A_{dc}$ is the DC gain",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 802,
+      "bottomRightX": 397,
+      "bottomRightY": 821,
+      "content": "$\\omega_{p1} = 2\\pi f_{p1}$ is the first pole frequency",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 827,
+      "bottomRightX": 414,
+      "bottomRightY": 848,
+      "content": "$\\omega_{p2} = 2\\pi f_{p2}$ is the second pole frequency",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "6-37",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

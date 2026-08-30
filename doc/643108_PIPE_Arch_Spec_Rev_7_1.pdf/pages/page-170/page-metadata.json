@@ -1,0 +1,128 @@
+{
+  "index": 169,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 122,
+      "bottomRightX": 686,
+      "bottomRightY": 152,
+      "content": "- In NELB mode, the controller must not perform any operations that require the use of the following:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 157,
+      "bottomRightX": 381,
+      "bottomRightY": 211,
+      "content": "- RxEIDetectDisable\n- TxCommonModeDisable\n- AsyncPowerChangeAck",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 215,
+      "bottomRightX": 534,
+      "bottomRightY": 292,
+      "content": "- AlignDetect should continue to follow normal operation.\n- Tx Pattern must continue to follow normal operation.\n- PowerPresent must be set high in NELB mode.\n- TxOneZeros must be low in NELB mode.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 314,
+      "bottomRightX": 496,
+      "bottomRightY": 336,
+      "content": "### 8.34.2 Entry and Exit from NELB Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 342,
+      "bottomRightX": 554,
+      "bottomRightY": 357,
+      "content": "The handshake sequence for Entry into NELB Mode is as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 364,
+      "bottomRightX": 676,
+      "bottomRightY": 508,
+      "content": "1. MAC releases PIPE lane reset.\n2. MAC moves to proper PowerDown state.\n3. MAC writes to the PHY NELB Control register with position desired and enable set (PHY sends write Ack).\n4. PHY does its internal setup for NELB.\n5. PHY writes to the NELB Status register in the MAC, setting NELB State to 1 (MAC sends write Ack).\n6. MAC now free to train in NELB.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 514,
+      "bottomRightX": 515,
+      "bottomRightY": 529,
+      "content": "The handshake sequence for exit from NELB is as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 536,
+      "bottomRightX": 684,
+      "bottomRightY": 716,
+      "content": "- Option 1: MAC asserts PIPE lane reset OR\n- Option 2: (The PHY must specify in its datasheet whether it supports this exit method)\n  1. Mac moves to proper PowerDown state.\n  2. MAC sends NELB Control message to PHY with enable cleared (PHY sends write Ack back).\n  3. PHY does set up to move back to normal operation.\n  4. PHY sends NELB Acknowledgment message to MAC, setting NELB State to 0 (MAC sends write Ack back).\n  5. MAC now free to train in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 723,
+      "bottomRightX": 279,
+      "bottomRightY": 737,
+      "content": "Handshake rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 743,
+      "bottomRightX": 684,
+      "bottomRightY": 892,
+      "content": "- Handshake must occur in a PowerDown state that has both Tx and Rx off but PCLK running.\n- Handshake must complete prior to doing transmitter receiver detect if TxdetectRx is to be used.\n- Handshake may be done at any data rate if supported by PHY. The PHY must support the handshake at initial protocol defined rate (for instance, 2.5GT/s for PCIe).\n- If PHY is to report an error in the NELB Status register on entry, the state must indicate out of NELB, and the PHY must remain functionally in normal mode.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "170",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "index": 142,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 366,
+      "bottomRightY": 130,
+      "content": "- USB 3.1 Standard-B connector: 2%\n- USB 3.1 Micro connector family: 2%",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 226,
+      "topLeftY": 152,
+      "bottomRightX": 630,
+      "bottomRightY": 420,
+      "content": "![img-111.jpeg](img-111.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-111.jpeg"
+    },
+    {
+      "topLeftX": 254,
+      "topLeftY": 467,
+      "bottomRightX": 569,
+      "bottomRightY": 483,
+      "content": "Figure 5-27. Illustration of Peak-to-Peak Crosstalk",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 498,
+      "bottomRightX": 493,
+      "bottomRightY": 517,
+      "content": "### 5.6.1.3.2.6 Differential to Common Mode Conversion",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 524,
+      "bottomRightX": 698,
+      "bottomRightY": 593,
+      "content": "The differential to common mode conversion (SCD21 or SCD12) does not require embedding the reference host and the reference device with the mated cable assembly; it is for the mated cable assembly only. A mated cable assembly passes the SCD12 requirement if its SCD12 is less than or equal to -20 dB across the frequency range of 100MHz to 10 GHz, as shown in Figure 5-28.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "5-55",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

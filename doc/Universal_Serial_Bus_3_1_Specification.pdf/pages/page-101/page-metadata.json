@@ -1,0 +1,94 @@
+{
+  "index": 100,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 335,
+      "topLeftY": 111,
+      "bottomRightX": 493,
+      "bottomRightY": 207,
+      "content": "![img-38.jpeg](img-38.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-38.jpeg"
+    },
+    {
+      "topLeftX": 208,
+      "topLeftY": 360,
+      "bottomRightX": 578,
+      "bottomRightY": 663,
+      "content": "![img-39.jpeg](img-39.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-39.jpeg"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 706,
+      "bottomRightX": 595,
+      "bottomRightY": 724,
+      "content": "Figure 5-4. USB 3.1 Standard-A Plug Interface Dimensions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 736,
+      "bottomRightX": 494,
+      "bottomRightY": 757,
+      "content": "### 5.3.1.2 USB 3.1 Standard-A Reference Footprints",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 762,
+      "bottomRightX": 673,
+      "bottomRightY": 814,
+      "content": "This specification does not define standard footprints. Any footprint may be used as long as all mechanical and electrical requirements are met. Example footprints are provided for reference only.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 818,
+      "bottomRightX": 679,
+      "bottomRightY": 851,
+      "content": "Figure 5-5 shows through-hole example footprints for the USB 3.1 Standard-A receptacle with a back-shield. Pin numbers are marked.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 857,
+      "bottomRightX": 692,
+      "bottomRightY": 892,
+      "content": "Figure 5-6 shows an example footprint for a mid-mount standard mount (mounted on the top of the PCB) Standard-A receptacle that includes Insertion Detect.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "5-13",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

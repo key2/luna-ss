@@ -1,0 +1,4 @@
+|  Bit | Default | Attribute | Required | Description  |
+| --- | --- | --- | --- | --- |
+|  [7] | 0h | N/A | N/A | Reserved  |
+|  [6:0] | 0h | Level | PCIe (optional) | **Sample Count:** This field indicates the number of bits that have been margined and can increment only when "Start Margin" is asserted. The value of this field is 3×log2(number of bits margined). This field stops incrementing when the "Error Count" saturates. This field only resets on a PIPE reset or when the MAC writes to the "Sample Count Reset" bit in the Rx Margin Control1 register. This field is only required if the sampling rate is not reported in the PHY datasheet. If used, this field must be updated by the PHY every time the associated value changes; implementations may collapse multiple updates into a single write only to avoid creating a backlog of writes.  |

@@ -1,0 +1,93 @@
+{
+  "index": 484,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 62,
+      "content": "- 454 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 94,
+      "bottomRightX": 658,
+      "bottomRightY": 125,
+      "content": "to U3. While this state is active, the hub does not propagate downstream-directed traffic to this port, but the hub will respond to resume signaling from the port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 132,
+      "bottomRightX": 671,
+      "bottomRightY": 395,
+      "content": "- If the value is 4 (eSS.Disabled), the hub shall transition the link to eSS.Disabled. The request is valid at all times when the value is 4. The downstream port shall transition to the DSPORT.Disabled state after this request is received.\n- If the value is 5 (Rx.Detect), the hub shall transition the link to Rx.Detect. This request is only valid when the downstream port is in the DSPORT.Disabled state. If the link is in any other state when a request is received with this value, the behavior is undefined. The downstream port shall transition to the DSPORT.Disconnected state after this request is received.\n- If the value is 10 (Enable Compliance Mode), the hub shall enable entry into Compliance Mode for the next attach. This request is valid only when the downstream port is in the DSPORT.Disconnected state. If the link is in any other state when a request is received with this value, the behavior is undefined. Entry into Compliance Mode is disabled once the link enters Compliance Mode or Polling.LFPS succeeds.\n- The hub shall respond with a Request Error if it sees any other value in the upper byte of the wIndex field.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 416,
+      "bottomRightX": 663,
+      "bottomRightY": 478,
+      "content": "When the feature selector is PORT_REMOTE_WAKE_MASK, the most significant byte (bits 15..8) of the wIndex field specifies the conditions that would cause the hub to signal a remote wake event on its upstream port. The encoding for the port remote wake mask is given below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 489,
+      "bottomRightX": 592,
+      "bottomRightY": 506,
+      "content": "Table 10-18. Downstream Port Remote Wake Mask Encoding",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 515,
+      "bottomRightX": 641,
+      "bottomRightY": 820,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0 | Conn_RWEnable **Value****Meaning** 0 The hub is disabled from signaling a remote wakeup due to a connect event on this port; connect events that occur during suspend must still be detected and reported after the resume process has completed (due to some other event) as a C_PORT_CONNECTION port status change. 1 The hub is enabled to signal a remote wakeup due to a connect event on the port and if Function Remote Wake is also enabled.  |\n|  1 | Disconn_RWEnable **Value****Meaning** 0 The hub is disabled from signaling a remote wakeup due to a disconnect event on this port; disconnect events that occur during suspend must still be detected and reported after the resume process has completed (due to some other event) as a C_PORT_CONNECTION port status change. 1 The hub is enabled to signal a remote wakeup due to a disconnect event on the port and if Function Remote Wake is also enabled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-261.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

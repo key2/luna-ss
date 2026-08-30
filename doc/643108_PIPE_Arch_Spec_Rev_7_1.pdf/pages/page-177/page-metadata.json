@@ -1,0 +1,75 @@
+{
+  "index": 176,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 122,
+      "bottomRightX": 697,
+      "bottomRightY": 181,
+      "content": "implementations elastic buffer and symbol synchronization logic. Note that the transmitter that is going to electrical idle may transmit garbage data and this data will show up on the RxData[] lines. The MAC should discard any symbols received after the electrical idle ordered set until RxValid is deasserted.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 189,
+      "bottomRightX": 337,
+      "bottomRightY": 205,
+      "content": "Figure 9-6. Receiver Active to Idle",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 208,
+      "bottomRightX": 700,
+      "bottomRightY": 554,
+      "content": "![img-75.jpeg](img-75.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-75.jpeg"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 558,
+      "bottomRightX": 698,
+      "bottomRightY": 647,
+      "content": "The second diagram shows how the interface responds when the receive channel has been idle and then begins signaling again. In this case, there can be significant delay between the deassertion of RxElecIdle (indicating that there is activity on the Rx+/Rx- lines) and RxValid being asserted (indicating valid data on the RxData[] signals). This delay is composed of the time required for the receiver to retrain as well as elastic buffer depth.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 967,
+      "content": "177",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

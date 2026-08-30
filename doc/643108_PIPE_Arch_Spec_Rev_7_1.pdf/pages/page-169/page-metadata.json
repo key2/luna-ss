@@ -1,0 +1,245 @@
+{
+  "index": 168,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 239,
+      "topLeftY": 122,
+      "bottomRightX": 694,
+      "bottomRightY": 181,
+      "content": "- If RxStandbyStatus returns in response to RxStandby, it should continue to do so in NELB mode.\n- If RxStandbyStatus is not supported (for instance, USB) or guaranteed, the same holds true in NELB mode.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 187,
+      "bottomRightX": 296,
+      "bottomRightY": 202,
+      "content": "- Rate Changes:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 208,
+      "bottomRightX": 693,
+      "bottomRightY": 287,
+      "content": "- This operates the same as in normal operation.\n- The same combinations of Rate, Width, PCLK Rate, RxWIDTH, and so forth. It must be supported in NELB mode as in normal operation.\n- Clock changes related to rate changes should remain the same as in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 292,
+      "bottomRightX": 691,
+      "bottomRightY": 307,
+      "content": "- For instance, PclkChangeOk / PclkChangeAck should remain the same.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 311,
+      "bottomRightX": 693,
+      "bottomRightY": 339,
+      "content": "- TxDetectRx/Loopback must not be used to indicate follower loopback operation while NELB is enabled.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 346,
+      "bottomRightX": 437,
+      "bottomRightY": 360,
+      "content": "- Start of data transfer on Rx data path:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 366,
+      "bottomRightX": 693,
+      "bottomRightY": 407,
+      "content": "- If the PHY cannot guarantee all bits will be looped back when the Rx data path is exiting electrical idle, it must clearly specify in its datasheet when the first data will appear.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 412,
+      "bottomRightX": 694,
+      "bottomRightY": 452,
+      "content": "- For instance, the block aligner requires two EIEOSs to begin forwarding data and the data from the Tx data path up to the 2nd EIEOS would not be seen (similar thing for 8b/10b aligner).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 457,
+      "bottomRightX": 527,
+      "bottomRightY": 471,
+      "content": "- NELB must function when SRISEnable is high or low.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 477,
+      "bottomRightX": 671,
+      "bottomRightY": 493,
+      "content": "- No false or additional ppm is required to be applied if SRISEnable is high.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 497,
+      "bottomRightX": 588,
+      "bottomRightY": 512,
+      "content": "- RefClkRequired# must function as it does in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 518,
+      "bottomRightX": 571,
+      "bottomRightY": 532,
+      "content": "- DataBusWidth must function as it does in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 538,
+      "bottomRightX": 694,
+      "bottomRightY": 566,
+      "content": "- TxDeemph and TxSwing must continue to be consumed by the PHY. The PHY may choose to ignore them if the loopback point is not affected by the Tx EQ settings.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 572,
+      "bottomRightX": 687,
+      "bottomRightY": 601,
+      "content": "- The controller must not use the following functions while in NELB as the PHY may not return a response:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 608,
+      "bottomRightX": 376,
+      "bottomRightY": 660,
+      "content": "- Receiver Lane Margining\n- TxMargin\n- IORecal",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 666,
+      "bottomRightX": 694,
+      "bottomRightY": 694,
+      "content": "- Elastic Buffer controls as defined in the message bus section (depth, run mode, and so forth) must continue to function the same as normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 700,
+      "bottomRightX": 660,
+      "bottomRightY": 729,
+      "content": "- BlockAlignControl functionality is expected to function the same as in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 736,
+      "bottomRightX": 601,
+      "bottomRightY": 751,
+      "content": "- EncodeDecodeBypass must operate as it does in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 757,
+      "bottomRightX": 641,
+      "bottomRightY": 785,
+      "content": "- RxPolarity functionality must continue to operate the same as in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 791,
+      "bottomRightX": 683,
+      "bottomRightY": 819,
+      "content": "- PHY or MAC can implement implementation specific means to invert the data for increased test coverage.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 824,
+      "bottomRightX": 607,
+      "bottomRightY": 839,
+      "content": "- Local Preset Fetch bus must function as it does in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 844,
+      "bottomRightX": 694,
+      "bottomRightY": 871,
+      "content": "- GetLocalPresetCoefficients, LocalPresetIndex, LocalFS, LocalLF, LocalG{5,4}FS, LocalG{5,4}LF, LocalTxPresetCoefficient",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 877,
+      "bottomRightX": 669,
+      "bottomRightY": 892,
+      "content": "- FS and LF of link partner must continue to be reported as in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 953,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "169",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

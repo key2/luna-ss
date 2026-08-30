@@ -1,0 +1,57 @@
+{
+  "index": 70,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 122,
+      "bottomRightX": 365,
+      "bottomRightY": 137,
+      "content": "Table 6-17. MacCLK Lane Input Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 148,
+      "bottomRightX": 696,
+      "bottomRightY": 821,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  MacCLKPHYMode [3:0] | N/A | Selects the protocol associated with this MacCLK lane: 0 - PCIe 1 - USB 2 - SATA 3 - DisplayPort 4 - Reserved 5 - Reserved 6 - Reserved 7 - USB4 All other reserved. This signal is asynchronous and is permitted to change only during MacCLKReset# assertion. The MAC must ensure this signal is valid at MacCLKReset# deassertion. | PCIe, SATA, USB, DisplayPort, USB4  |\n|  MacCLKRate[4:0] | N/A | Selects the rate of the MacCLK. This uses the following encoding definitions: 0-30: Uses the same encoding definitions as PCLK Rate. 31: Vendor specific override This signal is asynchronous and is permitted to change during MacCLKReset# assertion. The MAC must ensure this signal is at a valid value at MacCLKReset# deassertion. When MacCLKReset# is deasserted, this signal is permitted to change only when MacCLKReq and MacCLKAck are deasserted. The MAC must ensure MacCLKRate is stable before MacCLKReq asserts. | PCIe, SATA, USB, DisplayPort, USB4  |\n|  MacCLKReq | High | The MAC sets this signal to \"1\" to request the MacCLK to run and sets this signal to \"0\" to request the MacCLK to stop. When this signal is asserted, the PHY is required to start the MacCLK and then to subsequently assert MacCLKAck to indicate the MacCLK is valid and running at the desired rate. When this signal is deasserted, the PHY is required to stop the MacCLK and deassert MacCLKAck before or after MacCLK is stopped. This signal is asynchronous. The MAC must ensure this signal is valid at MacCLKReset# deassertion. This signal defaults to \"0\" when MacCLKReset# deasserts. | PCIe, SATA, USB, DisplayPort, USB4  |\n|  MacCLKSSCEnable | High | The MAC sets this to signal to \"1\" to request SSC to be enabled on the MacCLK. This signal is set to \"0\" to request SSC to be disabled on the MacCLK. This signal is asynchronous and is permitted to change during MacCLKReset# assertion. The MAC must ensure this signal is at a valid value at MacCLKReset# deassertion. MacCLKSSCEnable is permitted to be dynamically asserted or deasserted while MacCLK is running. | PCIe, SATA, USB, DisplayPort, USB4  |\n|  MacCLKReset# | Low | Resets the MacCLK lane state. This signal is asynchronous and is permitted to assert at any time regardless of PHY state. | PCIe, SATA, USB, DisplayPort, USB4  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-49.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 297,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "71",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

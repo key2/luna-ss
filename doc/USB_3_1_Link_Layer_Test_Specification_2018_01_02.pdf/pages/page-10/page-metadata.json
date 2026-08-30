@@ -1,0 +1,75 @@
+{
+  "index": 9,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 303,
+      "bottomRightY": 61,
+      "content": "Chapter 2: Terms and Abbreviations",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 356,
+      "bottomRightY": 113,
+      "content": "## 2 Terms and Abbreviations",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 118,
+      "bottomRightX": 660,
+      "bottomRightY": 148,
+      "content": "This chapter lists and defines terms and abbreviations used throughout this specification. Terms and Abbreviations specified in the USB 3.0 specifications are not duplicated here.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 177,
+      "bottomRightX": 710,
+      "bottomRightY": 420,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  Host Controller Test Driver | The USB30CV driver running on the host controller. This driver has a known behavior in order to run a portion of the tests described in this specification (for host downstream port testing only).  |\n|  Link Validation System | The hardware aimed at running the tests on an Upstream or a Downstream Port Under Test. The Link Validation System will act as the opposite port.  |\n|  LVS | See Link Validation System.  |\n|  Port Under Test | The port connected to the Link Validation System on which the tests are run.  |\n|  PUT | See Port Under Test.  |\n|  USB30CV | USB 3.0 Command Verifier software, available for download from usb.org. The same software that runs Ch 9 and MSC tests.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-3.md"
+    },
+    {
+      "topLeftX": 407,
+      "topLeftY": 934,
+      "bottomRightX": 416,
+      "bottomRightY": 946,
+      "content": "2",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

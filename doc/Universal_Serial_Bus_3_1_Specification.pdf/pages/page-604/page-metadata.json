@@ -1,0 +1,182 @@
+{
+  "index": 603,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 253,
+      "bottomRightY": 111,
+      "content": "# Exiting the U3 State",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 692,
+      "bottomRightY": 136,
+      "content": "The only legitimate link state transition from U3 is U3 → U0, and either link partner can initiate it.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 144,
+      "bottomRightX": 502,
+      "bottomRightY": 162,
+      "content": "Host software initiates U3 exit on a downstream port by issuing a",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 162,
+      "bottomRightX": 698,
+      "bottomRightY": 246,
+      "content": "SetPortFeature(PORT_LINK_STATE) request to the desired downstream port. Upstream ports (e.g., upstream port of a hub, or a peripheral device), initiate U3 exit in response to a remote wakeup event. An example of this would be an incoming Wake on LAN packet for a USB attached network interface device. The exit process consists of a Low Frequency Periodic Signaling (LFPS) handshake followed by link recovery and training.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 254,
+      "bottomRightX": 275,
+      "bottomRightY": 270,
+      "content": "# Device Initiated U3 Exit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 281,
+      "bottomRightX": 698,
+      "bottomRightY": 331,
+      "content": "If the exit was initiated by a device, the specific function within the device that initiated the wakeup would follow up the LFPS triggered transition to U0 by sending a Function Wake device notification packet to the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 339,
+      "bottomRightX": 262,
+      "bottomRightY": 355,
+      "content": "# Host initiated U3 Exit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 366,
+      "bottomRightX": 674,
+      "bottomRightY": 415,
+      "content": "For host initiated U3 exit, the LFPS handshake process allows devices up to 20 ms to complete, allowing sufficient time for a device to turn on a switched power rail if implemented (refer to Chapter 6 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 424,
+      "bottomRightX": 681,
+      "bottomRightY": 492,
+      "content": "The software interface associated with U3 consists of a set of port controls and function controls. The port controls, e.g., initiating U3 on a hub downstream port, are described in Section C.1.2.3. The function controls, e.g., enabling a function (device) for remote wakeup, are described in Section C.1.4.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 511,
+      "bottomRightX": 593,
+      "bottomRightY": 532,
+      "content": "# C.1.2 Link Power Management for Downstream Ports",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 538,
+      "bottomRightX": 690,
+      "bottomRightY": 555,
+      "content": "Hubs play several critical roles in link power management. They perform the following functions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 559,
+      "bottomRightX": 696,
+      "bottomRightY": 630,
+      "content": "- Coordinate the upstream port link power management state with that of their downstream ports.\n- Handle packet deferral, where the hub tells the host that a packet was sent to a downstream port that is not currently in U0.\n- Provide inactivity timers on downstream ports to initiate U1 and U2 entry.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 646,
+      "bottomRightX": 494,
+      "bottomRightY": 665,
+      "content": "# C.1.2.1 Link State Coordination and Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 670,
+      "bottomRightX": 686,
+      "bottomRightY": 737,
+      "content": "A hub monitors its downstream ports' link states and keeps its upstream port in the lowest power link state it can without allowing it to be in a lower power state than any of its downstream ports. The intent for this policy is to ensure that the path to the host, (i.e., the upstream port), is as active as the most active of its downstream ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 745,
+      "bottomRightX": 686,
+      "bottomRightY": 798,
+      "content": "When a device initiates a transition from a low power state back to U0 on a hub downstream port, the hub begins transitioning its upstream port to U0 immediately, in parallel with the downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 805,
+      "bottomRightX": 655,
+      "bottomRightY": 856,
+      "content": "For packets traveling downstream, hubs must first receive the packet, determine which of its downstream ports the packet is targeted at, and then only initiate a transition to U0 for that particular downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 864,
+      "bottomRightX": 682,
+      "bottomRightY": 900,
+      "content": "USB 3.0 hubs use a unicast packet transmission model and this improves the power efficiency of the platform in every instance where a hub is deployed. USB 3.1 hubs use a store and forward",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 112,
+      "bottomRightY": 994,
+      "content": "C-6",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

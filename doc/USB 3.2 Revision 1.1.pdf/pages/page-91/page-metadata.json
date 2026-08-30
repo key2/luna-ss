@@ -1,0 +1,156 @@
+{
+  "index": 90,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 60 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 211,
+      "topLeftY": 92,
+      "bottomRightX": 576,
+      "bottomRightY": 110,
+      "content": "Figure 6-11. Gen 2 Bit Transmission Order and Framing",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 124,
+      "bottomRightX": 637,
+      "bottomRightY": 303,
+      "content": "![img-22.jpeg](img-22.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-22.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 323,
+      "bottomRightX": 374,
+      "bottomRightY": 338,
+      "content": "### 6.3.2.2 Normative 128b/132b Decode Rules",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 344,
+      "bottomRightX": 673,
+      "bottomRightY": 421,
+      "content": "The physical layer shall encode the data on a per block basis. Each block, except for the SKP Ordered Set control block, shall comprise a 4-bit Block Header and a 128-bit payload. The SKP Ordered Set control block shall be comprised of a 4-bit Block Header and a 192-bit payload. The 4-bit header is set to 0011b for data and 1100b for control blocks. This header format allows for the correction of single bit errors in the header information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 433,
+      "bottomRightX": 666,
+      "bottomRightY": 463,
+      "content": "Ordered sets are control blocks, and all data is sent in data blocks. The following is a list of the control blocks.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 471,
+      "bottomRightX": 272,
+      "bottomRightY": 597,
+      "content": "- TS1 Ordered Set\n- TS2 Ordered Set\n- TSEQ Ordered Set\n- SYNC Ordered Set\n- SKP Ordered Set\n- SDS Ordered Set",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 612,
+      "bottomRightX": 380,
+      "bottomRightY": 629,
+      "content": "### 6.3.2.3 Data Scrambling for Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 635,
+      "bottomRightX": 666,
+      "bottomRightY": 667,
+      "content": "The scrambler used for Gen 2 operation is different than the scrambler used for Gen 1 operation. The LFSR uses the following polynomial: $$G(X) = X^{23} + X^{21} + X^{16} + X^8 + X^5 + X^2 + 1$$.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 678,
+      "bottomRightX": 432,
+      "bottomRightY": 694,
+      "content": "The scrambler has the following modes of operation:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 699,
+      "bottomRightX": 618,
+      "bottomRightY": 760,
+      "content": "1. The scrambler advances and is XORed with the data.\n2. The scrambler advances and is bypassed (not XORed with the data).\n3. The scrambler does not advance and is bypassed (not XORed with the data).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 773,
+      "bottomRightX": 333,
+      "bottomRightY": 790,
+      "content": "The scrambling rules are as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 795,
+      "bottomRightX": 627,
+      "bottomRightY": 891,
+      "content": "1. The 4 bits of the Block Header bypass and do not advance the scrambler.\n2. TS1, TS2 and TSEQ:\n   a. Symbol 0 of a TS1, TS2, or TSEQ Ordered Set bypass and advances the scrambler.\n   b. Symbols 1 to 13 are scrambled.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

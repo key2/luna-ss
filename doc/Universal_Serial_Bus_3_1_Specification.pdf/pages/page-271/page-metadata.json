@@ -1,0 +1,138 @@
+{
+  "index": 270,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 92,
+      "bottomRightX": 581,
+      "bottomRightY": 110,
+      "content": "1. No LFPS signal for more than tPollingSCDLFPSTimeout is observed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 112,
+      "bottomRightX": 638,
+      "bottomRightY": 144,
+      "content": "Note: This condition implies the SuperSpeed link partner has entered Polling.RxEQ transmitting TSEQ ordered sets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 146,
+      "bottomRightX": 633,
+      "bottomRightY": 162,
+      "content": "2. Twenty Polling.LFPS bursts are transmitted, after finding no SCD2 is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 164,
+      "bottomRightX": 668,
+      "bottomRightY": 248,
+      "content": "Note: This condition guarantees that, in the case of a port in SuperSpeedPlus operation connecting to a port in SuperSpeed operation, a port in SuperSpeed operation will receive twenty consecutive Polling.LFPS to exit from this substate if it is unable to recognize Polling.LFPS with varying tRepeat in SCD1 and SCD2, and it happens to transmit Polling.LFPS matching SCD1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 251,
+      "bottomRightX": 632,
+      "bottomRightY": 445,
+      "content": "- A downstream port shall transition to Rx.Detect upon the 360-ms timer timeout (tPollingLFPSTimeout) and cPollingTimeout is less than two.\n- A downstream port shall transition to eSS.Inactive upon the 360-ms timer timeout (tPollingLFPSTimeout) and cPollingTimeout is two.\n- An upstream port of a hub shall transition to Rx.Detect upon the 360-ms timeout (tPollingLFPSTimeout).\n- A peripheral device shall transition to eSS.Disabled upon the 360-ms timeout (tPollingLFPSTimeout).\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 461,
+      "bottomRightX": 320,
+      "bottomRightY": 481,
+      "content": "### 7.5.4.5 Polling.PortMatch",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 484,
+      "bottomRightX": 690,
+      "bottomRightY": 586,
+      "content": "Polling.PortMatch is a substate where the two ports in SuperSpeedPlus operation perform the LBPM handshake, for announcing, matching, and deciding the operation on the highest common capability between the two link partners. The LBPM handshake includes two stages of operation. The first stage is to announce LBPM PHY Capability as defined in Table 7-13 below. The second stage is for each port to decode LBPM PHY Capability and adjust to the highest common PHY Capability by transmitting PHY Capability Match.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 591,
+      "bottomRightX": 421,
+      "bottomRightY": 609,
+      "content": "#### 7.5.4.5.1 PHY Capability LBPM Definition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 613,
+      "bottomRightX": 687,
+      "bottomRightY": 646,
+      "content": "SuperSpeedPlus PHY Capability is defined based on the following LBPM. Refer to Section 6.9.5 for LBPM details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 662,
+      "bottomRightX": 335,
+      "bottomRightY": 679,
+      "content": "Table 7-13. PHY Capability LBPM",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 681,
+      "bottomRightX": 588,
+      "bottomRightY": 790,
+      "content": "|  b1~0: LBPM Type | b3~2: LBPM Subtype | b7~b4: Reserved (0000)  |\n| --- | --- | --- |\n|  00: PHY Capability | PHY Rate  |   |\n|   |  00: 5Gbps  |   |\n|   |  01: 10Gbps  |   |\n|  01: PHY Ready | Reserved (00)  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-102.md"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 795,
+      "bottomRightX": 692,
+      "bottomRightY": 862,
+      "content": "Two types of LBPM are defined. PHY Capability LBPM is used to announce a port's PHY capabilities. The initial value shall describe a port's highest PHY capabilities. The announced capabilities may later be adjusted in order to match the link partner's capabilities or if the link fails to reach U0 during training and the two ports need to fall back to a lower rate.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "7-59",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

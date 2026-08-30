@@ -1,0 +1,102 @@
+{
+  "index": 175,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 121,
+      "bottomRightX": 647,
+      "bottomRightY": 166,
+      "content": "## 9.3 Downstream Initiated L1 Substate Entry Using Sideband Mechanism",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 177,
+      "bottomRightX": 538,
+      "bottomRightY": 206,
+      "content": "Figure 9-5. L1 Substate Management Using RxEIDetectDisable and TxCommonModeDisable",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 210,
+      "bottomRightX": 690,
+      "bottomRightY": 646,
+      "content": "![img-74.jpeg](img-74.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-74.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 659,
+      "bottomRightX": 661,
+      "bottomRightY": 705,
+      "content": "## 9.4 Receivers and Electrical Idle – PCIe Mode Example",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 710,
+      "bottomRightX": 679,
+      "bottomRightY": 769,
+      "content": "This section only applies to a PHY operating to 2.5 GT/s. Note that when operating at 5.0 GT/s or 8 GT/s signaling rates, RxElecIdle may not be reliable. MACs should see the PCIe Revision 3.0 base specification or USB 3.0 specification for methods of detecting entry into the electrical idle condition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 774,
+      "bottomRightX": 675,
+      "bottomRightY": 847,
+      "content": "See Section 6.1.3 for the definition of RxElecIdle when operating at 5.0 GT/s. This section shows some examples of how PIPE interface signaling may happen as a receiver transitions from active to electrical idle and back again. In these transitions, there may be a significant time difference between when RxElecIdle transitions and when RxValid transitions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 854,
+      "bottomRightX": 685,
+      "bottomRightY": 899,
+      "content": "The first diagram shows how the interface responds when the receive channel has been active and then goes to electrical idle. In this case, the delay between RxElecIdle being asserted and RxValid being deasserted is directly related to the depth of the",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "176",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

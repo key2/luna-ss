@@ -1,0 +1,3 @@
+|  Name | Active Level | Description | Relevant Protocols  |
+| --- | --- | --- | --- |
+|  DeepPMAck# | Low | Deep Power Management Ack. This is an asynchronous signal used to acknowledge transitions on DeepPMReq#. This signal is only required on a PHY that implements DeepPMReq#. A value of "0" indicates that PHY has acknowledged a request on DeepPMReq# to enter a deep power management state; however, it does not indicate that the PHY has actually entered a deep power management state. A value of "1" indicates that the PHY acknowledged a request on DeepPMReq# to exit a deep power management state. The PHY must first exit any deep power management state before returning this handshake. See Section 8.3.4 for more details. | PCIe, SATA, USB, USB4, and DisplayPort  |

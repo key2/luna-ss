@@ -1,0 +1,183 @@
+{
+  "index": 180,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 345,
+      "bottomRightY": 111,
+      "content": "The equations for these functions are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 121,
+      "bottomRightX": 367,
+      "bottomRightY": 166,
+      "content": "$$H_{CDR}(s) = \\frac{2s\\zeta\\omega_n + \\omega_n^2}{s^2 + 2s\\zeta\\omega_n + \\omega_n^2} \\tag{1}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 179,
+      "bottomRightX": 150,
+      "bottomRightY": 195,
+      "content": "and",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 206,
+      "bottomRightX": 356,
+      "bottomRightY": 251,
+      "content": "$$JTF(s) = \\frac{s^2}{s^2 + 2\\zeta\\omega_n s + \\omega_n^2} \\tag{2}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 263,
+      "bottomRightX": 646,
+      "bottomRightY": 297,
+      "content": "where $\\omega_n$ is the natural frequency and $\\zeta$ is the damping factor. The relationship to the 3 dB frequency is",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 307,
+      "bottomRightX": 426,
+      "bottomRightY": 365,
+      "content": "$$\\omega_{3dB} = \\omega_n \\left(1 + 2\\zeta^2 + \\left[(1 + 2\\zeta^2)^2 + 1\\right]^{\\frac{1}{2}}\\right)^{\\frac{1}{2}} \\tag{3}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 377,
+      "bottomRightX": 639,
+      "bottomRightY": 397,
+      "content": "As shown in Figure 6-13, for Gen 1 operation the corner frequency is $\\omega_{3dB} = 2\\pi 10^7$ and",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 401,
+      "bottomRightX": 675,
+      "bottomRightY": 421,
+      "content": "$\\zeta = 0.707$. For Gen 2 operation refer to Figure 6-14 with $\\omega_{3dB} = 2\\pi 1.5 \\times 10^7$ and $\\zeta = 0.707$.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 425,
+      "bottomRightX": 466,
+      "bottomRightY": 441,
+      "content": "These transfer functions have a maximum peaking of 2 dB.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 461,
+      "bottomRightX": 569,
+      "bottomRightY": 482,
+      "content": "### 6.5.3 Normative Spread Spectrum Clocking (SSC)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 486,
+      "bottomRightX": 681,
+      "bottomRightY": 569,
+      "content": "All ports are required to have Spread Spectrum Clocking (SSC) modulation. Providing the same SSC clock to two different components is allowed but not required, the SSC can be generated asynchronously. The SSC profile is not specified and is vendor specific. The SSC modulation requirement is listed in Table 6-16. The SSC modulation may not violate the phase slew rate described in Section 6.5.4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 589,
+      "bottomRightX": 303,
+      "bottomRightY": 604,
+      "content": "Table 6-16. SSC Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 607,
+      "bottomRightX": 705,
+      "bottomRightY": 690,
+      "content": "|  Symbol | Description | Limits |   | Units | Note  |\n| --- | --- | --- | --- | --- | --- |\n|   |   |  Min | Max  |   |   |\n|  t_{SSC-MOD-RATE} | Modulation Rate | 30 | 33 | kHz |   |\n|  t_{SSC-FREQ-DEVIATION} | SSC deviation | +0/-4000 | +0/-5000 | ppm | 1, 2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-69.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 692,
+      "bottomRightX": 154,
+      "bottomRightY": 704,
+      "content": "Note:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 140,
+      "topLeftY": 706,
+      "bottomRightX": 684,
+      "bottomRightY": 720,
+      "content": "1. The data rate is modulated from 0 ppm to -5000 ppm of the nominal data rate frequency and scales with data rate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 722,
+      "bottomRightX": 329,
+      "bottomRightY": 736,
+      "content": "2. This is measured below 2 MHz only.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 743,
+      "bottomRightX": 603,
+      "bottomRightY": 761,
+      "content": "An example of the period modulation from triangular SSC is shown in Figure 6-15.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "6-25",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

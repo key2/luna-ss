@@ -1,0 +1,9 @@
+|  Encoding | Command | Description | Required Fields | Cycles to Transmit  |
+| --- | --- | --- | --- | --- |
+|  4'b0000 | NOP | Idle. See Table 6-11. | Command[3:0] | 1  |
+|  4'b0001 | write_uncommitted | The current write should be saved off into a write buffer and its associated data values are updated into the relevant PIPE register at a future time when a write_committed is received. This is useful for signals that must change in the same cycle but that are distributed among multiple registers. See Table 6-14. | Command[3:0], Address[11:0], Data[7:0] | 3  |
+|  4'b0010 | write_committed | The current write, as well as any previously uncommitted writes saved into the write buffer, should be committed, that is, their values should be updated into the PIPE registers. Once a write_committed is sent, no new writes, whether committed or uncommitted, may be sent until a write_ack is received. See Table 6-14. | Command[3:0], Address[11:0], Data[7:0] | 3  |
+|  4'b0011 | read | Used to read contents of a PIPE register. Only one read can be outstanding at a time in each direction. See Table 6-12. | Command[3:0], Address[11:0] | 2  |
+|  4 "b0100 | read completion | Data response to a read. See Table 6-13. | Command[3:0], Data[7:0] | 2  |
+|  4'b0101 | write_ack | Used to acknowledge receipt of a write_committed and readiness to accept another write. The Ack is sent when the write buffer is flushed and the resulting PIPE operation is guaranteed to start in a deterministic amount of time. **Note:** This does not provide confirmation that the PIPE operation triggered by the write has completed. See Table 6-11. | Command[3:0] | 1  |
+|  All others | Reserved | N/A | N/A | N/A  |

@@ -1,0 +1,103 @@
+{
+  "index": 164,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 208,
+      "topLeftY": 98,
+      "bottomRightX": 623,
+      "bottomRightY": 273,
+      "content": "![img-131.jpeg](img-131.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-131.jpeg"
+    },
+    {
+      "topLeftX": 234,
+      "topLeftY": 289,
+      "bottomRightX": 590,
+      "bottomRightY": 307,
+      "content": "Figure 6-9. Gen 2 Serialization and Deserialization Order",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 165,
+      "topLeftY": 413,
+      "bottomRightX": 662,
+      "bottomRightY": 593,
+      "content": "![img-132.jpeg](img-132.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-132.jpeg"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 662,
+      "bottomRightX": 586,
+      "bottomRightY": 681,
+      "content": "Figure 6-10. Gen 2 Bit Transmission Order and Framing",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 708,
+      "bottomRightX": 451,
+      "bottomRightY": 726,
+      "content": "### 6.3.2.2 Normative 128b/132b Decode Rules",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 731,
+      "bottomRightX": 675,
+      "bottomRightY": 799,
+      "content": "The physical layer shall encode the data on a per block basis. Each block shall comprise a 4-bit Block Header and a 128-bit payload. The 4-bit header is set to 0011b for data and 1100b for control blocks. This header format allows for the correction of single bit errors in the header information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 808,
+      "bottomRightX": 671,
+      "bottomRightY": 841,
+      "content": "Ordered sets are control blocks, and all data is sent in data blocks. The following is a list of the control blocks.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 849,
+      "bottomRightX": 272,
+      "bottomRightY": 886,
+      "content": "- TS1 Ordered Set\n- TS2 Ordered Set",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "6-9",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

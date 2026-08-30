@@ -1,0 +1,174 @@
+{
+  "index": 469,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 439 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 217,
+      "bottomRightY": 108,
+      "content": "### 10.16 Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 115,
+      "bottomRightX": 272,
+      "bottomRightY": 130,
+      "content": "#### 10.16.1 Standard Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 137,
+      "bottomRightX": 656,
+      "bottomRightY": 200,
+      "content": "Hubs have tighter constraints on request processing timing than specified in Section 9.2.6 for standard devices because they are crucial to the “time to availability” of all devices attached to the USB. The worst case request timing requirements are listed below (they apply to both Standard and Hub Class requests):",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 211,
+      "bottomRightX": 518,
+      "bottomRightY": 250,
+      "content": "- Completion time for requests with no data stage: 50 ms\n- Completion times for standard requests with data stage(s):",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 256,
+      "bottomRightX": 461,
+      "bottomRightY": 270,
+      "content": "Time from setup packet to first data stage: 50 ms",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 276,
+      "bottomRightX": 462,
+      "bottomRightY": 292,
+      "content": "Time between each subsequent data stage: 50 ms",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 298,
+      "bottomRightX": 483,
+      "bottomRightY": 314,
+      "content": "Time between last data stage and status stage: 50 ms",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 335,
+      "bottomRightX": 639,
+      "bottomRightY": 367,
+      "content": "Because hubs play such a crucial role in bus enumeration, it is recommended that hubs average response times be less than 5 ms for all requests.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 378,
+      "bottomRightX": 462,
+      "bottomRightY": 394,
+      "content": "Table 10-6 outlines the various standard device requests.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 210,
+      "topLeftY": 407,
+      "bottomRightX": 577,
+      "bottomRightY": 423,
+      "content": "Table 10-6. Hub Responses to Standard Device Requests",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 157,
+      "topLeftY": 431,
+      "bottomRightX": 633,
+      "bottomRightY": 741,
+      "content": "|  bRequest | Hub Response  |\n| --- | --- |\n|  CLEAR_FEATURE | Standard  |\n|  GET_CONFIGURATION | Standard  |\n|  GET_DESCRIPTOR | Standard  |\n|  GET_INTERFACE | Undefined. Hubs are allowed to support only one interface.  |\n|  GET_STATUS | Standard  |\n|  SET_ADDRESS | Standard  |\n|  SET_CONFIGURATION | Standard  |\n|  SET_DESCRIPTOR | Optional  |\n|  SET_FEATURE | Standard  |\n|  SET_INTERFACE | Undefined. Hubs are allowed to support only one interface.  |\n|  SET_ISOCH_DELAY | Standard  |\n|  SET_SEL | Standard  |\n|  SYNCH_FRAME | Undefined. Hubs are not allowed to have isochronous endpoints.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-235.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 760,
+      "bottomRightX": 671,
+      "bottomRightY": 824,
+      "content": "A hub is required to accept all “Standard” requests without error. A hub shall not respond with a request error to a well-formed SET_ISOCH_DELAY request. A hub is not required to retain or process the delay value. Optional requests that are not implemented shall return a STALL in the Data stage or Status stage of the request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 835,
+      "bottomRightX": 298,
+      "bottomRightY": 851,
+      "content": "#### 10.16.2 Class-specific Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 856,
+      "bottomRightX": 672,
+      "bottomRightY": 904,
+      "content": "The hub class defines requests to which hubs respond, as outlined in Table 10-7. Table 10-8 defines the hub class request codes. All requests in the table below except SetHubDescriptor() are mandatory.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

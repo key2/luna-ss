@@ -1,0 +1,1 @@
+https://cdn.gowinsemi.com.cn/IPUG781E.pdf

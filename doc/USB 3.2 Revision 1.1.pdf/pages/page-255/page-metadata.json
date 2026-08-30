@@ -1,0 +1,218 @@
+{
+  "index": 254,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 224 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 94,
+      "bottomRightX": 328,
+      "bottomRightY": 109,
+      "content": "#### 8.4.8.3.2.1 Responder Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 115,
+      "bottomRightX": 616,
+      "bottomRightY": 131,
+      "content": "This is the initial state of the Responder after power-up, Hot Reset, or Warm Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 143,
+      "bottomRightX": 603,
+      "bottomRightY": 159,
+      "content": "Upon entering this state the Responder shall terminate all LDM protocol activity.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 172,
+      "bottomRightX": 645,
+      "bottomRightY": 203,
+      "content": "*LDM Enabled=0* – If *LDM Enabled* equals 0, then the Responder shall transition from any other LDM state to the **Responder Disabled** state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 215,
+      "bottomRightX": 620,
+      "bottomRightY": 246,
+      "content": "*LDM Enabled=1* – If *LDM Enabled* equal 1, then the Responder shall transition to the **Timestamp Request** state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 258,
+      "bottomRightX": 328,
+      "bottomRightY": 273,
+      "content": "#### 8.4.8.3.2.2 Timestamp Request",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 280,
+      "bottomRightX": 584,
+      "bottomRightY": 296,
+      "content": "Upon entering this state, the Responder shall wait for a LDM TS Request LMP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 307,
+      "bottomRightX": 660,
+      "bottomRightY": 354,
+      "content": "LDM TS Request LMP – If a LDM TS Request LMP is received, the Responder shall capture timestamp t2 from the PTM Local Time Source to record the time that the LDM TS Request was received and transition to the **Timestamp Response** state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 367,
+      "bottomRightX": 647,
+      "bottomRightY": 397,
+      "content": "Note: Timestamp t2 shall be adjusted for the TS Delay. Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 410,
+      "bottomRightX": 336,
+      "bottomRightY": 425,
+      "content": "#### 8.4.8.3.2.3 Timestamp Response",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 432,
+      "bottomRightX": 535,
+      "bottomRightY": 449,
+      "content": "Upon entering this state the Responder shall wait for a Trigger Event.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 460,
+      "bottomRightX": 672,
+      "bottomRightY": 567,
+      "content": "Trigger Event – When a Trigger Event occurs, the Responder shall capture timestamp t3 from the PTM Local Time Source to record the time that the LDM Response was transmitted. If the value t3 - t2 is less than tLDMResponseDelay, the Responder shall form a LDM TS Response LMP by initializing the *Response Delay* field with the value t3 - t2, transmit the LDM TS Response LMP to the Requester, and transition to the **Timestamp Request** state. If the value t3 - t2 is equal to or greater than tLDMResponseDelay, then the Responder shall transition to the **Timestamp Request** state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 579,
+      "bottomRightX": 652,
+      "bottomRightY": 625,
+      "content": "A typical Trigger Event for the Responder **Timestamp Response** state would be the next opportunity to schedule a LDM TS Response LMP on its downstream link after a LDM TS Request LMP has been received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 637,
+      "bottomRightX": 672,
+      "bottomRightY": 668,
+      "content": "Note: The Timestamp t3 shall be adjusted for the TS Delay. Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 681,
+      "bottomRightX": 672,
+      "bottomRightY": 727,
+      "content": "Note: A Responder shall set the *LCW Delayed* (DL) flag and re-calculate CRC-5 if a LDM TS Response LMP is delayed if its adjusted *Response Delay* value exceeds tLDMRequestTimeout. Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 740,
+      "bottomRightX": 256,
+      "bottomRightY": 755,
+      "content": "#### 8.4.8.4 LDM Link Delay",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 761,
+      "bottomRightX": 652,
+      "bottomRightY": 792,
+      "content": "LDM defines the set of PTM capabilities which support the measurement of the LDM Link Delay.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 805,
+      "bottomRightX": 669,
+      "bottomRightY": 866,
+      "content": "**LDM Link Delay** identifies the delay between the first symbol of a packet being transmitted on a Responder's downstream facing port and the first symbol of the same packet being received on the Requester's upstream facing port. In a hub or device the LDM Link Delay is derived from Timestamp Exchanges with its upstream Responder.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 878,
+      "bottomRightX": 666,
+      "bottomRightY": 909,
+      "content": "A Requester may execute multiple Timestamp Exchanges to refine its LDM Link Delay value through averaging.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

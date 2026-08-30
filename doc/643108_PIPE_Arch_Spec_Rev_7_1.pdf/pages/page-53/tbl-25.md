@@ -1,0 +1,9 @@
+|  Name | Active Level | Description |   |   | Relevant Protocols  |
+| --- | --- | --- | --- | --- | --- |
+|  PowerDown[3:0] SATA Mode | N/A | SATA mode: Power up or down the transceiver. Power states [3][2][1][0] Description 0 0 0 0 POWER_STATE_0 Operational state 0 0 0 1 POWER_STATE_1 Phy specific 0 0 1 0 POWER_STATE_2 Phy specific 0 0 1 1 POWER_STATE_3 Phy specific 0 1 0 0 POWER_STATE_4 Phy specific 0 1 0 1 POWER_STATE_5 Phy specific 0 1 1 0 POWER_STATE_6 Phy specific 0 1 1 1 POWER_STATE_7 Phy specific 1 0 0 0 POWER_STATE_8 Phy specific 1 0 0 1 POWER_STATE_9 Phy specific 1 0 1 0 POWER_STATE_10 Phy specific 1 0 1 1 POWER_STATE_11 Phy specific 1 1 0 0 POWER_STATE_12 Phy specific 1 1 0 1 POWER_STATE_13 Phy specific 1 1 1 0 POWER_STATE_14 Phy specific 1 1 1 1 POWER_STATE_15 Phy specific A PIPE compliant SATA PHY is recommended to support at least four states other than POWER_STATE_0. There must be at least one power state meeting each of the requirements shown in the following table. |   |   | SATA  |
+|   |   |  PCLK State | TX Common Mode State | Exit Latency to POWER_STATE_0  |   |
+|   |   |  Off | Off | < 10 ms  |   |
+|   |   |  Off | On | < 10 us  |   |
+|   |   |  On | On | < 10 us  |   |
+|   |   |  On | Off | < 300 us  |   |
+|   |   |  Exit latency to POWER_STATE_0 is measured from when the MAC changes the Power down value to when the PHY deasserts PHY status. The actual PHY latency must provide enough margin from the indicated limits to enable compliant device behavior per the SATA Specification. A MAC must map the available PHY states to SATA states. **Note:** PLL shutdown is only possible if PowerDown is set to a state with PCLK off.  |   |   |   |

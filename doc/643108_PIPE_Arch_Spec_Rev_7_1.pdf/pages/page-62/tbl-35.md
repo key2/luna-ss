@@ -1,0 +1,3 @@
+|  Name | Active Level | Description | Relevant Protocols  |
+| --- | --- | --- | --- |
+|  RefClkRequired # | Low | This signal is deasserted by the PHY when the reference clock can be safely removed in low power states. This signal must remain asserted low in all states except P2, P1 and PowerDown states assigned to L1 substate support. While in P2, P1, or L1 substate PowerDown states, the PHY deasserts this signal when it is ready for reference clock removal. While in P2 or P1 or L1 substate PowerDown states, the PHY asserts this signal when it detects a P2 or P1 or L1 substate exit request. This signal is optionally implemented by the PHY. The MAC is required to prevent CLKREQ# from being deasserted if this signal is asserted. | PCIe  |

@@ -1,0 +1,66 @@
+{
+  "index": 517,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 63,
+      "content": "- 487 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 95,
+      "bottomRightX": 607,
+      "bottomRightY": 125,
+      "content": "**Figure D-3. Example placement of Gen 2 SKP Block, Idle Symbols, Link Command and Header Packet**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 117,
+      "topLeftY": 139,
+      "bottomRightX": 718,
+      "bottomRightY": 529,
+      "content": "|  128b/132b Control block  |   |   |   |   |   |   |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  Block Header 1100 Block #1 | 0th SKP | 1st SKP | 2nd SKP | 3rd SKP | 4th SKP | 5th SKP | 6th SKP | 7th SKP |   |\n|   |  8th SKP | 9th SKP | 10th SKP | 11th SKP | 12th SKP | 13th SKP | 14th SKP | 15th SKP |   |\n|   |  16th SKP | 17th SKP | 18th SKP | 19th SKP | 20th SKP | 21st SKP | 22nd SKP | 23rd SKP |   |\n|   |  24th SKPEND | 25th Scrambler Seed | 26th Scrambler Seed | 27th Scrambler Seed |  |  |  |  |   |\n|  128b/132b Data block  |   |   |   |   |   |   |   |   |   |\n|  Block Header 0011 Block #2 | 0th IS | 1st SLC | 2nd SLC | 3rd SLC | 4th EPC | 5th Link Command Word | 6th Link Command Word | 7th Link Command Word |   |\n|   |  8th Link Command Word | 9th IS | 10th IS | 11th SHP | 12th SHP | 13th SHP | 14th EPF | 15th Header |   |\n|  128b/132b Data block  |   |   |   |   |   |   |   |   |   |\n|  Block Header 0011 Block #3 | 0th Header | 1st Header | 2nd Header | 3rd Header | 4th Header | 5th Header | 6th Header | 7th Header |   |\n|   |  8th Header | 9th Header | 10th Header | 11th CRC | 12th CRC | 13th Link Command Word | 14th Link Command Word | 15th IS |   |\n|  128b/132b Data block  |   |   |   |   |   |   |   |   |   |\n|  Block Header 0011 Block #4 | 0th IS | 1st SLC | 2nd SLC | 3rd SLC | 4th EPC | 5th Link Command Word | 6th Link Command Word | 7th Link Command Word |   |\n|   |  8th Link Command Word | 9th IS | 10th IS | 11th IS | 12th IS | 13th IS | 14th IS | 15th IS |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-280.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

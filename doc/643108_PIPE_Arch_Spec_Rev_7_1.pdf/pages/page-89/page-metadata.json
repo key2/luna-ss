@@ -1,0 +1,112 @@
+{
+  "index": 88,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 506,
+      "bottomRightY": 141,
+      "content": "### 7.1.14 Address 403h: PHY Tx Control3",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 150,
+      "bottomRightX": 536,
+      "bottomRightY": 165,
+      "content": "This register is used to control the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 179,
+      "bottomRightX": 393,
+      "bottomRightY": 193,
+      "content": "Table 7-15. Address 403h: PHY Tx Control3",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 198,
+      "bottomRightX": 699,
+      "bottomRightY": 514,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe, USB, USB4, and DisplayPort | **TxDeemph[11:6]/TxDeemph_Czero[5:0]** For applicable protocols with the exception of PCIe at 64 GT/s and higher rates and with the exception of USB4 at 40 GT/s, this field is TxDeemph[11:6] and defined as follows: This field is part of TxDeemph[17:0], which selects the transmitter de-emphasis. See TxDeemph[5:0] for a detailed description. For PCIe at 64 GT/s and higher rates and USB4 at 40 GT/s, this field is TxDeemph_Czero[5:0] and defined as follows: TxDeemph_Czero[5:0] field is part of a set of fields that select the transmitter de-emphasis. This field corresponds to cursor C_{D}. See TxDeemph_Cminus2[5:0], TxDeemph_Cminus1[5:0], and TxDeemph_Cplus1[5:0] for the other coefficients. **Note:** The MAC must ensure that only supported values are used for TxDeemph_Czero[5:0]. In cases where the implementation is required to keep track of Tx coefficients from previous states, this shall be done by the MAC.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-79.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 528,
+      "bottomRightX": 507,
+      "bottomRightY": 548,
+      "content": "### 7.1.15 Address 404h: PHY Tx Control4",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 556,
+      "bottomRightX": 536,
+      "bottomRightY": 571,
+      "content": "This register is used to control the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 586,
+      "bottomRightX": 393,
+      "bottomRightY": 600,
+      "content": "Table 7-16. Address 404h: PHY Tx Control4",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 604,
+      "bottomRightX": 705,
+      "bottomRightY": 901,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe, USB, USB4, and DisplayPort | **TxDeemph[17:12]/TxDeemph_Cplus1[5:0]** For applicable protocols with the exception of PCIe at 64 GT/s and higher rates and with the exception of USB4 at 40 GT/s, this field is TxDeemph[17:12] and defined as follows: This field is part of TxDeemph[17:0], which selects the transmitter de-emphasis. See TxDeemph[5:0] for detailed description. For PCIe at 64 GT/s and higher rates and USB4 at 40 GT/s, this field is TxDeemph_Cplus1[5:0] and defined as follows: TxDeemph_Cplus1[5:0] is part of a set of fields that select the transmitter de-emphasis. This field corresponds to post cursor C_{+1}. See TxDeemph_Cminus2[5:0], TxDeemph_Cminus1[5:0], and TxDeemph_Czero[5:0] for the other coefficients. **Note:** The MAC must ensure that only supported values are used for TxDeemph_Cplus1[5:0]. In cases where the implementation is required to keep track of Tx coefficients from previous states, this must be done by the MAC.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-80.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "89",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+|  Bit | Default | Attribute | Required | Description  |
+| --- | --- | --- | --- | --- |
+|  [5:0] | 0h | Level | PCIe and USB4 | **TxDeemph_Cminus2[5:0]:** This field is part of a set of fields that select transmitter de-emphasis. This field corresponds to precursor C_{2}. See TxDeemph_Cminus1[5:0], TxDeemph_Czero[5:0], and TxDeemph_Cplus1[5:0] for the other coefficients. This is only applicable to PCIe Mode when the rate is at 64 GT/s or 128 GT/s and USB4 at 40 GT/s. For lower PCIe operational rates and lower USB4 rates, refer to TxDeemph[17:0]. **Note:** The MAC must ensure that only supported values are used for TxDeemph_Cminus2[5:0]. In cases where the implementation is required to keep track of Tx coefficients from previous states, this shall be done by the MAC.  |

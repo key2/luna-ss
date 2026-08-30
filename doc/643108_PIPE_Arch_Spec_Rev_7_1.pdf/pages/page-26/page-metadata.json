@@ -1,0 +1,75 @@
+{
+  "index": 25,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 120,
+      "bottomRightX": 520,
+      "bottomRightY": 154,
+      "content": "### 3 PHY/MAC Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 182,
+      "bottomRightX": 686,
+      "bottomRightY": 284,
+      "content": "Figure 3-1 shows the data and logical command and status signals between the PHY and the MAC layer for one Rx pair and one Tx pair combination. Figure 3-2 and Figure 3-3 show the data and command and status signals between the PHY and the MAC layer for the DisplayPort DPTX and DPRX, respectively. Full support of PCIe mode, USB mode, SATA mode, DisplayPort mode, and USB4 mode at all rates require different numbers of control and status signals to be implemented. See Section 6.1 for details on which specific signals are required for each operating mode.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 293,
+      "bottomRightX": 305,
+      "bottomRightY": 309,
+      "content": "Figure 3-1. PHY/MAC Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 310,
+      "bottomRightX": 690,
+      "bottomRightY": 683,
+      "content": "![img-5.jpeg](img-5.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-5.jpeg"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 966,
+      "content": "26",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 689,
+      "bottomRightY": 968,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

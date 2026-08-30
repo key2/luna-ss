@@ -1,0 +1,60 @@
+intel®
+
+7.1.17 Address 406h: PHY Tx Control6 ...91
+7.1.18 Address 407h: PHY Tx Control7 ...91
+7.1.19 Address 408h: PHY Tx Control8 ...91
+7.1.20 Address 409h: PHY Tx Control9 ...92
+7.1.21 Address 40Ah: PHY TX Control 10 ...93
+7.1.22 Address 800h: PHY Common Control0 ...93
+7.1.23 Address 801h: PHY Near End Loopback Control ...94
+7.2 MAC Registers ...95
+7.2.1 Address 0h: Rx Margin Status0 ...97
+7.2.2 Address 1h: Rx Margin Status1 ...97
+7.2.3 Address 2h: Rx Margin Status2 ...97
+7.2.4 Address 3h: Elastic Buffer Status ...98
+7.2.5 Address 4h: Elastic Buffer Location ...98
+7.2.6 Address 5h: Rx Status0 ...98
+7.2.7 Address 6h: Rx Control0 ...99
+7.2.8 Address 7h: Rx Margin Status3 ...99
+7.2.9 Address Ah: Rx Link Evaluation Status0 ...100
+7.2.10 Address Bh: Rx Link Evaluation Status1 ...100
+7.2.11 Address Ch: Rx Status4 ...101
+7.2.12 Address Dh: Rx Status5 ...102
+7.2.13 Address Eh: Rx Link Evaluation Status2 ...102
+7.2.14 Address Fh: Rx Link Evaluation Status3 ...103
+7.2.15 Address 10h: Rx Status6 ...104
+7.2.16 Address 400h: Tx Status0 ...104
+7.2.17 Address 401h: Tx Status1 ...105
+7.2.18 Address 402h: Tx Status2 ...105
+7.2.19 Address 403h: Tx Status3 ...106
+7.2.20 Address 404h: Tx Status4 ...106
+7.2.21 Address 405h: Tx Status5 ...106
+7.2.22 Address 406h: Tx Status6 ...106
+7.2.23 Address 407h: Tx Status7 ...107
+7.2.24 Address 408h: Tx Status8 ...107
+7.2.25 Address 409h: Tx Status9 ...107
+7.2.26 Address 40Ah: Tx Status10 ...107
+7.2.27 Address 40Bh: Tx Status11 ...108
+7.2.28 Address 40Ch: Tx Status12 ...108
+7.2.29 Address 800h: Near End Loopback Status ...108
+8 PIPE Operational Behavior ...110
+8.1 Clocking ...110
+8.1.1 Clocking Topologies ...110
+8.1.2 MacCLK Clocking Scheme ...114
+8.2 Reset ...116
+8.3 Power Management ...116
+8.3.1 Power Management – PCIe Mode ...116
+8.3.2 Power Management – USB Mode ...119
+8.3.3 Power Management – USB4 Mode ...121
+8.3.4 Power Management – SATA Mode ...122
+8.3.5 Power Management – DisplayPort Mode ...123
+8.3.6 Asynchronous Deep Power Management ...124
+8.4 Changing Signaling Rate, PCLK Rate, or Data Bus Width ...126
+8.4.1 PCIe Mode ...126
+8.4.2 USB Mode ...127
+8.4.3 SATA Mode ...127
+8.4.4 Fixed Data Path Implementations ...128
+
+4
+
+Reference Number: 643108, Revision: 7.1

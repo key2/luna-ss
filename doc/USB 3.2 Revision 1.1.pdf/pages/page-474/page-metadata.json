@@ -1,0 +1,176 @@
+{
+  "index": 473,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 443 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 673,
+      "bottomRightY": 123,
+      "content": "wLength bytes of the descriptor are returned; this is not considered an error even if wLength is zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 136,
+      "bottomRightX": 562,
+      "bottomRightY": 154,
+      "content": "It is a Request Error if wValue or wIndex are other than as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 165,
+      "bottomRightX": 569,
+      "bottomRightY": 180,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 193,
+      "bottomRightX": 298,
+      "bottomRightY": 207,
+      "content": "### 10.16.2.4 Get Hub Status",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 215,
+      "bottomRightX": 633,
+      "bottomRightY": 246,
+      "content": "This request returns the current hub status and the states that have changed since the previous acknowledgment.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 256,
+      "bottomRightX": 664,
+      "bottomRightY": 313,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10100000B | GET_STATUS | Zero | Zero | Four | Hub Status and Change Status  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-242.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 334,
+      "bottomRightX": 643,
+      "bottomRightY": 366,
+      "content": "The first word of data contains the wHubStatus field (refer to Table 10-10). The second word of data contains the wHubChange field (refer to Table 10-11).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 377,
+      "bottomRightX": 622,
+      "bottomRightY": 393,
+      "content": "It is a Request Error if wValue, wIndex, or wLength are other than as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 406,
+      "bottomRightX": 569,
+      "bottomRightY": 421,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 433,
+      "bottomRightX": 533,
+      "bottomRightY": 449,
+      "content": "Table 10-10. Hub Status Field, wHubStatus",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 459,
+      "bottomRightX": 668,
+      "bottomRightY": 729,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0 | Local Power Source: This field indicates whether hub power (for other than the SIE) is being provided by an external source (Self-powered, see Section 11.4.1.1) or from the USB. This field allows the USB system software to determine the amount of power available from a hub to downstream devices. 0 = Local power source good 1 = Local power source lost (inactive)  |\n|  1 | Over-current: If the hub supports over-current reporting on a hub basis, this field indicates that the sum of all the ports' current has exceeded the specified maximum and all ports have been placed in the Powered-off-reset state. If the hub reports over-current on a per-port basis or has no over-current detection capabilities, this field is always zero. The hub shall only report over-current if it is physically unable to meet the sum of all ports' current draws. For more details on over-current protection, refer to the USB 2.0 Specification, Section 7.2.1.2.1. 0 = No over-current condition currently exists. 1 = A hub over-current condition exists.  |\n|  2-15 | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-243.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 748,
+      "bottomRightX": 668,
+      "bottomRightY": 779,
+      "content": "There are no defined feature selector values for these status bits and they can neither be set nor cleared by the USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 246,
+      "topLeftY": 792,
+      "bottomRightX": 539,
+      "bottomRightY": 808,
+      "content": "Table 10-11. Hub Change Field, wHubChange",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 817,
+      "bottomRightX": 668,
+      "bottomRightY": 921,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0 | Local Power Status Change (C_HUB_LOCAL_POWER): This field indicates that a change has occurred in the hub's Local Power Source field in wHubStatus. This field is initialized to zero when the hub receives a bus reset. 0 = No change has occurred to Local Power Status. 1 = Local Power Status has changed.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-244.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

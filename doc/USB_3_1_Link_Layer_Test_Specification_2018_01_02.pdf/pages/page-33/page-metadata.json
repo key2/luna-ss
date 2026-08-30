@@ -1,0 +1,57 @@
+{
+  "index": 32,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 61,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 911,
+      "content": "|  7.5.3.3.2#2 | A downstream port shall transition to Rx.Detect.Active after it transmits Warm Reset for the duration of tReset. | NT  |\n| --- | --- | --- |\n|  7.5.3.3.2#3 | An upstream port shall transition to Rx.Detect.Active when it receives no more LFPS Warm Reset signaling. | NT  |\n|  Subsection reference: 7.5.3.4 Rx.Detect.Active  |   |   |\n|  Subsection reference: 7.5.3.5 Rx.Detect.Active Requirement  |   |   |\n|  7.5.3.5#1 | The transmitter shall initiate a far-end receiver termination detection when in Rx.Detect.Active. | NT  |\n|  7.5.3.5#2 | The number of far-end receiver termination detection events shall be counted by an upstream port when in Rx.Detect.Active. | NT  |\n|  Subsection reference: 7.5.3.6 Exit from Rx.Detect.Active  |   |   |\n|  7.5.3.6#1 | The port shall transition from Rx.Detect.Active to Polling upon detection of a far-end low-impedance receiver termination (RRX-DC). | NT  |\n|  7.5.3.6#2 | A downstream port shall transition from Rx.Detect.Active to Rx.Detect.Quiet when a far-end low-impedance receiver termination (RRX-DC) is not detected. | NT  |\n|  7.5.3.6#3 | An upstream port of a hub shall transition from Rx.Detect.Active to Rx.Detect.Quiet when a far-end low-impedance receiver termination (RRX-DC) is not detected. | NT  |\n|  7.5.3.6#4 | An upstream port of a peripheral device shall transition from Rx.Detect.Active to Rx.Detect.Quiet when the following two conditions are met: - A far-end low-impedance receiver termination (RRX-DC) is not detected. - The number of far-end receiver termination detection events is less than eight. | NT  |\n|  7.5.3.6#5 | An upstream port of a peripheral device shall transition from Rx.Detect.Active to eSS.Disabled when the following two conditions are met: - A far-end low-impedance receiver termination (RRX-DC) is not detected. - The number of far-end receiver termination (RRX-DC) detection events has reached eight. | NT  |\n|  Subsection reference: 7.5.3.7 Rx.Detect.Quiet  |   |   |\n|  Subsection reference: 7.5.3.7.1 Rx.Detect.Quiet Requirements  |   |   |\n|  7.5.3.7.1#1 | The far-end receiver termination detection shall be disabled when in Rx.Detect.Quiet. | NT  |\n|  Subsection reference: 7.5.3.7.2 Exit from Rx.Detect.Quiet  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-26.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "25",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

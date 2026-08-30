@@ -1,0 +1,164 @@
+{
+  "index": 618,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 586,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 673,
+      "bottomRightY": 128,
+      "content": "3. The last component of the end to end exit latency is characterized by the larger of Hub1_UP:U1DEL and RP2:U1DEL which represents the Link2 exit latency (Link2_EL).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 146,
+      "bottomRightX": 635,
+      "bottomRightY": 185,
+      "content": "End to end exit latency = Max(Link3_EL, (Link2_EL + tHubPort2PortU1ExitLat))\nU2 → U0 Transition Latency",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 190,
+      "bottomRightX": 698,
+      "bottomRightY": 240,
+      "content": "This example highlights the end to end latency incurred when transitioning both Link2 and Link3 from U2 → U0. For the purposes of this example it is assumed that all link partners are enabled for U2 and that both Link2 and Link3 are currently in the U2 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 244,
+      "bottomRightX": 691,
+      "bottomRightY": 416,
+      "content": "1. Dev2 is prepared to send a packet upstream to the host. However, it first needs to bring Link3 out of U2 and back to U0 before it is able to send the packet. Dev2 begins the process by transmitting LFPS to Hub1:DP2 which then starts both link partners transitioning in parallel towards U0. The Link3 exit latency (Link3_EL) is characterized by the larger of Dev2_UP:U2DEL and Hu1b_DP2:U2DEL.\n2. After a latency of tHubPort2PortU2EL, the time it takes the hub to determine that one of its downstream ports is awakening, the hub then begins signaling LFPS on Link2 to initiate transition of the Link2 partners (hub's upstream port and host controller root port RP2) to U0.\n3. The last component of the end to end exit latency is characterized by the larger of Hub1_UP:U2DEL and RP2:U2DEL which represents the Link2 exit latency (Link2_EL).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 424,
+      "bottomRightX": 598,
+      "bottomRightY": 442,
+      "content": "End to end exit latency = Max(Link3_EL, Link2_EL + tHubPort2PortU2EL)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 466,
+      "bottomRightX": 650,
+      "bottomRightY": 492,
+      "content": "### C.3 Device-Initiated Link Power Management Policies",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 501,
+      "bottomRightX": 679,
+      "bottomRightY": 553,
+      "content": "Power savings resulting from the effective use of link power management can have a significant impact on system power consumption. For example, without using link power management, the average battery life of a typical notebook computer could be decreased by as much as 15%.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 560,
+      "bottomRightX": 502,
+      "bottomRightY": 578,
+      "content": "Both devices and downstream ports can initiate U1 and U2 entry.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 582,
+      "bottomRightX": 692,
+      "bottomRightY": 651,
+      "content": "- Downstream ports have inactivity timers used to initiate U1 and U2 entry. Downstream port inactivity timeouts are programmed by system software.\n- Devices may have additional information available that they can use to decide to initiate U1 or U2 entry more aggressively than inactivity timers.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 657,
+      "bottomRightX": 489,
+      "bottomRightY": 675,
+      "content": "This section describes policies for devices to initiate U1 or U2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 693,
+      "bottomRightX": 522,
+      "bottomRightY": 715,
+      "content": "### C.3.1 Overview and Background Information",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 720,
+      "bottomRightX": 700,
+      "bottomRightY": 786,
+      "content": "Devices can save significant power by initiating U1 or U2 more aggressively rather than waiting for downstream port inactivity timeouts. For example, an isochronous device may substantially increase U1 residency by initiating U1 upon completion of isochronous transfers within each service interval.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 796,
+      "bottomRightX": 665,
+      "bottomRightY": 829,
+      "content": "Devices can use the following information to help determine when to initiate U1 or U2 due to endpoint idle conditions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 834,
+      "bottomRightX": 530,
+      "bottomRightY": 851,
+      "content": "- The type of device endpoints and related flags (refer to Chapter 8)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 853,
+      "bottomRightX": 462,
+      "bottomRightY": 908,
+      "content": "- Packets Pending flag, used with bulk endpoints\n- End of Burst flag, used with interrupt endpoints\n- Last Packet flag, used with isochronous endpoints",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 981,
+      "bottomRightX": 698,
+      "bottomRightY": 995,
+      "content": "C-21",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

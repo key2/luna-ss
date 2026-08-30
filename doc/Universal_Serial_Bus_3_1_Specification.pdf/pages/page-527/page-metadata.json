@@ -1,0 +1,84 @@
+{
+  "index": 526,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 29,
+      "bottomRightX": 701,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 103,
+      "bottomRightX": 551,
+      "bottomRightY": 121,
+      "content": "Table 10-3. Downstream Flowing Header Packet Processing Actions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 121,
+      "bottomRightX": 701,
+      "bottomRightY": 286,
+      "content": "|   | Packet Type  |   |   |\n| --- | --- | --- | --- |\n|  DFP LTSSM State | ITP | PING | Other TPs/DPs  |\n|  U0 | Queue | Queue | Queue  |\n|  U1/U2 | Silently Discarded | Queue (Wake) | Queue (Wake, DF, drop DPP)  |\n|  Recovery | Queue | Queue | Queue  |\n|  Others | Silently Discarded | Silently Discarded | Silently Discarded  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-203.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 305,
+      "bottomRightX": 433,
+      "bottomRightY": 323,
+      "content": "The steps described in the next 4 sections depend on:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 328,
+      "bottomRightX": 652,
+      "bottomRightY": 369,
+      "content": "- whether the hub is operating as a SuperSpeed hub or a SuperSpeedPlus hub, and\n- whether the port processing is being done for an upstream or downstream facing port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 374,
+      "bottomRightX": 474,
+      "bottomRightY": 392,
+      "content": "#### 10.9.4.4.1 SuperSpeed Hub Upstream Facing Port",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 396,
+      "bottomRightX": 701,
+      "bottomRightY": 883,
+      "content": "- The header packet is not an ITP and not a PING and is routed to a downstream port that is in U1 or in U2:\n  1. The hub initiates U0 entry on the appropriate downstream port link. U0 entry shall be initiated no later than tDownLinkStateChange from when the hub received the first symbol of the header packet.\n  2. If the header packet is not already marked deferred:\n     a) The header packet is marked deferred and the Link Control Word CRC-5 is re-calculated for the deferred header packet. If the deferred header packet is a DPH, the corresponding DPP is silently discarded.\n     b) A copy of the header packet is modified to include the hub's hub depth, marked as deferred and with the Link Control Word CRC-5 recalculated is queued for transmission on the upstream port. Note that the route string in this deferred header packet is preserved and not set to zero.\n  3. The deferred header packet (see Section 7.2.4.1.4) is queued for transmission on the appropriate downstream port.\n- If the header packet is a PING and is routed to a downstream port that is in U0 or is in U1 or is in U2 or is in Recovery:\n  1. If the appropriate downstream port link is in U1 or in U2, the hub initiates U0 entry on the appropriate downstream port link. U0 entry shall be initiated no later than tDownLinkStateChange from when the hub received the first symbol of the header packet.\n  2. The header packet is queued for transmission on the appropriate downstream port.\n- If the header packet is not an ITP and not a PING and is routed to a downstream port that is in U0 or in Recovery:\n  1. If the downstream port Tx header packet buffer queue is not empty (there is at least one header packet in the queue that has not been completely transmitted) or no link credit is available for transmission on the downstream port, the header packet is marked delayed and the Link Control Word CRC-5 is re-calculated for the modified header packet.\n  2. The header packet is queued for transmission on the appropriate downstream port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 662,
+      "topLeftY": 980,
+      "bottomRightX": 701,
+      "bottomRightY": 995,
+      "content": "10-49",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

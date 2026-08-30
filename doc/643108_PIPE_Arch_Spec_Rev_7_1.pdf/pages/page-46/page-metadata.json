@@ -1,0 +1,75 @@
+{
+  "index": 45,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 123,
+      "bottomRightX": 325,
+      "bottomRightY": 141,
+      "content": "### 6.1.1 Data Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 161,
+      "bottomRightX": 383,
+      "bottomRightY": 176,
+      "content": "Table 6-1. Tx Data Interface Input Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 180,
+      "bottomRightX": 687,
+      "bottomRightY": 809,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  Original PIPE: TxData[31:0] for 32-bit interface TxData[15:0] for 16-bit interface TxData[7:0] for 8-bit interface SerDes arch: TxData[159:0] for 160-bit interface TxData[79:0] for 80-bit interface TxData[39:0] for 40-bit interface TxData[19:0] for 20-bit interface TxData[9:0] for 10-bit interface Serdes arch: (USB4 only) TxData[55:0] for 56-bit interface | N/A | Parallel data input bus for Tx differential pair. For Original PIPE architecture, the TxData signal width options are 32, 16, and 8 bits. For the 16-bit interface, 16 bits represent two symbols of Tx data. Bits [7:0] are the first symbol to be transmitted, and bits [15:8] are the second symbol. For the 32-bit interface, 32 bits represent the 4 symbols of Tx data. Bits [23:16] are the third symbol to be transmitted, and bits [31:24] are the fourth symbol. Bit zero is the first to be transmitted. For the SerDes architecture, the TxData signal width options are 160, 80, 40, 20, and 10 bits. For the 80-bit interface, 80 bits represent eight symbols of Tx data. Bits [49:40], bits [59:50], bits [69:60], and bits [79:70] are the fifth, sixth, seventh, and eighth symbols, respectively. For the 160-bit interface, 160 bits represent 16 symbols of Tx data. Bits [89:80], bits [99:90], bits [109:100], bits [119:110], bits [129:120], bits [139:130], bits [149:140], bits [159:150] are the ninth, tenth, eleventh, twelfth, thirteenth, fourteenth, fifteenth, and sixteenth symbols, respectively. For block encoded data^{1}, only 8 bits out of each 10-bit slice are used, for example, [7:0] represent byte0, [9:8] are reserved, [17:10] represent byte1, and [19:18] are reserved, and so forth. Bit zero is the first to be transmitted. Additionally for SerDes architecture, USB4 uses a 56-bit interface instead of an 80-bit interface. Refer to Section 8.34.3 for details of the 56-bit interface. | PCIe, SATA, USB, DisplayPort Tx, and USB4  |\n|  SerDes arch: TxData2[55:0] for 56-bit interface TxData2[39:0] for 40-bit interface TxData2[19:0] for 20-bit interface TxData2[9:0] for 10-bit interface | N/A | Parallel data input bus for the Tx2 differential pair. For the SerDes architecture, the TxData signal width options are 56, 40, 20, and 10 bits. For the 40-bit interface, 40 bits represent four symbols of Tx data. Bits [9:0], bits [19:10], bits [29:20], and bits [39:30] are the represent the first, second, third, and fourth symbols, respectively. Refer to Section 8.34.3 for details of the 56-bit interface. | DisplayPort Tx, USB4  |\n|  TxDataValid | N/A | PCI Express mode and SATA mode and USB mode (original PIPE-only): This signal allows the MAC to instruct the PHY to ignore the data interface for one clock cycle. A value of one indicates that the PHY will use the data, and a value of zero indicates that the PHY will not use the data. It is required that the MAC assert TxDataValid at all times when the PHY is in a mode that does not require the signal. All PCI Express modes at 8 GT/s, 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s and all USB modes at 10 GT/s use TxDataValid. See Table 3-1, Table 3-2, and Table 3-3 for a list of other modes that use TxDataValid. See Section 8.26 for details on USB usage; this signal is not applicable to USB SerDes architecture designs. | PCIe, SATA, USB (original PIPE-only)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-17.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 811,
+      "bottomRightX": 686,
+      "bottomRightY": 834,
+      "content": "1. For PCIe operating at 8 GT/s or higher link speed, USB4, and USB 10 GT/s link speed, the data bits are utilized as per the block encoded data description detailed in the previous tables. For all other modes, all the data bits are utilized.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "46",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

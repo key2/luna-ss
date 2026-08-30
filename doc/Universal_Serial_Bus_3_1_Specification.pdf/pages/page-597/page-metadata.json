@@ -1,0 +1,57 @@
+{
+  "index": 596,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 587,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Symbol Scrambling",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 579,
+      "bottomRightY": 512,
+      "content": "// Now advance the LFSR 8 serial clocks\nbit_out[0] = bit[8];\nbit_out[1] = bit[9];\nbit_out[2] = bit[10];\nbit_out[3] = bit[11] ^ bit[8];\nbit_out[4] = bit[12] ^ bit[9] ^ bit[8];\nbit_out[5] = bit[13] ^ bit[10] ^ bit[9] ^ bit[8];\nbit_out[6] = bit[14] ^ bit[11] ^ bit[10] ^ bit[9];\nbit_out[7] = bit[15] ^ bit[12] ^ bit[11] ^ bit[10];\nbit_out[8] = bit[0] ^ bit[13] ^ bit[12] ^ bit[11];\nbit_out[9] = bit[1] ^ bit[14] ^ bit[13] ^ bit[12];\nbit_out[10] = bit[2] ^ bit[15] ^ bit[14] ^ bit[13];\nbit_out[11] = bit[3] ^ bit[15] ^ bit[14];\nbit_out[12] = bit[4] ^ bit[15];\nbit_out[13] = bit[5];\nbit_out[14] = bit[6];\nbit_out[15] = bit[7];\nlfsr = 0;\nfor (i=0; i < 16; i++) // convert the LFSR back to an integer\n    lfsr += (bit_out[i] << i);\n\noutbyte = 0;\nfor (i=0; i<8; i++) // convert data back to an integer\n    outbyte += (descrambit[i] << i);\n\nreturn outbyte;",
+      "confidenceScores": null,
+      "type": "code"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 531,
+      "bottomRightX": 681,
+      "bottomRightY": 565,
+      "content": "The initial 16-bit values of the LFSR for the first 128 LFSR advances following a reset are listed below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 572,
+      "bottomRightX": 624,
+      "bottomRightY": 867,
+      "content": "|   | 0, 8 | 1, 9 | 2, A | 3, B | 4, C | 5, D | 6, E | 7, F  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  00 | FFFF | E817 | 0328 | 284B | 4DE8 | E755 | 404F | 4140  |\n|  08 | 4E79 | 761E | 1466 | 6574 | 7DBD | B6E5 | FDA6 | B165  |\n|  10 | 7D09 | 02E5 | E572 | 673D | 34CF | CB54 | 4743 | 4DEF  |\n|  18 | E055 | 40E0 | EE40 | 54BE | B334 | 2C7B | 7D0C | 07E5  |\n|  20 | E5AF | BA3D | 248A | 8DC4 | D995 | 85A1 | BD5D | 4425  |\n|  28 | 2BA4 | A2A3 | B8D2 | CBF8 | EB43 | 5763 | 6E7F | 773E  |\n|  30 | 345F | 5B54 | 5853 | 5F18 | 14B7 | B474 | 6CD4 | DC4C  |\n|  38 | 5C7C | 70FC | F6F0 | E6E6 | F376 | 603B | 3260 | 64C2  |\n|  40 | CB84 | 9743 | 5CBF | B3FC | E47B | 6E04 | 0C3E | 3F2C  |\n|  48 | 29D7 | D1D1 | C069 | 7BC0 | CB73 | 6043 | 4A60 | 6FFA  |\n|  50 | F207 | 1102 | 01A9 | A939 | 2351 | 566B | 6646 | 4FF6  |\n|  58 | F927 | 3081 | 85B0 | AC5D | 478C | 82EF | F3F2 | E43B  |\n|  60 | 2E04 | 027E | 7E72 | 79AE | A501 | 1A7D | 7F2A | 2197  |\n|  68 | 9019 | 0610 | 1096 | 9590 | 8FCD | D0E7 | F650 | 46E6  |\n|  70 | E8D6 | C228 | 3AB2 | B70A | 129F | 9CE2 | FC3C | 2B5C  |\n|  78 | 5AA3 | AF6A | 70C7 | CDF0 | E3D5 | C0AB | B9C0 | D9C1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-266.md"
+    },
+    {
+      "topLeftX": 678,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "B-5",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

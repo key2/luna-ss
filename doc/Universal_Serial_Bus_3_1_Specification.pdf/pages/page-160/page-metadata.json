@@ -1,0 +1,48 @@
+{
+  "index": 159,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 214,
+      "topLeftY": 108,
+      "bottomRightX": 610,
+      "bottomRightY": 646,
+      "content": "![img-124.jpeg](img-124.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-124.jpeg"
+    },
+    {
+      "topLeftX": 280,
+      "topLeftY": 666,
+      "bottomRightX": 546,
+      "bottomRightY": 685,
+      "content": "Figure 6-4. Gen 2 Receiver Block Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 980,
+      "bottomRightX": 113,
+      "bottomRightY": 995,
+      "content": "6-4",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

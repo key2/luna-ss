@@ -1,0 +1,209 @@
+{
+  "index": 275,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 92,
+      "bottomRightX": 661,
+      "bottomRightY": 143,
+      "content": "1. Eight consecutive and identical TS2 ordered sets are received.\n2. Sixteen TS2 ordered sets are sent after receiving the first of the eight consecutive and identical TS2 ordered sets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 147,
+      "bottomRightX": 680,
+      "bottomRightY": 179,
+      "content": "- The port in SuperSpeedPlus operation shall transition to Polling.Idle when the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 181,
+      "bottomRightX": 661,
+      "bottomRightY": 249,
+      "content": "1. Eight consecutive and identical TS2 ordered sets, excluding symbols 14 and 15, are received.\n2. Sixteen TS2 ordered sets are sent after receiving the first of the eight consecutive and identical TS2 ordered sets, excluding symbols 14 and 15.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 251,
+      "bottomRightX": 684,
+      "bottomRightY": 283,
+      "content": "Note: SYNC OS and SKP OS in between TS2 OS do not disqualify the consecutive detection of TS2 OS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 287,
+      "bottomRightX": 693,
+      "bottomRightY": 321,
+      "content": "- A downstream port in SuperSpeed operation shall transition to Rx.Detect upon the 12-ms timer timeout (tPollingConfigurationTimeout) and the following two conditions are met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 323,
+      "bottomRightX": 488,
+      "bottomRightY": 355,
+      "content": "1. The conditions to transition to Polling.Idle are not met.\n2. cPollingTimeout is less than two.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 358,
+      "bottomRightX": 674,
+      "bottomRightY": 391,
+      "content": "- A downstream port in SuperSpeed operation shall transition to eSS.Inactive upon the 12-ms timer timeout (tPollingConfigurationTimeout) and the following two conditions are met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 393,
+      "bottomRightX": 488,
+      "bottomRightY": 428,
+      "content": "1. The conditions to transition to Polling.Idle are not met.\n2. cPollingTimeout is two.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 430,
+      "bottomRightX": 683,
+      "bottomRightY": 479,
+      "content": "- An upstream port of a hub in SuperSpeed operation shall transition to Rx.Detect upon the 12-ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling.Idle are not met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 482,
+      "bottomRightX": 694,
+      "bottomRightY": 531,
+      "content": "- An upstream port of a peripheral device in SuperSpeed operation shall transition to eSS.Disabled upon the 12-ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling.Idle are not met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 534,
+      "bottomRightX": 671,
+      "bottomRightY": 584,
+      "content": "- A downstream port in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12-ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling.Idle are not met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 587,
+      "bottomRightX": 694,
+      "bottomRightY": 637,
+      "content": "- An upstream port of a hub in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12-ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling.Idle are not met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 639,
+      "bottomRightX": 674,
+      "bottomRightY": 689,
+      "content": "- An upstream port of a peripheral device in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12-ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling. Idle are not met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 691,
+      "bottomRightX": 531,
+      "bottomRightY": 707,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 710,
+      "bottomRightX": 633,
+      "bottomRightY": 726,
+      "content": "- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 729,
+      "bottomRightX": 591,
+      "bottomRightY": 745,
+      "content": "- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 760,
+      "bottomRightX": 264,
+      "bottomRightY": 778,
+      "content": "### 7.5.4.10 Polling.Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 117,
+      "topLeftY": 783,
+      "bottomRightX": 578,
+      "bottomRightY": 817,
+      "content": "Polling.Idle is a substate where the port decodes the TS2 ordered set received in Polling.Configuration and determines the next state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 823,
+      "bottomRightX": 374,
+      "bottomRightY": 842,
+      "content": "### 7.5.4.10.1 Polling.Idle Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 846,
+      "bottomRightX": 687,
+      "bottomRightY": 899,
+      "content": "- The port shall decode the TS2 ordered set received during Polling.Configuration and proceeds to the next state.\n- A downstream port shall reset its Link Error Count.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-64",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

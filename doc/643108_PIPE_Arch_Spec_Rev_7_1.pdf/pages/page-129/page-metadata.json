@@ -1,0 +1,112 @@
+{
+  "index": 128,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 456,
+      "bottomRightY": 150,
+      "content": "Figure 8-16. Rate Change with Fixed PCLK Frequency",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 162,
+      "bottomRightX": 617,
+      "bottomRightY": 397,
+      "content": "![img-37.jpeg](img-37.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-37.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 420,
+      "bottomRightX": 651,
+      "bottomRightY": 463,
+      "content": "## 8.5 Transmitter Margining – PCIe Mode and USB Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 471,
+      "bottomRightX": 696,
+      "bottomRightY": 515,
+      "content": "While in the P0 power state, the PHY can be instructed to change the value of the voltage at the transmitter pins. When the MAC changes TxMargin[2:0], the PHY must be capable of transmitting with the new setting within 128 ns.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 521,
+      "bottomRightX": 696,
+      "bottomRightY": 580,
+      "content": "There is a limited set of legal TxMargin[2:0] and Rate combinations that a MAC can select. See the PCIe base specification for a complete description of legal settings when the PHY is in PCIe mode. The USB specification for a complete description of the legal settings when the PHY is in USB mode.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 588,
+      "bottomRightX": 378,
+      "bottomRightY": 605,
+      "content": "Figure 8-17. Selecting Tx Margining Value",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 641,
+      "bottomRightX": 659,
+      "bottomRightY": 799,
+      "content": "![img-38.jpeg](img-38.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-38.jpeg"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 802,
+      "bottomRightX": 407,
+      "bottomRightY": 822,
+      "content": "Selecting Tx Margining value",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 968,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 967,
+      "content": "129",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

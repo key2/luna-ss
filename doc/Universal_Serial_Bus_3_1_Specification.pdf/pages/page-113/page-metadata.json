@@ -1,0 +1,138 @@
+{
+  "index": 112,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 104,
+      "bottomRightX": 435,
+      "bottomRightY": 124,
+      "content": "### 5.3.2.2 Pin Assignments and Description",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 129,
+      "bottomRightX": 675,
+      "bottomRightY": 162,
+      "content": "The usage and assignments of the nine pins in the USB 3.1 Standard-B connector are defined in Table 5-3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 177,
+      "bottomRightX": 494,
+      "bottomRightY": 193,
+      "content": "Table 5-3. USB 3.1 Standard-B Connector Pin Assignments",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 197,
+      "bottomRightX": 618,
+      "bottomRightY": 395,
+      "content": "|  Pin Number | Signal Name | Description | Mating Sequence  |\n| --- | --- | --- | --- |\n|  1 | VBUS | Power | Second  |\n|  2 | D- | USB 2.0 differential pair | Third or beyond  |\n|  3 | D+  |   |   |\n|  4 | GND | Ground for power return | Second  |\n|  5 | StdB_SSTX- | SuperSpeed transmitter differential pair | Third or beyond  |\n|  6 | StdB_SSTX+  |   |   |\n|  7 | GND_DRAIN | Ground for signal return |   |\n|  8 | StdB_SSRX- | SuperSpeed receiver differential pair |   |\n|  9 | StdB_SSRX+ |   |   |\n|  Shell | Shield | Connector metal shell | First  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-35.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 396,
+      "bottomRightX": 393,
+      "bottomRightY": 411,
+      "content": "Note: Tx and Rx are defined from the device perspective.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 416,
+      "bottomRightX": 649,
+      "bottomRightY": 433,
+      "content": "The physical location of the pins in the connector is illustrated in Figure 5-9 to Figure 5-11.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 446,
+      "bottomRightX": 468,
+      "bottomRightY": 469,
+      "content": "### 5.3.3 USB 3.1 Micro Connector Family",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 482,
+      "bottomRightX": 337,
+      "bottomRightY": 502,
+      "content": "#### 5.3.3.1 Interfaces Definition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 507,
+      "bottomRightX": 693,
+      "bottomRightY": 576,
+      "content": "The USB 3.1 Micro connector family consists of the USB 3.1 Micro-B receptacle, USB 3.1 Micro-AB receptacle, USB 3.1 Micro-B plug, and USB 3.1 Micro-A plug. Figure 5-12 and Figure 5-13 show the USB 3.1 Micro family receptacle and plug interface dimensions, respectively. Only dimensions that govern the mating interoperability are specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 581,
+      "bottomRightX": 534,
+      "bottomRightY": 597,
+      "content": "The USB 3.1 Micro connector family has the following characteristics:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 601,
+      "bottomRightX": 698,
+      "bottomRightY": 793,
+      "content": "- The USB 3.1 Micro-B connector may be considered a combination of USB 2.0 Micro-B interface and the USB 3.1 SuperSpeed contacts. The USB 3.1 Micro-B receptacle accepts a USB 2.0 Micro-B plug, maintaining backward compatibility.\n- The USB 3.1 Micro-B connector maintains the same connector height and contact pitch as the USB 2.0 Micro-B connector.\n- The USB 3.1 Micro-B connector uses the same latch design as the USB 2.0 Micro-B connector.\n- The USB 3.1 Micro-AB receptacle is identical to the USB 3.1 Micro-B receptacle except for a keying difference in the connector shell outline.\n- The USB 3.1 Micro-A plug is similar to the USB 3.1 Micro-B plug with different keying and ID pin connections. The Universal Serial Bus Power Delivery Specification discusses the ID pin connections.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 799,
+      "bottomRightX": 647,
+      "bottomRightY": 834,
+      "content": "There is no required footprint for the USB 3.1 Micro connector family. Figure 5-14 shows reference Micro-B and -AB connector footprints.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "5-25",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

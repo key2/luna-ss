@@ -1,0 +1,155 @@
+{
+  "index": 333,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 100,
+      "bottomRightX": 539,
+      "bottomRightY": 119,
+      "content": "### 8.5.6.5.1 Optional Normative LTM and BELT Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 127,
+      "bottomRightX": 313,
+      "bottomRightY": 143,
+      "content": "# **General Device Requirements**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 148,
+      "bottomRightX": 696,
+      "bottomRightY": 322,
+      "content": "- LTM TPs shall be originated only by peripheral devices.\n- LTM TPs apply to all endpoint types except for isochronous endpoints. For interrupt endpoints the BELT value only applies while the endpoint is in a flow control condition.\n- Once a BELT value has been sent to the host by a device, all configured endpoints for that device shall expect to be serviced within the specified BELT time.\n- A device shall send an LTM TP with a value of tBELTdefault in the BELT field in response to any change in state of LTM_Enable within the timing specified by tMinLTMStateChange.\n- A device shall ensure that its BELT value is determined frequently enough that it is able to provide reasonable estimate of the device's service latency tolerance prior to its need to change BELT value. In addition, the following conditions shall be met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 324,
+      "bottomRightX": 538,
+      "bottomRightY": 340,
+      "content": "1. The maximum number of LTM TPs is bounded by tBeltRepeat.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 341,
+      "bottomRightX": 458,
+      "bottomRightY": 357,
+      "content": "2. Each LTM TP shall have a different BELT value.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 360,
+      "bottomRightX": 607,
+      "bottomRightY": 396,
+      "content": "- The system shall default to a BELT of 1 ms for all devices (refer to Table 8-36).\n- The minimum value for a BELT is 125 μs (refer to Table 8-36).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 402,
+      "bottomRightX": 514,
+      "bottomRightY": 419,
+      "content": "# **Device Requirements Governing Establishment of BELT Value**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 424,
+      "bottomRightX": 690,
+      "bottomRightY": 524,
+      "content": "- The LTM mechanism shall utilize U1SEL and U2SEL to provide devices with system latency information (see Section 9.4.12 – Set SEL). In this context, the system latency is the time between when a device transmits an ERDY and when it will receive a transaction packet (type is direction-specific) from the host when the deepest allowed link state is U1 or U2. These values are used by the device to properly adjust their BELT value, factoring in their location within the USB link topology.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 525,
+      "bottomRightX": 694,
+      "bottomRightY": 611,
+      "content": "1. Devices that allow their link to enter U1, but not U2, shall subtract the U1 System Exit Latency (U1SEL) from its total latency tolerance and send the resultant value as the BELT field value in an LTM TP.\n2. Devices that allow their link to enter U1 and U2, shall subtract U2SEL from its total latency tolerance and send the resulting value as the BELT field value in an LTM TP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 627,
+      "bottomRightX": 435,
+      "bottomRightY": 646,
+      "content": "### 8.5.6.6 Bus Interval Adjustment Message",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 651,
+      "bottomRightX": 684,
+      "bottomRightY": 701,
+      "content": "The Bus Interval Adjustment Message may be sent only by devices operating at Gen 1 speed and shall be ignored by hosts that are not operating at Gen 1 speed. Note that this notification will be deprecated in a future release.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 711,
+      "bottomRightX": 690,
+      "bottomRightY": 777,
+      "content": "This device notification may be sent by a device to request an increase or decrease in the length of the bus interval. This would typically be used by a device trying to synchronize the host's bus interval clock with an external clock. Bus interval adjustment requests are relative to the current bus interval. For example, if a device requests an increase of one",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 778,
+      "bottomRightX": 627,
+      "bottomRightY": 828,
+      "content": "BusIntervalAdjustmentGranularity unit and then later requests an increase of two BusIntervalAdjustmentGranularity units the overall increase by the host would be three BusIntervalAdjustmentGranularity units.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 837,
+      "bottomRightX": 681,
+      "bottomRightY": 906,
+      "content": "The host shall support adjustments through an absolute range of -37268 to 37267 BusIntervalAdjustmentGranularity units. A device shall not request adjustments more than once every eight bus intervals. A device shall not send another bus interval adjustment request until it has waited long enough to accurately observe the effect of the previous bus interval adjustment",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-40",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

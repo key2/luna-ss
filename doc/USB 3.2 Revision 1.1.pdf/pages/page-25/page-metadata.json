@@ -1,0 +1,56 @@
+{
+  "index": 24,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 375,
+      "topLeftY": 46,
+      "bottomRightX": 415,
+      "bottomRightY": 61,
+      "content": "- xxv -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 927,
+      "content": "Figure 6-24. Configuration for Measuring Transmitter Equalization...88\nFigure 6-25. Example waveforms for measuring transmitter equalization...89\nFigure 6-26. Frequency Spectrum of TSEQ...90\nFigure 6-27. Gen 1 Tx Compliance Rx EQ Transfer Function...91\nFigure 6-28. Gen 2 Compliance Rx EQ Transfer Function...92\nFigure 6-29. Gen 2 reference DFE Function...93\nFigure 6-30. Rx Jitter Tolerance Setup...98\nFigure 6-31. Jitter Tolerance Curve...98\nFigure 6-32. LFPS Signaling...100\nFigure 6-33. U1 Exit, U2 Exit, and U3 Wakeup LFPS Handshake Timing Diagram...102\nFigure 6-34. Example of Warm Reset Out of U3...104\nFigure 6-35. Example of Binary Representation based on Polling.LFPS...105\nFigure 6-36. SCD1/SCD2 transmission...105\nFigure 6-37. Logic Representation of LBPS...107\nFigure 6-38. LBPM Transmission Examples...107\nFigure 6-39. Rx Detect Schematic...109\nFigure 6-40. Transmitter Data Striping Example...111\nFigure 7-1. Link Layer...113\nFigure 7-2. Byte Ordering...114\nFigure 7-3. Header Packet with HPSTART, Packet Header, and Link Control Word...116\nFigure 7-4. Non-deferred Gen 2 DPH Format...116\nFigure 7-5. Packet Header...116\nFigure 7-6. CRC-16 Remainder Generation...117\nFigure 7-7. Link Control Word...118\nFigure 7-8. CRC-5 Remainder Generation...119\nFigure 7-9. Data Packet Payload with CRC-32 and Framing...120\nFigure 7-10. CRC-32 Remainder Generation...120\nFigure 7-11. Data Packet with Data Packet Header Followed by Data Packet Payload...122\nFigure 7-12. Link Command Structure...123\nFigure 7-13. Link Command Word Structure...124\nFigure 7-14. State Diagram of the Link Training and Status State Machine...161\nFigure 7-15. eSS.Disabled Substate Machine...163\nFigure 7-16. eSS.Inactive Substate Machine...165\nFigure 7-17. Rx.Detect Substate Machine...168\nFigure 7-18. Example Timing Diagrams of a SSP Port Switching to SS Operation...172\nFigure 7-19. Example Timing Diagrams of a SSP Port Switching to SS Operation in Polling.LFPSPlus...175\nFigure 7-20. Example Timing Diagrams of Two Ports in x2 Operation...179\nFigure 7-21. Polling Substate Machine...187\nFigure 7-22. U1...191\nFigure 7-23. U2...192\nFigure 7-24. U3...194\nFigure 7-25. Recovery Substate Machine...199\nFigure 7-26. Loopback Substate Machine...202\nFigure 7-27. Hot Reset Substate Machine...205\nFigure 8-1. Protocol Layer Highlighted...206\nFigure 8-2. Example Transaction Packet...209\nFigure 8-3. Link Control Word Detail...210\nFigure 8-4. Link Management Packet Structure...211\nFigure 8-5. Set Link Function LMP...212\nFigure 8-6. U2 Inactivity Timeout LMP...213\nFigure 8-7. Vendor Device Test LMP...213\nFigure 8-8. Port Capability LMP...214\nFigure 8-9. Port Configuration LMP...216\nFigure 8-10. Port Configuration Response LMP...217",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

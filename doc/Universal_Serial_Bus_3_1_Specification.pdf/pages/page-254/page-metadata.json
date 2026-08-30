@@ -1,0 +1,75 @@
+{
+  "index": 253,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 523,
+      "bottomRightY": 146,
+      "content": "5. Receiving LAU, or LXU without sending LGO_Ux.\n6. Receiving LPMA without sending LAU.\n7. Receiving an unexpected header packet during link initialization.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 151,
+      "bottomRightX": 696,
+      "bottomRightY": 202,
+      "content": "These error situations are largely not due to link errors. A port's behavior under these situations is undefined and implementation specific. It is recommended that a port ignore those unexpected link commands or header packets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 207,
+      "bottomRightX": 700,
+      "bottomRightY": 273,
+      "content": "If the ports are directed to different link states based on TS2 ordered set, the downstream port's TS2 ordered set overrides the upstream port's TS2 ordered set. For example, if a downstream port issues Hot Reset in its TS2 ordered set, and an upstream port issues Loopback mode, Hot Reset overrides Loopback. The ports shall enter Hot Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 289,
+      "bottomRightX": 364,
+      "bottomRightY": 304,
+      "content": "Table 7-11. Error Types and Recovery",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 307,
+      "bottomRightX": 705,
+      "bottomRightY": 904,
+      "content": "|  Error Type | Description/Example | Error Recovery Path | Update Link Error Count? | Update Soft Error Count? (SuperSpeedPlus USB)  |\n| --- | --- | --- | --- | --- |\n|  Missing Header Packet Framing | Only a valid packet framing ordered set will be declared in the receiver side. | Delayed transition to Recovery | Yes | No  |\n|  Header Packet Error | Any header packet CRC is bad. | Header packet retry process | No | Yes  |\n|  Rx Header Sequence Number Error | The Header Sequence Number in the received header packet does not match the Rx Header Sequence Number. | Recovery | Yes | No  |\n|  ACK Tx Header Sequence Number Error | The Header Sequence Number in the received LGOOD_n (not Header Sequence Number Advertisement) does not match ACK Tx Header Sequence Number. | Recovery | Yes | No  |\n|  Header Sequence Number Advertisement Error | 1. LGOOD_n not received upon PENDING_HP_TIMER timeout. 2. A header packet received before sending LGOOD_n. 3. LCRD_x or LCRD1_x/LCRD2_x or LGO_Ux received before receiving LGOOD_n. | Recovery | Yes | No  |\n|  Rx Header Buffer Credit Advertisement Error (SuperSpeed USB) | 1. LCRD_x not received upon CREDIT_HP_TIMER timeout. 2. A header packet received before sending LCRD_x. 3. LGO_Ux received before receiving LCRD_x. | Recovery | Yes | No  |\n|  Type 1/Type 2 Rx Buffer Credit Advertisement Error (SuperSpeedPlus USB) | 1. LCRD1_x/LCRD2_x not received upon Type 1/Type 2 CREDIT_HP_TIMER timeout. 2. A packet received before sending LCRD1_x/LCRD2_x. 3. LGO_Ux received before receiving LCRD1_x/LCRD2_x. | Recovery | Yes | No  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-98.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "7-42",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

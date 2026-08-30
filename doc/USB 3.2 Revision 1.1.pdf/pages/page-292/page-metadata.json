@@ -1,0 +1,66 @@
+{
+  "index": 291,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 261 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 266,
+      "topLeftY": 92,
+      "bottomRightX": 522,
+      "bottomRightY": 110,
+      "content": "Figure 8-36. Sample BULK IN Sequence",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 222,
+      "topLeftY": 119,
+      "bottomRightX": 569,
+      "bottomRightY": 631,
+      "content": "![img-127.jpeg](img-127.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-127.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

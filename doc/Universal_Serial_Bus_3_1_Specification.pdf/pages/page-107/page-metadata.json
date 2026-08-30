@@ -1,0 +1,111 @@
+{
+  "index": 106,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 435,
+      "bottomRightY": 112,
+      "content": "### 5.3.1.3 Pin Assignments and Description",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 118,
+      "bottomRightX": 676,
+      "bottomRightY": 150,
+      "content": "The usage and assignments of the nine pins in the USB 3.1 Standard-A connector are defined in Table 5-2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 165,
+      "bottomRightX": 494,
+      "bottomRightY": 181,
+      "content": "Table 5-2. USB 3.1 Standard-A Connector Pin Assignments",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 184,
+      "bottomRightX": 618,
+      "bottomRightY": 462,
+      "content": "|  Pin Number^{1} | Signal Name^{2} | Description | Mating Sequence^{3}  |\n| --- | --- | --- | --- |\n|  1 | VBUS | Power | Third  |\n|  2 | D- | USB 2.0 differential pair | Fourth  |\n|  3 | D+  |   |   |\n|  4 | GND | Ground for power return | Third  |\n|  5 | StdA_SSRX- | SuperSpeed receiver differential pair | Last  |\n|  6 | StdA_SSRX+  |   |   |\n|  7 | GND_DRAIN | Ground for signal return  |   |\n|  8 | StdA_SSTX- | SuperSpeed transmitter differential pair  |   |\n|  9 | StdA_SSTX+  |   |   |\n|  12^{4}, 13 | INSERTION DETECT | Receptacle only. Detects insertion of a plug into the receptacle. Optional except for cold socket applications. See the Universal Serial Bus Power Delivery Specification for details. | Second  |\n|  Shell | Shield | Connector metal shell | First  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-34.md"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 463,
+      "bottomRightX": 547,
+      "bottomRightY": 476,
+      "content": "Note 1: Note 1: Pin numbers not included in this table do not have contacts present.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 477,
+      "bottomRightX": 424,
+      "bottomRightY": 491,
+      "content": "Note 2: Tx and Rx are defined from the host perspective.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 492,
+      "bottomRightX": 499,
+      "bottomRightY": 505,
+      "content": "Note 3: The mating sequence assumes support of INSERTION DETECT.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 507,
+      "bottomRightX": 416,
+      "bottomRightY": 519,
+      "content": "Note 4: Pin 12, if present, shall be connected to Shield.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 542,
+      "bottomRightX": 686,
+      "bottomRightY": 594,
+      "content": "The physical location of the pins in the connector is illustrated in Figure 5-1 to Figure 5-7. Pins 1 to 4 are referred to as the USB 2.0 pins, while pins 5 to 9 are referred to as the SuperSpeed pins. See the Universal Serial Bus Power Delivery Specification for location of pins 12 and 13.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "5-19",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "index": 550,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 699,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 109,
+      "bottomRightX": 321,
+      "bottomRightY": 126,
+      "content": "### 10.16.2.1 Clear Hub Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 132,
+      "bottomRightX": 430,
+      "bottomRightY": 148,
+      "content": "This request resets a value reported in the hub status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 151,
+      "bottomRightX": 699,
+      "bottomRightY": 193,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00100000B | CLEAR_FEATURE | Feature Selector | Zero | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-232.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 198,
+      "bottomRightX": 686,
+      "bottomRightY": 265,
+      "content": "Clearing a feature disables that feature; refer to Table 10-9 for the feature selector definitions that apply to the hub as a recipient. If the feature selector is associated with a status change, clearing that status change acknowledges the change. This request format is used to clear either the C_HUB_LOCAL_POWER or C_HUB_OVER_CURRENT features.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 270,
+      "bottomRightX": 692,
+      "bottomRightY": 304,
+      "content": "It is a Request Error if wValue is not a feature selector listed in Table 10-9 or if wIndex or wLength are not as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 309,
+      "bottomRightX": 554,
+      "bottomRightY": 326,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 341,
+      "bottomRightX": 321,
+      "bottomRightY": 358,
+      "content": "### 10.16.2.2 Clear Port Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 365,
+      "bottomRightX": 431,
+      "bottomRightY": 381,
+      "content": "This request resets a value reported in the port status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 383,
+      "bottomRightX": 699,
+      "bottomRightY": 426,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex |   | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  00100011B | CLEAR_FEATURE | Feature Selector | Selector | Port | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-233.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 430,
+      "bottomRightX": 662,
+      "bottomRightY": 464,
+      "content": "The port number shall be a valid port number for that hub, greater than zero. The port field is located in bits 7..0 of the wIndex field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 470,
+      "bottomRightX": 686,
+      "bottomRightY": 536,
+      "content": "Clearing a feature disables that feature or starts a process associated with the feature; refer to Table 10-9 for the feature selector definitions. If the feature selector is associated with a status change, clearing that status change acknowledges the change. This request format is used to clear the following features:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 541,
+      "bottomRightX": 325,
+      "bottomRightY": 686,
+      "content": "- PORT_POWER\n- C_PORT_CONNECTION\n- C_PORT_RESET\n- C_PORT_OVER_CURRENT\n- C_PORT_LINK_STATE\n- C_PORT_CONFIG_ERROR\n- C_BH_PORT_RESET\n- FORCE_LINKPM_ACCEPT",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 692,
+      "bottomRightX": 697,
+      "bottomRightY": 794,
+      "content": "Clearing the PORT_POWER feature causes the port to be placed in the DSPORT-Powered-off-reset state and may, subject to the constraints due to the hub's method of power switching, result in power being removed from the port. When in the DSPORT-Powered-off or the DSPORT-Powered-off-detect or the DSPORT-Powered-off-reset state, the only requests that are valid when this port is the recipient are Get Port Status (refer to Section 10.16.2.6) and Set Port Feature (PORT_POWER) (refer to Section 10.16.2.10).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 799,
+      "bottomRightX": 674,
+      "bottomRightY": 850,
+      "content": "Clearing the FORCE_LINKPM_ACCEPT feature causes the port to de-assert the Force_LinkPM_Accept bit in Set Link Function LMPs. If the Force_LinkPM_Accept bit is not asserted on the port, the hub shall treat this request as a functional no-operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 855,
+      "bottomRightX": 692,
+      "bottomRightY": 905,
+      "content": "It is a Request Error if wValue is not a feature selector listed in Table 10-9, if wIndex specifies a port that does not exist, or if wLength is not as specified above. It is not an error for this request to try to clear a feature that is already cleared (the hub shall treat this as a functional no-operation).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-73",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

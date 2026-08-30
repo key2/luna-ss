@@ -1,0 +1,155 @@
+{
+  "index": 84,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 235,
+      "bottomRightY": 108,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 115,
+      "bottomRightX": 250,
+      "bottomRightY": 216,
+      "content": "7.2.4.2.2#1,\n7.2.4.2.3#1,3,4,5,7,8\n7.2.4.2.7#2,3\n7.5.8.1#2\n7.5.8.2#5",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 223,
+      "bottomRightX": 254,
+      "bottomRightY": 239,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 247,
+      "bottomRightX": 704,
+      "bottomRightY": 435,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence.\nThe LVS application prompts the test operator to enable and configure the U1 and U2 inactivity timers through USB30CV. CV will set the U1 Timeout field to 00h and the U2 Timeout field to 7Fh.\n2. The LVS waits to receive an LGO_U2 from the PUT.\n3. The LVS transmits an LXU when it receives the LGO_U2.\n4. The test fails if the PUT sends an LPMA, or if recovery is entered.\n5. The LVS waits to receive an LGO_U2 from the PUT again.\n6. The LVS transmits an LAU when it receives the LGO_U2.\n7. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 441,
+      "bottomRightX": 608,
+      "bottomRightY": 502,
+      "content": "a. The PUT does not transmit an LPMA before PM_ENTRY_TIMER deadline.\nb. The PUT enters recovery\nc. The PUT does transition to U2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 509,
+      "bottomRightX": 704,
+      "bottomRightY": 585,
+      "content": "8. The test fails if the PUT does not transition to U2.\n9. The LVS transmits the U2 Exit LFPS to transition to U0 and waits to receive U2 Exit LFPS to complete the U2 Exit LFPS handshake.\n10. The test fails if the LFPS handshake does not conform to the following specifications from section 6.9.2:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 592,
+      "bottomRightX": 692,
+      "bottomRightY": 705,
+      "content": "a. Between 300ns – 2ms elapses between the start of the LVS U2 Exit LFPS and the start of the PUT U2 Exit LFPS.\nb. The PUT U2 Exit LFPS duration is within 80us – 2ms.\nc. The PUT enters U0 before Ux_EXIT_TIMER deadline.\nd. The PUT enters Recovery before tNoLFPSResponseTimeout deadline after the start of its U2 exit LFPS.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 713,
+      "bottomRightX": 694,
+      "bottomRightY": 767,
+      "content": "11. The test passes if all packets are successful, recovery is entered once, no extra packets or LFPS signals are received, and the PUT returns to U0.\n12. After the LVS completes this test case, clear the U1/U2 registers through the CV prompt.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 848,
+      "bottomRightX": 509,
+      "bottomRightY": 865,
+      "content": "# TD.7.20 PM_LC_TIMER Deadline Test (Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 867,
+      "bottomRightX": 600,
+      "bottomRightY": 885,
+      "content": "This test verifies that the PUT accepts an LGO_U1 sent at the PM_LC_TIMER deadline.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 890,
+      "bottomRightX": 235,
+      "bottomRightY": 904,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 912,
+      "bottomRightX": 211,
+      "bottomRightY": 927,
+      "content": "7.2.4.2.1#1, 2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "77",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

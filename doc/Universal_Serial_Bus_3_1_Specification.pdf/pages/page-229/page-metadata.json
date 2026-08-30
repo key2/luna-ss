@@ -1,0 +1,174 @@
+{
+  "index": 228,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 94,
+      "topLeftY": 108,
+      "bottomRightX": 387,
+      "bottomRightY": 126,
+      "content": "### 7.2.2.3 Link Command Placement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 132,
+      "bottomRightX": 475,
+      "bottomRightY": 148,
+      "content": "The link command placement shall meet the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 153,
+      "bottomRightX": 680,
+      "bottomRightY": 296,
+      "content": "- Link commands shall not be placed inside header packet structures (i.e., within LMPs, TPs, ITPs, or DPHs).\n- Link commands shall not be placed within the DPP of a DP structure.\n- Link commands shall not be placed between the DPH and the DPP.\n- Link commands may be placed before and after a header packet with the exception that they shall not be placed in between a DPH and its DPP.\n- Multiple link commands are allowed to be transmitted back to back.\n- Link commands shall not be sent until all scheduled SKP ordered sets have been transmitted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 298,
+      "bottomRightX": 664,
+      "bottomRightY": 315,
+      "content": "Note: Additional rules regarding scheduling of link commands are found in Section 10.9.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 337,
+      "bottomRightX": 684,
+      "bottomRightY": 354,
+      "content": "For SuperSpeedPlus USB, the link command placement shall meet the following additional rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 358,
+      "bottomRightX": 676,
+      "bottomRightY": 411,
+      "content": "- All link commands shall be placed in data blocks.\n- The placement of a link command may start in any symbol position within a data block, and may cross over to the next consecutive data blocks.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 416,
+      "bottomRightX": 588,
+      "bottomRightY": 434,
+      "content": "Refer to Appendix D for examples of SuperSpeedPlus link command placement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 94,
+      "topLeftY": 447,
+      "bottomRightX": 292,
+      "bottomRightY": 469,
+      "content": "### 7.2.3 Logical Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 474,
+      "bottomRightX": 694,
+      "bottomRightY": 558,
+      "content": "Logical Idle is defined to be a period of one or more symbol periods when no information (packets or link commands) is being transferred on the link. For SuperSpeed USB, a special D-Symbol (00h), is defined as Idle Symbol (IS). For SuperSpeedPlus USB, a special symbol (5Ah) is defined as Idle Symbol. Idle Symbol shall be transmitted by a port at any time in U0 meeting the logical idle definition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 563,
+      "bottomRightX": 588,
+      "bottomRightY": 581,
+      "content": "By default, the IS shall be scrambled according to rules described in Section 6.3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 130,
+      "topLeftY": 595,
+      "bottomRightX": 335,
+      "bottomRightY": 611,
+      "content": "Table 7-6. Logical Idle Definition",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 613,
+      "bottomRightX": 603,
+      "bottomRightY": 683,
+      "content": "|  Symbol | Data Byte Value |   | Definition  |\n| --- | --- | --- | --- |\n|  IS | SuperSpeed operation | 00h | Represents Idle state on the bus.  |\n|   |  SuperSpeedPlus operation | 5Ah  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-93.md"
+    },
+    {
+      "topLeftX": 94,
+      "topLeftY": 704,
+      "bottomRightX": 667,
+      "bottomRightY": 747,
+      "content": "### 7.2.4 Link Command Usage for Flow Control, Error Recovery, and Power Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 752,
+      "bottomRightX": 698,
+      "bottomRightY": 802,
+      "content": "Link commands are used for link level header packet flow control, to identify lost/corrupted header packets and to initiate/acknowledge link level power management transitions. The construction and descriptions for each link command are found in Section 7.2.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 94,
+      "topLeftY": 817,
+      "bottomRightX": 546,
+      "bottomRightY": 837,
+      "content": "#### 7.2.4.1 Header Packet Flow Control and Error Recovery",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 841,
+      "bottomRightX": 694,
+      "bottomRightY": 891,
+      "content": "Header packet flow control is used for all header packets. It requires each side of the link to follow specific header buffer and transmission ordering constraints to guarantee a successful packet transfer and link interoperability. This section describes, in detail, the rules of packet flow control.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 981,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-17",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

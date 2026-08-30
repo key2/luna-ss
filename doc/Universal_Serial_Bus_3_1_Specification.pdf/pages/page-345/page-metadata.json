@@ -1,0 +1,174 @@
+{
+  "index": 344,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 92,
+      "bottomRightX": 681,
+      "bottomRightY": 128,
+      "content": "downstream port number. The Hub Depth value is determined and assigned to every hub during the enumeration process.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 159,
+      "bottomRightX": 728,
+      "bottomRightY": 232,
+      "content": "![img-218.jpeg](img-218.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-218.jpeg"
+    },
+    {
+      "topLeftX": 311,
+      "topLeftY": 263,
+      "bottomRightX": 515,
+      "bottomRightY": 281,
+      "content": "Figure 8-32. Route String Detail",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 301,
+      "bottomRightX": 692,
+      "bottomRightY": 335,
+      "content": "In Figure 8-32, the value in Hub@Tier1 field is the downstream port number of the hub connected directly to one of the root ports on the host to which a second hub is attached and so on.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 352,
+      "bottomRightX": 384,
+      "bottomRightY": 374,
+      "content": "#### 8.9.1 Route String Port Field",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 379,
+      "bottomRightX": 630,
+      "bottomRightY": 397,
+      "content": "This 4-bit wide field in the Route String represents the port in the hub being addressed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 416,
+      "bottomRightX": 440,
+      "bottomRightY": 438,
+      "content": "#### 8.9.2 Route String Port Field Width",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 441,
+      "bottomRightX": 686,
+      "bottomRightY": 476,
+      "content": "The Route String Port field width is fixed at 4 bits, limiting the maximum number of ports a hub may support to 15.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 495,
+      "bottomRightX": 298,
+      "bottomRightY": 514,
+      "content": "#### 8.9.3 Port Number",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 520,
+      "bottomRightX": 692,
+      "bottomRightY": 588,
+      "content": "The specific port on a hub to which the packet is directed is identified by the value in the Route String Port field. When addressing the hub controller then the Port Number field at the hub's tier level shall be set to zero in the Route String. The hub's downstream ports are addressed beginning with one and count up sequentially.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 614,
+      "bottomRightX": 433,
+      "bottomRightY": 640,
+      "content": "### 8.10 Transaction Packet Usages",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 650,
+      "bottomRightX": 674,
+      "bottomRightY": 685,
+      "content": "TPs are used to report the status of data transactions and can return values indicating successful reception of data packets, command acceptance or rejection, flow control, and halt conditions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 702,
+      "bottomRightX": 398,
+      "bottomRightY": 724,
+      "content": "#### 8.10.1 Flow Control Conditions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 730,
+      "bottomRightX": 697,
+      "bottomRightY": 798,
+      "content": "This section describes the interaction between the host and a device when an endpoint returns a flow control response. The flow control is at an end-to-end level between the host and the endpoint on the device. Only bulk, control and interrupt endpoints may send flow control responses. Isochronous endpoints shall not send flow control responses.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 806,
+      "bottomRightX": 645,
+      "bottomRightY": 840,
+      "content": "An IN endpoint shall be considered to be in a flow control condition if it returns one of the following responses to an ACK TP:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 844,
+      "bottomRightX": 699,
+      "bottomRightY": 897,
+      "content": "- Responding with an NRDY TP; note that an endpoint shall wait until it receives an ACK TP for the last DP it transmitted before it can send an NRDY TP\n- Sending a DP with the EOB field set to 1 in the DPH",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 981,
+      "bottomRightX": 697,
+      "bottomRightY": 994,
+      "content": "8-51",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

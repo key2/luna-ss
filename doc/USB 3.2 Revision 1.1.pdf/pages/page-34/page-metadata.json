@@ -1,0 +1,263 @@
+{
+  "index": 33,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 380,
+      "topLeftY": 46,
+      "bottomRightX": 410,
+      "bottomRightY": 61,
+      "content": "- 3 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 92,
+      "bottomRightX": 672,
+      "bottomRightY": 184,
+      "content": "backward compatibility at the Type-A connector to allow Enhanced SuperSpeed devices to be used, albeit at a lower speed, with USB 2.0 PCs and allow high speed devices with their existing cables to be connected to the USB 3.1 SuperSpeed Type-A connectors. USB 2.0 backward compatibility for USB Type-C solutions requires the use of legacy adaptation cables and adapters as defined by the USB Type-C specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 190,
+      "bottomRightX": 633,
+      "bottomRightY": 221,
+      "content": "- Features that allow the host controller to take advantage of the USB 3.2 speed without any change to the OS.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 236,
+      "bottomRightX": 279,
+      "bottomRightY": 252,
+      "content": "### 1.7 Related Documents",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 258,
+      "bottomRightX": 477,
+      "bottomRightY": 274,
+      "content": "USB Type-C® Cable and Connector Specification, Release 2.1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 285,
+      "bottomRightX": 645,
+      "bottomRightY": 318,
+      "content": "USB 3.1 Legacy Cable and Connector Specification, Revision 1.0 (including all errata and ECNs through June 2017)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 329,
+      "bottomRightX": 633,
+      "bottomRightY": 347,
+      "content": "Universal Serial Bus Specification, Revision 2.0 (including all posted errata and ECNs)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 357,
+      "bottomRightX": 613,
+      "bottomRightY": 374,
+      "content": "Universal Serial Bus Micro-USB Cables and Connectors Specification, Revision 1.01",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 385,
+      "bottomRightX": 530,
+      "bottomRightY": 402,
+      "content": "USB On-the-Go Supplement to the USB 2.0 Specification, Revision 1.3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 413,
+      "bottomRightX": 653,
+      "bottomRightY": 430,
+      "content": "USB On-the-Go and Embedded Host Supplement to the USB 3.0 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 441,
+      "bottomRightX": 630,
+      "bottomRightY": 473,
+      "content": "EIA-364-1000.01: Environmental Test Methodology for Assessing the Performance of Electrical Connectors and Sockets Used in Business Office Applications",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 484,
+      "bottomRightX": 550,
+      "bottomRightY": 501,
+      "content": "USB 3.1 Legacy Connectors and Cable Assemblies Compliance Document",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 513,
+      "bottomRightX": 463,
+      "bottomRightY": 529,
+      "content": "USB SuperSpeed Electrical Test Methodology white paper",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 540,
+      "bottomRightX": 339,
+      "bottomRightY": 557,
+      "content": "USB 3.0 Jitter Budgeting white paper",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 568,
+      "bottomRightX": 666,
+      "bottomRightY": 601,
+      "content": "INCITS TR-35-2004, INCITS Technical Report for Information Technology – Fibre Channel – Methodologies for Jitter and Signal Quality Specification (FC-MJSQ)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 612,
+      "bottomRightX": 567,
+      "bottomRightY": 629,
+      "content": "Universal Serial Bus Power Delivery Specification, Revision 3.0 Version 1.1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 641,
+      "bottomRightX": 238,
+      "bottomRightY": 657,
+      "content": "### 1.8 Conventions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 663,
+      "bottomRightX": 232,
+      "bottomRightY": 679,
+      "content": "#### 1.8.1 Precedence",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 685,
+      "bottomRightX": 671,
+      "bottomRightY": 716,
+      "content": "If there is a conflict between text, figures, and tables, the precedence shall be tables, figures, and then text.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 728,
+      "bottomRightX": 222,
+      "bottomRightY": 744,
+      "content": "#### 1.8.2 Keywords",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 751,
+      "bottomRightX": 634,
+      "bottomRightY": 768,
+      "content": "The following keywords differentiate between the levels of requirements and options.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 779,
+      "bottomRightX": 234,
+      "bottomRightY": 795,
+      "content": "##### 1.8.2.1 Informative",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 801,
+      "bottomRightX": 660,
+      "bottomRightY": 833,
+      "content": "Informative is a keyword that describes information with this specification that intends to discuss and clarify requirements and features as opposed to mandating them.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 844,
+      "bottomRightX": 191,
+      "bottomRightY": 860,
+      "content": "##### 1.8.2.2 May",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 866,
+      "bottomRightX": 530,
+      "bottomRightY": 883,
+      "content": "May is a keyword that indicates a choice with no implied preference.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

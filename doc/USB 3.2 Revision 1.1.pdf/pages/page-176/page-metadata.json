@@ -1,0 +1,182 @@
+{
+  "index": 175,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 145 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 634,
+      "bottomRightY": 162,
+      "content": "- A port that sends LAU shall enter the corresponding low power link state upon receipt of LPMA before PM_ENTRY_TIMER timeout.\n- A port that sends LAU shall enter the requested low power link state upon PM_ENTRY_TIMER timeout and if all of the following conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 167,
+      "bottomRightX": 396,
+      "bottomRightY": 205,
+      "content": "1. LPMA is not received.\n2. No TS1 ordered set is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 210,
+      "bottomRightX": 629,
+      "bottomRightY": 241,
+      "content": "Note: This implies LPMA is corrupted and the port issuing LGO_Ux has entered Ux.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 248,
+      "bottomRightX": 664,
+      "bottomRightY": 279,
+      "content": "- A port that has sent LAU shall enter Recovery before PM_ENTRY_TIMER timeout if a TS1 ordered set is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 284,
+      "bottomRightX": 637,
+      "bottomRightY": 315,
+      "content": "Note: This implies LAU was corrupted and the port issuing LGO_Ux has entered Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 323,
+      "bottomRightX": 656,
+      "bottomRightY": 366,
+      "content": "- A port that has sent LAU shall not respond with Ux LFPS exit handshake defined in Section 6.9.2 before PM_ENTRY_TIMER timeout and if LFPS Ux_Exit signal is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 375,
+      "bottomRightX": 670,
+      "bottomRightY": 420,
+      "content": "Note: This implies LPMA was corrupted and the port issuing LGO_Ux has initiated Ux exit. Under this situation, the port sending LAU shall complete the low power link state entry process and then respond to Ux exit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 441,
+      "bottomRightX": 574,
+      "bottomRightY": 457,
+      "content": "There also exists a situation where a port transitions from U1 to U2 directly.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 471,
+      "bottomRightX": 612,
+      "bottomRightY": 486,
+      "content": "- A port in U1 shall enter U2 directly if the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 492,
+      "bottomRightX": 641,
+      "bottomRightY": 528,
+      "content": "1. The port's U2 inactivity timer is enabled.\n2. The U2 inactivity timer times out and no U1 LFPS exit signal is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 551,
+      "bottomRightX": 291,
+      "bottomRightY": 565,
+      "content": "### 7.2.4.2.4 U3 Entry Flow",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 572,
+      "bottomRightX": 656,
+      "bottomRightY": 589,
+      "content": "Only a downstream port can initiate U3 entry. An upstream port shall not reject U3 entry.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 601,
+      "bottomRightX": 673,
+      "bottomRightY": 752,
+      "content": "- Upon directed, a downstream port shall initiate U3 entry process by sending LGO_U3.\n- Upon issuing LGO_U3, a downstream port shall start PM_LC_TIMER.\n- An upstream port shall send LAU in response to LGO_U3 request by a downstream port.\n- An upstream port shall not send any packets or link commands subsequent to sending an LAU.\n- Upon issuing LGO_U3, a downstream port shall ignore any packets sent by an upstream port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 758,
+      "bottomRightX": 652,
+      "bottomRightY": 788,
+      "content": "Note: This is a corner condition that an upstream port is sending a header packet before receiving LGO_U3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 796,
+      "bottomRightX": 661,
+      "bottomRightY": 924,
+      "content": "- Upon Receiving LGO_U3, an upstream port shall respond with an LAU. The processing of all the unacknowledged packets shall be aborted.\n- Upon issuing LAU, an upstream port shall start PM_ENTRY_TIMER.\n- A downstream port shall send a single LPMA and then transition to U3 when LAU is received.\n- A downstream port shall transition to Recovery and reinitiate U3 entry after re-entry to U0 if all of the following three conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

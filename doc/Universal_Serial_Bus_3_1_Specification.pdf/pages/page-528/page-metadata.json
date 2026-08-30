@@ -1,0 +1,146 @@
+{
+  "index": 527,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 93,
+      "bottomRightX": 684,
+      "bottomRightY": 161,
+      "content": "Note: If the queue for the appropriate downstream port is full, the header packet is queued as soon as a space is available for the appropriate downstream port. The hub shall process subsequent header packets while a downstream port buffer is full if they are directed to a different downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 163,
+      "bottomRightX": 501,
+      "bottomRightY": 179,
+      "content": "- If the header packet is an ITP then for each downstream port:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 180,
+      "bottomRightX": 691,
+      "bottomRightY": 351,
+      "content": "1. The ITP is silently discarded for any downstream port with a link not in U0 and not in Recovery.\n2. The Delta and Correction fields in the ITP shall be updated to account for the measured delay of propagating the ITP through the hub.\na) If the delay introduced by the hub exceeds the tPropagationDelayJitterLimit, then the header packet shall be marked Delayed (DL) and the correct Link Control Word CRC-5 is re-calculated for modified header packet.\nb) If the Delta subfield overflowed, the ITP shall not be queued, otherwise the header packet shall be queued for transmission on each downstream port that has completed Port Configuration and is in U0 or in Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 353,
+      "bottomRightX": 684,
+      "bottomRightY": 421,
+      "content": "Note: If the queue for the appropriate downstream port is full, the header packet is queued as soon as a space is available in the appropriate downstream port queue. The hub shall process subsequent header packets while a downstream port queue is full if they are directed to a different downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 422,
+      "bottomRightX": 690,
+      "bottomRightY": 456,
+      "content": "- If the header packet is routed to a disabled or nonexistent downstream port or to a downstream port that is in not in U0 and not in U1 and not in U2 and not in Recovery:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 459,
+      "bottomRightX": 603,
+      "bottomRightY": 514,
+      "content": "1. The header packet is removed from the RX header packet queue.\n2. The header packet is silently discarded.\n3. If the header packet is a DPH the corresponding DPP is silently discarded.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 516,
+      "bottomRightX": 441,
+      "bottomRightY": 532,
+      "content": "- If the header packet is routed to the hub controller:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 534,
+      "bottomRightX": 647,
+      "bottomRightY": 603,
+      "content": "1. The header packet is processed by the hub controller.\n2. The header packet is removed from the RX header packet queue.\n3. A response to the header packet is queued for transmission on the upstream port, if required.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 610,
+      "bottomRightX": 503,
+      "bottomRightY": 629,
+      "content": "### 10.9.4.4.2 SuperSpeedPlus Hub Upstream Facing Port",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 632,
+      "bottomRightX": 679,
+      "bottomRightY": 664,
+      "content": "- The header packet is not an ITP and not a PING and is routed to a downstream port that is in U1 or in U2:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 667,
+      "bottomRightX": 691,
+      "bottomRightY": 735,
+      "content": "1. The hub initiates U0 entry on the appropriate downstream port link. U0 entry shall be initiated no later than tDownLinkStateChange from when the hub received the first symbol of the header packet.\n2. If the header packet is not already marked deferred:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 736,
+      "bottomRightX": 680,
+      "bottomRightY": 855,
+      "content": "a) The header packet is marked deferred and the Link Control Word CRC-5 is re-calculated for the deferred header packet. If the deferred header packet is a DPH, the corresponding DPP is silently discarded.\nb) A copy of the header packet is modified to include the hub's hub depth, marked as deferred and with the Link Control Word CRC-5 recalculated is buffered awaiting arbitration for transmission on the upstream port. Note that the route string in this deferred header packet is preserved and not set to zero.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 857,
+      "bottomRightX": 666,
+      "bottomRightY": 891,
+      "content": "3. The deferred header packet (see Section 7.2.4.1.4) is buffered awaiting arbitration (see Section 10.8.6.4) for transmission on the appropriate downstream port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 981,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-50",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+|  Name | Active Level | Description | Relevant Protocols  |
+| --- | --- | --- | --- |
+|  RxStandbyStatus | High | SATA mode and PCIe mode and USB4 mode: The PHY uses this signal to indicate its RxStandby state. 0: Active 1: Standby RxStandbyStatus reflects the state of the high-speed receiver. The high-speed receiver is always off in the PHY states that do not provide PCLK. PCIe mode: RxStandbyStatus is undefined when the power state is P1 or P2. This signal is not applicable to USB mode. | PCIe, SATA, and USB4  |
+|  RxStandbyStatus2 | High | This corresponds to the Rx2 differential pair. Refer to RxStandbyStatus for more details. | USB4  |

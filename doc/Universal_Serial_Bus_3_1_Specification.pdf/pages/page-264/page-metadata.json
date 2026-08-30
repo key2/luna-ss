@@ -1,0 +1,120 @@
+{
+  "index": 263,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 645,
+      "bottomRightY": 130,
+      "content": "- The port shall transition to eSS.Inactive.Quiet when a far-end low-impedance receiver termination (R_RX-DC) meeting specification defined in Table 6-21 is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 151,
+      "bottomRightX": 677,
+      "bottomRightY": 472,
+      "content": "![img-179.jpeg](img-179.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-179.jpeg"
+    },
+    {
+      "topLeftX": 274,
+      "topLeftY": 479,
+      "bottomRightX": 550,
+      "bottomRightY": 497,
+      "content": "Figure 7-16. eSS.Inactive Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 512,
+      "bottomRightX": 272,
+      "bottomRightY": 529,
+      "content": "### 7.5.3 Rx.Detect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 538,
+      "bottomRightX": 698,
+      "bottomRightY": 690,
+      "content": "Rx.Detect is the power on state of the LTSSM for both a downstream port and an upstream port. It is also the state for a downstream port upon issuing a Warm Reset, and the state for an upstream port upon detecting a Warm Reset from any other link state except eSS.Disabled. The purpose of Rx.Detect is to detect the impedance of far-end receiver termination to ground. Rx.Detect.Reset is a default reset state used by the two ports to synchronize the operation after a Warm Reset; this substate exits immediately if Warm Reset is not present. Rx.Detect.Active is a substate for far-end receiver termination detection. Rx.Detect.Quiet is a power saving substate in which the function of a far-end receiver termination detection is disabled. A port will perform the far-end receiver termination detection periodically during Rx.Detect.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 702,
+      "bottomRightX": 405,
+      "bottomRightY": 721,
+      "content": "#### 7.5.3.1 Rx.Detect Substate Machines",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 727,
+      "bottomRightX": 642,
+      "bottomRightY": 744,
+      "content": "Rx.Detect contains a substate machine shown in Figure 7-17 with the following substates:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 750,
+      "bottomRightX": 251,
+      "bottomRightY": 802,
+      "content": "- Rx.Detect.Reset\n- Rx.Detect.Active\n- Rx.Detect.Quiet",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 817,
+      "bottomRightX": 367,
+      "bottomRightY": 836,
+      "content": "#### 7.5.3.2 Rx.Detect Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 838,
+      "bottomRightX": 679,
+      "bottomRightY": 871,
+      "content": "- The transmitter common mode is not required to be within specification during this state.\n- The low-impedance receiver termination (R_RX-DC) defined in Table 6-21 shall be maintained.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-52",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

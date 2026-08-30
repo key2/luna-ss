@@ -1,0 +1,120 @@
+{
+  "index": 339,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 61,
+      "content": "Revision 1.1",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 62,
+      "bottomRightX": 177,
+      "bottomRightY": 77,
+      "content": "June 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 309 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 61,
+      "content": "Universal Serial Bus 3.2",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 62,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 652,
+      "bottomRightY": 110,
+      "content": "Figure 8-67. Sample Smart Enhanced SuperSpeed Isochronous OUT Transaction",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 119,
+      "bottomRightX": 624,
+      "bottomRightY": 804,
+      "content": "![img-158.jpeg](img-158.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-158.jpeg"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 804,
+      "bottomRightX": 500,
+      "bottomRightY": 814,
+      "content": "Note: ep1/ep2 service interval 8 = Bus Intervals, each expected to return 10 packets each.",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 598,
+      "topLeftY": 816,
+      "bottomRightX": 622,
+      "bottomRightY": 827,
+      "content": "U-173",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 853,
+      "bottomRightX": 607,
+      "bottomRightY": 868,
+      "content": "### 8.12.6.2 Host Flexibility in Performing SuperSpeed Isochronous Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 875,
+      "bottomRightX": 657,
+      "bottomRightY": 921,
+      "content": "A host targeting an endpoint on a SuperSpeed bus instance may transfer all the DPs to or from an endpoint in bursts of any size as long as the number of outstanding packets is less than or equal to the max burst size advertised by the endpoint in its descriptors.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

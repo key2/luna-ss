@@ -1,0 +1,112 @@
+{
+  "index": 81,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 159,
+      "bottomRightX": 520,
+      "bottomRightY": 179,
+      "content": "### 7.1.3 Address 2h: Elastic Buffer Control",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 187,
+      "bottomRightX": 686,
+      "bottomRightY": 246,
+      "content": "This register is used to control the elastic buffer depth, enabling the controller to optimize latency in nominal half full mode. The ability to control the elastic buffer depth is an optional feature that may be especially beneficial for Retimers operating in the PCIe SRIS mode.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 258,
+      "bottomRightX": 398,
+      "bottomRightY": 273,
+      "content": "Table 7-4. Address 2h: Elastic Buffer Control",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 279,
+      "bottomRightX": 688,
+      "bottomRightY": 428,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:0] | 0h | Level | PCIe (optional) | **Elastic Buffer Depth Control:** This field is used to set the elastic buffer depth. The MAC must choose from the supported values advertised in the PHY datasheet. This value can only be changed during the transmission of TS1 ordered sets. The PHY performs the adjustment as quickly as possible without waiting for SKPs. The PHY signals completion of elastic buffer depth adjustment by setting the Elastic Buffer Status register. **Note:** This field is not used in the SerDes architecture.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-64.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 442,
+      "bottomRightX": 473,
+      "bottomRightY": 463,
+      "content": "### 7.1.4 Address 3h: PHY Rx Control0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 471,
+      "bottomRightX": 484,
+      "bottomRightY": 486,
+      "content": "This register is used to control receiver functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 502,
+      "bottomRightX": 462,
+      "bottomRightY": 516,
+      "content": "Table 7-5. Address 3h: PHY Rx Control0 (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 519,
+      "bottomRightX": 687,
+      "bottomRightY": 670,
+      "content": "|  Bit | Default | Attribute | Required | Description  |   |\n| --- | --- | --- | --- | --- | --- |\n|  [7:2] | 0h | N/A | N/A | Reserved  |   |\n|  [1] | 0h | Level | PCIe, USB, and SATA | **RxPolarity:** This field is used to control the polarity inversion on the received data.  |   |\n|   |   |   |   |  Value | Description  |\n|   |   |   |   |  0 | The PHY does no polarity inversion.  |\n|   |   |   |   |  1 | The PHY does polarity inversion.  |\n|   |   |   |   |  **Note:** This field is not used in the SerDes architecture.  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-65.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "82",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+|   | LCRD_x, advancing the credit index alphabetically, and incrementing the Local Rx Header Buffer Credit Count by one. |   |
+| --- | --- | --- |
+|  Subsection reference: 7.2.4.1.8 SuperSpeedPlus Type 1/Type 2 Rx Buffer Credit  |   |   |
+|  7.2.4.1.8#1 | A port shall consume one Local Type 1 or Type 2 Rx Buffer Credit if the respective Type 1 or Type 2 packet is “received properly”. The Local Type 1/Type 2 Rx Buffer Credit Count shall be decremented by one. | NT  |
+|  7.2.4.1.8#2 | Upon completion of a Type 1 or Type 2 packet processing and the respective Type 1 or Type 2 Rx Buffer is made available, a port shall restore accordingly a Local Type 1 or Type 2 Rx Buffer Credit by sending a single LCRD1_x or LCRD2_x, advancing the credit index alphabetically, and incrementing the Local Type 1 or Type 2 Rx Buffer Credit Count by one. | BC  |
+|  Subsection reference: 7.2.4.1.9 Receiving Data Packet Payload  |   |   |
+|  7.2.4.1.9#1 | For SuperSpeed USB, a DPP processing shall be started if a DPH is properly received and a DPPSTART OS is received properly immediately after its DPH. | BC  |
+|  7.2.4.1.9#2 | For SuperSpeed USB, a DPP processing shall be completed when a valid DPPEND OS is detected. | 7.6  |
+|  7.2.4.1.9#3 | For SuperSpeed USB, a DPP processing shall be aborted when a valid DPPABORT OS is detected, when a K-symbol that does not belong to a valid DPPEND or DPPABORT OS is detected before a valid DPPEND or DPPABORD OS -- and in this case a port shall then ignore the corresponding DPPEND or DPPABORT OS associated with the DPP, when a DPP or length exceeding sDataSymbolsBabble has been reached and no valid DPPEND or DPPABORT OS is detected. | NT  |
+|  7.2.4.1.9#4 | For SuperSpeed USB, a DPP processing shall be dropped if its DPH is corrupted or when it does not immediately follow its DPH. | NT  |
+|  7.2.4.1.9#5 | For SuperSpeedPlus USB, a DPP processing shall be started if a DPH is received properly or is not received properly but a valid DPP length field replica is declared, and a DPPSTART OS or a DPPABORT OS is received immediately after its DPH. | 7.6  |
+|  7.2.4.1.9#6 | For SuperSpeedPlus USB, a DPP processing shall be completed when a valid DPPEND OS or DPPABORT OS is detected at the expected end of DPP indicated by valid length field plus four. | 7.6  |
+|  7.2.4.1.9#7 | For SuperSpeedPlus USB, a DPP processing shall be aborted if a DPPEND OS or a DPPABORT OS is not detected at the expected end of DPP indicated by valid length field plus four. In this case the port shall transition to Recovery. | NT  |
+|  7.2.4.1.6#1 | A port shall detect a DPP packet when receiving a DPPSTART framing with at least three valid symbols out of four, and ignore the packet otherwise. | 7.6  |
+|  7.2.4.1.6#2 | A port shall accept a DPP when a valid DPPSTART is detected, a valid DPPEND is detected, there are four to 1028 symbols, the | 7.6  |

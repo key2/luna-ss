@@ -1,0 +1,66 @@
+{
+  "index": 283,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 81,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 63,
+      "content": "- 253 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 81,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 215,
+      "topLeftY": 95,
+      "bottomRightX": 572,
+      "bottomRightY": 113,
+      "content": "**Figure 8-33. Sample Concurrent BULK IN Transactions**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 130,
+      "bottomRightX": 595,
+      "bottomRightY": 817,
+      "content": "![img-124.jpeg](img-124.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-124.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

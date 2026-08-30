@@ -1,0 +1,93 @@
+{
+  "index": 273,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 243 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 243,
+      "topLeftY": 92,
+      "bottomRightX": 543,
+      "bottomRightY": 109,
+      "content": "Table 8-22. Sublink Speed Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 119,
+      "bottomRightX": 676,
+      "bottomRightY": 776,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |   |\n| --- | --- | --- | --- |\n|  4 | 1:0 | **SubType**. This field shall be set to *DEV_NOTIFICATION*.  |   |\n|  4 | 1:4 | **Notification Type**. SUBLINK_SPEED.  |   |\n|  23 | 1:8 | **Reserved**.  |   |\n|  2 | 2:4 | **Lane Speed Exponent** (LSE). This field defines the base 1000 exponent, that shall be applied to the Lane Speed Mantissa (LSM) when calculating the maximum Lane Speed represented by this Sublink Speed Device Notification.  |   |\n|   |   |  **Value** | **Description**  |\n|   |   |  00b | Bits per second  |\n|   |   |  01b | Kb/s  |\n|   |   |  10b | Mb/s  |\n|   |   |  11b | Gb/s  |\n|  2 | 2:6 | **Sublink Type** (ST). This field identifies whether this Sublink Speed Device Notification defines a symmetric or asymmetric bit rate. This field also indicates if this Sublink Speed Device Notification defines the receive or transmit bit rate. Note that the Sublink Speed Attributes shall be paired, i.e. an Rx immediately followed by a Tx, and both Attributes shall define the same value for the SSID.  |   |\n|   |   |  Bit | Value Description  |\n|   |   |  0 | 0 Symmetric. Rx and Tx Sublinks have the same number of lanes and operate at the same speed.  |\n|   |   |  1 | 1 Asymmetric. Rx and Tx Sublink have different number of lanes and/or operate at different speeds.  |\n|   |   |  0 | 0 Sublink operates in Receive mode  |\n|   |   |  1 | 1 Sublink operates in Transmit mode  |\n|  2 | 2:8 | **Reserved**.  |   |\n|  4 | 2:10 | **Lane Count** (Lanes). This field identifies the number of Lanes associated with a Sublink. The *Lane Count* value is a zero based value; e.g., a Lane Count of 0 means 1 lane, 1 = 2 lanes, etc.  |   |\n|  2 | 2:14 | **Link Protocol** (LP). This field identifies the protocol supported by the link.  |   |\n|   |   |  **Value** | **Description**  |\n|   |   |  00b | Reserved  |\n|   |   |  01b | SuperSpeedPlus  |\n|   |   |  11b-10b | Reserved  |\n|  16 | 2:16 | **Lane Speed Mantissa** (LSM). This field defines the mantissa that shall be applied to the LSE when calculating the Lane Speed represented by this Sublink Speed Device Notification.  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-125.md"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 804,
+      "bottomRightX": 208,
+      "bottomRightY": 821,
+      "content": "### NOTE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 838,
+      "bottomRightX": 634,
+      "bottomRightY": 869,
+      "content": "This specification includes features to support SSIC capabilities, such as asymmetric link speeds and multiple lanes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 881,
+      "bottomRightX": 622,
+      "bottomRightY": 912,
+      "content": "The Enhanced SuperSpeed bus does not support Asymmetric link speeds. An Enhanced SuperSpeed device shall only set the **Sublink Type** to Symmetric.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

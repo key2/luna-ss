@@ -1,0 +1,121 @@
+{
+  "index": 87,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 57 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 258,
+      "topLeftY": 92,
+      "bottomRightX": 530,
+      "bottomRightY": 111,
+      "content": "Figure 6-7. Character to Symbol Mapping",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 121,
+      "bottomRightX": 652,
+      "bottomRightY": 502,
+      "content": "![img-18.jpeg](img-18.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-18.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 515,
+      "bottomRightX": 398,
+      "bottomRightY": 530,
+      "content": "### 6.3.1.1 Serialization and Deserialization of Data",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 537,
+      "bottomRightX": 673,
+      "bottomRightY": 568,
+      "content": "The bits of a Symbol are placed starting with bit \"a\" and ending with bit \"j.\" This is shown in Figure 6-8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 277,
+      "topLeftY": 581,
+      "bottomRightX": 510,
+      "bottomRightY": 597,
+      "content": "Figure 6-8. Bit Transmission Order",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 607,
+      "bottomRightX": 668,
+      "bottomRightY": 733,
+      "content": "![img-19.jpeg](img-19.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-19.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 754,
+      "bottomRightX": 474,
+      "bottomRightY": 770,
+      "content": "### 6.3.1.2 Normative 8b/10b Decode Rules for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 783,
+      "bottomRightX": 667,
+      "bottomRightY": 904,
+      "content": "1. A Transmitter is permitted to pick any disparity when first transmitting differential data after being in an Electrical Idle state. The Transmitter shall then follow proper 8b/10b encoding rules until the next Electrical Idle state is entered.\n2. The initial disparity for a Receiver is the disparity of the first Symbol used to obtain Symbol lock.\n3. Disparity may also be-reinitialized if Symbol lock is lost and regained during the transmission of differential information due to a burst error event.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

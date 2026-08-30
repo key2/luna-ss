@@ -1,0 +1,57 @@
+{
+  "index": 20,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 61,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 915,
+      "content": "|   | CRC-32 is valid, no K-symbol occurrence is detected, no 8b/10b error is detected and it is received immediately after its DPH. |   |\n| --- | --- | --- |\n|  7.2.4.1.6#3 | A port shall ignore a DPP when valid DPPSTART and DPPEND are detected and the CRC-32 check fails, there are less than four symbols, there are more than 1028 symbols, any K-symbol occurrence is detected, any 8b/10b error is detected or it is not preceded immediately by its DPH. | NT  |\n|  Subsection reference: 7.2.4.1.10 Receiving LGOOD_n  |   |   |\n|  7.2.4.1.10#1 | If a port receives an LGOOD_n and this LGOOD_n is not Header Sequence Number Advertisement, is shall transition to Recovery if the received Header Sequence Number does not match the ACK Tx Header Sequence Number. The ACK Tx Header Sequence Number shall be unchanged. | 7.14  |\n|  Subsection reference: 7.2.4.1.11 Receiving LCRD_x/LCRD1_x/LCRD2_x  |   |   |\n|  7.2.4.1.11#1 | A port shall transition to Recovery if it receives an out of order LCRD_x/LCRD1_x/LCRD2_x. | 7.15  |\n|  Subsection reference: 7.2.4.1.12 Receiving LBAD  |   |   |\n|  7.2.4.1.12#1 | Upon receiving LBAD, a port shall send a single LRTY before retransmitting all the header packets in the (Type 1/Type 2) Tx Header Buffers that have not been acknowledged with LGOOD_n. | 7.8  |\n|  7.2.4.1.12#2 | A hub shall set the DL bit in the Link Control Word on all resent header packets and recalculate the CRC-5. | LVS  |\n|  7.2.4.1.12#3 | When retransmitting a DP in SuperSpeed operation, a hub shall drop the DPP. When retransmitting a DP in SuperSpeedPlus operation, a hub shall drop the DPP and replace it with a nullified DPP. | IOP  |\n|  7.2.4.1.12#4 | Upon receipt of an LBAD, a port shall send a single LRTY if there is no unacknowledged header packet in the (Type 1/Type 2) Tx Header Buffers. | 7.8  |\n|  Subsection reference: 7.2.4.1.13 Transmitting Timers  |   |   |\n|  7.2.4.1.13#1 | The PENDING_HP_TIMER shall be started when a port enters U0 in expectation of the Header Sequence Number Advertisement. | 7.26  |\n|  7.2.4.1.13#2 | The PENDING_HP_TIMER shall be started when the oldest header packet is retransmitted in response to LBAD. | 7.8  |\n|  7.2.4.1.13#3 | The PENDING_HP_TIMER shall be started when a header packet is transmitted and there are no prior header packets transmitted but unacknowledged in the (Type 1/Type 2) Tx Header Buffers. | 7.11  |\n|  7.2.4.1.13#4 | The PENDING_HP_TIMER shall be reset and restarted when a header packet is acknowledged with LGOOD_n and there are | 7.9  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-14.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "13",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

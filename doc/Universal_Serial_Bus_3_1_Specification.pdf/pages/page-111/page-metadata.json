@@ -1,0 +1,152 @@
+{
+  "index": 110,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 698,
+      "bottomRightY": 44,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 152,
+      "bottomRightX": 473,
+      "bottomRightY": 341,
+      "content": "![img-57.jpeg](img-57.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-57.jpeg"
+    },
+    {
+      "topLeftX": 517,
+      "topLeftY": 146,
+      "bottomRightX": 645,
+      "bottomRightY": 273,
+      "content": "![img-58.jpeg](img-58.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-58.jpeg"
+    },
+    {
+      "topLeftX": 476,
+      "topLeftY": 284,
+      "bottomRightX": 614,
+      "bottomRightY": 428,
+      "content": "![img-59.jpeg](img-59.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-59.jpeg"
+    },
+    {
+      "topLeftX": 261,
+      "topLeftY": 382,
+      "bottomRightX": 453,
+      "bottomRightY": 518,
+      "content": "![img-60.jpeg](img-60.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-60.jpeg"
+    },
+    {
+      "topLeftX": 314,
+      "topLeftY": 522,
+      "bottomRightX": 382,
+      "bottomRightY": 535,
+      "content": "SECTION D-D",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 524,
+      "topLeftY": 435,
+      "bottomRightX": 591,
+      "bottomRightY": 446,
+      "content": "SECTION A-A",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 493,
+      "topLeftY": 474,
+      "bottomRightX": 614,
+      "bottomRightY": 542,
+      "content": "![img-61.jpeg](img-61.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-61.jpeg"
+    },
+    {
+      "topLeftX": 517,
+      "topLeftY": 555,
+      "bottomRightX": 584,
+      "bottomRightY": 565,
+      "content": "SECTION B-B",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 270,
+      "topLeftY": 552,
+      "bottomRightX": 375,
+      "bottomRightY": 659,
+      "content": "![img-62.jpeg](img-62.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-62.jpeg"
+    },
+    {
+      "topLeftX": 283,
+      "topLeftY": 674,
+      "bottomRightX": 350,
+      "bottomRightY": 685,
+      "content": "SECTION C-C",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 416,
+      "topLeftY": 585,
+      "bottomRightX": 443,
+      "bottomRightY": 594,
+      "content": "NOTES:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 425,
+      "topLeftY": 594,
+      "bottomRightX": 633,
+      "bottomRightY": 699,
+      "content": "1) CRITICAL DIMENSIONS ARE TOLERANCED AND SHALL NOT BE DEVIATED.\n2) GENERAL TOLERANCE IS ±0.10 OTHERWISE THE SPECIFIED TOLERANCE APPLIES.\n3) ALL DIMENSIONS ARE IN MILLIMETERS.\n4) DIMENSIONS THAT ARE LABELED REF ARE TYPICAL DIMENSIONS AND MAY VARY FROM MANUFACTURER TO MANUFACTURER.\n5) NON-DIMENSIONED GEOMETRY FOR REFERENCE ONLY, SUBJECT TO CHANGE.\n6) OVERALL CONNECTOR AND CABLE LENGTH IS MEASURED FROM DATUM A OF THE SERIES \"B\" PLUG TO DATUM A OF THE SERIES \"A\" PLUG OR BLUNT END TERMINATION.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 225,
+      "topLeftY": 736,
+      "bottomRightX": 599,
+      "bottomRightY": 754,
+      "content": "Figure 5-10. USB 3.1 Standard-B Plug Interface Dimensions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-23",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

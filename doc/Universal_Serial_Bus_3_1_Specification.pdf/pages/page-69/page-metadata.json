@@ -1,0 +1,38 @@
+{
+  "index": 68,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 521,
+      "topLeftY": 31,
+      "bottomRightX": 699,
+      "bottomRightY": 45,
+      "content": "USB 3.1 Architectural Overview",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 696,
+      "bottomRightY": 198,
+      "content": "- A pipe supports one of four transfer types as defined in USB 2.0 (bulk, control, interrupt, and isochronous). The basic architectural elements of these transfer types are unchanged from USB 2.0.\n- The bulk transfer type has an extension for Enhanced SuperSpeed protocol called Streams. Streams provide in-band, protocol-level support for multiplexing multiple independent logical data streams through a standard bulk pipe.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "3-17",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

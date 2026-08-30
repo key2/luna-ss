@@ -1,0 +1,139 @@
+{
+  "index": 376,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 346 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 573,
+      "bottomRightY": 109,
+      "content": "For returning the current status of the FW update allowed/disallowed state:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 119,
+      "bottomRightX": 676,
+      "bottomRightY": 300,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bmRequestType | 1 | 00H | Device to Host, Standard  |\n|  1 | bRequest | 1 | 1AH | GET_FW_STATUS  |\n|  2 | wValue | 2 | 00H | 00H : Allowed/Disallowed State  |\n|  4 | wIndex | 2 | 0000H | Zero  |\n|  6 | wLength | 2 | 0001H | Data Length : 0001H when wValue is 00H  |\n|  8 | Data | 1 | Update_Allowed | 00H : FW update disallowed 01H : FW update allowed 02H - 0FFH : Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-176.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 322,
+      "bottomRightX": 453,
+      "bottomRightY": 337,
+      "content": "For returning the current hash using SHA256 algorithm:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 347,
+      "bottomRightX": 676,
+      "bottomRightY": 512,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bmRequestType | 1 | 80H | Device to Host, Standard  |\n|  1 | bRequest | 1 | 1AH | GET_FW_STATUS  |\n|  2 | wValue | 2 | 01H | 01H : Hash 02H - 0FFH : Reserved  |\n|  4 | wIndex | 2 | 0000H | Zero  |\n|  6 | wLength | 2 | 0020H | Data Length : 0020H when wValue is 01H  |\n|  8 | Data | 32 | Hash | SHA256 Hash  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-177.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 534,
+      "bottomRightX": 663,
+      "bottomRightY": 609,
+      "content": "The implementation of this command must be equivalent to a ROM based implementation such that future updates to the device FW should not result into changes in the behavior of this command execution. Such an implementation is necessary to ensure that if the updateable portion of the device FW is updated by malware it can be detected by higher level SW using this command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 623,
+      "bottomRightX": 665,
+      "bottomRightY": 684,
+      "content": "In order to minimize the latency associated with actual execution of this command the hash can be pre-computed and stored in a persistent storage that is only accessible to the hardened code. This will require the device to disallow writes to the address space storing the hash prior to the exiting the ROM based code execution.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 695,
+      "bottomRightX": 666,
+      "bottomRightY": 742,
+      "content": "If SW determines that the received hash does not match the expected hash value, it may use FW update to ensure that the firmware is updated to a gold state. The device may continue to reuse the existing protocol for firmware update.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 755,
+      "bottomRightX": 429,
+      "bottomRightY": 769,
+      "content": "### 9.4.16 Events and Their Effect on Device Parameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 776,
+      "bottomRightX": 672,
+      "bottomRightY": 838,
+      "content": "This section lists the various parameters and the effect on those parameters when the device receives a control transfer command or when it observes a bus reset on the bus. An X denotes that the parameter is reset to its default value when the said event occurs. A Y denotes that the particular Parameter is modified by the event.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 850,
+      "bottomRightX": 610,
+      "bottomRightY": 882,
+      "content": "Control transfers and events not identified in the table shall not affect the value of parameters shown in Table 9-10.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

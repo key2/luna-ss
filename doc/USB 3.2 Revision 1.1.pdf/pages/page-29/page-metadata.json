@@ -1,0 +1,57 @@
+{
+  "index": 28,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- xxix -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 927,
+      "content": "|  Table 6-20. Normative Transmitter Eye Mask at Test Point TP4 | 84  |\n| --- | --- |\n|  Table 6-21. Gen 2 Transmitter Equalization Settings | 87  |\n|  Table 6-22. Receiver Normative Electrical Parameters | 93  |\n|  Table 6-23. Receiver Informative Electrical Parameters | 94  |\n|  Table 6-24. BRST | 97  |\n|  Table 6-25. BDAT | 97  |\n|  Table 6-26. BERC | 97  |\n|  Table 6-27. BCNT | 97  |\n|  Table 6-28. Input Jitter Requirements for Rx Tolerance Testing | 99  |\n|  Table 6-29. Normative LFPS Electrical Specification | 100  |\n|  Table 6-30. LFPS Transmitter Timing for SuperSpeed Designs^{1} | 100  |\n|  Table 6-31. LFPS Handshake Timing for U1/U2 Exit, Loopback Exit, and U3 Wakeup | 103  |\n|  Table 6-32. Binary Representation of Polling.LFPS | 105  |\n|  Table 6-33. LBPS Transmit and Receive Specification | 107  |\n|  Table 6-34. Lane-to-Lane Skew Requirements | 112  |\n|  Table 7-1. CRC-16 Mapping | 118  |\n|  Table 7-2. CRC-32 Mapping | 121  |\n|  Table 7-3. Link Command Ordered Set Structure | 123  |\n|  Table 7-4. Link Command Bit Definitions | 124  |\n|  Table 7-5. Link Command Definitions | 126  |\n|  Table 7-6. Logical Idle Definition | 128  |\n|  Table 7-7. Transmitter Timers Summary | 142  |\n|  Table 7-8. Link Flow Control Timers Summary | 143  |\n|  Table 7-9. Valid Packet Framing Symbol Order (Sx is One of SHP, DPHP, SDP, END or EDB) | 149  |\n|  Table 7-10. Valid Link Command Symbol Order | 151  |\n|  Table 7-11. Error Types and Recovery | 155  |\n|  Table 7-12. LTSSM State Transition Timeouts | 160  |\n|  Table 7-13. PHY LBPM Definition | 175  |\n|  Table 7-14. Start-up PHY Capability Match | 176  |\n|  Table 7-15. Gen 2x2 PHY Capability Fallback Order | 176  |\n|  Table 8-1. Type Field Description | 210  |\n|  Table 8-2. Link Control Word Format | 210  |\n|  Table 8-3. Link Management Packet Subtype Field | 211  |\n|  Table 8-4. Set Link Function | 212  |\n|  Table 8-5. U2 Inactivity Timer Functionality | 213  |\n|  Table 8-6. Vendor-specific Device Test Function | 213  |\n|  Table 8-7. Port Capability LMP Format | 214  |\n|  Table 8-8. Port Type Selection Matrix | 215  |\n|  Table 8-9. Port Configuration LMP Format (Differences with Port Capability LMP) | 216  |\n|  Table 8-10. Port Configuration Response LMP Format (Differences with Port Capability LMP) | 217  |\n|  Table 8-11. LDM LMP | 231  |\n|  Table 8-12. Transaction Packet Subtype Field | 231  |\n|  Table 8-13. ACK TP Format | 232  |\n|  Table 8-14. NRDY TP Format (Differences with ACK TP) | 235  |\n|  Table 8-15. ERDY TP Format (Differences with ACK TP) | 235  |\n|  Table 8-16. STATUS TP Format (Differences with ACK TP) | 236  |\n|  Table 8-17. STALL TP Format (Differences with ACK TP) | 237  |\n|  Table 8-18. Device Notification TP Format (Differences with ACK TP) | 237  |\n|  Table 8-19. Function Wake Device Notification | 238  |\n|  Table 8-20. Latency Tolerance Message Device Notification | 238  |\n|  Table 8-21. Bus Interval Adjustment Message Device Notification | 239  |\n|  Table 8-22. Sublink Speed Device Notification | 243  |\n|  Table 8-23. PING TP Format (differences with ACK TP) | 244  |\n|  Table 8-24. PING_RESPONSE TP Format (Differences with ACK TP) | 245  |\n|  Table 8-25. Data Packet Format (Differences with ACK TP) | 246  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-19.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

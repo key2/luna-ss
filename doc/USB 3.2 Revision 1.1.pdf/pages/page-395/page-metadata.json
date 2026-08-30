@@ -1,0 +1,94 @@
+{
+  "index": 394,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 364 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 90,
+      "bottomRightX": 676,
+      "bottomRightY": 402,
+      "content": "|  6 | *bInterfaceSubClass* | 1 | SubClass | Subclass code (assigned by the USB-IF). These codes are qualified by the value of the *bInterfaceClass* field. If the *bInterfaceClass* field is reset to zero, this field shall also be reset to zero. If the *bInterfaceClass* field is not set to FFH, all values are reserved for assignment by the USB-IF.  |\n| --- | --- | --- | --- | --- |\n|  7 | *bInterfaceProtocol* | 1 | Protocol | Protocol code (assigned by the USB). These codes are qualified by the value of the *bInterfaceClass* and the *bInterfaceSubClass* fields. If an interface supports class-specific requests, this code identifies the protocols that the device uses as defined by the specification of the device class. If this field is reset to zero, the device does not use a class-specific protocol on this interface. If this field is set to FFH, the device uses a vendor-specific protocol for this interface.  |\n|  8 | *iInterface* | 1 | Index | Index of string descriptor describing this interface  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-198.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 424,
+      "bottomRightX": 216,
+      "bottomRightY": 438,
+      "content": "### 9.6.6 Endpoint",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 445,
+      "bottomRightX": 655,
+      "bottomRightY": 552,
+      "content": "Each endpoint used for an interface has its own descriptor. This descriptor contains the information required by the host to determine the bandwidth requirements of each endpoint. An endpoint descriptor is always returned as part of the configuration information returned by a GetDescriptor(Configuration) request. An endpoint descriptor cannot be directly accessed with a GetDescriptor() or SetDescriptor() request. There is never an endpoint descriptor for endpoint zero. Table 9-26 shows the standard endpoint descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 256,
+      "topLeftY": 564,
+      "bottomRightX": 532,
+      "bottomRightY": 581,
+      "content": "Table 9-26. Standard Endpoint Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 591,
+      "bottomRightX": 676,
+      "bottomRightY": 767,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | *bLength* | 1 | Number | Size of this descriptor in bytes  |\n|  1 | *bDescriptorType* | 1 | Constant | ENDPOINT Descriptor Type  |\n|  2 | *bEndpointAddress* | 1 | Endpoint | The address of the endpoint on the device described by this descriptor. The address is encoded as follows: Bit 3...0: The endpoint number Bit 6...4: Reserved, reset to zero Bit 7: Direction, ignored for control endpoints 0 = OUT endpoint 1 = IN endpoint  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-199.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

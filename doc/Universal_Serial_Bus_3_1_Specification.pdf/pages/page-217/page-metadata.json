@@ -1,0 +1,102 @@
+{
+  "index": 216,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 304,
+      "bottomRightY": 108,
+      "content": "### 7.2.1.1.2 Packet Header",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 115,
+      "bottomRightX": 668,
+      "bottomRightY": 164,
+      "content": "A packet header consists of 14 bytes as formatted in Figure 7-5. It includes 12 bytes of header information and a 2-byte CRC-16. CRC-16 is used to protect the data integrity of the 12-byte header information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 263,
+      "topLeftY": 186,
+      "bottomRightX": 561,
+      "bottomRightY": 382,
+      "content": "![img-167.jpeg](img-167.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-167.jpeg"
+    },
+    {
+      "topLeftX": 329,
+      "topLeftY": 392,
+      "bottomRightX": 495,
+      "bottomRightY": 410,
+      "content": "Figure 7-5. Packet Header",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 425,
+      "bottomRightX": 533,
+      "bottomRightY": 441,
+      "content": "The implementation of CRC-16 on the packet header is defined below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 445,
+      "bottomRightX": 673,
+      "bottomRightY": 593,
+      "content": "- The polynomial for CRC-16 shall be 100Bh.\nNote: The CRC-16 polynomial is not the same as the one used for USB 2.0.\n- The initial value of CRC-16 shall be FFFFh.\n- CRC-16 shall be calculated for all 12 bytes of the header information, not inclusive of any packet framing symbols.\n- CRC-16 calculation shall begin at byte 0, bit 0 and continue to bit 7 of each of the 12 bytes.\n- The remainder of CRC-16 shall be complemented.\n- The residual of CRC-16 shall be F6AAh.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 596,
+      "bottomRightX": 656,
+      "bottomRightY": 630,
+      "content": "Note: The inversion of the CRC-16 remainder adds an offset of FFFFh that will create a constant CRC-16 residual of F6AAh at the receiver side.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 635,
+      "bottomRightX": 680,
+      "bottomRightY": 669,
+      "content": "Figure 7-6 is an illustration of CRC-16 remainder generation. The output bit ordering is listed in Table 7-1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-5",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "index": 361,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- 331 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 274,
+      "topLeftY": 92,
+      "bottomRightX": 515,
+      "bottomRightY": 109,
+      "content": "**Table 9-4. Standard Device Requests**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 117,
+      "bottomRightX": 693,
+      "bottomRightY": 607,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B 00000001B 00000010B | CLEAR_FEATURE | Feature Selector | Zero Interface Endpoint | Zero | None  |\n|  10000000B | GET_CONFIGURATION | Zero | Zero | One | Configuration Value  |\n|  10000000B | GET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero or Language ID | Descriptor Length | Descriptor  |\n|  10000001B | GET_INTERFACE | Zero | Interface | One | Alternate Interface  |\n|  10000000B 10000001B 10000010B | GET_STATUS | Zero | Status Type | Zero Interface Endpoint | Two Device, Interface, or Endpoint Status  |\n|  00000000B | SET_ADDRESS | Device Address | Zero | Zero | None  |\n|  00000000B | SET_CONFIGURATION | Configuration Value | Zero | Zero | None  |\n|  00000000B | SET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero or Language ID | Descriptor Length | Descriptor  |\n|  00000000B 00000001B 00000010B | SET_FEATURE | Feature Selector | Options | Zero Interface Endpoint | Zero None  |\n|  00000001B | SET_INTERFACE | Alternate Setting | Interface | Zero | None  |\n|  00000000B | SET_ISOCH_DELAY | Delay in ns | Zero | Zero | None  |\n|  00000000B | SET_SEL | Zero | Zero | Six | Exit Latency Values  |\n|  10000010B | SYNCH_FRAME | Zero | Endpoint | Two | Frame Number  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-149.md"
+    },
+    {
+      "topLeftX": 280,
+      "topLeftY": 644,
+      "bottomRightX": 511,
+      "bottomRightY": 662,
+      "content": "**Table 9-5. Standard Request Codes**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 270,
+      "topLeftY": 670,
+      "bottomRightX": 515,
+      "bottomRightY": 923,
+      "content": "|  bRequest | Value  |\n| --- | --- |\n|  GET_STATUS | 0  |\n|  CLEAR_FEATURE | 1  |\n|  Reserved for future use | 2  |\n|  SET_FEATURE | 3  |\n|  Reserved for future use | 4  |\n|  SET_ADDRESS | 5  |\n|  GET_DESCRIPTOR | 6  |\n|  SET_DESCRIPTOR | 7  |\n|  GET_CONFIGURATION | 8  |\n|  SET_CONFIGURATION | 9  |\n|  GET_INTERFACE | 10  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-150.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

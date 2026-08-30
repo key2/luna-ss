@@ -1,0 +1,83 @@
+{
+  "index": 20,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 122,
+      "bottomRightX": 700,
+      "bottomRightY": 513,
+      "content": "- The standard PHY interface enables multiple IP sources for the PCIe logical layer and provides a target interface for PCIe PHY vendors.\n- Support for 2.5 GT/s only, or 2.5 GT/s and 5.0 GT/s, or 2.5 GT/s, 5.0 GT/s and 8.0 GT/s, or 2.5 GT/s, 5.0 GT/s, 8.0 GT/s, and 16 GT/s, or 2.5 GT/s, 5.0 GT/s, 8.0 GT/s and 16 GT/s and 32 GT/s, or 2.5 GT/s, 5.0 GT/s, 8.0 GT/s, 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s serial data transmission rate.\n- It utilizes 8-bit, 16-bit, or 32-bit parallel interfaces to transmit and receive PCIe data. Additionally, it supports a 64-bit interface (in SerDes architecture only).\n- Allowed integration of high-speed components into a single functional block as seen by the endpoint device designer\n- Data and clock recovery from serial stream on the PCIe bus\n- Holding registers to stage transmit (Tx) and receive (Rx) data\n- Support of direct disparity control for use in transmitting compliance patterns\n- 8b/10b encoding and decoding, and error indication (original PIPE)\n- 128b/130b encoding and decoding, and error indication (original PIPE)\n- Receiver detection\n- Beacon transmission and reception\n- Selectable Tx margining, Tx de-emphasis and signal swing values\n- Lane margining at the receiver\n- Polarity (original PIPE)\n- Electrical Idle entry and exit detection (Squelch)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 532,
+      "bottomRightX": 363,
+      "bottomRightY": 557,
+      "content": "## 2.2 USB PHY Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 562,
+      "bottomRightX": 698,
+      "bottomRightY": 636,
+      "content": "The USB PHY layer handles the low-level USB protocol and signaling. This includes features such as analog buffers, receiver detection, data serialization and de-serialization, 8b/10b encoding and decoding, 128b/132b encoding and decoding (10 GT/s), and elastic buffers. The primary focus of this block is to shift the clock domain of the data from the USB rate to one that is compatible with the general logic in the ASIC.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 642,
+      "bottomRightX": 420,
+      "bottomRightY": 656,
+      "content": "Some key features of the USB PHY are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 662,
+      "bottomRightX": 694,
+      "bottomRightY": 893,
+      "content": "- Standard PHY interface that enables multiple IP sources to the USB link layer and provides a target interface for USB PHY vendors\n- Support for 5.0 GT/s and/or 10 GT/s serial data transmission rate\n- Utilizes 8-bit, 16-bit or 32-bit parallel interfaces to transmit and receive USB data\n- Allowing the integration of high-speed components into a single functional block as seen in the device designer\n- Data and clock recovery from serial stream on the USB bus\n- Register holding to stage the Tx and Rx data\n- 8b/10b encoding and decoding, and error indication\n- 128b/132b encoding and decoding and error indication\n- Receiver detection\n- Low Frequency Periodic Signaling (LFPS)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 297,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "21",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

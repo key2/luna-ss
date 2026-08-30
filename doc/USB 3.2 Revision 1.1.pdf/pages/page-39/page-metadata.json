@@ -1,0 +1,57 @@
+{
+  "index": 38,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 191,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 380,
+      "topLeftY": 46,
+      "bottomRightX": 410,
+      "bottomRightY": 61,
+      "content": "- 8 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 89,
+      "bottomRightX": 683,
+      "bottomRightY": 901,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  function | A set of one or more related interfaces on a USB device that exposes a capability to a software client.  |\n|  Gbps | Transmission rate expressed in gigabits per second (1,000,000,000 bits per second).  |\n|  Gen 1 | Gen 1 is an adjective used to refer to the Physical layer associated with a 5.0 Gbps signaling rate. The original USB SuperSpeed Phy and a Gen 1 Phy refer to the same Phy.  |\n|  Gen 2 | Gen 2 is an adjective used to refer to the Physical layer associated with a 10 Gbps signaling rate.  |\n|  Gen X | Gen X is a generic term used to refer to any of the combinations Gen 1, Gen 2 or Gen 1/Gen 2 when the topic is specific to the phy layers but does not need to be specific to either Gen 1 or Gen 2. Examples include: Gen X phy/connection.  |\n|  Gen X x Y | X refers to the rate of signaling on the wire (Gen 1, Gen 2, etc.) and Y refers to the number of lanes.  |\n|  handshake packet | A packet that acknowledges or rejects a specific condition. For examples, see ACK, NRDY, or ERDY.  |\n|  header | Packet header. For example, DPH, LMP, and TP are all headers.  |\n|  Header Sequence Number Advertisement | The exchange of the ACK Tx Header Sequence Numbers between the link partners upon entry to U0.  |\n|  high-speed | USB operation at 480 Mbps. See also low-speed and full-speed.  |\n|  host | The host computer system where the USB host controller is installed. This includes the host hardware platform (CPU, bus, etc.) and the operating system in use.  |\n|  host controller | The interface provided to the system to support devices on the USB.  |\n|  Hot Reset | Reset mechanism using TS1/TS2 ordered sets.  |\n|  HPSTART | Frame ordered set used to denote the start of a header packet.  |\n|  hub | A USB device that provides additional connections to the USB.  |\n|  Hub Delay Measurement (HDM) | The HDM mechanism of PTM defines a set of hub features that increases the accuracy of the Isochronous Timestamps in the ITPs that they forward downstream.  |\n|  hub tier | One plus the number of USB links in a communication path between the host and a peripheral device.  |\n|  ID pin | Denotes the pin on the USB 3.1 Micro connector family that is used to differentiate a USB 3.1 Micro-A plug from a USB 3.1 Micro-B plug.  |\n|  Inband Reset | Mechanism that relies on SuperSpeed and/or LFPS signaling to propagate the reset across the link.  |\n|  informative | Information given for illustrative purposes only and contains no requirements. See normative.  |\n|  interrupt transfer | One of the four USB transfer types. Interrupt transfers have a bounded latency and are typically used to handle service needs. See also transfer type.  |\n|  isochronous data | A stream of data whose timing is implied by its delivery rate.  |\n|  isochronous device | An entity with isochronous endpoints, as defined in the USB Specification, that sources or sinks sampled analog streams or synchronous data streams.  |\n|  isochronous sink endpoint | An endpoint that is capable of consuming an isochronous data stream that is sent by the host.  |\n|  isochronous source endpoint | An endpoint that is capable of producing an isochronous data stream and sending it to the host.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-24.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "index": 141,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 111 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 92,
+      "bottomRightX": 551,
+      "bottomRightY": 111,
+      "content": "Figure 6-40. Transmitter Data Striping Example",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 124,
+      "bottomRightX": 679,
+      "bottomRightY": 420,
+      "content": "![img-60.jpeg](img-60.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-60.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 456,
+      "bottomRightX": 260,
+      "bottomRightY": 471,
+      "content": "### 6.13.5 Data Scrambling",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 476,
+      "bottomRightX": 389,
+      "bottomRightY": 493,
+      "content": "Data scrambling operates on a per lane basis.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 504,
+      "bottomRightX": 651,
+      "bottomRightY": 520,
+      "content": "For Gen 1 operation, the LFSR seed values shall be FFFFh for lane 0 and 8000h for lane 1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 532,
+      "bottomRightX": 673,
+      "bottomRightY": 562,
+      "content": "For Gen 2 operation, the LFSR seed values shall be 1DBFBCh for lane 0 and 0607BBh for lane 1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 576,
+      "bottomRightX": 269,
+      "bottomRightY": 590,
+      "content": "### 6.13.6 Ordered Set Rules",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 599,
+      "bottomRightX": 501,
+      "bottomRightY": 614,
+      "content": "The following rules apply for ordered sets in a x2 configuration:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 621,
+      "bottomRightX": 663,
+      "bottomRightY": 778,
+      "content": "- Ordered sets (TS1, TS2, TSEQ, SDS, SKP, and SYNC) shall be transmitted simultaneously on each lane, meeting the lane-to-lane skew constraints defined in Section 6.13.8.\n- TS1 and TS2 transmit and receive requirements shall be satisfied for all negotiated lanes before transitioning to the next state.\n- If a receiver receives TS1 on any negotiated lane while in U0, it shall enter recovery and begin transmitting TS1 on all of the negotiated lanes.\n- Clock offset compensation based on the SKP ordered set is performed on a per lane basis.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 793,
+      "bottomRightX": 298,
+      "bottomRightY": 807,
+      "content": "### 6.13.7 Lane Polarity Inversion",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 814,
+      "bottomRightX": 657,
+      "bottomRightY": 844,
+      "content": "Lane polarity inversion detection and correction shall be done on an independent per lane basis for Gen 1x2 and Gen 2x2 operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 857,
+      "bottomRightX": 274,
+      "bottomRightY": 871,
+      "content": "### 6.13.8 Lane-to-Lane Skew",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 879,
+      "bottomRightX": 631,
+      "bottomRightY": 910,
+      "content": "Requirements for lane-to-lane skew for Gen 1x2 and Gen 2x2 operation are defined in Table 6-34.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

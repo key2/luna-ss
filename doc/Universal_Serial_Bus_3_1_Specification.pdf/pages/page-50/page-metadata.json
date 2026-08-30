@@ -1,0 +1,39 @@
+{
+  "index": 49,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 90,
+      "bottomRightX": 699,
+      "bottomRightY": 899,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  training sequences | Ordered sets for initializing bit and symbol alignment and receiver equalization. Examples are TS1, TS2, and TSEQ.  |\n|  transaction | The delivery of service to an endpoint: • The IN consists of an ACK TP with a response of NRDY TP, DP, or STALL TP. • The OUT consists of a DP with a response of NRDY TP, an ACK TP, or STALL TP.  |\n|  transfer | One or more bus transactions to move information between a software client and its function.  |\n|  transfer type | Determines the characteristics of the data flow between a software client and its function. Four standard transfer types are defined: control, interrupt, bulk, and isochronous.  |\n|  Type-A connector | The standard-A connector defined in this specification.  |\n|  Type A packet | See Type A traffic class  |\n|  Type B packet | See Type B traffic class  |\n|  Type A traffic class | Header packet or periodic data packet  |\n|  Type B traffic class | Asynchronous data packet  |\n|  Type A Rx Buffer Credit | The availability of a single free Rx Buffer from a link partner to store a periodic data packet of maximum data packet payload  |\n|  Type B Rx Buffer Credit | The availability of a single free Rx Buffer from a link partner to store an asynchronous data packet of maximum data packet payload  |\n|  Type A Rx Buffer Credit Advertisement | The exchange of the Type A Remote Rx Buffer Credits between the link partners upon entry to U0  |\n|  Type B Rx Buffer Credit Advertisement | The exchange of the Type B Remote Rx Buffer Credits between the link partners upon entry to U0  |\n|  Tx Header Sequence Number | The header sequence number to be added to a header packet to be transmitted.  |\n|  Tx Port | The collection of transmitters driving lanes in a port. See Figure 2-1.  |\n|  upstream | The direction of data flow towards the host. An upstream port is the port on a device electrically closest to the host. Upstream ports receive downstream data traffic.  |\n|  upstream port | A port that a device uses to connect to a host or a hub. The port on all devices is an upstream port.  |\n|  upstream sublink | The collection of lanes between the DFP Rx and the UFP Tx. See Figure 2-1.  |\n|  UFP | Upstream Facing Port (aka upstream port). See Figure 2-1.  |\n|  USB 3.1 Standard-A connector | USB 3.1 host connector, supporting both SuperSpeed and SuperSpeedPlus modes.  |\n|  USB 3.1 Standard-B connector | USB 3.1 standard Type-B device connector, supporting both SuperSpeed and SuperSpeedPlus modes.  |\n|  USB 3.1 Micro-A plug | Part of the USB 3.1 Micro connector family for OTG use; it can be plugged into a USB 3.1 Micro-AB receptacle; it differs from the USB 3.1 Micro-B plug only in keying and ID pin connection.  |\n|  USB 3.1 Micro-AB receptacle | Part of the USB 3.1 Micro connector family; it accepts either a USB 3.1 Micro-B plug or a USB 3.1 Micro-A plug.  |\n|  USB 3.1 Micro-B connector | USB 3.1 device connector, supporting both SuperSpeed and SuperSpeedPlus modes.  |\n|  USB 3.1 Micro connector family | All the receptacles and plugs supporting both SuperSpeed and SuperSpeedPlus modes that are used on devices, including the USB 3.1 Micro-B, USB 3.1 Micro-AB, and USB 3.1 Micro-A connectors.  |\n|  USB 2.0 Standard-A connector | The Type-A connector defined by the USB 2.0 specification.  |\n|  USB 2.0 Standard-B connector | The standard Type-B connector defined by the USB 2.0 specification.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-30.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 111,
+      "bottomRightY": 994,
+      "content": "2-8",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

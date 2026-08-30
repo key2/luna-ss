@@ -1,0 +1,183 @@
+{
+  "index": 480,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 450 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 633,
+      "bottomRightY": 124,
+      "content": "This bit will be cleared by a ClearPortFeature(C_PORT_LINK_STATE) request, or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 136,
+      "bottomRightX": 269,
+      "bottomRightY": 153,
+      "content": "# C_PORT_CONFIG_ERROR",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 164,
+      "bottomRightX": 655,
+      "bottomRightY": 225,
+      "content": "This bit is set to one if the link connected to the port could not be successfully configured, e.g., if two downstream only capable ports are connected to each other or if the link configuration could not be completed. In addition, the port shall transition to the DSPORT.Error state when this occurs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 237,
+      "bottomRightX": 650,
+      "bottomRightY": 268,
+      "content": "This bit will be cleared by a ClearPortFeature(C_PORT_CONFIG_ERROR) request, or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 281,
+      "bottomRightX": 358,
+      "bottomRightY": 295,
+      "content": "# 10.16.2.6.3 Extended Port Status Bits",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 302,
+      "bottomRightX": 657,
+      "bottomRightY": 334,
+      "content": "The extended port status bits are returned only if the Port Status Type of a Get Port Status request is set to EXT_PORT_STATUS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 346,
+      "bottomRightX": 668,
+      "bottomRightY": 377,
+      "content": "Note that for Enhanced SuperSpeed devices the \"Port Speed\" is the Link Speed multiplied by Lane Count.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 389,
+      "bottomRightX": 581,
+      "bottomRightY": 404,
+      "content": "Table 10-15. Extended Port Status Field, dwExtPortStatus",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 415,
+      "bottomRightX": 671,
+      "bottomRightY": 594,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0-3 | Rx Sublink Speed ID (RX_SUBLINK_SPEED_ID): Indicates the negotiated Rx Sublink speed of the device attached to this port. This field is valid only if an Enhanced SuperSpeed device is attached.  |\n|  4-7 | Tx Sublink Speed ID (TX_SUBLINK_SPEED_ID): Indicates the negotiated Tx Sublink speed of the device attached to this port. This field is valid only if an Enhanced SuperSpeed device is attached.  |\n|  8-11 | Rx Lane Count (RX_LANE_COUNT): Zero based value of the negotiated number of Rx lanes of the device attached to this port. This field is valid only if an Enhanced SuperSpeed device is attached.  |\n|  12-15 | Tx Lane Count (TX_LANE_COUNT): Zero based value of the negotiated number of Tx lanes of the device attached to this port. This field is valid only if an Enhanced SuperSpeed device is attached.  |\n|  12-31 | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-253.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 613,
+      "bottomRightX": 439,
+      "bottomRightY": 630,
+      "content": "# TX_SUBLINK_SPEED_ID and RX_SUBLINK_SPEED_ID",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 641,
+      "bottomRightX": 671,
+      "bottomRightY": 734,
+      "content": "The value in this field is only valid when the PORT_ENABLE bit is set to one. The Lane Speed (i.e. bit rate of a single lane) is determined by evaluating the parameters of the Sublink Speed Attribute in the SuperSpeedPlus USB Capability descriptor whose Sublink Speed Attribute ID value matches the Sublink Speed ID value, e.g. if the Sublink Speed Attribute LSE and LSM fields equal 3 and 10, respectively, then the link is operating at 10 Gb/s. All values not referenced by a Sublink Speed Attribute are reserved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 745,
+      "bottomRightX": 425,
+      "bottomRightY": 762,
+      "content": "This field can only be read by USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 773,
+      "bottomRightX": 361,
+      "bottomRightY": 790,
+      "content": "# TX_LANE_COUNT and RX_LANE_COUNT",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 802,
+      "bottomRightX": 668,
+      "bottomRightY": 848,
+      "content": "This value in this field is only valid when the PORT_ENABLE bit is set to one. The speed of a port is determined by multiplying the Sublink Speed (as defined by the SUBLINK_SPEED_ID) by the Lane Count.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 859,
+      "bottomRightX": 425,
+      "bottomRightY": 877,
+      "content": "This field can only be read by USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

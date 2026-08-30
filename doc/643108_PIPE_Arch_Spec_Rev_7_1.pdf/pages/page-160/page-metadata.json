@@ -1,0 +1,57 @@
+{
+  "index": 159,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 138,
+      "bottomRightX": 549,
+      "bottomRightY": 154,
+      "content": "Table 8-10. Lane Margining at the Receiver Sequences (Sheet 1 of 4)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 157,
+      "bottomRightX": 687,
+      "bottomRightY": 890,
+      "content": "|  Operation | Type of Sampler | Sequence  |   |   |\n| --- | --- | --- | --- | --- |\n|   |   |  Direction | Message Bus Command | \\( Description^1 \\)  |\n|  Start Margining Success | Independent | M-->P | UWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |  M-->P | CWr | RxMarginControl0=8'b000011?1 (clear error/sample and set start)  |\n|   |   |   |  | Mac clears its error count snapshot.  |\n|   |   |  P-->M | Ack | -  |\n|   |   |   |  | PHY clears its error and sample counters due to MAC setting Sample Count Reset and Error Count Reset bits in RxMarginControl0.  |\n|   |   |  P-->M | UWr | RxMarginStatus1.SampleCount=0 (if supported)  |\n|   |   |  P-->M | UWr | RxMarginStatus2.ErrorCount=0 (if supported)  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginStatus=1  |\n|   |   |  M-->P | Ack | -  |\n|   |  Dependent | M-->P | UWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |  M-->P | CWr | RxMarginControl0=8'b000011?1 (set start) (error/sample clears are a don't care)  |\n|   |   |   |  | Mac clears its error count snapshot.  |\n|   |   |  P-->M | Ack | -  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginStatus=1  |\n|   |   |  M-->P | Ack | -  |\n|  Offset Change Success | Independent | M-->P | UWr | RxMarginControl0=8'b000011?1 (clear error/sample counts)  |\n|   |   |  M-->P | CWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |   |  | Mac clears its error count snapshot.  |\n|   |   |  P-->M | Ack | -  |\n|   |   |   |  | PHY clears its error and sample counters due to MAC setting Sample Count Reset and Error Count Reset bits in RxMarginControl0.  |\n|   |   |  P-->M | UWr | RxMarginStatus1.SampleCount=0 (if supported)  |\n|   |   |  P-->M | UWr | RxMarginStatus2.ErrorCount=0 (if supported)  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginStatus=1  |\n|   |   |  M-->P | Ack | -  |\n|   |  Dependent | M-->P | CWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |   |  | Mac clears its error count snapshot.  |\n|   |   |  P-->M | Ack | -  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginStatus=1  |\n|   |   |  M-->P | Ack | -  |\n|  Clear Error | Independent | M-->P | CWr | RxMarginControl0=8'b000001?1 (clear error, hold t vs v, maintain start)  |\n|   |   |  P-->M | Ack | -  |\n|   |   |  P-->M | UWr | RxMarginStatus1.SampleCount=current (if supported)  |\n|   |   |  P-->M | CWr | RxMarginStatus2.ErrorCount=0 (if supported)  |\n|   |   |  M-->P | Ack | -  |\n|   |  Dependent |  |  | Mac clears its error count snapshot.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-147.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "160",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

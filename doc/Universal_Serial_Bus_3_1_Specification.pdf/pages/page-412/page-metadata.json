@@ -1,0 +1,57 @@
+{
+  "index": 411,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 325,
+      "topLeftY": 106,
+      "bottomRightX": 419,
+      "bottomRightY": 124,
+      "content": "# SSP ISOC IN",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 141,
+      "bottomRightX": 618,
+      "bottomRightY": 799,
+      "content": "![img-254.jpeg](img-254.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-254.jpeg"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 833,
+      "bottomRightX": 595,
+      "bottomRightY": 850,
+      "content": "Figure 8-68. Sample Pipeline Isochronous IN Transactions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "8-118",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

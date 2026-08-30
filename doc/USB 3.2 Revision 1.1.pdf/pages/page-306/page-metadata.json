@@ -1,0 +1,129 @@
+{
+  "index": 305,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 275 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 193,
+      "topLeftY": 92,
+      "bottomRightX": 593,
+      "bottomRightY": 110,
+      "content": "Figure 8-42. Device OUT Move Data State Machine (DOMDSM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 120,
+      "bottomRightX": 642,
+      "bottomRightY": 514,
+      "content": "![img-133.jpeg](img-133.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-133.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 535,
+      "bottomRightX": 657,
+      "bottomRightY": 568,
+      "content": "The Device OUT Move Data State Machine (DOMDSM) is entered from the Start Stream or Idle states as described above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 580,
+      "bottomRightX": 663,
+      "bottomRightY": 627,
+      "content": "The DOMDSM allows either the device to terminate the Move Data operation because it has exhausted its Function Buffer space associated with a Stream or the host to terminate the Move Data operation because it has exhausted its Endpoint Data associated with a Stream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 637,
+      "bottomRightX": 652,
+      "bottomRightY": 684,
+      "content": "PP=0 - Upon entry into the DOMDSM, if the host has only one packet of Endpoint Data available for the Stream then PP will equal 0 in the first DP received by the Device, and it shall transition to the OUTMvData Device Terminate state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 695,
+      "bottomRightX": 673,
+      "bottomRightY": 742,
+      "content": "PP = 1 - Upon entry into the DOMDSM, if the host has more than one packet of Endpoint Data available for the Stream then PP will equal 1 in the first DP received by the Device, and it shall transition to the OUTMvData Device state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 754,
+      "bottomRightX": 655,
+      "bottomRightY": 802,
+      "content": "The DOMDSM always exits to the Idle state. The Retry (Rty=1) flag shall never be set in a packet that causes a DOMDSM exit. A Stream pipe remains in the Move Data state during packet retries.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 812,
+      "bottomRightX": 660,
+      "bottomRightY": 859,
+      "content": "Note: The Stream ID value shall be CStream for all packets exchanged in the Move Data state. If a Stream ID value other than CStream is detected while in the DOMDSM the device should halt the endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 870,
+      "bottomRightX": 653,
+      "bottomRightY": 919,
+      "content": "Note: if CStream is not Active upon initially entering the Move Data state, the device may reject the Stream proposal with an NRDY or STALL the pipe, as defined by the associated Device Class.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

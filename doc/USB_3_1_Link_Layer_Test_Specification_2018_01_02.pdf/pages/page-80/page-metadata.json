@@ -1,0 +1,209 @@
+{
+  "index": 79,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 235,
+      "bottomRightY": 108,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 115,
+      "bottomRightX": 207,
+      "bottomRightY": 129,
+      "content": "7.2.4.1.10#6",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 137,
+      "bottomRightX": 254,
+      "bottomRightY": 152,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 159,
+      "bottomRightX": 700,
+      "bottomRightY": 309,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence with the exception that the LVS will not send any LCRD_X or LCRD1_X.\n2. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port, LDN when it is configured as a Downstream Port).\n3. The test passes if the PUT goes to recovery after the CREDIT_HP_TIMER deadline and before the CREDIT_HP_TIMER expires. For a Gen 2 PUT, this refers to the Type 1 CREDIT_HP_TIMER.\n4. For a Gen 1 device, skip the remaining steps.\n5. The LVS and PUT complete the Link Initialization Sequence.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 315,
+      "bottomRightX": 435,
+      "bottomRightY": 333,
+      "content": "■ If the LVS is configured as a Downstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 339,
+      "bottomRightX": 527,
+      "bottomRightY": 377,
+      "content": "a. LVS issues a GetDeviceDescriptor() request for the PUT.\nb. LVS will not send any LCRD2_X.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 385,
+      "bottomRightX": 424,
+      "bottomRightY": 400,
+      "content": "■ If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 407,
+      "bottomRightX": 706,
+      "bottomRightY": 498,
+      "content": "a. The LVS prompts the test operator to have the PUT send a GetDeviceDescriptor request through USB30CV and then press \"OK\".\nb. The test fails if no GetDeviceDescriptor request is received and the test operator has pressed \"OK\".\nc. LVS will not send any LCRD2_X.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 504,
+      "bottomRightX": 700,
+      "bottomRightY": 536,
+      "content": "6. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port, LDN when it is configured as a Downstream Port).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 541,
+      "bottomRightX": 694,
+      "bottomRightY": 573,
+      "content": "7. The test passes if the PUT goes to recovery after the type 2 CREDIT_HP_TIMER deadline and before the type 2 CREDIT_HP_TIMER expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 632,
+      "bottomRightX": 364,
+      "bottomRightY": 648,
+      "content": "### TD.7.13 Wrong Header Sequence Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 651,
+      "bottomRightX": 621,
+      "bottomRightY": 669,
+      "content": "This test verifies that the PUT will go to recovery when it receives a wrong header sequence.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 688,
+      "bottomRightX": 235,
+      "bottomRightY": 702,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 710,
+      "bottomRightX": 179,
+      "bottomRightY": 724,
+      "content": "7.3.5#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 732,
+      "bottomRightX": 254,
+      "bottomRightY": 749,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 754,
+      "bottomRightX": 698,
+      "bottomRightY": 824,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence, with the exception that the LVS will send two LMP packets with Header Sequence Numbers that are not sequential.\n2. The test passes if the PUT goes to recovery within tRecoveryTransition after reception of the LMP packet with a Header Sequence Number that is not sequential.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 882,
+      "bottomRightX": 383,
+      "bottomRightY": 899,
+      "content": "### TD.7.14 Wrong LGOOD_N Sequence Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 901,
+      "bottomRightX": 666,
+      "bottomRightY": 919,
+      "content": "This test verifies that the PUT will go to recovery when it receives an incorrect LGOOD_N sequence.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 947,
+      "content": "72",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 971,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

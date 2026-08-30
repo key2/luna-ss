@@ -1,0 +1,149 @@
+{
+  "index": 90,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 508,
+      "bottomRightY": 141,
+      "content": "### 7.1.17 Address 406h: PHY Tx Control6",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 150,
+      "bottomRightX": 536,
+      "bottomRightY": 165,
+      "content": "This register is used to control the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 179,
+      "bottomRightX": 393,
+      "bottomRightY": 193,
+      "content": "Table 7-18. Address 406h: PHY Tx Control6",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 198,
+      "bottomRightX": 696,
+      "bottomRightY": 397,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | **Reserved**  |\n|  [5:0] | 0h | Level | PCIe | **FS[5:0]:** This field reflects the FS value advertised by the link partner. The MAC must only change this value when a new FS value is captured during link training. A PHY may optionally consider this value when deciding how long to evaluate Tx equalization settings of the link partner. The MAC must only change this field when a new FS value is captured during link training or if there is a rate change. The MAC must drive the relevant 8 GT/s values when the operational rate is 8 GT/s, it must drive the relevant 16 GT/s values when the operational rate is 16 GT/s, it must drive the relevant 32 GT/s values when the operational rate is 32 GT/s, it must drive the relevant 64 GT/s values when the operational rate is 64 GT/s, and it must drive the relevant 128 GT/s values when the operational rate is 128 GT/s  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-82.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 412,
+      "bottomRightX": 507,
+      "bottomRightY": 432,
+      "content": "### 7.1.18 Address 407h: PHY Tx Control7",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 440,
+      "bottomRightX": 536,
+      "bottomRightY": 456,
+      "content": "This register is used to control the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 471,
+      "bottomRightX": 393,
+      "bottomRightY": 483,
+      "content": "Table 7-19. Address 407h: PHY Tx Control7",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 488,
+      "bottomRightX": 700,
+      "bottomRightY": 668,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe | **LF[5:0]:** This field reflects the LF value advertised by the link partner. The MAC must only change this value when a new LF value is captured during link training or when there is a rate change. A PHY may optionally consider this value when deciding how long to evaluate Tx equalization settings of the link partner. The MAC must drive the relevant 8 GT/s values when the operational rate is 8 GT/s, it must drive the relevant 16 GT/s values when the operational rate is 16 GT/s, it must drive the relevant 32 GT/s values, when the operational rate is 32 GT/s, it must drive the relevant 64 GT/s values when the operational rate is 64 GT/s, and it must drive the relevant 128 GT/s values when the operational rate is 128 GT/s.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-83.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 682,
+      "bottomRightX": 507,
+      "bottomRightY": 701,
+      "content": "### 7.1.19 Address 408h: PHY Tx Control8",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 710,
+      "bottomRightX": 536,
+      "bottomRightY": 725,
+      "content": "This register is used to control the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 739,
+      "bottomRightX": 488,
+      "bottomRightY": 755,
+      "content": "Table 7-20. Address 408h: PHY Tx Control8 (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 759,
+      "bottomRightX": 696,
+      "bottomRightY": 803,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:4] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-84.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "91",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

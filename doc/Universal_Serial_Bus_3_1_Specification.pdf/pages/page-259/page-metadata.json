@@ -1,0 +1,84 @@
+{
+  "index": 258,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 91,
+      "bottomRightX": 716,
+      "bottomRightY": 245,
+      "content": "|  Name | Initial State | Timeout to Next State | Timeout Values  |\n| --- | --- | --- | --- |\n|  tRecoveryIdleTimeout | Recovery.Idle | eSS.Inactive | 2 ms  |\n|  tLoopbackExitTimeout | Loopback.Exit | eSS.Inactive | 2 ms  |\n|  tHotResetActiveTimeout | Hot Reset.Active | eSS.Inactive | 12 ms  |\n|  tHotResetExitTimeout | Hot Reset.Exit | eSS.Inactive | 2 ms  |\n|  tU3WakeupRetryDelay | U3 | U3 | 100 ms  |\n|  tU2RxdetDelay | U2 | U2 | 100 ms  |\n|  tU3RxdetDelay | U3 | U3 | 100 ms  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-101.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 248,
+      "bottomRightX": 158,
+      "bottomRightY": 258,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 261,
+      "bottomRightX": 708,
+      "bottomRightY": 309,
+      "content": "1. Implementations are recommended to consider system states when choosing when to use a larger value of the tRxDetectQuietTimeoutDFP timer. Using a smaller value when the system is active and a larger value when the system is in a standby/sleep or other idle state allows for higher responsiveness to connect events during active states while enabling power savings in an idle system state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 310,
+      "bottomRightX": 589,
+      "bottomRightY": 324,
+      "content": "2. Upon Polling timeout, a port shall transition to different states. Refer to Section 7.5.4.3 for details.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 328,
+      "bottomRightX": 439,
+      "bottomRightY": 341,
+      "content": "3. The accuracy of U2 inactivity timer is specified in Section 10.4.1.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 351,
+      "bottomRightX": 686,
+      "bottomRightY": 400,
+      "content": "All state machines diagrams have descriptions for transition conditions. These descriptions are informative only. The exact implementation of the state transitions shall follow the description in each section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 673,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-47",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "index": 175,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 93,
+      "bottomRightX": 692,
+      "bottomRightY": 177,
+      "content": "A receiver must always perform single bit error correction on the SKP and SKPEND (and all other special) symbols. However, since the Hamming distance between the SKP and SKPEND symbols is 8, once a receiver has determined that it is dealing with a non-empty SKP OS (by proper detection of a first SKP symbol) it may be beneficial to use multiple bit (up to 3-bit) error correction in differentiating between a SKP and a SKPEND symbol.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 195,
+      "bottomRightX": 348,
+      "bottomRightY": 211,
+      "content": "Table 6-12. Gen 2 SKP Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 214,
+      "bottomRightX": 660,
+      "bottomRightY": 660,
+      "content": "|  Symbol Number | Value | Description  |\n| --- | --- | --- |\n|  0 through 2*N-1 [N can be 0 through 18] | CCh | SKP Symbol Symbol 0 is the SKP Ordered Set Identifier Note: for an empty SKP OS, the first symbol will be a SKPEND.  |\n|  2*N | 33h | SKPEND Symbol  |\n|  2*N+1 | 00-FFh | (i) If prior block was a Data Block: Bit[7] = Even Data Parity Bit[6:0] = LFSR[22:16] (ii) Else: Bit[7] = ~LFSR[22] Bit[6:0] = LFSR[22:16]  |\n|  2*N+2 | 00-FFh | (i) If LTSSM state is Polling.Compliance: Error_Status[7:0] (ii) Else LFSR[15:8]  |\n|  2*N+3 | 00-FFh | (i) If LTSSM state is Polling.Compliance: ~Error_Status[7:0] (ii) Else LFSR[7:0]  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-65.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 676,
+      "bottomRightX": 463,
+      "bottomRightY": 692,
+      "content": "The following rules apply for SKP insertion for Gen 2 operation:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 694,
+      "bottomRightX": 694,
+      "bottomRightY": 881,
+      "content": "1. A transmitter shall keep a running count of the number of transmitted blocks since the last SKP Ordered set. The value of this count will be referred to as Y. The value of Y is reset whenever the transmitter enters Polling.Active or when a SKP OS is transmitted.\n2. Once the count, Y, gets to 21 a transmitter must insert a SKP OS at the next legitimate opportunity. The fastest a transmitter can insert SKP OS is once every 22 blocks. Situations that delay the immediate insertion of a SKP OS are the following: a transmitter shall not interrupt a data packet or a SYNC OS to insert a SKP OS. In the worst case it may take 90 blocks before there is an opportunity to insert a SKP OS. In Gen 2 operation there is no accumulation of SKP OS, each time a SKP OS is transmitted the SKP counter, Y, is reset to 0.\n3. SKP Ordered Sets do not count as interruptions when monitoring for Ordered Sets (i.e., consecutive TS1, TS2 Ordered Sets in Polling and Recovery).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "6-20",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

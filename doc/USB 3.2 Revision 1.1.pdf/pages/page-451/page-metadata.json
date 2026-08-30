@@ -1,0 +1,119 @@
+{
+  "index": 450,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 420 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 207,
+      "topLeftY": 94,
+      "bottomRightX": 669,
+      "bottomRightY": 125,
+      "content": "downstream port, the header packet is marked delayed and the Link Control Word CRC-5 is re-calculated for the modified header packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 131,
+      "bottomRightX": 602,
+      "bottomRightY": 161,
+      "content": "2. The header packet is queued for transmission on the appropriate downstream port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 168,
+      "bottomRightX": 667,
+      "bottomRightY": 229,
+      "content": "Note: If the queue for the appropriate downstream port is full, the header packet is queued as soon as a space is available for the appropriate downstream port. The hub shall process subsequent header packets while a downstream port buffer is full if they are directed to a different downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 236,
+      "bottomRightX": 676,
+      "bottomRightY": 458,
+      "content": "- If the header packet is an ITP then for each downstream port:\n  1. The ITP is silently discarded for any downstream port with a link not in U0 and not in Recovery.\n  2. The Delta and Correction fields in the ITP shall be updated to account for the measured delay of propagating the ITP through the hub.\n     a) If the delay introduced by the hub exceeds the tPropagationDelayJitterLimit, then the header packet shall be marked Delayed (DL) and the correct Link Control Word CRC-5 is re-calculated for modified header packet.\n     b) If the Delta subfield overflowed, the ITP shall not be queued, otherwise the header packet shall be queued for transmission on each downstream port that has completed Port Configuration and is in U0 or in Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 464,
+      "bottomRightX": 667,
+      "bottomRightY": 525,
+      "content": "Note: If the queue for the appropriate downstream port is full, the header packet is queued as soon as a space is available in the appropriate downstream port queue. The hub shall process subsequent header packets while a downstream port queue is full if they are directed to a different downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 532,
+      "bottomRightX": 669,
+      "bottomRightY": 745,
+      "content": "- If the header packet is routed to a disabled or nonexistent downstream port or to a downstream port that is in not in U0 and not in U1 and not in U2 and not in Recovery:\n  1. The header packet is removed from the RX header packet queue.\n  2. The header packet is silently discarded.\n  3. If the header packet is a DPH the corresponding DPP is silently discarded.\n- If the header packet is routed to the hub controller:\n  1. The header packet is processed by the hub controller.\n  2. The header packet is removed from the RX header packet queue.\n  3. A response to the header packet is queued for transmission on the upstream port, if required.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 766,
+      "bottomRightX": 461,
+      "bottomRightY": 782,
+      "content": "#### 10.9.4.4.2 SuperSpeedPlus Hub Upstream Facing Port",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 788,
+      "bottomRightX": 664,
+      "bottomRightY": 893,
+      "content": "- The header packet is not an ITP and not a PING and is routed to a downstream port that is in U1 or in U2:\n  1. The hub initiates U0 entry on the appropriate downstream port link. U0 entry shall be initiated no later than tDownLinkStateChange from when the hub received the first symbol of the header packet.\n  2. If the header packet is not already marked deferred:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

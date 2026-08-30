@@ -1,0 +1,38 @@
+{
+  "index": 5,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 120,
+      "bottomRightX": 690,
+      "bottomRightY": 224,
+      "content": "9.11 Message Bus: BlockAlignControl... 183\n9.12 Message Bus: ElasticBufferLocation Update ... 184\n9.13 Message Bus: RxInPhase01Equalization Update ... 185\n**10 Multi-Lane PIPE – PCIe Mode**... 186\n**A Appendix** ... 189\nA.1 DisplayPort AUX Signals... 189",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 952,
+      "bottomRightX": 101,
+      "bottomRightY": 967,
+      "content": "6",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 490,
+      "topLeftY": 952,
+      "bottomRightX": 690,
+      "bottomRightY": 968,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

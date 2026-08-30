@@ -1,0 +1,48 @@
+{
+  "index": 597,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 28,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 635,
+      "bottomRightY": 125,
+      "content": "An 8-bit value of 0 repeatedly encoded with the LFSR after reset produces the following consecutive 8-bit values:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 141,
+      "topLeftY": 142,
+      "bottomRightX": 681,
+      "bottomRightY": 488,
+      "content": "|   | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 0A | 0B | 0C | 0D | 0E | 0F  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  00 | FF | 17 | C0 | 14 | B2 | E7 | 02 | 82 | 72 | 6E | 28 | A6 | BE | 6D | BF | 8D  |\n|  10 | BE | 40 | A7 | E6 | 2C | D3 | E2 | B2 | 07 | 02 | 77 | 2A | CD | 34 | BE | E0  |\n|  20 | A7 | 5D | 24 | B1 | 9B | A1 | BD | 22 | D4 | 45 | 1D | D3 | D7 | EA | 76 | EE  |\n|  30 | 2C | DA | 1A | FA | 28 | 2D | 36 | 3B | 3A | 0E | 6F | 67 | CF | 06 | 4C | 26  |\n|  40 | D3 | E9 | 3A | CD | 27 | 76 | 30 | FC | 94 | 8B | 03 | DE | D3 | 06 | 52 | F6  |\n|  50 | 4F | 88 | 80 | 95 | C4 | 6A | 66 | F2 | 9F | 0C | A1 | 35 | E2 | 41 | CF | 27  |\n|  60 | 74 | 40 | 7E | 9E | A5 | 58 | FE | 84 | 09 | 60 | 08 | A9 | F1 | 0B | 6F | 62  |\n|  70 | 17 | 43 | 5C | ED | 48 | 39 | 3F | D4 | 5A | F5 | 0E | B3 | C7 | 03 | 9D | 9B  |\n|  80 | 8B | 0D | 8E | 5C | 33 | 98 | 77 | AE | 2D | AC | 0B | 3E | DA | 0B | 42 | 7A  |\n|  90 | 7C | D1 | CF | A8 | 1C | 12 | EE | 41 | C2 | 3F | 38 | 7A | 0D | 69 | F4 | 01  |\n|  A0 | DA | 31 | 72 | C5 | A0 | D7 | 93 | 0E | DC | AF | A4 | 55 | E7 | F0 | 72 | 16  |\n|  B0 | 68 | D5 | 38 | 84 | DD | 00 | CD | 18 | 9E | CA | 30 | 59 | 4C | 75 | 1B | 77  |\n|  C0 | 31 | C5 | ED | CF | 91 | 64 | 6E | 3D | FE | E8 | 29 | 04 | CF | 6C | FC | C4  |\n|  D0 | 0B | 5E | DA | 62 | BA | 5B | AB | DF | 59 | B7 | 7D | 37 | 5E | E3 | 1A | C6  |\n|  E0 | 88 | 14 | F5 | 4F | 8B | C8 | 56 | CB | D3 | 10 | 42 | 63 | 04 | 8A | B4 | F7  |\n|  F0 | 84 | 01 | A0 | 01 | 83 | 49 | 67 | EE | 3E | 2A | 8B | A4 | 76 | AF | 14 | D5  |\n|  100 | 4F | AC | 60 | B6 | 79 | D6 | 62 | B7 | 43 | E7 | E5 | 2A | 40 | 2C | 6E | 7A  |\n|  110 | 56 | 61 | 63 | 20 | 6A | 97 | 4A | 38 | 05 | E5 | DD | 68 | 0D | 78 | 4C | 53  |\n|  120 | 8B | D6 | 86 | 57 | B2 | AA | 1A | 80 | 18 | DC | BA | FC | 03 | A3 | 4B | 30  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-267.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 980,
+      "bottomRightX": 114,
+      "bottomRightY": 995,
+      "content": "B-6",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

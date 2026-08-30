@@ -1,0 +1,2 @@
+https://www.usb.org/document-library/electrical-compliance-test-specification-superspeed-usb-10-gbps-rev-10
+https://www.usb.org/document-library/electrical-compliance-test-specification-superspeed-usb-10-gbps-rev-10

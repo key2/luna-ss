@@ -1,0 +1,57 @@
+{
+  "index": 56,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 513,
+      "bottomRightY": 138,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 9 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 781,
+      "content": "|  Name | Active Level | Description |   | Relevant Protocols  |\n| --- | --- | --- | --- | --- |\n|  Rate[3:0] | N/A | Control the link signaling rate.PCIe mode: |   | PCIe, SATA, USB, DisplayPort, and USB4  |\n|   |   |  Value | Description  |   |\n|   |   |  0 | Use 2.5 GT/s signaling rate.  |   |\n|   |   |  1 | Use 5.0 GT/s signaling rate.  |   |\n|   |   |  2 | Use 8.0 GT/s signaling rate.  |   |\n|   |   |  3 | Use 16.0 GT/s signaling rate.  |   |\n|   |   |  4 | Use 32.0 GT/s signaling rate.  |   |\n|   |   |  5 | Use 64 GT/s signaling rate.  |   |\n|   |   |  6 | Use 128 GT/s signaling rate.  |   |\n|   |   |  7 through 15 | Reserved  |   |\n|   |   |  SATA mode:  |   |   |\n|   |   |  Value | Description  |   |\n|   |   |  0 | Use 1.5 GT/s signaling rate.  |   |\n|   |   |  1 | Use 3.0 GT/s signaling rate.  |   |\n|   |   |  2 | Use 6.0 GT/s signaling rate.  |   |\n|   |   |  3 through 15 | Reserved  |   |\n|   |   |  USB mode:  |   |   |\n|   |   |  Value | Description  |   |\n|   |   |  0 | Use 5.0 GT/s signaling rate.  |   |\n|   |   |  1 | Use 10.0 GT/s signaling rate.  |   |\n|   |   |  2 through 15 | Reserved  |   |\n|   |   |  DisplayPort mode:  |   |   |\n|   |   |  Value | Description  |   |\n|   |   |  0 | Use 1.62 Gbps signaling rate.  |   |\n|   |   |  1 | Use 2.7 Gbps signaling rate.  |   |\n|   |   |  2 | Use 5.4 Gbps signaling rate.  |   |\n|   |   |  3 | Use 8.1 Gbps signaling rate.  |   |\n|   |   |  4 | Use 2.16 Gbps signaling rate.  |   |\n|   |   |  5 | Use 2.43 Gbps signaling rate.  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-29.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "57",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

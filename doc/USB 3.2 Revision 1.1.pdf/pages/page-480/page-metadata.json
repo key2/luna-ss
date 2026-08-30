@@ -1,0 +1,183 @@
+{
+  "index": 479,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 449 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 91,
+      "bottomRightX": 672,
+      "bottomRightY": 321,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  6 | Port Link State Change (C_PORT_LINK_STATE): This field is set when the port link status has changed as described below. **Value****Meaning** 0 No change 1 Link Status has changed  |\n|  7 | Port Config Error (C_PORT_CONFIG_ERROR): This field is set when the port fails to configure its link partner. **Value****Meaning** 0 Port Link Configuration was successful 1 Port Link Configuration was unsuccessful  |\n|  8-15 | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-252.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 342,
+      "bottomRightX": 255,
+      "bottomRightY": 357,
+      "content": "### C_PORT_CONNECTION",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 370,
+      "bottomRightX": 496,
+      "bottomRightY": 387,
+      "content": "This bit is set to one when the PORT_CONNECTION bit changes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 397,
+      "bottomRightX": 660,
+      "bottomRightY": 430,
+      "content": "This bit shall be set to zero by a ClearPortFeature(C_PORT_CONNECTION) request or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 441,
+      "bottomRightX": 272,
+      "bottomRightY": 457,
+      "content": "### C_PORT_OVER_CURRENT",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 469,
+      "bottomRightX": 660,
+      "bottomRightY": 515,
+      "content": "This bit is set to one when the PORT_OVER_CURRENT bit changes from zero to one or from one to zero. This bit is also set if the port is placed in the DSPORT-Powered-off-reset state due to an over-current condition on another port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 526,
+      "bottomRightX": 628,
+      "bottomRightY": 544,
+      "content": "This bit shall be set to zero by a ClearPortFeature(C_PORT_OVER_CURRENT) request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 555,
+      "bottomRightX": 212,
+      "bottomRightY": 571,
+      "content": "### C_PORT_RESET",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 585,
+      "bottomRightX": 633,
+      "bottomRightY": 615,
+      "content": "This bit is set to one when the port transitions from the DSPORT.Resetting state to the DSPORT.Enabled state for any type of reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 627,
+      "bottomRightX": 665,
+      "bottomRightY": 658,
+      "content": "This bit shall be set to zero by a ClearPortFeature(C_PORT_RESET) request, or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 670,
+      "bottomRightX": 236,
+      "bottomRightY": 686,
+      "content": "### C_PORT_BH_RESET",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 698,
+      "bottomRightX": 633,
+      "bottomRightY": 729,
+      "content": "This bit is set to one when the port transitions from the DSPORT.Resetting state to the DSPORT.Enabled state for a Warm Reset only.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 741,
+      "bottomRightX": 668,
+      "bottomRightY": 773,
+      "content": "This bit shall be cleared by a ClearPortFeature(C_PORT_BH_RESET) request, or while logical port power is off.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 784,
+      "bottomRightX": 249,
+      "bottomRightY": 800,
+      "content": "### C_PORT_LINK_STATE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 812,
+      "bottomRightX": 668,
+      "bottomRightY": 890,
+      "content": "This bit is set to one when the port's link completes a transition from the U3 state to the U0 state as a result of a SetPortFeature(Port_Link_State) request or completes a transition to Loopback state or to Compliance or to eSS.Inactive with Rx terminations present. This bit is not set to one due to transitions from U3 to U0 as a result of remote wakeup signaling received on a downstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

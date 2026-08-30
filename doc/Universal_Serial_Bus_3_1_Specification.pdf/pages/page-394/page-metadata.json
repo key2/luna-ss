@@ -1,0 +1,86 @@
+{
+  "index": 393,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 275,
+      "topLeftY": 92,
+      "bottomRightX": 553,
+      "bottomRightY": 289,
+      "content": "![img-236.jpeg](img-236.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-236.jpeg"
+    },
+    {
+      "topLeftX": 154,
+      "topLeftY": 300,
+      "bottomRightX": 671,
+      "bottomRightY": 319,
+      "content": "Figure 8-50. Host Stops Servicing Interrupt IN Transaction Once NRDY is Received",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 351,
+      "bottomRightX": 538,
+      "bottomRightY": 614,
+      "content": "![img-237.jpeg](img-237.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-237.jpeg"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 627,
+      "bottomRightX": 620,
+      "bottomRightY": 644,
+      "content": "Figure 8-51. Host Resumes IN Transaction after Device Sent ERDY",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 286,
+      "topLeftY": 679,
+      "bottomRightX": 538,
+      "bottomRightY": 827,
+      "content": "![img-238.jpeg](img-238.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-238.jpeg"
+    },
+    {
+      "topLeftX": 287,
+      "topLeftY": 840,
+      "bottomRightX": 537,
+      "bottomRightY": 857,
+      "content": "Figure 8-52. Endpoint Sends STALL TP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "8-100",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

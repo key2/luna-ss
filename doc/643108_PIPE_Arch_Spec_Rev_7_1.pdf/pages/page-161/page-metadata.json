@@ -1,0 +1,57 @@
+{
+  "index": 160,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 602,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 559,
+      "bottomRightY": 138,
+      "content": "Table 8-10. Lane Margining at the Receiver Sequences (Sheet 2 of 4)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 811,
+      "content": "|  Operation | Type of Sampler | Sequence  |   |   |\n| --- | --- | --- | --- | --- |\n|   |   |  Direction | Message Bus Command | Description^{1}  |\n|  Stop Margining | Independent | M-->P | UWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |  M-->P | CWr | RxMarginControl0=8'b00000000 (stop, clear t vs v)  |\n|   |   |  P-->M | Ack | -  |\n|   |   |  P-->M | UWr | RxMarginStatus1.SampleCount=Final (if supported)  |\n|   |   |  P-->M | UWr | RxMarginStatus2.ErrorCount=Final (if supported)  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginStatus=1  |\n|   |   |  M-->P | Ack | -  |\n|   |  Dependent | M-->P | UWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |  M-->P | CWr | RxMarginControl0=8'b00000000 (stop, clear t vs v)  |\n|   |   |  P-->M | Ack | -  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginStatus=1  |\n|   |   |  M-->P | Ack | -  |\n|  Start Margining NAK | Independent | M-->P | UWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |  M-->P | CWr | RxMarginControl0=8'b000011?1 (clear error/sample and start)  |\n|   |   |   |  | Mac clears its error count snapshot.  |\n|   |   |  P-->M | Ack | -  |\n|   |   |   |  | PHY clears its error and sample counters due to MAC setting Sample Count Reset and Error Count Reset bits in RxMarginControl0.  |\n|   |   |  P-->M | UWr | RxMarginStatus1.SampleCount=0 (if supported)  |\n|   |   |  P-->M | UWr | RxMarginStatus2.ErrorCount=0 (if supported)  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginNak=1  |\n|   |   |  M-->P | Ack | -  |\n|   |   |   |  | MAC changes execution status to 11 (NAK).  |\n|   |   |   |  | The \"Stop Margining\" sequence should be followed.  |\n|   |  Dependent | M-->P | UWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |  M-->P | CWr | RxMarginControl0=8'b000011?1 (set start) (error/sample clears are a don't care)  |\n|   |   |   |  | Mac clears its error count snapshot.  |\n|   |   |  P-->M | Ack | -  |\n|   |   |   |  | PHY detects bad margin request, places/keeps margin logic in normal functional operation mode.  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginNak=1  |\n|   |   |  M-->P | Ack | -  |\n|   |   |   |  | MAC changes execution status to 11 (NAK).  |\n|   |   |   |  | The \"Stop Margining\" sequence should be followed.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-148.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "161",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

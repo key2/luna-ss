@@ -1,0 +1,75 @@
+{
+  "index": 186,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 108,
+      "bottomRightX": 578,
+      "bottomRightY": 123,
+      "content": "Table 6-18. Transmitter Informative Electrical Parameters at Silicon Pads",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 126,
+      "bottomRightX": 703,
+      "bottomRightY": 679,
+      "content": "|  Symbol | Parameter | 5.0 GT/s | 10 GT/s | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  t_{MIN-PULSE-Dj} | Deterministic min pulse | 0.96 | 0.96 | UI | Tx pulse width variation that is deterministic  |\n|  t_{MIN-PULSE-Tj} | Tx min pulse | 0.90 | 0.90 | UI | Min Tx pulse at 10^{-12} including Dj and Rj  |\n|  t_{TX-EYE} | Transmitter Eye | 0.625 (min) | 0.646 (min) | UI | Includes all jitter sources  |\n|  t_{TX-DJ-DD} | Tx deterministic jitter | 0.205 (max) | 0.170 (max) | UI | Deterministic jitter only assuming the Dual Dirac distribution  |\n|  C_{TX-PARASITIC} | Tx input capacitance for return loss | 1.25 (max) | 1.1 (max) | pf | Parasitic capacitance to ground  |\n|  R_{TX-DC} | Transmitter DC common mode impedance | 18 (min) 30 (max) | 18 (min) 30 (max) | Ω | DC impedance limits to guarantee Receiver detect behavior. Measured with respect to AC ground over a voltage of 0-500 mV.  |\n|  i_{TX-SHORT} | Transmitter short-circuit current limit | 60 (max) | 60 (max) | mA | The total current Transmitter can supply when shorted to ground.  |\n|  V_{TX-DC-CM} | Transmitter DC common-mode voltage | 0 (min) 2.2 (max) | 0 (min) 2.2 (max) | V | The instantaneous allowed DC common-mode voltages at the connector side of the AC coupling capacitors.  |\n|  V_{TX-CM-AC-PP_ACTIVE} | Tx AC common mode voltage active | 100 | 100 (max) | mVp-p | Maximum mismatch from Txp + Txn for both time and amplitude.  |\n|  V_{TX-CM-DC-ACTIVE-IDLE-DELTA} | Absolute DC Common Mode Voltage between U1 and U0 | 200 (max) | 200 (max) | mV |   |\n|  V_{TX-IDLE-DIFF-AC-pp} | Electrical Idle Differential Peak – Peak Output Voltage | 0 (min) 10 (max) | 0 (min) 10 (max) | mV |   |\n|  V_{TX-IDLE-DIFF-DC} | DC Electrical Idle Differential Output Voltage | 0 (min) 10 (max) | 0 (min) 10 (max) | mV | Voltage shall be low pass filtered to remove any AC component. This limits the common mode error when resuming U1 to U0.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-71.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 692,
+      "bottomRightX": 388,
+      "bottomRightY": 712,
+      "content": "### 6.7.2 Low Power Transmitter",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 729,
+      "bottomRightX": 694,
+      "bottomRightY": 847,
+      "content": "In addition to the full swing transmitter specification, an optional low power swing transmitter is also specified for SuperSpeed applications. A low power swing transmitter is typically used in systems that are sensitive to power and noise interference, and have a relatively short channel. The requirement as to whether a transmitter needs to support full swing, low power swing, or both swings, is dependent on its usage model. All SuperSpeed transmitters must support full swing, while support for low power swing is optional. The method by which the output swing is selected is not defined in the specification, and is implementation specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 855,
+      "bottomRightX": 692,
+      "bottomRightY": 904,
+      "content": "While two different transmitters are specified, only a single receiver specification is defined. This implies that receiver margins (as specified in Table 6-21) shall be met if a low power transmitter is used.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "6-31",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

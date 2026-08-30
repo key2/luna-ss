@@ -1,0 +1,57 @@
+{
+  "index": 33,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 61,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 927,
+      "content": "|  7.5.3.7.2#1 | A downstream port shall transition from Rx.Detect.Quiet to Rx.Detect.Active upon the timeout of the tRxDetectQuietTimeoutDFP timer (12ms to 120ms). | NT  |\n| --- | --- | --- |\n|  7.5.3.7.2#2 | An upstream port shall transition from Rx.Detect.Quiet to Rx.Detect.Active upon the timeout of the tRxDetectQuietTimeoutUFP timer (12ms). | NT  |\n|  Subsection reference: 7.5.4 Polling  |   |   |\n|  Subsection reference: 7.5.4.2 Polling Requirements  |   |   |\n|  7.5.4.2#1 | A downstream port shall implement a counter, cPollingTimeout, which shall be reset to zero upon PowerOn Reset, Warm Reset on the upstream port, exit to eSS.Disabled or eSS.Inactive or U0, and detection of the removal of far-end terminations. | BC  |\n|  7.5.4.2#2 | A downstream port shall implement a counter, cPollingTimeout, which shall be incremented by one or saturated at two if a transition to Rx.Detect is due to timeout in any of the Polling substates. | 7.40  |\n|  Subsection reference: 7.5.4.3 Polling.LFPS  |   |   |\n|  Subsection reference: 7.5.4.3.1 Polling.LFPS Requirements  |   |   |\n|  7.5.4.3.1#1 | Upon entry to Polling.LFPS, an LFPS receiver shall be enabled. | BC  |\n|  7.5.4.3.1#2 | Upon entry to Polling.LFPS, a port shall establish its LFPS operating condition within 80 μs. | NT  |\n|  7.5.4.3.1#3 | A downstream port shall disable its transition path to Compliance Mode upon PowerOn Reset or Warm Reset. | NT  |\n|  7.5.4.3.1#4 | A downstream port shall enabled its transition path to Compliance Mode, if directed. | 7.34  |\n|  7.5.4.3.1#5 | An upstream port always has its transition path to Compliance Mode enabled upon PowerOn Reset. | 7.33  |\n|  7.5.4.3.1#6 | A port in SuperSpeed operation shall transmit Polling.LFPS. | BC  |\n|  7.5.4.3.1#7 | An upstream port in SuperSpeedPlus operation shall transmit SCD1. If no signature of SCD1 is found in sixteen consecutive Polling.LFPS received, the port shall switch to SuperSpeed operation and transmit Polling.LFPS instead of SCD1. | 7.1  |\n|  7.5.4.3.1#8 | A downstream port in SuperSpeedPlus operation shall transmit SCD1 if Compliance Mode is disabled. If no signature of SCD1 is found in sixteen consecutive Polling.LFPS received, the port shall switch to SuperSpeed operation and transmit Polling.LFPS instead of SCD1. | 7.1  |\n|  7.5.4.3.1#8 | A downstream port in SuperSpeedPlus operation shall transmit SCD2 if Compliance Mode is enabled. | NT  |\n|  7.5.4.3.1#9 | A port in SuperSpeedPlus operation shall implement a 60us timer (tPollingSCDLFPSTimeout) to monitor the absence of | 7.1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-27.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 935,
+      "bottomRightX": 420,
+      "bottomRightY": 947,
+      "content": "26",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 955,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

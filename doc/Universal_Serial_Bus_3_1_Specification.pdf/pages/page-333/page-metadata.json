@@ -1,0 +1,139 @@
+{
+  "index": 332,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 580,
+      "bottomRightY": 128,
+      "content": "### 8.5.6.3 Bus Interval Adjustment Message Device Notification",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 692,
+      "bottomRightY": 166,
+      "content": "The Bus Interval Adjustment Message Device Notification is only defined for devices operating at Gen 1 speed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 189,
+      "bottomRightX": 662,
+      "bottomRightY": 315,
+      "content": "![img-212.jpeg](img-212.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-212.jpeg"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 328,
+      "bottomRightX": 618,
+      "bottomRightY": 345,
+      "content": "Figure 8-26. Bus Interval Adjustment Message Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 374,
+      "bottomRightX": 531,
+      "bottomRightY": 390,
+      "content": "Table 8-21. Bus Interval Adjustment Message Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 392,
+      "bottomRightX": 700,
+      "bottomRightY": 522,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | **SubType**. This field shall be set to *DEV_NOTIFICATION*.  |\n|  4 | 1:4 | **Notification Type**. BUS_INTERVAL_ADJUSTMENT_MESSAGE.  |\n|  8 | 1:8 | **Reserved**.  |\n|  16 | 1:16 | **Bus Interval Adjustment**. This field is a two's complement value ranging from -32768 to +32767 expressed in BusIntervalAdjustmentGranularity units.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-125.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 543,
+      "bottomRightX": 388,
+      "bottomRightY": 561,
+      "content": "### 8.5.6.4 Function Wake Notification",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 567,
+      "bottomRightX": 693,
+      "bottomRightY": 619,
+      "content": "A function may signal that it wants to exit from device suspend (after transitioning the link to U0) or function suspend by sending a Function Wake Device Notification to the host if it is enabled for remote wakeup. Refer to Section 9.2.5 for more details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 636,
+      "bottomRightX": 409,
+      "bottomRightY": 656,
+      "content": "### 8.5.6.5 Latency Tolerance Messaging",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 660,
+      "bottomRightX": 666,
+      "bottomRightY": 711,
+      "content": "Latency Tolerance Messaging is an optional normative USB power management feature that utilizes reported BELT (Best Effort Latency Tolerance) values to enable more power efficient platform operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 720,
+      "bottomRightX": 687,
+      "bottomRightY": 786,
+      "content": "The BELT value is the maximum time (factoring in the service needs of all configured endpoints) for leaving a device without service from the host. Specifically, the BELT value is the time between the host's receipt of an ERDY from a device, and the host's transmission of the response to the ERDY.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 796,
+      "bottomRightX": 687,
+      "bottomRightY": 864,
+      "content": "Devices indicate whether they are capable of sending LTM TPs using the LTM Capable field in the SUPERSPEED_USB Device Capability descriptor in the BOS descriptor (refer to Section 9.6.2). The LTM Enable (refer to Section 9.4.10) feature selector enables (or disables) an LTM capable device to send LTM TPs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "8-39",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

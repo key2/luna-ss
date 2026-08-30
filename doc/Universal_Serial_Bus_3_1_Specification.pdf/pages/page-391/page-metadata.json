@@ -1,0 +1,138 @@
+{
+  "index": 390,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 690,
+      "bottomRightY": 144,
+      "content": "Note that even though the status reporting is always in the device-to-host direction, the STATUS TP shall be treated as an OUT transaction. A host may start performing IN transactions to another endpoint without waiting for the response for the STATUS TP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 163,
+      "bottomRightX": 353,
+      "bottomRightY": 178,
+      "content": "Table 8-31. Status Stage Responses",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 181,
+      "bottomRightX": 420,
+      "bottomRightY": 263,
+      "content": "|  Status Response | TP Sent by Device  |\n| --- | --- |\n|  Request completes | ACK TP  |\n|  Request has an error | STALL TP  |\n|  Device is busy | NRDY TP  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-137.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 269,
+      "bottomRightX": 698,
+      "bottomRightY": 369,
+      "content": "The host shall send a STATUS TP to the control pipe to initiate the Status stage. The pipe's handshake response to this TP indicates the current status. An NRDY TP indicates that a device is still processing the command and that the device shall send an ERDY TP when it completes the command. An ACK TP indicates that a device has completed the command and is ready to accept a new command. A STALL TP indicates that a device has an error that prevents it from completing the command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 380,
+      "bottomRightX": 657,
+      "bottomRightY": 414,
+      "content": "The NumP field of the ACK TP sent by a control endpoint on the device shall be set to zero. However, this is not considered a flow control condition for a control endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 423,
+      "bottomRightX": 686,
+      "bottomRightY": 473,
+      "content": "If during a Data stage a control pipe is sent more data or is requested to return more data than was indicated in the Setup stage, it shall return a STALL TP. If a control pipe returns a STALL TP during the Data stage, there shall not be a Status stage for that control transfer.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 491,
+      "bottomRightX": 384,
+      "bottomRightY": 510,
+      "content": "### 8.12.2.2 Variable-length Data Stage",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 514,
+      "bottomRightX": 686,
+      "bottomRightY": 582,
+      "content": "A control pipe may have a variable-length data phase in which the host requests more data than is contained in the specified data structure. When all of the data structure is returned to the host, a device indicates that the Data stage is ended by returning a DP that has a payload less than the maximum packet size for that endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 591,
+      "bottomRightX": 660,
+      "bottomRightY": 641,
+      "content": "Note that if the amount of data in the data structure that is returned to the host is less than the amount requested by the host and is an exact multiple of maximum packet size then a control endpoint shall send a zero length DP to terminate the data stage.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 659,
+      "bottomRightX": 469,
+      "bottomRightY": 678,
+      "content": "### 8.12.2.3 STALL TPs Returned by Control Pipes",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 683,
+      "bottomRightX": 698,
+      "bottomRightY": 802,
+      "content": "Control pipes have the unique ability to return a STALL TP due to problems in control transfers. If a device is unable to complete a command, it returns a STALL TP in the Data and/or Status stages of the control transfer. Unlike the case of a functional stall, protocol stall does not indicate an error with the device. The protocol STALL condition lasts until the receipt of the next SETUP DP, and the device shall return a STALL TP in response to any IN or OUT transaction on the pipe until the SETUP DP is received. In general, protocol stall indicates that the request or its parameters are not understood by a device and thus provides a mechanism for extending USB requests.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 810,
+      "bottomRightX": 451,
+      "bottomRightY": 827,
+      "content": "Devices do not support functional stall on a control pipe.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "8-97",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "index": 96,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 502,
+      "bottomRightY": 144,
+      "content": "### 7.2.1 Address 0h: Rx Margin Status0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 152,
+      "bottomRightX": 390,
+      "bottomRightY": 169,
+      "content": "Table 7-26. Address 0h: Rx Margin Status0",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 172,
+      "bottomRightX": 699,
+      "bottomRightY": 463,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:2] | 0h | N/A | N/A | Reserved  |\n|  [1] | 0h | 1-cycle | PCIe (optional) | **Margin Nak:** This field is used by the PHY to indicate that a voltage margin request corresponds to an unsupported offset that falls within the advertised range. This field may be asserted in response to a change to the \"Start Margin\" field or \"Margin Offset[6:0]\" field or \"Margin Direction\" field during voltage margining only. This field is only written once per committed write affecting either of the above three fields. When this field is set, the \"Margin Status\" should not be set. The design must support the minimum voltage offset requirement stated in the *PCIe Base Specification*. **Note:** If the voltage margin offset requested falls outside of the PHY advertised range, the PHY is not required to communicate a NAK by setting this field; this is assumed to be a MAC error and PHY behavior is undefined.  |\n|  [0] | 0h | 1-cycle | PCIe | **Margin Status:** This field is used by the PHY to acknowledge a valid change to the \"Start Margin\" field or the \"Margin Offset[6:0]\" field. This field is only written once per committed write affecting either of the above two fields. For example, if both \"Start Margin\" and \"Margin Offset[6:0]\" are changed, but one is changed with an uncommitted write and one is changed with a committed write, this \"Margin Status\" field is only written once to acknowledge both changes.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-95.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 481,
+      "bottomRightX": 501,
+      "bottomRightY": 503,
+      "content": "### 7.2.2 Address 1h: Rx Margin Status1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 512,
+      "bottomRightX": 389,
+      "bottomRightY": 527,
+      "content": "Table 7-27. Address 1h: Rx Margin Status1",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 530,
+      "bottomRightX": 699,
+      "bottomRightY": 698,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7] | 0h | N/A | N/A | Reserved  |\n|  [6:0] | 0h | Level | PCIe (optional) | **Sample Count:** This field indicates the number of bits that have been margined and can increment only when \"Start Margin\" is asserted. The value of this field is 3×log2(number of bits margined). This field stops incrementing when the \"Error Count\" saturates. This field only resets on a PIPE reset or when the MAC writes to the \"Sample Count Reset\" bit in the Rx Margin Control1 register. This field is only required if the sampling rate is not reported in the PHY datasheet. If used, this field must be updated by the PHY every time the associated value changes; implementations may collapse multiple updates into a single write only to avoid creating a backlog of writes.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-96.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 716,
+      "bottomRightX": 503,
+      "bottomRightY": 737,
+      "content": "### 7.2.3 Address 2h: Rx Margin Status2",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 747,
+      "bottomRightX": 485,
+      "bottomRightY": 763,
+      "content": "Table 7-28. Address 2h: Rx Margin Status2 (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 766,
+      "bottomRightX": 699,
+      "bottomRightY": 811,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-97.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "97",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

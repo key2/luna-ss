@@ -1,0 +1,35 @@
+Revision 1.1
+June 2022
+
+- 267 -
+
+Universal Serial Bus 3.2
+Specification
+
+ACK(Prime, NumP>0, PP=0) - If an ACK TP with the Stream ID field set to Prime is received, then the device shall transition the pipe to the Prime Pipe state. This transition occurs after the initial Endpoint Buffers are assigned to the pipe by system software.
+
+ACK(Deferred) - If an ACK with the Deferred (DF) flag set is received, then the device shall transition the pipe to the Deferred Prime Pipe state. This packet is received when the link has transitioned to a U1 or U2 state while waiting for the initial Endpoint Buffer assignment.
+
+### 8.12.1.4.2.2 Prime Pipe
+
+The Prime Pipe state informs the device that the Endpoint Buffers have been assigned to one or more Streams; however, it does not specify which Stream(s). In this state, the device shall set all Active Streams to Ready. After returning to the Idle state the device shall issue an ERDY to start a specific Stream from its list of Active Streams.
+
+NRDY(Prime) - Upon entering the Prime Pipe state, the device shall generate an NRDY TP with its Stream ID field set to Prime and transition to the Idle state.
+
+### 8.12.1.4.2.3 Deferred Prime Pipe
+
+The Deferred Prime Pipe state informs the device that the Endpoint Buffers have been assigned to one or more Streams; however, the link has transitioned to a U1 or U2 state while waiting. In this state, the device shall set all Active Streams to Ready. After returning to the Idle state the device shall issue an ERDY to start a specific Stream from its list of Active Streams.
+
+No Condition - Upon entering the Deferred Prime Pipe state, the device shall immediately transition to the Idle state. This is the only Deferred Prime Pipe exit transition in Figure 8-39.
+
+### 8.12.1.4.2.4 Idle
+
+In the Idle state, the pipe is waiting for a Stream selection (e.g., a transition to Start Stream or Move Data) or a notification from the host that a Stream Endpoint Buffer has been added or modified for the pipe (i.e., transition to Prime Pipe). Note that upon the initial entry in to Idle (i.e., from Disabled), only the device may initiate a Stream selection.
+
+ERDY(Stream n, NumP>0) - To initiate a Stream selection, the device generates an ERDY TP with its Stream ID set to Stream n and a NumP value > 0, and transitions to the Start Stream state, where Stream n is the Stream ID proposed by the device. A device may initiate this transition when it wishes to start a Stream transfer, regardless of whether the pipe is in a flow control condition or not. The device maintains a list of Active and Ready Streams that it may generate ERDYs for. The method that a device uses for Stream selection is outside the scope of this specification and is normally defined by the Device Class associated with the pipe. Note that the value of the ERDY NumP field reflects the amount of Endpoint Data the device has available for Stream n.
+
+ACK(Prime, NumP>0, PP=0) - If an ACK TP with a Stream ID equal to Prime is received from the host, the device shall transition to the Prime Pipe state.
+
+ACK(Stream x, NumP>0) - With this transition the host proposes the Stream ID Stream x to the device. If an ACK TP with a Stream ID not equal to Prime is received from the host, the device shall transition to the Move Data state. The host may initiate this transition when it wishes to start a Stream transfer and is referred to as a Host Initiated Move Data or HIMD. A HIMD indicates the specific Stream that the Endpoint Buffer had been changed for. The device shall set Stream x to Ready due to this transition. After entering the Move Data state, the device may reject the proposed Stream with an NRDY or accept the proposed Stream with a DP. Upon transitioning to the Move Data state the device sets CStream to the value of
+
+Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.

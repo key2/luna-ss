@@ -1,0 +1,86 @@
+{
+  "index": 544,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 95,
+      "bottomRightX": 243,
+      "bottomRightY": 112,
+      "content": "Interface Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 114,
+      "bottomRightX": 501,
+      "bottomRightY": 289,
+      "content": "|  bLength | 9  |\n| --- | --- |\n|  bDescriptorType | INTERFACE Descriptor type  |\n|  bInterfaceNumber | 0  |\n|  bAlternateSetting | 0  |\n|  bNumEndpoints | 1  |\n|  bInterfaceClass | HUB_CLASSCODE (9)  |\n|  bInterfaceSubClass | 0  |\n|  bInterfaceProtocol | 0  |\n|  iInterface | 1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-223.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 314,
+      "bottomRightX": 415,
+      "bottomRightY": 333,
+      "content": "Endpoint Descriptor (for Status Change Endpoint)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 334,
+      "bottomRightX": 501,
+      "bottomRightY": 463,
+      "content": "|  bLength | 7  |\n| --- | --- |\n|  bDescriptorType | ENDPOINT Descriptor type  |\n|  bEndpointAddress | Implementation-dependent; Bit 7: Direction = In(1)  |\n|  bmAttributes | Transfer Type = Interrupt (19)  |\n|  wMaxPacketSize | 2  |\n|  bInterval | 8 (maximum allowable interval)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-224.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 489,
+      "bottomRightX": 485,
+      "bottomRightY": 507,
+      "content": "Endpoint Companion Descriptor (for Status Change Endpoint)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 508,
+      "bottomRightX": 501,
+      "bottomRightY": 622,
+      "content": "|  bLength | 6  |\n| --- | --- |\n|  bDescriptorType | SUPERSPEED_USB_ENDPOINT_COMPANION Descriptor type  |\n|  bMaxBurst | 0  |\n|  bmAttributes | 0  |\n|  wBytesPerInterval | 2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-225.md"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-67",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

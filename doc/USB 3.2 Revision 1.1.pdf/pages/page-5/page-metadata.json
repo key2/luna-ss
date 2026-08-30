@@ -1,0 +1,57 @@
+{
+  "index": 4,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 380,
+      "topLeftY": 46,
+      "bottomRightX": 409,
+      "bottomRightY": 61,
+      "content": "- v -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 99,
+      "bottomRightX": 639,
+      "bottomRightY": 907,
+      "content": "|  **Keysight Technologies Inc.** | Biing-Lin Lem Roland Scherzinger | Jit Lim Dov Yancu | Pedro Merlo  |\n| --- | --- | --- | --- |\n|  **LeCroy Corporation** | Linden Hsu Mike Micheletti | Daniel H Jacobs Michael Romm | Tyler Joe Chris Webb  |\n|  **Lenovo** | Tomoki Harada |  |   |\n|  **LG Electronics Inc.** | Do Kyun Kim |  |   |\n|  **Lotes Co., Ltd.** | Ariel Delos Reyes | Regina Liu-Hwang | John Lynch  |\n|  **LSI Corporation** | Harvey Newman | Dave Thompson | Srinivas Vura  |\n|  **Luxshare-ICT** | Josue Castillo Stone Lin Pat Young | Sally Chiu Scott Shuey | Alan Kinningham James Stevens  |\n|  **MEC IMEX INC – HPT** | Daniel Chen |  |   |\n|  **MegaChips Corporation** | Satoru Kumashiro |  |   |\n|  **Microchip Technology Inc.** | Mark Bohm Richard Petrie | Mick Davis Andrew Rogers | Adriaan Peeters Mouli Subramanian  |\n|  **MQP Electronics Ltd.** | Sten Carlsen |  |   |\n|  **Nokia** | Peter Harrison |  |   |\n|  **NXP Semiconductors** | Jason Chen Vijendra Kuroodi Ahmad Yazdi | Gerrit den Besten Krishnan TN | Anand Kannan Bart Vertenten  |\n|  **ON Semiconductor** | Eduardo De Reza |  |   |\n|  **Parade Technologies, Inc.** | Craig Wiley |  |   |\n|  **Qualcomm, Inc.** | James Goel | Karyn Vuong | Jin-sheng Wang  |\n|  **Realtek Semiconductor Corp.** | Terry Lin |  |   |\n|  **Samsung Electronics Co., Ltd.** | Cheolyoon Chung Jun Bum Lee | Jagoun Koo | Cheolho Lee  |\n|  **Seagate Technology LLC** | Alvin Cox Michael Morgan Philip Yin | Steven Davis Dan Smith | Emmanuel Lemay Cuong Tran  |\n|  **Shenzhen Deren Electronics Co., Ltd** | Smark Huo | Lucy Zhang |   |\n|  **Sibridge Technologies** | Bhavesh Desai Kruti Shah | Chirag Dhruv Mishith Shukla | Dipak Modi  |\n|  **Specwertz** | Amanda Hosler |  |   |\n|  **Synopsys, Inc.** | Subramaniam Aravindhan Morton Christiansen Eric Huang Matthew Myers Zongyao Wen | Chandrashekar B U Gervais Fong Behram Minwalla Tri Nguyen | Bala Babu Kevin Heilman Saleem Mohammad John Stonick  |\n|  **Tektronix, Inc.** | Sarah Boen Joshua OBrien | Keyur Diwan | Srikrishna N.H.  |\n|  **Total Phase** | Chris Yokum James Mason | Egbert Stellinga | Noah Zhang  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-10.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

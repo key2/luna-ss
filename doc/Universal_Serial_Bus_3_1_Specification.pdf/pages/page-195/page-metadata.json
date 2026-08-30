@@ -1,0 +1,112 @@
+{
+  "index": 194,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 231,
+      "topLeftY": 98,
+      "bottomRightX": 593,
+      "bottomRightY": 318,
+      "content": "![img-149.jpeg](img-149.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-149.jpeg"
+    },
+    {
+      "topLeftX": 276,
+      "topLeftY": 343,
+      "bottomRightX": 548,
+      "bottomRightY": 361,
+      "content": "Figure 6-26. Gen 2 reference DFE Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 390,
+      "bottomRightX": 452,
+      "bottomRightY": 412,
+      "content": "### 6.8.3 Receiver Electrical Parameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 417,
+      "bottomRightX": 679,
+      "bottomRightY": 450,
+      "content": "Normative specifications are to be measured at the connector. Peak (p) and peak- peak (p-p) are defined in Section 6.6.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 469,
+      "bottomRightX": 458,
+      "bottomRightY": 484,
+      "content": "Table 6-21. Receiver Normative Electrical Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 487,
+      "bottomRightX": 710,
+      "bottomRightY": 791,
+      "content": "|  Symbol | Parameter | Gen 1 (5.0 GT/s) | Gen 2 (10 GT/s) | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  UI | Unit Interval | 199.94 (min) 200.06 (max) | 99.97 (min) 100.03 (max) | ps | UI does not account for SSC caused variations.  |\n|  R_{RX-DC} | Receiver DC common mode impedance | 18 (min) 30 (max) | 18 (min) 30 (max) | Ω | DC impedance limits are needed to guarantee Receiver detect. Measured with respect to ground over a voltage of 500 mV maximum.  |\n|  R_{RX-DIFF-DC} | DC differential impedance | 72 (min) 120 (max) | 72 (min) 120 (max) | Ω |   |\n|  Z_{RX-HIGH-IMP-DC-POS}^{1} | DC Input CM Input Impedance for V>0 during Reset or power down | 25k (min) | 25k (min) | Ω | Rx DC CM impedance with the Rx terminations not powered, measured over the range 0 – 500 mV with respect to ground.  |\n|  V_{RX-LFPS-DET-DIFFp-p} | LFPS Detect Threshold | 100 (min) 300 (max) | 100 (min) 300 (max) | mV | Below the minimum is noise. Must wake up above the maximum.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-74.md"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 793,
+      "bottomRightX": 200,
+      "bottomRightY": 806,
+      "content": "Note",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 810,
+      "bottomRightX": 675,
+      "bottomRightY": 841,
+      "content": "1. Only DC Input CM Input Impedance for V >0 is specified. DC Input CM Input Impedance for V <0 is not guaranteed and could be as low as 0 Ω.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 848,
+      "bottomRightX": 697,
+      "bottomRightY": 900,
+      "content": "The values in Table 6-22 are informative and not normative. They are included in this document to provide some guidance beyond the normative requirements in Table 6-21 for receiver design and development. A receiver can be fully compliant with the normative requirements of the",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "6-39",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

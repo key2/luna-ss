@@ -1,0 +1,57 @@
+{
+  "index": 436,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 593,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 108,
+      "bottomRightX": 302,
+      "bottomRightY": 124,
+      "content": "Table 9-6. Descriptor Types",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 126,
+      "bottomRightX": 466,
+      "bottomRightY": 451,
+      "content": "|  Descriptor Types | Value  |\n| --- | --- |\n|  DEVICE | 1  |\n|  CONFIGURATION | 2  |\n|  STRING | 3  |\n|  INTERFACE | 4  |\n|  ENDPOINT | 5  |\n|  Reserved | 6  |\n|  Reserved | 7  |\n|  INTERFACE_POWER^{1} | 8  |\n|  OTG | 9  |\n|  DEBUG | 10  |\n|  INTERFACE_ASSOCIATION | 11  |\n|  BOS | 15  |\n|  DEVICE CAPABILITY | 16  |\n|  SUPERSPEED_USB_ENDPOINT_COMPANION | 48  |\n|  SUPERSPEEDPLUS_ISOCHRONOUS_ENDPOINT_COMPANION | 49  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-152.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 876,
+      "bottomRightX": 694,
+      "bottomRightY": 907,
+      "content": "$^{1}$ The INTERFACE_POWER descriptor is defined in the current revision of the USB Interface Power Management Specification.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "9-19",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

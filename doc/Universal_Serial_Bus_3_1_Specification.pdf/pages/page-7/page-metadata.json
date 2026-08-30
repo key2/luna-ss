@@ -1,0 +1,49 @@
+{
+  "index": 6,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 95,
+      "topLeftY": 90,
+      "bottomRightX": 410,
+      "bottomRightY": 248,
+      "content": "|  Yang You | Microsoft Corporation  |\n| --- | --- |\n|  Nobuo Furuya | Renesas Electronics Corp.  |\n|  Masami Katagiri | Renesas Electronics Corp.  |\n|  Steven Kawamoto | Renesas Electronics Corp.  |\n|  Kiichi Muto | Renesas Electronics Corp.  |\n|  Peter Teng | Renesas Electronics Corp.  |\n|  Hicham Bouzekri | ST-Ericsson  |\n|  Morten Christiansen | ST-Ericsson  |\n|  Grant Ley | Texas Instruments  |\n|  James Skidmore | Texas Instruments  |\n|  Sue Vining | Texas Instruments  |\n|  Tod Wolf | Texas Instruments  |\n|  Li Yang | Texas Instruments  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-7.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 272,
+      "bottomRightX": 302,
+      "bottomRightY": 290,
+      "content": "## Contributor Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 95,
+      "topLeftY": 295,
+      "bottomRightX": 444,
+      "bottomRightY": 904,
+      "content": "|  Jason Chen | Aces Electronics Co., Ltd.  |\n| --- | --- |\n|  Andy Feng | Aces Electronics Co., Ltd.  |\n|  Chris Kao | Aces Electronics Co., Ltd.  |\n|  Glen Chandler | ACON, Advanced-Connectek, Inc.  |\n|  Alan MacDougall | ACON, Advanced-Connectek, Inc.  |\n|  Shadi Barakat | Advanced Micro Devices  |\n|  Walter Fry | Advanced Micro Devices  |\n|  Will Harris | Advanced Micro Devices  |\n|  Jason Hawken | Advanced Micro Devices  |\n|  Hugo Lamarche | Advanced Micro Devices  |\n|  Yufei Ma | Advanced Micro Devices  |\n|  Joseph Scanlon | Advanced Micro Devices  |\n|  Vishant Tyagi | Advanced Micro Devices  |\n|  Min Wang | Advanced Micro Devices  |\n|  James Choate | Agilent Technologies, Inc.  |\n|  Thorsten Goetzelmann | Agilent Technologies, Inc.  |\n|  Takuya Hirato | Agilent Technologies, Inc.  |\n|  Hiroshi Kanda | Agilent Technologies, Inc.  |\n|  Donald Schoenecker | Agilent Technologies, Inc.  |\n|  Chi Chang | ASMedia Technology Inc.  |\n|  Chin Chang | ASMedia Technology Inc.  |\n|  Chiahsin Chen | ASMedia Technology Inc.  |\n|  Weber Chuang | ASMedia Technology Inc.  |\n|  Ming-Wei Hsu | ASMedia Technology Inc.  |\n|  Han Sung Kuo | ASMedia Technology Inc.  |\n|  ShuYu Lin | ASMedia Technology Inc.  |\n|  Luke Peng | ASMedia Technology Inc.  |\n|  Daniel Wei | ASMedia Technology Inc.  |\n|  ShengChung Wu | ASMedia Technology Inc.  |\n|  Ted Hsiao | Bizlink Technology, Inc.  |\n|  Pete Burgers | DisplayLink (UK) Ltd.  |\n|  Dan Ellis | DisplayLink (UK) Ltd.  |\n|  Richard Petrie | DisplayLink (UK) Ltd.  |\n|  Terry Little | Foxconn / Hon Hai  |\n|  Steve Sedio | Foxconn / Hon Hai  |\n|  Tim Barilovits | Fresco Logic Inc.  |\n|  Bob McVay | Fresco Logic Inc.  |\n|  Christopher Meyers | Fresco Logic Inc.  |\n|  Jie Ni | Fresco Logic Inc.  |\n|  Jeffrey Yang | Fresco Logic Inc.  |\n|  Jing-Fan Zhang | Fresco Logic Inc.  |\n|  Mike Engbretson | Granite River Labs  |\n|  Kunia Aihara | Hirose Electric Co., Ltd.  |\n|  Kazu Ichikawa | Hirose Electric Co., Ltd.  |\n|  Masaru Kawamura | Hirose Electric Co., Ltd.  |\n|  William MacKillop | Hirose Electric Co., Ltd.  |\n|  Sho Nakamura | Hirose Electric Co., Ltd.  |\n|  Toshiyuki Takada | Hirose Electric Co., Ltd.  |\n|  Sid Tono | Hirose Electric Co., Ltd.  |\n|  Tirumal Annamaneni | Intersil Corporation  |\n|  Colby Keith | Intersil Corporation  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-8.md"
+    },
+    {
+      "topLeftX": 681,
+      "topLeftY": 981,
+      "bottomRightX": 701,
+      "bottomRightY": 995,
+      "content": "vii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

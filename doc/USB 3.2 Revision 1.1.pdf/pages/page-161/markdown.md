@@ -1,0 +1,27 @@
+Revision 1.1
+June 2022
+
+- 130 -
+
+Universal Serial Bus 3.2
+Specification
+
+b. A port shall initiate the Header Sequence Number Advertisement.
+c. A port in SuperSpeed operation shall initiate the Rx Header Buffer Credit Advertisement. A port in SuperSpeedPlus operation shall initiate the Type 1 and Type 2 Rx Buffer Credit Advertisements.
+• The Header Sequence Number Advertisement refers to ACK Tx Header Sequence Number initialization by exchanging Header Sequence Numbers between the two ports. This Header Sequence Number is the Header Sequence Number of the last header packet a port has received properly. The main purpose of the Header Sequence Number Advertisement is to maintain the link flow before and after Recovery such that a port upon re-entry to U0 is aware what the last header packet is that was sent successfully prior to Recovery, and decides what header packets in its Tx Header Buffers or Type 1/Type 2 Tx Header Buffers that can be flushed or need to be retransmitted. The following rules shall be applied during the Header Sequence Number Advertisement:
+1. A port shall set its initial Rx Header Sequence Number defined in the following:
+   a. If a port enters U0 from Polling or Hot Reset, the Rx Header Sequence Number is zero.
+   b. If a port enters U0 from Recovery, the Rx Header Sequence Number is the header Sequence Number of the next expected header packet.
+2. A port shall set its initial Tx Header Sequence Number defined in the following:
+   a. If a port enters U0 from Polling or Hot Reset, its Tx Header Sequence Number is zero.
+   b. If a port enters U0 from Recovery, its Tx Header Sequence Number is the same as the Tx Header Sequence Number before Recovery.
+Note: A header packet that is re-transmitted shall maintain its originally assigned Header Sequence Number.
+3. A port shall initiate the Header Sequence Number Advertisement by transmitting LGOOD_n with "n" equal to the Rx Header Sequence Number minus one.
+Note: The decrement is based on modulo-8 operation in SuperSpeed operation, and modulo-16 in SuperSpeedPlus operation.
+4. A port shall set its initial ACK Tx Header Sequence Number to the Sequence Number received during the Rx Header Sequence Number Advertisement plus one.
+Note: The increment is based on modulo-8 operation in SuperSpeed operation, and modulo-16 in SuperSpeedPlus operation.
+5. A port in SuperSpeed operation shall not send any header packets until the Header Sequence Number Advertisement has been received and a Remote Rx Header Buffer Credit is available. A port in SuperSpeedPlus operation shall not send any Type 1 or Type 2 packet until the Header Sequence Number Advertisement has been received and their respective Remote Type 1 or Type 2 Rx Buffer Credit is available.
+6. A port shall not request for a low power link state entry before receiving and sending the Header Sequence Number Advertisement.
+Note: The rules of Low Power Link State Initiation (refer to Section 7.2.4.2) still apply.
+
+Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.

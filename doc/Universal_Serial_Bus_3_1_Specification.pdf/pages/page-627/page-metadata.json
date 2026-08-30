@@ -1,0 +1,85 @@
+{
+  "index": 626,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 94,
+      "bottomRightX": 374,
+      "bottomRightY": 124,
+      "content": "## D Example Packets",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 175,
+      "bottomRightX": 637,
+      "bottomRightY": 313,
+      "content": "|  31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0  |   |   |   |   |   |   |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  Device Address 000_0001b |   | Reserved 0000_0000_0000_0000_0000b |   |   |   |   |   |   | Type 00100b  |\n|  Reserved 000_0000_0000b |   |   | NumP 00001b | Reserved 0000b | Ept Num 0000b | D 0 | Rsvd 000b | SubType 0011b  |   |\n|  Reserved 00000b | Reserved 000_0000_0000_0000_0000_0000_0000b  |   |   |   |   |   |   |   |   |\n|  Link Control Word |   |   |   |   | CRC-16  |   |   |   |   |\n|  11110b | 0 | 0 | 001b | 000b | 010b | 10001111b | 01001110b  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-273.md"
+    },
+    {
+      "topLeftX": 613,
+      "topLeftY": 314,
+      "bottomRightX": 637,
+      "bottomRightY": 325,
+      "content": "U-164",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 269,
+      "topLeftY": 339,
+      "bottomRightX": 555,
+      "bottomRightY": 356,
+      "content": "Figure D-1. Sample ERDY Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 392,
+      "bottomRightX": 637,
+      "bottomRightY": 657,
+      "content": "|  31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0  |   |   |   |   |   |   |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  Device Address 000_0100b |   | Routing String 0000_0000_0000_0010_0001b |   |   |   |   |   |   | Type 01000b  |\n|  Data Length 0000_0000_0000_1001b |   |   |   | S 0 | Rsvd 000b | Ept Num 0001b | D 0 | EOB 1 | R 0  |\n|  Rsvd 0000b | PP 1 | Reserved 000_0000_0000_0000_0000_0000_0000b  |   |   |   |   |   |   |   |\n|  Link Control Word |   |   |   |   | CRC-16  |   |   |   |   |\n|  01011b | 0 | 0 | 010b | 000b | 001b | 00011000b | 11101101b  |   |   |\n|  Byte 3 0111_0110b |   |   | Byte 2 0101_0100b |   |   | Byte 1 0011_0010b |   | Byte 0 0001_0000b  |   |\n|  Byte 7 1111_1110b |   |   | Byte 6 1101_1100b |   |   | Byte 5 1011_1010b |   | Byte 4 1001_1000b  |   |\n|  0110_0010b |   |   | CRC32 1111_0011b |   |   | 1000_1011b |   | Byte 8 0001_0000b  |   |\n|   |   |   |   |   |   |   |   | CRC32 0000_0111b  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-274.md"
+    },
+    {
+      "topLeftX": 613,
+      "topLeftY": 659,
+      "bottomRightX": 637,
+      "bottomRightY": 670,
+      "content": "U-165",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 311,
+      "topLeftY": 685,
+      "bottomRightX": 513,
+      "bottomRightY": 702,
+      "content": "Figure D-2. Sample Data Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 678,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "D-1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

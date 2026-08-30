@@ -1,0 +1,66 @@
+{
+  "index": 405,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 748,
+      "content": "![img-251.jpeg](img-251.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-251.jpeg"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 752,
+      "bottomRightX": 645,
+      "bottomRightY": 770,
+      "content": "Figure 8-65. Sample Enhanced SuperSpeed Isochronous OUT Transaction",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 791,
+      "bottomRightX": 480,
+      "bottomRightY": 809,
+      "content": "### 8.12.6.1.1 Smart Isochronous Scheduling Protocol",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 817,
+      "bottomRightX": 679,
+      "bottomRightY": 887,
+      "content": "Figure 8-66 and Figure 8-67 show sample isochronous IN and OUT transactions with smart Isochronous scheduling to endpoints that have service intervals of 8. In the isochronous IN example below the host is only sending one ACK TP with the SSI and DBI field set to non-zero values when asking for data from the endpoint. It should be noted that a host may send multiple",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "8-112",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

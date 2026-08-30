@@ -1,0 +1,156 @@
+{
+  "index": 485,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 455 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 143,
+      "topLeftY": 91,
+      "bottomRightX": 648,
+      "bottomRightY": 313,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  2 | OC_RWEnable **Value****Meaning** 0 The hub is disabled from signaling a remote wakeup due to an over-current event on this port; over-current events that occur during suspend must still be detected and reported after the resume process has completed (due to some other event) as a C_PORT_OVER_CURRENT port status change. Note that a hub that does not support per-port over current detection/reporting will signal remote-wakeup for an over-current event unless all ports have OC-RWEnable set to 0. 1 The hub is enabled to signal a remote wakeup due to an over-current event on the port and if Function Remote Wake is also enabled.  |\n|  3-7 | These bits are reserved and must be set to zero.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-262.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 335,
+      "bottomRightX": 660,
+      "bottomRightY": 365,
+      "content": "Note that after power on or after the hub is reset, the remote wake mask is set to zero (i.e., the mask is enabled).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 377,
+      "bottomRightX": 402,
+      "bottomRightY": 393,
+      "content": "The hub shall meet the following requirements:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 407,
+      "bottomRightX": 637,
+      "bottomRightY": 549,
+      "content": "- If the port is in the Powered-off state, the hub shall treat a SetPortFeature(PORT_RESET) request as a functional no-operation.\n- If the port is not in the Enabled state, the hub shall treat a SetPortFeature(PORT_LINK_STATE) U3 request as a functional no-operation.\n- If the port is not in the Powered-off state, the hub shall treat a SetPortFeature(PORT_POWER) request as a functional no-operation.\n- If the port is not in the Enabled state, the hub shall treat a SetPortFeature(FORCE_LINKPM_ACCEPT) request as a functional no-operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 570,
+      "bottomRightX": 673,
+      "bottomRightY": 647,
+      "content": "When the feature selector is BH_PORT_RESET, the hub shall initiate a warm reset (refer to Section 7.4.2) on the port that is identified by this command. The state of the port after this reset shall be the same as the state after a SetPortFeature(PORT_RESET). On completion of a BH_PORT_RESET, the hub shall set the C_BH_PORT_RESET field to one in the PortStatus for this port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 659,
+      "bottomRightX": 623,
+      "bottomRightY": 690,
+      "content": "It is a Request Error if wValue is not a feature selector listed in Table 10-9, if wIndex specifies a port that does not exist, or if wLength is not as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 702,
+      "bottomRightX": 569,
+      "bottomRightY": 719,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 731,
+      "bottomRightX": 343,
+      "bottomRightY": 747,
+      "content": "### 10.17 Host Root (Downstream) Ports",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 753,
+      "bottomRightX": 663,
+      "bottomRightY": 800,
+      "content": "The root ports of a USB host have similar functional requirements to the downstream ports of a USB hub. This section summarizes which requirements also apply to the root port of a host and identifies any additional or different requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 811,
+      "bottomRightX": 660,
+      "bottomRightY": 843,
+      "content": "A host root port shall follow the requirements for a downstream facing hub port in Section 10.2 except for Section 10.2.3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 854,
+      "bottomRightX": 660,
+      "bottomRightY": 886,
+      "content": "A host root port shall follow the requirements for a downstream facing hub port in Section 10.3 with the following exceptions and additions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 898,
+      "bottomRightX": 652,
+      "bottomRightY": 930,
+      "content": "- None of the transitions and/or transition conditions based on the state of the hub upstream port apply to a root port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

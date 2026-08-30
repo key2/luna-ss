@@ -1,0 +1,156 @@
+{
+  "index": 494,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 91,
+      "bottomRightX": 680,
+      "bottomRightY": 152,
+      "content": "|  Key | Description  |\n| --- | --- |\n|  us.vbus = on | Upstream port VBUS is On  |\n|  u1.u2.exit.fails | U1 or U2 Exit Fails  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-201.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 166,
+      "bottomRightX": 605,
+      "bottomRightY": 188,
+      "content": "### 10.3.1 Hub Downstream Facing Port State Descriptions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 202,
+      "bottomRightX": 347,
+      "bottomRightY": 220,
+      "content": "#### 10.3.1.1 DSPORT.Powered-off",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 226,
+      "bottomRightX": 673,
+      "bottomRightY": 294,
+      "content": "The DSPORT.Powered-off state is a logical powered off state. This is a default state where DSPORT port will be after power-up if the hub supports power switching. The hub may still be required or choose to provide VBUS for a downstream port in the DSPORT.Powered-off state. Detailed requirements for presence of VBUS are covered later in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 299,
+      "bottomRightX": 562,
+      "bottomRightY": 316,
+      "content": "A port shall transition into this state if any of the following situations occur:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 321,
+      "bottomRightX": 691,
+      "bottomRightY": 479,
+      "content": "- From any state when VBUS is removed from the hub upstream port and the hub supports power switching on the DS ports.\n- Any \"power-off\" condition is met:\n  - From any state when local power is lost to the port.\n  - From any state if the hub's upstream port link transitions to the eSS.Disabled state and Upstream PORT VBUS is on.\n  - From any state if the hub's upstream port link has attempted eight consecutive Rx.Detect events without detecting far-end receiver terminations and the receiver termination (near-end) of the hub's downstream port is ready to be turned off.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 483,
+      "bottomRightX": 671,
+      "bottomRightY": 515,
+      "content": "The downstream port's termination is considered to be ready to turn off when any of following conditions is met.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 521,
+      "bottomRightX": 527,
+      "bottomRightY": 589,
+      "content": "- Warm reset signaling has completed.\n- The port is power switched.\n- The port is in a powered on state and not performing a warm reset\n- No device is connected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 596,
+      "bottomRightX": 657,
+      "bottomRightY": 612,
+      "content": "A port shall remain in the DSPORT.Powered-off state until the following conditions are met.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 616,
+      "bottomRightX": 650,
+      "bottomRightY": 686,
+      "content": "- The hub's Upstream Port link has detected far-end receiver terminations. Note that this requires Upstream Port VBUS to be on.\n- No \"power-off\" condition is true.\n- No Overcurrent condition is active.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 692,
+      "bottomRightX": 700,
+      "bottomRightY": 727,
+      "content": "If a hub was configured while the local power supply was present and then if local power is lost, the hub shall place all ports in the Powered-off state if power remains to run the hub controller.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 731,
+      "bottomRightX": 570,
+      "bottomRightY": 748,
+      "content": "In the DSPORT.Powered-off state, the port's link is in the eSS.Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 753,
+      "bottomRightX": 700,
+      "bottomRightY": 853,
+      "content": "Table 10-2 shows the allowed state of VBUS for hub downstream ports for possible states of the hub upstream port and logical port power for a downstream port. The table covers the case where the hub has adequate power to provide power for the downstream ports (local power source is present). For a hub that does not implement per port power control, all downstream ports that will be affected by removing VBUS shall be in a state where power may be off (refer to Table 10-2) before the hub removes VBUS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 859,
+      "bottomRightX": 680,
+      "bottomRightY": 893,
+      "content": "Note: a hub may provide power to all its downstream ports all of the time to support applications such as battery charging from a USB port. Such hubs must ensure that Enhanced SuperSpeed",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "10-17",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

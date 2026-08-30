@@ -1,0 +1,103 @@
+{
+  "index": 567,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 537 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 241,
+      "topLeftY": 92,
+      "bottomRightX": 547,
+      "bottomRightY": 110,
+      "content": "Figure E-32. Illustration of Host Insertion Loss",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 119,
+      "bottomRightX": 546,
+      "bottomRightY": 358,
+      "content": "![img-227.jpeg](img-227.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-227.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 390,
+      "bottomRightX": 668,
+      "bottomRightY": 468,
+      "content": "Figure E-33 shows an example of a long channel insertion loss. The channel insertion loss without an LRD is about -33dB, far exceeding the spec budget of 23 dB. If we target to have an equalized channel insertion loss of 20 dB (3 dB less than the spec budget), even the highest LRD gain will not be able to achieve it. So, in this example, the LRD might not have enough EQ gain range to support this channel.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 479,
+      "bottomRightX": 651,
+      "bottomRightY": 526,
+      "content": "Insertion loss is certainly not the only parameter that impacts signal integrity. Channel crosstalk and reflection can seriously degrade link margin and efforts should be made by system integrators to minimize crosstalk and reflection.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 537,
+      "bottomRightX": 558,
+      "bottomRightY": 554,
+      "content": "Figure E-33. Illustration of Channel Insertion Loss",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 193,
+      "topLeftY": 566,
+      "bottomRightX": 591,
+      "bottomRightY": 885,
+      "content": "![img-228.jpeg](img-228.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-228.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

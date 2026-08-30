@@ -1,0 +1,123 @@
+{
+  "index": 465,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 435 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 525,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 94,
+      "bottomRightX": 298,
+      "bottomRightY": 110,
+      "content": "# **SuperSpeed USB Device Capability**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 108,
+      "bottomRightX": 491,
+      "bottomRightY": 278,
+      "content": "|  bLength | 10  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | SUPERSPEED_USB  |\n|  bmAttributes | Implementation-dependent  |\n|  wSpeedsSupported | 14  |\n|  bFunctionalitySupport | 1  |\n|  bU1DevExitLat | Implementation-dependent  |\n|  wU2DevExitLat | Implementation-dependent  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-225.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 295,
+      "bottomRightX": 320,
+      "bottomRightY": 310,
+      "content": "# **SuperSpeedPlus USB Device Capability**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 310,
+      "bottomRightX": 491,
+      "bottomRightY": 542,
+      "content": "|  bLength | 28  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | SUPERSPEED_PLUS  |\n|  bReserved | 0  |\n|  bmAttributes | 13H  |\n|  wFunctionalitySupport | 1  |\n|  wReserved | 0  |\n|  bmSublinkSpeedAttr[0] | Implementation-dependent  |\n|  bmSublinkSpeedAttr[1] | Implementation-dependent  |\n|  bmSublinkSpeedAttr[2] | Implementation-dependent  |\n|  bmSublinkSpeedAttr[3] | Implementation-dependent  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-226.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 561,
+      "bottomRightX": 182,
+      "bottomRightY": 576,
+      "content": "# **ContainerID**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 576,
+      "bottomRightX": 491,
+      "bottomRightY": 682,
+      "content": "|  bLength | 20  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | CONTAINER_ID  |\n|  bReserved | 0  |\n|  ContainerID | Implementation-dependent  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-227.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 701,
+      "bottomRightX": 272,
+      "bottomRightY": 715,
+      "content": "# **Precision Time Measurement**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 715,
+      "bottomRightX": 491,
+      "bottomRightY": 780,
+      "content": "|  bLength | 3  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | PRECISION_TIME_MEASUREMENT  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-228.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

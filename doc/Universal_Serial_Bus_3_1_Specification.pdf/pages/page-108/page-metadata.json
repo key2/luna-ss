@@ -1,0 +1,102 @@
+{
+  "index": 107,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 103,
+      "bottomRightX": 518,
+      "bottomRightY": 124,
+      "content": "### 5.3.1.4 USB 3.1 Standard-A Connector Color Coding",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 129,
+      "bottomRightX": 698,
+      "bottomRightY": 180,
+      "content": "Since both the USB 2.0 Standard-A and USB 3.1 Standard-A receptacles may co-exist on a host, color coding is recommended for the USB 3.1 Standard-A connector (receptacle and plug) housings to help users distinguish it from the USB 2.0 Standard-A connector.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 184,
+      "bottomRightX": 698,
+      "bottomRightY": 253,
+      "content": "Blue (Pantone 300C) is the recommended color for the USB 3.1 Standard-A receptacle and plug plastic housings. When the recommended color is used, connector manufacturers and system integrators should make sure that the blue-colored receptacle housing is visible to users. Figure 5-8 illustrates the color coding recommendation for the USB 3.1 Standard-A connector.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 345,
+      "bottomRightX": 649,
+      "bottomRightY": 583,
+      "content": "![img-47.jpeg](img-47.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-47.jpeg"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 645,
+      "bottomRightX": 627,
+      "bottomRightY": 678,
+      "content": "Figure 5-8. Illustration of Color Coding Recommendation for USB 3.1 Standard-A Connector",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 691,
+      "bottomRightX": 454,
+      "bottomRightY": 713,
+      "content": "### 5.3.2 USB 3.1 Standard-B Connector",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 728,
+      "bottomRightX": 329,
+      "bottomRightY": 747,
+      "content": "#### 5.3.2.1 Interface Definition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 754,
+      "bottomRightX": 673,
+      "bottomRightY": 806,
+      "content": "Figure 5-9, Figure 5-10, and Figure 5-11 show the USB Standard-B receptacle dimensions, the USB Standard-B plug dimensions, and a USB Standard-B receptacle reference footprint, respectively. See Section 5.6.1.2 for target characteristic impedance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 994,
+      "content": "5-20",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

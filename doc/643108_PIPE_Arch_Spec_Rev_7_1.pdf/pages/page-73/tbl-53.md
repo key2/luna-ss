@@ -1,0 +1,3 @@
+|  Name | Active Level | Description | Relevant Protocols  |
+| --- | --- | --- | --- |
+|  TxCompliance | High | **This signal is not used in the SerDes architecture.** PCIe mode: Sets the running disparity to negative. Used when transmitting the PCIe compliance pattern. Implementation of this signal is only required for PHYs that support the PCIe mode. This signal is sampled by TxDataValid. | PCIe  |

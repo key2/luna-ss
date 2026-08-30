@@ -1,0 +1,155 @@
+{
+  "index": 245,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 681,
+      "bottomRightY": 143,
+      "content": "- The port shall reinitiate low power link state entry process described in Section 7.2.4.2.3 and 7.2.4.2.4 upon re-entry to U0 from Recovery if the conditions to enter a low power link state are still valid.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 160,
+      "bottomRightX": 419,
+      "bottomRightY": 176,
+      "content": "### 7.2.4.2.7 Low Power Link State Exit Flow",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 180,
+      "bottomRightX": 694,
+      "bottomRightY": 230,
+      "content": "Exit from a low power link state refers to exit from U1/U2, or wakeup from U3. It is accomplished by the LFPS Exit signaling defined in Section 6.9.2. A successful LFPS handshake process will lead both a downstream port and an upstream port to Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 232,
+      "bottomRightX": 688,
+      "bottomRightY": 266,
+      "content": "A Ux_EXIT_TIMER defined in Section 7.2.4.2.1 is only applied when a port is attempting an exit from U1 or U2. It shall not be applied when a port is initiating a U3 wakeup.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 267,
+      "bottomRightX": 680,
+      "bottomRightY": 301,
+      "content": "The exit from U1/U2 shall meet the following flow. The U3 wakeup follows the same flow with the exception that Ux_EXIT_TIMER is disabled during U3 wakeup.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 302,
+      "bottomRightX": 694,
+      "bottomRightY": 495,
+      "content": "- If a port is initiating U1/U2 Exit, it shall start sending U1/U2 LFPS Exit handshake signal defined in Section 6.9.2 and start the Ux_EXIT_TIMER.\n- If a port is initiating U3 wakeup, it shall start sending U3 LFPS wakeup handshake signal defined in Section 6.9.2.\n- A port upon receiving U1/U2 Exit or U3 wakeup LFPS handshake signal shall start U1/U2 exit or U3 wakeup by responding with U1/U2 Exit or U3 wakeup LFPS signal defined in Section 6.9.2.\n- Upon a successful LFPS handshake before tNoLFPSResponseTimeout defined in Table 6-30, a port shall transition to Recovery.\n- A port initiating U1 or U2 Exit shall transition to eSS.Inactive if one of the following two conditions is met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 497,
+      "bottomRightX": 680,
+      "bottomRightY": 548,
+      "content": "1. Upon tNoLFPSResponseTimeout and the condition of a successful LFPS handshake is not met.\n2. Upon Ux_EXIT_TIMER timeout, the link has not transitioned to U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 550,
+      "bottomRightX": 673,
+      "bottomRightY": 600,
+      "content": "- A port initiating U3 wakeup shall remain in U3 when the condition of a successful LFPS handshake is not met upon tNoLFPSResponseTimeout and it may initiate U3 wakeup again after a minimum of 100-ms delay.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 601,
+      "bottomRightX": 676,
+      "bottomRightY": 636,
+      "content": "- A root port not able to respond to U3 LFPS wakeup within tNoLFPSResponseTimeout shall initiate U3 LFPS wakeup when it is ready to return to U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 659,
+      "bottomRightX": 423,
+      "bottomRightY": 683,
+      "content": "## 7.3 Link Error Rules/Recovery",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 698,
+      "bottomRightX": 580,
+      "bottomRightY": 719,
+      "content": "### 7.3.1 Overview of Enhanced SuperSpeed Bit Errors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 724,
+      "bottomRightX": 698,
+      "bottomRightY": 774,
+      "content": "The Enhanced SuperSpeed timing budget is based on a link's statistical random bit error probability less than 10⁻¹². Packet framings and link command framing are tolerant to one symbol error. Details on bit error detection under link flow control are described in Section 7.2.4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 791,
+      "bottomRightX": 552,
+      "bottomRightY": 812,
+      "content": "### 7.3.2 Link Error Types, Detection, and Recovery",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 816,
+      "bottomRightX": 698,
+      "bottomRightY": 902,
+      "content": "Data transfers between the two link partners are carried out using the form of a packet. A set of link commands is defined to ensure the successful packet flow across the link. Other link commands are also defined to manage the link connectivity. When symbol errors occur on the link, the integrity of a packet or a link command can be compromised. Therefore, not only a packet or a link command needs to be constructed to increase the error tolerance, but the link data integrity",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-34",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

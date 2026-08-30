@@ -1,0 +1,129 @@
+{
+  "index": 617,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 679,
+      "bottomRightY": 161,
+      "content": "3. The final hop requires Hub1:DP2 to signal LFPS over Link3 at which point the final component of the end to end latency is executed by the Link3 partners in parallel. This final ingredient to the end to end latency is characterized by the larger of Hub1:U2DEL and Dev2_UP:U2DEL.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 167,
+      "bottomRightX": 584,
+      "bottomRightY": 182,
+      "content": "The total exit latency for end to end link transition to U0 can be summarized as:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 193,
+      "bottomRightX": 675,
+      "bottomRightY": 210,
+      "content": "Max(RP2:U2DEL, Hub1:U2DEL) + HSD + Hub1:HHDL + Max(Hub1:U2DEL, Dev2_UP:U2DEL)",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 228,
+      "bottomRightX": 381,
+      "bottomRightY": 246,
+      "content": "### C.2.2.2 Device Initiated Transition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 251,
+      "bottomRightX": 680,
+      "bottomRightY": 283,
+      "content": "This section provides some examples for calculating end to end exit latencies for device initiated exit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 298,
+      "bottomRightX": 321,
+      "bottomRightY": 315,
+      "content": "### U1 → U0 Transition Latency",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 328,
+      "bottomRightX": 698,
+      "bottomRightY": 379,
+      "content": "This example highlights the end to end latency incurred when transitioning both Link2 and Link3 from U1 → U0. For the purposes of this example it is assumed that all link partners are enabled for U1 and that both Link2 and Link3 are currently in the U1 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 387,
+      "bottomRightX": 700,
+      "bottomRightY": 421,
+      "content": "Figure C-7 depicts the end to end link state transition in chronological order. Following the figure a more detailed description of the sequence is provided.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 250,
+      "topLeftY": 445,
+      "bottomRightX": 573,
+      "bottomRightY": 680,
+      "content": "![img-297.jpeg](img-297.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-297.jpeg"
+    },
+    {
+      "topLeftX": 209,
+      "topLeftY": 692,
+      "bottomRightX": 614,
+      "bottomRightY": 711,
+      "content": "Figure C-7. Upstream Device to Host Path Exit Latency with Hub",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 724,
+      "bottomRightX": 691,
+      "bottomRightY": 862,
+      "content": "1. Dev2 is prepared to send a packet upstream to the host. However, it first needs to bring Link3 out of U1 and back to U0 before it is able to send the packet. Dev2 begins the process by transmitting LFPS to Hub1:DP2 which then starts both link partners transitioning in parallel towards U0. The Link3 exit latency (Link3_EL) is characterized by the larger of Dev2_UP:U1DEL and Hub1_DP2:U1DEL.\n2. After a latency of tHubPort2PortU1EL, the time it takes the hub to determine that one of its downstream ports is awakening, the hub then begins signaling LFPS on Link2 to initiate transition of the Link2 partners (hub's upstream port and host controller root port RP2) to U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 119,
+      "bottomRightY": 994,
+      "content": "C-20",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "index": 443,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 698,
+      "bottomRightY": 279,
+      "content": "The Halt feature is required to be implemented for all interrupt and bulk endpoint types. If the endpoint is currently halted, then the Halt feature is set to one. Otherwise, the Halt feature is reset to zero. The Halt feature may optionally be set with the SetFeature(ENDPOINT_HALT) request. When set by the SetFeature() request, the endpoint exhibits the same stall behavior as if the field had been set by a hardware condition. If the condition causing a halt has been removed, clearing the Halt feature via a ClearFeature(ENDPOINT_HALT) request results in the endpoint no longer returning a STALL Transaction Packet. Regardless of whether an endpoint has the Halt feature set, a ClearFeature(ENDPOINT_HALT) request always results in the data sequence being reinitialized to zero, and if Streams are enabled, the Stream State Machine shall be reinitialized to the Disabled state. The Halt feature is reset to zero after either a SetConfiguration() or SetInterface() request even if the requested configuration or interface is the same as the current configuration or interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 287,
+      "bottomRightX": 698,
+      "bottomRightY": 322,
+      "content": "Enhanced SuperSpeed devices do not support functional stall on control endpoints and hence do not require the Halt feature be implemented for any control endpoints.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 154,
+      "topLeftY": 345,
+      "bottomRightX": 670,
+      "bottomRightY": 530,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Reserved (Reset to Zero) |   |   |   |   |   | PTM Valid | PTM Enable  |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D9 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |\n|  D23 | D22 | D21 | D20 | D19 | D18 | D17 | D16  |\n|  PTM Link Delay (low byte)  |   |   |   |   |   |   |   |\n|  D31 | D30 | D29 | D28 | D27 | D26 | D25 | D24  |\n|  PTM Link Delay (high byte)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-163.md"
+    },
+    {
+      "topLeftX": 645,
+      "topLeftY": 535,
+      "bottomRightX": 669,
+      "bottomRightY": 544,
+      "content": "U-085a",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 165,
+      "topLeftY": 560,
+      "bottomRightX": 658,
+      "bottomRightY": 579,
+      "content": "Figure 9-7. Information Returned by a PTM GetStatus() Request to an Endpoint",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 592,
+      "bottomRightX": 684,
+      "bottomRightY": 625,
+      "content": "The status fields defined by Figure 9-7 are returned by a PTM_STATUS type request to a Device recipient.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 634,
+      "bottomRightX": 698,
+      "bottomRightY": 770,
+      "content": "The LDM Enabled flag indicates whether the device is currently enabled to participate in Precision Time Measurement (PTM). If D5 is set to zero, the device is disabled from executing the LDM protocol and providing a local bus interval boundary reference, otherwise; it is enabled to execute the LDM protocol. The LDM Enabled flag can be modified by the SetFeature() and ClearFeature() requests using the LDM_ENABLE feature selector. This field shall be set to one when the device is reset, allowing a PTM capable device to automatically attempt to participate in LDM with its upstream partner. If a Requestor is unable to successfully establish LDM Timestamp Exchanges in its Responder, then the LDM Enabled field shall be cleared to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 777,
+      "bottomRightX": 695,
+      "bottomRightY": 811,
+      "content": "The LDM Valid field indicates whether the LDM Link Delay is valid, otherwise; it is invalid. LDM Valid shall be zero if LDM Enabled is zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 820,
+      "bottomRightX": 684,
+      "bottomRightY": 871,
+      "content": "The LDM Link Delay field is in tIsochTimestampGranularity units. If LDM Valid is one, then the LDM Link Delay field defines the link delay value measured by the PTM LDM mechanism. If LDM Valid is one, then the LDM Link Delay field shall be set to zero. Refer to section 8.4.8.4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "9-26",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

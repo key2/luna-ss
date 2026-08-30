@@ -1,0 +1,212 @@
+{
+  "index": 481,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 451 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 93,
+      "bottomRightX": 321,
+      "bottomRightY": 108,
+      "content": "### 10.16.2.7 Set Hub Descriptor",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 115,
+      "bottomRightX": 378,
+      "bottomRightY": 131,
+      "content": "This request overwrites the hub descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 141,
+      "bottomRightX": 670,
+      "bottomRightY": 211,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00100000B | SET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero | Descriptor Length | Descriptor  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-254.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 231,
+      "bottomRightX": 668,
+      "bottomRightY": 293,
+      "content": "The SetDescriptor request for the hub class descriptor follows the same usage model as that of the standard SetDescriptor request (refer to the Chapter 9). The standard hub descriptor is denoted by using the value bDescriptorType defined in Section 10.15.2.1. All hubs are required to implement one hub descriptor with descriptor index zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 305,
+      "bottomRightX": 654,
+      "bottomRightY": 350,
+      "content": "This request is optional. This request writes data to a class-specific descriptor. The host provides the data that is to be transferred to the hub during the data transfer stage of the control transaction. This request writes the entire hub descriptor at once.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 365,
+      "bottomRightX": 673,
+      "bottomRightY": 411,
+      "content": "Hubs shall buffer all the bytes received from this request to ensure that the entire descriptor has been successfully transmitted from the host. Upon successful completion of the bus transfer, the hub updates the contents of the specified descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 421,
+      "bottomRightX": 656,
+      "bottomRightY": 469,
+      "content": "It is a Request Error if wIndex is not zero or if wLength does not match the amount of data sent by the host. Hubs that do not support this request respond with a STALL during the Data stage of the request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 481,
+      "bottomRightX": 570,
+      "bottomRightY": 497,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 509,
+      "bottomRightX": 303,
+      "bottomRightY": 523,
+      "content": "### 10.16.2.8 Set Hub Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 530,
+      "bottomRightX": 427,
+      "bottomRightY": 547,
+      "content": "This request sets a value reported in the hub status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 556,
+      "bottomRightX": 659,
+      "bottomRightY": 602,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00100000B | SET_FEATURE | Feature Selector | Zero | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-255.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 623,
+      "bottomRightX": 645,
+      "bottomRightY": 654,
+      "content": "Setting a defined feature enables that feature. Status changes may not be acknowledged using this request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 666,
+      "bottomRightX": 657,
+      "bottomRightY": 697,
+      "content": "It is a Request Error if wValue is not a defined feature selector or if wIndex or wLength are not as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 710,
+      "bottomRightX": 570,
+      "bottomRightY": 726,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 739,
+      "bottomRightX": 295,
+      "bottomRightY": 755,
+      "content": "### 10.16.2.9 Set Hub Depth",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 762,
+      "bottomRightX": 652,
+      "bottomRightY": 793,
+      "content": "This request sets the value that the hub uses to determine the index into the Route String Index for the hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 804,
+      "bottomRightX": 659,
+      "bottomRightY": 849,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00100000B | SET_HUB_DEPTH | Hub Depth | Zero | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-256.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 869,
+      "bottomRightX": 660,
+      "bottomRightY": 901,
+      "content": "wValue has the value of the Hub Depth. The Hub Depth left shifted by two is the offset into the Route String that identifies the lsb of the Route String Port Field for the hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

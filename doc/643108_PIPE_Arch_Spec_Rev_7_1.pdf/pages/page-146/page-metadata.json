@@ -1,0 +1,75 @@
+{
+  "index": 145,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 121,
+      "bottomRightX": 602,
+      "bottomRightY": 167,
+      "content": "## 8.22 Implementation-Specific Timing and Selectable Parameter Support",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 171,
+      "bottomRightX": 686,
+      "bottomRightY": 215,
+      "content": "PHY vendors (macrocell or discrete) must specify typical and worst-case timings for the cases listed in Table 8-4. Other implementation specific parameters listed in Table 8-4 must also be specified advertised by the PHY in its datasheet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 228,
+      "bottomRightX": 539,
+      "bottomRightY": 246,
+      "content": "Table 8-4. Parameters Advertised in PHY Datasheet (Sheet 1 of 7)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 248,
+      "bottomRightX": 687,
+      "bottomRightY": 889,
+      "content": "|  Parameter | Description  |\n| --- | --- |\n|  Transmit Latency | Time for data moving between the parallel interface and the PCIe, SATA or USB serial lines. Timing is measured from when the data is transferred across the parallel interface (that is, the rising edge of **PCLK**) and when the first bit of the equivalent 10-bit symbol is transmitted on the **Tx+/Tx-** serial lines. The PHY reports the latency for each operational mode the PHY supports. **Note:** If the transmit latency is different when EncodeDecodeBypass is asserted – the PHY must report this latency separately.  |\n|  Receive Latency | Time for data moving between the parallel interface and the PCIe, SATA or USB serial lines. Timing is measured from when the first bit of a 10-bit symbol is available on the **Rx+/Rx-** serial lines to when the corresponding 8-bit data is transferred across the parallel interface (that is, the rising edge of **PCLK**). The PHY reports the latency for each operational mode the PHY supports. The reported latency is the nominal latency assuming the elasticity buffer is full to its nominal operating level. **Note:** If the receive latency is different when EncodeDecodeBypass is asserted – the PHY must report this latency separately. Additionally, the expected latency must be reported separately for both elasticity buffer operating modes.  |\n|  Power State After Reset | The PHY power state immediately following reset. The state after reset needs to provide PCLK and have common mode off. Reporting this parameter is required if the PHY supports either SATA mode or PCIe mode at 8 GT/s.  |\n|  Loopback enable latency | Amount of time it takes the PHY to begin looping back receive data. Timed from when **TxDetectRx/Loopback** is asserted until the receive data is being transmitted on the serial pins. The PHY reports the latency for each operational mode the PHY supports.  |\n|  Transmit Beacon – PCIe Mode. | Timed from when the MAC directs the PHY to send a beacon (power state is P2 and **TxElecIdle** is deasserted) until the beacon signaling begins at the serial pins.  |\n|  Receive Beacon – PCIe Mode | Timed from when valid beacon signaling is present at the receiver pins until **RxElecIdle** is deasserted.  |\n|  Transmit LFPS – USB Mode | Timed from when the MAC directs the PHY to send LFPS signaling until the LFPS signaling begins at the serial pins. Times are reported for each possible P state if the times are different for different power states.  |\n|  Receive LFPS – USB Mode | Timed from when valid LFPS signaling is present at the receiver pins until **RxElecIdle** is deasserted.  |\n|  MinTimBeforeLFPS -- USB4 Mode, DP Mode | The minimum required time from when the MAC signals to the PHY that it plans to transmit LFPS to when the MAC starts to transmit LFPS. Time is specified independently for each protocol.  |\n|  MaxTimeBeforeLFPS – USB4 Mode, DP Mode | The maximum allowable time from when the MAC signals to the PHY that it plans to transmit LFPS to when the MAC must start transmitting LFPS. Time is specified independently for each protocol.  |\n|  MinTimeEIAfterLFPS – USB4 Mode, DP Mode | The minimum required time in Electrical Idle after the MAC stops transmitting LFPS before the MAC is permitted to start transmitting high speed data. Time is specified independently for each protocol.  |\n|  N_FTS with common clock (PCIe Mode) | Number of FTS ordered sets required by the receiver to obtain reliable bit and symbol lock when operating with a common clock. Note: This value may be required to be reported separately per rate.  |\n|  N_FTS without common clock (PCIe Mode) | Number of FTS ordered sets required by the receiver to obtain reliable bit and symbol lock when operating without a common clock. Note: This value may be required to be reported separately per rate.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-134.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "146",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

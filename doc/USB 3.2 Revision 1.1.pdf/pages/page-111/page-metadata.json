@@ -1,0 +1,147 @@
+{
+  "index": 110,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 80 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 91,
+      "bottomRightX": 708,
+      "bottomRightY": 379,
+      "content": "![img-29.jpeg](img-29.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-29.jpeg"
+    },
+    {
+      "topLeftX": 343,
+      "topLeftY": 395,
+      "bottomRightX": 447,
+      "bottomRightY": 412,
+      "content": "Gen 2 eye mask",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 438,
+      "bottomRightX": 311,
+      "bottomRightY": 454,
+      "content": "### 6.6.2 Voltage Level Definitions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 461,
+      "bottomRightX": 671,
+      "bottomRightY": 507,
+      "content": "Referring to Figure 6-18, the differential voltage, $V_{DIFF}$, is the voltage on Txp (Rxp at the receiver) with respect to Txn (Rxn at the receiver). $V_{DIFF}$ is the same voltage as the swing on the single signal of one conductor. The differential voltage is",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 518,
+      "bottomRightX": 266,
+      "bottomRightY": 535,
+      "content": "(4) $V_{DIFF} = Txp - Txn$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 546,
+      "bottomRightX": 660,
+      "bottomRightY": 579,
+      "content": "The total differential voltage swing is the peak to peak differential voltage, $V_{DIFF-PP}$. This is twice the differential voltage. The peak to peak differential voltage is",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 590,
+      "bottomRightX": 269,
+      "bottomRightY": 606,
+      "content": "(5) $V_{DIFF-PP} = 2 * V_{DIFF}$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 619,
+      "bottomRightX": 674,
+      "bottomRightY": 650,
+      "content": "The Common Mode Voltage ($V_{CM}$) is the average voltage present on the same differential pair with respect to ground. This is measured, with respect to ground, as",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 662,
+      "bottomRightX": 294,
+      "bottomRightY": 678,
+      "content": "(6) $V_{CM} = (Txp + Txn) / 2.$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 689,
+      "bottomRightX": 675,
+      "bottomRightY": 736,
+      "content": "DC is defined as all frequency components below $F_{DC} = 30$ kHz. AC is defined as all frequency components at or above $F_{DC} = 30$ kHz. These definitions pertain to all voltage and current specifications.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 748,
+      "bottomRightX": 671,
+      "bottomRightY": 856,
+      "content": "An example waveform is shown in Figure 6-18. In this waveform, the peak-to-peak differential voltage, $V_{DIFF-PP}$ is 800 mV. The differential voltage, $V_{DIFF}$, is 400 mVPP. Note that while the center crossing point for both Txp and Txn is shown at 300 mV, the corresponding crossover point for the differential voltage is at 0.0 V. The center crossing point at 300 mV is also the common mode voltage, $V_{CM}$. Note these waveforms include de-emphasis. The actual amount of de-emphasis can vary depending on the transmitter setting according to the allowed ranges in Table 6-18.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

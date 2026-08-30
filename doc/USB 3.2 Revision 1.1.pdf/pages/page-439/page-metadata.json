@@ -1,0 +1,192 @@
+{
+  "index": 438,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 408 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 264,
+      "bottomRightY": 108,
+      "content": "### 10.8.2 SKP Ordered Sets",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 671,
+      "bottomRightY": 146,
+      "content": "A SuperSpeedPlus hub transmits SKP ordered sets, following the rules for all transmitters in Chapter 6, for all transmissions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 160,
+      "bottomRightX": 280,
+      "bottomRightY": 175,
+      "content": "### 10.8.3 Interpacket Spacing",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 181,
+      "bottomRightX": 647,
+      "bottomRightY": 212,
+      "content": "When a hub originates or forwards packets, DPHs and their corresponding DPPs shall be sent as required in Section 7.2.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 223,
+      "bottomRightX": 648,
+      "bottomRightY": 269,
+      "content": "The SuperSpeedPlus hub has several aspects to its store and forward behavior including buffering, arbitration among packets to be forwarded upstream, and modifications of packets during forwarding.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 284,
+      "bottomRightX": 327,
+      "bottomRightY": 299,
+      "content": "### 10.8.4 Upstream Flowing Buffering",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 304,
+      "bottomRightX": 671,
+      "bottomRightY": 396,
+      "content": "The SuperSpeedPlus hub shall provide buffering for 16 x 1 KB Control/Bulk DPP buffers and 16 x 1 KB Interrupt/Isochronous DPP buffers for each DFP receiver. The SuperSpeedPlus hub shall provide buffering for 16 x Control/Bulk header buffers and 16 x TP/Interrupt/Isochronous header buffers per DFP receiver. These buffers shall be used to hold packets received from downstream ports that are awaiting transmission on the upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 408,
+      "bottomRightX": 673,
+      "bottomRightY": 471,
+      "content": "Buffer space is required for each downstream port since there can be packets simultaneously arriving on each downstream port while there is a packet being transmitted on the upstream port. Further, the hub arbitration rules (see Section 10.8.6) can delay when a packet received on a downstream port can be transmitted on the upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 481,
+      "bottomRightX": 611,
+      "bottomRightY": 498,
+      "content": "Figure 10-17. Logical Representation of Upstream Flowing Buffers",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 508,
+      "bottomRightX": 723,
+      "bottomRightY": 708,
+      "content": "![img-178.jpeg](img-178.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-178.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 728,
+      "bottomRightX": 344,
+      "bottomRightY": 743,
+      "content": "### 10.8.5 Downstream Flowing Buffering",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 750,
+      "bottomRightX": 626,
+      "bottomRightY": 780,
+      "content": "The SuperSpeedPlus hub shall provide enough buffering depending on the speed and number of lanes on the upstream port and the number of downstream ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 793,
+      "bottomRightX": 657,
+      "bottomRightY": 824,
+      "content": "The number of 1KB Control/Bulk DPP buffers and 1KB Interrupt/Isochronous DPP buffers (NBuf) shall be calculated as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 836,
+      "bottomRightX": 586,
+      "bottomRightY": 852,
+      "content": "1. Determine the number of downstream ports to saturate upstream port",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 863,
+      "bottomRightX": 531,
+      "bottomRightY": 878,
+      "content": "SpeedRatio = Upstream port speed/Gen 1x1 speed",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 889,
+      "bottomRightX": 595,
+      "bottomRightY": 903,
+      "content": "Number of ports for saturation is N = Ceil (SpeedRatio)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

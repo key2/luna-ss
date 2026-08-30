@@ -1,0 +1,66 @@
+{
+  "index": 259,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 301,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 92,
+      "bottomRightX": 705,
+      "bottomRightY": 623,
+      "content": "![img-177.jpeg](img-177.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-177.jpeg"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 633,
+      "bottomRightX": 510,
+      "bottomRightY": 645,
+      "content": "Note: Transition conditions are illustrative only. Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 675,
+      "topLeftY": 645,
+      "bottomRightX": 705,
+      "bottomRightY": 655,
+      "content": "U-047A",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 707,
+      "bottomRightX": 640,
+      "bottomRightY": 724,
+      "content": "Figure 7-14. State Diagram of the Link Training and Status State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "7-48",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

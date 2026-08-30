@@ -1,0 +1,138 @@
+{
+  "index": 260,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 230 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 93,
+      "bottomRightX": 672,
+      "bottomRightY": 200,
+      "content": "- A Responder shall capture t2 timestamps upon receiving the last symbol of a LDM Request.\n- A Responder shall capture t3 timestamps upon transmitting the last symbol of a LDM Response.\n- A Requester shall capture t4 timestamps upon receiving the last symbol of a LDM Response.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 215,
+      "bottomRightX": 658,
+      "bottomRightY": 261,
+      "content": "Note that these rules assume that the Tx and Rx TS Delays in Figure 8-16 are zero, i.e. the Timestamp Measurement Planes and the TS LMP link boundary transmit and receive times are identical. Refer to Section 8.4.8.8 for how to adjust for actual Timestamp Delays.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 273,
+      "bottomRightX": 295,
+      "bottomRightY": 286,
+      "content": "### 8.4.8.10 LDM and Hubs",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 294,
+      "bottomRightX": 663,
+      "bottomRightY": 371,
+      "content": "A hub is both a Requester and a Responder, and acts as intermediary between its Upstream and Downstream Facing Ports. As a Requester, a hub utilizes the PTM LDM mechanism to issue LDM Requests on its Upstream Facing Port to identify the LDM Link Delay between itself and its upstream Responder. A hub utilizes the PTM HDM mechanism to update the Isochronous Timestamps of ITPs that it forwards downstream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 383,
+      "bottomRightX": 673,
+      "bottomRightY": 506,
+      "content": "A hub implementation has LDM Enabled and LDM Valid flags. Their states are determined by the Hub's Requester State Machine. The values of the LDM Enabled or LDM Valid flags in the hub's Responder State Machines track the Requester State Machine values; e.g., if LDM Enabled or LDM Valid in the Requester State Machine transition to 0, then all of the hub's Responder State Machine shall transition to the Responder Disabled state. When both LDM Enabled and LDM Valid in the Requester State Machine transition to 1, then all of the hub's Responder State Machine shall transition to the Init Request state. A hub does not have LDM Enabled or LDM Valid flags per downstream facing port Responder State Machine.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 517,
+      "bottomRightX": 673,
+      "bottomRightY": 670,
+      "content": "The USB topology is enumerated from the Root Hub port down; i.e., a hub must be in the Configured state before its downstream ports are active. The PTM timing parameters are selected so that, for typical enumeration sequences, the LDM Link Delay is established in a hub before it transitions to the Configured state. This means that the hub's Responder State Machines should be in the Init Request state as soon as its downstream ports are operational and that no software intervention is required to enable LDM. If the Requester of a device attached to a Downstream Facing Port is unable to establish the LDM Link Delay in timely manner, it may transition to the LDM Disabled state and require software to manually start LDM Exchanges. An alternative is for PTM aware enumeration software to verify that PTM capable hubs have established the LDM Link Delay before configuring them.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 682,
+      "bottomRightX": 421,
+      "bottomRightY": 697,
+      "content": "### 8.4.8.11 Link Delay Measurement (LDM) LMP",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 705,
+      "bottomRightX": 639,
+      "bottomRightY": 736,
+      "content": "LDM LMPs shall be used in a LDM Timestamp Exchange to measure the link delay on an upstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 319,
+      "topLeftY": 748,
+      "bottomRightX": 469,
+      "bottomRightY": 763,
+      "content": "Figure 8-17. LDM LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 773,
+      "bottomRightX": 655,
+      "bottomRightY": 882,
+      "content": "![img-110.jpeg](img-110.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-110.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

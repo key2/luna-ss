@@ -1,0 +1,93 @@
+{
+  "index": 581,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 308,
+      "bottomRightY": 128,
+      "content": "### 11.4.4.2 Dynamic Detach",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 136,
+      "bottomRightX": 694,
+      "bottomRightY": 289,
+      "content": "When a device is detached from the network with power flowing in the cable, the inductance of the cable will cause a large flyback voltage to occur on the open end of the device cable. This flyback voltage is not destructive. Proper bypass measures on the hub ports will suppress any coupled noise. This will require some low capacitance, very low inductance bypass capacitors on each hub port connector. The flyback voltage and the noise it creates are also moderated by the bypass capacitance on the device end of the cable. Also, there must be some minimum capacitance on the device end of the cable to ensure that the inductive flyback on the open end of the cable does not cause the voltage on the device end to reverse polarity. A minimum of 1.0 μF is recommended for bypass across VBUS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 305,
+      "bottomRightX": 451,
+      "bottomRightY": 326,
+      "content": "### 11.4.5 VBUS Electrical Characteristics",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 341,
+      "bottomRightX": 379,
+      "bottomRightY": 356,
+      "content": "Table 11-2. DC Electrical Characteristics",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 359,
+      "bottomRightX": 652,
+      "bottomRightY": 591,
+      "content": "|  Parameter | Symbol | Conditions | Min. | Max. | Units  |\n| --- | --- | --- | --- | --- | --- |\n|  **Supply Voltage:**  |   |   |   |   |   |\n|  Port (downstream connector) | VBUS |  | 4.45 | 5.25 | V  |\n|  Port (upstream connector) | VBUS |  | 4.0 |  | V  |\n|  **Supply Current:**  |   |   |   |   |   |\n|  High-power Hub Port (out) | ICCPRT |  | 900 |  | mA  |\n|  Low-power Hub Port (out) | ICCUPT |  | 150 |  | mA  |\n|  High-power Peripheral Device (in) | ICCHPF |  |  | 900 | mA  |\n|  Low-power Peripheral Device (in) | ICCLPF |  |  | 150 | mA  |\n|  Unconfigured Device (in) | ICCINIT |  |  | 150 | mA  |\n|  Suspended High-power Device | ICCS |  |  | 2.5 | mA  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-256.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 605,
+      "bottomRightX": 378,
+      "bottomRightY": 625,
+      "content": "### 11.4.6 Powered-B Connector",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 631,
+      "bottomRightX": 542,
+      "bottomRightY": 648,
+      "content": "The Powered-B connector was defined by USB 3.0 has been deprecated.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "11-10",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

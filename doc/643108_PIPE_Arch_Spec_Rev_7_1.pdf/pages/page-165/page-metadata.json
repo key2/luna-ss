@@ -1,0 +1,75 @@
+{
+  "index": 164,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 121,
+      "bottomRightX": 397,
+      "bottomRightY": 143,
+      "content": "### 8.33 PHY Recalibration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 152,
+      "bottomRightX": 697,
+      "bottomRightY": 338,
+      "content": "In certain situations, the PHY may need to be recalibrated. These situations may include changes in operating conditions, for instance, Vref changes, or detection of certain error conditions. The PIPE specification provides mechanisms for either the controller or the PHY to initiate recalibration. Recalibration must occur during Recovery, so if the PHY determines that a recalibration is necessary, it notifies the controller that it should enter Recovery and request a recalibration. Figure 8-43 shows the sequence of message bus commands for a controller initiated PHY recalibration. Figure 8-44 shows the sequence of message bus commands for a PHY initiated PHY recalibration; this sequence essentially consists of the PHY notifying the controller that it should request a recalibration, then the controller follows the same steps as it would for a controller initiated PHY recalibration. After the PHY notifies the controller that the recalibration operation is complete by setting the IORecalDone bit, the controller is permitted to exit Recovery and resume normal operation on the link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 345,
+      "bottomRightX": 456,
+      "bottomRightY": 361,
+      "content": "Figure 8-43. PHY Recalibration Initiated by Controller",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 365,
+      "bottomRightX": 700,
+      "bottomRightY": 623,
+      "content": "![img-64.jpeg](img-64.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-64.jpeg"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 965,
+      "content": "165",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

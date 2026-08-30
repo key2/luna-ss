@@ -1,0 +1,200 @@
+{
+  "index": 99,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 61,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 708,
+      "bottomRightY": 123,
+      "content": "8. The test fails if the Port Configuration exchange sequences are not successful or the link does not stay in U0 for at least 50ms.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 205,
+      "bottomRightX": 440,
+      "bottomRightY": 223,
+      "content": "### TD.7.40 Polling Retry Test (Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 225,
+      "bottomRightX": 591,
+      "bottomRightY": 256,
+      "content": "This test verifies that the PUT recovers to Rx.Detect twice, and then eSS.Inactive when tPollingLFPSTimeout expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 262,
+      "bottomRightX": 234,
+      "bottomRightY": 276,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 284,
+      "bottomRightX": 195,
+      "bottomRightY": 299,
+      "content": "7.3.10#2,3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 307,
+      "bottomRightX": 189,
+      "bottomRightY": 321,
+      "content": "7.5.4.2#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 329,
+      "bottomRightX": 208,
+      "bottomRightY": 344,
+      "content": "7.5.4.3.2#6,7",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 352,
+      "bottomRightX": 208,
+      "bottomRightY": 367,
+      "content": "7.5.4.8.2#3,4",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 375,
+      "bottomRightX": 198,
+      "bottomRightY": 389,
+      "content": "7.5.4.9.2#3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 397,
+      "bottomRightX": 253,
+      "bottomRightY": 415,
+      "content": "#### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 420,
+      "bottomRightX": 629,
+      "bottomRightY": 481,
+      "content": "1. The LVS presents terminations and does not send any signal for the remainder of the test.\n2. The test fails if the PUT does not transition to Polling.LFPS within 200ms.\n3. For a PUT with a captive re-timer:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 487,
+      "bottomRightX": 671,
+      "bottomRightY": 549,
+      "content": "(1) The test fails if the PUT does not transition to Rx.Detect after 24 ms.\n(2) The test fails if the PUT does not transition to Polling.LFPS within 8ms.\n(3) The test fails if the PUT does not continue this cycle up to tPollingLFPSTimeout expiration.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 555,
+      "bottomRightX": 671,
+      "bottomRightY": 616,
+      "content": "4. The test fails if the PUT does not transition to Rx.Detect within tPollingLFPSTimeout expiration.\n5. The test fails if the PUT does not transition to Polling.LFPS within 200ms.\n6. For a PUT with a captive re-timer:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 624,
+      "bottomRightX": 671,
+      "bottomRightY": 685,
+      "content": "(1) The test fails if the PUT does not transition to Rx.Detect after 24 ms.\n(2) The test fails if the PUT does not transition to Polling.LFPS within 8ms.\n(3) The test fails if the PUT does not continue this cycle up to tPollingLFPSTimeout expiration.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 691,
+      "bottomRightX": 671,
+      "bottomRightY": 753,
+      "content": "7. The test fails if the PUT does not transition to Rx.Detect within tPollingLFPSTimeout expiration.\n8. The test fails if the PUT does not transition to Polling.LFPS within 200ms.\n9. For a PUT with a captive re-timer:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 760,
+      "bottomRightX": 671,
+      "bottomRightY": 820,
+      "content": "(1) The test fails if the PUT does not transition to Rx.Detect after 24 ms.\n(2) The test fails if the PUT does not transition to Polling.LFPS within 8ms.\n(3) The test fails if the PUT does not continue this cycle up to tPollingLFPSTimeout expiration.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 826,
+      "bottomRightX": 684,
+      "bottomRightY": 910,
+      "content": "10. The test fails if the PUT does not transition to eSS.Inactive within tPollingLFPSTimeout expiration.\n11. If PUT is Gen 1, continue with the rest of the test steps.\n12. The LVS removes terms for 200ms and presents terms.\n13. The LVS and PUT transition through Polling.LFPS to Polling.Active.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "92",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "index": 543,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 95,
+      "bottomRightX": 359,
+      "bottomRightY": 112,
+      "content": "SuperSpeedPlus USB Device Capability",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 114,
+      "bottomRightX": 501,
+      "bottomRightY": 327,
+      "content": "|  bLength | 28  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | SUPERSPEED_PLUS  |\n|  bReserved | 0  |\n|  bmAttributes | 13H  |\n|  wFunctionalitySupport | 1  |\n|  wReserved | 0  |\n|  bmSublinkSpeedAttr[0] | 00050030H  |\n|  bmSublinkSpeedAttr[1] | 000500B0H  |\n|  bmSublinkSpeedAttr[2] | 000A4031H  |\n|  bmSublinkSpeedAttr[3] | 000A40B1H  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-219.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 353,
+      "bottomRightX": 200,
+      "bottomRightY": 368,
+      "content": "ContainerID",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 372,
+      "bottomRightX": 501,
+      "bottomRightY": 471,
+      "content": "|  bLength | 20  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | CONTAINER_ID  |\n|  bReserved | 0  |\n|  ContainerID | Implementation-dependent  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-220.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 498,
+      "bottomRightX": 297,
+      "bottomRightY": 512,
+      "content": "Precision Time Measurement",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 515,
+      "bottomRightX": 501,
+      "bottomRightY": 577,
+      "content": "|  bLength | 3  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | PRECISION_TIME_MEASUREMENT  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-221.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 602,
+      "bottomRightX": 447,
+      "bottomRightY": 620,
+      "content": "Configuration Descriptor (SuperSpeedPlus information)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 622,
+      "bottomRightX": 501,
+      "bottomRightY": 791,
+      "content": "|  bLength | 9  |\n| --- | --- |\n|  bDescriptorType | CONFIGURATION Descriptor type  |\n|  wTotalLength | 31  |\n|  bNumInterfaces | 1  |\n|  bConfigurationValue | X  |\n|  iConfiguration | Y  |\n|  bmAttributes | Z  |\n|  bMaxPower | The maximum amount of bus power the hub will consume in this configuration  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-222.md"
+    },
+    {
+      "topLeftX": 93,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-66",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

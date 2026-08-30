@@ -1,0 +1,212 @@
+{
+  "index": 366,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 336 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 136,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10000001B | GET_INTERFACE | Zero | Interface | One | Alternate Setting  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-157.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 141,
+      "bottomRightX": 673,
+      "bottomRightY": 173,
+      "content": "Some devices have configurations with interfaces that have mutually exclusive settings. This request allows the host to determine the currently selected alternate setting.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 184,
+      "bottomRightX": 652,
+      "bottomRightY": 201,
+      "content": "If wValue or wLength are not as specified above, then the device behavior is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 214,
+      "bottomRightX": 637,
+      "bottomRightY": 229,
+      "content": "If the interface specified does not exist, then the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 242,
+      "bottomRightX": 672,
+      "bottomRightY": 272,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 285,
+      "bottomRightX": 534,
+      "bottomRightY": 300,
+      "content": "Address state: A Request Error response is given by the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 313,
+      "bottomRightX": 634,
+      "bottomRightY": 329,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 341,
+      "bottomRightX": 224,
+      "bottomRightY": 354,
+      "content": "### 9.4.5 Get Status",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 363,
+      "bottomRightX": 440,
+      "bottomRightY": 379,
+      "content": "This request returns status for the specified recipient.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 389,
+      "bottomRightX": 676,
+      "bottomRightY": 470,
+      "content": "|  bmRequestType | bRequest | wValue |   | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  10000000B | GET_STATUS | Zero | Status Type | Zero | Status Type Length | Device, Interface, or Endpoint Status  |\n|  10000001B |   |   |   | Interface  |   |   |\n|  10000010B |   |   |   | Endpoint  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-158.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 476,
+      "bottomRightX": 667,
+      "bottomRightY": 552,
+      "content": "The Recipient bits of the bmRequestType field specify the desired recipient. The data returned is the current status of the specified recipient. If the recipient is an endpoint, then the lower byte of wIndex identifies the endpoint whose status is being queried. If the recipient is an interface, then the lower byte of wIndex identifies the interface whose status is being queried.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 564,
+      "bottomRightX": 515,
+      "bottomRightY": 581,
+      "content": "Only a Device is allowed as the Recipient for a PTM Status request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 592,
+      "bottomRightX": 671,
+      "bottomRightY": 640,
+      "content": "The wValue field specifies the Status type in the low order byte (refer to Table 9-8) and the high order byte is reserved. The Status Type is used to select a specific status register when several types of status registers are implemented in a device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 267,
+      "topLeftY": 651,
+      "bottomRightX": 520,
+      "bottomRightY": 668,
+      "content": "Table 9-8. Standard Status Type Codes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 677,
+      "bottomRightX": 676,
+      "bottomRightY": 765,
+      "content": "|  Status Type | Value | Status Type Length | Description  |\n| --- | --- | --- | --- |\n|  STANDARD_STATUS | 00H | 2 | Returns Standard Status Request information  |\n|  PTM_STATUS | 01H | 4 | Returns PTM Status Request information  |\n|  Reserved | 02-FFH |  | Reserved for future use  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-159.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 785,
+      "bottomRightX": 671,
+      "bottomRightY": 817,
+      "content": "If wLength is not as specified above or if wIndex is non-zero for a device status request, then the behavior of the device is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 828,
+      "bottomRightX": 664,
+      "bottomRightY": 859,
+      "content": "If an interface or an endpoint is specified that does not exist, then the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 871,
+      "bottomRightX": 673,
+      "bottomRightY": 903,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

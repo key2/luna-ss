@@ -1,0 +1,101 @@
+{
+  "index": 207,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 177 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 95,
+      "bottomRightX": 402,
+      "bottomRightY": 111,
+      "content": "#### **7.5.4.5.2 Polling.PortMatch Requirements**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 117,
+      "bottomRightX": 676,
+      "bottomRightY": 403,
+      "content": "- A 12 ms timer (tPollingLBPMLFPSTimeout) shall be started upon entry to the substate.\n- Upon entry to this substate from Polling.LFPSPlus, the port shall transmit continuous PHY Capability LBPMs defined in Table 7-13 to announce its highest PHY Capability.\n- Upon entry to this substate from Polling.Active, or Polling.Configuration, or Polling.Idle, the port shall transmit continuous PHY Capability LBPMs defined in Table 7-13 to announce its next highest PHY Capability from its previous PHY Capability.\n- The port shall decode received PHY Capability LBPM or PHY Ready LBPM and compare to its own PHY Capability.\n- The port with higher PHY capability shall adjust its PHY capability by transmitting PHY Capability LBPM that matches its link partner's.\n- The port with lower PHY capability shall continue transmitting its own PHY Capability LBPMs and monitoring the PHY Capability LBPMs from its link partner.\n- The two ports shall continue the interactive process of PHY Capability LBPM exchange as described above until they match the PHY Capability.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 424,
+      "bottomRightX": 375,
+      "bottomRightY": 439,
+      "content": "#### **7.5.4.5.3 Exit from Polling.PortMatch**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 446,
+      "bottomRightX": 679,
+      "bottomRightY": 776,
+      "content": "- The port shall transition to Polling.PortConfig when four consecutive and matched PHY Capability LBPMs are sent after two consecutive and matched PHY Capability LBPMs or PHY Ready LBPMs are received.\n  Note: A port exiting from Polling.PortMatch and ready for PHY operation without re-configuration may immediately transmit PHY Ready LBPMs.\n- A downstream port shall transition to Rx.Detect upon the 12 ms timer timeout (tPollingLBPMLFPSTimeout) and cPollingTimeout is less than two.\n- A downstream port shall transition to eSS.Inactive upon the 12 ms timer timeout (tPollingLBPMLFPSTimeout) and cPollingTimeout is two.\n- An upstream port of a hub shall transition to Rx.Detect upon the 12 ms timer timeout (tPollingLBPMLFPSTimeout) and the conditions to transition to Polling.PortConfig are not met.\n- A peripheral device shall transition to eSS.Disabled upon the 12 ms timer timeout (tPollingLBPMLFPSTimeout) and the conditions to transition to Polling.PortConfig are not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 797,
+      "bottomRightX": 271,
+      "bottomRightY": 813,
+      "content": "#### **7.5.4.6 Polling.PortConfig**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 818,
+      "bottomRightX": 671,
+      "bottomRightY": 881,
+      "content": "Polling.PortConfig is a substate where a port configures itself according to PHY Capability LBPM matched in Polling.PortMatch, and synchronizes with its link partner in exiting from this substate to Polling.RxEQ. It is also a substate for re-timers in x2 operation to announce its presence. Refer to Appendix E for additional details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

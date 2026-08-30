@@ -1,0 +1,76 @@
+{
+  "index": 61,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 510,
+      "bottomRightY": 138,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 14 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 690,
+      "bottomRightY": 582,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  RxStandby | High | SATA Mode: Controls whether the PHY RX is active when the PHY is in any power state with PCLK on. 0 – Active 1 – Standby RxStandby is ignored when the PHY is in any power state where the high speed receiver is always off. PCIe Mode: Controls whether the PHY RX is active when the PHY is in P0 or P0s. 0 – Active 1 – Standby RxStandby is ignored when the PHY is in states other than P0 or P0s. If RxStandby changes during IORecal, RxEqEval, or RxEqTraining operations, the PHY must abort the request and return the handshake acknowledgment. USB Mode and USB4 Mode: Controls whether the PHY RX is active when the PHY is in any power state with PCLK on. 0 – Active 1 – Standby RxStandby is ignored when the PHY is in any power state where the high speed receiver is always off. If RxStandby changes during IORecal, RxEqEval, or RxEqTraining operations, the PHY must abort the request and return the handshake acknowledgment. | PCIe, SATA, USB, USB4  |\n|  RxStandby2 | High | This signal corresponds to the Rx2 differential pair. | USB4  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-34.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 617,
+      "bottomRightX": 503,
+      "bottomRightY": 634,
+      "content": "Table 6-6. Command Interface Output Signals (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 637,
+      "bottomRightX": 690,
+      "bottomRightY": 816,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  RefClkRequired # | Low | This signal is deasserted by the PHY when the reference clock can be safely removed in low power states. This signal must remain asserted low in all states except P2, P1 and PowerDown states assigned to L1 substate support. While in P2, P1, or L1 substate PowerDown states, the PHY deasserts this signal when it is ready for reference clock removal. While in P2 or P1 or L1 substate PowerDown states, the PHY asserts this signal when it detects a P2 or P1 or L1 substate exit request. This signal is optionally implemented by the PHY. The MAC is required to prevent CLKREQ# from being deasserted if this signal is asserted. | PCIe  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-35.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 966,
+      "content": "62",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 689,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

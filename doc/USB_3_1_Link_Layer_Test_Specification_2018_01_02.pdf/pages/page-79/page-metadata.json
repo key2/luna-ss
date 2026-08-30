@@ -1,0 +1,209 @@
+{
+  "index": 78,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 92,
+      "bottomRightX": 424,
+      "bottomRightY": 109,
+      "content": "▪ If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 116,
+      "bottomRightX": 707,
+      "bottomRightY": 221,
+      "content": "a. The LVS prompts the test operator to have the PUT send a GetDeviceDescriptor request through USB30CV and then press “OK”.\nb. The test fails if no GetDeviceDescriptor request is received and the test operator has pressed “OK”.\nc. LVS transmits all LCRD2_X responses associated with the GetDeviceDescriptor request 200ns prior to the type 2 CREDIT_HP_TIMER deadline.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 227,
+      "bottomRightX": 699,
+      "bottomRightY": 258,
+      "content": "5. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 263,
+      "bottomRightX": 707,
+      "bottomRightY": 295,
+      "content": "6. The test passes if the exchanges are successful, no timeout is detected, no recovery is entered, all packets are successfully received, all credits are restored and the link stays in U0 for at least 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 354,
+      "bottomRightX": 396,
+      "bottomRightY": 371,
+      "content": "### TD.7.11 PENDING_HP_TIMER Timeout Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 375,
+      "bottomRightX": 621,
+      "bottomRightY": 390,
+      "content": "This test verifies that the PUT will go to recovery when the PENDING_HP_TIMER expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 396,
+      "bottomRightX": 235,
+      "bottomRightY": 411,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 420,
+      "bottomRightX": 203,
+      "bottomRightY": 432,
+      "content": "7.2.4.1.10#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 440,
+      "bottomRightX": 254,
+      "bottomRightY": 456,
+      "content": "#### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 463,
+      "bottomRightX": 702,
+      "bottomRightY": 517,
+      "content": "1. Do steps 1 to 3 of the Link Initialization Sequence.\n2. The LVS and the PUT will exchange the Port Configuration transaction, but the LVS will respond (with an LGOOD) to the first LMP packet sent by the PUT after expiration of the PENDING_HP_TIMER.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 523,
+      "bottomRightX": 434,
+      "bottomRightY": 539,
+      "content": "▪ If the LVS is configured as a Downstream Port:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 545,
+      "bottomRightX": 586,
+      "bottomRightY": 630,
+      "content": "a. LVS waits for the PUT’s Port Capability LMP.\nb. LVS verifies that the Port Capability LMP is valid.\nc. LVS will not respond to the PUT with an LGOOD.\nd. LVS transmits its Port Capability LMP and Port Configuration LMP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 636,
+      "bottomRightX": 424,
+      "bottomRightY": 652,
+      "content": "▪ If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 658,
+      "bottomRightX": 538,
+      "bottomRightY": 742,
+      "content": "a. LVS waits for the PUT to transmit its Port Capability LMP.\nb. LVS verifies that the Port Capability LMP is valid.\nc. LVS transmits its PUT Port Capability LMP.\nd. LVS will not respond to the PUT with an LGOOD.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 749,
+      "bottomRightX": 698,
+      "bottomRightY": 780,
+      "content": "3. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port, LDN when it is configured as a Downstream Port).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 786,
+      "bottomRightX": 687,
+      "bottomRightY": 818,
+      "content": "4. The test passes if the PUT goes to recovery after the PENDING_HP_TIMER deadline and before the PENDING_HP_TIMER expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 877,
+      "bottomRightX": 384,
+      "bottomRightY": 893,
+      "content": "### TD.7.12 CREDIT_HP_TIMER Timeout Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 895,
+      "bottomRightX": 610,
+      "bottomRightY": 912,
+      "content": "This test verifies that the PUT will go to recovery when the CREDIT_HP_TIMER expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 418,
+      "bottomRightY": 946,
+      "content": "71",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

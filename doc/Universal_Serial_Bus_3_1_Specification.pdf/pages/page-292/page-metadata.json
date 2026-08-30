@@ -1,0 +1,164 @@
+{
+  "index": 291,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 691,
+      "bottomRightY": 130,
+      "content": "- The port shall maintain its transmitter specifications defined in Table 6-17.\n- The port shall maintain its low-impedance receiver termination (R$_{RX-DC}$) defined in Table 6-21.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 144,
+      "bottomRightX": 311,
+      "bottomRightY": 162,
+      "content": "### 7.5.12.3 Hot Reset.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 168,
+      "bottomRightX": 657,
+      "bottomRightY": 185,
+      "content": "Hot Reset.Active is a substate where a port will perform the reset as defined in Section 7.4.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 191,
+      "bottomRightX": 417,
+      "bottomRightY": 209,
+      "content": "#### 7.5.12.3.1 Hot Reset.Active Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 213,
+      "bottomRightX": 623,
+      "bottomRightY": 247,
+      "content": "- Upon entry to this substate, the port shall first transmit at least 16 TS2 ordered sets continuously with the Reset bit asserted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 251,
+      "bottomRightX": 697,
+      "bottomRightY": 368,
+      "content": "Note: Depending on the time delay between the two ports entering Hot Reset, when the downstream port is transmitting the first 16 TS2 ordered sets with the Reset bit asserted, it may still receive part of the TS2 ordered sets from the upstream port exiting from Polling.Configuration or Recovery.Configuration. The downstream port shall ignore those TS2 ordered sets. Also upon entry to this substate, both ports shall ignore the Disabling Scrambling bit in the link configuration field of the TS2 Ordered Set. This bit is only decoded in Polling.Idle or Recovery.Idle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 372,
+      "bottomRightX": 691,
+      "bottomRightY": 529,
+      "content": "- A 12-ms timer (tHotResetActiveTimeout) shall be started upon entry to this substate.\n- A downstream port shall continue to transmit TS2 ordered sets with the Reset bit asserted until the upstream port transitions from sending TS2 ordered sets with the Reset bit asserted to sending the TS2 ordered sets with the Reset bit de-asserted.\n- An upstream port shall transmit TS2 ordered sets with the Reset bit asserted while performing the Hot Reset.\n- An upstream port shall transmit TS2 ordered sets with the Reset bit de-asserted after completing the Hot Reset.\n- The port shall perform Hot Reset described in Hot Reset requirement of this section.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 536,
+      "bottomRightX": 385,
+      "bottomRightY": 552,
+      "content": "#### 7.5.12.3.2 Exit from Hot Reset.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 558,
+      "bottomRightX": 648,
+      "bottomRightY": 574,
+      "content": "- The port shall transition to Hot Reset.Exit when the following three conditions are met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 576,
+      "bottomRightX": 682,
+      "bottomRightY": 644,
+      "content": "1. At least 16 TS2 ordered sets with the Reset bit asserted are transmitted.\n2. Two consecutive TS2 ordered sets are received with the Reset bit de-asserted.\n3. Four consecutive TS2 ordered sets with the Reset bit de-asserted are sent after receiving one TS2 ordered set with the Reset bit de-asserted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 648,
+      "bottomRightX": 656,
+      "bottomRightY": 757,
+      "content": "- The port shall transition to eSS.Inactive upon the 12-ms timer timeout (tHotResetActiveTimeout) and the conditions to transition to Hot Reset.Exit are not met.\n- The port in SuperSpeedPlus operation may ignore SDS OS if corrupted.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 771,
+      "bottomRightX": 293,
+      "bottomRightY": 788,
+      "content": "### 7.5.12.4 Hot Reset.Exit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 795,
+      "bottomRightX": 684,
+      "bottomRightY": 827,
+      "content": "Hot Reset.Exit is a substate where the port has completed Hot Reset and is ready to exit from Hot Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 835,
+      "bottomRightX": 400,
+      "bottomRightY": 853,
+      "content": "#### 7.5.12.4.1 Hot Reset.Exit Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 857,
+      "bottomRightX": 504,
+      "bottomRightY": 875,
+      "content": "- The port in SuperSpeed operation shall transmit idle symbols.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-80",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

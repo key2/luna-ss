@@ -1,0 +1,49 @@
+{
+  "index": 25,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 90,
+      "bottomRightX": 701,
+      "bottomRightY": 730,
+      "content": "|  10.16.2.2 | Clear Port Feature | 10-73  |\n| --- | --- | --- |\n|  10.16.2.3 | Get Hub Descriptor | 10-74  |\n|  10.16.2.4 | Get Hub Status | 10-74  |\n|  10.16.2.5 | Get Port Error Count | 10-76  |\n|  10.16.2.6 | Get Port Status | 10-76  |\n|  10.16.2.6.1 | Port Status Bits | 10-78  |\n|   | PORT_CONNECTION | 10-79  |\n|   | PORT_ENABLE | 10-79  |\n|   | PORT_OVER_CURRENT | 10-79  |\n|   | PORT_RESET | 10-80  |\n|   | PORT_LINK_STATE | 10-80  |\n|   | PORT_POWER | 10-80  |\n|   | PORT_SPEED | 10-80  |\n|  10.16.2.6.2 | Port Status Change Bits | 10-80  |\n|   | C_PORT_CONNECTION | 10-82  |\n|   | C_PORT_OVER_CURRENT | 10-82  |\n|   | C_PORT_RESET | 10-82  |\n|   | C_PORT_BH_RESET | 10-82  |\n|   | C_PORT_LINK_STATE | 10-82  |\n|   | C_PORT_CONFIG_ERROR | 10-82  |\n|  10.16.2.6.3 | Extended Port Status Bits | 10-83  |\n|   | TX_SUBLINK_SPEED_ID and RX_SUBLINK_SPEED_ID | 10-83  |\n|   | TX_LANE_COUNT and RX_LANE_COUNT | 10-83  |\n|  10.16.2.7 | Set Hub Descriptor | 10-83  |\n|  10.16.2.8 | Set Hub Feature | 10-84  |\n|  10.16.2.9 | Set Hub Depth | 10-84  |\n|  10.16.2.10 | Set Port Feature | 10-84  |\n|  10.17 | Host Root (Downstream) Ports | 10-88  |\n|  10.18 | Peripheral Device Upstream Ports | 10-88  |\n|  10.18.1 | Peripheral Device Upstream Ports | 10-88  |\n|  10.18.2 | Peripheral Device Upstream Port State Machine | 10-89  |\n|  10.18.2.1 | USDPORT-Powered-off | 10-90  |\n|  10.18.2.2 | USDPORT-Powered on | 10-91  |\n|  10.18.2.3 | USDPORT.Training | 10-91  |\n|  10.18.2.4 | USDPORT.Connected/Enabled | 10-91  |\n|  10.18.2.5 | USDPORT.Error | 10-91  |\n|  10.18.2.6 | USDPORT.Disabled | 10-92  |\n|  10.18.2.7 | USDPORT.Disabled_Error | 10-92  |\n|  10.19 | Hub Chapter Parameters | 10-93  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-19.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 736,
+      "bottomRightX": 698,
+      "bottomRightY": 757,
+      "content": "## 11 Interoperability and Power Delivery 11-1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 758,
+      "bottomRightX": 701,
+      "bottomRightY": 890,
+      "content": "|  11.1 | USB 3.1 Host Support for USB 2.0 | 11-1  |\n| --- | --- | --- |\n|  11.2 | USB 3.1 Hub Support for USB 2.0 | 11-2  |\n|  11.3 | USB 3.1 Device Support for USB 2.0 | 11-2  |\n|  11.4 | Power Distribution | 11-2  |\n|  11.4.1 | Classes of Devices and Connections | 11-3  |\n|  11.4.1.1 | Self-powered Hubs | 11-4  |\n|  11.4.1.1.1 | Over-current Protection | 11-4  |\n|  11.4.1.2 | Low-power Bus-powered Devices | 11-5  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-20.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 981,
+      "bottomRightX": 115,
+      "bottomRightY": 995,
+      "content": "xxvi",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

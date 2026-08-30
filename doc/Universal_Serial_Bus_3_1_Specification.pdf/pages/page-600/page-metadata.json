@@ -1,0 +1,165 @@
+{
+  "index": 599,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 364,
+      "bottomRightY": 127,
+      "content": "### C.1.1.1 Summary of Link States",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 132,
+      "bottomRightX": 571,
+      "bottomRightY": 150,
+      "content": "Table C-1 provides a summary characterization of the SuperSpeed link states.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 167,
+      "bottomRightX": 453,
+      "bottomRightY": 183,
+      "content": "Table C-1. Link States and Characteristics Summary",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 185,
+      "bottomRightX": 699,
+      "bottomRightY": 391,
+      "content": "|  Link State | Description | Characteristics | State Transition Initiator | Device Clock Gen On/Off | Typical Exit Latency Range  |\n| --- | --- | --- | --- | --- | --- |\n|  U0 | Link active | Link operational state | N/A | On | N/A  |\n|  U1 | Link idle – fast exit | Rx and Tx circuitry quiesced | Hardware^{1} | On or Off | μs  |\n|  U2 | Link idle – slower exit | Clock generation circuitry may additionally be quiesced | Hardware^{1} | On or Off^{2} | μs – ms  |\n|  U3 | Link suspend | Interface (e.g., Physical Layer) power may be removed | Entry: Software only Exit: Hardware or Software | Off | ms  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-268.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 393,
+      "bottomRightX": 158,
+      "bottomRightY": 403,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 408,
+      "bottomRightX": 645,
+      "bottomRightY": 421,
+      "content": "1. It is possible, under system test conditions, to instrument software initiated U1 and U2 state transitions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 423,
+      "bottomRightX": 668,
+      "bottomRightY": 450,
+      "content": "2. From a power efficiency perspective it is desirable for devices to turn off their clock generation circuitry (e.g., their PLL) during the U2 link state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 474,
+      "bottomRightX": 306,
+      "bottomRightY": 492,
+      "content": "### C.1.1.2 U0 – Link Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 498,
+      "bottomRightX": 694,
+      "bottomRightY": 530,
+      "content": "U0 is the fully operational, link active state. Packets of any type may be communicated over a link that is in the U0 State.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 550,
+      "bottomRightX": 392,
+      "bottomRightY": 568,
+      "content": "### C.1.1.3 U1 – Link Idle with Fast Exit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 573,
+      "bottomRightX": 681,
+      "bottomRightY": 625,
+      "content": "U1 is a power saving state this is characterized by fast transition time back to the U0 State. Note that the predominant latency, when transitioning from the U1 → U0 state is imposed by the time that is required to achieve symbol lock between the two link partners.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 635,
+      "bottomRightX": 264,
+      "bottomRightY": 653,
+      "content": "### C.1.1.3.1 U1 Entry",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 660,
+      "bottomRightX": 686,
+      "bottomRightY": 729,
+      "content": "Either link partner for a given link can request a transition to the U1 link state. All downstream ports (hub or root ports) track inactivity using an inactivity timer mechanism. When a port's inactivity timer expires, if enabled, it requests transition to the U1 state. Upstream ports may also initiate U1 entry based on device specific policies.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 737,
+      "bottomRightX": 694,
+      "bottomRightY": 804,
+      "content": "When a port initiates U1 entry, its link partner may either accept or reject the request. The link level U0 → U1 transition process consists of one port transmitting an LGO_U1 link command, and its link partner responding with either an LAU (accept the request) or an LXU (reject the request) link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 814,
+      "bottomRightX": 698,
+      "bottomRightY": 899,
+      "content": "The most typical reason for rejecting a U1 transition request would be because the requesting port's link partner has some activity which will shortly require a packet transmission. Downstream ports would also reject a U1 transition request if not enabled to accept U1 transition requests. Rejection of a U1 transition request by an upstream port simply resets and restarts the requesting link partner's inactivity timer.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 112,
+      "bottomRightY": 994,
+      "content": "C-2",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

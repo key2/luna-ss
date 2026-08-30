@@ -1,0 +1,48 @@
+{
+  "index": 102,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 106,
+      "bottomRightX": 694,
+      "bottomRightY": 470,
+      "content": "![img-41.jpeg](img-41.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-41.jpeg"
+    },
+    {
+      "topLeftX": 572,
+      "topLeftY": 479,
+      "bottomRightX": 699,
+      "bottomRightY": 497,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-15",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "index": 66,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 702,
+      "bottomRightY": 146,
+      "content": "3. The test passes if the PUT moves successfully to Polling.RxEQ according to section 7.5.4.3.2, and if the Polling.LFPS tPeriod, tBurst and tRepeat from the PUT are within the ranges specified in section 6.9.1.\n4. Repeat the steps with the other durations listed above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 205,
+      "bottomRightX": 421,
+      "bottomRightY": 222,
+      "content": "### TD.6.6 SCD Duration Test (Gen 2 Capable Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 225,
+      "bottomRightX": 701,
+      "bottomRightY": 254,
+      "content": "This test verifies that the PUT's Polling.LFPS detector supports the required duration range for SCD signals. Here are the durations to be tested:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 262,
+      "bottomRightX": 504,
+      "bottomRightY": 381,
+      "content": "A. tBurst = 0.6 us and '0' tRepeat = 6 us and '1' tRepeat = 11 us\nB. tBurst = 0.6 us and '0' tRepeat = 6 us and '1' tRepeat = 14 us\nC. tBurst = 0.6 us and '0' tRepeat = 9 us and '1' tRepeat = 11 us\nD. tBurst = 0.6 us and '0' tRepeat = 9 us and '1' tRepeat = 14 us\nE. tBurst = 1.4 us and '0' tRepeat = 6 us and '1' tRepeat = 11 us\nF. tBurst = 1.4 us and '0' tRepeat = 6 us and '1' tRepeat = 14 us\nG. tBurst = 1.4 us and '0' tRepeat = 9 us and '1' tRepeat = 11 us\nH. tBurst = 1.4 us and '0' tRepeat = 9 us and '1' tRepeat = 14 us",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 395,
+      "bottomRightX": 235,
+      "bottomRightY": 411,
+      "content": "### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 420,
+      "bottomRightX": 341,
+      "bottomRightY": 435,
+      "content": "(No Physical Layer assertions defined)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 440,
+      "bottomRightX": 254,
+      "bottomRightY": 456,
+      "content": "### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 463,
+      "bottomRightX": 708,
+      "bottomRightY": 711,
+      "content": "1. The LVS and the PUT go through the initial steps of the LTSSM (eSS.Disabled, Rx.Detect) to reach Polling.LFPS.\n2. The LVS will start generating a Polling.LFPS SCD1 signal having the A parameters specified in the list above.\n3. The LVS verifies that:\n  a. The PUT moves successfully to Polling.LFPSPlus according to section 7.5.4.3.2.\n  b. The SCD1 Polling.LFPSs transmitted from the PUT have tPeriod, tBurst, and tRepeat within the ranges specified in spec sections 6.9.1 and 6.9.4.1.\n4. The LVS will generate Polling.LFPS SCD2 signals having the A parameters specified in the list above.\n5. The test passes if the PUT moves successfully to Polling.PortMatch according to section 7.5.4.4.2, and if the SCD2 Polling.LFPSs transmitted from the PUT have tPeriod, tBurst and tRepeat within the ranges specified in section 6.9.1 and 6.9.4.1.\n6. Repeat the steps with the other parameters listed above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 771,
+      "bottomRightX": 425,
+      "bottomRightY": 787,
+      "content": "### TD.6.7 PWM Duration Test (Gen 2 Capable Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 791,
+      "bottomRightX": 708,
+      "bottomRightY": 820,
+      "content": "This test verifies that the PUT's Polling.LFPS detector supports the required duration range for PWM signals. Here are the durations to be tested:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 827,
+      "bottomRightX": 499,
+      "bottomRightY": 917,
+      "content": "A. tPWM = 2 us and tLFPS-0 = 0.5 us and tLFPS-1 = 1.33 us\nB. tPWM = 2 us and tLFPS-0 = 0.5 us and tLFPS-1 = 1.8 us\nC. tPWM = 2 us and tLFPS-0 = 0.8 us and tLFPS-1 = 1.33 us\nD. tPWM = 2 us and tLFPS-0 = 0.8 us and tLFPS-1 = 1.8 us\nE. tPWM = 2.4 us and tLFPS-0 = 0.5 us and tLFPS-1 = 1.33 us\nF. tPWM = 2.4 us and tLFPS-0 = 0.5 us and tLFPS-1 = 1.8 us",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "59",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

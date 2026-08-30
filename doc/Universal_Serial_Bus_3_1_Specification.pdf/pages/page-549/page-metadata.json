@@ -1,0 +1,66 @@
+{
+  "index": 548,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 104,
+      "bottomRightX": 397,
+      "bottomRightY": 126,
+      "content": "### 10.16.2 Class-specific Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 131,
+      "bottomRightX": 694,
+      "bottomRightY": 182,
+      "content": "The hub class defines requests to which hubs respond, as outlined in Table 10-7. Table 10-8 defines the hub class request codes. All requests in the table below except SetHubDescriptor() are mandatory.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 196,
+      "bottomRightX": 295,
+      "bottomRightY": 212,
+      "content": "Table 10-7. Hub Class Requests",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 84,
+      "topLeftY": 215,
+      "bottomRightX": 713,
+      "bottomRightY": 601,
+      "content": "|  Request | bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  ClearHubFeature | 00100000B | CLEAR_FEATURE | Feature Selector | Zero | Zero | None  |\n|  ClearPortFeature | 00100011B | CLEAR_FEATURE | Feature Selector | Port | Zero | None  |\n|  GetHubDescriptor | 10100000B | GET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero or Language ID | Descriptor Length | Descriptor  |\n|  GetHubStatus | 10100000B | GET_STATUS | Zero | Zero | Four | Hub Status and Change Status  |\n|  GetPortStatus | 10100011B | GET_STATUS | Zero | Port | Four | Port Status and Change Status  |\n|  GetPortErrorCount | 10100011B | GET_PORT_ERR_COUNT | Zero | Port | Two | Number of Link Errors on this port  |\n|  SetHubDescriptor | 00100000B | SET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero or Language ID | Descriptor Length | Descriptor  |\n|  SetHubFeature | 00100000B | SET_FEATURE | Feature Selector | Zero | Zero | None  |\n|  SetHubDepth | 00100000B | SET_HUB_DEPTH | Hub Depth | Zero | Zero | None  |\n|  SetPortFeature | 00100011B | SET_FEATURE | Feature Selector | Selector, Timeout, Port | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-229.md"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-71",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

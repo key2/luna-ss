@@ -1,0 +1,111 @@
+{
+  "index": 455,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 425 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 645,
+      "bottomRightY": 123,
+      "content": "be turned off when any of the over-current protection circuits indicates an over-current condition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 137,
+      "bottomRightX": 250,
+      "bottomRightY": 152,
+      "content": "### 10.13 Hub Controller",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 159,
+      "bottomRightX": 522,
+      "bottomRightY": 175,
+      "content": "The Hub Controller is logically organized as shown in Figure 10-21.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 224,
+      "topLeftY": 186,
+      "bottomRightX": 563,
+      "bottomRightY": 203,
+      "content": "Figure 10-21. Example Hub Controller Organization",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 213,
+      "bottomRightX": 561,
+      "bottomRightY": 524,
+      "content": "![img-182.jpeg](img-182.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-182.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 546,
+      "bottomRightX": 295,
+      "bottomRightY": 561,
+      "content": "### 10.13.1 Endpoint Organization",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 567,
+      "bottomRightX": 673,
+      "bottomRightY": 722,
+      "content": "The Hub Class defines one additional endpoint beyond the default control pipe, which is required for all hubs: the Status Change endpoint. This endpoint has the maximum burst size set to one. The host system receives port and hub status change notifications through the Status Change endpoint. The Status Change endpoint is an interrupt endpoint. If no hub or port status change bits are set, then the hub returns an NRDY when the Status Change endpoint receives an IN (via an ACK TP) request. When a status change bit is set, the hub will send an ERDY TP to the host. The host will subsequently ask the Status Change endpoint for the data, which will indicate the entity (hub or port) with a change bit set. The USB system software can use this data to determine which status registers to access in order to determine the exact cause of the status change interrupt.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

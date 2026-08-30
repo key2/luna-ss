@@ -1,0 +1,93 @@
+{
+  "index": 167,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 374,
+      "bottomRightY": 110,
+      "content": "### 6.3.2.4 128b/132b Decode Errors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 116,
+      "bottomRightX": 425,
+      "bottomRightY": 132,
+      "content": "The Block Header decode error rules are as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 136,
+      "bottomRightX": 636,
+      "bottomRightY": 172,
+      "content": "1. Single bit errors in the Block Header shall be reported to the link layer and corrected.\n2. Double bit errors in the Block Header shall be reported to the link layer.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 188,
+      "bottomRightX": 633,
+      "bottomRightY": 210,
+      "content": "### 6.3.3 Special Symbols for Framing and Link Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 215,
+      "bottomRightX": 700,
+      "bottomRightY": 367,
+      "content": "The 8b/10b encoding scheme provides Special Symbols that are distinct from the Data Symbols used to represent characters. These Special Symbols are used for various Link Management mechanisms described later. Table 6-1 lists the Special Symbols used and provides a brief description for each. Special Symbols shall follow the proper 8b/10b disparity rules. The compliance tests are defined in the USB SuperSpeed Compliance Methodology white paper. For Gen 2 operation the block header identifies whether the following 16 symbols have special meaning or if they represent data. In Gen 2 operation a receiver shall always perform single bit error correction on the special symbols when they are part of a control block. For Gen 1 and Gen 2 the following special symbols are defined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 384,
+      "bottomRightX": 299,
+      "bottomRightY": 400,
+      "content": "Table 6-1. Special Symbols",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 402,
+      "bottomRightX": 694,
+      "bottomRightY": 894,
+      "content": "|  Symbol | Name | Gen 1 Symbol | Gen 2 Symbol | Description  |\n| --- | --- | --- | --- | --- |\n|  SKP | Skip | K28.1 | CCh | Compensates for different bit rates between two communicating ports. SKPs may be dynamically inserted or removed from the data stream. For SuperSpeedPlus operation, unscrambled  |\n|  SKPEND | Skip End | Not applicable | 33h | Marks the boundary between SKP symbols and the remainder of the SKP OS. Unscrambled.  |\n|  SDP | Start Data Packet | K28.2 | 96h | Marks the start of a Data Packet Payload. For SuperSpeedPlus operation, scrambled and transmitted only in data block.  |\n|  EDB | End Bad | K28.3 | 69h | Marks the end of a nullified Packet. For SuperSpeedPlus operation, scrambled and transmitted only in data block.  |\n|  SUB | Decode Error Substitution | K28.4 | Not applicable | Symbol substituted by the 8b/10b decoder when a Decode error is detected.  |\n|  COM | Comma | K28.5 | Not applicable | Used for symbol alignment.  |\n|  --- | --- | K28.6 | Not applicable | Reserved  |\n|  SHP | Start Header Packet | K27.7 | 9Ah | Marks the start of a Data Packet (Gen 1 operation only), Transaction Packet or Link Management Packet. For SuperSpeedPlus operation, scrambled and transmitted only in data block.  |\n|  DPHP | Start Data Packet Header | Not applicable | 95h | Marks the start of a Data Packet (SuperSpeedPlus only). Scrambled and transmitted only in data block.  |\n|  END | End | K29.7 | 65h | Marks the end of a packet. For SuperSpeedPlus operation, scrambled and transmitted only in data block.  |\n|  SLC | Start Link Command | K30.7 | 5Ah | Marks the start of a Link Command. For SuperSpeedPlus operation, scrambled and transmitted only in data block.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-53.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "6-12",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

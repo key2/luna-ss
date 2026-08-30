@@ -1,0 +1,3 @@
+|  Bit | Default | Attribute | Required | Description  |
+| --- | --- | --- | --- | --- |
+|  [7:0] | 0h | Level | PCIe (optional) | **Elastic Buffer Depth Control:** This field is used to set the elastic buffer depth. The MAC must choose from the supported values advertised in the PHY datasheet. This value can only be changed during the transmission of TS1 ordered sets. The PHY performs the adjustment as quickly as possible without waiting for SKPs. The PHY signals completion of elastic buffer depth adjustment by setting the Elastic Buffer Status register. **Note:** This field is not used in the SerDes architecture.  |

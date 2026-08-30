@@ -1,0 +1,10 @@
+|   | LFPS signal after the completion of SuperSpeed Polling.LFPS handshake. |   |
+| --- | --- | --- |
+|  7.5.4.3.1#10 | A port in SuperSpeedPlus operation shall be ready for SuperSpeed operation if it has detected that its link partner operates at SuperSpeed. | 7.1  |
+|  7.5.4.3.1#11 | A port shall disabled its transition path to Compliance Mode when it has successfully completed Polling.LFPS handshake or has entered Compliance Mode. | NT  |
+|  Subsection reference: 7.5.4.3.2 Exit from Polling.LFPS  |   |   |
+|  7.5.4.3.2#1 | The port in SuperSpeed operation shall transition from Polling.LFPS to Polling.RxEQ when the following three conditions are met: - At least 16 consecutive Polling.LFPS bursts are sent. - Two consecutive Polling.LFPS bursts are received. - Four consecutive Polling.LFPS bursts are sent after receiving one Polling.LFPS burst. | BC  |
+|  7.5.4.3.2#2 | A port in SuperSpeedPlus operation shall transition to Polling.LFPSPlus if two SCD1 are transmitted after one SCD1 or SCD2 is received. | BC  |
+|  7.5.4.3.2#3 | A port in SuperSpeedPlus operation shall transition to Polling.RxEQ and switch to SuperSpeed operation if the following conditions are met: - At least two consecutive Polling.LFPS bursts are received. - Twenty Polling.LFPS bursts are transmitted and no SCD1 is detected. - No LFPS signal for more than tPollingSCDLFPSTimeout is observed. | 7.1  |
+|  7.5.4.3.2#4 | An upstream port shall transition to from Polling.LFPS to Compliance Mode upon 360-ms timer timeout if the following two conditions are met: - The port has never successfully completed Polling.LFPS after PowerOn Reset. - The condition to transition to Polling.RxEQ is not met. | 7.33 7.34  |
+|  7.5.4.3.2#5 | A downstream port shall transition from Polling.LFPS to Compliance Mode upon the 360ms timer timeout (tPollingLFPSTimeout) if the following three conditions are met: - The Compliance Mode is enabled. - The port has never successfully completed Polling.LFPS handshake after Compliance Mode is enabled. - The condition to transition to Polling.RxEQ or Polling.LFPSPlus is not met. | 7.34  |

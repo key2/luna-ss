@@ -1,0 +1,85 @@
+{
+  "index": 72,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 138,
+      "bottomRightX": 533,
+      "bottomRightY": 154,
+      "content": "Table 6-20. Original PIPE Only: Rx data Interface Output Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 157,
+      "bottomRightX": 696,
+      "bottomRightY": 681,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  RxDataK[3:0] for 32-bit interface RxDataK[1:0] for 16-bit interface RxDataK for 8-bit interface | N/A | **This signal is not used in the SerDes architecture.** Data/Control bit for the symbols of Rx data. For 32-bit interfaces, Bit 0 corresponds to the low-byte of RxData, Bit 3 corresponds to the upper byte. For 16-bit interface, Bit 0 corresponds to the low-byte of RxData[15:0], Bit 1 to the upper byte. A value of zero indicates a data byte; a value of 1 indicates a control byte. Not used in PCIe mode at 8 GT/s or higher rates or USB mode at 10 GT/s or USB4 mode. When the PHY is in a SATA mode, the first valid data following an ALIGN primitive must appear as byte zero in the Rx data. | PCIe, SATA, and USB  |\n|  RxDataValid | N/A | **This signal is not used in the SerDes architecture.** PCIe mode and SATA mode and USB mode: This signal allows the PHY to instruct the MAC to ignore the data interface for one clock cycle. A value of one indicates that the MAC will use the data, a value of zero indicates that the MAC will not use the data. RxDataValid shall not assert when RxValid is de-asserted in PHY modes that require the use of RxDataValid. If a PHY supports the RxDataValid signal, it must keep RxDataValid asserted when the PHY is in a mode that does not require the signal. The MAC may ignore RxDataValid when it is in a mode that does not require the signal. | PCIe, SATA, USB  |\n|  RxStartBlock | N/A | **This signal is not used in the SerDes architecture.** PCIe mode and USB mode: Only used at the 8.0 GT/s, 16 GT/s, and 32 GT/s PCIe signaling rates and the 10 GT/s USB signaling rate. This signal allows the PHY to tell the MAC the starting byte for a 128b block. The starting byte for a 128b block must always start with byte zero of the data interface. If there is an invalid sync header decoded on RxSyncHeader[3:0] and block alignment is still present (RxValid == 1), then the PHY will assert RxStartBlock with the invalid sync header on RxSyncHeader[3:0] RxStartBlock shall not assert when RxValid is de-asserted | PCIe, SATA, USB  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-52.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 696,
+      "bottomRightX": 390,
+      "bottomRightY": 716,
+      "content": "### 6.3.2 Command Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 736,
+      "bottomRightX": 504,
+      "bottomRightY": 752,
+      "content": "Table 6-21. Command Interface Input Signals (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 755,
+      "bottomRightX": 696,
+      "bottomRightY": 868,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  TxCompliance | High | **This signal is not used in the SerDes architecture.** PCIe mode: Sets the running disparity to negative. Used when transmitting the PCIe compliance pattern. Implementation of this signal is only required for PHYs that support the PCIe mode. This signal is sampled by TxDataValid. | PCIe  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-53.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "73",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

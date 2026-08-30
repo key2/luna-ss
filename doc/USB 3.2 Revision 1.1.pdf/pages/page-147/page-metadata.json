@@ -1,0 +1,149 @@
+{
+  "index": 146,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 116 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 92,
+      "bottomRightX": 656,
+      "bottomRightY": 110,
+      "content": "Figure 7-3. Header Packet with HPSTART, Packet Header, and Link Control Word",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 121,
+      "bottomRightX": 585,
+      "bottomRightY": 237,
+      "content": "![img-63.jpeg](img-63.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-63.jpeg"
+    },
+    {
+      "topLeftX": 249,
+      "topLeftY": 253,
+      "bottomRightX": 538,
+      "bottomRightY": 268,
+      "content": "Figure 7-4. Non-deferred Gen 2 DPH Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 282,
+      "bottomRightX": 612,
+      "bottomRightY": 469,
+      "content": "![img-64.jpeg](img-64.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-64.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 481,
+      "bottomRightX": 295,
+      "bottomRightY": 495,
+      "content": "### 7.2.1.1.2 Packet Header",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 502,
+      "bottomRightX": 666,
+      "bottomRightY": 548,
+      "content": "A packet header consists of 14 bytes as formatted in Figure 7-5. It includes 12 bytes of header information and a 2-byte CRC-16. CRC-16 is used to protect the data integrity of the 12-byte header information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 306,
+      "topLeftY": 560,
+      "bottomRightX": 481,
+      "bottomRightY": 577,
+      "content": "Figure 7-5. Packet Header",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 245,
+      "topLeftY": 588,
+      "bottomRightX": 544,
+      "bottomRightY": 696,
+      "content": "![img-65.jpeg](img-65.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-65.jpeg"
+    },
+    {
+      "topLeftX": 272,
+      "topLeftY": 702,
+      "bottomRightX": 441,
+      "bottomRightY": 768,
+      "content": "Used for:\n1) Link Management Packet\n2) Transaction Packet\n3) Data Packet Header\n4) Isochronous Timestamp Packets",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 786,
+      "bottomRightX": 536,
+      "bottomRightY": 803,
+      "content": "The implementation of CRC-16 on the packet header is defined below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 814,
+      "bottomRightX": 673,
+      "bottomRightY": 913,
+      "content": "- The polynomial for CRC-16 shall be 100Bh.\nNote: The CRC-16 polynomial is not the same as the one used for USB 2.0.\n- The initial value of CRC-16 shall be FFFFh.\n- CRC-16 shall be calculated for all 12 bytes of the header information, not inclusive of any packet framing symbols.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

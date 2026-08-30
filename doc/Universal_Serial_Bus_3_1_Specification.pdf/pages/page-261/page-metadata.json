@@ -1,0 +1,200 @@
+{
+  "index": 260,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 302,
+      "bottomRightY": 113,
+      "content": "### 7.5.1 eSS.Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 119,
+      "bottomRightX": 678,
+      "bottomRightY": 187,
+      "content": "eSS.Disabled is a state with a port's low-impedance receiver termination removed. It is a state where a port's Enhanced SuperSpeed connectivity is disabled. Refer to Section 10.18 for details regarding the behavior of a peripheral device. Refer to Sections 10.3 to 10.6 for behaviors regarding a hub's upstream port and downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 189,
+      "bottomRightX": 670,
+      "bottomRightY": 239,
+      "content": "eSS.Disabled does not contain any substates in the case of downstream ports and hub upstream ports. For a peripheral upstream port, it contains two substates, eSS.Disabled.Default and eSS.Disabled.Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 244,
+      "bottomRightX": 605,
+      "bottomRightY": 261,
+      "content": "eSS.Disabled is also a logical power-off state for a self-powered hub upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 265,
+      "bottomRightX": 686,
+      "bottomRightY": 284,
+      "content": "eSS.Disabled.Default is also a logical power-off state for a self-powered peripheral upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 288,
+      "bottomRightX": 599,
+      "bottomRightY": 304,
+      "content": "A downstream port shall transition to this state from any other state when directed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 309,
+      "bottomRightX": 696,
+      "bottomRightY": 327,
+      "content": "A self-powered hub or peripheral upstream port shall transition to this state when VBUS is not valid.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 342,
+      "bottomRightX": 637,
+      "bottomRightY": 360,
+      "content": "#### 7.5.1.1 eSS.Disabled for Downstream Ports and Hub Upstream Ports",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 366,
+      "bottomRightX": 656,
+      "bottomRightY": 382,
+      "content": "eSS.Disabled for Downstream Ports and Hub Upstream Ports does not contain any substates.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 389,
+      "bottomRightX": 396,
+      "bottomRightY": 407,
+      "content": "##### 7.5.1.1.1 eSS.Disabled Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 411,
+      "bottomRightX": 676,
+      "bottomRightY": 498,
+      "content": "- VBUS may be present during eSS.Disabled.\n- The port's receiver termination shall present high impedance to ground of $Z_{RX-HIGH-IMP-DC-POS}$ defined in Table 6-21.\n- The port shall be disabled from transmitting and receiving LFPS and Enhanced SuperSpeed signals.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 505,
+      "bottomRightX": 362,
+      "bottomRightY": 521,
+      "content": "##### 7.5.1.1.2 Exit from eSS.Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 526,
+      "bottomRightX": 649,
+      "bottomRightY": 579,
+      "content": "- A downstream port shall transition to Rx.Detect when directed.\n- An upstream port shall transition to Rx.Detect only when VBUS transitions to valid or a USB 2.0 bus reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 594,
+      "bottomRightX": 591,
+      "bottomRightY": 612,
+      "content": "#### 7.5.1.2 eSS.Disabled for Upstream Ports of Peripheral Devices",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 617,
+      "bottomRightX": 673,
+      "bottomRightY": 652,
+      "content": "eSS.Disabled of a peripheral device operates similarly to hub upstream ports, except that it only attempts a limited number of Enhanced SuperSpeed attempts upon USB 2.0 bus reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 657,
+      "bottomRightX": 420,
+      "bottomRightY": 675,
+      "content": "##### 7.5.1.2.1 eSS.Disabled Substate Machine",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 681,
+      "bottomRightX": 563,
+      "bottomRightY": 698,
+      "content": "eSS.Disabled of a peripheral device has two substates shown in Figure 7-15.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 702,
+      "bottomRightX": 275,
+      "bottomRightY": 736,
+      "content": "- eSS.Disabled.Default\n- eSS.Disabled.Error",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 742,
+      "bottomRightX": 611,
+      "bottomRightY": 760,
+      "content": "eSS.Disabled.Default is a logical power-off state for a self-powered peripheral device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-49",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

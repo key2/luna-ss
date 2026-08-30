@@ -1,0 +1,75 @@
+{
+  "index": 2,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 94,
+      "bottomRightX": 642,
+      "bottomRightY": 124,
+      "content": "# Acknowledgement of Technical Contribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 360,
+      "topLeftY": 162,
+      "bottomRightX": 429,
+      "bottomRightY": 177,
+      "content": "# Dedication",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 186,
+      "bottomRightX": 555,
+      "bottomRightY": 238,
+      "content": "Dedicated to the memory of Brad Hosler, the impact of whose accomplishments made the Universal Serial Bus one of the most successful technology innovations of the Personal Computer era.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 249,
+      "bottomRightX": 689,
+      "bottomRightY": 300,
+      "content": "The authors of this specification would like to recognize the following people who participated in the USB 3.0 Bus Specification technical workgroups. We would also like to acknowledge the many others throughout the industry who provided feedback and contributed to the development of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 309,
+      "bottomRightX": 285,
+      "bottomRightY": 326,
+      "content": "Promoter Company Employees",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 95,
+      "topLeftY": 329,
+      "bottomRightX": 411,
+      "bottomRightY": 904,
+      "content": "|  Alan Berkema | Hewlett-Packard Company  |\n| --- | --- |\n|  Walter Fry | Hewlett-Packard Company  |\n|  Anthony Hudson | Hewlett-Packard Company  |\n|  David Roderick | Hewlett-Packard Company  |\n|  Kok Hong Chan | Intel Corporation  |\n|  Huimin Chen | Intel Corporation  |\n|  Bob Dunstan | Intel Corporation  |\n|  Dan Froelich | Intel Corporation  |\n|  Howard Heck | Intel Corporation  |\n|  Brad Hosler | Intel Corporation  |\n|  John Howard | Intel Corporation  |\n|  Rahman Ismail | Intel Corporation  |\n|  John Keys | Intel Corporation  |\n|  Yun Ling | Intel Corporation  |\n|  Andy Martwick | Intel Corporation  |\n|  Steve McGowan | Intel Corporation  |\n|  Ramin Neshati | Intel Corporation  |\n|  Duane Quiet | Intel Corporation  |\n|  Jeff Ravencraft | Intel Corporation  |\n|  Brad Saunders | Intel Corporation  |\n|  Joe Schaefer | Intel Corporation  |\n|  Sarah Sharp | Intel Corporation  |\n|  Micah Sheller | Intel Corporation  |\n|  Gary Solomon | Intel Corporation  |\n|  Karthi Vadivelu | Intel Corporation  |\n|  Clint Walker | Intel Corporation  |\n|  Jim Walsh | Intel Corporation  |\n|  Randy Aull | Microsoft Corporation  |\n|  Fred Bhesania | Microsoft Corporation  |\n|  Martin Borve | Microsoft Corporation  |\n|  Jim Bovee | Microsoft Corporation  |\n|  Stephen Cooper | Microsoft Corporation  |\n|  Lars Giusti | Microsoft Corporation  |\n|  Robbie Harris | Microsoft Corporation  |\n|  Allen Marshall | Microsoft Corporation  |\n|  Kiran Muthabatulla | Microsoft Corporation  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-1.md"
+    },
+    {
+      "topLeftX": 687,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "iii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

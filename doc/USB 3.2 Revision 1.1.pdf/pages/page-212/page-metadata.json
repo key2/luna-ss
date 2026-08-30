@@ -1,0 +1,137 @@
+{
+  "index": 211,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 181 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 95,
+      "bottomRightX": 671,
+      "bottomRightY": 193,
+      "content": "- The port in Gen 2 operation shall transition to Polling.Active after 524,288 TSEQ ordered sets defined in Table 6-8 are transmitted on each negotiated lane.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 214,
+      "bottomRightX": 245,
+      "bottomRightY": 229,
+      "content": "#### 7.5.4.8 Polling.Active",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 235,
+      "bottomRightX": 666,
+      "bottomRightY": 296,
+      "content": "Polling.Active is a substate where the link's receiver training continues. TS1 OS are exchanged on each negotiated lane. In x2 operation, the port performs the link training on each lane independently, and advances to the next state when each negotiated lane has met the exit conditions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 309,
+      "bottomRightX": 377,
+      "bottomRightY": 325,
+      "content": "##### 7.5.4.8.1 Polling.Active Requirements",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 332,
+      "bottomRightX": 676,
+      "bottomRightY": 670,
+      "content": "- In x1 operation, a 12 ms timer (tPollingActiveTimeout) shall be started upon entry to this substate. In x2 operation, a 24 ms timer shall be used. Note that in x2 operation, the timer shall continue until each lane has met the exit conditions to Polling.Configuration.\n- The port shall transmit identical TS1 ordered sets on each negotiated lane. Note that in Gen 2 operation Symbols 14 and 15 of the TS1 ordered set may be different for DC balance. Note also that in x2 operation, one lane may complete its TS1 OS exit handshake earlier than the other lane. Under this condition, the lane that has completed the TS1 OS exit handshake successfully shall continue to transmit TS1 OS until the port is ready to transition to the next state.\n- The port in Gen 2 operation shall insert a SYNC ordered set every 32 TS1 ordered sets on each negotiated lane. Refer to Section 6.4.1.2 for details.\n- The port in Gen 2 operation shall perform block alignment and scrambler synchronization as defined in Sections 6.3.2.3 and 6.4.1.2.4.\n- Lane polarity detection and correction shall be completed.\n- The port shall monitor the exit handshake on each negotiated lane.\n- The port in x2 operation shall perform the lane-to-lane de-skew at its receiver.\n- The port that fails to achieve a successful training with its link partner shall reconfigure itself for the next capability it supports.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 676,
+      "bottomRightX": 652,
+      "bottomRightY": 722,
+      "content": "Note: An example of this is, when a port in Gen 1x2 fails to reach successful handshake with its link partner, it shall re-configure itself for Gen 1x1 operation. Refer to Section 7.5.4.5 for mechanism of PHY capability fallback.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 729,
+      "bottomRightX": 543,
+      "bottomRightY": 745,
+      "content": "- The receiver shall be in training using TS1 or TS2 ordered sets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 750,
+      "bottomRightX": 660,
+      "bottomRightY": 827,
+      "content": "Note: Depending on the link condition and different receiver implementations, one port's receiver training may be faster than the other. When this occurs, the port whose receiver training is completed earlier will enter Polling.Configuration and start transmitting TS2 ordered sets while the other port is still in Polling.Active using TS2 ordered sets to complete its receiver training.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 847,
+      "bottomRightX": 348,
+      "bottomRightY": 863,
+      "content": "##### 7.5.4.8.2 Exit from Polling.Active",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 870,
+      "bottomRightX": 666,
+      "bottomRightY": 902,
+      "content": "- The port in Gen 1 operation shall transition to Polling.Configuration upon receiving eight consecutive and identical TS1 or TS2 ordered sets on each negotiated lane.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

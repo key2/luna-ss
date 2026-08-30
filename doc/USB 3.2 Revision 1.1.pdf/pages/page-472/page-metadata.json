@@ -1,0 +1,149 @@
+{
+  "index": 471,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 441 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 92,
+      "bottomRightX": 525,
+      "bottomRightY": 108,
+      "content": "Table 10-9. Hub Class Feature Selectors",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 119,
+      "bottomRightX": 595,
+      "bottomRightY": 540,
+      "content": "|  Feature Selector | Recipient | Value  |\n| --- | --- | --- |\n|  C_HUB_LOCAL_POWER | Hub | 0  |\n|  C_HUB_OVER_CURRENT | Hub | 1  |\n|  PORT_CONNECTION | Port | 0  |\n|  PORT_OVER_CURRENT | Port | 3  |\n|  PORT_RESET | Port | 4  |\n|  PORT_LINK_STATE | Port | 5  |\n|  PORT_POWER | Port | 8  |\n|  C_PORT_CONNECTION | Port | 16  |\n|  C_PORT_OVER_CURRENT | Port | 19  |\n|  C_PORT_RESET | Port | 20  |\n|  RESERVED (used in USB 2.0 specification) | Port | 21  |\n|  PORT_U1_TIMEOUT | Port | 23  |\n|  PORT_U2_TIMEOUT | Port | 24  |\n|  C_PORT_LINK_STATE | Port | 25  |\n|  C_PORT_CONFIG_ERROR | Port | 26  |\n|  PORT_REMOTE_WAKE_MASK | Port | 27  |\n|  BH_PORT_RESET | Port | 28  |\n|  C_BH_PORT_RESET | Port | 29  |\n|  FORCE_LINKPM_ACCEPT | Port | 30  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-238.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 560,
+      "bottomRightX": 315,
+      "bottomRightY": 574,
+      "content": "### 10.16.2.1 Clear Hub Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 583,
+      "bottomRightX": 440,
+      "bottomRightY": 599,
+      "content": "This request resets a value reported in the hub status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 608,
+      "bottomRightX": 694,
+      "bottomRightY": 654,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00100000B | CLEAR_FEATURE | Feature Selector | Zero | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-239.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 675,
+      "bottomRightX": 665,
+      "bottomRightY": 737,
+      "content": "Clearing a feature disables that feature; refer to Table 10-9 for the feature selector definitions that apply to the hub as a recipient. If the feature selector is associated with a status change, clearing that status change acknowledges the change. This request format is used to clear either the C_HUB_LOCAL_POWER or C_HUB_OVER_CURRENT features.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 749,
+      "bottomRightX": 652,
+      "bottomRightY": 780,
+      "content": "It is a Request Error if wValue is not a feature selector listed in Table 10-9 or if wIndex or wLength are not as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 792,
+      "bottomRightX": 571,
+      "bottomRightY": 808,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 820,
+      "bottomRightX": 318,
+      "bottomRightY": 834,
+      "content": "### 10.16.2.2 Clear Port Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 842,
+      "bottomRightX": 443,
+      "bottomRightY": 858,
+      "content": "This request resets a value reported in the port status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 868,
+      "bottomRightX": 694,
+      "bottomRightY": 913,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex |   | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  00100011B | CLEAR_FEATURE | Feature Selector | Selector | Port | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-240.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

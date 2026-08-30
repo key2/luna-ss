@@ -1,0 +1,128 @@
+{
+  "index": 237,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 207 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 94,
+      "bottomRightX": 371,
+      "bottomRightY": 109,
+      "content": "### 8.1 Enhanced SuperSpeed Transactions",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 115,
+      "bottomRightX": 663,
+      "bottomRightY": 162,
+      "content": "The Enhanced SuperSpeed Bus defines multiple speeds at which the bus can operate. The rules for transactions on a SuperSpeed bus instance are defined in Section 8.1.1. The rules for transactions on a SuperSpeedPlus bus instance are defined in Section 8.1.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 174,
+      "bottomRightX": 536,
+      "bottomRightY": 190,
+      "content": "All links in a SuperSpeed bus instance shall operate at Gen 1x1 speed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 203,
+      "bottomRightX": 417,
+      "bottomRightY": 218,
+      "content": "#### 8.1.1 Transactions on a SuperSpeed Bus Instance",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 225,
+      "bottomRightX": 672,
+      "bottomRightY": 331,
+      "content": "Transactions are initiated by the host when it either requests or sends data to an endpoint on a device and are completed when the endpoint sends the data or acknowledges receipt of the data. A transfer on the SuperSpeed bus instance is a request for data made by a device application to the host which then breaks it up into one or more burst transactions. A host may initiate one or more OUT bus transactions to one or more endpoints while it waits for the completion of the current bus transaction. However, a host shall not initiate another IN bus transaction to any endpoint on the same SuperSpeed bus instance until the host:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 344,
+      "bottomRightX": 550,
+      "bottomRightY": 577,
+      "content": "- For non-isochronous endpoint\n  1. receives all requested Data Packets (DPs) or\n  2. receives a short packet or\n  3. receives a DP with EOB flag set or\n  4. receives an NRDY or a STALL Transaction Packet (TP) or\n  5. times out the transaction for the current ACK TP\n- For isochronous endpoint\n  1. receives all the DPs that were requested or\n  2. receives a short packet or\n  3. receives a DP with last packet flag field set or\n  4. times out the transaction for the current ACK TP",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 597,
+      "bottomRightX": 629,
+      "bottomRightY": 613,
+      "content": "For non-isochronous transactions, an endpoint may respond to valid transactions by:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 626,
+      "bottomRightX": 618,
+      "bottomRightY": 724,
+      "content": "- Returning an NRDY Transaction Packet\n- Accepting it by returning an ACK Transaction Packet in the case of an OUT transaction\n- Returning one or more data packets in the case of an IN transaction\n- Returning a STALL Transaction Packet if there is an internal endpoint error",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 745,
+      "bottomRightX": 675,
+      "bottomRightY": 897,
+      "content": "An NRDY Transaction Packet (TP) response indicates that an endpoint is not ready to sink or source data. This allows the links between the device and the host to be placed in a reduced power state until an endpoint is ready to receive or send data. However, as mentioned in Section 8.10.1, the host may continue to perform transactions with the endpoint on the device even before the endpoint notifies the host that it is ready. When ready, the endpoint asynchronously sends an ERDY TP to the host to tell it that it is now ready to move data and the host responds by rescheduling the request. Note that isochronous transactions do not use ERDY or NRDY TPs as they are serviced by the host at periodic intervals. Additionally, data packets sent to or received from an isochronous endpoint are not acknowledged, i.e., no ACK TPs are sent to acknowledge the receipt of data packets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

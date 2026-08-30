@@ -1,0 +1,166 @@
+{
+  "index": 152,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 122 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 93,
+      "bottomRightX": 485,
+      "bottomRightY": 109,
+      "content": "1. A downstream port is directed to issue a Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 115,
+      "bottomRightX": 663,
+      "bottomRightY": 146,
+      "content": "Note: An upstream port, before declaring the detection of Warm Reset, may already enter Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 152,
+      "bottomRightX": 381,
+      "bottomRightY": 167,
+      "content": "2. A port is directed to enter Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 172,
+      "bottomRightX": 652,
+      "bottomRightY": 203,
+      "content": "Note: It is highly recommended that a port complete the DPP transmission before transitioning to Recovery for ease of transmit implementation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 216,
+      "bottomRightX": 586,
+      "bottomRightY": 232,
+      "content": "In all other cases, a port in Gen 2 operation shall perform one of the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 244,
+      "bottomRightX": 673,
+      "bottomRightY": 380,
+      "content": "- It shall append DPPEND OS upon completing the transmission of DPP.\n- In the case of a nullified DPP, it shall append DPPABORT OS immediately after its DPHP.\n- In the case of partially nullified DPP, it shall append DPPABORT OS after completing the DPP as defined by the length field in its associated DPHP, similar to normal ending of DPP. A port may fill with Idle Symbols in DPP if intended data for transmission are not available but shall invalidate the CRC-32 field. The condition to transmit a partially nullified DPP is implementation specific.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 401,
+      "bottomRightX": 553,
+      "bottomRightY": 417,
+      "content": "### 7.2.1.2.3 Data Payload Structure and Spacing between DPH and DPP",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 425,
+      "bottomRightX": 657,
+      "bottomRightY": 456,
+      "content": "There shall be no spacing between a DPH and its corresponding DPP. This is illustrated in Figure 7-11.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 189,
+      "topLeftY": 467,
+      "bottomRightX": 599,
+      "bottomRightY": 499,
+      "content": "Figure 7-11. Data Packet with Data Packet Header Followed by Data Packet Payload",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 508,
+      "bottomRightX": 677,
+      "bottomRightY": 660,
+      "content": "![img-72.jpeg](img-72.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-72.jpeg"
+    },
+    {
+      "topLeftX": 329,
+      "topLeftY": 673,
+      "bottomRightX": 459,
+      "bottomRightY": 689,
+      "content": "(a) Gen 1 DP Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 715,
+      "bottomRightX": 723,
+      "bottomRightY": 897,
+      "content": "![img-73.jpeg](img-73.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-73.jpeg"
+    },
+    {
+      "topLeftX": 329,
+      "topLeftY": 909,
+      "bottomRightX": 459,
+      "bottomRightY": 927,
+      "content": "(b). Gen 2 DP Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

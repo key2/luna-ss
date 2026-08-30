@@ -1,0 +1,122 @@
+{
+  "index": 329,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 417,
+      "bottomRightY": 128,
+      "content": "### 8.5.5 STALL Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 135,
+      "bottomRightX": 669,
+      "bottomRightY": 184,
+      "content": "This TP can only be sent by an endpoint on the device. It is used to inform the host that the endpoint is halted or that a control transfer is invalid. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 209,
+      "bottomRightX": 662,
+      "bottomRightY": 335,
+      "content": "![img-208.jpeg](img-208.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-208.jpeg"
+    },
+    {
+      "topLeftX": 287,
+      "topLeftY": 347,
+      "bottomRightX": 536,
+      "bottomRightY": 364,
+      "content": "Figure 8-22. STALL Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 393,
+      "bottomRightX": 477,
+      "bottomRightY": 410,
+      "content": "Table 8-17. STALL TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 413,
+      "bottomRightX": 699,
+      "bottomRightY": 509,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to STALL.  |\n|  3 | 1:4 | Reserved (Rsvd).  |\n|  52 | 1:12 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-121.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 529,
+      "bottomRightX": 651,
+      "bottomRightY": 570,
+      "content": "### 8.5.6 Device Notification (DEV_NOTIFICATION) Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 578,
+      "bottomRightX": 698,
+      "bottomRightY": 660,
+      "content": "This TP can only be sent by a device. It is used by devices to inform the host of an asynchronous change in a device or interface state, e.g., to identify the function within a device that caused the device to perform a remote wake operation. This TP is not sent from a particular endpoint but from the device in general. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 684,
+      "bottomRightX": 662,
+      "bottomRightY": 811,
+      "content": "![img-209.jpeg](img-209.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-209.jpeg"
+    },
+    {
+      "topLeftX": 249,
+      "topLeftY": 824,
+      "bottomRightX": 573,
+      "bottomRightY": 841,
+      "content": "Figure 8-23. Device Notification Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-36",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

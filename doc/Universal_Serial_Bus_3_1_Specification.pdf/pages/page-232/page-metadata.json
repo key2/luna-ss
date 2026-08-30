@@ -1,0 +1,119 @@
+{
+  "index": 231,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 175,
+      "topLeftY": 92,
+      "bottomRightX": 698,
+      "bottomRightY": 162,
+      "content": "b. If a port enters U0 from Recovery, it shall flush all the header packets in its Tx Header Buffers or Type 1/Type 2 Tx Header Buffers that have been sent before Recovery except for those with the Header Sequence Number greater than (modulo 8) the Header Sequence Number received in Header Sequence Number Advertisement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 175,
+      "topLeftY": 166,
+      "bottomRightX": 686,
+      "bottomRightY": 216,
+      "content": "Note: If for example, the Header Sequence Number Advertisement of LGOOD_1 is received, a port shall flush the header packets in its Tx Header Buffers or Type 1/Type 2 Tx Header Buffers with Header Sequence Numbers of 1, 0, 7, 6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 220,
+      "bottomRightX": 695,
+      "bottomRightY": 305,
+      "content": "- For SuperSpeed USB, the Rx Header Buffer Credit Advertisement refers to Remote Rx Header Buffer Credit Count Initialization by exchanging the number of available Local Rx Header Buffer Credits between the two ports. The main purpose of this advertisement is for a port to align its Remote Rx Header Buffer Credit Count with its link partner upon entry to U0. The following rules shall be applied during the Rx Header Buffer Credit Advertisement:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 306,
+      "bottomRightX": 689,
+      "bottomRightY": 357,
+      "content": "1. A port shall initiate the Rx Header Buffer Credit Advertisement after sending LGOOD_n during Header Sequence Number Advertisement.\n2. A port shall initialize the following before sending the Rx Header Buffer Credit:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 186,
+      "topLeftY": 359,
+      "bottomRightX": 685,
+      "bottomRightY": 498,
+      "content": "a. A port shall initialize its Tx Header Buffer Credit index to A.\nb. A port shall initialize its Rx Header Buffer Credit index to A.\nc. A port shall initialize its Remote Rx Header Buffer Credit Count to zero.\nd. A port shall continue to process those header packets in its Rx Header Buffers that have been either acknowledged with LGOOD_n prior to entry to Recovery, or validated during Recovery, and then update the Local Rx Header Buffer Credit Count.\ne. A port shall set its Local Rx Header Buffer Credit Count defined in the following:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 211,
+      "topLeftY": 499,
+      "bottomRightX": 695,
+      "bottomRightY": 567,
+      "content": "1. If a port enters U0 from Polling or Hot Reset, its Local Rx Header Buffer Credit Count is 4.\n2. If a port enters U0 from Recovery, its Local Rx Header Buffer Credit Count is the number of Rx Header Buffers available for incoming header packets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 569,
+      "bottomRightX": 696,
+      "bottomRightY": 619,
+      "content": "3. A port shall perform the Rx Header Buffer Credit Advertisement by transmitting LCRD_x to notify its link partner. A port shall transmit one of the following based on its Local Rx Header Buffer Credit Count:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 186,
+      "topLeftY": 621,
+      "bottomRightX": 690,
+      "bottomRightY": 724,
+      "content": "a. LCRD_A if the Local Rx Header Buffer Credit Count is one.\nb. LCRD_A and LCRD_B if the Local Rx Header Buffer Credit Count is two.\nc. LCRD_A, LCRD_B, and LCRD_C if the Local Rx Header Buffer Credit Count is three.\nd. LCRD_A, LCRD_B, LCRD_C and LCRD_D if the Local Rx Header Buffer Credit Count is four.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 727,
+      "bottomRightX": 686,
+      "bottomRightY": 829,
+      "content": "4. A port receiving LCRD_x from its link partner shall increment its Remote Rx Header Buffer Credit Count by one each time an LCRD_x is received up to four.\n5. A port shall not transmit any header packet if its Remote Rx Header Buffer Credit Count is zero.\n6. A port shall not request for a low power link state entry before receiving and sending LCRD_x during the Rx Header Buffer Credit Advertisement.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 175,
+      "topLeftY": 832,
+      "bottomRightX": 679,
+      "bottomRightY": 850,
+      "content": "Note: The rules of Low Power Link State Initiation (refer to Section 7.2.4.2) still apply.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-20",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

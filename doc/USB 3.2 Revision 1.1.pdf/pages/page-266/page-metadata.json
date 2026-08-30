@@ -1,0 +1,141 @@
+{
+  "index": 265,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 235 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 267,
+      "topLeftY": 92,
+      "bottomRightX": 520,
+      "bottomRightY": 109,
+      "content": "Figure 8-19. NRDY Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 120,
+      "bottomRightX": 652,
+      "bottomRightY": 227,
+      "content": "![img-112.jpeg](img-112.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-112.jpeg"
+    },
+    {
+      "topLeftX": 212,
+      "topLeftY": 256,
+      "bottomRightX": 574,
+      "bottomRightY": 272,
+      "content": "Table 8-14. NRDY TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 283,
+      "bottomRightX": 645,
+      "bottomRightY": 402,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to NRDY.  |\n|  3 | 1:4 | Reserved (Rsvd).  |\n|  20 | 1:12 | Reserved.  |\n|  5 | 2:27 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-113.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 430,
+      "bottomRightX": 413,
+      "bottomRightY": 445,
+      "content": "### 8.5.3 Endpoint Ready (ERDY) Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 452,
+      "bottomRightX": 673,
+      "bottomRightY": 497,
+      "content": "This TP can only be sent by a device for a non-isochronous endpoint. It is used to inform the host that an endpoint is ready to send or receive data packets. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 267,
+      "topLeftY": 510,
+      "bottomRightX": 520,
+      "bottomRightY": 526,
+      "content": "Figure 8-20. ERDY Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 537,
+      "bottomRightX": 652,
+      "bottomRightY": 645,
+      "content": "![img-113.jpeg](img-113.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-113.jpeg"
+    },
+    {
+      "topLeftX": 212,
+      "topLeftY": 673,
+      "bottomRightX": 574,
+      "bottomRightY": 689,
+      "content": "Table 8-15. ERDY TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 699,
+      "bottomRightX": 652,
+      "bottomRightY": 911,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to ERDY.  |\n|  3 | 1:4 | Reserved (Rsvd).  |\n|  4 | 1:12 | Reserved.  |\n|  5 | 1:16 | Number of Packets (NumP). For an OUT endpoint, refer to Table 8-13 for the description of this field. For an IN endpoint this field is set by the endpoint to the number of packets it can transmit when the host resumes transactions to it. This field shall not have a value greater than the maximum burst size supported by the endpoint as indicated by the value in the bMaxBurst field in the Endpoint Companion Descriptor. Note that the value reported in this field may be treated by the host as informative only.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-114.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

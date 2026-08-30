@@ -1,0 +1,93 @@
+{
+  "index": 481,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 694,
+      "bottomRightY": 161,
+      "content": "As shown in Figure 10-3, the SuperSpeedPlus hub portion consists of three functional components: the SuperSpeedPlus Upstream Controller, the SuperSpeedPlus Downstream Controller and the SuperSpeedPlus Hub Controller. All subsequent references in this specification are to components of the Enhanced SuperSpeed hub unless otherwise noted.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 166,
+      "bottomRightX": 694,
+      "bottomRightY": 233,
+      "content": "The SuperSpeedPlus Upstream (SSP US) Controller is responsible for the behavior of the upstream port, buffering for packets being received from the upstream link, buffering and arbitrating packets waiting to be transmitted on the upstream link, and for routing packets to the appropriate downstream port's Downstream Controller (or to the hub controller).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 237,
+      "bottomRightX": 688,
+      "bottomRightY": 304,
+      "content": "The SuperSpeedPlus Downstream (SSP DS) Controller is responsible for the behavior of the downstream port, buffering for packets being received from the downstream link, buffering and arbitrating packets waiting to be transmitted on the downstream link and for routing packets to the Upstream Controller.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 309,
+      "bottomRightX": 694,
+      "bottomRightY": 343,
+      "content": "The SuperSpeedPlus Hub Controller provides the same mechanism for host-to-hub communication that the SuperSpeed Hub Controller does.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 366,
+      "bottomRightX": 732,
+      "bottomRightY": 680,
+      "content": "![img-259.jpeg](img-259.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-259.jpeg"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 704,
+      "bottomRightX": 603,
+      "bottomRightY": 721,
+      "content": "Figure 10-3. SuperSpeedPlus Portion of the Hub Architecture",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 735,
+      "bottomRightX": 700,
+      "bottomRightY": 856,
+      "content": "Unlike USB peripheral devices, a USB hub connects upstream on both the Enhanced SuperSpeed bus and USB 2.0 bus. Connections may be enabled or disabled under the control of system software for a USB hub's downstream ports. If a USB hub upstream port is not connected on either USB 2.0 bus or Enhanced SuperSpeed bus, the hub does not provide power to the downstream ports unless it supports the USB Implementers Forum, Inc.'s Battery Charging Specification. Refer to Section 10.3.1.1 for a detailed discussion on when a hub is allowed to remove VBUS from a downstream facing port. This specification allows self-powered and bus-powered hubs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "10-4",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

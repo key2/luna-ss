@@ -1,0 +1,95 @@
+{
+  "index": 578,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 500,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Interoperability and Power Delivery",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 98,
+      "bottomRightX": 652,
+      "bottomRightY": 272,
+      "content": "![img-288.jpeg](img-288.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-288.jpeg"
+    },
+    {
+      "topLeftX": 216,
+      "topLeftY": 285,
+      "bottomRightX": 569,
+      "bottomRightY": 304,
+      "content": "Figure 11-5. Worst-case Voltage Drop Topology (Steady",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 323,
+      "bottomRightX": 508,
+      "bottomRightY": 340,
+      "content": "State) Note: the following assumptions were used in Figure 11-5:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 344,
+      "bottomRightX": 594,
+      "bottomRightY": 436,
+      "content": "- 3 meter cable assembly with A-series and B-series plugs\n- #22AWG wire used for power and ground (0.019 Ω/foot)\n- A-series and B-series plug/receptacle pair have a contact resistance of 30 mΩ\n- Wire ~380 mΩ series resistance\n- IR Drop at device = (((2 * 30 mΩ) + 190 mΩ) * 900 mA) * 2 or 0.450 V",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 188,
+      "topLeftY": 458,
+      "bottomRightX": 637,
+      "bottomRightY": 665,
+      "content": "![img-289.jpeg](img-289.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-289.jpeg"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 679,
+      "bottomRightX": 650,
+      "bottomRightY": 696,
+      "content": "Figure 11-6. Worst-case Voltage Drop Analysis Using Equivalent Resistance",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 715,
+      "bottomRightX": 420,
+      "bottomRightY": 784,
+      "content": "|  Rt | Host Trace Resistance: | 0.167 Ω  |\n| --- | --- | --- |\n|  Rc | Mated Connector Resistance: | 0.030 Ω  |\n|  Rw | Cable Resistance: | 0.190 Ω  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-255.md"
+    },
+    {
+      "topLeftX": 673,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "11-7",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

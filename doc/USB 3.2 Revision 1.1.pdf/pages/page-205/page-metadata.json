@@ -1,0 +1,164 @@
+{
+  "index": 204,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 174 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 258,
+      "bottomRightY": 108,
+      "content": "### 7.5.4.4 Polling.LFPSPlus",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 114,
+      "bottomRightX": 663,
+      "bottomRightY": 147,
+      "content": "Polling.LFPSPlus is a substate where the port SuperSpeedPlus operation performs SCD2 handshake, for additional confirmation of the SuperSpeedPlus capability of its link partner.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 159,
+      "bottomRightX": 390,
+      "bottomRightY": 174,
+      "content": "#### 7.5.4.4.1 Polling.LFPSPlus Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 181,
+      "bottomRightX": 667,
+      "bottomRightY": 227,
+      "content": "- The port in SuperSpeedPlus operation shall transmit SCD2 defined in Table 6-33. If SCD2 cannot be found in 64 consecutive Polling.LFPS received, it shall transmit Polling.LFPS with non-varying tRepeat instead of SCD2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 157,
+      "topLeftY": 233,
+      "bottomRightX": 629,
+      "bottomRightY": 264,
+      "content": "Note: This is an extreme case where a port in SuperSpeed operation transmits Polling.LFPS coinciding with SCD1 and remains in Polling.LFPS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 270,
+      "bottomRightX": 668,
+      "bottomRightY": 391,
+      "content": "- The operation of the 360 ms timer (tPollingLFPSTimeout) shall continue without reset upon entry to this substate from Polling.LFPS.\n- A port in SuperSpeedPlus operation shall be ready for SuperSpeed operation if it has detected that its link partner operates at SuperSpeed.\n- A port in SuperSpeedPlus operation shall implement a 60 μs timer (tPollingSCDLFPSTimeout) to monitor the absence of LFPS signal after the completion of SuperSpeed Polling.LFPS handshake.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 397,
+      "bottomRightX": 362,
+      "bottomRightY": 413,
+      "content": "#### 7.5.4.4.2 Exit from Polling.LFPSPlus",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 420,
+      "bottomRightX": 652,
+      "bottomRightY": 487,
+      "content": "- The port in SuperSpeedPlus operation shall transition to Polling.PortMatch if two SCD2 are transmitted after one SCD2 as defined in Section 6.9.4.2 is received.\n- A port in SuperSpeedPlus operation shall transition to Polling.RxEQ and switch to SuperSpeed operation if one of the following two conditions is met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 494,
+      "bottomRightX": 614,
+      "bottomRightY": 510,
+      "content": "1. No LFPS signal for more than tPollingSCDLFPSTimeout is observed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 515,
+      "bottomRightX": 629,
+      "bottomRightY": 547,
+      "content": "Note: This condition implies the SuperSpeed link partner has entered Polling.RxEQ transmitting TSEQ ordered sets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 552,
+      "bottomRightX": 663,
+      "bottomRightY": 583,
+      "content": "2. Twenty Polling.LFPS bursts with non-varying tRepeat are transmitted, after finding no SCD2 is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 589,
+      "bottomRightX": 668,
+      "bottomRightY": 679,
+      "content": "Note: This condition guarantees that, in the case of a port in SuperSpeedPlus operation connecting to a port in SuperSpeed operation, a port in SuperSpeed operation will receive twenty consecutive Polling.LFPS to exit from this substate if it is unable to recognize Polling.LFPS with varying tRepeat in SCD1 and SCD2, and it happens to transmit Polling.LFPS matching SCD1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 687,
+      "bottomRightX": 668,
+      "bottomRightY": 898,
+      "content": "- A downstream port shall transition to Rx.Detect upon the 360 ms timer timeout (tPollingLFPSTimeout) and cPollingTimeout is less than two.\n- A downstream port shall transition to eSS.Inactive upon the 360 ms timer timeout (tPollingLFPSTimeout) and cPollingTimeout is two.\n- An upstream port of a hub shall transition to Rx.Detect upon the 360 ms timeout (tPollingLFPSTimeout).\n- A peripheral device shall transition to eSS.Disabled upon the 360 ms timeout (tPollingLFPSTimeout).\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

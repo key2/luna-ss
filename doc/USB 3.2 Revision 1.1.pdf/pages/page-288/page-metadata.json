@@ -1,0 +1,111 @@
+{
+  "index": 287,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- 257 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 92,
+      "bottomRightX": 675,
+      "bottomRightY": 154,
+      "content": "Note: Receipt of an ACK TP indicates to the host the DP with the previous sequence number was successfully received by a device as well as the number of data packet buffers the device has available to receive any pending DPs the host has. A device shall send an ACK TP for each DP successfully received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 166,
+      "bottomRightX": 561,
+      "bottomRightY": 198,
+      "content": "**Table 8-29. Device Responses to OUT Transactions (Bulk, Control, and Interrupt Endpoints)**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 108,
+      "topLeftY": 207,
+      "bottomRightX": 676,
+      "bottomRightY": 615,
+      "content": "|  DPH has Invalid Values | DPH has Deferred Bit Set | Receiver Halt Feature Set | Data Packet Payload Error | Device Can Accept Data | TP Returned by Device  |\n| --- | --- | --- | --- | --- | --- |\n|  Yes | Do not care | Do not care | Do not care | Do not care | Discard DP.  |\n|  No | Yes | Yes | Do not care | Do not care | The device shall send an ERDY TP.  |\n|  No | Yes | No | Do not care | No | The device shall not respond. It shall send an ERDY TP when it is ready to resume.  |\n|  No | Yes | No | Do not care | Yes | The device shall send an ERDY TP.  |\n|  No | No | Yes | Do not care | Do not care | The device shall send a STALL TP.  |\n|  No | No | No | Do not care | No | Discard DP, send an NRDY TP.  |\n|  No | No | No | Yes | Yes | Discard DP, send an ACK TP with the sequence number of the DP expected (thereby indicating that the DP was not received), the Retry bit set and the number of DPs that the device can receive for this endpoint.  |\n|  No | No | No | No | Yes | Send an ACK TP indicating the sequence number of the next DP expected (thereby indicating that this DP was received successfully) and the number of DPs that the device can receive for this endpoint.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-133.md"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 637,
+      "bottomRightX": 348,
+      "bottomRightY": 653,
+      "content": "#### 8.11.4 Device Response to a SETUP DP",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 659,
+      "bottomRightX": 661,
+      "bottomRightY": 721,
+      "content": "A SETUP DP is a special DP that is identified by the **Setup** field set to one and addressed to any control endpoint. SETUP is a special type of host-to-device data transaction that permits the host to initiate a command that the device shall perform. Upon receiving a SETUP DP, a device shall respond as shown in Table 8-30.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 733,
+      "bottomRightX": 563,
+      "bottomRightY": 750,
+      "content": "A SETUP DPH shall be considered invalid if it has any one of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 755,
+      "bottomRightX": 641,
+      "bottomRightY": 913,
+      "content": "- Incorrect Device Address\n- Endpoint number and direction does not refer to an endpoint that is part of the current configuration\n- Endpoint number does not refer to a control endpoint\n- Non-zero sequence number\n- Data length is not set to eight\n- TT does not match the endpoint type (for a device operating in SuperSpeedPlus mode).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

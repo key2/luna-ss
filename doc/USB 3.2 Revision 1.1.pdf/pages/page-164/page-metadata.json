@@ -1,0 +1,74 @@
+{
+  "index": 163,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 133 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 93,
+      "bottomRightX": 676,
+      "bottomRightY": 755,
+      "content": "c. LCRD1_A, LCRD1_B, and LCRD1_C/ LCRD2_A, LCRD2_B, and LCRD2_C if the Local Type 1/Type 2 Rx Buffer Credit Count is three.\nd. LCRD1_A, LCRD1_B, LCRD1_C and LCRD1_D/ LCRD2_A, LCRD2_B, LCRD2_C and LCRD2_D if the Local Type 1/Type 2 Rx Buffer Credit Count is four.\ne. LCRD1_A, LCRD1_B, LCRD1_C, LCRD1_D and LCRD1_E/ LCRD2_A, LCRD2_B, LCRD2_C, LCRD2_D and LCRD2_E if the Local Type 1/Type 2 Rx Buffer Credit Count is five. Note that Rx Buffer Credit Count of five or more applies to Gen 2x2 operation.\nf. LCRD1_A, LCRD1_B, LCRD1_C, LCRD1_D, LCRD_E and LCRD1_F/ LCRD2_A, LCRD2_B, LCRD2_C, LCRD2_D, LCRD2_E and LCRD2_F if the Local Type 1/Type 2 Rx Buffer Credit Count is six.\ng. LCRD1_A, LCRD1_B, LCRD1_C, LCRD1_D, LCRD_E, LCRD1_F and LCRD1_G/ LCRD2_A, LCRD2_B, LCRD2_C, LCRD2_D, LCRD2_E, LCRD2_F and LCRD2_G if the Local Type 1/Type 2 Rx Buffer Credit Count is seven.\n4. A port receiving LCRD1_x/LCRD2_x from its link partner shall increment its respective Remote Type 1/Type 2 Rx Buffer Credit Count by one each time a LCRD1_x/LCRD2_x is received up to four or seven.\n5. A port shall not transmit any Type 1 or Type 2 packet if the respective Remote Type 1 or Type 2 Rx Buffer Credit Count is zero.\n6. A port shall not request for a low power link state entry before receiving and sending LCRD1_x and LCRD2_x during the Type 1 and Type 2 Rx Buffer Credit Advertisements.\nNote: The rules of Low Power Link State Initiation (refer to Section 7.2.4.2) still apply.\n• The following rules shall be applied additionally when a port enters U0 from Recovery:\n1. A port sending LBAD before Recovery shall not expect to receive LRTY before a retried header packet from its link partner upon entry to U0.\n2. A port receiving LBAD before Recovery shall not send LRTY before a retried header packet to its link partner upon entry to U0.\nNote: There exists a situation where an LBAD was sent by a port before Recovery and it may or may not be received properly by its link partner. Under this situation, the rules of LBAD/LRTY do not apply. Refer to Sections 7.2.4.1.4 and 7.2.4.1.12 for details.\n• Upon entry to Recovery and the next state is Hot Reset or Loopback, a port may optionally continue its processing of all the packets received properly.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 776,
+      "bottomRightX": 591,
+      "bottomRightY": 792,
+      "content": "#### 7.2.4.1.2 General Rules of LGOOD_n and LCRD_x/LCRD1_x/LCRD2_x Usage",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 799,
+      "bottomRightX": 665,
+      "bottomRightY": 927,
+      "content": "• For SuperSpeed USB, the Rx Header Buffer Credit shall be transmitted in the alphabetical order of LCRD_A, LCRD_B, LCRD_C, LCRD_D, and back to LCRD_A. LCRD_x received out of alphabetical order is considered as missing of a link command, and transition to Recovery shall be initiated.\n• For SuperSpeedPlus USB, the Type 1 Rx Buffer Credit shall be transmitted in the alphabetical order of LCRD1_A, LCRD1_B, LCRD1_C, LCRD1_D in Gen 1x2 or Gen 2x1 operation, and additionally LCRD1_E, LCRD1_F, LCRD1_G in Gen 2x2 operation and back to LCRD1_A. LCRD1_x received out of alphabetical order is considered as",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

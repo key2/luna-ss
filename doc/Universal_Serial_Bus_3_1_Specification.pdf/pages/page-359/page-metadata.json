@@ -1,0 +1,84 @@
+{
+  "index": 358,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 606,
+      "content": "![img-223.jpeg](img-223.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-223.jpeg"
+    },
+    {
+      "topLeftX": 278,
+      "topLeftY": 612,
+      "bottomRightX": 546,
+      "bottomRightY": 631,
+      "content": "Figure 8-37. Sample BULK OUT Sequence",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 658,
+      "bottomRightX": 369,
+      "bottomRightY": 678,
+      "content": "### 8.12.1.4 Bulk Streaming Protocol",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 683,
+      "bottomRightX": 695,
+      "bottomRightY": 751,
+      "content": "The Stream Protocol adheres to the semantics of the standard Enhanced SuperSpeed Bulk protocol, so the packet exchanges on an Enhanced SuperSpeed bulk pipe that supports Streams are indistinguishable from an Enhanced SuperSpeed bulk pipe that does not. The Stream Protocol is managed strictly through manipulation of the Stream ID field in the packet header.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 759,
+      "bottomRightX": 688,
+      "bottomRightY": 827,
+      "content": "Note: Device Class defined methods are used for coordinating the Stream IDs that are used by the host to select Endpoint Buffers and by the device to select the Function Data associated with a particular Stream. Typically this is done via an out-of-band mechanism (e.g., another endpoint) that is used to pass the list of \"Active Stream IDs\" between the host and the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 835,
+      "bottomRightX": 695,
+      "bottomRightY": 888,
+      "content": "Note: The Stream state machines illustrate a 1:1 relationship between sending a DP and receiving an ACK. Logically this is true; however, Enhanced SuperSpeed burst capabilities allows up to MaxBurst outstanding ACKs between the host and a device so temporally there may be a \"many to",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "8-65",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

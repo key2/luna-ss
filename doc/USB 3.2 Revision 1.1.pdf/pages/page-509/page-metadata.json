@@ -1,0 +1,75 @@
+{
+  "index": 508,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- 478 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 92,
+      "bottomRightX": 561,
+      "bottomRightY": 109,
+      "content": "**Table A-2. 8b/10b Special Character Symbol Codes**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 118,
+      "bottomRightX": 670,
+      "bottomRightY": 404,
+      "content": "|  Data Byte Name | Data Byte Value (hex) | Bits HGF EDCBA (binary) | Current RD- abcdei fghj (binary) | Current RD+ abcdei fghj (binary)  |\n| --- | --- | --- | --- | --- |\n|  K28.0 | 1C | 000 11100 | 001111 0100 | 110000 1011  |\n|  K28.1 | 3C | 001 11100 | 001111 1001 | 110000 0110  |\n|  K28.2 | 5C | 010 11100 | 001111 0101 | 110000 1010  |\n|  K28.3 | 7C | 011 11100 | 001111 0011 | 110000 1100  |\n|  K28.4 | 9C | 100 11100 | 001111 0010 | 110000 1101  |\n|  K28.5 | BC | 101 11100 | 001111 1010 | 110000 0101  |\n|  K28.6 | DC | 110 11100 | 001111 0110 | 110000 1001  |\n|  K28.7 | FC | 111 11100 | 001111 1000 | 110000 0111  |\n|  K23.7 | F7 | 111 10111 | 111010 1000 | 000101 0111  |\n|  K27.7 | FB | 111 11011 | 110110 1000 | 001001 0111  |\n|  K29.7 | FD | 111 11101 | 101110 1000 | 010001 0111  |\n|  K30.7 | FE | 111 11110 | 011110 1000 | 100001 0111  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-275.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 439,
+      "bottomRightX": 649,
+      "bottomRightY": 500,
+      "content": "Note: Only a small fraction of the possible K-characters are defined in this table. Any K-character that decodes to a value that is not in Table A-2 shall be returned as Decode_Error_Substitution (K28.4). Refer to Section 6.3.1.4 and Table 6-2 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "index": 369,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 576,
+      "content": "![img-227.jpeg](img-227.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-227.jpeg"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 580,
+      "bottomRightX": 621,
+      "bottomRightY": 597,
+      "content": "Figure 8-41. Device OUT Stream Protocol State Machine (DOSPSM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 617,
+      "bottomRightX": 224,
+      "bottomRightY": 633,
+      "content": "### 8.12.1.4.3.1 Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 646,
+      "bottomRightX": 698,
+      "bottomRightY": 680,
+      "content": "After an endpoint is configured or receives a SetFeature(ENDPOINT_HALT) request, the pipe is in the Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 688,
+      "bottomRightX": 698,
+      "bottomRightY": 791,
+      "content": "DP(Prime, PP=0) - If a DP with the Stream ID field set to Prime is successfully received, then the device shall transition the pipe to the Prime Pipe state. The DPP shall contain a zero-length data payload. This transition occurs after the initial Endpoint Buffers are assigned to the pipe by system software. Note, if an error is detected in the DP data (even though it is zero-length) the device shall remain in the Disabled state, and issue ACK(Prime, NumP>0, Rty) packets, retrying until a DP(Prime) is successfully received. This case is not illustrated in the figure above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 799,
+      "bottomRightX": 698,
+      "bottomRightY": 851,
+      "content": "DPH(Deferred) - If a DP with the Deferred (DF) flag set is received, then the device shall transition the pipe to the Deferred Prime Pipe state. This packet is received when the link has transitioned to a U1 or U2 state while waiting for the initial Endpoint Data assignment.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "8-76",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

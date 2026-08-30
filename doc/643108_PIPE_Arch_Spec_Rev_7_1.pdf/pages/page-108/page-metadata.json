@@ -1,0 +1,150 @@
+{
+  "index": 107,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 355,
+      "bottomRightY": 136,
+      "content": "Table 7-53. Address 40Ah: Tx Status10",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 148,
+      "bottomRightX": 687,
+      "bottomRightY": 223,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:1] | 0h | N/A | N/A | Reserved  |\n|  [0] | 0h | Level | USB4 and DisplayPort | **TxLaneReady:** This field is set to \"1\" by the PHY to indicate that the transmitter is enabled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-124.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 241,
+      "bottomRightX": 453,
+      "bottomRightY": 259,
+      "content": "### 7.2.27 Address 40Bh: Tx Status11",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 293,
+      "bottomRightX": 349,
+      "bottomRightY": 307,
+      "content": "Table 7-54. Address 40Bh: TxStatus11",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 312,
+      "bottomRightX": 687,
+      "bottomRightY": 456,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0 | N/A | N/A | Reserved  |\n|  [5:0] | 0 | Level | PCIe | **LocalG7FS[5:0]:** This field reflects the FS value for the PHY. These signals are only used by a PHY that requires dynamic preset coefficient updates. The FS value is valid for 128 GT/s. This field must be updated by the PHY before the first PhyStatus pulse after a rate change to 128 GT/s, or in response to GetLocalPresetCoefficients when LocalPresetIndex[5:0] > 44  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-125.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 472,
+      "bottomRightX": 453,
+      "bottomRightY": 492,
+      "content": "### 7.2.28 Address 40Ch: Tx Status12",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 523,
+      "bottomRightX": 350,
+      "bottomRightY": 538,
+      "content": "Table 7-55. Address 40Ch: TxStatus12",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 542,
+      "bottomRightX": 687,
+      "bottomRightY": 668,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0 | N/A | N/A | Reserved  |\n|  [5:0] | 0 | Level | PCIe | **LocalG7LF[5:0]:** This field reflects the LF value for the PHY. These signals are only used by a PHY that requires dynamic preset coefficient updates. The LF value is valid for 128 GT/s. Local G7LF[5:0] must be sampled whenever LocalG7FS[5:0] is sampled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-126.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 685,
+      "bottomRightX": 599,
+      "bottomRightY": 707,
+      "content": "### 7.2.29 Address 800h: Near End Loopback Status",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 713,
+      "bottomRightX": 632,
+      "bottomRightY": 729,
+      "content": "This register is required only for PHYs that support the optional NELB feature.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 741,
+      "bottomRightX": 542,
+      "bottomRightY": 757,
+      "content": "Table 7-56. Address 800h: Near End Loopback Status (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 761,
+      "bottomRightX": 687,
+      "bottomRightY": 892,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:2] | 0h | N/A | N/A | Reserved  |\n|  [1] | 0h | Level | PCIe, USB, USB4, and SATA | **NELB Error:** This field is set to \"1\" to indicate an error if the requested operation through the NELB Control register (see Section 7.1.23) is not supported. Specifically, the following two scenarios may result in an error status: 1) The NELB position is not supported or 2) The NELB enable bit is cleared when the PHY does not support exit from NELB via message bus and requires a PIPE reset instead.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-127.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "108",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

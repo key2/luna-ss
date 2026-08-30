@@ -1,0 +1,112 @@
+{
+  "index": 207,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 443,
+      "bottomRightY": 126,
+      "content": "### 6.9.5.2 LBPM Definition and Transmission",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 652,
+      "bottomRightY": 166,
+      "content": "LBPM is byte based with LSb transmitted first. A port may transmit a single LBPM, or consecutive LBPMs. The transmission of LBPM shall adhere to the following conventions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 175,
+      "bottomRightX": 688,
+      "bottomRightY": 312,
+      "content": "- A LBPM delimiter is defined with one tPWM of LFPS followed by one tPWM of EI.\n- The LPBM transmission shall start with a LBPM delimiter.\n- The LBPM transmission shall end with a LBPM delimiter.\n- The transmission of LBPM shall be LSb first.\n- Consecutive LBPM transmission shall be LSB first with LBPM delimiter in between each LBPMs.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 323,
+      "bottomRightX": 467,
+      "bottomRightY": 339,
+      "content": "Examples of LBPM transmission are shown in Figure 6-35.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 370,
+      "bottomRightX": 652,
+      "bottomRightY": 508,
+      "content": "![img-159.jpeg](img-159.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-159.jpeg"
+    },
+    {
+      "topLeftX": 319,
+      "topLeftY": 524,
+      "bottomRightX": 504,
+      "bottomRightY": 542,
+      "content": "(a). Single LBPM Transmission",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 595,
+      "bottomRightX": 703,
+      "bottomRightY": 727,
+      "content": "![img-160.jpeg](img-160.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-160.jpeg"
+    },
+    {
+      "topLeftX": 265,
+      "topLeftY": 729,
+      "bottomRightX": 563,
+      "bottomRightY": 745,
+      "content": "(b). Consecutive LBPMs Transmitted Back to Back",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 275,
+      "topLeftY": 757,
+      "bottomRightX": 547,
+      "bottomRightY": 774,
+      "content": "Figure 6-35. LBPM Transmission Examples",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "6-52",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "index": 9,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 53,
+      "bottomRightX": 185,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 120,
+      "bottomRightX": 690,
+      "bottomRightY": 897,
+      "content": "7-13 Address 401h: PHY Tx Control1 ...87\n7-14 Address 402h: PHY Tx Control2 ...87\n7-15 Address 403h: PHY Tx Control3 ...89\n7-16 Address 404h: PHY Tx Control4 ...89\n7-17 Address 405h: PHY Tx Control5 ...90\n7-18 Address 406h: PHY Tx Control6 ...91\n7-19 Address 407h: PHY Tx Control7 ...91\n7-20 Address 408h: PHY Tx Control8 ...91\n7-21 Address 409h: PHY Tx Control9 ...92\n7-22 Address 40Ah: PHY TX Control 10 ...93\n7-23 Address 800h: PHY Common Control0 ...93\n7-24 Address 801h: PHY Near End Loopback Control ...94\n7-25 MAC Registers ...95\n7-26 Address 0h: Rx Margin Status0 ...97\n7-27 Address 1h: Rx Margin Status1 ...97\n7-28 Address 2h: Rx Margin Status2 ...97\n7-29 Address 3h: Elastic Buffer Status ...98\n7-30 Address 4h: Elastic Buffer Location ...98\n7-31 Address 5h: Rx Status0 ...98\n7-32 Address 6h: Rx Control0 ...99\n7-33 Address 7h: Rx Margin Status3 ...99\n7-34 Address 8h: Reserved ...99\n7-35 Address 9h: Reserved ...99\n7-36 Address Ah: Rx Link Evaluation Status0 ...100\n7-37 Address Bh: Rx Link Evaluation Status1 ...100\n7-38 Address Ch: Rx Status4 ...101\n7-39 Address Dh: Rx Status5 ...102\n7-40 Address Eh: Rx Link Evaluation Status2 ...102\n7-41 Address Fh: Rx Link Evaluation Status3 ...103\n7-42 Address 10h: Rx Status 6 ...104\n7-43 Address 400h: Tx Status0 ...104\n7-44 Address 401h: Tx Status1 ...105\n7-45 Address 402h: Tx Status2 ...105\n7-46 Address 403h: Tx Status3 ...106\n7-47 Address 404h: Tx Status4 ...106\n7-48 Address 405h: Tx Status5 ...106\n7-49 Address 406h: Tx Status6 ...106\n7-50 Address 407h: Tx Status7 ...107\n7-51 Address 408h: Tx Status8 ...107\n7-52 Address 409h: Tx Status9 ...107\n7-53 Address 40Ah: Tx Status10 ...108\n7-54 Address 40Bh: TxStatus11 ...108\n7-55 Address 40Ch: TxStatus12 ...108\n7-56 Address 800h: Near End Loopback Status ...108\n8-1 USB4 PHY Power States ...121\n8-2 DisplayPort PHY Power States ...124\n8-3 PclkChangeOK/PclkChangeAck Requirements ...126\n8-4 Parameters Advertised in PHY Datasheet ...146\n8-5 Control Signal Decode Table – PCIe Mode ...153\n8-6 Control Signal Decode Table – USB Mode, USB4 Mode, and DisplayPort Mode ...154",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 953,
+      "bottomRightX": 107,
+      "bottomRightY": 966,
+      "content": "10",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 491,
+      "topLeftY": 953,
+      "bottomRightX": 689,
+      "bottomRightY": 966,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

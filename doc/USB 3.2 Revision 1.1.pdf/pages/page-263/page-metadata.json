@@ -1,0 +1,112 @@
+{
+  "index": 262,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 232 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 421,
+      "bottomRightY": 108,
+      "content": "### 8.5.1 Acknowledgement (ACK) Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 115,
+      "bottomRightX": 317,
+      "bottomRightY": 131,
+      "content": "This TP is used for two purposes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 143,
+      "bottomRightX": 673,
+      "bottomRightY": 227,
+      "content": "- For IN endpoints, this TP is sent by the host to request data from a device as well as to acknowledge the previously received data packet.\n- For OUT endpoints, this TP is sent by a device to acknowledge receipt of the previous data packet sent by the host, as well as to inform the host of the number of data packet buffers it has available after receipt of this packet.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 272,
+      "topLeftY": 232,
+      "bottomRightX": 515,
+      "bottomRightY": 249,
+      "content": "Figure 8-18. ACK Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 259,
+      "bottomRightX": 673,
+      "bottomRightY": 377,
+      "content": "![img-111.jpeg](img-111.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-111.jpeg"
+    },
+    {
+      "topLeftX": 303,
+      "topLeftY": 417,
+      "bottomRightX": 483,
+      "bottomRightY": 432,
+      "content": "Table 8-13. ACK TP Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 443,
+      "bottomRightX": 679,
+      "bottomRightY": 768,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  20 | 0:5 | **Route String/Reserved.** This field is only used by hubs. In conjunction with the hub depth, it is used to route a packet to the correct downstream port. Refer to Section 8.9 for details. When sent by a device, this field is Reserved.  |\n|  7 | 0:25 | **Device Address.** This field specifies the device, via its address, that is the recipient or the source of the TP. Refer to Section 8.8.  |\n|  4 | 1:0 | **SubType.** This field shall be set to *ACK* for an ACK TP.  |\n|  2 | 1:4 | **Reserved (Rsvd).**  |\n|  1 | 1:6 | **Retry Data Packet (rty).** This field is used to signal that the host or a device did not receive a data packet or received a corrupted data packet and requests the transmitter to resend one or more data packets starting at the specified sequence number.  |\n|  1 | 1:7 | **Direction (D).** This field defines the direction of an endpoint within the device that is the source or recipient of this TP. Refer to Section 8.8. **Value****Direction of Data Flow** 0b Host to Device 1b Device to Host  |\n|  4 | 1:8 | **Endpoint Number (Ept Num).** This field determines an endpoint within the device that is the source or recipient of this TP. Refer to Section 8.8.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-110.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

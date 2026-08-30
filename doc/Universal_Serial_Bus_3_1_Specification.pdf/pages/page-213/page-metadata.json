@@ -1,0 +1,84 @@
+{
+  "index": 212,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 94,
+      "bottomRightX": 294,
+      "bottomRightY": 123,
+      "content": "# 7 Link Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 154,
+      "bottomRightX": 686,
+      "bottomRightY": 306,
+      "content": "The Enhanced SuperSpeed USB consists of SuperSpeed USB operating at the Gen 1 speed, and SuperSpeedPlus USB operating at the Gen 2 speed. The link layer of the Enhanced SuperSpeed USB has the responsibility of maintaining the link connectivity so that successful data transfers between the two link partners are ensured. A robust link flow control is defined based on packets and link commands. Packets are prepared in the link layer to carry data and different information between the host and a device. Link commands are defined for communications between the two link partners. Packet frame ordered sets and link command ordered sets are also constructed such that they are tolerant to one symbol error. In addition, error detection capabilities are also incorporated into a packet and a link command to verify packet and link command integrity.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 325,
+      "bottomRightX": 688,
+      "bottomRightY": 663,
+      "content": "![img-163.jpeg](img-163.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-163.jpeg"
+    },
+    {
+      "topLeftX": 340,
+      "topLeftY": 681,
+      "bottomRightX": 483,
+      "bottomRightY": 698,
+      "content": "Figure 7-1. Link Layer",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 713,
+      "bottomRightX": 673,
+      "bottomRightY": 747,
+      "content": "The link layer also facilitates link training, link testing/debugging, and link power management. This is accomplished by the introduction of Link Training Status State Machine (LTSSM).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 752,
+      "bottomRightX": 477,
+      "bottomRightY": 769,
+      "content": "The focus of this chapter is to address the following in detail:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 773,
+      "bottomRightX": 357,
+      "bottomRightY": 902,
+      "content": "- Packet Framing\n- Link command definition and usage\n- Link initialization and flow control\n- Link power management\n- Link error rules/recovery\n- Resets\n- LTSSM specifications",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

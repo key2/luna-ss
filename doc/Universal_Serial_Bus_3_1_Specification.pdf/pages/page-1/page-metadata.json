@@ -1,0 +1,92 @@
+{
+  "index": 0,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 330,
+      "bottomRightX": 588,
+      "bottomRightY": 433,
+      "content": "# Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 528,
+      "bottomRightX": 265,
+      "bottomRightY": 548,
+      "content": "Hewlett-Packard Company",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 556,
+      "bottomRightX": 201,
+      "bottomRightY": 574,
+      "content": "Intel Corporation",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 582,
+      "bottomRightX": 232,
+      "bottomRightY": 601,
+      "content": "Microsoft Corporation",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 609,
+      "bottomRightX": 230,
+      "bottomRightY": 628,
+      "content": "Renesas Corporation",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 636,
+      "bottomRightX": 173,
+      "bottomRightY": 654,
+      "content": "ST-Ericsson",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 663,
+      "bottomRightX": 213,
+      "bottomRightY": 681,
+      "content": "Texas Instruments",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 609,
+      "topLeftY": 853,
+      "bottomRightX": 701,
+      "bottomRightY": 871,
+      "content": "Revision 1.0",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 609,
+      "topLeftY": 880,
+      "bottomRightX": 701,
+      "bottomRightY": 899,
+      "content": "July 26, 2013",
+      "confidenceScores": null,
+      "type": "text"
+    }
+  ]
+}

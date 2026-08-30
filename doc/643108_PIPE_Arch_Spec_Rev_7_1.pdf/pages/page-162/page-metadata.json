@@ -1,0 +1,57 @@
+{
+  "index": 161,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 549,
+      "bottomRightY": 138,
+      "content": "Table 8-10. Lane Margining at the Receiver Sequences (Sheet 3 of 4)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 687,
+      "bottomRightY": 737,
+      "content": "| Operation | Type of Sampler | Sequence |\n| --- | --- | --- |\n| Direction | Message Bus Command | Description^{1} |\n| Offset Change NAK | Independent | M-->P | UWr | RxMarginControl0=8'b000011?1 (clear error/sample counts) |\n| M-->P | CWr | RxMarginControl1={1'b?,7'b?} (direction, offset) |\n| - | - | MAC clears its error count snapshot. |\n| P-->M | Ack | - |\n| - | - | PHY clears its error and sample counters due to MAC setting Sample Count Reset and Error Count Reset bits in RxMarginControl0. PHY detects bad offset, places/keeps margin logic in normal functional operation mode (margin off). |\n| P-->M | UWr | RxMarginStatus1.SampleCount=0 (if supported) |\n| P-->M | UWr | RxMarginStatus2.ErrorCount=0 (if supported) |\n| P-->M | CWr | RxMarginStatus0.MarginNak=1 |\n| M-->P | Ack | - |\n| - | - | MAC changes execution status to 11 (NAK). |\n| - | - | The \"Stop Margining\" sequence should be followed. |\n| Dependent | M-->P | CWr | RxMarginControl1={1'b?,7'b?} (direction, offset) |\n| - | - | MAC clears its error count snapshot. |\n| P-->M | Ack | - |\n| - | - | PHY detects bad offset, places/keeps margin logic in normal functional operation mode (margin off). |\n| P-->M | CWr | RxMarginStatus0.MarginNak=1 |\n| M-->P | Ack | - |\n| - | - | MAC changes execution status to 11 (NAK). |\n| - | - | The \"Stop Margining\" sequence should be followed. |\n| Error and Sample Counts Update (under limit) | Independent | - | - | PHY detects a change in error or sample count. **Note:** Multiple updates may be combined into single write to avoid backlog. |\n| P-->M | UWr | RxMarginStatus1.SampleCount= new current (if supported) |\n| P-->M | CWr | RxMarginStatus2.ErrorCount= new current (if supported) |\n| M-->P | Ack | - |\n| - | - | MAC changes execution status to new error/sample count. |\n| Dependent | - | - | MAC detects a change in error count. |\n| - | - | MAC changes execution status to new error count. |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-149.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "162",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

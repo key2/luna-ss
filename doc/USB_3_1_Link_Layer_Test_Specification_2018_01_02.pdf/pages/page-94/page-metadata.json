@@ -1,0 +1,191 @@
+{
+  "index": 93,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 263,
+      "bottomRightY": 61,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 92,
+      "bottomRightX": 198,
+      "bottomRightY": 108,
+      "content": "7.5.3.3.1#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 116,
+      "bottomRightX": 205,
+      "bottomRightY": 130,
+      "content": "7.5.10.3.2#5",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 138,
+      "bottomRightX": 196,
+      "bottomRightY": 152,
+      "content": "10.3.1.6#6",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 161,
+      "bottomRightX": 254,
+      "bottomRightY": 176,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 182,
+      "bottomRightX": 708,
+      "bottomRightY": 447,
+      "content": "1. Perform the Link Initialization Sequence to bring the LVS and PUT link to U0.\n2. The LVS software prompts the test operator to initiate a Hot Reset on the PUT through USB30CV.\n3. The LVS waits for the PUT to send TS1s.\n4. The test fails if the TS1 Ordered Sets have the Reset bit set.\n5. The LVS does not transmit anything in response to the PUT.\n6. The test fails if the PUT does not transmit a Warm Reset LFPS after tRecoveryActiveTimeout expires.\n7. The LVS responds to the Warm Reset LFPS by entering Rx.Detect.\n8. The LVS and PUT perform the Link Initialization Sequence to bring the link to U0.\n9. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n10. The test passes if the exchanges are successful, the PUT initiates a Warm Reset LFPS after tRecoveryActiveTimeout in Recovery.Active and the link reaches U0 with a correct Port Configuration Transaction and stays there for at least 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 505,
+      "bottomRightX": 581,
+      "bottomRightY": 522,
+      "content": "# TD.7.32 Warm Reset Rx.Detect Timeout Test (Hub Downstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 525,
+      "bottomRightX": 504,
+      "bottomRightY": 541,
+      "content": "This test has been deleted. The assert has been covered in TD 10.109.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 599,
+      "bottomRightX": 484,
+      "bottomRightY": 616,
+      "content": "# TD.7.33 Exit Compliance Mode Test (Upstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 620,
+      "bottomRightX": 621,
+      "bottomRightY": 635,
+      "content": "This test verifies that a device exits Compliance Mode when it receives a Warm Reset LFPS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 643,
+      "bottomRightX": 234,
+      "bottomRightY": 656,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 665,
+      "bottomRightX": 179,
+      "bottomRightY": 679,
+      "content": "7.4.2#9",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 687,
+      "bottomRightX": 198,
+      "bottomRightY": 702,
+      "content": "7.5.4.3.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 711,
+      "bottomRightX": 190,
+      "bottomRightY": 725,
+      "content": "7.5.5.1#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 732,
+      "bottomRightX": 190,
+      "bottomRightY": 748,
+      "content": "7.5.5.2#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 756,
+      "bottomRightX": 254,
+      "bottomRightY": 771,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 777,
+      "bottomRightX": 694,
+      "bottomRightY": 899,
+      "content": "1. The LVS makes sure VBUS is off to assure a PowerOn Reset.\n2. The LVS prompts the test operator to power cycle a self-powered device.\n3. The LVS turns on VBUS, bringing the link to Rx.Detect.\n4. The LVS presents Terminations and waits for the PUT to present Terminations.\n5. When the LVS detects Terminations from the PUT, the LVS starts a timer for tPollingLFPSTimeout and does not transmit an LFPS.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "86",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "index": 121,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 104,
+      "bottomRightX": 354,
+      "bottomRightY": 124,
+      "content": "### 5.4.1 Cable Construction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 689,
+      "bottomRightY": 200,
+      "content": "Figure 5-15 illustrates a USB 3.1 cable cross-section. There are three groups of wires: D+/D-signal pair (typically unshielded twisted pair (UTP)), Enhanced SuperSpeed signal pairs (typically Shielded Differential Pair (SDP), twisted, twinax, or coaxial signal pairs), and power and ground wires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 231,
+      "topLeftY": 223,
+      "bottomRightX": 593,
+      "bottomRightY": 691,
+      "content": "![img-87.jpeg](img-87.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-87.jpeg"
+    },
+    {
+      "topLeftX": 231,
+      "topLeftY": 704,
+      "bottomRightX": 591,
+      "bottomRightY": 721,
+      "content": "Figure 5-15. Illustration of a USB 3.1 Cable Cross-Section",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 735,
+      "bottomRightX": 694,
+      "bottomRightY": 804,
+      "content": "The D+/D- signal pair is intended to transmit the USB 2.0 signaling while the Enhanced SuperSpeed signal pairs are used for SuperSpeed; the shield is needed for the SuperSpeed differential pairs for signal integrity and EMI performance. Each Enhanced SuperSpeed drain wire is connected to the system ground through the GND_DRAIN pin(s) in the connector.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 808,
+      "bottomRightX": 641,
+      "bottomRightY": 844,
+      "content": "A metal braid is required to enclose all the wires in the USB 3.1 cable. The braid shall be terminated to the plug metal shells, as close to 360° as possible, to reduce EMI.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-34",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

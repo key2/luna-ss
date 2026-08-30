@@ -1,0 +1,146 @@
+{
+  "index": 178,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 148 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 678,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 95,
+      "bottomRightX": 667,
+      "bottomRightY": 125,
+      "content": "transition from one state to another. The detection and recovery from those link errors are described with details in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 139,
+      "bottomRightX": 278,
+      "bottomRightY": 154,
+      "content": "### 7.3.3 Link Error Statistics",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 160,
+      "bottomRightX": 652,
+      "bottomRightY": 206,
+      "content": "To facilitate the quality of the link operation, two counts of link error statistics are implemented and accessible by the upper layer for its decision if port re-configuration is needed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 219,
+      "bottomRightX": 260,
+      "bottomRightY": 233,
+      "content": "#### 7.3.3.1 Link Error Count",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 240,
+      "bottomRightX": 675,
+      "bottomRightY": 287,
+      "content": "The Link Error Count is defined to record the number of events when a port transitions from U0 to Recovery to recover an error event. All downstream ports shall implement the Link Error Count.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 299,
+      "bottomRightX": 534,
+      "bottomRightY": 315,
+      "content": "The operation of Link Error count shall adhere to the following rules.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 326,
+      "bottomRightX": 667,
+      "bottomRightY": 485,
+      "content": "- A port in SuperSpeedPlus operation shall implement the Link Error Count that counts up to 65,535 error events. The Link Error Count shall saturate if it has reached its maximum count value.\n- The Link Error Count shall be reset to zero in any one of the following conditions.\n  1. PowerOn Reset, Hot Reset, or Warm Reset\n  2. Directed\n- The Link Error Count shall be incremented by one each time a port transitions from U0 to Recovery to recover an error event.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 506,
+      "bottomRightX": 260,
+      "bottomRightY": 521,
+      "content": "#### 7.3.3.2 Soft Error Count",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 528,
+      "bottomRightX": 667,
+      "bottomRightY": 590,
+      "content": "The Soft Error Count is defined to record the number of error events of the port that are either correctable or detectable and do not require the link to recover through transition to Recovery. Only a port capable of SuperSpeedPlus operation may optionally implement the Soft Error Count.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 601,
+      "bottomRightX": 555,
+      "bottomRightY": 617,
+      "content": "The operation of the Soft Error Count shall adhere to the following rules.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 629,
+      "bottomRightX": 667,
+      "bottomRightY": 903,
+      "content": "- A port in SuperSpeedPlus operation shall count up to 65,535 error events. The Soft Error Count shall saturate if it has reached its maximum count value\n- The Soft Error Count shall be reset to zero in any one of the following conditions.\n  1. PowerOn Reset, Hot-Reset, or Warm-Reset\n  2. Directed\n- The Soft Error Count shall increment by one if any of the following errors is detected.\n  1. Single-bit error in the block header.\n  2. CRC-5 or CRC-16 or CRC-32 error.\n  3. Single symbol framing error.\n  4. Idle Symbol error.\n  5. Single SKP symbol error.\n  6. Optionally for error in the length field replica of DPH.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

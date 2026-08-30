@@ -1,0 +1,113 @@
+{
+  "index": 109,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 141,
+      "bottomRightX": 375,
+      "bottomRightY": 338,
+      "content": "![img-54.jpeg](img-54.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-54.jpeg"
+    },
+    {
+      "topLeftX": 155,
+      "topLeftY": 400,
+      "bottomRightX": 348,
+      "bottomRightY": 572,
+      "content": "![img-55.jpeg](img-55.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-55.jpeg"
+    },
+    {
+      "topLeftX": 446,
+      "topLeftY": 431,
+      "bottomRightX": 636,
+      "bottomRightY": 572,
+      "content": "![img-56.jpeg](img-56.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-56.jpeg"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 702,
+      "bottomRightX": 240,
+      "bottomRightY": 714,
+      "content": "NOTES:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 714,
+      "bottomRightX": 460,
+      "bottomRightY": 734,
+      "content": "1) CRITICAL DIMENSIONS ARE TOLERANCED\nAND SHALL NOT BE DEVIATED.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 734,
+      "bottomRightX": 473,
+      "bottomRightY": 754,
+      "content": "2) GENERAL TOLERANCE IS ±0.10 OTHERWISE\nTHE SPECIFIED TOLERANCE APPLIES.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 754,
+      "bottomRightX": 473,
+      "bottomRightY": 794,
+      "content": "3) ALL DIMENSIONS ARE IN MILLIMETERS.\n4) DIMENSIONS THAT ARE LABELED REF ARE\nTYPICAL DIMENSIONS AND MAY VARY FROM\nMANUFACTURER TO MANUFACTURER.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 794,
+      "bottomRightX": 486,
+      "bottomRightY": 814,
+      "content": "5) NON-DIMENSIONED GEOMETRY FOR REFERENCE\nONLY, SUBJECT TO CHANGE.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 209,
+      "topLeftY": 856,
+      "bottomRightX": 614,
+      "bottomRightY": 872,
+      "content": "Figure 5-9. USB 3.1 Standard-B Receptacle Interface Dimensions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-22",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

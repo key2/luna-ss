@@ -1,0 +1,75 @@
+{
+  "index": 535,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 499,
+      "bottomRightY": 115,
+      "content": "### 10.13.4 Hub and Port Status Change Bitmap",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 700,
+      "bottomRightY": 254,
+      "content": "The Hub and Port Status Change Bitmap, shown in Figure 10-24, indicates whether the hub or a port has experienced a status change. This bitmap also indicates which port(s) have had a change in status. The hub returns this value on the Status Change endpoint. Hubs report this value in byte-increments. For example, if a hub has six ports, it returns a byte quantity, and reports a zero in the invalid port number field locations. The USB system software is aware of the number of ports on a hub (this is reported in the hub descriptor) and decodes the Hub and Port Status Change Bitmap accordingly. The hub reports any changes in hub status in bit zero of the Hub and Port Status Change Bitmap.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 259,
+      "bottomRightX": 689,
+      "bottomRightY": 293,
+      "content": "The Hub and Port Status Change Bitmap size is two bytes. Hubs report only as many bits as there are ports on the hub. A USB hub may have no more than nMaxHubPorts.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 311,
+      "bottomRightX": 676,
+      "bottomRightY": 586,
+      "content": "![img-281.jpeg](img-281.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-281.jpeg"
+    },
+    {
+      "topLeftX": 254,
+      "topLeftY": 596,
+      "bottomRightX": 569,
+      "bottomRightY": 613,
+      "content": "Figure 10-24. Hub and Port Status Change Bitmap",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-58",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

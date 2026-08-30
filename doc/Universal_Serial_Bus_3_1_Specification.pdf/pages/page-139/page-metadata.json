@@ -1,0 +1,75 @@
+{
+  "index": 138,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 112,
+      "bottomRightX": 553,
+      "bottomRightY": 445,
+      "content": "![img-104.jpeg](img-104.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-104.jpeg"
+    },
+    {
+      "topLeftX": 205,
+      "topLeftY": 456,
+      "bottomRightX": 620,
+      "bottomRightY": 474,
+      "content": "Figure 5-24. Illustration of Insertion Loss Fit at Nyquist Frequency",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 487,
+      "bottomRightX": 626,
+      "bottomRightY": 505,
+      "content": "The difference between IL(f) and ILfit(f) is defined as the insertion loss deviation, ILD:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 512,
+      "bottomRightX": 681,
+      "bottomRightY": 532,
+      "content": "$$ILD(f) = IL(f) - ILfit(f). \\tag{5-2}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 541,
+      "bottomRightX": 686,
+      "bottomRightY": 577,
+      "content": "It measures the ripple of the insertion loss, or the multi-reflection. Figure 5-25 shows an example of insertion loss deviation plotted against frequency.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 697,
+      "bottomRightY": 994,
+      "content": "5-51",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

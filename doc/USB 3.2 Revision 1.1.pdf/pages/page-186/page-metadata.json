@@ -1,0 +1,120 @@
+{
+  "index": 185,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- 155 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 93,
+      "bottomRightX": 387,
+      "bottomRightY": 109,
+      "content": "### 7.3.14 Summary of Error Types and Recovery",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 114,
+      "bottomRightX": 674,
+      "bottomRightY": 145,
+      "content": "Table 7-11 summarizes the link error types, error count, and different error paths to restore the link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 158,
+      "bottomRightX": 633,
+      "bottomRightY": 189,
+      "content": "Situations also exist where an unexpected link command or header packet is received. These include but are not limited to the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 201,
+      "bottomRightX": 675,
+      "bottomRightY": 437,
+      "content": "1. Receiving an unexpected link command such as LBAD, LRTY, LAU, LXU, or LPMA before receiving the Header Sequence Number Advertisement and the Remote Rx Header Buffer Credit Advertisement or Type 1/Type 2 Rx Buffer Credit Advertisements.\n2. Receiving the Header Sequence Number Advertisement after entry to U0 from Recovery with its ACK Tx Header Sequence Number not corresponding to any header packets in the Tx Header Buffers or Type 1/Type 2 Tx Header Buffers.\n3. Receiving LRTY without sending LBAD.\n4. Receiving LGOOD_n that is neither a Header Sequence Number Advertisement, nor for header packet acknowledgement.\n5. Receiving LAU, or LXU without sending LGO_Ux.\n6. Receiving LPMA without sending LAU.\n7. Receiving an unexpected header packet during link initialization.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 443,
+      "bottomRightX": 660,
+      "bottomRightY": 489,
+      "content": "These error situations are largely not due to link errors. A port's behavior under these situations is undefined and implementation specific. It is recommended that a port ignore those unexpected link commands or header packets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 501,
+      "bottomRightX": 658,
+      "bottomRightY": 563,
+      "content": "If the ports are directed to different link states based on TS2 ordered set, the downstream port's TS2 ordered set overrides the upstream port's TS2 ordered set. For example, if a downstream port issues Hot Reset in its TS2 ordered set, and an upstream port issues Loopback mode, Hot Reset overrides Loopback. The ports shall enter Hot Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 269,
+      "topLeftY": 576,
+      "bottomRightX": 521,
+      "bottomRightY": 592,
+      "content": "Table 7-11. Error Types and Recovery",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 601,
+      "bottomRightX": 662,
+      "bottomRightY": 902,
+      "content": "|  Error Type | Description/Example | Error Recovery Path | Update Link Error Count? | Update Soft Error Count? (SuperSpeedPlus USB)  |\n| --- | --- | --- | --- | --- |\n|  Missing Header Packet Framing | Only a valid packet framing ordered set will be declared in the receiver side. | Delayed transition to Recovery | Yes | No  |\n|  Header Packet Error | Any header packet CRC is bad. | Header packet retry process | No | Yes  |\n|  Rx Header Sequence Number Error | The Header Sequence Number in the received header packet does not match the Rx Header Sequence Number. | Recovery | Yes | No  |\n|  ACK Tx Header Sequence Number Error | The Header Sequence Number in the received LGOOD_n (not Header Sequence Number Advertisement) does not match ACK Tx Header Sequence Number. | Recovery | Yes | No  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-88.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

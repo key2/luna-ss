@@ -1,0 +1,184 @@
+{
+  "index": 360,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 330 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 207,
+      "bottomRightY": 108,
+      "content": "#### 9.3.4 wIndex",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 671,
+      "bottomRightY": 146,
+      "content": "The contents of this field vary according to the request. It is used to pass a parameter to the device, specific to the request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 159,
+      "bottomRightX": 666,
+      "bottomRightY": 190,
+      "content": "The wIndex field is often used in requests to specify an endpoint or an interface. Figure 9-2 shows the format of wIndex when it is used to specify an endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 209,
+      "topLeftY": 202,
+      "bottomRightX": 578,
+      "bottomRightY": 218,
+      "content": "Figure 9-2. wIndex Format when Specifying an Endpoint",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 228,
+      "bottomRightX": 656,
+      "bottomRightY": 300,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Direction | Reserved (Reset to Zero) |   |   | Endpoint Number  |   |   |   |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D7 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-147.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 329,
+      "bottomRightX": 645,
+      "bottomRightY": 389,
+      "content": "The Direction bit is set to zero to indicate the OUT endpoint with the specified Endpoint Number and to one to indicate the IN endpoint. In the case of a control pipe, the request should have the Direction bit set to zero but the device may accept either value of the Direction bit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 401,
+      "bottomRightX": 580,
+      "bottomRightY": 418,
+      "content": "Figure 9-3 shows the format of wIndex when it is used to specify an interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 209,
+      "topLeftY": 430,
+      "bottomRightX": 578,
+      "bottomRightY": 445,
+      "content": "Figure 9-3. wIndex Format when Specifying an Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 456,
+      "bottomRightX": 656,
+      "bottomRightY": 529,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Interface Number  |   |   |   |   |   |   |   |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D7 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-148.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 556,
+      "bottomRightX": 214,
+      "bottomRightY": 571,
+      "content": "#### 9.3.5 wLength",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 578,
+      "bottomRightX": 673,
+      "bottomRightY": 625,
+      "content": "This field specifies the length of the data transferred during the second stage of the control transfer. The direction of data transfer (host-to-device or device-to-host) is indicated by the Direction bit of the bmRequestType field. If this field is zero, there is no data transfer stage.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 636,
+      "bottomRightX": 666,
+      "bottomRightY": 697,
+      "content": "On an input request, a device shall never return more data than is indicated by the wLength value; it may return less. On an output request, wLength will always indicate the exact amount of data to be sent by the host. Device behavior is undefined if the host should send more or less data than is specified in wLength.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 710,
+      "bottomRightX": 315,
+      "bottomRightY": 725,
+      "content": "### 9.4 Standard Device Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 731,
+      "bottomRightX": 637,
+      "bottomRightY": 779,
+      "content": "This section describes the standard device requests defined for all devices. Table 9-4 outlines the standard device requests, while Table 9-5 and Table 9-6 give the standard request codes and descriptor types, respectively.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 791,
+      "bottomRightX": 673,
+      "bottomRightY": 852,
+      "content": "Devices shall respond to standard device requests, even if the device has not yet been assigned an address or has not been configured. If a standard request defines a persistent parameter that can be modified, the reset/default value for that parameter, unless otherwise specified, is zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

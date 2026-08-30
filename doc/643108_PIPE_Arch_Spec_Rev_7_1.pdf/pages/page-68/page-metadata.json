@@ -1,0 +1,131 @@
+{
+  "index": 67,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 138,
+      "bottomRightX": 571,
+      "bottomRightY": 154,
+      "content": "Table 6-12. Command+Address Message Bus Transaction Timing (Read)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 157,
+      "bottomRightX": 690,
+      "bottomRightY": 244,
+      "content": "|   |  | M2P/P2M_MessageBus  |   |   |   |   |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|   |  | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0  |\n|  Time | t | Cmd[3:0] |   |   |   | Addr[11:8]  |   |   |   |\n|   |  t+1 | Addr[7:0]  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-44.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 263,
+      "bottomRightX": 628,
+      "bottomRightY": 279,
+      "content": "Table 6-13. Command+Data Message Bus Transaction Timing (Read Completion)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 283,
+      "bottomRightX": 690,
+      "bottomRightY": 370,
+      "content": "|   |  | M2P/P2M_MessageBus  |   |   |   |   |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|   |  | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0  |\n|  Time | t | Cmd[3:0] |   |   |   | 0000b  |   |   |   |\n|   |  t+1 | Data[7:0]  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-45.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 390,
+      "bottomRightX": 564,
+      "bottomRightY": 418,
+      "content": "Table 6-14. Command+Address+Data Message Bus Transaction Timing (Write_uncommitted, Write_committed)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 421,
+      "bottomRightX": 690,
+      "bottomRightY": 526,
+      "content": "|   |  | M2P/P2M_MessageBus  |   |   |   |   |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|   |  | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0  |\n|  Time | t | Cmd[3:0] |   |   |   | Addr[11:8]  |   |   |   |\n|   |  t+1 | Addr[7:0]  |   |   |   |   |   |   |   |\n|   |  t+2 | Data[7:0]  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-46.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 537,
+      "bottomRightX": 453,
+      "bottomRightY": 556,
+      "content": "### 6.1.4.2 Message Bus Interface Framing",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 560,
+      "bottomRightX": 660,
+      "bottomRightY": 577,
+      "content": "The framing of transactions is implicitly derived by adhering to the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 582,
+      "bottomRightX": 670,
+      "bottomRightY": 716,
+      "content": "1. All zeroes must be driven on the message bus when idle.\n2. An idle to a non-idle transition indicates the start of a transaction; a new transaction can immediately start the cycle after the end of the previous transaction without an intervening idle.\n3. The number of cycles to transmit a transaction depends on the command and is specified in Table 6-10.\n4. The cycles associated with one transaction must be transferred in contiguous cycles.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 723,
+      "bottomRightX": 681,
+      "bottomRightY": 796,
+      "content": "Figure 6-1 illustrates the framing of a couple of transactions on the message bus. The start of the first transaction is inferred by the idle to a non-idle transition. The command is decoded as a write, which takes three cycles to transmit. Since the cycle following the end of the write is non-idle, it is inferred to be the start of the next transaction, which is decoded to be another write that takes three cycles to transmit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 966,
+      "content": "68",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

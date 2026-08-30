@@ -1,0 +1,122 @@
+{
+  "index": 182,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 409,
+      "bottomRightY": 148,
+      "content": "Figure 9-14. Equalization with Invalid Request",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 166,
+      "bottomRightX": 662,
+      "bottomRightY": 258,
+      "content": "![img-83.jpeg](img-83.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-83.jpeg"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 276,
+      "bottomRightX": 694,
+      "bottomRightY": 349,
+      "content": "Figure 9-15 shows a sequence where the MAC aborts the RxEqEval request before the link evaluation feedback is returned by the PHY. Figure 9-16 shows a sequence where the MAC aborts the RxEqEval request while the link evaluation feedback is being returned by the PHY, that is, there is an overlap. In both abort case, the MAC must ignore the feedback value returned by the PHY.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 359,
+      "bottomRightX": 411,
+      "bottomRightY": 375,
+      "content": "Figure 9-15. Aborted Equalization, Scenario #1",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 391,
+      "bottomRightX": 664,
+      "bottomRightY": 518,
+      "content": "![img-84.jpeg](img-84.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-84.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 542,
+      "bottomRightX": 411,
+      "bottomRightY": 557,
+      "content": "Figure 9-16. Aborted Equalization, Scenario #2",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 574,
+      "bottomRightX": 661,
+      "bottomRightY": 711,
+      "content": "![img-85.jpeg](img-85.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-85.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 738,
+      "bottomRightX": 561,
+      "bottomRightY": 763,
+      "content": "### 9.11 Message Bus: BlockAlignControl",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 767,
+      "bottomRightX": 695,
+      "bottomRightY": 811,
+      "content": "Figure 9-17 shows a sequence where BlockAlignControl is used to reestablish block alignment after a loss of alignment is detected. This sequence also shows how RxValid transitions during this process.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "183",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

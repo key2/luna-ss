@@ -1,0 +1,111 @@
+{
+  "index": 497,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 467 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 277,
+      "topLeftY": 92,
+      "bottomRightX": 510,
+      "bottomRightY": 110,
+      "content": "Figure 11-4. Self-powered Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 189,
+      "topLeftY": 119,
+      "bottomRightX": 602,
+      "bottomRightY": 297,
+      "content": "![img-191.jpeg](img-191.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-191.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 334,
+      "bottomRightX": 364,
+      "bottomRightY": 349,
+      "content": "### 11.4.2 Steady-State Voltage Drop Budget",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 356,
+      "bottomRightX": 351,
+      "bottomRightY": 372,
+      "content": "This analysis is based on the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 379,
+      "bottomRightX": 628,
+      "bottomRightY": 484,
+      "content": "- 3 meter cable assembly with A-series and B-series plugs\n- #22AWG wire used for power and ground (0.019 Ω/foot)\n- A-series and B-series plug/receptacle pair have a contact resistance of 30 mΩ\n- Wire ~380 mΩ series resistance\n- IR Drop at device = (((2 * 30 mΩ) + 190 mΩ) * 900 mA) * 2 or 0.450 V",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 497,
+      "bottomRightX": 451,
+      "bottomRightY": 512,
+      "content": "The steady-state voltage drop budget is determined by:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 518,
+      "bottomRightX": 656,
+      "bottomRightY": 708,
+      "content": "- The nominal 5 V source is 4.75 V to 5.50 V.\n- The maximum voltage drop (for detachable cables) between the USB A-series plug and USB B-series plug on VBUS is 171 mV.\n- The maximum current for the calculations is 0.9 A.\n- The maximum voltage drop for all cables between upstream and downstream on GND is 171 mV.\n- The maximum voltage drop for all mated connectors is 27 mV.\n- All hubs and peripheral devices shall be able to provide configuration information with as little as 4.00 V at the device end of their B-series receptacle. Both low and high-power devices need to be operational with this minimum voltage.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

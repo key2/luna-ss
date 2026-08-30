@@ -1,0 +1,200 @@
+{
+  "index": 22,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 645,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Contents",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 115,
+      "topLeftY": 92,
+      "bottomRightX": 700,
+      "bottomRightY": 125,
+      "content": "9.5 Descriptors ...9-35\n9.6 Standard USB Descriptor Definitions ...9-35",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 127,
+      "bottomRightX": 698,
+      "bottomRightY": 158,
+      "content": "9.6.1 Device ...9-35\n9.6.2 Binary Device Object Store (BOS) ...9-38",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 231,
+      "topLeftY": 160,
+      "bottomRightX": 698,
+      "bottomRightY": 255,
+      "content": "9.6.2.1 USB 2.0 Extension ...9-40\n9.6.2.2 SuperSpeed USB Device Capability ...9-41\n9.6.2.3 Container ID ...9-43\n9.6.2.4 Platform Descriptor ...9-43\n9.6.2.5 SuperSpeedPlus USB Device Capability ...9-44\n9.6.2.6 Precision Time Measurement ...9-46",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 257,
+      "bottomRightX": 698,
+      "bottomRightY": 371,
+      "content": "9.6.3 Configuration ...9-46\n9.6.4 Interface Association ...9-48\n9.6.5 Interface ...9-49\n9.6.6 Endpoint ...9-51\n9.6.7 SuperSpeed Endpoint Companion ...9-55\n9.6.8 SuperSpeedPlus Isochronous Endpoint Companion ...9-58\n9.6.9 String ...9-59",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 115,
+      "topLeftY": 372,
+      "bottomRightX": 698,
+      "bottomRightY": 386,
+      "content": "9.7 Device Class Definitions ...9-60",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 388,
+      "bottomRightX": 698,
+      "bottomRightY": 436,
+      "content": "9.7.1 Descriptors ...9-60\n9.7.2 Interface(s) ...9-60\n9.7.3 Requests ...9-60",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 443,
+      "bottomRightX": 700,
+      "bottomRightY": 464,
+      "content": "# 10 Hub, Host Downstream Port, and Device Upstream Port Specification 10-1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 466,
+      "bottomRightX": 698,
+      "bottomRightY": 482,
+      "content": "10.1 Hub Feature Summary ...10-1",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 483,
+      "bottomRightX": 698,
+      "bottomRightY": 530,
+      "content": "10.1.1 Connecting to an Enhanced SuperSpeed Capable Host ...10-5\n10.1.2 Connecting to a USB 2.0 Host ...10-6\n10.1.3 Hub Connectivity ...10-6",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 531,
+      "bottomRightX": 698,
+      "bottomRightY": 580,
+      "content": "10.1.3.1 Routing Information ...10-6\n10.1.3.2 SuperSpeed Hub Packet Signaling Connectivity ...10-8\n10.1.3.3 SuperSpeedPlus Hub Packet Routing ...10-9",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 581,
+      "bottomRightX": 698,
+      "bottomRightY": 628,
+      "content": "10.1.4 Resume Connectivity ...10-10\n10.1.5 Hub Fault Recovery Mechanisms ...10-10\n10.1.6 Hub Buffer Architecture ...10-11",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 629,
+      "bottomRightX": 698,
+      "bottomRightY": 644,
+      "content": "10.1.6.1 SuperSpeed Hub Buffer Architecture ...10-11",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 256,
+      "topLeftY": 646,
+      "bottomRightX": 708,
+      "bottomRightY": 677,
+      "content": "10.1.6.1.1 SuperSpeed Hub Header Packet Buffer Architecture 10-11\n10.1.6.1.2 Hub Data Buffer Architecture ...10-12",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 678,
+      "bottomRightX": 698,
+      "bottomRightY": 693,
+      "content": "10.1.6.2 SuperSpeedPlus Hub Buffer Architecture ...10-12",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 695,
+      "bottomRightX": 698,
+      "bottomRightY": 711,
+      "content": "10.2 Hub Power Management ...10-13",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 712,
+      "bottomRightX": 698,
+      "bottomRightY": 759,
+      "content": "10.2.1 Link States ...10-13\n10.2.2 Hub Downstream Port U1/U2 Timers ...10-13\n10.2.3 Downstream/Upstream Port Link State Transitions ...10-14",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 760,
+      "bottomRightX": 698,
+      "bottomRightY": 775,
+      "content": "10.3 Hub Downstream Facing Ports ...10-14",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 776,
+      "bottomRightX": 698,
+      "bottomRightY": 792,
+      "content": "10.3.1 Hub Downstream Facing Port State Descriptions ...10-17",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 793,
+      "bottomRightX": 698,
+      "bottomRightY": 890,
+      "content": "10.3.1.1 DSPORT.Powered-off ...10-17\n10.3.1.2 DSPORT.Disconnected (Waiting for eSS Connect) ...10-18\n10.3.1.3 DSPORT.Training ...10-19\n10.3.1.4 DSPORT.ERROR ...10-19\n10.3.1.5 DSPORT.Enabled ...10-19\n10.3.1.6 DSPORT.Resetting ...10-20",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 676,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "xxiii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

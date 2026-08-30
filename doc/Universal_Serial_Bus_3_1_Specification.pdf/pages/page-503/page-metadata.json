@@ -1,0 +1,164 @@
+{
+  "index": 502,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 699,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 694,
+      "bottomRightY": 144,
+      "content": "- If the U2 timeout is 0xFF, the port shall be disabled from initiating U2 entry but shall accept U2 entry requests by the link partner unless the hub has one or more packets/link commands to transmit on the port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 148,
+      "bottomRightX": 694,
+      "bottomRightY": 183,
+      "content": "A port transitions to one of the Enabled U0 states (depending on the U1 and U2 Timeout values) in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 188,
+      "bottomRightX": 699,
+      "bottomRightY": 454,
+      "content": "- From any state if the hub receives a SetPortFeature(PORT_LINK_STATE) U0 request.\n- From U1 if the link partner successfully initiates a transition to U0.\n- From U2 if the link partner successfully initiates a transition to U0.\n- From U1 if the hub successfully initiates a transition to U0 after receiving a packet routed to the port.\n- From U2 if the hub successfully initiates a transition to U0 after receiving a packet routed to the port\n- From an attempt to transition from the U0 to the U1 state if the downstream port's link partner rejects the transition attempt\n- From an attempt to transition from the U0 to the U2 state if the downstream port's link partner rejects the transition attempt\n- From U3 if the upstream port of the hub receives wakeup signaling and the hub downstream port being transitioned received wakeup signaling while it was in U3.\n- From U3 if the downstream port's link partner initiated wake signaling and the upstream hub port's link is not in U3.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 459,
+      "bottomRightX": 688,
+      "bottomRightY": 494,
+      "content": "Note: Refer to Section 10.1.4 for details on cases where a downstream port's link partner initiates remote wakeup signaling.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 507,
+      "bottomRightX": 387,
+      "bottomRightY": 526,
+      "content": "### 10.4.2.2 Attempt U0 – U1 Transition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 530,
+      "bottomRightX": 603,
+      "bottomRightY": 548,
+      "content": "In this state, the port attempts to transition its link from the U0 state to the U1 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 553,
+      "bottomRightX": 597,
+      "bottomRightY": 570,
+      "content": "A port shall attempt to transition to the U1 state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 574,
+      "bottomRightX": 554,
+      "bottomRightY": 629,
+      "content": "- The U1 timer reaches the U1 timeout value.\n- The hub receives a SetPortFeature(PORT_LINK_STATE) U1 request.\n- The downstream port's link partner initiates a U0-U1 transition.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 634,
+      "bottomRightX": 699,
+      "bottomRightY": 683,
+      "content": "If the transition attempt fails, the port returns to the appropriate enabled U0 state. However, if this state was entered due to a SetPortFeature request, the port continues to attempt the U0-U1 transition on its link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 688,
+      "bottomRightX": 642,
+      "bottomRightY": 707,
+      "content": "Note: that the SetPortFeature request is typically only used for U1 entry for test purposes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 721,
+      "bottomRightX": 387,
+      "bottomRightY": 739,
+      "content": "### 10.4.2.3 Attempt U0 – U2 Transition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 744,
+      "bottomRightX": 607,
+      "bottomRightY": 762,
+      "content": "In this state, the port attempts to transition the link from the U0 state to the U2 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 767,
+      "bottomRightX": 597,
+      "bottomRightY": 784,
+      "content": "A port shall attempt to transition to the U2 state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 787,
+      "bottomRightX": 554,
+      "bottomRightY": 842,
+      "content": "- The U2 timer reaches the U2 timeout value.\n- The hub receives a SetPortFeature(PORT_LINK_STATE) U2 request.\n- The downstream port's link partner initiates a U0-U2 transition.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 847,
+      "bottomRightX": 690,
+      "bottomRightY": 897,
+      "content": "If the transition attempt fails, the port returns to the appropriate enabled U0 state. However, if this state was entered due to a SetPortFeature request, the port continues to attempt the U0-U2 transition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "10-25",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

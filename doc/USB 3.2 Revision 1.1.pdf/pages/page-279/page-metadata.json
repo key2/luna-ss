@@ -1,0 +1,129 @@
+{
+  "index": 278,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 248 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 226,
+      "topLeftY": 92,
+      "bottomRightX": 561,
+      "bottomRightY": 109,
+      "content": "Table 8-26. Isochronous Timestamp Packet Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 119,
+      "bottomRightX": 671,
+      "bottomRightY": 500,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  27 | 0:5 | **Isochronous Timestamp (ITS).** The isochronous timestamp field is used to identify the current time value from the perspective of the host transmitting the ITP. The timestamp field is split into two sub-fields: **Bits****Description** 13:0 **Bus interval counter.** The current 125μs (one Microframe interval) counter. The count value rolls over to zero when the value reaches 0x3FFF and continues to increment. 26:14 **Delta.** The time delta from the start of the current ITP packet to the previous bus interval boundary. This value is a number of tIsochTimestampGranularity units. The value used shall specify the delta that comes closest to the previous bus interval boundary without going before the boundary. Note: If a packet starts exactly on a bus interval boundary, the delta time is set to 0.  |\n|  7 | 1:0 | **Bus Interval Adjustment Control.** This field is deprecated in this version of the specification and shall be Reserved. This field specifies the address of the device that controls the bus interval adjustment mechanism. Upon reset, power-up, or if the device is disconnected, the host shall set this field to zero.  |\n|  14 | 1:7 | **Correction.** This field specifies the negative delay in tIsochTimestampGranularity units that the ITP has accumulated passing through PTM capable hubs. This field shall be set to 0 by the host.  |\n|  43 | 1:21 | **Reserved.**  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-130.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 519,
+      "bottomRightX": 661,
+      "bottomRightY": 582,
+      "content": "The ITS value in the ITP shall have an accuracy of ±1 tIsochTimestampGranularity units of the value of the host clock (for ITP generation) measured when the first framing symbol of the ITP is transmitted by the host. The requirements with respect to ITPs for a hub that supports Precision Time Management (PTM) are described in Section 10.9.4.4.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 594,
+      "bottomRightX": 266,
+      "bottomRightY": 608,
+      "content": "### 8.8 Addressing Triple",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 615,
+      "bottomRightX": 648,
+      "bottomRightY": 660,
+      "content": "Data Packets and most Transaction Packets provide access to specific data flow using a composite of three fields. They are the **Device Address**, the **Endpoint Number**, and the **Direction** fields.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 674,
+      "bottomRightX": 671,
+      "bottomRightY": 734,
+      "content": "Upon reset and power-up, a device's address defaults to a value of zero and shall be programmed by the host during the enumeration process with a value in the range from 1 to 127. Device address zero is reserved as the default address and may not be assigned to any other use.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 748,
+      "bottomRightX": 659,
+      "bottomRightY": 793,
+      "content": "Devices may support up to a maximum of 15 IN and 15 OUT endpoints (as indicated by the **Direction** field) apart from the required default control endpoint that has an endpoint number set to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 806,
+      "bottomRightX": 267,
+      "bottomRightY": 821,
+      "content": "### 8.9 Route String Field",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 827,
+      "bottomRightX": 673,
+      "bottomRightY": 921,
+      "content": "The **Route String** is a 20-bit field in downstream directed packets that the hub uses to route each packet to the designated downstream port. It is composed of a concatenation of the downstream port numbers (4 bits per hub) for each hub traversed to reach a device. The hub uses a Hub Depth value multiplied by four as an offset into the Route String to locate the bits it uses to determine the downstream port number. The Hub Depth value is determined and assigned to every hub during the enumeration process.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

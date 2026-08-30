@@ -1,0 +1,137 @@
+{
+  "index": 622,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 586,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 698,
+      "bottomRightY": 144,
+      "content": "plus some guard band. This assumes the device will not allow its link to enter U2 prior to changing its state to LT-idle. If the device will allow its link to enter U2 when in LT-active, then the total latency the device must be able to tolerate is 125 μs plus the worst case value for U2SEL.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 154,
+      "bottomRightX": 676,
+      "bottomRightY": 187,
+      "content": "For system implementations where U1SEL is less than its worst case value, the device reports a BELT value larger than 125 μs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 205,
+      "bottomRightX": 429,
+      "bottomRightY": 223,
+      "content": "### C.4.1.3 Transitioning Between LT-States",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 228,
+      "bottomRightX": 679,
+      "bottomRightY": 279,
+      "content": "When a device transitions between LT-states, the device sends an LTM Transaction Packet (TP) with an updated BELT. The device should send all BELT updates as soon as possible after a change in LT-state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 289,
+      "bottomRightX": 471,
+      "bottomRightY": 307,
+      "content": "### C.4.1.3.1 Transitioning From LT-idle to LT-active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 315,
+      "bottomRightX": 679,
+      "bottomRightY": 349,
+      "content": "Devices transition from LT-idle to LT-active when the device determines that a bulk or interrupt data transfer needs to occur. Some examples are given below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 354,
+      "bottomRightX": 698,
+      "bottomRightY": 662,
+      "content": "- The host initiates a bulk OUT transfer with the Packets Pending flag asserted to a flash drive device. As a result of receiving this OUT request, the device transitions to LT-active and sends an updated BELT to the host.\n- The host initiates a bulk IN transfer with the Packets Pending flag asserted to a hard disk drive device with is spindle currently spun down and the requested data not in a cache on the hard disk drive. As a result of receiving this IN request, the device determines that a bulk data transfer has been initiated by the host. However, the device will service the IN request after its spindle spins up, which may take substantially longer than the last reported BELT. The device may delay transitioning to LT-active. When the device determines that the spindle will complete its spin up within the last reported BELT, the device transitions to LT-active and sends an updated BELT to the host.\n- A Network Interface Controller device begins receiving data on its network interface that requires a bulk IN data transfer with the host. As a result of receiving data on its network interface, the device transitions to LT-active, begins to transition its link to U0 (if not already in U0), and sends both an ERDY and an updated BELT to the host.\n- A multi-touch Human Interface Device is set up with an interrupt endpoint. When human input is detected the device transitions to LT-active, begins transitioning its link to U0 (if not already in U0), and sends both an ERDY and an updated BELT to the host.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 668,
+      "bottomRightX": 671,
+      "bottomRightY": 702,
+      "content": "In some cases, a transition from LT-idle to LT-active is not appropriate even though the device needs to transmit to the host. For example:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 706,
+      "bottomRightX": 684,
+      "bottomRightY": 739,
+      "content": "- The host sends a GetStatus request to a device. Since it is a control transfer and not a bulk or an interrupt transfer, the device remains in the LT-idle state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 745,
+      "bottomRightX": 690,
+      "bottomRightY": 779,
+      "content": "When the device transitions from LT-idle to LT-active, the device sends an LTM TP with a BELT of at least tBELTmin.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 790,
+      "bottomRightX": 470,
+      "bottomRightY": 808,
+      "content": "### C.4.1.3.2 Transitioning From LT-active to LT-idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 816,
+      "bottomRightX": 698,
+      "bottomRightY": 868,
+      "content": "When a device determines that it is idle, it transitions from LT-active to LT-idle. The method used in this example for device idle detection is based on U2 entry. When the device is in LT-active, the device transitions to LT-idle just prior to when its link will enter U2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "C-25",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

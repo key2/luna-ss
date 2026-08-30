@@ -1,0 +1,76 @@
+{
+  "index": 182,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 100,
+      "bottomRightX": 688,
+      "bottomRightY": 390,
+      "content": "![img-138.jpeg](img-138.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-138.jpeg"
+    },
+    {
+      "topLeftX": 363,
+      "topLeftY": 399,
+      "bottomRightX": 462,
+      "bottomRightY": 416,
+      "content": "Gen 1 eye mask",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 461,
+      "bottomRightX": 726,
+      "bottomRightY": 754,
+      "content": "![img-139.jpeg](img-139.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-139.jpeg"
+    },
+    {
+      "topLeftX": 363,
+      "topLeftY": 770,
+      "bottomRightX": 462,
+      "bottomRightY": 786,
+      "content": "Gen 2 eye mask",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 337,
+      "topLeftY": 798,
+      "bottomRightX": 487,
+      "bottomRightY": 814,
+      "content": "Figure 6-16. Eye Masks",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 673,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "6-27",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

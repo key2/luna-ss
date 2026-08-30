@@ -1,0 +1,103 @@
+{
+  "index": 165,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 133,
+      "bottomRightX": 410,
+      "bottomRightY": 148,
+      "content": "Figure 8-44. PHY Recalibration Initiated by PHY",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 152,
+      "bottomRightX": 690,
+      "bottomRightY": 428,
+      "content": "![img-65.jpeg](img-65.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-65.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 442,
+      "bottomRightX": 483,
+      "bottomRightY": 467,
+      "content": "### 8.34 Digital Near End Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 471,
+      "bottomRightX": 686,
+      "bottomRightY": 528,
+      "content": "The PIPE specification defines an optional Digital Near-End Loopback (DNELB) operational mode to facilitate HVM testing; toggling signals via functional testing in loopback mode enables fault testing. This feature is applicable to PCIe, USB, USB4, and SATA.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 537,
+      "bottomRightX": 677,
+      "bottomRightY": 694,
+      "content": "Several possible loopback points from the transmit to the receive datapath are recommended as shown in Figure 8-45 and Figure 8-46. Figure 8-45 shows loopback paths in a PHY with original PIPE architecture; LB0 through LB4 are recommended paths and correspond to encodings defined in the PHY Near End Loopback Control register (See Section 7.1.23), while LB5 is a potential PHY implementation specific path. The loopback paths may require logic, represented by f in the diagrams, to convert between the Tx and Rx paths clock frequencies and data width. Figure 8-46 shows loopback paths in a PHY with SerDes architecture; L0, L3, and LB4 are recommended paths and correspond to encodings defined in the PHY Near End Loopback Control register (See Section 7.1.23), while LB5 is a potential PHY implementation specific path.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 704,
+      "bottomRightX": 501,
+      "bottomRightY": 719,
+      "content": "Figure 8-45. Original PIPE Architecture: DNELB Path Examples",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 722,
+      "bottomRightX": 690,
+      "bottomRightY": 888,
+      "content": "![img-66.jpeg](img-66.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-66.jpeg"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "166",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

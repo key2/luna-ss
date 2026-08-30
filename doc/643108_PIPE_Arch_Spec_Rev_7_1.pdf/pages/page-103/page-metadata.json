@@ -1,0 +1,66 @@
+{
+  "index": 102,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 588,
+      "bottomRightY": 141,
+      "content": "#### 7.2.14 Address Fh: Rx Link Evaluation Status3",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 152,
+      "bottomRightX": 445,
+      "bottomRightY": 167,
+      "content": "Table 7-41. Address Fh: Rx Link Evaluation Status3",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 172,
+      "bottomRightX": 699,
+      "bottomRightY": 359,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7] | 0h | N/A | N/A | Reserved  |\n|  [6:4] | 0h | Level | PCIe | LinkEvalFeedbackDirectionChange_Cplus1[2:0]:This field provides link equalization evaluation feedback in the direction change format for coefficient \\( C_{+1} \\) when operating at a rate of 64 GT/s and 128 GT/s. See LinkEvalFeedbackDirectionChange_Cminus2[2:0] for more details.  |\n|  [3] | 0h | N/A | N/A | Reserved  |\n|  [2:0] | 0h | Level | PCIe | LinkEvalFeedbackDirectionChange_Czero[2:0]:This field provides link equalization evaluation feedback in the direction change format for coefficient \\( C_0 \\) when operating at a rate of 64 GT/s and 128 GT/s. See LinkEvalFeedbackDirectionChange_Cminus2[2:0] for more details.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-112.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 965,
+      "content": "103",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

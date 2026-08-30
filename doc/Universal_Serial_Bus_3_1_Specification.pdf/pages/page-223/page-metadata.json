@@ -1,0 +1,112 @@
+{
+  "index": 222,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 700,
+      "bottomRightY": 162,
+      "content": "- In the case of partially nullified DPP, it shall append DPPABORT OS after completing the DPP as defined by the length field in its associated DPH, similar to normal ending of DPP. A port shall fill with Idle Symbols in DPP if intended data for transmission are not available. The condition to transmit a partially nullified DPP is implementation specific.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 167,
+      "bottomRightX": 609,
+      "bottomRightY": 186,
+      "content": "### 7.2.1.2.3 Data Payload Structure and Spacing between DPH and DPP",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 190,
+      "bottomRightX": 649,
+      "bottomRightY": 225,
+      "content": "There shall be no spacing between a DPH and its corresponding DPP. This is illustrated in Figure 7-11.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 243,
+      "bottomRightX": 696,
+      "bottomRightY": 406,
+      "content": "![img-173.jpeg](img-173.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-173.jpeg"
+    },
+    {
+      "topLeftX": 331,
+      "topLeftY": 415,
+      "bottomRightX": 492,
+      "bottomRightY": 431,
+      "content": "(a). SuperSpeed DP Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 436,
+      "bottomRightX": 735,
+      "bottomRightY": 615,
+      "content": "![img-174.jpeg](img-174.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-174.jpeg"
+    },
+    {
+      "topLeftX": 318,
+      "topLeftY": 638,
+      "bottomRightX": 506,
+      "bottomRightY": 655,
+      "content": "(b). SuperSpeedPlus DP Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 664,
+      "bottomRightX": 618,
+      "bottomRightY": 695,
+      "content": "Figure 7-11. Data Packet with Data Packet Header Followed by Data Packet Payload. (a) SuperSpeed DP; (b). SuperSpeedPlus DP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 710,
+      "bottomRightX": 643,
+      "bottomRightY": 742,
+      "content": "Additional details on how header packets are transmitted and received at the link level are described in Section 7.2.4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-11",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

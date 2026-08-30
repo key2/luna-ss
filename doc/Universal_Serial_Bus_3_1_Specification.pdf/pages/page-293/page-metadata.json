@@ -1,0 +1,120 @@
+{
+  "index": 292,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 700,
+      "bottomRightY": 233,
+      "content": "- The port in SuperSpeedPlus operation shall transmit a single SDS ordered set before the start of the data block with Idle Symbols.\n- The port in SuperSpeedPlus operation may ignore SDS ordered set if corrupted and continue to process the following data block. The port may optionally choose to recover SDS ordered set if error is detected.\n- A 2-ms timer (tHotResetExitTimeout) shall be started upon entry to this substate.\n- The port shall be able to receive the Header Sequence Number Advertisement from its link partner.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 238,
+      "bottomRightX": 686,
+      "bottomRightY": 288,
+      "content": "Note: The exit time difference between the two ports will result in one port entering U0 first and starting the Header Sequence Number Advertisement while the other port is still in Hot Reset.Exit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 295,
+      "bottomRightX": 369,
+      "bottomRightY": 312,
+      "content": "### 7.5.12.4.2 Exit from Hot Reset.Exit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 317,
+      "bottomRightX": 576,
+      "bottomRightY": 334,
+      "content": "- The port shall transition to U0 when the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 335,
+      "bottomRightX": 536,
+      "bottomRightY": 370,
+      "content": "1. Eight consecutive Idle Symbols are received.\n2. Sixteen Idle Symbols are sent after receiving one Idle Symbol.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 371,
+      "bottomRightX": 686,
+      "bottomRightY": 461,
+      "content": "- The port shall transition to eSS.Inactive upon the 2-ms timer timeout (tHotResetExitTimeout) and the conditions to transition to U0 are not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 476,
+      "bottomRightX": 698,
+      "bottomRightY": 796,
+      "content": "![img-187.jpeg](img-187.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-187.jpeg"
+    },
+    {
+      "topLeftX": 130,
+      "topLeftY": 798,
+      "bottomRightX": 500,
+      "bottomRightY": 811,
+      "content": "Note: Transition conditions are illustrative only. Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 813,
+      "bottomRightX": 693,
+      "bottomRightY": 824,
+      "content": "U-056",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 282,
+      "topLeftY": 836,
+      "bottomRightX": 542,
+      "bottomRightY": 854,
+      "content": "Figure 7-24. Hot Reset Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-81",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

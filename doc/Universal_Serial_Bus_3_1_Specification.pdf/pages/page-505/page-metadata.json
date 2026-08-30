@@ -1,0 +1,56 @@
+{
+  "index": 504,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 29,
+      "bottomRightX": 701,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 92,
+      "bottomRightX": 427,
+      "bottomRightY": 117,
+      "content": "## 10.5 Hub Upstream Facing Port",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 123,
+      "bottomRightX": 701,
+      "bottomRightY": 208,
+      "content": "The following sections provide a functional description of a state machine that exhibits correct behavior for a hub upstream facing port. These sections also apply to the upstream facing port on a device unless exceptions are specifically noted. An upstream port shall only attempt to connect to the Enhanced SuperSpeed bus and the USB 2.0 bus as described by the upstream port state machine in the following sections.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 212,
+      "bottomRightX": 701,
+      "bottomRightY": 297,
+      "content": "Figure 10-12 is an illustration of the upstream facing port state machine. Each of the states is described in Section 10.5.1. In Figure 10-12, some of the entry conditions into states are shown without origin. These conditions have multiple origin states and the individual transitions lines are not shown so that the diagram can be simplified. The description of the entered state indicates from which states the transition is applicable.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 664,
+      "topLeftY": 981,
+      "bottomRightX": 701,
+      "bottomRightY": 996,
+      "content": "10-27",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

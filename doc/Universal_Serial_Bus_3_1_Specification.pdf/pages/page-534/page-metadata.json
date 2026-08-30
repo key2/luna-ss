@@ -1,0 +1,57 @@
+{
+  "index": 533,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 31,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 334,
+      "content": "![img-279.jpeg](img-279.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-279.jpeg"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 339,
+      "bottomRightX": 652,
+      "bottomRightY": 370,
+      "content": "Figure 10-22. Relationship of Status, Status Change, and Control Information to Device States",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 385,
+      "bottomRightX": 673,
+      "bottomRightY": 420,
+      "content": "The USB system software uses the interrupt pipe associated with the Status Change endpoint to detect changes in hub and port status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-56",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+intel®
+
+## 2 Introduction
+
+The PHY Interface for the PCI Express* (PCIe*), SATA, USB¹, DisplayPort, and USB4 Architectures (PIPE) is intended to enable the development of functionalities equivalent to the PHYs of PCIe, SATA, USB, DisplayPort, and USB4. Such PHYs can be delivered as discrete Integrated Circuits (ICs) or as macrocells for inclusion in Application-Specific Integrated Circuit (ASIC) designs. The specification defines a set of PHY functions that must be incorporated in a PIPE-compliant PHY; it also defines a standard interface between a PHY and a Media Access Layer (MAC) and a Link Layer ASIC. This specification is not intended to define the internal architecture or design of a compliant PHY chip or macrocell. The PIPE specification is defined to allow several approaches to be used. When possible, the PIPE specification references the PCIe Base Specification, the SATA 3.0 Specification, the USB 3.2 Specification, the DisplayPort 1.4 Specification, or the USB4 2.0 Specification rather than repeating its content. In case of conflicts, the PCIe Base Specification, the SATA 3.0 Specification, the USB 3.2 Specification, DisplayPort 1.4 Specification, and USB4 2.0 Specification must supersede the PIPE specification.
+
+This specification provides some information about how the MAC could use the PIPE interface for several Link Training and Status State Machine (LTSSM) states, link states, and other protocols. This information should be viewed as “guidelines for” or as “one way to implement” base specification requirements. MAC implementations are free to do things in other ways as long as they meet the corresponding specification requirements.
+
+One of the intents of the PIPE specification is to accelerate the development of PCIe, SATA, USB, and USB4 devices. This document defines an interface to which ASIC and endpoint device can be developed by vendors. Peripheral and IP vendors will be able to develop and validate their designs, insulated from the high-speed and analog circuitry issues associated with the PCIe, SATA, USB, DisplayPort, or USB4 PHY interfaces, therefore minimizing the time and risk of their development cycles.
+
+The PIPE specification defines two clocking options for the interface. In the first alternative the PHY provides a clock (PCLK) that clocks the PIPE interface as an output. In the second alternative, the PCLK is provided to each lane of the PHY as an input. The alternative, where the PCLK is provided to each lane of the PHY, was added in revision 4.1 of the PIPE specification. It allows the controller or logic external to the PHY to more easily adjust timing of the PIPE interface to meet timing requirements for silicon implementations. A PHY is only required to support one of the timing alternatives. The two clocking options must be referenced as “PCLK as PHY Output” and “PCLK as PHY Input” respectively. The DisplayPort only supports the “PCLK as PHY Input” clocking option.
+
+Note: The “PCLK as PHY Output” mode is not supported for PCIe 5.0 and beyond, USB4, or Displayport.
+
+Figure 2-1 shows the partitioning described in this specification for the PCIe Base Specification. Figure 2-2 shows the partitioning described in this specification for the USB 3.2 Specification. Figure 2-3 shows the partitioning described in this specification for the USB4 2.0 Specification.
+
+1. USB refers to USB3. USB4 is referenced explicitly.
+
+Reference Number: 643108, Revision: 7.1
+
+17

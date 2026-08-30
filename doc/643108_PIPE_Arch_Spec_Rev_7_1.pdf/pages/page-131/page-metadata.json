@@ -1,0 +1,104 @@
+{
+  "index": 130,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 421,
+      "bottomRightY": 148,
+      "content": "Figure 8-19. Receiver Detect – Receiver Present",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 152,
+      "bottomRightX": 700,
+      "bottomRightY": 451,
+      "content": "![img-40.jpeg](img-40.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-40.jpeg"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 468,
+      "bottomRightX": 700,
+      "bottomRightY": 530,
+      "content": "|  Detected Condition | RxStatus Code  |\n| --- | --- |\n|  Receiver not present | 000b  |\n|  Receiver present | 011b  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-133.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 545,
+      "bottomRightX": 602,
+      "bottomRightY": 568,
+      "content": "### 8.8 Transmitting a Beacon – PCIe Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 574,
+      "bottomRightX": 695,
+      "bottomRightY": 632,
+      "content": "When the PHY has been put in the P2 power state, and the MAC wants to transmit a beacon, the MAC deasserts TxElecIdle and the PHY should generate a valid beacon until TxElecIdle is asserted. The MAC must assert TxElecIdle before transitioning the PHY to P0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 642,
+      "bottomRightX": 303,
+      "bottomRightY": 657,
+      "content": "Figure 8-20. Beacon Transmit",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 660,
+      "bottomRightX": 700,
+      "bottomRightY": 838,
+      "content": "![img-41.jpeg](img-41.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-41.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 966,
+      "content": "131",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "index": 232,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 688,
+      "bottomRightY": 193,
+      "content": "- For SuperSpeedPlus USB, the process of the Type 1/Type 2 Rx Buffer Credit Advertisements is the same as the process of the Rx Header Buffer Credit Advertisement defined for SuperSpeed USB. There is no specific order requirement to perform the Rx Buffer Credit Advertisement between the two traffic classes. Mixture of LCRD1_x and LCRD2_x may be sent. The following rules shall be applied to SuperSpeedPlus USB during the Type 1/Type 2 Rx Buffer Credit Advertisements:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 196,
+      "bottomRightX": 684,
+      "bottomRightY": 248,
+      "content": "1. A port shall initiate the Type 1/Type 2 Rx Buffer Credit Advertisement after sending LGOOD_n during Header Sequence Number Advertisement.\n2. A port shall initialize the following before sending the Type 1/Type 2 Rx Buffer Credit:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 180,
+      "topLeftY": 249,
+      "bottomRightX": 698,
+      "bottomRightY": 389,
+      "content": "a. A port shall initialize its Type 1/Type 2 Tx Header Buffer Credit index to A.\nb. A port shall initialize its Type 1/Type 2 Rx Buffer Credit index to A.\nc. A port shall initialize its Remote Type 1/Type 2 Rx Buffer Credit Count to zero.\nd. A port shall continue to process the packets in its Type 1/Type 2 Rx Buffers that have been either acknowledged with LGOOD_n prior to entry to Recovery, or validated during Recovery, and then update the Local Type 1/Type 2 Rx Buffer Credit Count.\ne. A port shall set its Local Type 1/Type 2 Rx Buffer Credit Count defined in the following:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 204,
+      "topLeftY": 390,
+      "bottomRightX": 693,
+      "bottomRightY": 474,
+      "content": "1. If a port enters U0 from Polling or Hot Reset, its Local Type 1/Type 2 Rx Buffer Credit Count is 4.\n2. If a port enters U0 from Recovery, its Local Type 1/Type 2 Rx Buffer Credit Count is the number of Type 1/Type 2 Rx Buffers available for incoming packets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 476,
+      "bottomRightX": 696,
+      "bottomRightY": 525,
+      "content": "3. A port shall perform the Type 1/Type 2 Rx Buffer Credit Advertisement by transmitting LCRD1_x/LCRD2_x to notify its link partner. A port shall transmit one of the following based on its Local Type 1/Type 2 Rx Buffer Credit Count:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 180,
+      "topLeftY": 527,
+      "bottomRightX": 698,
+      "bottomRightY": 664,
+      "content": "a. LCRD1_A/LCRD2_A if the Local Type 1/Type 2 Rx Buffer Credit Count is one.\nb. LCRD1_A and LCRD1_B/LCRD2_A and LCRD2_B if the Local Type 1/Type 2 Rx Buffer Credit Count is two.\nc. LCRD1_A, LCRD1_B, and LCRD1_C/LCRD2_A, LCRD2_B, and LCRD2_C if the Local Type 1/Type 2 Rx Buffer Credit Count is three.\nd. LCRD1_A, LCRD1_B, LCRD1_C and LCRD1_D/LCRD2_A, LCRD2_B, LCRD2_C and LCRD2_D if the Local Type 1/Type 2 Rx Buffer Credit Count is four.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 668,
+      "bottomRightX": 693,
+      "bottomRightY": 803,
+      "content": "4. A port receiving LCRD1_x/LCRD2_x from its link partner shall increment its respective Remote Type 1/Type 2 Rx Buffer Credit Count by one each time a LCRD1_x/LCRD2_x is received up to four.\n5. A port in shall not transmit any Type 1 or Type 2 packet if the respective Remote Type 1 or Type 2 Rx Buffer Credit Count is zero.\n6. A port shall not request for a low power link state entry before receiving and sending LCRD1_x and LCRD2_x during the Type 1 and Type 2 Rx Buffer Credit Advertisements.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 180,
+      "topLeftY": 806,
+      "bottomRightX": 684,
+      "bottomRightY": 823,
+      "content": "Note: The rules of Low Power Link State Initiation (refer to Section 7.2.4.2) still apply.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 824,
+      "bottomRightX": 651,
+      "bottomRightY": 841,
+      "content": "- The following rules shall be applied additionally when a port enters U0 from Recovery:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 843,
+      "bottomRightX": 688,
+      "bottomRightY": 877,
+      "content": "1. A port sending LBAD before Recovery shall not expect to receive LRTY before a retried header packet from its link partner upon entry to U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-21",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

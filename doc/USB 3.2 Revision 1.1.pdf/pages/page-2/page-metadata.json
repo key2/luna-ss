@@ -1,0 +1,120 @@
+{
+  "index": 1,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 381,
+      "topLeftY": 48,
+      "bottomRightX": 408,
+      "bottomRightY": 60,
+      "content": "- ii -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 112,
+      "bottomRightX": 222,
+      "bottomRightY": 128,
+      "content": "# Revision History",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 142,
+      "bottomRightX": 676,
+      "bottomRightY": 294,
+      "content": "|  Revision | Comments | Issue Date  |\n| --- | --- | --- |\n|  1.0 | Initial Release – USB 3.0 | November 12, 2008  |\n|   | Incorporated errata and ECNs | June 6, 2011  |\n|  1.0 | Initial Release – USB 3.1 | July 26, 2013  |\n|   | Incorporated errata and ECNs | September 22, 2017  |\n|  1.0 | Initial Release – USB 3.2 | September 22, 2017  |\n|  1.1 | Incorporated errata and ECNs | June 2022  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-0.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 344,
+      "bottomRightX": 360,
+      "bottomRightY": 359,
+      "content": "# INTELLECTUAL PROPERTY DISCLAIMER",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 361,
+      "bottomRightX": 663,
+      "bottomRightY": 483,
+      "content": "THIS SPECIFICATION IS PROVIDED TO YOU “AS IS” WITH NO WARRANTIES WHATSOEVER INCLUDING ANY WARRANTY OF MERCHANTABILITY, NON-INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE. THE AUTHORS OF THIS SPECIFICATION DISCLAIM ALL LIABILITY FOR INFRINGEMENT OF ANY PROPRIETARY RIGHTS, RELATING TO THE USE OR IMPLEMENTATION OF INFORMATION IN THIS SPECIFICATION. THE PROVISION OF THIS SPECIFICATION TO YOU DOES NOT PROVIDE YOU WITH ANY LICENSE, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, TO ANY INTELLECTUAL PROPERTY RIGHTS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 698,
+      "bottomRightX": 384,
+      "bottomRightY": 715,
+      "content": "Please send comments to techsup@usb.org.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 727,
+      "bottomRightX": 573,
+      "bottomRightY": 760,
+      "content": "For industry information, refer to the USB Implementers Forum web page at http://www.usb.org.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 801,
+      "bottomRightX": 614,
+      "bottomRightY": 832,
+      "content": "All product names are trademarks, registered trademarks, or servicemarks of their respective owners.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 872,
+      "bottomRightX": 660,
+      "bottomRightY": 919,
+      "content": "Copyright © 2007 – 2022, USB 3.0 Promoter Group (Apple Inc., Hewlett-Packard Inc., Intel Corporation, Microsoft Corporation, Renesas Corporation, STMicroelectronics, and Texas Instruments).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "index": 184,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 414,
+      "bottomRightY": 115,
+      "content": "### 6.6.3 Tx and Rx Input Parasitics",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 119,
+      "bottomRightX": 610,
+      "bottomRightY": 136,
+      "content": "Tx and Rx input parasitics are specified by the lumped circuit shown in Figure 6-18.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 257,
+      "topLeftY": 160,
+      "bottomRightX": 569,
+      "bottomRightY": 394,
+      "content": "![img-141.jpeg](img-141.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-141.jpeg"
+    },
+    {
+      "topLeftX": 275,
+      "topLeftY": 407,
+      "bottomRightX": 550,
+      "bottomRightY": 425,
+      "content": "Figure 6-18. Device Termination Schematic",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 442,
+      "bottomRightX": 681,
+      "bottomRightY": 477,
+      "content": "In this circuit, the input buffer is simplified to a termination resistance in parallel with a parasitic capacitor. This simplified circuit is the load impedance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "6-29",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

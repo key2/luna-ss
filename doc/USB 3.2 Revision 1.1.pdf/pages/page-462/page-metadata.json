@@ -1,0 +1,155 @@
+{
+  "index": 461,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 431 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 666,
+      "bottomRightY": 124,
+      "content": "configuration and/or BOS descriptor with the permanently attached devices each reporting self-powered, with zero MaxPower in their respective configuration descriptors.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 135,
+      "bottomRightX": 665,
+      "bottomRightY": 213,
+      "content": "A bus powered hub shall be able to supply any power not used by the hub electronics or permanently attached devices for the selected configuration to the exposed downstream ports. The hub shall be able to provide the power with any split across the exposed downstream ports (i.e., if the hub can provide 600 mA to two exposed downstream ports, it must be able to provide 450 mA to one and 150 mA to the other, 300 mA to each, etc.).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 223,
+      "bottomRightX": 639,
+      "bottomRightY": 256,
+      "content": "Note: Software shall ensure that at least ONE UNIT LOAD is available for each exposed downstream port on a bus powered hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 266,
+      "bottomRightX": 656,
+      "bottomRightY": 314,
+      "content": "A self-powered hub shall ensure that it is able to provide at least six unit loads for each exposed downstream port on the hub. In addition, depending on the type of self-powered hub, when the hub is attached to a USB downstream port, it shall:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 319,
+      "bottomRightX": 673,
+      "bottomRightY": 487,
+      "content": "- Traditional (non-USB connector e.g. barrel jack): The hub independently manages its power and shall move to the Powered state (as per Section 9.1) on both the USB 2.0 and the USB 3.2 hubs when external power is applied.\n- USB PD powered [via its upstream port]: The hub draws power from the upstream port and shall move to the Powered state if it gets enough power to be a self-powered hub. If it cannot, then it shall use PD mechanisms to inform the system of a Capability mismatch with insufficient power.\n- USB PD powered [via one of its downstream ports]: The hub draws power from one of its downstream ports and shall move to the Powered state if it gets enough power to be a self-powered hub. If it cannot, then it shall:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 493,
+      "bottomRightX": 650,
+      "bottomRightY": 567,
+      "content": "- Move only the USB 2.0 hub to the Powered state\n- Set C_HUB_LOCAL_POWER and set the local power source field in the Hub Status to one\n- Set Downstream PD Capability Mismatch field in the Hub Status to one",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 573,
+      "bottomRightX": 673,
+      "bottomRightY": 620,
+      "content": "- USB Type-C current [via its upstream port]: The hub draws power from the upstream port and shall move to the Powered state if it gets enough power to be a self-powered hub. If it cannot, then it shall:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 626,
+      "bottomRightX": 650,
+      "bottomRightY": 699,
+      "content": "- Move only the USB 2.0 hub to the Powered state\n- Set C_HUB_LOCAL_POWER and set the local power source field in the Hub Status to one\n- Set Insufficient USB Type-C current field in the Hub Status to one",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 715,
+      "bottomRightX": 230,
+      "bottomRightY": 730,
+      "content": "### 10.15 Descriptors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 736,
+      "bottomRightX": 667,
+      "bottomRightY": 783,
+      "content": "Hub descriptors are derived from the general USB device framework. Hub descriptors describe a hub device and the ports on that hub. The host accesses hub descriptors through the hub's default control pipe.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 795,
+      "bottomRightX": 573,
+      "bottomRightY": 811,
+      "content": "The USB specification (refer to Chapter 8) defines the following descriptors:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 818,
+      "bottomRightX": 312,
+      "bottomRightY": 923,
+      "content": "- Device Level Descriptors\n- Configuration\n- Interface\n- Endpoint\n- String (optional)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

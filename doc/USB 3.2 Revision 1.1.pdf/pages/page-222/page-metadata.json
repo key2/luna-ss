@@ -1,0 +1,147 @@
+{
+  "index": 221,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 191 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 666,
+      "bottomRightY": 125,
+      "content": "- An upstream port shall transmit Ping.LFPS as defined in Table 6-30. If the port is in x2 operation, it shall transmit Ping.LFPS on the Configuration Lane.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 145,
+      "bottomRightX": 237,
+      "bottomRightY": 160,
+      "content": "### 7.5.7.2 Exit from U1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 169,
+      "bottomRightX": 670,
+      "bottomRightY": 431,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when the 300 ms timer (tU1PingTimeout) expires.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.\n- A self-powered upstream port shall transition to eSS.Disabled upon not detecting valid VBUS as defined in Section 11.4.5.\n- The port shall transition to U2 upon the timeout of the U2 inactivity timer defined in Sections 10.4.2.4 and 10.6.2.4.\n- The port shall transition to Recovery upon successful completion of a LFPS handshake meeting the U1 LFPS exit handshake signaling in Section 6.9.2.\n- The port shall transition to eSS.Inactive upon the 2 ms (tNoLFPSResponseTimeout) LFPS handshake timer timeout and a successful LFPS handshake meeting the U1 LFPS exit handshake signaling in Section 6.9.2 is not achieved.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 340,
+      "topLeftY": 452,
+      "bottomRightX": 446,
+      "bottomRightY": 469,
+      "content": "Figure 7-22. U1",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 176,
+      "topLeftY": 482,
+      "bottomRightX": 615,
+      "bottomRightY": 670,
+      "content": "![img-88.jpeg](img-88.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-88.jpeg"
+    },
+    {
+      "topLeftX": 176,
+      "topLeftY": 671,
+      "bottomRightX": 542,
+      "bottomRightY": 684,
+      "content": "Note: Transition conditions are illustrative only. Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 727,
+      "bottomRightX": 180,
+      "bottomRightY": 740,
+      "content": "### 7.5.8 U2",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 749,
+      "bottomRightX": 661,
+      "bottomRightY": 780,
+      "content": "U2 is a link state where more power saving opportunities are allowed compared to U1, but with an increased exit latency.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 793,
+      "bottomRightX": 671,
+      "bottomRightY": 808,
+      "content": "U2 does not contain any substates. The transitions to other states are shown in Figure 7-23.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 821,
+      "bottomRightX": 264,
+      "bottomRightY": 836,
+      "content": "### 7.5.8.1 U2 Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 844,
+      "bottomRightX": 665,
+      "bottomRightY": 927,
+      "content": "- The transmitter DC common mode voltage does not need to be within specification (VTX-CM-DC-ACTIVE-IDLE-DELTA) defined in Table 6-19 on each negotiated lane.\n- The port shall maintain its low-impedance receiver termination (RRX-DC) defined in Table 6-22. If the port is in x2 operation, it shall enable its low-impedance receiver termination (RRX-DC) on the each negotiated lane.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "index": 155,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 121,
+      "bottomRightX": 673,
+      "bottomRightY": 167,
+      "content": "### 8.27 128b/130b Encoding and Block Synchronization (PCIe 8, 16, and 32 GT/s)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 171,
+      "bottomRightX": 688,
+      "bottomRightY": 456,
+      "content": "For every block (usually 128 bits – shorter/longer SKP blocks are sometimes transmitted by Retimers) that is moved across the PIPE TxData interface at the 8.0 GT/s rate, 16 GT/s rate, or 32 GT/s rate, the PHY must transmit two extra bits. The MAC must use the TxDataValid signal periodically to allow the PHY to transmit the built-up backlog of data. For example, if the TxData bus is 16-bits wide and PCLK is 500 MHz then every eight blocks the MAC must deassert TxDataValid for one PCLK to allow the PHY to transmit the 16-bit backlog of built up data. The buffers used by the PHY to store Tx data related to the 128/130b encoding rate mismatch must be empty when the PHY comes out of reset and must be empty whenever the PHY exits electrical idle (since Tx buffers are flushed before entry to idle). The PHY must use RxDataValid in a similar fashion. TxDataValid and RxDataValid must be deasserted for one clock exactly every N blocks when the PIPE interface is operating at 8 GT/s or 16 GT/s, where N is 4 for an 8 bit-wide interface, 8 for a 16-bit wide interface, and 16 for a 32-bit wide interface. The MAC must first deassert TxDataValid immediately after the end of the Nth transmitted block following reset or exit from electrical idle. Examples of the timing for TxDataValid are shown in Figure 8-38 for an 8-bit interface and in Figure 8-39 for a 16-bit interface. The PHY must first deassert RxDataValid immediately after the end of the Nth received block transmitted across the PIPE interface following reset or exit from electrical idle. Examples of timings for RxDataValid and other Rx related signals for a 16-bit wide interface are shown in Figure 8-40.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 466,
+      "bottomRightX": 667,
+      "bottomRightY": 481,
+      "content": "Figure 8-38. PCIe 8 GT/s or Higher TxDataValid Timing for 8 Bit-Wide TxData Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 484,
+      "bottomRightX": 688,
+      "bottomRightY": 688,
+      "content": "![img-59.jpeg](img-59.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-59.jpeg"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "156",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

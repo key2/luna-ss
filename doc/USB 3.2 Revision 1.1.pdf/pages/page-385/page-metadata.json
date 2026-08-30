@@ -1,0 +1,102 @@
+{
+  "index": 384,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 61,
+      "content": "Revision 1.1",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 62,
+      "bottomRightX": 177,
+      "bottomRightY": 77,
+      "content": "June 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 354 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 61,
+      "content": "Universal Serial Bus 3.2",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 62,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 364,
+      "bottomRightY": 110,
+      "content": "### 9.6.2.2 SuperSpeed USB Device Capability",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 643,
+      "bottomRightY": 162,
+      "content": "This section defines the required device-level capabilities descriptor which shall be implemented by all Enhanced SuperSpeed devices. This capability descriptor cannot be directly accessed with a GetDescriptor() or SetDescriptor() request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 220,
+      "topLeftY": 174,
+      "bottomRightX": 569,
+      "bottomRightY": 190,
+      "content": "Table 9-16. SuperSpeed Device Capability Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 200,
+      "bottomRightX": 676,
+      "bottomRightY": 796,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of descriptor  |\n|  1 | bDescriptorType | 1 | Constant | DEVICE CAPABILITY Descriptor type  |\n|  2 | bDevCapabilityType | 1 | Constant | Capability type: SUPERSPEED_USB  |\n|  3 | bmAttributes | 1 | Bitmap | Bitmap encoding of supported device level features. A value of one in a bit location indicates a feature is supported; a value of zero indicates it is not supported. Encodings are: **Bit****Encoding** 0 Reserved. Shall be set to zero. 1 LTM Capable. A value of one in this bit location indicates that this device has is capable of generating Latency Tolerance Messages. 7:2 Reserved. Shall be set to zero.  |\n|  4 | wSpeedsSupported | 2 | Bitmap | Bitmap encoding of the speed supported by this device. **Bit****Encoding** 0 If this bit is set, then the device supports operation at low-Speed USB. 1 If this bit is set, then the device supports operation at full-Speed USB. 2 If this bit is set, then the device supports operation at high-Speed USB. 3 If this bit is set, then the device supports operation at Gen 1 speed. 15:4 Reserved. Shall be set to zero.  |\n|  6 | bFunctionalitySupport | 1 | Number | The lowest speed at which all the functionality supported by the device is available to the user. For example if the device supports all its functionality when connected at full speed and above then it sets this value to 1. Refer to the wSpeedsSupported field for valid values that can be placed in this field.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-185.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

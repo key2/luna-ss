@@ -1,0 +1,111 @@
+{
+  "index": 558,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 528 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 92,
+      "bottomRightX": 559,
+      "bottomRightY": 110,
+      "content": "Figure E-23. Re-driver Logic State Machine (RLSM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 227,
+      "topLeftY": 128,
+      "bottomRightX": 561,
+      "bottomRightY": 572,
+      "content": "![img-218.jpeg](img-218.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-218.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 606,
+      "bottomRightX": 211,
+      "bottomRightY": 620,
+      "content": "### E.6.3.3 Connect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 628,
+      "bottomRightX": 668,
+      "bottomRightY": 690,
+      "content": "Connect is a state where the re-driver performs far-end receiver termination. It maps the LTSSM Rx.detect's sub-states of Rx.Detect.Active, Rx.Detect.Quiet. Connect may also be a power-on initial state, if it is placed in a system that is ready to start the USB operation upon power-on. The re-driver shall perform the following in Connect.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 702,
+      "bottomRightX": 673,
+      "bottomRightY": 847,
+      "content": "- It shall perform the periodic far-end receiver termination detection on the Configuration Lane and at both DFP and UFP at least every 8 ms as defined in Section E.3.2.1. Note that it is highly desired that the re-driver consumes no more than 200 μs to perform the far-end receiver termination detection. This is to ensure minimum interruption to potential incoming LFPS signal.\n- It shall disable the transmitters. Note an LD may have its LFPS receiver enabled to improve the responsiveness of the LRD in this state. If a Polling.LFPS signal is detected, it implies its link partner has already transitioned to Polling. An LRD may not need to wait until the next cycle of far-end receiver termination detection.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 859,
+      "bottomRightX": 542,
+      "bottomRightY": 876,
+      "content": "The re-driver shall perform the state transition based on the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 888,
+      "bottomRightX": 561,
+      "bottomRightY": 903,
+      "content": "- The next state is Active if either of the following conditions is met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

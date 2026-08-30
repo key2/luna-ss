@@ -1,0 +1,146 @@
+{
+  "index": 345,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 659,
+      "bottomRightY": 126,
+      "content": "An OUT endpoint shall be considered to be in a flow control condition if it returns one of the following responses to a DP:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 131,
+      "bottomRightX": 436,
+      "bottomRightY": 166,
+      "content": "- Responding with an NRDY TP\n- Sending an ACK TP with the NumP field set to 0",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 173,
+      "bottomRightX": 692,
+      "bottomRightY": 223,
+      "content": "The Packets Pending field is only valid when set by the host and does not affect whether or not an endpoint enters the flow control state. Refer to Section 8.11 for further details on host and device TP responses.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 232,
+      "bottomRightX": 698,
+      "bottomRightY": 419,
+      "content": "When an endpoint is in a flow control condition, it shall send an ERDY TP to be moved back into the active state. Further, if the endpoint is an IN endpoint, then it shall wait until it receives an ACK TP for the last DP it transmitted before it can send an ERDY TP. When an endpoint is not in a flow control condition, it shall not send an ERDY TP unless the endpoint is a Bulk endpoint that supports streams. Refer to Section 8.12.1.4.2 and Section 8.12.1.4.3 for further information about when a Bulk endpoint that supports streams can send an ERDY TP. The host may resume transactions to any endpoint – even if the endpoint had not returned an ERDY TP after returning a flow control response. To ensure that the host and the device continue to operate normally, a host shall ignore ERDY TPs from an endpoint that is not in a flow control state. If the host continues, or resumes, transactions to an endpoint, the endpoint shall re-evaluate its flow control state and respond appropriately.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 436,
+      "bottomRightX": 352,
+      "bottomRightY": 456,
+      "content": "### 8.10.2 Burst Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 463,
+      "bottomRightX": 641,
+      "bottomRightY": 479,
+      "content": "The Enhanced SuperSpeed architecture allows bursting of DPs between a host and device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 487,
+      "bottomRightX": 630,
+      "bottomRightY": 504,
+      "content": "SuperSpeedPlus architecture has features that create additional burst conditions for DPs:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 510,
+      "bottomRightX": 531,
+      "bottomRightY": 563,
+      "content": "- Multiple simultaneous IN transactions\n- Hubs with additional buffering and with local arbitration decisions\n- Hubs with different speed downstream facing port links.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 580,
+      "bottomRightX": 501,
+      "bottomRightY": 599,
+      "content": "### 8.10.2.1 Enhanced SuperSpeed Burst Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 604,
+      "bottomRightX": 692,
+      "bottomRightY": 705,
+      "content": "The Enhanced SuperSpeed USB protocol allows the host to continually send data to a device or receive data from a device as long as the device can receive the data or transmit the data. The number of packets an endpoint on a device can send or receive at a time without an intermediate ACK TP is reported by the device in the endpoint companion descriptor (refer to Section 9.6.7) for that endpoint. An endpoint that reports more than one packet in its maximum burst size is considered to be able to support “Burst” Transactions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 713,
+      "bottomRightX": 364,
+      "bottomRightY": 730,
+      "content": "While bursting the following rules apply:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 735,
+      "bottomRightX": 691,
+      "bottomRightY": 818,
+      "content": "- The maximum number of packets that can be sent in a burst prior to receiving an acknowledgement is limited to the minimum of the maximum burst size (see the definition of bMaxBurst in Table 9-28) of the endpoint and the value of the NumP field in the last ACK TP or ERDY received by the endpoint or the host, minus the number of packets that the endpoint or the host has already sent after the packet acknowledged by the last ACK TP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 823,
+      "bottomRightX": 695,
+      "bottomRightY": 873,
+      "content": "Note that host may re-initialize the maximum number of DPs that can be sent/received in a burst to the maximum burst size of the endpoint whenever the endpoint is initialized or the host is resuming transactions to an endpoint after a flow control condition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-52",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

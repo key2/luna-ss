@@ -1,0 +1,57 @@
+{
+  "index": 36,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 61,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 651,
+      "bottomRightY": 927,
+      "content": "|   | • Twenty Polling.LFPS bursts are transmitted, after finding no SCD2 is detected. |   |\n| --- | --- | --- |\n|  7.5.4.4.2#3 | A downstream port shall transition to Rx.Detect upon the 360ms timeout detected and cPollingTimeout is less than two. | NT  |\n|  7.5.4.4.2#4 | A downstream port shall transition to eSS.Inactive upon the 360ms timeout detected and cPollingTimeout is two. | NT  |\n|  7.5.4.4.2#5 | An upstream port of a hub shall transition to Rx.Detect upon the 360ms timeout. | NT  |\n|  7.5.4.4.2#6 | An peripheral device shall transition to eSS.Disabled upon the 360ms timeout. | NT  |\n|  7.5.4.4.2#7 | A downstream port shall transition to Rx.Detect when directed to issue Warm Reset. | BC  |\n|  7.5.4.4.2#8 | An upstream port shall transition to Rx.Detect when a Warm Reset is detected. | BC  |\n|  Subsection reference: 7.5.4.5 Polling.PortMatch  |   |   |\n|  Subsection reference: 7.5.4.5.2 Polling.PortMatch Requirements  |   |   |\n|  7.5.4.5.2#1 | Upon entry to this substate from Polling.LFPSPlus, the port shall transmit continuous PHY Capability LBPMs to announce its highest PHY capability. | BC  |\n|  7.5.4.5.2#2 | Upon entry to this substate from Polling.Active or Polling.Configuration or Polling.Idle, the port shall transmit continuous PHY Capability LBPMs to announce its next highest PHY capability from its previous PHY Capability. | 7.39  |\n|  7.5.4.5.2#3 | A port shall decode received PHY Capability LBPM or PHY Ready LBPM and compare to its own PHY Capability. | BC  |\n|  7.5.4.5.2#4 | The port with higher PHY capability shall adjust its PHY capability by transmitting PHY Capability LBPM that matches its link partner's. | NT  |\n|  7.5.4.5.2#5 | The port with lower PHY capability shall continue transmitting its own PHY Capability LBPMs and monitoring the PHY Capability LBPMs from its link partner. | NT  |\n|  Subsection reference: 7.5.4.5.3 Exit from Polling.PortMatch  |   |   |\n|  7.5.4.5.3#1 | The port shall transition to Polling.PortConfig when four consecutive and matched PHY Capability LBPMs are sent after two consecutive and matched PHY Capability LBPMs or PHY Ready LBPMs are received. | BC  |\n|  7.5.4.5.3#2 | A downstream port shall transition to Rx.Detect upon the tPollingLBPMLFPSTimeout and cPollingTimeout is less than two. | NT  |\n|  7.5.4.5.3#3 | A downstream port shall transition to eSS.Inactive upon the tPollingLBPMLFPSTimeout and cPollingTimeout is two. | NT  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-30.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 935,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "29",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 955,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

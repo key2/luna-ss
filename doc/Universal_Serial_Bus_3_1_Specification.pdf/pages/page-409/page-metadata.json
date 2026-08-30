@@ -1,0 +1,48 @@
+{
+  "index": 408,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 92,
+      "bottomRightX": 609,
+      "bottomRightY": 713,
+      "content": "![img-253.jpeg](img-253.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-253.jpeg"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 725,
+      "bottomRightX": 664,
+      "bottomRightY": 742,
+      "content": "Figure 8-67. Sample Smart Enhanced SuperSpeed Isochronous OUT Transaction",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-115",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

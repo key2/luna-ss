@@ -1,0 +1,101 @@
+{
+  "index": 1,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 234,
+      "bottomRightY": 61,
+      "content": "Chapter 1: Introduction",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 358,
+      "topLeftY": 48,
+      "bottomRightX": 430,
+      "bottomRightY": 60,
+      "content": "Revision 0.94",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 60,
+      "content": "1/2/2017",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 93,
+      "bottomRightX": 428,
+      "bottomRightY": 109,
+      "content": "Copyright © 2013-2018, USB Implementers Forum, Inc.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 128,
+      "topLeftY": 123,
+      "bottomRightX": 232,
+      "bottomRightY": 138,
+      "content": "All rights reserved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 181,
+      "bottomRightX": 710,
+      "bottomRightY": 227,
+      "content": "A LICENSE IS HEREBY GRANTED TO REPRODUCE THIS SPECIFICATION FOR INTERNAL USE ONLY. NO OTHER LICENSE, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, IS GRANTED OR INTENDED HEREBY.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 269,
+      "bottomRightX": 708,
+      "bottomRightY": 346,
+      "content": "USB-IF AND THE AUTHORS OF THIS SPECIFICATION EXPRESSLY DISCLAIM ALL LIABILITY FOR INFRINGEMENT OF INTELLECTUAL PROPERTY RIGHTS, RELATING TO IMPLEMENTATION OF INFORMATION IN THIS SPECIFICATION. USB-IF AND THE AUTHORS OF THIS SPECIFICATION ALSO DO NOT WARRANT OR REPRESENT THAT SUCH IMPLEMENTATION(S) WILL NOT INFRINGE THE INTELLECTUAL PROPERTY RIGHTS OF OTHERS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 389,
+      "bottomRightX": 709,
+      "bottomRightY": 466,
+      "content": "THIS SPECIFICATION IS PROVIDED \"AS IS\" AND WITH NO WARRANTIES, EXPRESS OR IMPLIED, STATUTORY OR OTHERWISE. ALL WARRANTIES ARE EXPRESSLY DISCLAIMED. NO WARRANTY OF MERCHANTABILITY, NO WARRANTY OF NON-INFRINGEMENT, NO WARRANTY OF FITNESS FOR ANY PARTICULAR PURPOSE, AND NO WARRANTY ARISING OUT OF ANY PROPOSAL, SPECIFICATION, OR SAMPLE.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 508,
+      "bottomRightX": 709,
+      "bottomRightY": 597,
+      "content": "IN NO EVENT WILL USB-IF OR USB-IF MEMBERS BE LIABLE TO ANOTHER FOR THE COST OF PROCURING SUBSTITUTE GOODS OR SERVICES, LOST PROFITS, LOSS OF USE, LOSS OF DATA OR ANY INCIDENTAL, CONSEQUENTIAL, INDIRECT, OR SPECIAL DAMAGES, WHETHER UNDER CONTRACT, TORT, WARRANTY, OR OTHERWISE, ARISING IN ANY WAY OUT OF THE USE OF THIS SPECIFICATION, WHETHER OR NOT SUCH PARTY HAD ADVANCE NOTICE OF THE POSSIBILITY OF SUCH DAMAGES.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

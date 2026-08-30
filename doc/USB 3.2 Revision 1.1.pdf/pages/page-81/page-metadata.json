@@ -1,0 +1,140 @@
+{
+  "index": 80,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 189,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 50 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 94,
+      "bottomRightX": 237,
+      "bottomRightY": 109,
+      "content": "## 5 Mechanical",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 124,
+      "bottomRightX": 623,
+      "bottomRightY": 172,
+      "content": "The electro-mechanical definition and requirements for USB connectors and cables have been removed from this specification and are now located in the USB 3.1 Legacy Cable and Connector specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 185,
+      "bottomRightX": 673,
+      "bottomRightY": 247,
+      "content": "This chapter summarizes the USB connectors and cables that are defined to deliver either a subset or all of USB 3.2 functionality. These connectors and cables are defined in separate USB specifications, most notably the USB Type-C™ Cable and Connector specification and the USB 3.1 Legacy Cable and Connector specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 227,
+      "topLeftY": 258,
+      "bottomRightX": 559,
+      "bottomRightY": 274,
+      "content": "Table 5-1. USB Connectors Applicability to USB 3.2",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 284,
+      "bottomRightX": 607,
+      "bottomRightY": 456,
+      "content": "|  Receptacle | Plugs | Applicability  |\n| --- | --- | --- |\n|  USB 3.1 Standard-A | USB 3.1 Standard-A | Enhanced SuperSpeed Gen 1x1 Enhanced SuperSpeed Gen 2x1  |\n|  USB 3.1 Standard-B | USB 3.1 Standard-B  |   |\n|  USB 3.1 Micro-B | USB 3.1 Micro-B  |   |\n|  USB 3.1 Micro-AB | USB 3.1 Micro-B or USB 3.1 Micro-A  |   |\n|  USB 3.2 Type-C | USB 3.2 Type-C | Enhanced SuperSpeed Gen 1x1 Enhanced SuperSpeed Gen 1x2 Enhanced SuperSpeed Gen 2x1 Enhanced SuperSpeed Gen 2x2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-32.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 474,
+      "bottomRightX": 651,
+      "bottomRightY": 522,
+      "content": "Table 5-2 and Table 5-3 identify the defined standard USB cables and adapter assemblies that have applicability to USB 3.2. Only the USB 3.1 Type-C to USB 3.1 Type-C cable assembly is capable of offering dual-lane support.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 211,
+      "topLeftY": 532,
+      "bottomRightX": 574,
+      "bottomRightY": 550,
+      "content": "Table 5-2. Standard USB Cables Applicability to USB 3.2",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 559,
+      "bottomRightX": 607,
+      "bottomRightY": 791,
+      "content": "|  Plug #1 | Plug #2 | Applicability  |\n| --- | --- | --- |\n|  USB 3.1 Standard-A | USB 3.1 Standard-B | Enhanced SuperSpeed Gen 1x1 Enhanced SuperSpeed Gen 2x1  |\n|  USB 3.1 Standard-A | USB 3.1 Micro-B  |   |\n|  USB 3.1 Standard-A | USB 3.1 Standard-A  |   |\n|  USB 3.1 Standard-A | USB 3.1 Type-C  |   |\n|  USB 3.1 Micro-A | USB 3.1 Standard-B  |   |\n|  USB 3.1 Micro-A | USB 3.1 Micro-B  |   |\n|  USB 3.1 Type-C | USB 3.1 Standard-B  |   |\n|  USB 3.1 Type-C | USB 3.1 Micro-B  |   |\n|  USB 3.2 Type-C | USB 3.2 Type-C | Enhanced SuperSpeed Gen 1x1 Enhanced SuperSpeed Gen 1x2 Enhanced SuperSpeed Gen 2x1 Enhanced SuperSpeed Gen 2x2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-33.md"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 810,
+      "bottomRightX": 617,
+      "bottomRightY": 827,
+      "content": "Table 5-3. Standard USB Adapter Assemblies Applicability to USB 3.2",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 837,
+      "bottomRightX": 607,
+      "bottomRightY": 893,
+      "content": "|  Plug | Receptacle | Applicability  |\n| --- | --- | --- |\n|  USB 3.1 Type-C | USB 3.1 Standard-A | Enhanced SuperSpeed Gen 1x1 Enhanced SuperSpeed Gen 2x1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-34.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

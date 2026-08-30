@@ -1,0 +1,146 @@
+{
+  "index": 59,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 278,
+      "bottomRightY": 115,
+      "content": "### 3.2.2 Link Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 119,
+      "bottomRightX": 689,
+      "bottomRightY": 187,
+      "content": "The Enhanced SuperSpeed link layer specifications are detailed in Chapter 7. An Enhanced SuperSpeed link is a logical and physical connection of two ports. The connected ports are called link partners. A port has a physical part (refer to Section 3.2.1) and a logical part. The link layer defines the logical portion of a port and the communications between link partners.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 191,
+      "bottomRightX": 317,
+      "bottomRightY": 208,
+      "content": "The logical portion of a port has:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 212,
+      "bottomRightX": 685,
+      "bottomRightY": 317,
+      "content": "- State machines for managing its end of the physical connection. These include physical layer initialization and event management, i.e., connect, removal, and power management.\n- State machines and buffering for managing information exchanges with the link partner. It implements protocols for flow control, reliable delivery (port to port) of packet headers, and link power management. The different link packet types are defined in Chapter 7.\n- Buffering for data and protocol layer information elements.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 322,
+      "bottomRightX": 320,
+      "bottomRightY": 339,
+      "content": "The logical portion of a port also:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 343,
+      "bottomRightX": 696,
+      "bottomRightY": 447,
+      "content": "- Provides correct framing of sequences of bytes into packets during transmission; e.g., insertion of packet delimiters\n- Detects received packets, including packet delimiters and error checks of received header packets (for reliable delivery)\n- Provides an appropriate interface to the protocol layer for pass-through of protocol-layer packet information exchanges",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 453,
+      "bottomRightX": 603,
+      "bottomRightY": 469,
+      "content": "The physical layer provides the logical port an interface through which it is able to:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 473,
+      "bottomRightX": 681,
+      "bottomRightY": 576,
+      "content": "- Manage the state of its PHY (i.e., its end of the physical connection), including power management and events (connection, removal, and wake).\n- Transmit and receive byte streams, with additional signals that qualify the byte stream as control sequences or data. The physical layer includes discrete transmit and receive physical links, therefore, a port is able to simultaneously transmit and receive control and data information.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 582,
+      "bottomRightX": 681,
+      "bottomRightY": 650,
+      "content": "The protocol between link partners uses specific encoded control sequences. Note that control sequences are encoded to be tolerant to a single bit error. Control sequences are used for port-to-port command protocol, framing of packet data (packet delimiters), etc. There is a link-partner protocol for power management that uses packet headers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 664,
+      "bottomRightX": 314,
+      "bottomRightY": 685,
+      "content": "### 3.2.3 Protocol Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 690,
+      "bottomRightX": 697,
+      "bottomRightY": 725,
+      "content": "The protocol layer specifications for Enhanced SuperSpeed are detailed in Chapter 8. This protocol layer defines the “end-to-end” communications rules between a host and device (see Figure 3-4).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 729,
+      "bottomRightX": 694,
+      "bottomRightY": 814,
+      "content": "The Enhanced SuperSpeed protocol provides for application data information exchanges between a host and a device endpoint. This communications relationship is called a pipe. It is a host-directed protocol, which means the host determines when application data is transferred between the host and device. The Enhanced SuperSpeed protocol is not a polled protocol, as a device is able to asynchronously request service from the host on behalf of a particular endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 819,
+      "bottomRightX": 686,
+      "bottomRightY": 903,
+      "content": "All protocol layer communications are accomplished via the exchange of packets. Packets are sequences of data bytes with specific control sequences which serve as delimiters managed by the link layer. Host transmitted protocol packets are routed through intervening hubs directly to a peripheral device. They do not traverse bus paths that are not part of the direct path between the host and the target peripheral device. A peripheral device expects it has been targeted by any",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 964,
+      "bottomRightX": 111,
+      "bottomRightY": 976,
+      "content": "3-8",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "index": 113,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 133,
+      "bottomRightX": 419,
+      "bottomRightY": 148,
+      "content": "Figure 8-4. PCLK as PHY Input with External PLL",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 152,
+      "bottomRightX": 686,
+      "bottomRightY": 524,
+      "content": "![img-25.jpeg](img-25.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-25.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 539,
+      "bottomRightX": 435,
+      "bottomRightY": 560,
+      "content": "### 8.1.2 MacCLK Clocking Scheme",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 566,
+      "bottomRightX": 686,
+      "bottomRightY": 668,
+      "content": "The MacCLK is an optional clock that is independent of data lanes. MacCLK frequency is controlled via a MacCLK lane. Figure 8-5 shows the signals associated with a single MacCLK lane. Multiple MacCLK lanes may be implemented; for example, DisplayPort and USB4 implementations are likely to implement two lanes. Some implementations may choose to map a MacCLK lane to a specific data lane with a direct correlation to PCLK. Each MacCLK lane consists of the following signals: MacCLKReset#, MacCLK, MacCLKReq, MacCLKSSCEnable, MacCLKAck, MacCLKPHYMode, and MacCLKRate.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "114",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

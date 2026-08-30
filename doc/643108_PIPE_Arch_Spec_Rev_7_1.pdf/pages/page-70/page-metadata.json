@@ -1,0 +1,84 @@
+{
+  "index": 69,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 186,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 381,
+      "bottomRightY": 142,
+      "content": "## 6.2.2 Command Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 161,
+      "bottomRightX": 487,
+      "bottomRightY": 176,
+      "content": "Table 6-16. SerDes Only: Command Interface Input Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 180,
+      "bottomRightX": 690,
+      "bottomRightY": 471,
+      "content": "|  Name | Active Level | Description |   | Relevant Protocols  |\n| --- | --- | --- | --- | --- |\n|  RxWidth[2:0] | N/A | **This signal is only used in the SerDes architecture.** It controls the PIPE receive data path width. |   | PCIe, SATA, USB, USB4, and DisplayPort Rx  |\n|   |   |  Value | Datapath Width  |   |\n|   |   |  0 | 10 bits  |   |\n|   |   |  1 | 20 bits  |   |\n|   |   |  2 | 40 bits  |   |\n|   |   |  3 | 80 bits (PCIe SerDes only)/56-bits USB4  |   |\n|   |   |  4 | 160 bits  |   |\n|   |   |  5-7 | Reserved  |   |\n|   |   |  **Note:** PHYs that support greater than x4 link width must provide option of 32-bit data width or smaller. PIPE implementations that only support one option at each signaling rate do not implement this signal.  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-48.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 485,
+      "bottomRightX": 391,
+      "bottomRightY": 508,
+      "content": "## 6.2.3 MacCLK Lane Signals",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 512,
+      "bottomRightX": 686,
+      "bottomRightY": 640,
+      "content": "A MacCLK lane is an optional feature that is implemented only by PHYs that support MacCLK. The signals defined here are per MacCLK lane. These signals are independent of the other PIPE signals. Refer to Section 8.1.2 for more details. The MacCLK lane signals are in the MacCLKReset# domain. The MAC and the PHY must not rely on the signals being held at a valid value when MacCLKReset# is asserted. If default values are specified, the MAC and the PHY must guarantee that the signals they drive are stable and at their reset values when MacCLKReset# deasserts. The PHY specifies the minimum MacCLKReset# assertion pulse duration it requires via the paramater MinimumMacCLKReset#AssertionPulse.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 106,
+      "bottomRightY": 965,
+      "content": "70",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 689,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "index": 200,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 106,
+      "bottomRightX": 515,
+      "bottomRightY": 124,
+      "content": "Table 6-29. LFPS Transmitter Timing for SuperSpeed Designs¹",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 126,
+      "bottomRightX": 676,
+      "bottomRightY": 341,
+      "content": "|   | tBurst |   |   |   | tRepeat  |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|   |  Min | Typ | Max | Minimum Number of LFPS Cycles² | Min | Typ | Max  |\n|  Polling.LFPS | 0.6 μs | 1.0 μs | 1.4 μs |  | 6 μs | 10 μs | 14 μs  |\n|  Ping.LFPS⁸ | 40 ns |  | 200 ns | 2 | 160 ms | 200 ms | 240 ms  |\n|  Ping.LFPS for SuperSpeedPlus⁹ | 40 ns |  | 160ns | 2 |  |  |   |\n|  tReset³ | 80 ms | 100 ms | 120 ms |  |  |  |   |\n|  U1 Exit⁴,⁵ | 600 ns⁷ |  | 2 ms |  |  |  |   |\n|  U2 / Loopback Exit⁴,⁵ | 80 μs⁷ |  | 2 ms |  |  |  |   |\n|  U3 Wakeup⁴,⁵ | 80 μs⁷ |  | 10 ms |  |  |  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-83.md"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 341,
+      "bottomRightX": 172,
+      "bottomRightY": 352,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 355,
+      "bottomRightX": 650,
+      "bottomRightY": 370,
+      "content": "1. If the transmission of an LFPS signal does not meet the specification, the receiver behavior is undefined.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 370,
+      "bottomRightX": 507,
+      "bottomRightY": 382,
+      "content": "2. Only Ping.LFPS has a requirement for minimum number of LFPS cycles.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 382,
+      "bottomRightX": 486,
+      "bottomRightY": 395,
+      "content": "3. The declaration of Ping.LFPS depends on only the Ping.LFPS burst.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 395,
+      "bottomRightX": 637,
+      "bottomRightY": 420,
+      "content": "4. Warm Reset, U1/U2/Loopback Exit, and U3 Wakeup are all single burst LFPS signals. tRepeat is not applicable.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 420,
+      "bottomRightX": 655,
+      "bottomRightY": 445,
+      "content": "5. The minimum duration of an LFPS burst shall be transmitted as specified. The LFPS handshake process and timing are defined in Section 6.9.2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 445,
+      "bottomRightX": 665,
+      "bottomRightY": 499,
+      "content": "6. A Port in U2 or U3 is not required to keep its transmitter DC common mode voltage. When a port begins U2 exit or U3 wakeup, it may start sending LFPS signal while establishing its transmitter DC common mode voltage. To make sure its link partner receives a proper LFPS signal, a minimum of 80 μs tBurst shall be transmitted. The same consideration also applies to a port receiving LFPS U2 exit or U3 wakeup signal.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 499,
+      "bottomRightX": 665,
+      "bottomRightY": 523,
+      "content": "7. A port is still required to detect U1 LFPS exit signal at a minimum of 300ns. The extra 300ns is provided as the guard band for successful U1 LFPS exit handshake.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 523,
+      "bottomRightX": 607,
+      "bottomRightY": 538,
+      "content": "8. This requirement applies to SuperSpeed only designs (are only capable of operating at 5Gb/s).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 538,
+      "bottomRightX": 659,
+      "bottomRightY": 551,
+      "content": "9. This requirement applies to SuperSpeedPlus designs (capable of operating at 10Gb/s and higher speeds).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 574,
+      "bottomRightX": 327,
+      "bottomRightY": 592,
+      "content": "### IMPLEMENTATION NOTE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 603,
+      "bottomRightX": 692,
+      "bottomRightY": 637,
+      "content": "Detect and differentiate between Ping.LFPS and U1 LFPS exit signaling for a downstream port in U1 or U2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 644,
+      "bottomRightX": 691,
+      "bottomRightY": 729,
+      "content": "When a downstream port is in U1, it may receive either a Ping.LFPS as a message from its link partner to inform its presence, or an U1 LFPS exit signal to signal that its link partner is attempting exit from U1. This will also occur when a downstream port is in U2, since there are situations where a downstream port enters U2 from U1 when its U2 inactivity timer times out, and its link partner is still in U1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 736,
+      "bottomRightX": 700,
+      "bottomRightY": 839,
+      "content": "Upon detecting the break of electrical idle due to receiving an LFPS signal, a downstream port may start a timer to measure the duration of the LFPS signal. If an electrical idle condition does not occur when the timer expires at 300 ns, a downstream port can declare the received LFPS signal is U1 exit and then respond to U1 exit by sending U1 LFPS exit handshake signal. If an electrical idle condition is detected before the timer reaches 300 ns, a downstream port can declare that the received LFPS signal is Ping.LFPS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "6-45",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

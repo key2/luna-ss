@@ -1,0 +1,157 @@
+{
+  "index": 551,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 556,
+      "bottomRightY": 111,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 125,
+      "bottomRightX": 331,
+      "bottomRightY": 144,
+      "content": "### 10.16.2.3 Get Hub Descriptor",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 150,
+      "bottomRightX": 352,
+      "bottomRightY": 166,
+      "content": "This request returns the hub descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 167,
+      "bottomRightX": 700,
+      "bottomRightY": 239,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10100000B | GET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero | Descriptor Length | Descriptor  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-234.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 243,
+      "bottomRightX": 699,
+      "bottomRightY": 311,
+      "content": "The GetDescriptor() request for the hub class descriptor follows the same usage model as that of the standard GetDescriptor() request (refer to Chapter 9). The standard hub descriptor is denoted by using the value bDescriptorType defined in Section 10.15.2.1. All hubs are required to implement one hub descriptor, with descriptor index zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 315,
+      "bottomRightX": 689,
+      "bottomRightY": 367,
+      "content": "If wLength is larger than the actual length of the descriptor, then only the actual length is returned. If wLength is less than the actual length of the descriptor, then only the first wLength bytes of the descriptor are returned; this is not considered an error even if wLength is zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 372,
+      "bottomRightX": 554,
+      "bottomRightY": 388,
+      "content": "It is a Request Error if wValue or wIndex are other than as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 393,
+      "bottomRightX": 554,
+      "bottomRightY": 411,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 425,
+      "bottomRightX": 300,
+      "bottomRightY": 443,
+      "content": "### 10.16.2.4 Get Hub Status",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 449,
+      "bottomRightX": 662,
+      "bottomRightY": 481,
+      "content": "This request returns the current hub status and the states that have changed since the previous acknowledgment.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 484,
+      "bottomRightX": 700,
+      "bottomRightY": 555,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10100000B | GET_STATUS | Zero | Zero | Four | Hub Status and Change Status  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-235.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 559,
+      "bottomRightX": 680,
+      "bottomRightY": 593,
+      "content": "The first word of data contains the wHubStatus field (refer to Table 10-10). The second word of data contains the wHubChange field (refer to Table 10-11).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 597,
+      "bottomRightX": 614,
+      "bottomRightY": 614,
+      "content": "It is a Request Error if wValue, wIndex, or wLength are other than as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 620,
+      "bottomRightX": 554,
+      "bottomRightY": 637,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-74",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

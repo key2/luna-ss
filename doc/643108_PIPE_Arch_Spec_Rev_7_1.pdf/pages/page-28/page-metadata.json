@@ -1,0 +1,111 @@
+{
+  "index": 27,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 122,
+      "bottomRightX": 686,
+      "bottomRightY": 237,
+      "content": "when operating at 2.5 GT/s signaling rate, and 16-bit data paths when operating at 5.0 GT/s signaling rate. Another implementation choice is to use a fixed data path width and change the PCLK frequency to adjust the signaling rate. In this case, an implementation with 8-bit data paths would provide PCLK at 250 MHz for 2.5 GT/s signaling and provide PCLK at 500 MHz for 5.0 GT/s signaling. Similarly, an implementation with 16-bit data paths would provide PCLK at 125 MHz for 2.5 GT/s signaling and 250 MHz for 5.0 GT/s signaling. The sample list of possibilities is shown in Table 3-1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 244,
+      "bottomRightX": 682,
+      "bottomRightY": 301,
+      "content": "For PIPE implementations that support 5.0 GT/s USB mode and 10 GT/s, USB mode implementers can choose from the options shown in Table 3-3. A PIPE compliant MAC or PHY is only required to support one option for each USB transfer speed that it supports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 308,
+      "bottomRightX": 688,
+      "bottomRightY": 380,
+      "content": "For SATA PIPE implementations that support only the 1.5 GT/s signaling rate implementers can choose to have 16-bit data paths with PCLK running at 75 MHz, or 8-bit data paths with PCLK running at 150, 300 or 600 MHz. The 300 and 600 MHz options require the use of TXDataValid and RXDataValid signals to toggle the use of data on the data bus.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 387,
+      "bottomRightX": 686,
+      "bottomRightY": 572,
+      "content": "SATA PIPE implementations that support 1.5 GT/s signaling and 3.0 GT/s signaling in SATA mode, and therefore are able to switch between 1.5 GT/s and 3.0 GT/s signaling rates, can be implemented in several ways. An implementation may choose to have PCLK fixed at 150 MHz and use 8-bit data paths when operating at 1.5 GT/s signaling rate, and 16-bit data paths when operating at 3.0 GT/s signaling rate. Another implementation choice is to use a fixed data path width and change PCLK frequency to adjust the signaling rate. In this case, an implementation with 8-bit data paths could provide PCLK at 150 MHz for 1.5 GT/s signaling and provide PCLK at 300 MHz for 3.0 GT/s signaling. Similarly, an implementation with 16-bit data paths would provide PCLK at 75 MHz for 1.5 GT/s signaling and 150 MHz for 3.0 mode are shown GT/s signaling. A sample list of possible widths and PCLK rates for SATA is shown in Table 3-4. A PIPE compliant MAC or PHY is only required to support one option for each SATA transfer speed that it supports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 580,
+      "bottomRightX": 685,
+      "bottomRightY": 666,
+      "content": "A sample list of possible data width and PCLK rate combinations for PCIe mode is shown in Table 3-1; other combinations are possible as long as they conform to the PIPE definitions and the combination of PCLK rate, data width, and TXDataValid/RXDataValid strobes match the bandwidth across the serial link. A PIPE compliant MAC or PHY is only required to support one option for each PCIe transfer speed that it supports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 679,
+      "bottomRightX": 684,
+      "bottomRightY": 706,
+      "content": "Note: PHYs that support greater than x4 link widths must provide an option for 32-bit or less data width.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 720,
+      "bottomRightX": 600,
+      "bottomRightY": 735,
+      "content": "Table 3-1. PCIe Mode - Possible PCLK Rates and Data Widths (Sheet 1 of 3)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 738,
+      "bottomRightX": 686,
+      "bottomRightY": 895,
+      "content": "|  Mode | PCLK | Original PIPE Data Width (SerDes Data Width^{1}) | TXDataValid and RXDataValid^{2} Strobe Rate  |\n| --- | --- | --- | --- |\n|  2.5 GT/s | 4000 MHz | 8 bits (10 bits) | 1 in 16 PCLKs  |\n|  2.5 GT/s | 2000 MHz | 8 bits (10 bits) | 1 in 8 PCLKs  |\n|  2.5 GT/s | 1000 MHz | 8 bits (10 bits) | 1 in 4 PCLKs  |\n|  2.5 GT/s | 500 MHz | 8 bits (10 bits) | 1 in 2 PCLKs  |\n|  2.5 GT/s | 250 MHz | 8 bits (10 bits) | N/A  |\n|  2.5 GT/s | 2000 MHz | 16 bits (20 bits) | 1 in 16 PCLKs  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-6.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "28",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

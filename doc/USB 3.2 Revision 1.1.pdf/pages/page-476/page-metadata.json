@@ -1,0 +1,112 @@
+{
+  "index": 475,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 445 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 274,
+      "topLeftY": 92,
+      "bottomRightX": 515,
+      "bottomRightY": 110,
+      "content": "Table 10-12. Port Status Type Codes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 119,
+      "bottomRightX": 673,
+      "bottomRightY": 283,
+      "content": "|  Port Status Type | Value (wValue, low-byte) | Port Status Length (wLength) | Description  |\n| --- | --- | --- | --- |\n|  PORT_STATUS | 00H | 4 | Returns Port Status Request information  |\n|  PD_STATUS | 01H | 8 | PD Status of the specified port on a PDUSB Hub. This value is deprecated and shall not be used.  |\n|  EXT_PORT_STATUS | 02H | 8 | Returns Extended Port Status Request information  |\n|  Reserved | 03-FFH | NA | Reserved for future use  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-248.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 302,
+      "bottomRightX": 671,
+      "bottomRightY": 365,
+      "content": "It is a Request Error if the Port Status Type equals EXT_PORT_STATUS and the hub that does not define a SuperSpeedPlus USB Capability descriptor, or if the Port Status Type equals a reserved value, or if wValue or wLength are other than as specified in Table 10-7, or if wIndex specifies a port that does not exist.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 375,
+      "bottomRightX": 671,
+      "bottomRightY": 392,
+      "content": "If the hub is not configured, the behavior of the hub in response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 404,
+      "bottomRightX": 301,
+      "bottomRightY": 418,
+      "content": "### 10.16.2.6.1 Port Status Bits",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 447,
+      "bottomRightX": 535,
+      "bottomRightY": 463,
+      "content": "Table 10-13. Port Status Field, wPortStatus",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 473,
+      "bottomRightX": 676,
+      "bottomRightY": 915,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0 | Current Connect Status (PORT_CONNECTION): This field reflects whether or not a device is currently connected to this port. **Value****Meaning** 0 No device is present 1 A device is present on this port  |\n|  1 | Port Enabled/Disabled: This field indicates whether the port is enabled. Ports can be disabled by either a fault condition (disconnect event or other fault condition) or by the USB system software. **Value****Meaning** 0 Port is disabled 1 Port is enabled  |\n|  2 | Reserved  |\n|  3 | Over-current (PORT_OVER_CURRENT): If the hub reports over-current conditions on a per-port basis, this field indicates that the current drain on the port exceeds the specified maximum. **Value****Meaning** 0 No over-current condition exists on this port 1 An over-current condition exists on this port  |\n|  4 | Reset (PORT_RESET): This field is set when the host wishes to reset the attached device. It remains set until the reset signaling is turned off by the hub. **Value****Meaning** 0 Reset signaling not asserted 1 Reset signaling asserted  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-249.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

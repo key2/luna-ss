@@ -1,0 +1,165 @@
+{
+  "index": 172,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 142 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 260,
+      "topLeftY": 92,
+      "bottomRightX": 528,
+      "bottomRightY": 110,
+      "content": "Table 7-7. Transmitter Timers Summary",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 119,
+      "bottomRightX": 613,
+      "bottomRightY": 203,
+      "content": "|  Timers | Timeout Value (μs)  |\n| --- | --- |\n|  PENDING_HP_TIMER | 10^{1}  |\n|  CREDIT_HP_TIMER Type 1/Type 2 CREDIT_HP_TIMER | 5000^{2}  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-84.md"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 205,
+      "bottomRightX": 602,
+      "bottomRightY": 255,
+      "content": "Note 1: The timeout value also includes the propagation delays introduced by a long active cable, and additional re-timers that maybe on a host and/or a device side. It is important to realize that any delay of the link command return by a port receiving HP may result in throughput performance degradation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 188,
+      "topLeftY": 258,
+      "bottomRightX": 602,
+      "bottomRightY": 414,
+      "content": "- A port in SS operation, upon receiving HP, shall return its correspondent LGOOD_n or LBAD within 3.0us. Note that this delay is based on the worst case scenario of a DP with maximum DPP payload being just transmitted. In this case, a port has to wait until the current DP is transmitted, followed by SKP OS and the preceding link commands.\n- A port in SSP operation, upon receiving HP, shall return its correspondent LGOOD_n or LBAD within 1.5us. Note that this delay is based on the worst case scenario of a DP with maximum DPP payload being just transmitted. In this case, a port has to wait until the current DP is transmitted, followed by SKP OS and the preceding link commands.\n- A port, upon receiving the link command, shall complete the link command processing within 200ns",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 188,
+      "topLeftY": 416,
+      "bottomRightX": 528,
+      "bottomRightY": 442,
+      "content": "Note 2: The relaxation of the timeout value is to allow some low cost implementation at a performance penalty of staling its link partner.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 479,
+      "bottomRightX": 364,
+      "bottomRightY": 495,
+      "content": "### 7.2.4.2 Link Power Management and Flow",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 501,
+      "bottomRightX": 652,
+      "bottomRightY": 579,
+      "content": "Requests to transition to low power link states are done at the link level during U0. Link commands LGO_U1, LGO_U2, and LGO_U3 are sent by a port as a request to enter a low power link state. LAU or LXU is sent by the other port as the response. LPMA is sent by a port in response only to LAU. Details on exit/wake from a low power link state are described in Sections 7.5.7, 7.5.8, and 7.5.9.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 591,
+      "bottomRightX": 397,
+      "bottomRightY": 606,
+      "content": "#### 7.2.4.2.1 Power Management Link Timers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 612,
+      "bottomRightX": 673,
+      "bottomRightY": 749,
+      "content": "A port shall have three timers for link power management. First, a PM_LC_TIMER is used for a port initiating an entry request to a low power link state. It is designed to ensure a prompt entry to a low power link state. Second, a PM_ENTRY_TIMER is used for a port accepting the entry request to a low power link state. It is designed to ensure that both ports across the link are in the same low power link state regardless if the LAU or LPMA is lost or corrupted. Finally, a Ux_EXIT_TIMER is used for a port to initiate the exit from U1 or U2. It is specified to ensure that the duration of U1 or U2 exit is bounded and the latency of a header packet transmission is not compromised. The timeout values of the three timers are specified in Table 7-8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 762,
+      "bottomRightX": 524,
+      "bottomRightY": 778,
+      "content": "A port shall operate the PM_LC_TIMER based on the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 791,
+      "bottomRightX": 673,
+      "bottomRightY": 859,
+      "content": "- A port requesting a low power link state entry shall start PM_LC_TIMER after the last symbol of the LGO_Ux link command is sent.\n- A port requesting a low power link state entry shall disable and reset PM_LC_TIMER upon receipt of the last symbol of LAU or LXU at its receiver.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 864,
+      "bottomRightX": 550,
+      "bottomRightY": 881,
+      "content": "A port shall operate the PM_ENTRY_TIMER based on the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 894,
+      "bottomRightX": 584,
+      "bottomRightY": 925,
+      "content": "- A port accepting the request to enter a low power link state shall start PM_ENTRY_TIMER after the last symbol of LAU is sent.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 199,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

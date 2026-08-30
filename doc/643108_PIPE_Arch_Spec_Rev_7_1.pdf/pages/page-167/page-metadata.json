@@ -1,0 +1,201 @@
+{
+  "index": 166,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 471,
+      "bottomRightY": 148,
+      "content": "Figure 8-46. SerDes Architecture: DNELB Path Examples",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 152,
+      "bottomRightX": 700,
+      "bottomRightY": 323,
+      "content": "![img-67.jpeg](img-67.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-67.jpeg"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 328,
+      "bottomRightX": 696,
+      "bottomRightY": 371,
+      "content": "The following subsections specify the sequences for entering and exiting DNELB mode; also specified are any differences in behavior of PIPE signals when operating in DNELB mode.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 99,
+      "topLeftY": 391,
+      "bottomRightX": 637,
+      "bottomRightY": 413,
+      "content": "### 8.34.1 PIPE Operations and Signals in DNELB Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 420,
+      "bottomRightX": 696,
+      "bottomRightY": 464,
+      "content": "The general philosophy is to enable the LTSSM to train as closely as possible to normal operational mode. Unless differences are called out specifically in this section, PIPE signals operate the same as they do in normal operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 469,
+      "bottomRightX": 273,
+      "bottomRightY": 482,
+      "content": "- Data Path:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 489,
+      "bottomRightX": 386,
+      "bottomRightY": 504,
+      "content": "- Original PIPE Architecture",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 509,
+      "bottomRightX": 694,
+      "bottomRightY": 556,
+      "content": "- Rate, Width, and PCLK Rate operate the same in DNELB mode as they do in normal operation.\n- Tx interface operates same as in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 259,
+      "topLeftY": 561,
+      "bottomRightX": 612,
+      "bottomRightY": 574,
+      "content": "- No additional limitations on TxDataValid or TxElecIdle",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 581,
+      "bottomRightX": 510,
+      "bottomRightY": 595,
+      "content": "- Rx interface operates same as in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 601,
+      "bottomRightX": 693,
+      "bottomRightY": 628,
+      "content": "- TxDataValid and TxElecIdle have impact on RxDataValid and RxElecIdle; the loopback location determines how the Tx side translates to the Rx side.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 634,
+      "bottomRightX": 333,
+      "bottomRightY": 647,
+      "content": "- SerDes Architecture:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 654,
+      "bottomRightX": 694,
+      "bottomRightY": 700,
+      "content": "- Rate, Width, PCLK Rate, and RxWidth operate the same in NELB mode as in normal operation.\n- Tx interface operates the same as in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 706,
+      "bottomRightX": 592,
+      "bottomRightY": 720,
+      "content": "- No additional limitations on TxDataValid or TxElecIdle.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 725,
+      "bottomRightX": 557,
+      "bottomRightY": 739,
+      "content": "- Rx interface operates the same as in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 744,
+      "bottomRightX": 684,
+      "bottomRightY": 759,
+      "content": "- RxValid, RxData, and RxCLK operate the same as in normal operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 764,
+      "bottomRightX": 671,
+      "bottomRightY": 778,
+      "content": "- PHY must convert the Tx data path into the expected Rx data path format.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 783,
+      "bottomRightX": 694,
+      "bottomRightY": 882,
+      "content": "- Convert from PCLK / TxDataValid / Width to RxCLK / RxWidth format\n- If RxCLK is slower than PCLK, the PHY is permitted to skew the duty cycle; however, the shorter of the low or high portion of the clock period must not be shorter than normal operation. For example, if RxCLK is 250 MHz and PCLK is 1G Hz, acceptable duty cycles include 1 ns/3 ns or 500 ps/3.5 ns. An asymmetric duty cycle enables simplification of generation of RxCLK via a simple digital divide of incoming PCLK.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 297,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "167",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

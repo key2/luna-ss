@@ -1,0 +1,156 @@
+{
+  "index": 253,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 223 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 673,
+      "bottomRightY": 184,
+      "content": "LDM TS Response LMP & DL=1 – If a LDM TS Response LMP is received and the LCW Delayed (DL) flag is one, the Requester shall consider the Response Delay field of the LDM TS Response LMP invalid, invalidate the LDM Context t1, t2, t3 timestamps, immediately generate a Trigger Event to initiate another Timestamp Exchange, and transition to the Timestamp Request state. Refer to Sections 7.2.4.1.2 and 7.2.4.1.12 for the conditions that may set the Delayed bit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 197,
+      "bottomRightX": 666,
+      "bottomRightY": 243,
+      "content": "Response Timeout – If a Response Timeout occurs the Requester shall transition to the Init Request state, where the LDM state machine will attempt to retry the Timestamp Exchange with the Responder.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 254,
+      "bottomRightX": 645,
+      "bottomRightY": 285,
+      "content": "Note: Timestamp t4 shall be adjusted for the TS Delay. Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 299,
+      "bottomRightX": 291,
+      "bottomRightY": 313,
+      "content": "### 8.4.8.3.1.5 LDM Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 319,
+      "bottomRightX": 657,
+      "bottomRightY": 351,
+      "content": "Upon entering this state, the Requester shall clear the LDM_ENABLE flag and terminate all LDM protocol activity.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 364,
+      "bottomRightX": 631,
+      "bottomRightY": 394,
+      "content": "CLEAR_FEATURE(LDM_ENABLE) – When this request is received by the device it shall transition from any other LDM state to the LDM Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 406,
+      "bottomRightX": 667,
+      "bottomRightY": 437,
+      "content": "SET_FEATURE(LDM_ENABLE) – If this request is received by the device it shall transition to the Init Request state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 451,
+      "bottomRightX": 335,
+      "bottomRightY": 466,
+      "content": "### 8.4.8.3.2 Responder Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 472,
+      "bottomRightX": 673,
+      "bottomRightY": 504,
+      "content": "This section describes the operations that a Responder (i.e. the Downstream Facing Port of a hub or host controller) performs to participate in the LDM protocol.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 515,
+      "bottomRightX": 535,
+      "bottomRightY": 532,
+      "content": "Figure 8-15. LDM Responder State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 540,
+      "bottomRightX": 591,
+      "bottomRightY": 841,
+      "content": "![img-108.jpeg](img-108.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-108.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 861,
+      "bottomRightX": 652,
+      "bottomRightY": 894,
+      "content": "The LDM Responder State Machine shall maintain the following local variable: Responder Response Delay Overflow.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "index": 141,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 133,
+      "bottomRightX": 272,
+      "bottomRightY": 148,
+      "content": "Figure 8-32. Loopback End",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 152,
+      "bottomRightX": 690,
+      "bottomRightY": 445,
+      "content": "![img-53.jpeg](img-53.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-53.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 461,
+      "bottomRightX": 656,
+      "bottomRightY": 483,
+      "content": "### 8.17 Polarity Inversion – PCIe and USB Modes",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 492,
+      "bottomRightX": 686,
+      "bottomRightY": 535,
+      "content": "To support lane polarity inversion, the PHY must invert received data when RxPolarity is asserted. Inverted data must begin showing up on RxData[] within 20 PCLKs of when RxPolarity is asserted.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 544,
+      "bottomRightX": 299,
+      "bottomRightY": 559,
+      "content": "Figure 8-33. Polarity Inversion",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 562,
+      "bottomRightX": 690,
+      "bottomRightY": 818,
+      "content": "![img-54.jpeg](img-54.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-54.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 833,
+      "bottomRightX": 636,
+      "bottomRightY": 857,
+      "content": "### 8.18 Setting Negative Disparity (PCIe Mode)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 862,
+      "bottomRightX": 686,
+      "bottomRightY": 905,
+      "content": "To set the running disparity to negative, the MAC asserts TxCompliance for one clock cycle that matches with the data that is to be transmitted with negative disparity. For a 16-bit interface, the low order byte will be the byte transmitted where running disparity",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "142",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

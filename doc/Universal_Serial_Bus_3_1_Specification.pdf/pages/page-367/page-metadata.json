@@ -1,0 +1,102 @@
+{
+  "index": 366,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 100,
+      "bottomRightX": 234,
+      "bottomRightY": 116,
+      "content": "### 8.12.1.4.2.6 Move Data",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 129,
+      "bottomRightX": 700,
+      "bottomRightY": 181,
+      "content": "In the Device IN Move Data state, CStream is set to the same value at both ends of the pipe and the pipe may actively move data. The details of the bus transactions executed in the Move Data state and its exit conditions are defined in the Device IN Move Data State Machine defined below.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 130,
+      "topLeftY": 197,
+      "bottomRightX": 700,
+      "bottomRightY": 593,
+      "content": "![img-226.jpeg](img-226.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-226.jpeg"
+    },
+    {
+      "topLeftX": 228,
+      "topLeftY": 599,
+      "bottomRightX": 597,
+      "bottomRightY": 616,
+      "content": "Figure 8-40. Device IN Move Data State Machine (DIMDSM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 635,
+      "bottomRightX": 699,
+      "bottomRightY": 720,
+      "content": "The Device IN Move Data State Machine (DIMDSM) is entered from the Start Stream or Idle states as described above. The entry into the DIMDSM immediately transitions to the INMvData Device state. The DIMDSM allows either the device to terminate the Move Data operation because it has exhausted its Function Data associated with a Stream or the host to terminate the Move Data operation because it has exhausted its Endpoint Buffer space associated with a Stream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 728,
+      "bottomRightX": 694,
+      "bottomRightY": 765,
+      "content": "The DIMDSM always exits to the Idle state. The Retry (Rty=1) flag shall never be set in a packet that causes a DIMDSM exit. A Stream pipe remains in the Move Data state during packet retries.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 770,
+      "bottomRightX": 696,
+      "bottomRightY": 824,
+      "content": "Note: The Stream ID value shall be CStream for all packets exchanged in the Move Data state. If a Stream ID value other than CStream is detected while in the DIMDSM, the device should halt the endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 830,
+      "bottomRightX": 694,
+      "bottomRightY": 867,
+      "content": "Note: if CStream is not Active upon initially entering the Move Data state, the device may reject the Stream proposal with an NRDY or STALL the pipe, as defined by the associated Device Class.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "8-73",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

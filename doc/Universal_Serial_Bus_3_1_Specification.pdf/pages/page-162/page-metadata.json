@@ -1,0 +1,111 @@
+{
+  "index": 161,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 344,
+      "bottomRightY": 113,
+      "content": "### 6.2.2 Channel Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 689,
+      "bottomRightY": 186,
+      "content": "A PHY is a transmitter and receiver that operate together and are located on the same component. A channel connects two PHYs together with two unidirectional differential pairs of pins for a total of four wires. The PHYs are required to be AC coupled. The AC coupling capacitors are associated with the transmitter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 213,
+      "bottomRightX": 337,
+      "bottomRightY": 238,
+      "content": "## 6.3 Symbol Encoding",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 258,
+      "bottomRightX": 325,
+      "bottomRightY": 280,
+      "content": "### 6.3.1 Gen 1 Encoding",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 284,
+      "bottomRightX": 671,
+      "bottomRightY": 338,
+      "content": "The Gen 1 PHY uses the 8b/10b transmission code. The definition of this transmission code is identical to that specified in ANSI X3.230-1994 (also referred to as ANSI INCITS 230-1994), clause 11. As shown in Figure 6-6, ABCDE maps to abcdei and FGH maps to fghj.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 355,
+      "bottomRightX": 657,
+      "bottomRightY": 729,
+      "content": "![img-128.jpeg](img-128.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-128.jpeg"
+    },
+    {
+      "topLeftX": 280,
+      "topLeftY": 741,
+      "bottomRightX": 542,
+      "bottomRightY": 760,
+      "content": "Figure 6-6. Character to Symbol Mapping",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 787,
+      "bottomRightX": 481,
+      "bottomRightY": 807,
+      "content": "#### 6.3.1.1 Serialization and Deserialization of Data",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 811,
+      "bottomRightX": 665,
+      "bottomRightY": 846,
+      "content": "The bits of a Symbol are placed starting with bit “a” and ending with bit “j.” This is shown in Figure 6-7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 111,
+      "bottomRightY": 994,
+      "content": "6-6",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

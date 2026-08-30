@@ -1,0 +1,9 @@
+|  Name | Active Level | Description |   |   |   | Relevant Protocols  |
+| --- | --- | --- | --- | --- | --- | --- |
+|   |  | If PowerDown changes during the IORecal, RxEqEval, or RxEqTraining operations, the PHY must abort the request and return the handshake acknowledgment. USB mode and USB4 modes: [3][2][1][0] Description 0 0 0 0 P0, normal operation 0 0 0 1 P1, low recovery time latency, power saving state 0 0 1 0 P2, longer recovery time latency, lower power state 0 0 1 1 P3, lowest power state 0 1 0 0 POWER_STATE_4 PHY-specific 0 1 0 1 POWER_STATE_5 PHY-specific 0 1 1 0 POWER_STATE_6 PHY-specific 0 1 1 1 POWER_STATE_7 PHY-specific 1 0 0 0 POWER_STATE_8 PHY-specific 1 0 0 1 POWER_STATE_9 PHY-specific 1 0 1 0 POWER_STATE_10 PHY-specific 1 0 1 1 POWER_STATE_11 PHY-specific 1 1 0 0 POWER_STATE_12 PHY-specific 1 1 0 1 POWER_STATE_13 PHY-specific 1 1 1 0 POWER_STATE_14 PHY-specific 1 1 1 1 POWER_STATE_15 PHY-specific When transitioning from P3 to P0, the signaling is asynchronous (since PCLK is not running). For USB, the following are the characteristics of the power states that must be minimally implemented: |   |   |   | PCIe, USB, and USB4  |
+|   |   |  PowerDown | PCLK State | Tx common mode state | Operations  |   |
+|   |   |  P0 | On | On | Transmit/Receive high speed data Transmit/Receive LFPS Termination control  |   |
+|   |   |  P1 | On | On | Transmit/Receive LFPS Termination control  |   |
+|   |   |  P2 | On | Off | Receive LFPS Termination control Remote receiver detection  |   |
+|   |   |  P3 | Off | Off | Off Receive LFPS Termination control Remote receiver detection  |   |
+|   |   |  If PowerDown changes during the IORecal, RxEqEval, or RxEqTraining operations, the PHY must abort the request and return the handshake acknowledgment. For USB4, refer to Section 8.3.3 for characteristics of power states that must be minimally implemented.  |   |   |   |   |

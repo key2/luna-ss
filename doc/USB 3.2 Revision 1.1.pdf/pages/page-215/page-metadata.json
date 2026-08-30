@@ -1,0 +1,101 @@
+{
+  "index": 214,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 184 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 96,
+      "bottomRightX": 676,
+      "bottomRightY": 464,
+      "content": "- An upstream port of a hub in SuperSpeed operation shall transition to Rx.Detect upon the 12 ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling.Idle are not met.\n- An upstream port of a peripheral device in SuperSpeed operation shall transition to eSS.Disabled upon the 12 ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling.Idle are not met.\n- A downstream port in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12 ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling.Idle are not met.\n- An upstream port of a hub in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12 ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling.Idle are not met.\n- An upstream port of a peripheral device in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12 ms timer timeout (tPollingConfigurationTimeout) and the conditions to transition to Polling. Idle are not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 485,
+      "bottomRightX": 278,
+      "bottomRightY": 501,
+      "content": "#### 7.5.4.10 Polling.Idle",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 507,
+      "bottomRightX": 600,
+      "bottomRightY": 538,
+      "content": "Polling.Idle is a substate where the port decodes the TS2 ordered set received in Polling.Configuration and determines the next state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 550,
+      "bottomRightX": 363,
+      "bottomRightY": 565,
+      "content": "##### 7.5.4.10.1 Polling.Idle Requirements",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 572,
+      "bottomRightX": 672,
+      "bottomRightY": 889,
+      "content": "- The port shall decode the TS2 ordered set received during Polling.Configuration and proceeds to the next state.\n- A downstream port shall reset its Link Error Count.\n- An upstream port shall reset its port configuration information to default values. Refer to Sections 8.4.5 and 8.4.6 for details.\n- The port in Gen 1 operation shall enable the scrambling by default if the Disabling Scrambling bit is not asserted in the TS2 ordered set received in Polling.Configuration.\n- The port in Gen 1 operation shall disable the scrambling if directed, or if the Disabling Scrambling bit is asserted in the TS2 ordered set received in Polling.Configuration.\n- The port in Gen 1 operation shall transmit Idle Symbols if the next state is U0. The port may transmit Idle Symbols if the next state is Loopback or Hot Reset.\n- The port in Gen 2 operation shall transmit a single SDS ordered set on each negotiated lane before the start of the data blocks with Idle Symbols if the next state is U0. The port may transmit SDS ordered set if the next state is Loopback or Hot Reset. In Gen 2x2 operation, data striping shall start after SDS. Refer to Section 6.13.4 for details of data striping.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 893,
+      "bottomRightX": 652,
+      "bottomRightY": 925,
+      "content": "Note: Under situation where a SKP ordered set is also scheduled at the same time with SDS ordered set, SKP ordered set shall be transmitted first.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

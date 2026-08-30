@@ -1,0 +1,158 @@
+{
+  "index": 462,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 432 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 667,
+      "bottomRightY": 140,
+      "content": "The hub class defines additional descriptors (refer to Section 10.15.2). In addition, vendor-specific descriptors are allowed in the USB device framework. Hubs support standard USB device commands as defined in Chapter 8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 152,
+      "bottomRightX": 655,
+      "bottomRightY": 198,
+      "content": "A hub is the only device that is allowed to function at high-speed and a Gen X speed at the same time. This specification only defines the descriptors a hub shall report on the Enhanced SuperSpeed bus.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 210,
+      "bottomRightX": 671,
+      "bottomRightY": 242,
+      "content": "Note that an Enhanced SuperSpeed hub shall always support the Get Descriptor (BOS) (refer to Section 9.6.2) when operating at either the Gen X speed or at USB 2.0 speeds.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 253,
+      "bottomRightX": 367,
+      "bottomRightY": 268,
+      "content": "### 10.15.1 Standard Descriptors for Hub Class",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 273,
+      "bottomRightX": 667,
+      "bottomRightY": 307,
+      "content": "The hub class pre-defines certain fields in standard USB descriptors. Other fields are either implementation-dependent or not applicable to this class.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 318,
+      "bottomRightX": 615,
+      "bottomRightY": 349,
+      "content": "A hub has a device descriptor with a bDeviceProtocol field set to 3 and an interface descriptor with a bInterfaceProtocol field set to 0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 361,
+      "bottomRightX": 502,
+      "bottomRightY": 394,
+      "content": "Hub Descriptors for USB hub operating in SuperSpeed mode\nDevice Descriptor (SuperSpeed information)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 395,
+      "bottomRightX": 497,
+      "bottomRightY": 567,
+      "content": "|  bLength | 18  |\n| --- | --- |\n|  bDescriptorType | DEVICE Descriptor type  |\n|  bcdUSB | 310H  |\n|  bDeviceClass | HUB_CLASSCODE (9)  |\n|  bDeviceSubClass | 0  |\n|  bDeviceProtocol | 3  |\n|  bMaxPacketSize0 | 9  |\n|  bNumConfigurations | 1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-213.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 583,
+      "bottomRightX": 196,
+      "bottomRightY": 595,
+      "content": "BOS Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 597,
+      "bottomRightX": 497,
+      "bottomRightY": 686,
+      "content": "|  bLength | 5  |\n| --- | --- |\n|  bDescriptorType | BOS Descriptor type  |\n|  wTotalLength | 73  |\n|  bNumDeviceCaps | 3  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-214.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 701,
+      "bottomRightX": 211,
+      "bottomRightY": 714,
+      "content": "USB 2.0 Extension",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 716,
+      "bottomRightX": 497,
+      "bottomRightY": 806,
+      "content": "|  bLength | 7  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | USB 2.0 EXTENSION  |\n|  bmAttributes | 2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-215.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

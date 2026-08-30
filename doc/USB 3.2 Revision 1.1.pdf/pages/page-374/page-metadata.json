@@ -1,0 +1,193 @@
+{
+  "index": 373,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 343 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 302,
+      "topLeftY": 92,
+      "bottomRightX": 486,
+      "bottomRightY": 110,
+      "content": "Table 9-9. Suspend Options",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 118,
+      "bottomRightX": 640,
+      "bottomRightY": 298,
+      "content": "|  Bit | Description  |   |\n| --- | --- | --- |\n|  0 | **Value** | **Meaning**  |\n|   |  0 | Normal operation state (default)  |\n|   |  1 | Low power suspend state  |\n|  1 | **Value** | **Meaning**  |\n|   |  0 | Function Remote Wake Disabled (Default)  |\n|   |  1 | Function Remote Wake Enabled  |\n|  2-7 | Reserved  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-169.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 325,
+      "bottomRightX": 671,
+      "bottomRightY": 389,
+      "content": "If the feature selector is FUNCTION_SUSPEND, then the most significant byte of wIndex is used to specify Suspend options. The recipient of a SetFeature (FUNCTION_SUSPEND...) shall be the first interface in the function; and, hence, the bmRequestType shall be set to one. The valid encodings for the FUNCTION_SUSPEND suspend options are listed in Table 9-9.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 399,
+      "bottomRightX": 541,
+      "bottomRightY": 416,
+      "content": "If wLength is non-zero, then the behavior of the device is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 427,
+      "bottomRightX": 657,
+      "bottomRightY": 459,
+      "content": "If an endpoint or interface is specified that does not exist, then the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 471,
+      "bottomRightX": 673,
+      "bottomRightY": 503,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 507,
+      "bottomRightX": 666,
+      "bottomRightY": 570,
+      "content": "Address state: If an interface or an endpoint other than the Default Control Pipe is specified then the device responds with a Request Error. If the device receives a SetFeature(U1/U2 Enable or LTM Enable or LDM Enable or FUNCTION_SUSPEND), then the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 574,
+      "bottomRightX": 633,
+      "bottomRightY": 592,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 603,
+      "bottomRightX": 239,
+      "bottomRightY": 616,
+      "content": "### 9.4.10 Set Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 625,
+      "bottomRightX": 621,
+      "bottomRightY": 641,
+      "content": "This request allows the host to select an alternate setting for the specified interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 651,
+      "bottomRightX": 676,
+      "bottomRightY": 696,
+      "content": "|  bmRequestType | bRequest | WValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000001B | SET_INTERFACE | Alternate Setting | Interface | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-170.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 702,
+      "bottomRightX": 673,
+      "bottomRightY": 780,
+      "content": "Some devices have configurations with interfaces that have mutually exclusive settings. This request allows the host to select the desired alternate setting. If a device only supports a default setting for the specified interface, then a STALL Transaction Packet may be returned in the Status stage of the request. This request cannot be used to change the set of configured interfaces (the SetConfiguration() request shall be used instead).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 791,
+      "bottomRightX": 636,
+      "bottomRightY": 822,
+      "content": "If the interface or the alternate setting does not exist, then the device responds with a Request Error. If wLength is non-zero, then the behavior of the device is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 834,
+      "bottomRightX": 673,
+      "bottomRightY": 866,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 870,
+      "bottomRightX": 525,
+      "bottomRightY": 887,
+      "content": "Address state: The device shall respond with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 893,
+      "bottomRightX": 633,
+      "bottomRightY": 909,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

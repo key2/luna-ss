@@ -1,0 +1,115 @@
+{
+  "index": 95,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 227,
+      "topLeftY": 100,
+      "bottomRightX": 597,
+      "bottomRightY": 349,
+      "content": "![img-19.jpeg](img-19.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-19.jpeg"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 380,
+      "bottomRightX": 552,
+      "bottomRightY": 420,
+      "content": "TOP VIEW (SIDE NEAREST SUPERSPEED CONTACTS)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 461,
+      "bottomRightX": 261,
+      "bottomRightY": 474,
+      "content": "USB 3.1 PLUG",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 276,
+      "topLeftY": 474,
+      "bottomRightX": 532,
+      "bottomRightY": 649,
+      "content": "![img-20.jpeg](img-20.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-20.jpeg"
+    },
+    {
+      "topLeftX": 542,
+      "topLeftY": 482,
+      "bottomRightX": 698,
+      "bottomRightY": 624,
+      "content": "![img-21.jpeg](img-21.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-21.jpeg"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 682,
+      "bottomRightX": 295,
+      "bottomRightY": 697,
+      "content": "USB 3.1 PD PLUG",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 270,
+      "topLeftY": 698,
+      "bottomRightX": 532,
+      "bottomRightY": 878,
+      "content": "![img-22.jpeg](img-22.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-22.jpeg"
+    },
+    {
+      "topLeftX": 542,
+      "topLeftY": 705,
+      "bottomRightX": 698,
+      "bottomRightY": 853,
+      "content": "![img-23.jpeg](img-23.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-23.jpeg"
+    },
+    {
+      "topLeftX": 572,
+      "topLeftY": 885,
+      "bottomRightX": 698,
+      "bottomRightY": 901,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 147,
+      "bottomRightY": 993,
+      "content": "5-8",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

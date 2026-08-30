@@ -1,0 +1,149 @@
+{
+  "index": 16,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 72,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 35,
+      "bottomRightX": 646,
+      "bottomRightY": 48,
+      "content": "3.5 DDR3",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 89,
+      "bottomRightX": 391,
+      "bottomRightY": 106,
+      "content": "Figure 3-3 Clock Connection Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 114,
+      "bottomRightX": 598,
+      "bottomRightY": 317,
+      "content": "![img-8.jpeg](img-8.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-8.jpeg"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 342,
+      "bottomRightX": 248,
+      "bottomRightY": 362,
+      "content": "### 3.4.2 Pin Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 382,
+      "bottomRightX": 361,
+      "bottomRightY": 395,
+      "content": "Table 3-2 Clock Pin Distribution",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 170,
+      "topLeftY": 399,
+      "bottomRightX": 653,
+      "bottomRightY": 639,
+      "content": "|  Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  F_CLK_24M | H5 | 10 | 1.8V | 50MHz single-ended clock  |\n|  F_CLK_200M_P | K5 | 10 | 1.8V | 200MHz differential clock  |\n|  F_CLK_200M_N | J5 | 10 | 1.8V | 200MHz differential clock  |\n|  Q0_148.5MHz_P | B5 | Q0 | - | 148.5MHz differential clock  |\n|  Q0_148.5MHz_N | A5 | Q0 | - | 148.5MHz differential clock  |\n|  Q0_200MHz_P | D10 | Q0 | - | 200MHz differential clock  |\n|  Q0_200MHz_N | C10 | Q0 | - | 200MHz differential clock  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-4.md"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 653,
+      "bottomRightX": 166,
+      "bottomRightY": 675,
+      "content": "## 3.5 DDR3",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 701,
+      "bottomRightX": 216,
+      "bottomRightY": 720,
+      "content": "### 3.5.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 739,
+      "bottomRightX": 646,
+      "bottomRightY": 798,
+      "content": "The development board includes one 2Gbit DDR3 chip. The signal of DDR3 chip is connected to the BANK8 and BANK9 of FPGA. The specific configurations of DDR3 are as shown in Table 3-3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 806,
+      "bottomRightX": 351,
+      "bottomRightY": 823,
+      "content": "Table 3-3 DDR3 Configuration",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 825,
+      "bottomRightX": 653,
+      "bottomRightY": 883,
+      "content": "|  Designator | Capacity  |\n| --- | --- |\n|  U15 | 128M x 16bit  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-5.md"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 909,
+      "bottomRightX": 649,
+      "bottomRightY": 928,
+      "content": "DDR3 hardware design requires strict consideration of signal integrity.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 72,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 957,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 611,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "10(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

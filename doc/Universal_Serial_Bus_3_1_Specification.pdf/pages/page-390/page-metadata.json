@@ -1,0 +1,93 @@
+{
+  "index": 389,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 98,
+      "bottomRightX": 534,
+      "bottomRightY": 546,
+      "content": "![img-234.jpeg](img-234.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-234.jpeg"
+    },
+    {
+      "topLeftX": 296,
+      "topLeftY": 557,
+      "bottomRightX": 527,
+      "bottomRightY": 576,
+      "content": "Figure 8-48. Control Write Sequence",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 594,
+      "bottomRightX": 687,
+      "bottomRightY": 697,
+      "content": "When a STALL TP is sent by a control endpoint in either the Data or Status stages of a control transfer, a STALL TP shall be returned on all succeeding accesses to that endpoint until a SETUP DP is received. An endpoint shall return an ACK TP when it receives a subsequent SETUP DP. For control endpoints, if an ACK TP is returned for the SETUP transaction, the host expects that the endpoint has automatically recovered from the condition that caused the STALL and the endpoint shall operate normally.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 714,
+      "bottomRightX": 372,
+      "bottomRightY": 734,
+      "content": "### 8.12.2.1 Reporting Status Results",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 738,
+      "bottomRightX": 675,
+      "bottomRightY": 772,
+      "content": "During the Status stage, a device reports to the host the outcome of the previous Setup and Data stages of the transfer. Three possible results may be returned:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 776,
+      "bottomRightX": 435,
+      "bottomRightY": 830,
+      "content": "- The command sequence completed successfully.\n- The command sequence failed to complete.\n- The device is still busy completing the command.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 837,
+      "bottomRightX": 695,
+      "bottomRightY": 888,
+      "content": "Status reporting is always in the device-to-host direction. Table 8-31 summarizes the type of responses required for each. All Control transfers return status in the TP that is returned to the host in response to a STATUS TP transaction.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-96",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

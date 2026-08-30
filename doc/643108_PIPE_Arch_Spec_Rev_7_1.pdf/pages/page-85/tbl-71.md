@@ -1,0 +1,3 @@
+|  Bit | Default | Attribute | Required | Description  |
+| --- | --- | --- | --- | --- |
+|  [7:0] | 5h | Level | No | **ElasticBufferLocationUpdateFrequency:** This field specifies the maximum update frequency to the ElasticBufferLocation field. The update frequency should not exceed 16×N symbol times, where N is the value programmed in this register. **Note:** This field is not used in the SerDes architecture.  |

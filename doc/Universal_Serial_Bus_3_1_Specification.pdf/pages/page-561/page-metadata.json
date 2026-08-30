@@ -1,0 +1,166 @@
+{
+  "index": 560,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 699,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 103,
+      "bottomRightX": 381,
+      "bottomRightY": 121,
+      "content": "### 10.16.2.6.3 Extended Port Status Bits",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 126,
+      "bottomRightX": 698,
+      "bottomRightY": 161,
+      "content": "The extended port status bits are returned only if the Port Status Type of a Get Port Status request is set to EXT_PORT_STATUS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 165,
+      "bottomRightX": 692,
+      "bottomRightY": 198,
+      "content": "Note that for Enhanced SuperSpeed devices the “Port Speed” is the Link Speed multiplied by Lane Count.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 213,
+      "bottomRightX": 486,
+      "bottomRightY": 228,
+      "content": "Table 10-15. Extended Port Status Field, dwExtPortStatus",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 231,
+      "bottomRightX": 703,
+      "bottomRightY": 409,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0-3 | Rx Sublink Speed ID (RX_SUBLINK_SPEED_ID): Indicates the negotiated Rx Sublink speed of the device attached to this port. This field is valid only if an Enhanced SuperSpeed device is attached.  |\n|  4-7 | Tx Sublink Speed ID (TX_SUBLINK_SPEED_ID): Indicates the negotiated Tx Sublink speed of the device attached to this port. This field is valid only if an Enhanced SuperSpeed device is attached.  |\n|  8-11 | Rx Lane Count (RX_LANE_COUNT): Zero based value of the negotiated number of Rx lanes of the device attached to this port. This field is valid only if an Enhanced SuperSpeed device is attached.  |\n|  12-15 | Tx Lane Count (TX_LANE_COUNT): Zero based value of the negotiated number of Tx lanes of the device attached to this port. This field is valid only if an Enhanced SuperSpeed device is attached.  |\n|  12-31 | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-244.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 422,
+      "bottomRightX": 483,
+      "bottomRightY": 439,
+      "content": "### TX_SUBLINK_SPEED_ID and RX_SUBLINK_SPEED_ID",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 443,
+      "bottomRightX": 697,
+      "bottomRightY": 545,
+      "content": "The value in this field is only valid when the PORT_ENABLE bit is set to one. The Lane Speed (i.e. bit rate of a single lane) is determined by evaluating the parameters of the Sublink Speed Attribute in the SuperSpeedPlus USB Capability descriptor whose Sublink Speed Attribute ID value matches the Sublink Speed ID value, e.g. if the Sublink Speed Attribute LSE and LSM fields equal 3 and 10, respectively, then the link is operating at 10 Gb/s. All values not referenced by a Sublink Speed Attribute are reserved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 550,
+      "bottomRightX": 428,
+      "bottomRightY": 567,
+      "content": "This field can only be read by USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 582,
+      "bottomRightX": 381,
+      "bottomRightY": 599,
+      "content": "### TX_LANE_COUNT and RX_LANE_COUNT",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 603,
+      "bottomRightX": 692,
+      "bottomRightY": 652,
+      "content": "This value in this field is only valid when the PORT_ENABLE bit is set to one. The speed of a port is determined by multiplying the Sublink Speed (as defined by the SUBLINK_SPEED_ID) by the Lane Count.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 658,
+      "bottomRightX": 428,
+      "bottomRightY": 676,
+      "content": "This field can only be read by USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 690,
+      "bottomRightX": 329,
+      "bottomRightY": 710,
+      "content": "### 10.16.2.7 Set Hub Descriptor",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 714,
+      "bottomRightX": 371,
+      "bottomRightY": 731,
+      "content": "This request overwrites the hub descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 732,
+      "bottomRightX": 700,
+      "bottomRightY": 818,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00100000B | SET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero | Descriptor Length | Descriptor  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-245.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 823,
+      "bottomRightX": 692,
+      "bottomRightY": 891,
+      "content": "The SetDescriptor request for the hub class descriptor follows the same usage model as that of the standard SetDescriptor request (refer to the framework chapter). The standard hub descriptor is denoted by using the value bDescriptorType defined in Section 10.15.2.1. All hubs are required to implement one hub descriptor with descriptor index zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-83",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

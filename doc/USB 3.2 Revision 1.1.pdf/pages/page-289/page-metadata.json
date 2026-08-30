@@ -1,0 +1,156 @@
+{
+  "index": 288,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 258 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 530,
+      "bottomRightY": 109,
+      "content": "In Table 8-30, DPP Error may be due to one or more of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 115,
+      "bottomRightX": 619,
+      "bottomRightY": 199,
+      "content": "- CRC incorrect\n- DPP aborted\n- DPP missing\n- Data length in the Setup DPH does not match the actual data payload length.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 220,
+      "topLeftY": 218,
+      "bottomRightX": 565,
+      "bottomRightY": 250,
+      "content": "Table 8-30. Device Responses to SETUP Transactions (Only for Control Endpoints)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 259,
+      "bottomRightX": 671,
+      "bottomRightY": 478,
+      "content": "|  DPH has Invalid Values | DPH has Deferred Bit Set | Data Packet Payload Error | TP Returned by Device  |\n| --- | --- | --- | --- |\n|  Yes | N/A | N/A | Discard DP.  |\n|  No | Yes | N/A | The device shall send an ERDY TP indicating that it is ready to receive the SETUP DP.  |\n|  No | No | Yes | Discard SETUP DP, send an ACK TP with the sequence number set to zero, the rty bit set and the NumP field set to one.  |\n|  No | No | No | Send an ACK TP with the sequence number set to one (thereby indicating that this SETUP DP was received successfully). The value in the NumP field indicates to the host whether the device wants to flow control the Data/Status stage or not. Refer to Section 8.12.2 for details.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-134.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 498,
+      "bottomRightX": 242,
+      "bottomRightY": 513,
+      "content": "### 8.12 TP Sequences",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 520,
+      "bottomRightX": 649,
+      "bottomRightY": 552,
+      "content": "The packets that comprise a transaction vary depending on the endpoint type. There are four endpoint types: bulk, control, interrupt, and isochronous.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 563,
+      "bottomRightX": 267,
+      "bottomRightY": 578,
+      "content": "#### 8.12.1 Bulk Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 585,
+      "bottomRightX": 671,
+      "bottomRightY": 664,
+      "content": "The bulk transaction type is characterized by its ability to guarantee error-free delivery of data between the host and a device by means of error detection and retry. Bulk transactions use a two-phase transaction consisting of TPs and DPs. Under certain flow control and halt conditions, the data phase may be replaced with a TP. The TT field shall be set to Bulk by hosts and peripheral devices operating in SuperSpeedPlus mode; see Table 8-13.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 675,
+      "bottomRightX": 422,
+      "bottomRightY": 689,
+      "content": "##### 8.12.1.1 State Machine Notation Information",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 696,
+      "bottomRightX": 652,
+      "bottomRightY": 742,
+      "content": "This section shows detailed host and device endpoint state machines required to advance the Protocol on an IN or OUT pipe. The diagrams should not be taken as a required implementation, but to specify the required behavior.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 755,
+      "bottomRightX": 652,
+      "bottomRightY": 801,
+      "content": "Figure 8-35 shows the legend for the state machine diagrams. A circle with a three line border indicates a reference to another (hierarchical) state machine. A circle with a two-line border indicates an initial state. A circle with a single line border is a simple state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 813,
+      "bottomRightX": 668,
+      "bottomRightY": 890,
+      "content": "A diamond (joint) is used to join several transitions to a common point. A joint allows a single input transition with multiple output transitions or multiple input transitions and a single output transition. All conditions on the transitions of a path involving a joint must be true for the path to be taken. A path is simply a sequence of transitions involving one or more joints.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

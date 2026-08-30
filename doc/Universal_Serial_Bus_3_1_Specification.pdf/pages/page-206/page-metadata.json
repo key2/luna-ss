@@ -1,0 +1,58 @@
+{
+  "index": 205,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 31,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 110,
+      "bottomRightX": 721,
+      "bottomRightY": 198,
+      "content": "![img-156.jpeg](img-156.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-156.jpeg"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 205,
+      "bottomRightX": 721,
+      "bottomRightY": 292,
+      "content": "![img-157.jpeg](img-157.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-157.jpeg"
+    },
+    {
+      "topLeftX": 291,
+      "topLeftY": 319,
+      "bottomRightX": 532,
+      "bottomRightY": 335,
+      "content": "Figure 6-33. SCD1/SCD2 transmission",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "6-50",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

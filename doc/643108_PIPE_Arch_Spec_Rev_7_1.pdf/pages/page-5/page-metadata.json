@@ -1,0 +1,47 @@
+{
+  "index": 4,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 602,
+      "topLeftY": 53,
+      "bottomRightX": 698,
+      "bottomRightY": 92,
+      "content": "intel.",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 120,
+      "bottomRightX": 701,
+      "bottomRightY": 898,
+      "content": "8.4.5 Fixed PCLK Implementations... 128\n8.5 Transmitter Margining – PCIe Mode and USB Mode ... 129\n8.6 Selectable De-Emphasis – PCIe Mode... 130\n8.7 Receiver Detection – PCIe Mode and USB Mode ... 130\n8.8 Transmitting a Beacon – PCIe Mode... 131\n8.9 Transmitting LFPS – USB Mode ... 132\n8.10 Transmitting LFPS – USB4 and DisplayPort Modes... 132\n8.11 Detecting a Beacon – PCIe Mode ... 133\n8.12 Detecting Low Frequency Periodic Signaling – USB Mode ... 134\n8.13 Detecting Low Frequency Periodic Signaling in USB4 Mode ... 134\n8.14 Clock Tolerance Compensation ... 134\n8.15 Error Detection ... 137\n8.15.1 8B/10B Decode Errors... 137\n8.15.2 Disparity Errors... 138\n8.15.3 Elastic Buffer Errors... 139\n8.16 Loopback ... 140\n8.17 Polarity Inversion – PCIe and USB Modes ... 142\n8.18 Setting Negative Disparity (PCIe Mode) ... 142\n8.19 Electrical Idle – PCIe Mode ... 143\n8.20 Electrical Idle – All... 145\n8.21 Link Equalization Evaluation... 145\n8.22 Implementation-Specific Timing and Selectable Parameter Support ... 146\n8.23 Control Signal Decode Table – PCIe Mode ... 153\n8.24 Control Signal Decode Table – USB Mode, USB4 Mode, and DisplayPort Mode ... 154\n8.25 Control Signal Decode Table – SATA Mode ... 155\n8.26 Required Synchronous Signal Timings ... 155\n8.27 128b/130b Encoding and Block Synchronization (PCIe 8, 16, and 32 GT/s) ... 156\n8.28 128b/132b Encoding and Block Synchronization (USB 10 GT/s) ... 157\n8.29 Message Bus Interface ... 158\n8.29.1 General Operational Rules ... 158\n8.29.2 Message Bus Operations vs. Dedicated Signals ... 159\n8.30 PCIe Lane Margining at the Receiver ... 159\n8.31 Short Channel Power Control ... 163\n8.32 RxEqTraining ... 164\n8.33 PHY Recalibration ... 165\n8.34 Digital Near End Loopback ... 166\n8.34.1 PIPE Operations and Signals in DNELB Mode ... 167\n8.34.2 Entry and Exit from NELB Mode ... 170\n8.34.3 USB4 PAM3 Encoding on PIPE Interface ... 171\n8.35 Switching Between Rx and Tx Pairs... 171\n9 Sample Operational Sequences... 172\n9.1 Active PM L0 to L0s and Back to L0 – PCIe Mode ... 172\n9.2 Active PM to L1 and Back to L0 – PCIe Mode ... 173\n9.3 Downstream Initiated L1 Substate Entry Using Sideband Mechanism ... 176\n9.4 Receivers and Electrical Idle – PCIe Mode Example ... 176\n9.5 Using CLKREQ# with PIPE – PCIe Mode ... 178\n9.5.1 CLKREQ# in L1 ... 178\n9.5.2 CLKREQ# in L2 ... 179\n9.5.3 Delayed CLKREQ# in L1 ... 179\n9.6 Block Alignment ... 179\n9.7 Message Bus: Rx Margining Sequence ... 180\n9.8 Message Bus: Updating LocalFS/LocalLF and LocalG4FS/LocalG4LF ... 180\n9.9 Message Bus: Updating TxDeemph ... 181\n9.10 Message Bus: Equalization... 182",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 952,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 686,
+      "topLeftY": 952,
+      "bottomRightX": 701,
+      "bottomRightY": 966,
+      "content": "5",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

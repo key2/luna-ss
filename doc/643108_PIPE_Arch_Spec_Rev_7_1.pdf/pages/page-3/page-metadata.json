@@ -1,0 +1,57 @@
+{
+  "index": 2,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 602,
+      "topLeftY": 53,
+      "bottomRightX": 698,
+      "bottomRightY": 92,
+      "content": "intel.",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 119,
+      "bottomRightX": 260,
+      "bottomRightY": 151,
+      "content": "# Contents",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 176,
+      "bottomRightX": 701,
+      "bottomRightY": 906,
+      "content": "|  **1** | **Preface** | 16  |\n| --- | --- | --- |\n|  1.1 | Scope of this Revision | 16  |\n|  **2** | **Introduction** | 17  |\n|  2.1 | PCIe PHY Layer | 20  |\n|  2.2 | USB PHY Layer | 21  |\n|  2.3 | USB4 PHY Layer | 22  |\n|  2.4 | SATA PHY Layer | 22  |\n|  2.5 | DisplayPort PHY Layer | 22  |\n|  2.6 | Low Pin Count Interface and SerDes Architecture | 23  |\n|  2.7 | Support for Short Reach (SR) Applications | 24  |\n|  2.8 | Configurable Pairs | 25  |\n|  **3** | **PHY/MAC Interface** | 26  |\n|  **4** | **PCIe, USB, USB4, and DisplayPort PHY Functionality** | 34  |\n|  4.1 | Original PIPE Architecture | 36  |\n|  4.2 | SerDes Architecture | 39  |\n|  **5** | **SATA PHY Functionality** | 42  |\n|  **6** | **PIPE Interface Signal Descriptions** | 45  |\n|  6.1 | PHY/MAC Interface Signals – Common for SerDes and Original PIPE | 45  |\n|  6.1.1 | Data Interface | 46  |\n|  6.1.2 | Command Interface | 49  |\n|  6.1.3 | Status Interface | 63  |\n|  6.1.4 | Message Bus Interface | 66  |\n|  6.2 | PHY/MAC Interface Signals – SerDes Architecture Only | 69  |\n|  6.2.1 | Data Interface | 69  |\n|  6.2.2 | Command Interface | 70  |\n|  6.2.3 | MacCLK Lane Signals | 70  |\n|  6.3 | PHY/MAC Interface Signals – Original PIPE Only | 72  |\n|  6.3.1 | Data Interface | 72  |\n|  6.3.2 | Command Interface | 73  |\n|  6.4 | External Signals – Common for SerDes and Original PIPE | 75  |\n|  **7** | **PIPE Message Bus Address Spaces** | 78  |\n|  7.1 | PHY Registers | 80  |\n|  7.1.1 | Address 0h: Rx Margin Control0 | 81  |\n|  7.1.2 | Address 1h: Rx Margin Control1 | 81  |\n|  7.1.3 | Address 2h: Elastic Buffer Control | 82  |\n|  7.1.4 | Address 3h: PHY Rx Control0 | 82  |\n|  7.1.5 | Address 4h: PHY Rx Control1 | 83  |\n|  7.1.6 | Address 5h: PHY Rx Control2 | 84  |\n|  7.1.7 | Address 6h: PHY Rx Control3 | 85  |\n|  7.1.8 | Address 7h: Elastic Buffer Location Update Frequency | 85  |\n|  7.1.9 | Address 8h: PHY Rx Control4 | 86  |\n|  7.1.10 | Address 9h: PHY Rx Control 5 | 86  |\n|  7.1.11 | Address 400h: PHY Tx Control0 | 86  |\n|  7.1.12 | Address 401h: PHY Tx Control1 | 87  |\n|  7.1.13 | Address 402h: PHY Tx Control2 | 87  |\n|  7.1.14 | Address 403h: PHY Tx Control3 | 89  |\n|  7.1.15 | Address 404h: PHY Tx Control4 | 89  |\n|  7.1.16 | Address 405h: PHY Tx Control5 | 90  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-0.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 686,
+      "topLeftY": 953,
+      "bottomRightX": 701,
+      "bottomRightY": 967,
+      "content": "3",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

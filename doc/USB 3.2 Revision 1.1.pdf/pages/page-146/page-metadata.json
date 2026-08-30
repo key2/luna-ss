@@ -1,0 +1,155 @@
+{
+  "index": 145,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 115 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 371,
+      "bottomRightY": 108,
+      "content": "### 7.2 Link Management and Flow Control",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 667,
+      "bottomRightY": 145,
+      "content": "This section contains information regarding link data integrity, flow control, and link power management.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 152,
+      "bottomRightX": 659,
+      "bottomRightY": 264,
+      "content": "- The packet and packet framing section defines packet types, packet structures, and CRC requirements for each packet.\n- The link command section defines special link command structures that control various functionalities at the link level.\n- The logical idle defines a special symbol used in U0.\n- The flow control defines a set of handshake rules for packet transactions.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 287,
+      "bottomRightX": 327,
+      "bottomRightY": 301,
+      "content": "### 7.2.1 Packets and Packet Framing",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 308,
+      "bottomRightX": 628,
+      "bottomRightY": 353,
+      "content": "The Enhanced SuperSpeed USB uses packets to transfer information. Detailed packet formats for Link Management Packets (LMP), Transaction Packets (TP), Isochronous Timestamp Packets (ITP), and Data Packets (DP) are defined in Section 8.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 368,
+      "bottomRightX": 306,
+      "bottomRightY": 381,
+      "content": "#### 7.2.1.1 Header Packet Structure",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 389,
+      "bottomRightX": 659,
+      "bottomRightY": 435,
+      "content": "In Gen 1 operation, all header packets are 20 symbols long, as is formatted in Figure 7-3. This includes LMPs, TPs, ITPs, and DPHs. A header packet consists of three parts, a header packet framing, a packet header, and a Link Control Word.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 447,
+      "bottomRightX": 673,
+      "bottomRightY": 539,
+      "content": "In Gen 2 operation, all header packets except for non-deferred DPH are the same as Gen 1 operation. The non-deferred Gen 2 DPH is a header packet with its own framing ordered set, and contains a length field replica immediately after the Link Control word. The purpose of this special construction is to allow the non-deferred Gen 2 DPH to be processed differently from all other header packets and to achieve single bit error tolerance in its length field. The non-deferred Gen 2 DPH format is shown in Figure 7-4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 552,
+      "bottomRightX": 344,
+      "bottomRightY": 566,
+      "content": "##### 7.2.1.1.1 Header Packet Framing",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 573,
+      "bottomRightX": 673,
+      "bottomRightY": 681,
+      "content": "Header packet framing, HPSTART ordered set, is a four-symbol header packet starting frame ordered set. In Gen 1 operation, it is defined as three consecutive K symbols of SHP followed by a single K-symbol of EPF. In Gen 2 operation, HPSTART ordered set is the framing ordered set for all header packets except for non-deferred DPH, and is defined as three consecutive symbols of SHP followed by a single symbol of EPF. A non-deferred Gen 2 DPH uses DPHSTART ordered set, which is defined as three consecutive symbols of DPHP followed by a single symbol of EPF. Refer to Table 6-2 for framing symbol definition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 693,
+      "bottomRightX": 659,
+      "bottomRightY": 799,
+      "content": "- All header packets except for non-deferred Gen 2 data packet header shall always begin with HPSTART ordered set.\n- A non-deferred Gen 2 data packet header shall always begin with DPHSTART ordered set.\n- A deferred Gen 2 data packet header shall always begin with HPSTART ordered set and it shall not contain the length field replica.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 820,
+      "bottomRightX": 641,
+      "bottomRightY": 836,
+      "content": "The construction of the header packet framing is to achieve one symbol error tolerance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

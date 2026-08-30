@@ -1,0 +1,112 @@
+{
+  "index": 117,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 87 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 92,
+      "bottomRightX": 619,
+      "bottomRightY": 111,
+      "content": "Figure 6-23. Example Output Waveform for 3-tap Transmit Equalizer",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 124,
+      "bottomRightX": 662,
+      "bottomRightY": 438,
+      "content": "![img-35.jpeg](img-35.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-35.jpeg"
+    },
+    {
+      "topLeftX": 305,
+      "topLeftY": 453,
+      "bottomRightX": 482,
+      "bottomRightY": 484,
+      "content": "Preshoot = 20log(Vc/Vb)\nDe-emphasis = 20log(Vb/Va)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 224,
+      "topLeftY": 524,
+      "bottomRightX": 564,
+      "bottomRightY": 542,
+      "content": "Table 6-21. Gen 2 Transmitter Equalization Settings",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 155,
+      "topLeftY": 550,
+      "bottomRightX": 635,
+      "bottomRightY": 640,
+      "content": "|  Parameter | Value |   | Comments  |\n| --- | --- | --- | --- |\n|   |  Min | Max  |   |\n|  Preshoot (dB) | 1.2 | 3.2 | Normative requirement^{1}  |\n|  De-emphasis (dB) | 2.1 | 7.0 | Normative requirement^{1}  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-58.md"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 642,
+      "bottomRightX": 195,
+      "bottomRightY": 653,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 657,
+      "bottomRightX": 569,
+      "bottomRightY": 672,
+      "content": "1. Measured at the output of the compliance breakout board in Figure 6-24.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "index": 179,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 211,
+      "topLeftY": 100,
+      "bottomRightX": 617,
+      "bottomRightY": 471,
+      "content": "![img-135.jpeg](img-135.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-135.jpeg"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 483,
+      "bottomRightX": 652,
+      "bottomRightY": 502,
+      "content": "Figure 6-13. \"Golden PLL\" and Jitter Transfer Functions for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 211,
+      "topLeftY": 546,
+      "bottomRightX": 605,
+      "bottomRightY": 865,
+      "content": "![img-136.jpeg](img-136.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-136.jpeg"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 880,
+      "bottomRightX": 652,
+      "bottomRightY": 898,
+      "content": "Figure 6-14. \"Golden PLL\" and Jitter Transfer Functions for Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "6-24",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "index": 229,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 199 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 261,
+      "topLeftY": 92,
+      "bottomRightX": 527,
+      "bottomRightY": 110,
+      "content": "Figure 7-25. Recovery Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 124,
+      "bottomRightX": 705,
+      "bottomRightY": 526,
+      "content": "![img-91.jpeg](img-91.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-91.jpeg"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 539,
+      "bottomRightX": 558,
+      "bottomRightY": 553,
+      "content": "Note: Transition conditions are illustrative only. Not all transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 566,
+      "bottomRightX": 221,
+      "bottomRightY": 581,
+      "content": "### 7.5.11 Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 588,
+      "bottomRightX": 673,
+      "bottomRightY": 620,
+      "content": "Loopback is intended for the receiver test and fault isolation. Loopback includes an optional bit error rate test (BERT) state machine in Gen 1 operation, described in Section 0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 631,
+      "bottomRightX": 663,
+      "bottomRightY": 663,
+      "content": "Loopback is also used for the BLR transmitter compliance test in Gen 1x1 operation. Refer to Section E.3.6 for the test configuration of BLR Compliance Mode.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 674,
+      "bottomRightX": 623,
+      "bottomRightY": 706,
+      "content": "A loopback master is the port requesting loopback. A loopback slave is the port that retransmits the symbols received from the loopback master.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 718,
+      "bottomRightX": 655,
+      "bottomRightY": 778,
+      "content": "During Loopback.Active, the loopback slave may support the BERT protocol described in Section 0. The loopback slave may respond to the command for BERT error counter reset and BERT report error count. The loopback slave may check the incoming data for the loopback data pattern.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 792,
+      "bottomRightX": 381,
+      "bottomRightY": 806,
+      "content": "#### 7.5.11.1 Loopback Substate Machines",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 814,
+      "bottomRightX": 656,
+      "bottomRightY": 830,
+      "content": "Loopback contains a substate machine shown in Figure 7-26 with the following substates:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 842,
+      "bottomRightX": 261,
+      "bottomRightY": 881,
+      "content": "- Loopback.Active\n- Loopback.Exit",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

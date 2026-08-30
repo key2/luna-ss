@@ -1,0 +1,236 @@
+{
+  "index": 81,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 144,
+      "bottomRightX": 489,
+      "bottomRightY": 162,
+      "content": "### TD.7.16 Link Command Missing Test (Upstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 165,
+      "bottomRightX": 657,
+      "bottomRightY": 196,
+      "content": "This test verifies that the PUT will go to Recovery if no Link Commands are received for more than tU0RecoveryTimeout.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 239,
+      "bottomRightX": 538,
+      "bottomRightY": 256,
+      "content": "Please note that the downstream LVS port shall disable transmission of ITPs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 262,
+      "bottomRightX": 234,
+      "bottomRightY": 276,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 284,
+      "bottomRightX": 193,
+      "bottomRightY": 298,
+      "content": "7.3.4#7, 8",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 304,
+      "bottomRightX": 190,
+      "bottomRightY": 319,
+      "content": "7.5.6.1#3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 326,
+      "bottomRightX": 190,
+      "bottomRightY": 339,
+      "content": "7.5.6.2#6",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 348,
+      "bottomRightX": 254,
+      "bottomRightY": 365,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 370,
+      "bottomRightX": 701,
+      "bottomRightY": 446,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence.\n2. The LVS will not send LDNs or any other link commands.\n3. The test fails if the PUT goes to Recovery before the tU0RecoveryTimeout deadline, or if it does not go to Recovery after tU0RecoveryTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 527,
+      "bottomRightX": 412,
+      "bottomRightY": 544,
+      "content": "### TD.7.17 tPortConfiguration Time Timeout Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 547,
+      "bottomRightX": 698,
+      "bottomRightY": 579,
+      "content": "This test verifies that a downstream PUT will go to SS.Inactive if tPortConfiguration expires, and an upstream PUT will go to SS.Disabled if tPortConfiguration expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 592,
+      "bottomRightX": 234,
+      "bottomRightY": 606,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 614,
+      "bottomRightX": 211,
+      "bottomRightY": 630,
+      "content": "7.5.6.2#10,11",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 637,
+      "bottomRightX": 189,
+      "bottomRightY": 652,
+      "content": "8.4.5#1,3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 659,
+      "bottomRightX": 179,
+      "bottomRightY": 674,
+      "content": "8.4.6#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 683,
+      "bottomRightX": 254,
+      "bottomRightY": 698,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 705,
+      "bottomRightX": 614,
+      "bottomRightY": 766,
+      "content": "1. Do steps 1 to 3 of the Link Initialization Sequence.\n2. The LVS does not transmit both the Port Capability LMP and Port Configuration LMP.\n3. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 772,
+      "bottomRightX": 708,
+      "bottomRightY": 803,
+      "content": "a. The PUT transitions to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) before tPortConfiguration deadline.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 810,
+      "bottomRightX": 690,
+      "bottomRightY": 841,
+      "content": "i. For a PUT with a captive re-timer, the PUT transitions to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) before tU0Recovery deadline.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 847,
+      "bottomRightX": 682,
+      "bottomRightY": 879,
+      "content": "b. The PUT does not transition to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) after tPortConfiguration expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 886,
+      "bottomRightX": 671,
+      "bottomRightY": 915,
+      "content": "i. For a PUT with a captive re-timer, the PUT does not transition to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) after tU0Recovery expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "74",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

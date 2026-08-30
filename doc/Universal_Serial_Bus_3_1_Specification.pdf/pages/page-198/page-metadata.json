@@ -1,0 +1,94 @@
+{
+  "index": 197,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 599,
+      "bottomRightY": 130,
+      "content": "### 6.8.5 Normative Receiver Tolerance Compliance Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 135,
+      "bottomRightX": 689,
+      "bottomRightY": 237,
+      "content": "The receiver tolerance test is tested using the appropriate compliance reference channel for Gen 1 or Gen 2 operation depending upon the rate being tested. A pattern generator shall send the rate appropriate compliance test pattern with added jitter through the compliance reference channels to the receiver. The receiver shall loop back the data and any difference in the pattern sent from the pattern generator and returned will be an error. When running the compliance tests, the receiver shall be put into loopback mode.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 243,
+      "bottomRightX": 679,
+      "bottomRightY": 279,
+      "content": "Additional details on the receiver compliance test are contained in the reference document, USB SuperSpeed Compliance Methodology.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 299,
+      "bottomRightX": 686,
+      "bottomRightY": 397,
+      "content": "![img-150.jpeg](img-150.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-150.jpeg"
+    },
+    {
+      "topLeftX": 309,
+      "topLeftY": 406,
+      "bottomRightX": 515,
+      "bottomRightY": 422,
+      "content": "Figure 6-27. Rx Tolerance Setup",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 235,
+      "topLeftY": 466,
+      "bottomRightX": 588,
+      "bottomRightY": 820,
+      "content": "![img-151.jpeg](img-151.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-151.jpeg"
+    },
+    {
+      "topLeftX": 301,
+      "topLeftY": 836,
+      "bottomRightX": 524,
+      "bottomRightY": 853,
+      "content": "Figure 6-28. Jitter Tolerance Curve",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "6-42",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "index": 570,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 113,
+      "bottomRightX": 405,
+      "bottomRightY": 136,
+      "content": "## 10.19 Hub Chapter Parameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 143,
+      "bottomRightX": 576,
+      "bottomRightY": 161,
+      "content": "Table 10-19 includes a complete list of the parameters used in the hub chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 174,
+      "bottomRightX": 310,
+      "bottomRightY": 189,
+      "content": "Table 10-19. Hub Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 194,
+      "bottomRightX": 700,
+      "bottomRightY": 908,
+      "content": "|  Name | Description | Min | Max | Units  |\n| --- | --- | --- | --- | --- |\n|  tDownLinkStateChange | Time from receiving the first symbol of a header packet directed to a downstream port that is in a low power link state to initiating a return to U0 on the downstream link. A hub reports the actual delay via the wHubDelay field in Enhanced SuperSpeed Hub Descriptor. | 0 | 400 | ns  |\n|  sDataSymbolsBabble | The number of symbols in a data packet payload after the DPPSTART ordered set without a Data Packet Payload ending frame ordered set or DPPABORT ordered set that shall cause a device to detect the packet is invalid. | 1030 | N/A | symbols  |\n|  tHubPropRemoteWakeUpstream | Time from start of remote wakeup signaling on the downstream port a hub to when the hub must propagate the remote wakeup signaling on its upstream port if the upstream port link is in U3. | 0 | 1 | ms  |\n|  tHubDriveRemoteWakeDownstream | Time from receiving a SetPortFeature(PORT_LINK_STATE) U0 for a downstream port with a link in U3 to driving remote wakeup signaling on the link. | 0 | 1000 | ns  |\n|  tHubPort2PortExitLat | Time from a downstream port's link initiating a U-state change to when a hub must initiate a U-state change on the upstream port's link (when required). | 0 | 1 | μs  |\n|  aCurrentUnit | Unit for reporting the current draw of hub controller circuitry in the hub descriptor. |  | 4 | mA  |\n|  nMaxHubPorts | Maximum number of ports on a USB hub. |  | 15 | Ports  |\n|  tTimeForResetError | If the downstream port link remains in RxDetect.Active or RxDetect.Quiet for this length of time during a warm reset, the reset is considered to have failed. | 100 | 200 | ms  |\n|  tCheckSuperSpeedOnReset | Time from when a device (not a hub) detects a USB 2.0 bus reset to when the device port must enter the USPORT-Powered-On state. | 0 | 1 | ms  |\n|  tUSB2SwitchDisconnect | Time from when a device (not a hub) enters USPORT.Training to when the device must disconnect on the USB 2.0 interface if the device is connected on USB 2.0. | 0 | 1 | ms  |\n|  tPropagationDelayJitterLimit | Variation from the minimum time between when the last symbol of a header packet routed to a downstream port with a link in U0 is received on a hub upstream port and when the first symbol of the header packet is transmitted on the hub downstream port. ITP propagation shall meet tPropagationDelayJitterLimit for all downstream ports that transmit the ITP. | -0 | +8 | ns  |\n|  nSkipSymbolLimit | Average number of symbols between transmitted SKP ordered sets. | 354 | 354 | Symbols  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-252.md"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-93",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "index": 432,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 593,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 269,
+      "bottomRightY": 116,
+      "content": "### 9.3.2 bRequest",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 119,
+      "bottomRightX": 681,
+      "bottomRightY": 170,
+      "content": "This field specifies the particular request. The Type bits in the bmRequestType field modify the meaning of this field. This specification defines values for the bRequest field only when the bits are reset to zero, indicating a standard request (refer to Table 9-4).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 187,
+      "bottomRightX": 250,
+      "bottomRightY": 208,
+      "content": "### 9.3.3 wValue",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 215,
+      "bottomRightX": 695,
+      "bottomRightY": 251,
+      "content": "The contents of this field vary according to the request. It is used to pass a parameter to the device, specific to the request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 267,
+      "bottomRightX": 250,
+      "bottomRightY": 287,
+      "content": "### 9.3.4 wIndex",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 294,
+      "bottomRightX": 695,
+      "bottomRightY": 329,
+      "content": "The contents of this field vary according to the request. It is used to pass a parameter to the device, specific to the request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 336,
+      "bottomRightX": 692,
+      "bottomRightY": 370,
+      "content": "The wIndex field is often used in requests to specify an endpoint or an interface. Figure 9-2 shows the format of wIndex when it is used to specify an endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 394,
+      "bottomRightX": 676,
+      "bottomRightY": 467,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Direction | Reserved (Reset to Zero) |   |   | Endpoint Number  |   |   |   |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D7 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-148.md"
+    },
+    {
+      "topLeftX": 648,
+      "topLeftY": 471,
+      "bottomRightX": 673,
+      "bottomRightY": 482,
+      "content": "U-081",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 234,
+      "topLeftY": 497,
+      "bottomRightX": 589,
+      "bottomRightY": 514,
+      "content": "Figure 9-2. wIndex Format when Specifying an Endpoint",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 537,
+      "bottomRightX": 686,
+      "bottomRightY": 588,
+      "content": "The Direction bit is set to zero to indicate the OUT endpoint with the specified Endpoint Number and to one to indicate the IN endpoint. In the case of a control pipe, the request should have the Direction bit set to zero but the device may accept either value of the Direction bit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 596,
+      "bottomRightX": 572,
+      "bottomRightY": 613,
+      "content": "Figure 9-3 shows the format of wIndex when it is used to specify an interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 637,
+      "bottomRightX": 676,
+      "bottomRightY": 711,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Interface Number  |   |   |   |   |   |   |   |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D7 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-149.md"
+    },
+    {
+      "topLeftX": 648,
+      "topLeftY": 715,
+      "bottomRightX": 673,
+      "bottomRightY": 725,
+      "content": "U-082",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 235,
+      "topLeftY": 740,
+      "bottomRightX": 588,
+      "bottomRightY": 758,
+      "content": "Figure 9-3. wIndex Format when Specifying an Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "9-15",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

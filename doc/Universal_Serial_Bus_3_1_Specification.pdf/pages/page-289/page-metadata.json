@@ -1,0 +1,120 @@
+{
+  "index": 288,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 92,
+      "bottomRightX": 715,
+      "bottomRightY": 507,
+      "content": "![img-185.jpeg](img-185.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-185.jpeg"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 519,
+      "bottomRightX": 569,
+      "bottomRightY": 535,
+      "content": "Note: Transition conditions are illustrative only. Not all transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 283,
+      "topLeftY": 567,
+      "bottomRightX": 542,
+      "bottomRightY": 586,
+      "content": "Figure 7-22. Recovery Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 600,
+      "bottomRightX": 275,
+      "bottomRightY": 622,
+      "content": "### 7.5.11 Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 626,
+      "bottomRightX": 677,
+      "bottomRightY": 659,
+      "content": "Loopback is intended for test and fault isolation. Loopback includes a bit error rate test (BERT) state machine, described in Chapter 6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 665,
+      "bottomRightX": 698,
+      "bottomRightY": 699,
+      "content": "A loopback master is the port requesting loopback. A loopback slave is the port that retransmits the symbols received from the loopback master.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 704,
+      "bottomRightX": 689,
+      "bottomRightY": 771,
+      "content": "During Loopback.Active, the loopback slave must support the BERT protocol described in Chapter 6. The loopback slave must respond to the command for BERT error counter reset and BERT report error count. The loopback slave must check the incoming data for the loopback data pattern.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 785,
+      "bottomRightX": 406,
+      "bottomRightY": 804,
+      "content": "#### 7.5.11.1 Loopback Substate Machines",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 809,
+      "bottomRightX": 641,
+      "bottomRightY": 827,
+      "content": "Loopback contains a substate machine shown in Figure 7-23 with the following substates:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 832,
+      "bottomRightX": 251,
+      "bottomRightY": 866,
+      "content": "- Loopback.Active\n- Loopback.Exit",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "7-77",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

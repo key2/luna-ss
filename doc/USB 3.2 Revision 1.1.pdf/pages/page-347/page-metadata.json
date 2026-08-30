@@ -1,0 +1,75 @@
+{
+  "index": 346,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 191,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 316 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 90,
+      "bottomRightX": 736,
+      "bottomRightY": 272,
+      "content": "|  Name | Description | Min | Max | Units  |\n| --- | --- | --- | --- | --- |\n|  tLDMRequestTimeout | Time by which an upstream facing port shall timeout a previously sent LDM Request. |  | 125 | μs  |\n|  tLDMResponseDelay | Time by which a Responder shall time out the generation of a LDM Response LMP. | 125 |  | μs  |\n|  tLDMResponseTime | Time between receiving the last framing symbol of a LDM TS Request LMP and transmitting the first framing symbol of a LDM TS Response LMP. |  | 3 | μs  |\n|  tLMPTransmissionDelay | The default transmission delay time used by software for transmitting a LMP. | 40 | 40 | Ns  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-143.md"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 272,
+      "bottomRightX": 345,
+      "bottomRightY": 287,
+      "content": "¹ (tIsochTimestampGranularity/4096)",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 288,
+      "bottomRightX": 637,
+      "bottomRightY": 302,
+      "content": "² This value was chosen to be greater than the link Pending HP Credit timeout (see Chapter 7)",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "index": 390,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 360 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 287,
+      "topLeftY": 92,
+      "bottomRightX": 500,
+      "bottomRightY": 110,
+      "content": "Table 9-22. FWStatus Capability",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 119,
+      "bottomRightX": 679,
+      "bottomRightY": 349,
+      "content": "| Offset | Field | Size | Value | Description |\n| --- | --- | --- | --- | --- |\n| 0 | bLength | 1 | Number | Size of descriptor |\n| 1 | bDescriptorType | 1 | Constant | DEVICE CAPABILITY Descriptor type |\n| 2 | bDevCapabilityType | 1 | Constant | Capability type: FWStatus Capability |\n| 3 | bcdDescriptorVersion | 1 | Number | Shall be set to current definition of the capability as defined. Initial value will be one. |\n| 5 | bmAttributes | 4 | Bitmap | Bitmap encoding of supported device level features |\n| Bit | Encoding |\n| 0 | Get FW Image Hash support |\n| 1 | Disallow FW Update support |\n| 2 - 31 | Reserved |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-193.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 370,
+      "bottomRightX": 243,
+      "bottomRightY": 385,
+      "content": "### 9.6.3 Configuration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 391,
+      "bottomRightX": 652,
+      "bottomRightY": 453,
+      "content": "The configuration descriptor describes information about a specific device configuration. The descriptor contains a bConfigurationValue field with a value that, when used as a parameter to the SetConfiguration() request, causes the device to assume the described configuration.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 464,
+      "bottomRightX": 673,
+      "bottomRightY": 555,
+      "content": "The descriptor describes the number of interfaces provided by the configuration. Each interface may operate independently. For example, a Video Class device might be configured with two interfaces, each providing 64 MB/sec bi-directional channels that have separate data sources or sinks on the host. Another configuration might present the Video Class device as a single interface, bonding the two channels into one 128 MB/sec bi-directional channel.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 568,
+      "bottomRightX": 647,
+      "bottomRightY": 600,
+      "content": "When the host requests the configuration descriptor, all related interface, endpoint, and endpoint companion descriptors are returned (refer to Section 9.4.3).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 611,
+      "bottomRightX": 666,
+      "bottomRightY": 688,
+      "content": "A device has one or more configuration descriptors. Each configuration has one or more interfaces and each interface has zero or more endpoints. An endpoint is not shared among interfaces within a single configuration unless the endpoint is used by alternate settings of the same interface. Endpoints may be shared among interfaces that are part of different configurations without this restriction.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 700,
+      "bottomRightX": 665,
+      "bottomRightY": 748,
+      "content": "Once configured, devices may support limited adjustments to the configuration. If a particular interface has alternate settings, an alternate may be selected after configuration. Table 9-23 shows the standard configuration descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 760,
+      "bottomRightX": 547,
+      "bottomRightY": 776,
+      "content": "Table 9-23. Standard Configuration Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 784,
+      "bottomRightX": 676,
+      "bottomRightY": 921,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of this descriptor in bytes  |\n|  1 | bDescriptorType | 1 | Constant | CONFIGURATION Descriptor Type  |\n|  2 | wTotalLength | 2 | Number | Total length of data returned for this configuration. Includes the combined length of all descriptors (configuration, interface, endpoint, and class- or vendor-specific) returned for this configuration  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-194.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

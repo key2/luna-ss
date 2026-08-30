@@ -1,0 +1,209 @@
+{
+  "index": 67,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 92,
+      "bottomRightX": 500,
+      "bottomRightY": 123,
+      "content": "G. tPWM = 2.4 us and tLFPS-0 = 0.8 us and tLFPS-1 = 1.33 us\nH. tPWM = 2.4 us and tLFPS-0 = 0.8 us and tLFPS-1 = 1.8 us",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 138,
+      "bottomRightX": 235,
+      "bottomRightY": 152,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 160,
+      "bottomRightX": 341,
+      "bottomRightY": 176,
+      "content": "(No Physical Layer assertions defined)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 182,
+      "bottomRightX": 254,
+      "bottomRightY": 198,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 205,
+      "bottomRightX": 682,
+      "bottomRightY": 279,
+      "content": "1. The LVS and the PUT go through the initial steps of the LTSSM (eSS.Disabled, Rx.Detect) to reach Polling.PortMatch.\n2. The LVS will generate LBPM signals having the A parameters specified in the list above.\n3. The LVS verifies that:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 288,
+      "bottomRightX": 681,
+      "bottomRightY": 340,
+      "content": "a. The PUT moves successfully to Polling.PortConfig according to section 7.5.4.5.2.\nb. The PWM LFPSs transmitted from the PUT have tPWM, tLFPS-0, and tLFPS-1 within the ranges specified in spec sections 6.9.1 and 6.9.5.1.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 348,
+      "bottomRightX": 708,
+      "bottomRightY": 438,
+      "content": "4. The LVS will generate LBPM signals having the A parameters specified in the list above.\n5. The test passes if the PUT moves successfully to Polling.RxEQ according to section 7.5.4.6.2, and if the PWM LFPSs transmitted from the PUT have tPWM, tLFPS-0 and tLFPS-1 within the ranges specified in section 6.9.1 and 6.9.4.1.\n6. Repeat the steps with the other parameters listed above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 520,
+      "bottomRightX": 232,
+      "bottomRightY": 540,
+      "content": "### 5.3 Link Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 571,
+      "bottomRightX": 294,
+      "bottomRightY": 588,
+      "content": "#### TD.7.1 Link Bring-up Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 591,
+      "bottomRightX": 671,
+      "bottomRightY": 622,
+      "content": "This test verifies that the Link Verification System (LVS) and the Port under Test (PUT) can reach U0 successfully.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 629,
+      "bottomRightX": 692,
+      "bottomRightY": 659,
+      "content": "As the test progresses it is divided into four subtests. Ports with Gen 1 capability and not Gen 2 capability must be tested with subtests 1 and 2. Ports with Gen 2 capability must be tested with subtests 3, 4 and 5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 667,
+      "bottomRightX": 235,
+      "bottomRightY": 681,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 689,
+      "bottomRightX": 519,
+      "bottomRightY": 706,
+      "content": "Refer to the list of covered assertions for the Link Initialization Sequence",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 712,
+      "bottomRightX": 254,
+      "bottomRightY": 727,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 734,
+      "bottomRightX": 329,
+      "bottomRightY": 750,
+      "content": "1. The LVS starts the link process.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 756,
+      "bottomRightX": 705,
+      "bottomRightY": 824,
+      "content": "- If the LVS is configured as a Downstream Port, the LVS asserts VBUS. The PUT should move from eSS.Disabled to Rx.Detect.\n- If the LVS is configured as an Upstream Port, the LVS asserts Terminations. The PUT should already be in Rx.Detect.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 832,
+      "bottomRightX": 663,
+      "bottomRightY": 862,
+      "content": "2. The test fails if the PUT does not transmit Polling.LFPS bursts before tRxDetectQuietTimeout + tPollingLFPSEstablishedTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 892,
+      "bottomRightX": 304,
+      "bottomRightY": 907,
+      "content": "# Continue to Required Subtest",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "60",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

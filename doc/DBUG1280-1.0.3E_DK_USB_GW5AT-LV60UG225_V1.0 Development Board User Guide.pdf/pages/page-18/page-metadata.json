@@ -1,0 +1,112 @@
+{
+  "index": 17,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 35,
+      "bottomRightX": 648,
+      "bottomRightY": 49,
+      "content": "3.5 DDR3",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 88,
+      "bottomRightX": 626,
+      "bottomRightY": 146,
+      "content": "In the design of circuit and PCB, matching resistor/termination resistor, impedance control and equal length control of traces have been fully considered to ensure DDR3 works stably at high speed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 197,
+      "topLeftY": 154,
+      "bottomRightX": 642,
+      "bottomRightY": 173,
+      "content": "The hardware connection diagram of DDR3 is as show in Figure 3-4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 181,
+      "bottomRightX": 471,
+      "bottomRightY": 199,
+      "content": "Figure 3-4 Hardware Connection Diagram of DDR3",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 206,
+      "bottomRightX": 500,
+      "bottomRightY": 397,
+      "content": "![img-9.jpeg](img-9.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-9.jpeg"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 416,
+      "bottomRightX": 249,
+      "bottomRightY": 435,
+      "content": "## 3.5.2 Pin Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 456,
+      "bottomRightX": 364,
+      "bottomRightY": 470,
+      "content": "Table 3-4 DDR3 Pin Distribution",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 474,
+      "bottomRightX": 653,
+      "bottomRightY": 927,
+      "content": "|  Signal Name | FPGA (U1) Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  DDR3_A0 | L7 | 9 | 1.5V | Address  |\n|  DDR3_A1 | M11 | 8 | 1.5V | Address  |\n|  DDR3_A2 | N11 | 8 | 1.5V | Address  |\n|  DDR3_A3 | N10 | 8 | 1.5V | Address  |\n|  DDR3_A4 | L10 | 8 | 1.5V | Address  |\n|  DDR3_A5 | M10 | 8 | 1.5V | Address  |\n|  DDR3_A6 | L8 | 9 | 1.5V | Address  |\n|  DDR3_A7 | N12 | 8 | 1.5V | Address  |\n|  DDR3_A8 | M9 | 9 | 1.5V | Address  |\n|  DDR3_A9 | R13 | 8 | 1.5V | Address  |\n|  DDR3_A10 | P13 | 8 | 1.5V | Address  |\n|  DDR3_A11 | K10 | 8 | 1.5V | Address  |\n|  DDR3_A12 | R14 | 8 | 1.5V | Address  |\n|  DDR3_A13 | P9 | 9 | 1.5V | Address  |\n|  DDR3_BA0 | N2 | 9 | 1.5V | Bank address  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-6.md"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 168,
+      "bottomRightY": 957,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 613,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "11(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

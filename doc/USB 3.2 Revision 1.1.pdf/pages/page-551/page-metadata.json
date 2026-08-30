@@ -1,0 +1,173 @@
+{
+  "index": 550,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 520 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 400,
+      "bottomRightY": 108,
+      "content": "# E.3.12.2 Exit from PassThrough Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 116,
+      "bottomRightX": 650,
+      "bottomRightY": 212,
+      "content": "- The re-timer shall transition to Rx.Detect if any one of the following conditions is met.\n  o Upon detecting successful Loopback LFPS exit handshake.\n  o Upon timeout of the tLoopbackExitTimeout timer.\n  o Upon detecting Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 224,
+      "bottomRightX": 253,
+      "bottomRightY": 240,
+      "content": "# E.3.13 Local Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 246,
+      "bottomRightX": 652,
+      "bottomRightY": 278,
+      "content": "Local Loopback is the same as the Loopback state defined in LTSSM. The re-timer always operates as a loopback slave.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 290,
+      "bottomRightX": 384,
+      "bottomRightY": 305,
+      "content": "# E.3.13.1 Local Loopback Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 313,
+      "bottomRightX": 663,
+      "bottomRightY": 468,
+      "content": "- The re-timer shall configure the two ports in the following.\n  o It shall configure its port receiving TS2 OS with the Local Loopback bit (bit-4) within the link configuration field asserted.\n  o It shall configure its other port in Rx.Detect.\n- The re-timer shall implement the two substates defined in LTSSM.\n- The re-timer operation shall meet the requirements defined in LTSSM.\n- In x2 operations, the loopback operation is performed on a per lane basis. The transmitter lane to lane skew does not need to be maintained.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 481,
+      "bottomRightX": 397,
+      "bottomRightY": 496,
+      "content": "# E.3.13.2 Exit from Local Loopback.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 504,
+      "bottomRightX": 673,
+      "bottomRightY": 602,
+      "content": "- The re-timer shall transition to Rx.Detect upon detecting Warm Reset at its port in Rx.Detect. Note that the re-timer will not declare Warm Reset at its port in Local Loopback.Active since the beginning of the Warm Reset will be treated as the start of the Loopback LFPS exit signal.\n- The re-timer shall transition to Local Loopback.Exit upon detection of Loopback LFPS exit signal.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 614,
+      "bottomRightX": 382,
+      "bottomRightY": 630,
+      "content": "# E.3.13.3 Exit from Local Loopback.Exit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 637,
+      "bottomRightX": 667,
+      "bottomRightY": 712,
+      "content": "- The re-timer shall transition to Rx.Detect if one of the following conditions is met.\n  o Upon detecting Warm Reset.\n  o Upon completing the Loopback LFPS exit handshake meeting Loopback LFPS exit signaling defined in Section 6.9.2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 724,
+      "bottomRightX": 221,
+      "bottomRightY": 738,
+      "content": "# E.3.14 Hot Reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 747,
+      "bottomRightX": 663,
+      "bottomRightY": 793,
+      "content": "Hot Reset is a state where no actions need to be taken by the re-timer. The re-timer's responsibility is to monitor the progression of Hot Reset until its completion. The re-timer does not need to implement two substates in Hot Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 805,
+      "bottomRightX": 352,
+      "bottomRightY": 820,
+      "content": "# E.3.14.1 Hot Reset Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 827,
+      "bottomRightX": 663,
+      "bottomRightY": 919,
+      "content": "- The re-timer shall track and monitor the progression of LTSSM.\n- The re-timer in SS operation shall not delete any inbound TS2 OS with the Reset bit de-asserted in order to perform clock offset compensation. Note that the TS2 OS with the Reset bit de-asserted is used for Hot Reset.Active exit handshake.\n- The re-timer shall start the tHotResetActiveTimeout timer upon entry to the state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

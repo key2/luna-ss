@@ -1,0 +1,173 @@
+{
+  "index": 437,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 61,
+      "content": "- 407 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 93,
+      "bottomRightX": 666,
+      "bottomRightY": 373,
+      "content": "- A SuperSpeed hub that receives a header packet on its upstream port that is routed to a downstream port shall immediately route the header packet to the appropriate downstream port header packet buffer (if space in that buffer is available) regardless of the state of any other downstream port header packet buffers or the state of the upstream port Rx header packet buffer. For example, a hub Tx header packet buffer for downstream port 1 is full and the hub has three more header packets routed to downstream port 1 in the hub upstream port Rx header packet buffer. If the hub now receives a header packet routed to downstream port 2, it must immediately route the header packet to the downstream port 2 Tx header packet buffer.\n- A SuperSpeed hub starting with all header packet buffers empty shall be able to receive at least eight header packets on the same downstream port directed for upstream transmission when the upstream port is not in U0.\n- Header packets transmitted by a downstream port shall be transmitted in the order they were received on the upstream port.\n- Header packets transmitted by an upstream port from the same downstream port shall be transmitted in the order they were received on that downstream port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 393,
+      "bottomRightX": 665,
+      "bottomRightY": 426,
+      "content": "Section 10.9 provides detailed functional state machines for the upstream and downstream port Tx and Rx header packet buffers in a hub implementation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 437,
+      "bottomRightX": 668,
+      "bottomRightY": 469,
+      "content": "The SuperSpeed hub shall have at least 1080 bytes of buffering for data packets received on the upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 480,
+      "bottomRightX": 639,
+      "bottomRightY": 512,
+      "content": "The SuperSpeed hub shall have at least 1080 bytes of shared buffering for data packets received on all downstream ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 524,
+      "bottomRightX": 353,
+      "bottomRightY": 540,
+      "content": "#### **10.7.5 SuperSpeed Packet Connectivity**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 546,
+      "bottomRightX": 665,
+      "bottomRightY": 593,
+      "content": "The SuperSpeed hub packet repeater/forwarder must re-clock the packets in both directions. Re-clocking means that the repeater extracts the data from the received stream and retransmits the stream using its own local clock.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 605,
+      "bottomRightX": 426,
+      "bottomRightY": 621,
+      "content": "#### **10.8 SuperSpeedPlus Store and Forward Behavior**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 626,
+      "bottomRightX": 539,
+      "bottomRightY": 643,
+      "content": "The SuperSpeedPlus Hub provides the following general functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 655,
+      "bottomRightX": 294,
+      "bottomRightY": 671,
+      "content": "In the downstream direction:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 677,
+      "bottomRightX": 518,
+      "bottomRightY": 738,
+      "content": "- Receives and validates packet\n- Forwards packet to appropriate downstream port\n- Selects next packet to transmit on (each) downstream port",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 759,
+      "bottomRightX": 276,
+      "bottomRightY": 775,
+      "content": "In the upstream direction:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 781,
+      "bottomRightX": 481,
+      "bottomRightY": 842,
+      "content": "- Receives and validates packet\n- Forwards packet to the upstream port\n- Selects next packet to transmit on the upstream port",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 862,
+      "bottomRightX": 285,
+      "bottomRightY": 878,
+      "content": "##### **10.8.1 Hub Elasticity Buffer**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 884,
+      "bottomRightX": 672,
+      "bottomRightY": 931,
+      "content": "There are no direct specifications for elasticity buffer behavior in a hub. However, note that a hub must meet the requirements in Section 10.7.3 for the maximum variation in propagation delay.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

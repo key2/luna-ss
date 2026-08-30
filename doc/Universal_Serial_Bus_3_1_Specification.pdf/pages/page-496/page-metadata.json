@@ -1,0 +1,93 @@
+{
+  "index": 495,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 682,
+      "bottomRightY": 144,
+      "content": "devices on its downstream-facing ports attempt Enhanced SuperSpeed connection once upstream VBUS is seen by the hub. The recommended method to achieve this is to cycle VBUS off for a duration or by actively discharging so that it is seen to be off by the downstream device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 159,
+      "bottomRightX": 434,
+      "bottomRightY": 174,
+      "content": "Table 10-2. Downstream Port VBUS Requirements",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 177,
+      "bottomRightX": 705,
+      "bottomRightY": 385,
+      "content": "|  Hub Upstream Port Connection Status | Downstream Port Enhanced SuperSpeed Port Power Off (PORT_POWER = 0) USB 2.0 Port Power On (PORT_POWER = 1) | Downstream Port Enhanced SuperSpeed Port Power On (PORT_POWER = 1) Downstream Port USB 2.0 Port Power Off (PORT_POWER = 0) | Downstream Port USB 2.0 and Enhanced SuperSpeed Port Power Off (PORT_POWER = 0)  |\n| --- | --- | --- | --- |\n|  Enhanced SuperSpeed | On* | On | May be off  |\n|  USB 2.0 | On | May be off | May be off  |\n|  Enhanced SuperSpeed and USB 2.0 | On | On | May be off  |\n|  No VBUS | May be off | May be off | May be off  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-202.md"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 386,
+      "bottomRightX": 680,
+      "bottomRightY": 399,
+      "content": "* If the hub upstream port is unable to connect on the USB 2.0 bus, the downstream port VBUS may be off in this state.",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 415,
+      "bottomRightX": 553,
+      "bottomRightY": 433,
+      "content": "### 10.3.1.2 DSPORT.Disconnected (Waiting for eSS Connect)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 438,
+      "bottomRightX": 493,
+      "bottomRightY": 454,
+      "content": "A port transitions to this state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 459,
+      "bottomRightX": 694,
+      "bottomRightY": 896,
+      "content": "- From the DSPORT.Powered-off state when the hub's Upstream Port link has detected far-end receiver terminations, Upstream Port VBUS is on (implied by receiver detection), no power-off condition is met and no overcurrent condition exists.\n- From any state that can and does detect a disconnect, except from DSPORT.Powered-off-detect.\n- From the DSPORT.Powered-off-reset state when conditions for Repowering defined in Section 10.3.1.10 are met and the DSPORT.Powered-off-reset state has been maintained for tReset.\n- From the DSPORT.Powered-off-detect state when conditions for Repowering defined in Section 10.3.1.10 are met.\n- From the DSPORT.Resetting state when a port's link times out from Rx.Detect.Active during a reset. That is, it detects a disconnect.\n- From the DSPORT.Disabled state when a SetPortFeature(PORT_LINK_STATE) Rx.Detect request is received for the port.\n- From the DSPORT.Disabled state when the hub's upstream port is reset. Note: The hub shall issue a Warm Reset on the downstream port, if a device is detected in the first Rx.Detect after entering this state, even if the upstream port reset is a hot reset.\n- From the DSPORT.Powered-off state or DSPORT.Disabled state when the hub's upstream port is reset. Note: The hub shall issue a Warm Reset on the downstream port after it has transitioned the port to the DSPORT.RxDetect state and detected a far-end receiver, even if the upstream port reset is a hot reset\n- From the DSPORT.Resetting state if the port's link times out from any Polling substate during a reset.\n- From the DSPORT.Training state if the port's link times out from any Polling substate and the cPollingTimeout is less than 2 and the port is not enabled to enter compliance or Polling",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-18",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

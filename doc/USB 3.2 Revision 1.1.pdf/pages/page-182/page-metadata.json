@@ -1,0 +1,165 @@
+{
+  "index": 181,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 151 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 93,
+      "bottomRightX": 650,
+      "bottomRightY": 123,
+      "content": "- For SuperSpeedPlus USB, a valid link command is declared if one of the following conditions is met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 131,
+      "bottomRightX": 666,
+      "bottomRightY": 227,
+      "content": "1. Both link command words are the same, they contain valid link command information as defined in Table 7-4, and they pass the CRC-5 check.\n2. One of the link command words contains valid link command information as defined in Table 7-4, and passes the CRC-5 check, and the other link command word either contains invalid link command information, or fails the CRC-5 check.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 236,
+      "bottomRightX": 636,
+      "bottomRightY": 325,
+      "content": "- An invalid link command is declared upon detection of a link command and the conditions to meet a valid link command are not met.\n- An invalid link command shall be ignored.\n- A port detecting missing of LGOOD_n or LCRD_x or LCRD1_x/LCRD2_x shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 331,
+      "bottomRightX": 670,
+      "bottomRightY": 422,
+      "content": "Note: Missing LGOOD_n is declared when two consecutive LGOOD_n received are not in numerical order. Missing LGOOD_n, or LBAD, or LRTY can also be inferred upon PENDING_HP_TIMER timeout. Missing LCRD_x or LCRD1_x/LCRD2_x is declared when two consecutive LCRD_x or LCRD1_x/LCRD2_x received are not in alphabetical order, or upon CREDIT_HP_TIMER or Type 1/Type 2 CREDIT_HP_TIMER times out and LCRD_x or LCRD1_x/LCRD2_x is not received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 430,
+      "bottomRightX": 641,
+      "bottomRightY": 445,
+      "content": "- A port detecting missing of LGO_Ux, or LAU, or LXU shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 451,
+      "bottomRightX": 656,
+      "bottomRightY": 481,
+      "content": "Note: Detection of missing LGO_Ux, or LAU, or LXU is declared upon PM_LC_TIMER timeout and LAU or LXU is not received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 488,
+      "bottomRightX": 654,
+      "bottomRightY": 518,
+      "content": "- A downstream port detecting missing of LUP shall transition to Recovery (refer to Section 7.5.6 for LUP detection).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 525,
+      "bottomRightX": 663,
+      "bottomRightY": 556,
+      "content": "Note: Missing of LPMA will not transition the link to Recovery. It will only cause an Ux entry delay for the port accepting LGO_Ux (refer to Section 7.2.4.2 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 562,
+      "bottomRightX": 645,
+      "bottomRightY": 593,
+      "content": "- An upstream port detecting missing of LDN shall transition to Recovery (refer to Section 7.5.6 for LDN detection).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 621,
+      "bottomRightX": 547,
+      "bottomRightY": 637,
+      "content": "Table 7-10. Valid Link Command Symbol Order",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 646,
+      "bottomRightX": 652,
+      "bottomRightY": 777,
+      "content": "|  Symbol 0 | Symbol 1 | Symbol 2 | Symbol 3 | Comment  |\n| --- | --- | --- | --- | --- |\n|  SLC | SLC | SLC | EPF | All symbols are valid  |\n|  Corrupt | SLC | SLC | EPF | First SLC corrupted  |\n|  SLC | Corrupt | SLC | EPF | Second SLC corrupted  |\n|  SLC | SLC | Corrupt | EPF | Third SLC corrupted  |\n|  SLC | SLC | SLC | Corrupt | EPF corrupted  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-87.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 810,
+      "bottomRightX": 392,
+      "bottomRightY": 825,
+      "content": "### 7.3.6 ACK Tx Header Sequence Number Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 832,
+      "bottomRightX": 650,
+      "bottomRightY": 909,
+      "content": "Each port has an ACK Tx Header Sequence Number that is defined in Section 7.2.4.1. The ACK Tx Header Sequence Number is initialized during the Header Sequence Number Advertisement. After a header packet is transmitted, a port is expecting to receive an LGOOD_n from its link partner as an explicit acknowledgement that the header packet is received properly. Upon receiving LGOOD_n, the Header Sequence Number contained in",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

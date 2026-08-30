@@ -1,0 +1,139 @@
+{
+  "index": 555,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 525 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 674,
+      "bottomRightY": 156,
+      "content": "unidirectional re-driver placed at the far-end. The actual construction of a re-driver based active cable is implementation specific. Furthermore, an active cable shall be equal or better in its loss characteristics of more than -6dB as an equivalent passive cable. Refer to the USB Type-C Specification for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 167,
+      "bottomRightX": 586,
+      "bottomRightY": 182,
+      "content": "Figure E-19. Example Link Topology with Three Re-drivers",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 193,
+      "bottomRightX": 676,
+      "bottomRightY": 289,
+      "content": "![img-214.jpeg](img-214.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-214.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 309,
+      "bottomRightX": 339,
+      "bottomRightY": 325,
+      "content": "### E.6.2 Re-driver Power Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 331,
+      "bottomRightX": 673,
+      "bottomRightY": 377,
+      "content": "A re-driver is not protocol aware and will not manage its power state explicitly matching the low power link states of U1, U2 or U3. System level simplification is required to ensure the interoperability with the re-driver.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 390,
+      "bottomRightX": 673,
+      "bottomRightY": 421,
+      "content": "- It is highly recommended that both U1 and U2 be disabled if an on-board re-driver is deployed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 433,
+      "bottomRightX": 364,
+      "bottomRightY": 449,
+      "content": "### E.6.3 Re-driver Behavioral Requirement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 456,
+      "bottomRightX": 675,
+      "bottomRightY": 517,
+      "content": "Shown in Figure E-20 is a conceptual block diagram of a Gen 2x2 re-driver. It consists of two lanes with each lane having two line drivers (LD). The operation of each LD is controlled by a re-driver logic state machine (RLSM). In this section, the details of RLSM and the LD functional requirements are described.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 529,
+      "bottomRightX": 557,
+      "bottomRightY": 546,
+      "content": "Figure E-20. Re-driver Conception Block Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 556,
+      "bottomRightX": 662,
+      "bottomRightY": 885,
+      "content": "![img-215.jpeg](img-215.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-215.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

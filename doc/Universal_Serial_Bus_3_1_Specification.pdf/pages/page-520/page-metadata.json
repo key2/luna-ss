@@ -1,0 +1,101 @@
+{
+  "index": 519,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 94,
+      "bottomRightX": 689,
+      "bottomRightY": 131,
+      "content": "- Enough of the DPP has been received to ensure that upstream port transmitter under-run will not occur during the transmission of this packet.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 144,
+      "bottomRightX": 694,
+      "bottomRightY": 229,
+      "content": "For example, if there are only buffered Bulk DPs from other downstream ports and an Isochronous DP is being received on one downstream port, the Upstream Controller shall select the Isochronous DP as the next packet to transmit on the upstream port; as long as the remaining time to receive the Isochronous DP is less than the time required to transmit the Bulk DP and there is a sufficient amount of the Isochronous DPP already received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 236,
+      "bottomRightX": 508,
+      "bottomRightY": 253,
+      "content": "### 10.8.6.4.2 Upstream Weighted Round Robin Arbitration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 258,
+      "bottomRightX": 678,
+      "bottomRightY": 307,
+      "content": "When the Upstream Controller needs to select the next Control/Bulk DP to transmit on the upstream port, the Upstream Controller uses the following selectPacket() algorithm to determine the next DP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 313,
+      "bottomRightX": 678,
+      "bottomRightY": 364,
+      "content": "In the selectPacket() algorithm pseudo code, once a packet is selected, the algorithm is complete and any remaining steps in the algorithm are ignored for the selection of the current packet to transmit upstream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 369,
+      "bottomRightX": 662,
+      "bottomRightY": 402,
+      "content": "Across invocations of the selectPacket algorithm, retain the value of i and curr_weight. Initial values of i=-1 and curr_weight=0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 407,
+      "bottomRightX": 609,
+      "bottomRightY": 446,
+      "content": "The i$^{th}$ downstream facing port is DFPi. The candidate packet for the i$^{th}$ DFP is CPi.\nselectPacket() algorithm:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 452,
+      "bottomRightX": 674,
+      "bottomRightY": 815,
+      "content": "1) If there are no buffered packets, set i=-1 and curr_weight=0 and don't select a packet.\nNote: The upstream port will await the arrival of a packet on some DFPi.\n2) For each DFPi, identify a candidate packet CPi for the DFPi:\n   a. if there is a Control or Bulk DP buffered, set CPi to be the first one that had been buffered.\n3) If there is only one DFPi with packets buffered for upstream transmission:\n   a. Set i = port index\n   b. Set cw = CPi.AW\n   c. Select CPi\n   d. exit\n4) While true\n   a. i = (i + 1) mod num_ports\n   b. if (i == 0) then\n      i. compute the Greatest Common Divisor (GCD) of all the buffered CPi.AW\n      ii. curr_weight = curr_weight - GCD\n      iii. if (curr_weight <= 0) then\n         1. curr_weight = max of CPi.AWs for all buffered CPi\n         2. if (curr_weight == 0) then there is no packet to select\n   c. if (DFPi.AW >= curr_weight) then\n      i. select CPi\n      ii. exit",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 981,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-42",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

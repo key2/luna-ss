@@ -1,0 +1,174 @@
+{
+  "index": 138,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 108 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 120,
+      "bottomRightX": 690,
+      "bottomRightY": 251,
+      "content": "![img-57.jpeg](img-57.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-57.jpeg"
+    },
+    {
+      "topLeftX": 242,
+      "topLeftY": 253,
+      "bottomRightX": 547,
+      "bottomRightY": 269,
+      "content": "(b). Consecutive LBPMs Transmitted Back to Back",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 302,
+      "bottomRightX": 415,
+      "bottomRightY": 318,
+      "content": "### 6.10 Transmitter and Receiver DC Specifications",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 326,
+      "bottomRightX": 322,
+      "bottomRightY": 340,
+      "content": "#### 6.10.1 Informative ESD Protection",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 347,
+      "bottomRightX": 666,
+      "bottomRightY": 393,
+      "content": "It is recommended that all signal and power pins withstand a minimum ESD value using the human body model and the charged device model, without damage, as defined by the semiconductor industry.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 406,
+      "bottomRightX": 673,
+      "bottomRightY": 498,
+      "content": "This is a suggested ESD tolerance. The ASIC designer is expected to apply current technology and knowledge of ESD prevention circuits to protect from environmental hazards that could create long term failure, and possibly, catastrophic failure in a system. It is up to the designer to use good design practices to implement appropriate ESD protection. With ESD protection in place, the ASIC design shall meet the other electrical requirements of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 510,
+      "bottomRightX": 394,
+      "bottomRightY": 524,
+      "content": "#### 6.10.2 Informative Short Circuit Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 531,
+      "bottomRightX": 659,
+      "bottomRightY": 579,
+      "content": "All Transmitters and Receivers shall support surprise hot insertion/removal without damage to the component. The Transmitter and Receiver shall be capable of withstanding sustained short circuit to ground of Txp (Rxp) and Txn (Rxn).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 591,
+      "bottomRightX": 391,
+      "bottomRightY": 605,
+      "content": "#### 6.10.3 Normative High Impedance Reflections",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 612,
+      "bottomRightX": 660,
+      "bottomRightY": 690,
+      "content": "During an asynchronous reset event, one device may be reset while the other device is transmitting. The device under reset is required to disconnect the receiver termination. During this time, the device under reset may be receiving active data. Since the data is not terminated, the differential voltage into the receiver will be doubled. For a short channel, the receiver may experience a total of 2* VDIFF.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 700,
+      "bottomRightX": 667,
+      "bottomRightY": 763,
+      "content": "The receiver shall tolerate this doubling of the negative voltage that can occur if the Rx termination is disconnected. A part shall tolerate a 20 ms event that doubles the voltage on the receiver input when the termination is disconnected 10,000 times over the life time of the part.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 775,
+      "bottomRightX": 274,
+      "bottomRightY": 788,
+      "content": "### 6.11 Receiver Detection",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 798,
+      "bottomRightX": 279,
+      "bottomRightY": 811,
+      "content": "#### 6.11.1 Rx Detect Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 818,
+      "bottomRightX": 656,
+      "bottomRightY": 926,
+      "content": "The Receiver Detection circuit is implemented as part of a Transmitter and shall correctly detect whether a load impedance equivalent to a DC impedance RRx-DC (Table 6-22) is present. The Rx detection operates on the principle of the RC time constant of the circuit. This time constant changes based on the presence of the receiver termination. This is conceptually illustrated in Figure 6-39. In this figure, R_Detect is the implementation specific charging resistor. C_AC is the AC capacitor that is in the circuit only if R_Term is also present, otherwise, only C_Parasitic is present.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "index": 92,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 487,
+      "bottomRightY": 137,
+      "content": "Table 7-21. Address 409h: PHY Tx Control9 (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 319,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [5:0] | 0h | Level | PCIe and USB4 | **TxDeemph_Cminus2[5:0]:** This field is part of a set of fields that select transmitter de-emphasis. This field corresponds to precursor C_{2}. See TxDeemph_Cminus1[5:0], TxDeemph_Czero[5:0], and TxDeemph_Cplus1[5:0] for the other coefficients. This is only applicable to PCIe Mode when the rate is at 64 GT/s or 128 GT/s and USB4 at 40 GT/s. For lower PCIe operational rates and lower USB4 rates, refer to TxDeemph[17:0]. **Note:** The MAC must ensure that only supported values are used for TxDeemph_Cminus2[5:0]. In cases where the implementation is required to keep track of Tx coefficients from previous states, this shall be done by the MAC.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-87.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 338,
+      "bottomRightX": 527,
+      "bottomRightY": 356,
+      "content": "### 7.1.21 Address 40Ah: PHY TX Control 10",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 365,
+      "bottomRightX": 528,
+      "bottomRightY": 380,
+      "content": "This register is used to controller transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 390,
+      "bottomRightX": 407,
+      "bottomRightY": 404,
+      "content": "Table 7-22. Address 40Ah: PHY TX Control 10",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 408,
+      "bottomRightX": 699,
+      "bottomRightY": 527,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:1] | 0h | N/A | N/A | Reserved  |\n|  [0] | 1h^{1} | Level | USB4 and DisplayPort | **TxLaneEnable:** This field is set to \"1\" by the MAC to instruct the PHY to enable the transmitter. The MAC is permitted to enable or disable a transmitter in any power state while TxElecIdle is asserted. The PHY indicates completion of this operation via the TxLaneReady register bit.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-88.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 530,
+      "bottomRightX": 390,
+      "bottomRightY": 544,
+      "content": "1. The default value of TxLaneEnable for the RX2 region is 0h.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 563,
+      "bottomRightX": 571,
+      "bottomRightY": 583,
+      "content": "### 7.1.22 Address 800h: PHY Common Control0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 591,
+      "bottomRightX": 671,
+      "bottomRightY": 620,
+      "content": "This register is used to control functionalities relevant to both the receiver and the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 635,
+      "bottomRightX": 528,
+      "bottomRightY": 650,
+      "content": "Table 7-23. Address 800h: PHY Common Control0 (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 653,
+      "bottomRightX": 699,
+      "bottomRightY": 787,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:2] | 0h | N/A | N/A | Reserved  |\n|  [1] | 0h | N/A | DisplayPort and USB4 | **MacTransmitLFPS:** This field controls whether the PHY or the MAC transmit the LFPS. 0 – PHY transmits LFPS 1 – MAC transmits LFPS The MAC must only change this when LFPS is not transmitting, and the MAC must not transmit LFPS at least 10 us after changing this bit.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-89.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "93",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

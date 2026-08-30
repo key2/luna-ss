@@ -1,0 +1,150 @@
+{
+  "index": 105,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 439,
+      "bottomRightY": 141,
+      "content": "### 7.2.19 Address 403h: Tx Status3",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 152,
+      "bottomRightX": 345,
+      "bottomRightY": 167,
+      "content": "Table 7-46. Address 403h: Tx Status3",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 172,
+      "bottomRightX": 687,
+      "bottomRightY": 314,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe | **LocalFS[5:0]:** This field reflects the FS value for the PHY. These signals are only used by a PHY that requires dynamic preset coefficient updates. The FS value is valid for 8 GT/s. This field shall be updated by the PHY before PhyStatus deasserts after RESET# and before the first PhyStatus pulse after a rate change to 8 GT/s or in response to GetLocalPresetCoefficients when LocalPresetIndex[5:0] < 11.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-117.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 334,
+      "bottomRightX": 439,
+      "bottomRightY": 354,
+      "content": "### 7.2.20 Address 404h: Tx Status4",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 365,
+      "bottomRightX": 345,
+      "bottomRightY": 380,
+      "content": "Table 7-47. Address 404h: Tx Status4",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 385,
+      "bottomRightX": 687,
+      "bottomRightY": 493,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe | **LocalLF[5:0]:** This field reflects the LF value for the PHY. This signal is only used by a PHY that requires dynamic preset coefficient updates. The LF value is valid for 8 GT/s. LocalLF[5:0] must updated whenever LocalFS[5:0] is updated  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-118.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 512,
+      "bottomRightX": 439,
+      "bottomRightY": 531,
+      "content": "### 7.2.21 Address 405h: Tx Status5",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 543,
+      "bottomRightX": 345,
+      "bottomRightY": 557,
+      "content": "Table 7-48. Address 405h: Tx Status5",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 562,
+      "bottomRightX": 687,
+      "bottomRightY": 702,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe | **LocalG4FS[5:0]:** This field reflects the FS value for the PHY. These signals are only used by a PHY that requires dynamic preset coefficient updates. The FS value is valid for 16 GT/s. This field must be updated by the PHY before the first PhyStatus pulse after a rate change to 16 GT/s or in response to GetLocalPresetCoefficients when LocalPresetIndex[5:0] > 10 and <=21.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-119.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 721,
+      "bottomRightX": 439,
+      "bottomRightY": 740,
+      "content": "### 7.2.22 Address 406h: Tx Status6",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 753,
+      "bottomRightX": 345,
+      "bottomRightY": 767,
+      "content": "Table 7-49. Address 406h: Tx Status6",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 771,
+      "bottomRightX": 687,
+      "bottomRightY": 891,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe | **LocalG4LF[5:0]:** This field reflects the LF value for the PHY. This signal is only used by a PHY that requires dynamic preset coefficient updates. The LF value is valid for 16 GT/s. LocalG4LF[5:0] must be sampled whenever LocalG4FS[5:0] is sampled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-120.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "106",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

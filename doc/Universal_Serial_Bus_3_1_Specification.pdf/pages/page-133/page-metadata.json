@@ -1,0 +1,173 @@
+{
+  "index": 132,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 44,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 391,
+      "bottomRightY": 115,
+      "content": "### 5.5.7 Cable Assembly Length",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 121,
+      "bottomRightX": 698,
+      "bottomRightY": 188,
+      "content": "This specification does not specify cable assembly lengths. A USB 3.1 cable assembly may be of any length as long as it meets all the requirements defined in this specification. The cable assembly voltage drop budget defined in Section 11.4.2 and the cable assembly loss budget defined in Section 5.6.1.3.2, limit the cable assembly length.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 211,
+      "bottomRightX": 400,
+      "bottomRightY": 235,
+      "content": "### 5.6 Electrical Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 240,
+      "bottomRightX": 678,
+      "bottomRightY": 308,
+      "content": "This section covers the electrical requirements for USB 3.1 raw cables, mated connectors, and mated cable assemblies. USB 3.1 signals, known as Enhanced SuperSpeed are governed by this specification. The USB 2.0 signals are governed by the USB 2.0 specification, unless otherwise specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 312,
+      "bottomRightX": 682,
+      "bottomRightY": 346,
+      "content": "Compliance to the USB 3.1 specification is established through normative requirements of mated connectors and mated cable assemblies.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 351,
+      "bottomRightX": 695,
+      "bottomRightY": 402,
+      "content": "Enhanced SuperSpeed requirements supporting Gen 2 speed are specified in the frequency domain. Components and assemblies meeting Enhanced SuperSpeed Gen 2 speed electrical requirements do not require separate qualification testing for Gen 1 speed compliance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 408,
+      "bottomRightX": 678,
+      "bottomRightY": 440,
+      "content": "DC requirements, such as contact resistance and current carrying capability, are also specified in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 446,
+      "bottomRightX": 649,
+      "bottomRightY": 479,
+      "content": "Any informative specification for cable and connector products is for the purpose of design guidelines and manufacturing control.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 484,
+      "bottomRightX": 695,
+      "bottomRightY": 552,
+      "content": "In conjunction with performance requirements, the required test method is referenced for the parameter stated. A list of the industry standards for DC requirements is found in the Section 5.6.2. Additional supporting test procedures are found in the USB 3.1 Connectors and Cable Assemblies Compliance Document.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 557,
+      "bottomRightX": 671,
+      "bottomRightY": 590,
+      "content": "The requirements in the section apply to all USB 3.1 connectors and/or cable assemblies unless specified otherwise.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 605,
+      "bottomRightX": 595,
+      "bottomRightY": 628,
+      "content": "### 5.6.1 Enhanced SuperSpeed Electrical Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 634,
+      "bottomRightX": 538,
+      "bottomRightY": 651,
+      "content": "The following sections outline the requirements for SuperSpeed signals.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 665,
+      "bottomRightX": 265,
+      "bottomRightY": 683,
+      "content": "#### 5.6.1.1 Raw Cable",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 690,
+      "bottomRightX": 684,
+      "bottomRightY": 774,
+      "content": "Informative raw cable electrical performance targets are provided to help cable assembly manufacturers manage raw cable suppliers. These targets are not part of the USB 3.1 compliance requirements. The mandatory requirements are that the mated cable assembly performance specified in Section 5.6.1.3 and other tests specified in the USB 3.1 Connectors and Cable Assemblies Compliance Document.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 781,
+      "bottomRightX": 376,
+      "bottomRightY": 800,
+      "content": "##### 5.6.1.1.1 Characteristic Impedance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 807,
+      "bottomRightX": 686,
+      "bottomRightY": 876,
+      "content": "The differential characteristic impedance for the SDP pairs is recommended to be 90 Ω +/- 5 Ω. The single-ended characteristic impedance of coaxial Enhanced SuperSpeed signal wires is recommended to be 45 Ω +/- 3 Ω. It should be measured with a TDR in a differential mode using a 200 ps (10%-90%) rise time.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-45",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

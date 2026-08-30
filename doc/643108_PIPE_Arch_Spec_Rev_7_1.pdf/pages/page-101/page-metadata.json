@@ -1,0 +1,66 @@
+{
+  "index": 100,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 123,
+      "bottomRightX": 426,
+      "bottomRightY": 141,
+      "content": "#### 7.2.11 Address Ch: Rx Status4",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 162,
+      "bottomRightX": 341,
+      "bottomRightY": 175,
+      "content": "Table 7-38. Address Ch: Rx Status4",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 180,
+      "bottomRightX": 699,
+      "bottomRightY": 324,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe | LocalG5FS[5:0] This field reflects the FS value for the PHY. These signals are only used by a PHY that requires dynamic preset coefficient updates. The FS value is valid for 32 GT/s.This field must be updated by the PHY before the first PhyStatus pulse after a rate change to 32 GT/s or in response to GetLocalPresetCoefficients when LocalPresetIndex[5:0] > 21 and <=32.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-109.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "101",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

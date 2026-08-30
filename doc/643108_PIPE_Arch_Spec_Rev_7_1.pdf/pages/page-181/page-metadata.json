@@ -1,0 +1,103 @@
+{
+  "index": 180,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 132,
+      "bottomRightX": 686,
+      "bottomRightY": 162,
+      "content": "Figure 9-10. LocalFS/LocalLF/LocalG4FS/LocalG4LF Updates Out of Reset and After Rate Change",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 165,
+      "bottomRightX": 700,
+      "bottomRightY": 428,
+      "content": "![img-79.jpeg](img-79.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-79.jpeg"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 432,
+      "bottomRightX": 696,
+      "bottomRightY": 493,
+      "content": "Figure 9-11 shows a sequence where LocalFS and LocalLF are updated in response to a GetLocalPresetCoefficients request where the LocalPresetIndex corresponds to an 8 GT/s rate. Note that the LocalFS and LocalLF values must be updated before or at the same cycle as the LocalTxPresetCoefficients are returned.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 500,
+      "bottomRightX": 571,
+      "bottomRightY": 515,
+      "content": "Figure 9-11. LocalFS/LocalLF Update Due to GetLocalPresetCoefficients",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 518,
+      "bottomRightX": 700,
+      "bottomRightY": 680,
+      "content": "![img-80.jpeg](img-80.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-80.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 694,
+      "bottomRightX": 588,
+      "bottomRightY": 719,
+      "content": "## 9.9 Message Bus: Updating TxDeemph",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 724,
+      "bottomRightX": 697,
+      "bottomRightY": 867,
+      "content": "Figure 9-12 shows a sequence where the MAC makes a GetLocalPresetCoefficients request for one or more values of LocalPresetIndex and the, subsequently, update the TxDeemph value. Note that for every GetLocalPresetCoefficients request, there is a 128 ns maximum response time for the PHY to return the LocalTxPresetCoefficients value; this time is shown in the diagram from the end of the second write_committed to the end of the third write_committed. This maximum response time requirement only exists for designs that use just-in-time fetching of GetLocalPresetCoefficients in response to Tx coefficients request from the link partner; designs that fetch ahead of time can circumvent this requirement. Additionally, after the write_committed for TxDeemph, the new TxDeemph value must be reflected on the pins within 128 ns. Note",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "181",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "index": 191,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 234,
+      "topLeftY": 98,
+      "bottomRightX": 593,
+      "bottomRightY": 397,
+      "content": "![img-146.jpeg](img-146.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-146.jpeg"
+    },
+    {
+      "topLeftX": 277,
+      "topLeftY": 411,
+      "bottomRightX": 547,
+      "bottomRightY": 430,
+      "content": "Figure 6-23. Frequency Spectrum of TSEQ",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 458,
+      "bottomRightX": 499,
+      "bottomRightY": 476,
+      "content": "### 6.8.2 Informative Receiver CTLE Function",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 484,
+      "bottomRightX": 689,
+      "bottomRightY": 569,
+      "content": "USB 3.1 allows the use of receiver equalization to meet system timing and voltage margins. For long cables and channels the eye at the Rx is closed, and there is no meaningful eye without first applying an equalization function. The Rx equalizer may be required to adapt to different channel losses using the Rx EQ training period. The exact Rx equalizer and training method is implementation specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 587,
+      "bottomRightX": 355,
+      "bottomRightY": 603,
+      "content": "#### 6.8.2.1 Gen 1 Reference CTLE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 610,
+      "bottomRightX": 684,
+      "bottomRightY": 645,
+      "content": "The equation for the continuous time linear equalizer (CTLE) used to develop the specification is the compliance Rx EQ transfer function described below.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 682,
+      "bottomRightX": 425,
+      "bottomRightY": 726,
+      "content": "$$H(s) = \\frac{A_{dc} \\omega_{p1} \\omega_{p2}}{\\omega_z} \\cdot \\frac{s + \\omega_z}{(s + \\omega_{p1})(s + \\omega_{p2})}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 762,
+      "bottomRightX": 330,
+      "bottomRightY": 778,
+      "content": "where $A_{dc}$ is the DC gain",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 786,
+      "bottomRightX": 372,
+      "bottomRightY": 805,
+      "content": "$\\omega_z = 2\\pi f_z$ is the zero frequency",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 813,
+      "bottomRightX": 397,
+      "bottomRightY": 830,
+      "content": "$\\omega_{p1} = 2\\pi f_{p1}$ is the first pole frequency",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 838,
+      "bottomRightX": 414,
+      "bottomRightY": 856,
+      "content": "$\\omega_{p2} = 2\\pi f_{p2}$ is the second pole frequency",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 861,
+      "bottomRightX": 689,
+      "bottomRightY": 896,
+      "content": "Figure 6-24 is a plot of the Compliance EQ transfer functions with the values for each of the input parameters.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "6-36",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

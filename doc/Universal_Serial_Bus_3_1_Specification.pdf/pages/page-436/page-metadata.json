@@ -1,0 +1,48 @@
+{
+  "index": 435,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 31,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 92,
+      "bottomRightX": 349,
+      "bottomRightY": 108,
+      "content": "Table 9-5. Standard Request Codes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 111,
+      "bottomRightX": 425,
+      "bottomRightY": 631,
+      "content": "|  bRequest | Value  |\n| --- | --- |\n|  GET_STATUS | 0  |\n|  CLEAR_FEATURE | 1  |\n|  Reserved for future use | 2  |\n|  SET_FEATURE | 3  |\n|  Reserved for future use | 4  |\n|  SET_ADDRESS | 5  |\n|  GET_DESCRIPTOR | 6  |\n|  SET_DESCRIPTOR | 7  |\n|  GET_CONFIGURATION | 8  |\n|  SET_CONFIGURATION | 9  |\n|  GET_INTERFACE | 10  |\n|  SET_INTERFACE | 11  |\n|  SYNCH_FRAME | 12  |\n|  SET_ENCRYPTION | 13  |\n|  GET_ENCRYPTION | 14  |\n|  SET_HANDSHAKE | 15  |\n|  GET_HANDSHAKE | 16  |\n|  SET_CONNECTION | 17  |\n|  SET_SECURITY_DATA | 18  |\n|  GET_SECURITY_DATA | 19  |\n|  SET_WUSB_DATA | 20  |\n|  LOOPBACK_DATA_WRITE | 21  |\n|  LOOPBACK_DATA_READ | 22  |\n|  SET_INTERFACE_DS | 23  |\n|  SET_SEL | 48  |\n|  SET_ISOCH_DELAY | 49  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-151.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "9-18",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

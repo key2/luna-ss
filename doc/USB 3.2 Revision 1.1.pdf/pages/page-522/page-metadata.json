@@ -1,0 +1,184 @@
+{
+  "index": 521,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 491 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 673,
+      "bottomRightY": 186,
+      "content": "- 10-μs host or device: implementations based on USB 3.1 Specification Revision 1.0 (July 26, 2013) in conjunction with USB 3.1 Pending_HP_Timer ECN, and future Revisions incorporating this ECN, that conform to the minimum Pending_HP_Timer timeout value of 10 μs. Note that a 10-μs USB 3.1 host or device implementation also incorporates USB 3.1 PM_Timer ECN and USB 3.1 Ux_LFPS_Exit ECN. Note that 10-μs host or device may apply to either x1 or x2 operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 198,
+      "bottomRightX": 349,
+      "bottomRightY": 213,
+      "content": "### E.1.2.1.1 3-Re-timer Connectivity",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 220,
+      "bottomRightX": 667,
+      "bottomRightY": 279,
+      "content": "The 3-re-timer connectivity refers to connectivity of a 3-μs host or device that is connected with a 10 μs device or host. Under this configuration, a maximum of three re-timers may be supported, one with a 10-μs host or device, the other two may be in an active cable. Note that there is no re-timer in a 3 μs device or host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 293,
+      "bottomRightX": 667,
+      "bottomRightY": 341,
+      "content": "An example link configuration is shown in Figure E-2, with a 3-μs host, and two re-timers in the active cable, interoperating with a 10-μs device including one re-timer on the device implementation. Note that it is assumed that a 3-μs host or device does not need retiming.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 351,
+      "bottomRightX": 633,
+      "bottomRightY": 369,
+      "content": "Figure E-2. Example Link Configuration of a 3-μs Host with a 10-μs Device",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 379,
+      "bottomRightX": 684,
+      "bottomRightY": 482,
+      "content": "![img-195.jpeg](img-195.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-195.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 495,
+      "bottomRightX": 349,
+      "bottomRightY": 510,
+      "content": "### E.1.2.1.2 4-Re-timer Connectivity",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 516,
+      "bottomRightX": 660,
+      "bottomRightY": 548,
+      "content": "The 4-re-timer connectivity refers to a 10-μs host or device connected to a 10-μs device or host. Under this configuration, a maximum of four re-timers may be supported.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 559,
+      "bottomRightX": 675,
+      "bottomRightY": 592,
+      "content": "An example link configuration is shown in Figure E-3, with a 10-μs host connected with a 10-μs device through an active cable.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 603,
+      "bottomRightX": 637,
+      "bottomRightY": 621,
+      "content": "Figure E-3. Example Link Configuration of a 10-μs Host with a 10-μs Device",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 630,
+      "bottomRightX": 676,
+      "bottomRightY": 726,
+      "content": "![img-196.jpeg](img-196.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-196.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 737,
+      "bottomRightX": 348,
+      "bottomRightY": 754,
+      "content": "### E.1.2.2 Link Delay Budget Requirement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 760,
+      "bottomRightX": 672,
+      "bottomRightY": 791,
+      "content": "The link delay budget requirements is defined based on the 3-re-timer connectivity model in x1 operation. It is bounded by Pending_HP_Timer shown in Figure E-4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 804,
+      "bottomRightX": 629,
+      "bottomRightY": 835,
+      "content": "- The total link delay budget is 2800 ns. This is defined assuming the following timings of a 3-μs host or device operating in x1 mode.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 847,
+      "bottomRightX": 587,
+      "bottomRightY": 891,
+      "content": "- The Pending_HP_Timer timeout value is 3 μs.\n- The combined Tx data path and Rx data path delays are 200 ns.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

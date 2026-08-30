@@ -1,0 +1,177 @@
+{
+  "index": 243,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 213 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 290,
+      "bottomRightY": 109,
+      "content": "### 8.4.3 U2 Inactivity Timeout",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 660,
+      "bottomRightY": 146,
+      "content": "The U2 Inactivity Timeout LMP shall be used to define the timeout from U1 to U2. Refer to Section 10.6 for details on this LMP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 268,
+      "topLeftY": 159,
+      "bottomRightX": 520,
+      "bottomRightY": 175,
+      "content": "Figure 8-6. U2 Inactivity Timeout LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 186,
+      "bottomRightX": 652,
+      "bottomRightY": 295,
+      "content": "![img-99.jpeg](img-99.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-99.jpeg"
+    },
+    {
+      "topLeftX": 625,
+      "topLeftY": 300,
+      "bottomRightX": 651,
+      "bottomRightY": 310,
+      "content": "U-095",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 249,
+      "topLeftY": 334,
+      "bottomRightX": 538,
+      "bottomRightY": 349,
+      "content": "Table 8-5. U2 Inactivity Timer Functionality",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 359,
+      "bottomRightX": 676,
+      "bottomRightY": 486,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | **Subtype**. This field shall be set to *U2 Inactivity Timeout* for a U2 Inactivity Timeout LMP.  |\n|  8 | 0:9 | **U2 Inactivity Timeout**. These 8 bits represent the U2 Inactivity Timeout value. The value placed in this field is the same value that is sent to the hub in a Set Port Feature (PORT_U2_TIMEOUT) command. Refer to Section 10.16.2.10 for details on the encoding of this field.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-101.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 508,
+      "bottomRightX": 277,
+      "bottomRightY": 521,
+      "content": "### 8.4.4 Vendor Device Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 529,
+      "bottomRightX": 657,
+      "bottomRightY": 560,
+      "content": "Use of this LMP is intended for vendor-specific device testing and shall not be used during normal operation of the link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 275,
+      "topLeftY": 573,
+      "bottomRightX": 511,
+      "bottomRightY": 589,
+      "content": "Figure 8-7. Vendor Device Test LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 600,
+      "bottomRightX": 652,
+      "bottomRightY": 708,
+      "content": "![img-100.jpeg](img-100.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-100.jpeg"
+    },
+    {
+      "topLeftX": 625,
+      "topLeftY": 714,
+      "bottomRightX": 651,
+      "bottomRightY": 724,
+      "content": "U-096",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 748,
+      "bottomRightX": 550,
+      "bottomRightY": 763,
+      "content": "Table 8-6. Vendor-specific Device Test Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 773,
+      "bottomRightX": 676,
+      "bottomRightY": 873,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | **Subtype**. This field shall be set to *Vendor Device Test*.  |\n|  8 | 0:9 | **Vendor-specific device test**. The function of these 8 bits is vendor specific.  |\n|  64 | 1:0 | **Vendor-defined data**. This value is vendor-defined.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-102.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

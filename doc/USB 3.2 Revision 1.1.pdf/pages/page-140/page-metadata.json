@@ -1,0 +1,148 @@
+{
+  "index": 139,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 109 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 92,
+      "bottomRightX": 504,
+      "bottomRightY": 110,
+      "content": "Figure 6-39. Rx Detect Schematic",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 227,
+      "topLeftY": 119,
+      "bottomRightX": 380,
+      "bottomRightY": 356,
+      "content": "![img-58.jpeg](img-58.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-58.jpeg"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 119,
+      "bottomRightX": 563,
+      "bottomRightY": 355,
+      "content": "![img-59.jpeg](img-59.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-59.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 371,
+      "bottomRightX": 628,
+      "bottomRightY": 402,
+      "content": "The left side of Figure 6-39 shows the Receiver Detection circuit with no termination present. The right side of the figure is the same circuit with termination.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 415,
+      "bottomRightX": 668,
+      "bottomRightY": 445,
+      "content": "Detect voltage transition must be common mode. Detect voltage transition shall conform to VTX_RCV_DETECT as described in Table 6-18.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 457,
+      "bottomRightX": 673,
+      "bottomRightY": 488,
+      "content": "The receiver detect sequence shall be in the positive common mode direction only. Negative receiver detection is not allowed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 502,
+      "bottomRightX": 280,
+      "bottomRightY": 516,
+      "content": "### 6.11.2 Rx Detect Sequence",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 522,
+      "bottomRightX": 517,
+      "bottomRightY": 539,
+      "content": "The recommended behavior of the Receiver Detection sequence is:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 551,
+      "bottomRightX": 667,
+      "bottomRightY": 641,
+      "content": "1. A Transmitter shall start at a stable voltage prior to the detect common mode shift.\n2. A Transmitter changes the common mode voltage on Txp and Txn consistent with detection of Receiver high impedance which is bounded by parameter ZRX-HIGH-IMP-DC-POS listed in Table 6-22.\n3. A Receiver is detected based on the rate that the lines change to the new voltage.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 646,
+      "bottomRightX": 650,
+      "bottomRightY": 745,
+      "content": "- The Receiver is not present if the voltage at the Transmitter charges at a rate dictated only by the Transmitter impedance and the capacitance of the interconnect and series capacitor.\n- The Receiver is present if the voltage at the Transmitter charges at a rate dictated by the Transmitter impedance, the series capacitor, the interconnect capacitance, and the Receiver termination.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 752,
+      "bottomRightX": 673,
+      "bottomRightY": 876,
+      "content": "Any time Electrical Idle is exited the detect sequence does not have to execute or may be aborted. During the Device connect, the Device receiver has to guarantee it is always in high impedance state while its power plane is stabilizing. This is required to avoid the Host falsely detecting the Device and starting the training sequence before the Device is ready. Similarly a disabled port has to keep its receiver termination in high impedance which is bounded by parameters ZRX-HIGH-IMP-DC-POS until directed by higher layer to exit from the Disabled state. In contrast, a port which is at U1/U2/U3 Electrical Idle shall have its Receiver Termination turned on and meet the RRX-DC specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

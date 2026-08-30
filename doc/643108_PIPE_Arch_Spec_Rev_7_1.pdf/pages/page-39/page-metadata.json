@@ -1,0 +1,75 @@
+{
+  "index": 38,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 137,
+      "bottomRightX": 465,
+      "bottomRightY": 154,
+      "content": "Figure 4-7. Receiver Block Diagram (8.0/10/16 GT/s)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 201,
+      "bottomRightX": 615,
+      "bottomRightY": 663,
+      "content": "![img-14.jpeg](img-14.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-14.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 702,
+      "bottomRightX": 421,
+      "bottomRightY": 725,
+      "content": "## 4.2 SerDes Architecture",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 732,
+      "bottomRightX": 694,
+      "bottomRightY": 848,
+      "content": "With the SerDes architecture, the PHY implements minimal digital logic compared to the original PIPE architecture. Figure 4-8 shows the transmitter functionality implemented in the PHY. The data received from the MAC goes through a parallel to serial converter before being driven out on differential wires. Note that in the SerDes architecture, all loopback logic resides in the MAC. Figure 4-9 shows the receiver functionality implemented in the PHY. The data received on the input differential wires goes through a serial to parallel converter before being forwarded to the MAC along with a recovered clock, RXCLK.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "39",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

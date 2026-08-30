@@ -1,0 +1,147 @@
+{
+  "index": 296,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 266 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 657,
+      "bottomRightY": 140,
+      "content": "Note: A transition condition that is italicized shall be interpreted as a comment, not a required condition. For example, the \"Stream n Active and Ready\" text of the Idle to Start Stream transition of Figure 8-39.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 152,
+      "bottomRightX": 674,
+      "bottomRightY": 200,
+      "content": "Note: Any CStream data payload may be zero-length. The use of zero-length DPs on a Stream pipe (other than for Prime Pipe or Start Stream reject operations) is defined by the Device Class associated with the endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 210,
+      "bottomRightX": 655,
+      "bottomRightY": 243,
+      "content": "Note: An IN Data or Burst Transaction is terminated with an ACK TP with NumP = 0. This ACK TP is referred to as a \"Terminating ACK\" in the following sections.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 253,
+      "bottomRightX": 364,
+      "bottomRightY": 268,
+      "content": "### 8.12.1.4.2 Device IN Stream Protocol",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 274,
+      "bottomRightX": 658,
+      "bottomRightY": 307,
+      "content": "This section defines the Enhanced SuperSpeed packet exchanges that transition the device side of the Stream Protocol from one state to another on an IN bulk endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 319,
+      "bottomRightX": 671,
+      "bottomRightY": 366,
+      "content": "In the following text, a Device IN Stream state transition is assumed to occur at the point the device sends the first bit of the first symbol of a state machine related message to the host, or at the point the device first decodes state machine related message from the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 376,
+      "bottomRightX": 600,
+      "bottomRightY": 394,
+      "content": "For an IN pipe, Endpoint Buffers in the host receive Function Data from a device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 404,
+      "bottomRightX": 601,
+      "bottomRightY": 421,
+      "content": "Figure 8-39. Device IN Stream Protocol State Machine (DISPSM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 428,
+      "bottomRightX": 644,
+      "bottomRightY": 841,
+      "content": "![img-130.jpeg](img-130.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-130.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 862,
+      "bottomRightX": 261,
+      "bottomRightY": 878,
+      "content": "### 8.12.1.4.2.1 Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 884,
+      "bottomRightX": 671,
+      "bottomRightY": 914,
+      "content": "After an endpoint is configured or receives a SetFeature(ENDPOINT_HALT) request, the pipe is in the Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

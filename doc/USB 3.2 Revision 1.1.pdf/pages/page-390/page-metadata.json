@@ -1,0 +1,148 @@
+{
+  "index": 389,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 359 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 345,
+      "bottomRightY": 106,
+      "content": "### 9.6.2.6 Precision Time Measurement",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 109,
+      "bottomRightX": 651,
+      "bottomRightY": 156,
+      "content": "This section defines the required device-level capabilities descriptor which shall be implemented by all hubs and devices that support the PTM capability. This capability descriptor cannot be directly accessed with a GetDescriptor() or SetDescriptor() request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 267,
+      "topLeftY": 161,
+      "bottomRightX": 520,
+      "bottomRightY": 176,
+      "content": "Table 9-20. PTM Capability Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 186,
+      "bottomRightX": 668,
+      "bottomRightY": 274,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of descriptor  |\n|  1 | bDescriptorType | 1 | Constant | DEVICE CAPABILITY Descriptor type  |\n|  2 | bDevCapabilityType | 1 | Constant | Capability type: PRECISION_TIME_MEASUREMENT  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-191.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 289,
+      "bottomRightX": 378,
+      "bottomRightY": 303,
+      "content": "### 9.6.2.7 Configuration Summary Descriptor",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 304,
+      "bottomRightX": 671,
+      "bottomRightY": 411,
+      "content": "The Configuration Summary Descriptor may be implemented by a device with more than one configuration, and identifies a single function presented by the device along with a list of the configuration descriptor indices that include the function. If implemented, each function presented by the device shall be represented by a separate Configuration Summary Descriptor. However, a function's Configuration Summary Descriptor may be omitted if the function is present in all possible configurations. Configuration Summary Descriptors should be included in the BOS descriptor in order of descending preference.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 425,
+      "bottomRightX": 590,
+      "bottomRightY": 456,
+      "content": "Configuration Summary Descriptors may be used by the host to select the most appropriate/preferred configuration for the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 462,
+      "bottomRightX": 549,
+      "bottomRightY": 478,
+      "content": "Table 9-21. Configuration Summary Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 487,
+      "bottomRightX": 679,
+      "bottomRightY": 791,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of descriptor  |\n|  1 | bDescriptorType | 1 | Constant | DEVICE CAPABILITY Descriptor type  |\n|  2 | bDevCapabilityType | 1 | Number | Capability type: CONFIGURATION SUMMARY  |\n|  3 | bcdVersion | 2 | BCD | 0100H, the revision of the Configuration Summary Descriptor with this document  |\n|  5 | bClass | 1 | Class | Class code of the function  |\n|  6 | bSubClass | 1 | Subclass | Subclass code of the function  |\n|  7 | bProtocol | 1 | Protocol | Protocol of the function  |\n|  8 | bConfigurationCount | 1 | Number | Number of configurations (N) that include this class/subclass/protocol  |\n|  9 | bConfigurationIndex[0] | 1 | Number | First configuration descriptor index for a configuration containing this class/subclass/protocol  |\n|  ... | ... | ... | ... | ...  |\n|  8+N | bConfigurationIndex[N-1] | 1 | Number | Last configuration descriptor index for a configuration containing this class/subclass/protocol  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-192.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 821,
+      "bottomRightX": 293,
+      "bottomRightY": 837,
+      "content": "### 9.6.2.8 FWStatus Capability",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 843,
+      "bottomRightX": 661,
+      "bottomRightY": 890,
+      "content": "This section defines the required device level capabilities descriptor which shall be implemented by all hubs and devices that support the FWStatus capability. This capability descriptor cannot be directly accessed with GetDescriptor() or SetDescriptor() request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

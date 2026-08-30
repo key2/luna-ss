@@ -1,0 +1,57 @@
+{
+  "index": 16,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 61,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 908,
+      "content": "|  7.2.4.1.1#41 | A port shall not transmit any header packet when its Remote (Type 1/Type 2) Rx Header Buffer Credit Count is zero. | NT  |\n| --- | --- | --- |\n|  7.2.4.1.1#42 | A port shall not request for a low power link state entry before receiving and sending LCRD_x(/LCRD1_x/LCRD2_x) during the (Type 1/Type 2) Rx Header Buffer Credit Advertisement. | 5.1  |\n|  7.2.4.1.1#43 | A port sending LBAD before Recovery shall not expect to receive LRTY before a retried header packet from its link partner upon entry to U0, when a port enters U0 from Recovery. | NT  |\n|  7.2.4.1.1#44 | A port receiving LBAD before Recovery shall not send LRTY before a retried header packet to its link partner upon entry to U0, when a port enters U0 from Recovery. | NT  |\n|  Subsection reference: 7.2.4.1.2 General Rules of LGOOD_n and LCRD_x Usage  |   |   |\n|  7.2.4.1.2#1 | For SuperSpeed USB, LCRD_x received out of alphabetical order is considered a missing of a link command, and transition to Recovery shall be initiated. | 7.15  |\n|  7.2.4.1.2#2 | For SuperSpeedPlus USB, LCRD1_x received out of alphabetical order is considered a missing of a link command, and transition to Recovery shall be initiated. The same is true for LCRD2_x. | 7.15  |\n|  7.2.4.1.2#3 | LGOOD_n received out of numerical order is considered a missing of a link command, and transition to Recovery shall be initiated. | 7.14  |\n|  7.2.4.1.2#4 | A hub shall set the DL bit in the Link Control Word when a header packet transmission is delayed. | NT  |\n|  Subsection reference: 7.2.4.1.3 Transmitting Header Packets  |   |   |\n|  7.2.4.1.3#1 | Before sending a header packet or a Type 1/Type 2 packet, a port shall add the Tx Header Sequence Number corresponding to the Header Sequence Number field in the Link Control Word. | BC  |\n|  7.2.4.1.3#2 | Transmission of a header packet or a Type 1/Type 2 packet shall consume a Tx Header Buffer or a Type 1/Type 2 Tx Header Buffer. The Tx Header Sequence Number shall be incremented by one after the transmission or roll over to zero if the maximum Header sequence number is reached. | BC  |\n|  7.2.4.1.3#3 | Transmission of a retried header packet or a Type 1/Type 2 packet shall not consume an additional Tx Header Buffer or Type 1/Type 2 Tx Header Buffer and the Tx Header Sequence Number shall remain unchanged. | 7.8  |\n|  7.2.4.1.3#4 | Upon receiving LBAD, a port shall send LRTY followed by resending all header packets that have not been acknowledged with LGOOD_n, except for Recovery. | 7.8  |\n|  7.2.4.1.3#5 | Prior to resending a header packet, a port shall set the Delay bit within the Link Control word and re-calculate the CRC-5. | 7.8  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-10.md"
+    },
+    {
+      "topLeftX": 408,
+      "topLeftY": 935,
+      "bottomRightX": 416,
+      "bottomRightY": 946,
+      "content": "9",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 955,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

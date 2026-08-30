@@ -1,0 +1,157 @@
+{
+  "index": 449,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 257,
+      "bottomRightY": 113,
+      "content": "### 9.4.12 Set SEL",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 694,
+      "bottomRightY": 154,
+      "content": "This request sets both the U1 and U2 System Exit Latency and the U1 or U2 exit latency for all the links between a device and a root port on the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 166,
+      "bottomRightX": 700,
+      "bottomRightY": 238,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B | SET_SEL | Zero | Zero | Six | Exit Latency Values  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-171.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 253,
+      "bottomRightX": 678,
+      "bottomRightY": 284,
+      "content": "The latency values are sent to the device in the data stage of the control transfer in the following format:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 287,
+      "bottomRightX": 606,
+      "bottomRightY": 388,
+      "content": "|  Offset | Name | Meaning  |\n| --- | --- | --- |\n|  0 | U1SEL | Time in μs for U1 System Exit Latency  |\n|  1 | U1PEL | Time in μs for U1 Device to Host Exit Latency  |\n|  2 | U2SEL | Time in μs for U2 System Exit Latency  |\n|  4 | U2PEL | Time in μs for U2 Device to Host Exit Latency  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-172.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 402,
+      "bottomRightX": 698,
+      "bottomRightY": 436,
+      "content": "Figure C-2 in Appendix C illustrates the total latency a device may experience. The components of latency include the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 449,
+      "bottomRightX": 694,
+      "bottomRightY": 570,
+      "content": "- t1: the time to transition all links in the path to the host to U0 when the transition is initiated by the device\n- t2: the time for the ERDY to traverse the interconnect hierarchy from the device to the host\n- t3: the time for the host to consume the ERDY and transmit a response to that request\n- t4: the time for the response to traverse the interconnect hierarchy from the host to the device",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 581,
+      "bottomRightX": 690,
+      "bottomRightY": 632,
+      "content": "The U1SEL and U2SEL values represent the total round trip path latency when transitioning the links between the device and host from U1 or U2 respectively to U0 under worst-case circumstances when the transition is initiated by the device. This is the sum of times t1, t2, and t4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 640,
+      "bottomRightX": 686,
+      "bottomRightY": 691,
+      "content": "The U1PEL and U2PEL values represent the device to host latency to transition the entire path of links between the device and host from U1 or U2 respectively to U0 under worst-case circumstances when the transition is initiated by the device. This time includes only t1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 699,
+      "bottomRightX": 396,
+      "bottomRightY": 716,
+      "content": "For more information, refer to Section C.1.5.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 727,
+      "bottomRightX": 684,
+      "bottomRightY": 762,
+      "content": "If wIndex or wValue is not set to zero or wLength is not six, then the behavior of the device is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 769,
+      "bottomRightX": 665,
+      "bottomRightY": 804,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 810,
+      "bottomRightX": 609,
+      "bottomRightY": 827,
+      "content": "Address state: This is a valid request when the device is in the Address state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 833,
+      "bottomRightX": 628,
+      "bottomRightY": 850,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "9-32",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

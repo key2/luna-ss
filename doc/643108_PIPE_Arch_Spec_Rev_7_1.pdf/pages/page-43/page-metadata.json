@@ -1,0 +1,57 @@
+{
+  "index": 42,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 137,
+      "bottomRightX": 524,
+      "bottomRightY": 154,
+      "content": "Figure 5-2. Transmitter Block Diagram (1.5, 3.0, and 6.0 GT/s)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 193,
+      "topLeftY": 169,
+      "bottomRightX": 602,
+      "bottomRightY": 461,
+      "content": "![img-18.jpeg](img-18.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-18.jpeg"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "43",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

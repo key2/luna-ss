@@ -1,0 +1,29 @@
+{
+  "index": 35,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 90,
+      "bottomRightX": 702,
+      "bottomRightY": 893,
+      "content": "Table 8-28. Host Responses to Data Received from a Device (Bulk, Control, and Interrupt Endpoints)...8-58\nTable 8-29. Device Responses to OUT Transactions (Bulk, Control, and Interrupt Endpoints)...8-59\nTable 8-30. Device Responses to SETUP Transactions (Only for Control Endpoints) ...8-60\nTable 8-31. Status Stage Responses ...8-97\nTable 8-32. ACK TP and DPs for Pipelined Isochronous IN Transactions ...8-117\nTable 8-33. Device Responses to Isochronous IN Transactions...8-119\nTable 8-34. Host Responses to IN Transactions ...8-120\nTable 8-35. Device Responses to OUT Data Packets ...8-120\nTable 8-36. Timing Parameters ...8-121\nTable 9-1. Visible Enhanced SuperSpeed Device States ...9-3\nTable 9-2. Preserved USB Suspend State Parameters ...9-10\nTable 9-3. Format of Setup Data ...9-14\nTable 9-4. Standard Device Requests ...9-17\nTable 9-5. Standard Request Codes ...9-18\nTable 9-6. Descriptor Types ...9-19\nTable 9-7. Standard Feature Selectors...9-20\nTable 9-8. Standard Status Type Codes...9-24\nTable 9-9. Suspend Options...9-29\nTable 9-10. Device Parameters and Events ...9-34\nTable 9-11. Standard Device Descriptor ...9-37\nTable 9-12. BOS Descriptor ...9-38\nTable 9-13. Format of a Device Capability Descriptor...9-39\nTable 9-14. Device Capability Type Codes...9-39\nTable 9-15. USB 2.0 Extension Descriptor ...9-40\nTable 9-16. SuperSpeed Device Capability Descriptor ...9-41\nTable 9-17. Container ID Descriptor ...9-43\nTable 9-18. Platform Descriptor...9-43\nTable 9-19. SuperSpeedPlus Descriptor ...9-44\nTable 9-20. PTM Capability Descriptor ...9-46\nTable 9-21. Standard Configuration Descriptor...9-47\nTable 9-22. Standard Interface Association Descriptor...9-48\nTable 9-23. Standard Interface Descriptor ...9-50\nTable 9-24. Standard Endpoint Descriptor...9-51\nTable 9-25. Example of Feedback Endpoint Numbers...9-53\nTable 9-26. SuperSpeed Endpoint Companion Descriptor ...9-55\nTable 9-27. SuperSpeedPlus Isochronous Endpoint Companion Descriptor ...9-58\nTable 9-28. String Descriptor Zero, Specifying Languages Supported by the Device ...9-59\nTable 9-29. UNICODE String Descriptor ...9-59\nTable 10-1. Downstream Facing Hub Port State Machine Diagram Legend ...10-16\nTable 10-2. Downstream Port VBUS Requirements ...10-18\nTable 10-3. Downstream Flowing Header Packet Processing Actions...10-49\nTable 10-4. Hub Power Operating Mode Summary ...10-60\nTable 10-5. Enhanced SuperSpeed Hub Descriptor ...10-68\nTable 10-6. Hub Responses to Standard Device Requests ...10-70\nTable 10-7. Hub Class Requests...10-71\nTable 10-8. Hub Class Request Codes ...10-72\nTable 10-9. Hub Class Feature Selectors...10-72",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 981,
+      "bottomRightX": 120,
+      "bottomRightY": 995,
+      "content": "xxxvi",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

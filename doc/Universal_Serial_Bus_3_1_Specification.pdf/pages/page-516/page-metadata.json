@@ -1,0 +1,155 @@
+{
+  "index": 515,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 93,
+      "bottomRightX": 698,
+      "bottomRightY": 351,
+      "content": "- A SuperSpeed hub that receives a header packet on its upstream port that is routed to a downstream port shall immediately route the header packet to the appropriate downstream port header packet buffer (if space in that buffer is available) regardless of the state of any other downstream port header packet buffers or the state of the upstream port Rx header packet buffer. For example, a hub Tx header packet buffer for downstream port 1 is full and the hub has three more header packets routed to downstream port 1 in the hub upstream port Rx header packet buffer. If the hub now receives a header packet routed to downstream port 2, it must immediately route the header packet to the downstream port 2 Tx header packet buffer.\n- A SuperSpeed hub starting with all header packet buffers empty shall be able to receive at least eight header packets on the same downstream port directed for upstream transmission when the upstream port is not in U0.\n- Header packets transmitted by a downstream port shall be transmitted in the order they were received on the upstream port.\n- Header packets transmitted by an upstream port from the same downstream port shall be transmitted in the order they were received on that downstream port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 356,
+      "bottomRightX": 691,
+      "bottomRightY": 389,
+      "content": "Section 10.9 provides detailed functional state machines for the upstream and downstream port Tx and Rx header packet buffers in a hub implementation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 394,
+      "bottomRightX": 676,
+      "bottomRightY": 428,
+      "content": "The SuperSpeed hub shall have at least 1080 bytes of buffering for data packets received on the upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 433,
+      "bottomRightX": 695,
+      "bottomRightY": 467,
+      "content": "The SuperSpeed hub shall have at least 1080 bytes of shared buffering for data packets received on all downstream ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 482,
+      "bottomRightX": 471,
+      "bottomRightY": 504,
+      "content": "### 10.7.5 SuperSpeed Packet Connectivity",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 508,
+      "bottomRightX": 682,
+      "bottomRightY": 559,
+      "content": "The SuperSpeed hub packet repeater/forwarder must re-clock the packets in both directions. Re-clocking means that the repeater extracts the data from the received stream and retransmits the stream using its own local clock.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 581,
+      "bottomRightX": 612,
+      "bottomRightY": 605,
+      "content": "## 10.8 SuperSpeedPlus Store and Forward Behavior",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 612,
+      "bottomRightX": 534,
+      "bottomRightY": 630,
+      "content": "The SuperSpeedPlus Hub provides the following general functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 634,
+      "bottomRightX": 295,
+      "bottomRightY": 651,
+      "content": "In the downstream direction:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 656,
+      "bottomRightX": 485,
+      "bottomRightY": 710,
+      "content": "- Receives and validates packet\n- Forwards packet to appropriate downstream port\n- Selects next packet to transmit on (each) downstream port",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 715,
+      "bottomRightX": 278,
+      "bottomRightY": 732,
+      "content": "In the upstream direction:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 737,
+      "bottomRightX": 449,
+      "bottomRightY": 791,
+      "content": "- Receives and validates packet\n- Forwards packet to the upstream port\n- Selects next packet to transmit on the upstream port",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 804,
+      "bottomRightX": 367,
+      "bottomRightY": 826,
+      "content": "### 10.8.1 Hub Elasticity Buffer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 832,
+      "bottomRightX": 691,
+      "bottomRightY": 866,
+      "content": "There are no direct specifications for elasticity buffer behavior in a hub. However, note that a hub must meet the requirements in Section 10.7.3 for the maximum variation in propagation delay.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 981,
+      "bottomRightX": 126,
+      "bottomRightY": 996,
+      "content": "10-38",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

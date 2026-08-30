@@ -1,0 +1,57 @@
+{
+  "index": 23,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 36,
+      "bottomRightX": 215,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 556,
+      "topLeftY": 36,
+      "bottomRightX": 645,
+      "bottomRightY": 48,
+      "content": "3.7 MIPI Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 86,
+      "bottomRightX": 644,
+      "bottomRightY": 810,
+      "content": "|  J18 Pin No. | Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- | --- |\n|  56 | MIPI_GPIO3 | H15 | 4 | 3.3V | GPIO reserved  |\n|  57 | GND | - | - | - | GND  |\n|  58 | MIPI_GPIO4 | J15 | 4 | 3.3V | GPIO reserved  |\n|  59 | GND | - | - | - | GND  |\n|  60 | GND | - | - | - | GND  |\n|  61 | M1_D2A | H1 | MIPI | - | MIPI CPHY data signal  |\n|  62 | MIPI_GPIO5 | F5 | 11 | 3.3V | GPIO reserved  |\n|  63 | M1_D2B | J1 | MIPI | - | MIPI CPHY data signal  |\n|  64 | MIPI_GPIO6 | K3 | 11 | 3.3V | GPIO reserved  |\n|  65 | M1_D2C | J2 | MIPI | - | MIPI CPHY data signal  |\n|  66 | GND | - | - | - | GND  |\n|  67 | GND | - | - | - | GND  |\n|  68 | MIPI_GPIO7 | K4 | 11 | 3.3V | GPIO reserved  |\n|  69 | GND | - | - | - | GND  |\n|  70 | MIPI_GPIO8 | G12 | 4 | 3.3V | GPIO reserved  |\n|  71 | GND | - | - | - | GND  |\n|  72 | GND | - | - | - | GND  |\n|  73 | GND | - | - | - | GND  |\n|  74 | GND | - | - | - | GND  |\n|  75 | GND | - | - | - | GND  |\n|  76 | VCC3P3 | - | - | 3.3V | Power  |\n|  77 | GND | - | - | - | GND  |\n|  78 | VCC3P3 | - | - | 3.3V | Power  |\n|  79 | GND | - | - | - | GND  |\n|  80 | VCC3P3 | - | - | 3.3V | Power  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-13.md"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 944,
+      "bottomRightX": 166,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 613,
+      "topLeftY": 944,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "17(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

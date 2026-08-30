@@ -1,0 +1,148 @@
+{
+  "index": 170,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 122,
+      "bottomRightX": 694,
+      "bottomRightY": 185,
+      "content": "- The MAC is encouraged to use the exit error indication to initiate a PIPE lane reset or otherwise block functional operation.\n- The **LB Position** cannot be changed while in NELB. NELB must be exited and re-entered with the new **LB Position**.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 99,
+      "topLeftY": 208,
+      "bottomRightX": 592,
+      "bottomRightY": 228,
+      "content": "### 8.34.3 USB4 PAM3 Encoding on PIPE Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 236,
+      "bottomRightX": 669,
+      "bottomRightY": 279,
+      "content": "Each pair of binary bits on the TxData[55:0], TxData2[55:0], RxData[55:0], or RxData2[55:0] interface represents a PAM3 analog level. The mapping follows the USB4 specification:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 284,
+      "bottomRightX": 439,
+      "bottomRightY": 343,
+      "content": "- 0 maps to the lower voltage level, V₋₁.\n- 1 maps to the middle voltage level, V₀.\n- 2 maps to the upper voltage level, V₁.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 348,
+      "bottomRightX": 669,
+      "bottomRightY": 391,
+      "content": "The 56-bit data interface represents four symbols. Bits [13:0] comprise the first symbol, bits [27:14] comprise the second symbol, bits [41:28] comprise the third symbol, and bits [55:42] comprise the third symbol.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 399,
+      "bottomRightX": 695,
+      "bottomRightY": 441,
+      "content": "Within each symbol, bits[1:0] are trit 0 of the symbol, bits [3:2] are trit 1 of the symbol, bits [5:4] are trit 2 of the symbol, and so forth. Refer to the USB4 specification for further details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 99,
+      "topLeftY": 464,
+      "bottomRightX": 599,
+      "bottomRightY": 486,
+      "content": "### 8.35 Switching Between Rx and Tx Pairs",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 493,
+      "bottomRightX": 696,
+      "bottomRightY": 593,
+      "content": "USB4 supports asymmetric mode. To transition between symmetric and asymmetric mode requires switching the direction of a differential Rx/Tx pair. The message bus sequence for switching from Rx to Tx operation is shown in Figure 8-47; the sequence for switching from Tx to Rx direction is specified in Figure 8-48. The traffic on all other differential pairs must not be impacted by this transition. This transition is permitted in any PowerDown state in which the message bus is operational; however, at a minimum, it must be supported in PS0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 620,
+      "bottomRightX": 520,
+      "bottomRightY": 635,
+      "content": "Figure 8-47. Transitioning from Rx to Tx Operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 638,
+      "bottomRightX": 700,
+      "bottomRightY": 737,
+      "content": "![img-68.jpeg](img-68.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-68.jpeg"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 762,
+      "bottomRightX": 520,
+      "bottomRightY": 777,
+      "content": "Figure 8-48. Transitioning from Tx to Rx Operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 780,
+      "bottomRightX": 700,
+      "bottomRightY": 875,
+      "content": "![img-69.jpeg](img-69.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-69.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "171",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

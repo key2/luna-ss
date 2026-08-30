@@ -1,0 +1,48 @@
+{
+  "index": 325,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 108,
+      "bottomRightX": 299,
+      "bottomRightY": 122,
+      "content": "Table 8-13. ACK TP Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 126,
+      "bottomRightX": 699,
+      "bottomRightY": 880,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  20 | 0:5 | **Route String/Reserved.** This field is only used by hubs. In conjunction with the hub depth, it is used to route a packet to the correct downstream port. Refer to Section 8.9 for details. When sent by a device, this field is Reserved.  |\n|  7 | 0:25 | **Device Address.** This field specifies the device, via its address, that is the recipient or the source of the TP. Refer to Section 8.8.  |\n|  4 | 1:0 | **SubType.** This field shall be set to ACK for an ACK TP.  |\n|  2 | 1:4 | **Reserved (Rsvd).**  |\n|  1 | 1:6 | **Retry Data Packet (rty).** This field is used to signal that the host or a device did not receive a data packet or received a corrupted data packet and requests the transmitter to resend one or more data packets starting at the specified sequence number.  |\n|  1 | 1:7 | **Direction (D).** This field defines the direction of an endpoint within the device that is the source or recipient of this TP. Refer to Section 8.8. **Value****Direction of Data Flow** 0b Host to Device 1b Device to Host  |\n|  4 | 1:8 | **Endpoint Number (Ept Num).** This field determines an endpoint within the device that is the source or recipient of this TP. Refer to Section 8.8.  |\n|  3 | 1:12 | **Transfer Type (TT).** When operating at Gen 1 speed, the value of this field is Reserved and shall be set to zero. When not operating at Gen 1 speed, this field is defined as follows: **Value****Meaning** 100b Control Transfer Type 101b Isochronous Transfer Type 110b Bulk Tranfer Type 111b Interrupt Transfer Type 001b Reserved 010b Reserved 011b Reserved 000b Unknown for ACKs and deferred DPs originating from SuperSpeed bus instances. Reserved for all other ACKs and DPs. Refer to chapter 10.  |\n|  1 | 1:15 | **Host Error (HE).** This field is only valid when the ACK TP is sent from the host to a device. This bit shall be set if the host was unable to accept a valid data packet due to internal host issues. When the host sets this field, it must also set the **Retry Data Packet** field for a non-isochronous transaction.  |\n|  5 | 1:16 | **Number of Packets (NumP).** This field is used to indicate the number of Data Packet buffers that the receiver can accept. The value in this field shall be less than or equal to the maximum burst size supported by the endpoint as determined by the value in the **bMaxBurst** field in the Endpoint Companion Descriptor (refer to Section 9.6.7).  |\n|  5 | 1:21 | **Sequence Number (Seq Num).** This field is used to identify the sequence number of the next expected data packet.  |\n|  5 | 1:26 | **Reserved.**  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-116.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "8-32",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

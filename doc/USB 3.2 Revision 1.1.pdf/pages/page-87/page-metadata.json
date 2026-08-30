@@ -1,0 +1,139 @@
+{
+  "index": 86,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 189,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 56 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 287,
+      "topLeftY": 92,
+      "bottomRightX": 500,
+      "bottomRightY": 108,
+      "content": "Table 6-1. Electrical Test Points",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 227,
+      "topLeftY": 119,
+      "bottomRightX": 561,
+      "bottomRightY": 269,
+      "content": "|  Test Point | Description  |\n| --- | --- |\n|  TP1 | Transmitter silicon pad  |\n|  TP2 | Transmitter port connector mid-point  |\n|  TP3 | Receiver port connector mid-point  |\n|  TP4 | Receiver silicon pad  |\n|  TP1Ro, TP3Ro | Re-timer transmitter silicon pad  |\n|  TP1Ri, TP3Ri | Re-timer receiver silicon pad  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-35.md"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 302,
+      "bottomRightX": 504,
+      "bottomRightY": 318,
+      "content": "Figure 6-6. Electrical Test Points",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 334,
+      "bottomRightX": 679,
+      "bottomRightY": 539,
+      "content": "![img-17.jpeg](img-17.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-17.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 577,
+      "bottomRightX": 651,
+      "bottomRightY": 609,
+      "content": "Note that simultaneous USB 2.0 and SuperSpeed Gen 1 or Gen 2 operation is required for downstream facing ports and for upstream facing ports on Hubs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 621,
+      "bottomRightX": 270,
+      "bottomRightY": 635,
+      "content": "### 6.2.2 Channel Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 642,
+      "bottomRightX": 675,
+      "bottomRightY": 702,
+      "content": "A PHY is a transmitter and receiver that operate together and are located on the same component. A channel connects two PHYs together with two unidirectional differential pairs of pins for a total of four wires. The PHYs are required to be AC coupled. The AC coupling capacitors are associated with the transmitter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 716,
+      "bottomRightX": 264,
+      "bottomRightY": 731,
+      "content": "### 6.3 Symbol Encoding",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 738,
+      "bottomRightX": 254,
+      "bottomRightY": 753,
+      "content": "#### 6.3.1 Gen 1 Encoding",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 761,
+      "bottomRightX": 668,
+      "bottomRightY": 807,
+      "content": "The Gen 1 PHY uses the 8b/10b transmission code. The definition of this transmission code is identical to that specified in ANSI X3.230-1994 (also referred to as ANSI INCITS 230-1994), clause 11. As shown in Figure 6-7, ABCDE maps to abcdei and FGH maps to fghj.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

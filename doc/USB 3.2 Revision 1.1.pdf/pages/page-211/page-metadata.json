@@ -1,0 +1,119 @@
+{
+  "index": 210,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 180 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 675,
+      "bottomRightY": 430,
+      "content": "- The port in x2 operation shall transition to Polling.RxEQ if both of the following conditions are met. Note that in x2 operation, the PHY Ready LBPM exchange is performed only on the Configuration Lane.\n  o The PHY Ready LBPM handshake is achieved.\n  o The de-assertion of bit-7 of the PHY Ready LBPM from the DFP is observed.\n- A downstream port shall transition to Rx.Detect upon the 12 ms timer timeout (tPollingLBPMLFPSTimeout) and cPollingTimeout is less than two.\n- A downstream port shall transition to eSS.Inactive upon the 12 ms timer timeout (tPollingLBPMLFPSTimeout) and cPollingTimeout is two.\n- An upstream port of a hub shall transition to Rx.Detect upon the 12 ms timer timeout (tPollingLBPMLFPSTimeout) and the conditions to transition to Polling.RxEQ are not met.\n- A peripheral device shall transition to eSS.Disabled upon the 12 ms timer timeout (tPollingLBPMLFPSTimeout) and the conditions to transition to Polling.RxEQ are not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 451,
+      "bottomRightX": 238,
+      "bottomRightY": 466,
+      "content": "### 7.5.4.7 Polling.RxEQ",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 473,
+      "bottomRightX": 666,
+      "bottomRightY": 519,
+      "content": "Polling.RxEQ is a substate for receiver equalization training. A port is required to complete its receiver equalization training. For the port in x2 operation, the link training is performed on each negotiated lane simultaneously.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 531,
+      "bottomRightX": 370,
+      "bottomRightY": 547,
+      "content": "#### 7.5.4.7.1 Polling.RxEQ Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 554,
+      "bottomRightX": 675,
+      "bottomRightY": 690,
+      "content": "- The detection and correction of the lane polarity inversion in Gen 1 operation shall be enabled, as is described in Section 6.4.2. In Gen 1x2 operation, the detection and correction of the lane polarity inversion shall be enabled on both lanes.\n- The port shall transmit the corresponding TSEQ ordered sets defined in Table 6-3 for Gen 1 operation, or Table 6-9 for Gen 2 operation. For Gen 2 operation, refer to Section 6.4.1.2.1 for SYNC ordered set insertion while transmitting TSEQ ordered sets.\n- The port shall complete receiver equalizer training upon exit from this substate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 696,
+      "bottomRightX": 668,
+      "bottomRightY": 818,
+      "content": "Note: A situation may exist where the port entering Polling.RxEQ earlier is transmitting TSEQ ordered sets while its link partner is still sending Polling.LFPS to satisfy the exit conditions from Polling.LFPS or Polling.LFPSPlus to Polling.RxEQ. In this situation, if its link partner is in electrical idle, near-end cross talk may cause the port to train its Rx equalizer using its own TSEQ ordered sets. To avoid a receiver from training itself, a port may either ignore the beginning part (about 30 µs) of the TSEQ ordered sets, or continue the equalizer training until it completes the transmission of TSEQ ordered sets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 840,
+      "bottomRightX": 341,
+      "bottomRightY": 855,
+      "content": "#### 7.5.4.7.2 Exit from Polling.RxEQ",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 862,
+      "bottomRightX": 619,
+      "bottomRightY": 908,
+      "content": "- The port in Gen 1 operation shall transition to Polling.Active after 65,536 consecutive TSEQ ordered sets defined in Table 6-3 are transmitted on each negotiated lane.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "index": 73,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 145,
+      "bottomRightX": 430,
+      "bottomRightY": 162,
+      "content": "### TD.7.5 Header Packet Framing Robustness Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 165,
+      "bottomRightX": 700,
+      "bottomRightY": 196,
+      "content": "This test verifies that the PUT does not invalidate header packets having one symbol error in the HPSTART framing. The combinations to be tested:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 202,
+      "bottomRightX": 293,
+      "bottomRightY": 261,
+      "content": "A. ERR SHP SHP EPF\nB. SHP ERR SHP EPF\nC. SHP SHP ERR EPF\nD. SHP SHP SHP ERR",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 276,
+      "bottomRightX": 473,
+      "bottomRightY": 292,
+      "content": "The Port Configuration transaction will be used for this purpose.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 323,
+      "bottomRightX": 234,
+      "bottomRightY": 335,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 344,
+      "bottomRightX": 198,
+      "bottomRightY": 358,
+      "content": "7.2.4.1.4#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 367,
+      "bottomRightX": 253,
+      "bottomRightY": 382,
+      "content": "#### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 390,
+      "bottomRightX": 674,
+      "bottomRightY": 479,
+      "content": "1. Perform the Link Initialization Sequence, but transmit all Header Packets with an error in the first HPSTART symbol.\n2. The test passes if the Link Initialization Sequence passes.\n3. Repeat the above steps with an error in the second, third, and fourth HPSTART symbols, as shown above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 539,
+      "bottomRightX": 468,
+      "bottomRightY": 555,
+      "content": "### TD.7.6 Data Payload Packet Framing Robustness Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 558,
+      "bottomRightX": 684,
+      "bottomRightY": 589,
+      "content": "This test verifies that the PUT does not invalidate data payload packets having a single character framing error in DPPSTART and DPPEND. The combinations to be tested:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 619,
+      "bottomRightX": 301,
+      "bottomRightY": 737,
+      "content": "A. ERR SDP SDP EPF\nB. SDP ERR SDP EPF\nC. SDP SDP ERR EPF\nD. SDP SDP SDP ERR\nE. ERR END END EPF\nF. END ERR END EPF\nG. END END ERR EPF\nH. END END END ERR",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 753,
+      "bottomRightX": 591,
+      "bottomRightY": 768,
+      "content": "When the LVS is a Downstream Port, it will place framing errors on Setup DP Packets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 774,
+      "bottomRightX": 696,
+      "bottomRightY": 806,
+      "content": "When the LVS is an Upstream Port, it will reply to the GetDeviceDescriptor request with a DPP containing framing errors.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 813,
+      "bottomRightX": 707,
+      "bottomRightY": 857,
+      "content": "If the DUT is a Gen 1 device, the LVS also verifies that the PUT can handle Gen2 Transaction Packets in which several Gen1 Reserved bits are in use. The verification includes various configurations in the TPS and TT fields of the Gen2 Transaction Packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 865,
+      "bottomRightX": 234,
+      "bottomRightY": 879,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 888,
+      "bottomRightX": 208,
+      "bottomRightY": 902,
+      "content": "7.2.4.1.6#1,2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 910,
+      "bottomRightX": 189,
+      "bottomRightY": 924,
+      "content": "7.3.4.1#3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 935,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "66",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

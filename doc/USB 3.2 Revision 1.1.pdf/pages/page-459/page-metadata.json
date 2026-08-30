@@ -1,0 +1,130 @@
+{
+  "index": 458,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 428 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 528,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 636,
+      "bottomRightY": 125,
+      "content": "and decodes the Hub and Port Status Change Bitmap accordingly. The hub reports any changes in hub status in bit zero of the Hub and Port Status Change Bitmap.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 135,
+      "bottomRightX": 666,
+      "bottomRightY": 167,
+      "content": "The Hub and Port Status Change Bitmap size is two bytes. Hubs report only as many bits as there are ports on the hub. A USB hub may have no more than nMaxHubPorts.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 179,
+      "bottomRightX": 557,
+      "bottomRightY": 197,
+      "content": "Figure 10-24. Hub and Port Status Change Bitmap",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 134,
+      "topLeftY": 205,
+      "bottomRightX": 660,
+      "bottomRightY": 479,
+      "content": "![img-185.jpeg](img-185.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-185.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 498,
+      "bottomRightX": 673,
+      "bottomRightY": 546,
+      "content": "Any time any of the Status Changed bits are non-zero, an ERDY is returned (if an NRDY was previously sent) notifying the host that the Hub and Port Status Change Bitmap has changed. Figure 10-25 shows an example creation mechanism for hub and port change bits.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 557,
+      "bottomRightX": 581,
+      "bottomRightY": 574,
+      "content": "Figure 10-25. Example Hub and Port Change Bit Sampling",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 224,
+      "topLeftY": 584,
+      "bottomRightX": 568,
+      "bottomRightY": 785,
+      "content": "![img-186.jpeg](img-186.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-186.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 805,
+      "bottomRightX": 383,
+      "bottomRightY": 821,
+      "content": "### 10.13.5 Over-current Reporting and Recovery",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 826,
+      "bottomRightX": 673,
+      "bottomRightY": 890,
+      "content": "USB devices shall be designed to meet applicable safety standards. Usually, this will mean that a self-powered hub implements current limiting on its downstream facing ports. If an over-current condition occurs, it causes a status and state change in one or more ports. This change is reported to the USB system software so that it can take corrective action.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

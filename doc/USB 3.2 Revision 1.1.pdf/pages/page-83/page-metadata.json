@@ -1,0 +1,94 @@
+{
+  "index": 82,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 52 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 266,
+      "topLeftY": 92,
+      "bottomRightX": 522,
+      "bottomRightY": 110,
+      "content": "Figure 6-2. Transmitter Block Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 120,
+      "bottomRightX": 352,
+      "bottomRightY": 459,
+      "content": "![img-12.jpeg](img-12.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-12.jpeg"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 473,
+      "bottomRightX": 298,
+      "bottomRightY": 488,
+      "content": "Gen 1 transmitter",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 380,
+      "topLeftY": 134,
+      "bottomRightX": 650,
+      "bottomRightY": 449,
+      "content": "![img-13.jpeg](img-13.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-13.jpeg"
+    },
+    {
+      "topLeftX": 457,
+      "topLeftY": 473,
+      "bottomRightX": 576,
+      "bottomRightY": 488,
+      "content": "Gen 2 transmitter",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

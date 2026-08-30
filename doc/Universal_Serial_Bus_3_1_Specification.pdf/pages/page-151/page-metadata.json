@@ -1,0 +1,102 @@
+{
+  "index": 150,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 113,
+      "bottomRightX": 572,
+      "bottomRightY": 136,
+      "content": "## 5.8 Implementation Notes and Design Guides",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 143,
+      "bottomRightX": 684,
+      "bottomRightY": 176,
+      "content": "This section discusses a few implementation notes and design guides to help users design and use the USB 3.1 connectors and cables.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 191,
+      "bottomRightX": 443,
+      "bottomRightY": 212,
+      "content": "### 5.8.1 Mated Connector Dimensions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 218,
+      "bottomRightX": 679,
+      "bottomRightY": 288,
+      "content": "Figure 5-31, Figure 5-32, and Figure 5-33 show the mated plugs and receptacles for the USB 3.1 Standard-A, USB 3.1 Standard-B, and USB 3.1 Micro connectors, respectively. The distance between the receptacle front surface and the cable overmold should be observed by system designers to avoid interference between the system enclosure and the cable plug overmold.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 293,
+      "bottomRightX": 665,
+      "bottomRightY": 325,
+      "content": "Provisions shall be made in connectors and chassis to ground the connector metal shells to the metal chassis to reduce EMI and RFI.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 266,
+      "topLeftY": 366,
+      "bottomRightX": 570,
+      "bottomRightY": 537,
+      "content": "![img-115.jpeg](img-115.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-115.jpeg"
+    },
+    {
+      "topLeftX": 307,
+      "topLeftY": 550,
+      "bottomRightX": 560,
+      "bottomRightY": 565,
+      "content": "FULLY MATED PLUG AND RECEPTACLE",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 622,
+      "bottomRightX": 570,
+      "bottomRightY": 639,
+      "content": "Figure 5-31. Mated USB 3.1 Standard-A Connector",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "5-63",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "index": 93,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 386,
+      "topLeftY": 141,
+      "bottomRightX": 586,
+      "bottomRightY": 307,
+      "content": "![img-13.jpeg](img-13.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-13.jpeg"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 169,
+      "bottomRightX": 344,
+      "bottomRightY": 322,
+      "content": "![img-14.jpeg](img-14.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-14.jpeg"
+    },
+    {
+      "topLeftX": 479,
+      "topLeftY": 330,
+      "bottomRightX": 564,
+      "bottomRightY": 344,
+      "content": "SECTION J-J",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 365,
+      "bottomRightX": 366,
+      "bottomRightY": 567,
+      "content": "![img-15.jpeg](img-15.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-15.jpeg"
+    },
+    {
+      "topLeftX": 400,
+      "topLeftY": 410,
+      "bottomRightX": 589,
+      "bottomRightY": 551,
+      "content": "![img-16.jpeg](img-16.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-16.jpeg"
+    },
+    {
+      "topLeftX": 223,
+      "topLeftY": 584,
+      "bottomRightX": 309,
+      "bottomRightY": 598,
+      "content": "SECTION S-S",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 485,
+      "topLeftY": 556,
+      "bottomRightX": 548,
+      "bottomRightY": 569,
+      "content": "DETAIL Z",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 572,
+      "topLeftY": 673,
+      "bottomRightX": 698,
+      "bottomRightY": 689,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 148,
+      "bottomRightY": 993,
+      "content": "5-6",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

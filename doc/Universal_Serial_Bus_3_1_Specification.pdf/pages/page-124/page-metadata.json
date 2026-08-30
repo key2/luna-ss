@@ -1,0 +1,56 @@
+{
+  "index": 123,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 46,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 115,
+      "bottomRightX": 342,
+      "bottomRightY": 138,
+      "content": "## 5.5 Cable Assemblies",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 154,
+      "bottomRightX": 613,
+      "bottomRightY": 198,
+      "content": "### 5.5.1 USB 3.1 Standard-A to USB 3.1 Standard-B Cable Assembly",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 203,
+      "bottomRightX": 701,
+      "bottomRightY": 271,
+      "content": "Figure 5-16 shows a USB 3.1 Standard-A to USB 3.1 Standard-B cable assembly. Due to increased wire sizes required for some PD cable implementations, the overmold dimensions for PD cables have larger maximum dimensions than the non-PD cables specified. See the *Universal Serial Bus Power Delivery Specification* for the maximum overmold dimensions of PD cable assemblies.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 978,
+      "bottomRightX": 158,
+      "bottomRightY": 995,
+      "content": "5-36",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

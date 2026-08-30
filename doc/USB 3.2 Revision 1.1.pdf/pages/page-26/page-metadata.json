@@ -1,0 +1,56 @@
+{
+  "index": 25,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- xxvi -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 927,
+      "content": "Figure 8-11. Link Delay Measurement Protocol...218\nFigure 8-12. PTM ITP Protocol...219\nFigure 8-13. LDM State Machine Notation...220\nFigure 8-14. LDM Requester State Machine...221\nFigure 8-15. LDM Responder State Machine...223\nFigure 8-16. PTM Path Performance Contributors...228\nFigure 8-17. LDM LMP...230\nFigure 8-18. ACK Transaction Packet...232\nFigure 8-19. NRDY Transaction Packet...235\nFigure 8-20. ERDY Transaction Packet...235\nFigure 8-21. STATUS Transaction Packet...236\nFigure 8-22. STALL Transaction Packet...236\nFigure 8-23. Device Notification Transaction Packet...237\nFigure 8-24. Function Wake Device Notification...238\nFigure 8-25. Latency Tolerance Message Device Notification...238\nFigure 8-26. Bus Interval Adjustment Message Device Notification...239\nFigure 8-27. Sublink Speed Device Notification...242\nFigure 8-28. PING Transaction Packet...244\nFigure 8-29. PING_RESPONSE Transaction Packet...244\nFigure 8-30. Example Data Packet...245\nFigure 8-31. Isochronous Timestamp Packet...247\nFigure 8-32. Route String Detail...249\nFigure 8-33. Sample Concurrent BULK IN Transactions...253\nFigure 8-34. Sample Concurrent BULK and Isochronous IN Transactions...254\nFigure 8-35. Legend for State Machines...259\nFigure 8-36. Sample BULK IN Sequence...261\nFigure 8-37. Sample BULK OUT Sequence...262\nFigure 8-38. General Stream Protocol State Machine (SPSM)...263\nFigure 8-39. Device IN Stream Protocol State Machine (DISPSM)...266\nFigure 8-40. Device IN Move Data State Machine (DIMDSM)...269\nFigure 8-41. Device OUT Stream Protocol State Machine (DOSPSM)...272\nFigure 8-42. Device OUT Move Data State Machine (DOMDSM)...275\nFigure 8-43. Host IN Stream Protocol State Machine (HISPSM)...277\nFigure 8-44. Host IN Move Data State Machine (HIMDSM)...280\nFigure 8-45. Host OUT Stream Protocol State Machine (HOSPSM)...283\nFigure 8-46. Host OUT Move Data State Machine (HOMDSM)...286\nFigure 8-47. Control Read Sequence...290\nFigure 8-48. Control Write Sequence...291\nFigure 8-49. Host Sends Interrupt IN Transaction in Each Service Interval...294\nFigure 8-50. Host Stops Servicing Interrupt IN Transaction Once NRDY is Received...294\nFigure 8-51. Host Resumes IN Transaction after Device Sent ERDY...295\nFigure 8-52. Endpoint Sends STALL TP...295\nFigure 8-53. Host Detects Error in Data and Device Resends Data...296\nFigure 8-54. Host Sends Interrupt OUT Transaction in Each Service Interval...297\nFigure 8-55. Host Stops Servicing Interrupt OUT Transaction Once NRDY is Received...297\nFigure 8-56. Host Resumes Sending Interrupt OUT Transaction After Device Sent ERDY...298\nFigure 8-57. Device Detects Error in Data and Host Resends Data...298\nFigure 8-58. Endpoint Sends STALL TP...298\nFigure 8-59. Multiple Active Isochronous Endpoints with Aligned Service Interval Boundaries...300\nFigure 8-60. Enhanced SuperSpeed Isochronous IN Transaction Format...301\nFigure 8-61. Enhanced SuperSpeed Isochronous OUT Transaction Format...301\nFigure 8-62. Sample Enhanced SuperSpeed Isochronous IN Transaction...303\nFigure 8-63. Sample Enhanced SuperSpeed Isochronous OUT Transaction...304\nFigure 8-64. Sample Enhanced SuperSpeed Isochronous IN Transaction...305\nFigure 8-65. Sample Enhanced SuperSpeed Isochronous OUT Transaction...306",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

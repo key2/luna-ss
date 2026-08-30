@@ -1,0 +1,173 @@
+{
+  "index": 72,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 264,
+      "bottomRightY": 63,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 712,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 92,
+      "bottomRightX": 433,
+      "bottomRightY": 108,
+      "content": "### TD.7.3 Link Commands CRC-5 Robustness Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 112,
+      "bottomRightX": 694,
+      "bottomRightY": 172,
+      "content": "This test verifies that a Gen 1 PUT will ignore link commands with a CRC-5 error, even if only one of the Link Command Words has a CRC-5 error. The test verifies that a Gen 2 device will accept link commands with one CRC-5 error and ignore link commands with both LCWs containing a CRC-5 error. The Port Configuration transaction will be used for this purpose.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 186,
+      "bottomRightX": 400,
+      "bottomRightY": 201,
+      "content": "The tested CRC-5 error robustness conditions are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 208,
+      "bottomRightX": 470,
+      "bottomRightY": 253,
+      "content": "A. Incorrect CRC-5 in first Link Command Word\nB. Incorrect CRC-5 in second Link Command Word\nC. Both Link Command Words have an incorrect CRC-5.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 276,
+      "bottomRightX": 235,
+      "bottomRightY": 290,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 298,
+      "bottomRightX": 180,
+      "bottomRightY": 312,
+      "content": "7.3.4#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 321,
+      "bottomRightX": 254,
+      "bottomRightY": 336,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 344,
+      "bottomRightX": 674,
+      "bottomRightY": 540,
+      "content": "1. Perform the Link Initialization Sequence but transmit all LCRD_X or LCRD1_X with condition A above.\n2. The test passes if:\n   a. A Gen 1 PUT enters recovery when CREDIT_HP_TIMER expires.\n   b. A Gen 2 PUT stays in U0 for 50ms.\n3. Repeat the above steps for condition B listed above.\n4. Perform the Link Initialization Sequence but transmit all LCRD_X or LCRD1_X with condition C above.\n5. The test passes if the PUT enters recovery when the CREDIT_HP_TIMER or the Type 1 CREDIT_HP_TIMER expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 598,
+      "bottomRightX": 356,
+      "bottomRightY": 613,
+      "content": "### TD.7.4 Invalid Link Commands Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 617,
+      "bottomRightX": 702,
+      "bottomRightY": 648,
+      "content": "This test verifies that the PUT will ignore Link Commands with link command information in the first LCW not the same as link command information in the second LCW, and both pass the CRC5 check.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 685,
+      "bottomRightX": 235,
+      "bottomRightY": 699,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 708,
+      "bottomRightX": 180,
+      "bottomRightY": 722,
+      "content": "7.3.4#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 731,
+      "bottomRightX": 254,
+      "bottomRightY": 747,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 753,
+      "bottomRightX": 702,
+      "bottomRightY": 918,
+      "content": "1. Do steps 1 to 5 of the Link Initialization Sequence.\n2. The LVS sends a link command with LGO_U1 in the first LCW and LGO_U2 in the second LCW, with good CRC-5 calculations on both.\n3. The test fails if the PUT responds with an LAU or LXU.\n4. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n5. The test passes if the link command is ignored, all exchanges are successful, no timeout is detected, no recovery is entered, all packets are successfully received by the PUT, all credits are restored and the link stays in U0 for at least 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "65",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

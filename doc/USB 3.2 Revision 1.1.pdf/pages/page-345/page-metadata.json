@@ -1,0 +1,66 @@
+{
+  "index": 344,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 314 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 291,
+      "topLeftY": 92,
+      "bottomRightX": 497,
+      "bottomRightY": 110,
+      "content": "Table 8-36. Timing Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 149,
+      "topLeftY": 119,
+      "bottomRightX": 736,
+      "bottomRightY": 896,
+      "content": "|  Name | Description | Min | Max | Units  |\n| --- | --- | --- | --- | --- |\n|  tPortConfiguration | Maximum duration from when the port enters U0 to when it has completed the exchange of LMPs. In case of tiebreaker (refer to Table 8-7), both ports shall reset their timers and restart them for each LMP exchange until the tiebreaker is resolved. |  | 20 | μs  |\n|  tPingTimeout | Timeout after the device receives a ping from the host and when it can initiate or accept U1 or U2 requests. This parameter is measured in terms of the maximum of all the service intervals for all isochronous endpoints within the device. | 2 |  | Service intervals  |\n|  tPingResponse | Time between device reception of the last framing symbol of a ping and the first framing symbol of the PING_RESPONSE |  | 400 | ns  |\n|  tBELTDefault | Default for best effort latency tolerance | 1 |  | ms  |\n|  tBELTmin | Minimum value of best effort latency tolerance allowed in a Latency Tolerance Message | 1 |  | ms  |\n|  tNRDYorSTALLResponse | Time between device reception of the last framing symbol for an ACK TP or a DPP or a STATUS TP and the first framing symbol of the NRDY or STALL response |  | 400 | ns  |\n|  tDPResponse | Time between device reception of the last framing symbol for an ACK TP and the first framing symbol of the DP response |  | 400 | ns  |\n|  tACKResponse | Time between device reception of the last framing symbol for a DPP or a STATUS TP and the first framing symbol of the ACK response |  | 400 | ns  |\n|  tHostACKResponse | Time between host reception of the last framing symbol for a DPP and the first framing symbol of the ACK response |  | 3 | μs  |\n|  tERDYTimeout | Timeout after the device sends an ERDY to the host and when it can initiate or accept a U1 or U2 request if not serviced | 500 |  | ms  |\n|  tNotification | Period at which the device shall send a function wake notification if the device has not been accessed (since sending the last function wake notification) | 2500 |  | ms  |\n|  tMaxBurstInterval | When the device is operating at Gen 1 speed, time between DPs when the device endpoint is bursting to the host or the host is bursting to the device endpoint. |  | 100 | ns  |\n|  tTimestampWindow | The host shall transmit an isochronous timestamp from a bus interval boundary to tTimestampWindow after the bus interval boundary if the root port's link is in U0. | 0 | 8 | μs  |\n|  tIsochTimestampGranularity | The granularity of isochronous timestamps | 8 | 8 | USB 2.0 High-Speed bit times  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-141.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

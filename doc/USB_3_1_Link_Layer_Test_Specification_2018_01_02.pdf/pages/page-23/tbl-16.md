@@ -1,0 +1,12 @@
+|  7.2.4.2.1#5 | A port shall start the Ux_EXIT_TIMER when it starts to send the LFPS Exit handshake signal. | NT  |
+| --- | --- | --- |
+|  7.2.4.2.1#6 | A port shall disable and reset the Ux_EXIT_TIMER upon entry to U0. | 6.6-7  |
+|  Subsection reference: 7.2.4.2.2 Low Power Link State Initiation  |   |   |
+|  7.2.4.2.2#1 | A port shall not send an LGO_U1, LGO_U2 or LGO_U3 unless it meets all of the following: - It has transmitted LGOOD_n and LCRD_x or LCRD1_x/LCRD2_x for all packets received. - It has received LGOOD_n and LCRD_x or LCRD1_x/LCRD2_x for all packets transmitted. - It has no pending packets for transmission. - It has completed the Header Sequence Number Advertisement and the Rx Header Buffer Credit Advertisement or Type 1/Type 2 Rx Buffer Credit Advertisement upon entry to U0. - It is directed by a higher layer to initiate entry. - It has met higher layer conditions for initiating entry. | 7.18-19  |
+|  7.2.4.2.2#2 | An upstream port shall send an LAU in response to an LGO_U1 or LGO_U2, when the Force Link PM Accept field is asserted due to having received a Set Link Functionality LMP. | 7.23-24  |
+|  7.2.4.2.2#3 | A port shall send an LAU in response to an LGO_U1 or LGO_U2, when all of the following conditions are met: - It has transmitted an LGOOD_n, LCRD_x or LCRD1_x/LCRD2_x sequence for all packets received. - It has received an LGOOD_n, LCRD_x or LCRD1_x/LCRD2_x sequence for all packets transmitted. - It has no pending packets for transmission. - It is not directed by a higher layer to reject entry. | 7.23-24  |
+|  7.2.4.2.2#4 | A port shall send an LXU, when any of the above conditions are not met. | NT  |
+|  7.2.4.2.2#5 | A port shall send an LXU in response to an LGO_U1 or LGO_U2, when it has not yet transmitted an LGOOD_n, LCRD_x sequence for all packets received. | NT  |
+|  7.2.4.2.2#6 | A port shall send an LXU in response to an LGO_U1 or LGO_U2, when it has not received an LGOOD_n, LCRD_x sequence for all packets transmitted. | NT  |
+|  7.2.4.2.2#7 | A port shall send an LXU in response to an LGO_U1 or LGO_U2, when it has pending packets for transmission. | NT  |
+|  7.2.4.2.2#8 | A port shall send an LXU in response to an LGO_U1 or LGO_U2, when it is directed by a higher layer to reject entry. | NT  |

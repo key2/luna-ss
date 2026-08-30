@@ -1,0 +1,57 @@
+{
+  "index": 3,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 595,
+      "topLeftY": 36,
+      "bottomRightX": 646,
+      "bottomRightY": 50,
+      "content": "Contents",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 181,
+      "bottomRightX": 180,
+      "bottomRightY": 208,
+      "content": "# Contents",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 94,
+      "topLeftY": 263,
+      "bottomRightX": 623,
+      "bottomRightY": 907,
+      "content": "|  **Contents** | **i**  |\n| --- | --- |\n|  **List of Figures** | **iii**  |\n|  **List of Tables** | **iv**  |\n|  **1 About This Guide** | **1**  |\n|  1.1 Purpose | 1  |\n|  1.2 Related Documents | 1  |\n|  1.3 Terminology and Abbreviations | 2  |\n|  1.4 Support and Feedback | 2  |\n|  **2 Development Board Introduction** | **3**  |\n|  2.1 Overview | 3  |\n|  2.2 A Development Board Kit | 4  |\n|  2.3 PCB Components | 5  |\n|  2.4 System Block Diagram | 5  |\n|  2.5 Features | 6  |\n|  **3 Development Board Circuit** | **7**  |\n|  3.1 FPGA | 7  |\n|  3.1.1 Overview | 7  |\n|  3.1.2 I/O BANK Description | 7  |\n|  3.2 Power Supply | 7  |\n|  3.2.1 Introduction | 7  |\n|  3.2.2 Power Distribution | 8  |\n|  3.3 Download Module | 9  |\n|  3.3.1 Introduction | 9  |\n|  3.3.2 Pin Distribution | 9  |\n|  3.4 Clock | 9  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-1.md"
+    },
+    {
+      "topLeftX": 71,
+      "topLeftY": 941,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 636,
+      "topLeftY": 941,
+      "bottomRightX": 646,
+      "bottomRightY": 956,
+      "content": "i",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

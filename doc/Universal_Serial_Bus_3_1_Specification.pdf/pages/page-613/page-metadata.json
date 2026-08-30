@@ -1,0 +1,75 @@
+{
+  "index": 612,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 586,
+      "topLeftY": 31,
+      "bottomRightX": 702,
+      "bottomRightY": 46,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 116,
+      "bottomRightX": 646,
+      "bottomRightY": 141,
+      "content": "## C.2 Calculating U1 and U2 End to End Exit Latencies",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 152,
+      "bottomRightX": 692,
+      "bottomRightY": 203,
+      "content": "This section provides examples of how to calculate the exit latency (i.e., time to transition from a non-U0 state to a U0 state) spanning the end to end path between a device and the host. Examples are given for both device initiated exit and host initiated exit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 211,
+      "bottomRightX": 652,
+      "bottomRightY": 246,
+      "content": "Figure C-3 depicts a SuperSpeed hierarchy and calls out the relevant parameters used in the calculations that follow.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 268,
+      "bottomRightX": 605,
+      "bottomRightY": 748,
+      "content": "![img-293.jpeg](img-293.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-293.jpeg"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 760,
+      "bottomRightX": 622,
+      "bottomRightY": 778,
+      "content": "Figure C-3. Host to Device Path Exit Latency Calculation Examples",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 995,
+      "content": "C-15",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

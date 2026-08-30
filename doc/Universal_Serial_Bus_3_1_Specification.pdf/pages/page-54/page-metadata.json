@@ -1,0 +1,138 @@
+{
+  "index": 53,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 133,
+      "topLeftY": 96,
+      "bottomRightX": 419,
+      "bottomRightY": 416,
+      "content": "![img-1.jpeg](img-1.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-1.jpeg"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 424,
+      "bottomRightX": 405,
+      "bottomRightY": 456,
+      "content": "Figure 3-1. USB 3.1 Dual Bus System Architecture",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 456,
+      "topLeftY": 94,
+      "bottomRightX": 607,
+      "bottomRightY": 160,
+      "content": "- USB 3.1 interconnect\n- USB 3.1 devices\n- USB 3.1 host",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 454,
+      "topLeftY": 169,
+      "bottomRightX": 698,
+      "bottomRightY": 301,
+      "content": "The USB 3.1 interconnect is the manner in which USB 3.1 and USB 2.0 devices connect to and communicate with the USB 3.1 host. The USB 3.1 interconnect inherits core architectural elements from USB 2.0, although several are augmented to accommodate the dual bus architecture.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 454,
+      "topLeftY": 307,
+      "bottomRightX": 685,
+      "bottomRightY": 391,
+      "content": "The baseline structural topology is the same as USB 2.0. It consists of a tiered star topology with a single host at tier 1 and hubs at lower tiers to provide bus connectivity to devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 454,
+      "topLeftY": 396,
+      "bottomRightX": 691,
+      "bottomRightY": 479,
+      "content": "The USB 3.1 connection model accommodates backward and forward compatibility for connecting USB 3.1 or USB 2.0 devices into a USB 3.1 connector. Similarly, USB 3.1 devices",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 480,
+      "bottomRightX": 700,
+      "bottomRightY": 582,
+      "content": "can be attached to a USB 2.0 connector. The mechanical and electrical backward/forward compatibility for USB 3.1 is accomplished via a composite cable and associated connector assemblies that form the mechanical infrastructure for the dual-bus architecture. USB 3.1 peripheral devices accomplish backward compatibility by including both Enhanced SuperSpeed and USB 2.0 interfaces. USB 3.1 hosts have both Enhanced SuperSpeed and USB 2.0 interfaces, which are essentially parallel buses that may be active simultaneously.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 587,
+      "bottomRightX": 690,
+      "bottomRightY": 639,
+      "content": "The USB 3.1 connection model allows for the discovery and configuration of USB devices at the highest signaling speed supported by the peripheral device, the highest signaling rate supported by hubs between the host and peripheral device, and the current host capability and configuration.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 642,
+      "bottomRightX": 696,
+      "bottomRightY": 727,
+      "content": "USB 3.1 hubs are a specific class of USB device whose purpose is to provide additional connection points to the bus beyond those provided by the host. In this specification, non-hub devices are referred to as peripheral devices in order to differentiate them from hub devices. In addition, in USB 2.0 the term “function” was sometimes used interchangeably with device. In this specification a function is a logical entity within a device, see Figure 3-4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 731,
+      "bottomRightX": 666,
+      "bottomRightY": 766,
+      "content": "The architectural implications of Enhanced SuperSpeed bus support on hosts, hub devices and peripheral devices are described in detail in Section 3.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 780,
+      "bottomRightX": 415,
+      "bottomRightY": 802,
+      "content": "### 3.1.1 USB 3.1 Physical Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 807,
+      "bottomRightX": 692,
+      "bottomRightY": 891,
+      "content": "The physical interface of USB 3.1 is comprised of USB 2.0 and Enhanced SuperSpeed portions. The USB 2.0 definitions for Electrical can be found in Chapter 7 of the USB 2.0 specification. The Enhanced SuperSpeed definitions are contained in this USB 3.1 specification and comprised of Mechanical (Chapter 5), and Physical Layer (Chapter 6) specifications. The physical layer for the Enhanced SuperSpeed bus is described in Section 3.2.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 964,
+      "bottomRightX": 111,
+      "bottomRightY": 977,
+      "content": "3-2",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

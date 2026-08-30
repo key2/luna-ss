@@ -1,0 +1,13 @@
+|   | sets with the Loopback bit set upon entry to Polling.Configuration. |   |
+| --- | --- | --- |
+|  7.5.4.9.1#3 | A port that has Disabling Scrambling capability and has been directed to disable scrambling shall transmit identical TS2 ordered sets with the Disabling Scrambling bit set upon entry to Polling.Configuration. | NT  |
+|  7.5.4.9.1#4 | The port in SuperSpeedPlus operation shall insert a SYNC ordered set every 32 TS2 ordered sets. | NT  |
+|  7.5.4.9.1#5 | The port in SuperSpeedPlus operation shall perform block alignment and scrambler synchronization. | NT  |
+|  Subsection reference: 7.5.4.9.2 Exit from Polling.Configuration  |   |   |
+|  7.5.4.9.2#1 | The port in SuperSpeed operation shall transition from Polling.Configuration to Polling.Idle when the following two conditions are met: - Eight consecutive and identical TS2 ordered sets are received. - Sixteen TS2 ordered sets are sent after receiving the first of the eight consecutive and identical TS2 ordered sets. | BC  |
+|  7.5.4.9.2#2 | The port in SuperSpeedPlus operation shall transition from Polling.Configuration to Polling.Idle when the following two conditions are met: - Eight consecutive and identical TS2 ordered sets, excluding symbols 14 and 15, are received. - Sixteen TS2 ordered sets are sent after receiving the first of the eight consecutive and identical TS2 ordered sets, excluding symbols 14 and 15. | BC  |
+|  7.5.4.9.2#3 | A downstream port in SuperSpeed operation shall transition from Polling.Configuration to Rx.Detect upon the 12-ms timer timeout if the conditions to transition to Polling.Idle are not met and cPollingTimeout is less than two. | 7.40  |
+|  7.5.4.9.2#4 | A downstream port in SuperSpeed operation shall transition from Polling.Configuration to eSS.Inactive upon the 12-ms timer timeout if the conditions to transition to Polling.Idle are not met and cPollingTimeout is two. | NT  |
+|  7.5.4.9.2#5 | An upstream port of a hub in SuperSpeed operation shall transition from Polling.Configuration to Rx.Detect upon the 12-ms timer timeout if the conditions to transitions to Polling.Idle are not met. | NT  |
+|  7.5.4.9.2#6 | An upstream port of a peripheral device in SuperSpeed operation shall transition from Polling.Configuration to SS.Disabled upon the 12-ms timer timeout if the conditions to transition to Polling.Idle are not met. | NT  |
+|  7.5.4.9.2#7 | A downstream port in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon | NT  |

@@ -1,0 +1,156 @@
+{
+  "index": 439,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 409 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 673,
+      "bottomRightY": 124,
+      "content": "2. Calculate the rate at which packets are consumed by the downstream ports assuming the devices attached downstream always accept DPs:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 135,
+      "bottomRightX": 568,
+      "bottomRightY": 150,
+      "content": "Packet Consumption Rate (PCR) = MaxBurst/SpeedRatio",
+      "confidenceScores": null,
+      "type": "code"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 163,
+      "bottomRightX": 409,
+      "bottomRightY": 179,
+      "content": "3. Compute the number of buffers required:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 188,
+      "bottomRightX": 475,
+      "bottomRightY": 281,
+      "content": "NBuf = 0; i = 1;\n\nWhile ((MaxBurst - |i*PCR|) > 0)\n\n    NBuf += (MaxBurst - |i*PCR|); i++;\n\nNBuf += N;",
+      "confidenceScores": null,
+      "type": "code"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 295,
+      "bottomRightX": 660,
+      "bottomRightY": 325,
+      "content": "The SuperSpeedPlus hub shall provide buffering for an equivalent number of Control/Bulk header buffers and TP/Interrupt/Isochronous header buffers as well.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 337,
+      "bottomRightX": 667,
+      "bottomRightY": 444,
+      "content": "Buffering for downstream flowing traffic is primarily present to provide a rate matching function due to the different possible upstream port and downstream port speeds. Therefore, it is provided for each hub and not for each downstream port. However, the organization and function of this buffering shall allow packets to be received from the upstream port and then subsequently transmitted on multiple downstream ports simultaneously and in a different order than the order in which they were received. That is, this buffering cannot be organized as a single, simple FIFO.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 456,
+      "bottomRightX": 621,
+      "bottomRightY": 473,
+      "content": "Figure 10-18. Logical Representation of Downstream Flowing Buffers",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 483,
+      "bottomRightX": 723,
+      "bottomRightY": 792,
+      "content": "![img-179.jpeg](img-179.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-179.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 798,
+      "bottomRightX": 415,
+      "bottomRightY": 813,
+      "content": "### 10.8.6 SuperSpeedPlus Hub Arbitration of Packets",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 821,
+      "bottomRightX": 321,
+      "bottomRightY": 836,
+      "content": "#### 10.8.6.1 Arbitration Weight",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 843,
+      "bottomRightX": 647,
+      "bottomRightY": 873,
+      "content": "The i$^{th}$ downstream facing port (DFPi) has an arbitration weight (AW) associated with it. This weight shall be set to;",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 233,
+      "topLeftY": 886,
+      "bottomRightX": 552,
+      "bottomRightY": 901,
+      "content": "DFPi.AW = DFPi.link_speed / ArbitrationWeightBase",
+      "confidenceScores": null,
+      "type": "code"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

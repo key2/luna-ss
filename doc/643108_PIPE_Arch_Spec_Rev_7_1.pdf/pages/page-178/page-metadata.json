@@ -1,0 +1,120 @@
+{
+  "index": 177,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 133,
+      "bottomRightX": 325,
+      "bottomRightY": 146,
+      "content": "Figure 9-7. Receiver Idle to Active",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 152,
+      "bottomRightX": 690,
+      "bottomRightY": 497,
+      "content": "![img-76.jpeg](img-76.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-76.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 510,
+      "bottomRightX": 636,
+      "bottomRightY": 535,
+      "content": "## 9.5 Using CLKREQ# with PIPE – PCIe Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 541,
+      "bottomRightX": 686,
+      "bottomRightY": 627,
+      "content": "CLKREQ# is used in some implementations by the downstream device to cause the upstream device to stop signaling on REFCLK. When REFCLK is stopped, this will typically cause the CLK input to the PIPE PHY to stop as well. The PCIe CEM specification allows the downstream device to stop REFCLK when the link is in either L1 or L2 states. For implementations that use CLKREQ# to further manage power consumption, PIPE compliant PHYs can be used as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 634,
+      "bottomRightX": 686,
+      "bottomRightY": 691,
+      "content": "The general usage model is that to stop REFCLK, the MAC puts the PHY into the P2 power state, then deasserts CLKREQ#. To get the REFCLK going again, the MAC asserts CLKREQ#, and then after some PHY and implementation specific time, the PHY is ready to use again.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 713,
+      "bottomRightX": 329,
+      "bottomRightY": 734,
+      "content": "### 9.5.1 CLKREQ# in L1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 741,
+      "bottomRightX": 686,
+      "bottomRightY": 800,
+      "content": "If the MAC is moving the link to the L1 state and intends to deassert CLKREQ# to stop REFCLK, then the MAC follows the proper sequence to get the link to L1, but instead of finishing by transitioning the PHY to P1, the MAC transition the PHY to P2. Then the MAC deasserts CLKREQ#.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 806,
+      "bottomRightX": 500,
+      "bottomRightY": 821,
+      "content": "When the MAC wants to get the link alive again, it can:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 826,
+      "bottomRightX": 524,
+      "bottomRightY": 904,
+      "content": "- Assert CLKREQ#.\n- Wait for REFCLK to be stable (implementation specific).\n- Wait for the PHY to be ready (PHY specific).\n- Transition the PHY to P0 state and begin training.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "178",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

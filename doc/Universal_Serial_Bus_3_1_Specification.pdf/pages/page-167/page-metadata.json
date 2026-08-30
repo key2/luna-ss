@@ -1,0 +1,48 @@
+{
+  "index": 166,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 306,
+      "topLeftY": 90,
+      "bottomRightX": 523,
+      "bottomRightY": 867,
+      "content": "![img-133.jpeg](img-133.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-133.jpeg"
+    },
+    {
+      "topLeftX": 272,
+      "topLeftY": 879,
+      "bottomRightX": 553,
+      "bottomRightY": 897,
+      "content": "Figure 6-11. LFSR for use in Gen 2 operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "6-11",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

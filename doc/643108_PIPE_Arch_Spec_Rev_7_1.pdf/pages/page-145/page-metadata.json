@@ -1,0 +1,111 @@
+{
+  "index": 144,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 133,
+      "bottomRightX": 392,
+      "bottomRightY": 148,
+      "content": "Figure 8-36. Data Throttling and TxElecIdle",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 152,
+      "bottomRightX": 700,
+      "bottomRightY": 395,
+      "content": "![img-57.jpeg](img-57.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-57.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 411,
+      "bottomRightX": 409,
+      "bottomRightY": 432,
+      "content": "## 8.20 Electrical Idle – All",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 440,
+      "bottomRightX": 696,
+      "bottomRightY": 513,
+      "content": "The PIPE specification does not require RxStandby to be asserted within any amount of time after Electrical Idle or that it be asserted at all. Individual PHYs that rely on specific timing relationships for proper operation must specify their own timing requirements for RxStandby assertion, which may vary depending on whether they have staggering requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 532,
+      "bottomRightX": 517,
+      "bottomRightY": 558,
+      "content": "## 8.21 Link Equalization Evaluation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 562,
+      "bottomRightX": 692,
+      "bottomRightY": 692,
+      "content": "While in the P0 power state, the PHY can be instructed to perform evaluation of the current Tx equalization settings of the link partner. Basic operation of the equalization evaluation is that the MAC requests the PHY to evaluate the current equalization settings by setting the RxEqEval register field. When the PHY has completed evaluating the current equalization settings, it writes to the LinkEvaluationFeedbackDirectionChange or the LinkEvaluationFeedbackFigureMerit register fields or both. After link equalization evaluation has completed, the MAC must clear the RxEqEval register field before initiating another evaluation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 698,
+      "bottomRightX": 697,
+      "bottomRightY": 813,
+      "content": "Once the MAC has requested link equalization evaluation (by setting the RxEqEval register bit), the MAC must leave RxEqEval set until after the PHY has signaled completion by writing to the LinkEvaluationFeedbackDirectionChange or LinkEvaluationFeedbackFigureMerit register fields unless the MAC needs to abort the evaluation due to high level timeouts or error conditions. To abort an evaluation the MAC clears the RxEqEval register bit before the PHY has signaled completion. If the MAC aborts the evaluation the PHY must signal completion as quickly as possible. The MAC ignores returned evaluation values in an abort scenario.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 819,
+      "bottomRightX": 696,
+      "bottomRightY": 862,
+      "content": "Refer to Section 9.10 for example waveforms illustrating successful equalization, invalid coefficient request, aborted equalization, and aborted equalization with race condition scenarios.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 965,
+      "content": "145",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "index": 562,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 532 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 667,
+      "bottomRightY": 156,
+      "content": "- The Gain is calculated as the ratio of the output amplitude to input amplitude, measured in dB: Gain = 20*log10(output amplitude / input amplitude). The Gain is plotted against the output amplitude, as illustrated in Figure E-26. The output 1-dB compression amplitude Vout_1dB, is used to measure linearity.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 225,
+      "topLeftY": 167,
+      "bottomRightX": 563,
+      "bottomRightY": 184,
+      "content": "Figure E-26. Illustration of 1-dB Compression Point",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 193,
+      "bottomRightX": 588,
+      "bottomRightY": 504,
+      "content": "![img-221.jpeg](img-221.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-221.jpeg"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 538,
+      "bottomRightX": 665,
+      "bottomRightY": 586,
+      "content": "- The 1-dB compression amplitude depends on LRD EQ gains or settings. The DC and AC linearity tests shall be performed for the optimal LRD EQ settings identified in the compliance eye tests to be discussed in Section E.6.4.7.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 597,
+      "bottomRightX": 610,
+      "bottomRightY": 614,
+      "content": "The pass/fail criterion for the 1-dB compression amplitude Vout_1dB is ≥ 700 mV.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 626,
+      "bottomRightX": 331,
+      "bottomRightY": 641,
+      "content": "### E.6.4.3 Intrinsic Jitter Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 647,
+      "bottomRightX": 647,
+      "bottomRightY": 679,
+      "content": "An LRD as an active component will introduce some jitter. Hence a jitter requirement is defined to control the intrinsic jitter from an LRD.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 690,
+      "bottomRightX": 673,
+      "bottomRightY": 737,
+      "content": "To obtain LRD intrinsic jitter, two measurements shall be done, as illustrated in Figure E-27. The baseline testing is to calibrate jitter using the calibration structure or the through in the EVB without the DUT LRD. The following key points shall be noted in the baseline testing:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 750,
+      "bottomRightX": 665,
+      "bottomRightY": 928,
+      "content": "- Jitter measurements shall be done with the LRD EQ setting identified from the compliance eye testing to be discussed in Section E.6.4.7.\n- A clock or single-tone signal of 5 GHz, the Nyquist frequency of USB 3.2 Gen 2, shall be used for jitter measurements.\n- The signal source should be adjusted such that the output amplitude of the LRD be about 100 mV below the AC 1-dB compression point to avoid LRD operating in non-liner region for the specific LRD EQ setting.\n- The LRD S-parameter or transfer function for the specific LRD EQ setting, with fixture effect de-embedded, shall be embedded in the oscilloscope. This will ensure",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

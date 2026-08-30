@@ -1,0 +1,128 @@
+{
+  "index": 208,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 178 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 93,
+      "bottomRightX": 400,
+      "bottomRightY": 108,
+      "content": "### 7.5.4.6.1 Polling.PortConfig Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 116,
+      "bottomRightX": 671,
+      "bottomRightY": 162,
+      "content": "- Upon entry to this state, the port shall place its transmitter in electrical idle if it is preparing its PHY re-configuration according to PHY Capability LBPM negotiated in Polling.PortMatch. The port shall perform the following PHY re-configuration.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 167,
+      "bottomRightX": 667,
+      "bottomRightY": 330,
+      "content": "1. The transmitter DC common mode voltage shall be within specification (V_TX-CM-DCACTIVE-IDLE-DELTA) defined in Table 6-19.\n2. The port shall maintain its low-impedance receiver termination (R_RX-DC) defined in Table 6-22.\n3. The port shall be ready to transmit TSEQ OS on each negotiated lane.\n4. The port shall be ready to receive TSEQ OS for receiver equalization training on each negotiated lane.\n5. The port configured to x2 operation shall have both lanes ready for link training.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 336,
+      "bottomRightX": 641,
+      "bottomRightY": 384,
+      "content": "- The port shall monitor the received LBPM and perform the PHY Ready LBPM handshake. It is defined by the port sending four consecutive and identical PHY Ready LBPMs after receiving two consecutive and identical PHY Ready LBPMs.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 389,
+      "bottomRightX": 654,
+      "bottomRightY": 435,
+      "content": "- The operation of the 12-ms timer (tPollingLBPMLFPSTimeout) shall continue without reset upon entry to the substate from Polling.PortMatch. In x2 operation, additional rules in the following apply.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 441,
+      "bottomRightX": 671,
+      "bottomRightY": 621,
+      "content": "○ A downstream port shall continue the tPollingLBPMLFPSTimeout timer without reset when sending the PHY Ready LBPM with bit-7 de-asserted.\n○ A downstream port shall reset the tPollingLBPMLFPSTimeout timer upon completing the PHY Ready LBPM handshake with bit-7 of its PHY Ready LBPM asserted. It shall re-start the tPollingLBPMLFPSTimeout timer when it is ready to exit to Polling.RxEQ by transmitting the PHY Ready LBPM with bit-7 de-asserted. Note that the duration of RT Config is managed by DFP upper layer.\n○ An upstream port shall reset the tPollingLBPMLFPSTimeout timer and remain in this substate upon completing the PHY Ready LBPM handshake and detecting bit-7 of the PHY Ready LBPM from DFP is asserted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 629,
+      "bottomRightX": 664,
+      "bottomRightY": 735,
+      "content": "- In x2 operation, a downstream port shall initiate the re-timer presence announcement as defined in Appendix E. If it has bit-7 of the PHY Ready LBPM handshake asserted, a downstream port shall remain in this substate after completing the PHY Ready LBPM handshake. Note that this is an intermediate state for DFP to perform additional operations in future revisions. A downstream port shall transmit PHY Ready LBPM with bit 7 de-asserted if it's ready to transition to Polling.RxEQ.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 741,
+      "bottomRightX": 661,
+      "bottomRightY": 773,
+      "content": "- In x2 operation, upon completing the PHY Ready LBPM handshake with bit-7 of the PHY Ready LBPM from DFP asserted, an upstream port shall perform the following.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 777,
+      "bottomRightX": 666,
+      "bottomRightY": 906,
+      "content": "○ It shall remain in this substate, keep its transmitter in LFPS EI, and continue to look for the received PHY Ready LBPM from DFP with bit-7 de-asserted. Note that DFP may send non PHY Ready LBPM or remain in LFPS EI during this period of time. Shown in Figure 7-20 are example timing diagrams of the port in x2 operation.\n○ Upon detecting PHY Ready LBPM from DFP with bit-7 de-asserted, it shall prepare itself to exit to Polling.RxEQ and respond with PHY Ready LBPM to complete the PHY Ready LBPM handshake.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

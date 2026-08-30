@@ -1,0 +1,138 @@
+{
+  "index": 566,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 536 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 607,
+      "bottomRightY": 124,
+      "content": "embedding s4p files. Refer to \"Electrical Compliance Test Specification Enhanced SuperSpeed Universal Serial Bus\" for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 251,
+      "topLeftY": 136,
+      "bottomRightX": 535,
+      "bottomRightY": 154,
+      "content": "Figure E-31. Compliance Eye Test - Rx Path",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 161,
+      "bottomRightX": 673,
+      "bottomRightY": 217,
+      "content": "![img-226.jpeg](img-226.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-226.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 251,
+      "bottomRightX": 657,
+      "bottomRightY": 283,
+      "content": "The compliance eye test shall follow the setups and requirements below. Refer to USB 3.2 compliance test spec for all other setups.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 294,
+      "bottomRightX": 543,
+      "bottomRightY": 312,
+      "content": "- The pattern generator is configured with the following outputs:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 323,
+      "bottomRightX": 448,
+      "bottomRightY": 423,
+      "content": "- 800 mV differential peak-to-peak swing\n- 1 ps rms random jitter\n- 0.17 UI sinusoidal jitter at 100 MHz\n- 2.2 dB pre-shoot and -3.1 de-emphasis",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 435,
+      "bottomRightX": 668,
+      "bottomRightY": 599,
+      "content": "- The test shall be done for each of the pre- and post-channel fixture ports with a prescribed insertion loss range for the short and long fixtures. LRD EQ settings may be swept for optimal result.\n- The same LRD settings shall be used for both the long and short channels/fixtures during test.\n- Tx and Rx-path tests may use different LRD settings.\n- The eye height and eye width pass/fail criteria are 70 mV and 48 ps (both at 10-6 BER), respectively, the same as defined in the USB 3.2 spec.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 610,
+      "bottomRightX": 322,
+      "bottomRightY": 626,
+      "content": "### E.6.4.8 Implementation Guidelines",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 633,
+      "bottomRightX": 671,
+      "bottomRightY": 725,
+      "content": "One of the key considerations in using an LRD is the LRD equalization range. The USB 3.2 specification has an informative insertion budget of 8.5 dB for the host/device and 23 dB for the end-to-end channel. We should make sure that the LRD equalized insertion loss of the host/device and channel be a few dB, recommend 3dB better than the spec budget. Such a margin is needed to compensate for the LRD impairments such as nonlinearity, intrinsic jitter, additive noise and crosstalk amplification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 736,
+      "bottomRightX": 673,
+      "bottomRightY": 815,
+      "content": "In the example shown in Figure E-32, the unequalized (thick solid line) host insertion loss is about -10dB, just about 1.5 dB exceeding the budget. After applying LRD EQ, the equalized host insertion loss can be much less than the spec budget of 8.5 dB. So, in this example, the LRD EQ gain range is more than adequate. Actually, some of the high gain EQ will cause over equalization as the host further deviates from a low-pass filter nature of a passive channel.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

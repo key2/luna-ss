@@ -1,0 +1,38 @@
+{
+  "index": 594,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 587,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Symbol Scrambling",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 677,
+      "bottomRightY": 620,
+      "content": "// Now advance the LFSR 8 serial clocks\nbit_out[0] = bit[8];\nbit_out[1] = bit[9];\nbit_out[2] = bit[10];\nbit_out[3] = bit[11] ^ bit[8];\nbit_out[4] = bit[12] ^ bit[9] ^ bit[8];\nbit_out[5] = bit[13] ^ bit[10] ^ bit[9] ^ bit[8];\nbit_out[6] = bit[14] ^ bit[11] ^ bit[10] ^ bit[9];\nbit_out[7] = bit[15] ^ bit[12] ^ bit[11] ^ bit[10];\nbit_out[8] = bit[0] ^ bit[13] ^ bit[12] ^ bit[11];\nbit_out[9] = bit[1] ^ bit[14] ^ bit[13] ^ bit[12];\nbit_out[10] = bit[2] ^ bit[15] ^ bit[14] ^ bit[13];\nbit_out[11] = bit[3]    ^ bit[15] ^ bit[14];\nbit_out[12] = bit[4]    ^ bit[15];\nbit_out[13] = bit[5];\nbit_out[14] = bit[6];\nbit_out[15] = bit[7];\nlfsr = 0;\nfor (i=0; i < 16; i++) // convert the LFSR back to an integer\n    lfsr += (bit_out[i] << i);\n\noutbyte = 0;\nfor (i=0; i<8; i++) // convert data back to an integer\n    outbyte += (scrambit[i] << i);\n\nreturn outbyte;\n}\n\n/* NOTE THAT THE DESCRAMBLE ROUTINE IS IDENTICAL TO THE SCRAMBLE ROUTINE\nthis routine implements the serial descrambling algorithm in parallel form\nthis advances the lfsr 8 bits every time it is called\nthis uses fewer than 25 xor gates to implement (with a static register)\nThe XOR tree is the same as the scrambling routine\n*/",
+      "confidenceScores": null,
+      "type": "code"
+    },
+    {
+      "topLeftX": 678,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "B-3",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

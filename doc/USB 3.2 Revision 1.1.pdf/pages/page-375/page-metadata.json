@@ -1,0 +1,221 @@
+{
+  "index": 374,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 344 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 295,
+      "bottomRightY": 109,
+      "content": "#### 9.4.11 Set Isochronous Delay",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 115,
+      "bottomRightX": 657,
+      "bottomRightY": 146,
+      "content": "This request informs the device of the delay from the time a host transmits a packet to the time it is received by the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 157,
+      "bottomRightX": 676,
+      "bottomRightY": 202,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B | SET_ISOCH_DELAY | Delay in ns | Zero | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-171.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 208,
+      "bottomRightX": 663,
+      "bottomRightY": 267,
+      "content": "The wValue field specifies a delay from 0 to 65535 ns. This delay represents the time from when the host starts transmitting the first framing symbol of the packet to when the device receives the first framing symbol of that packet. The wValue field shall be calculated as follows.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 280,
+      "bottomRightX": 630,
+      "bottomRightY": 298,
+      "content": "\\[\nw V a l u e = (s u m o f w H u b D e l a y v a l u e s) + (t T P T r a n s m i s s i o n D e l a y * (n u m b e r o f h u b s + 1))\n\\]",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 308,
+      "bottomRightX": 666,
+      "bottomRightY": 341,
+      "content": "Where, a wHubDelay value is provided by the Enhanced SuperSpeed Hub Descriptor of each hub in the path, respectively, and tTPTransmissionDelay is defined in Table 8-35.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 352,
+      "bottomRightX": 612,
+      "bottomRightY": 369,
+      "content": "If wIndex or wLength is non-zero, then the behavior of this request is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 380,
+      "bottomRightX": 612,
+      "bottomRightY": 395,
+      "content": "Default state: This is a valid request when the device is in the Default state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 401,
+      "bottomRightX": 616,
+      "bottomRightY": 417,
+      "content": "Address state: This is a valid request when the device is in the Address state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 423,
+      "bottomRightX": 633,
+      "bottomRightY": 439,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 452,
+      "bottomRightX": 205,
+      "bottomRightY": 466,
+      "content": "#### 9.4.12 Set SEL",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 473,
+      "bottomRightX": 660,
+      "bottomRightY": 504,
+      "content": "This request sets both the U1 and U2 System Exit Latency and the U1 or U2 exit latency for all the links between a device and a root port on the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 515,
+      "bottomRightX": 676,
+      "bottomRightY": 560,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B | SET_SEL | Zero | Zero | Six | Exit Latency Values  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-172.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 565,
+      "bottomRightX": 636,
+      "bottomRightY": 597,
+      "content": "The latency values are sent to the device in the data stage of the control transfer in the following format:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 607,
+      "bottomRightX": 640,
+      "bottomRightY": 719,
+      "content": "|  Offset | Name | Meaning  |\n| --- | --- | --- |\n|  0 | U1SEL | Time in μs for U1 System Exit Latency  |\n|  1 | U1PEL | Time in μs for U1 Device to Host Exit Latency  |\n|  2 | U2SEL | Time in μs for U2 System Exit Latency  |\n|  4 | U2PEL | Time in μs for U2 Device to Host Exit Latency  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-173.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 738,
+      "bottomRightX": 671,
+      "bottomRightY": 769,
+      "content": "If wIndex or wValue is not set to zero or wLength is not six, then the behavior of the device is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 781,
+      "bottomRightX": 672,
+      "bottomRightY": 812,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 818,
+      "bottomRightX": 616,
+      "bottomRightY": 834,
+      "content": "Address state: This is a valid request when the device is in the Address state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 840,
+      "bottomRightX": 633,
+      "bottomRightY": 856,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

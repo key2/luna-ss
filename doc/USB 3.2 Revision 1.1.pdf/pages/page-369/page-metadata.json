@@ -1,0 +1,148 @@
+{
+  "index": 368,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 338 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 92,
+      "bottomRightX": 666,
+      "bottomRightY": 110,
+      "content": "Figure 9-5. Information Returned by a Standard GetStatus() Request to an Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 120,
+      "bottomRightX": 656,
+      "bottomRightY": 224,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Reserved (Reset to Zero) |   |   |   |   |   | Function Remote Wakeup | Function Remote Wake Capable  |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D7 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-161.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 253,
+      "bottomRightX": 675,
+      "bottomRightY": 285,
+      "content": "The status fields defined by Figure 9-5 are returned by a STANDARD_STATUS type request to an Interface recipient.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 295,
+      "bottomRightX": 671,
+      "bottomRightY": 418,
+      "content": "The Function Remote Wake Capable field indicates whether the function supports remote wake up. The Function Remote Wakeup field indicates whether the function is currently enabled to request remote wakeup. The default mode for functions that support function remote wakeup is disabled. If D1 is reset to zero, the ability of the function to signal remote wakeup is disabled. If D1 is set to one, the ability of the function to signal remote wakeup is enabled. The Function Remote Wakeup field can be modified by the SetFeature() requests using the FUNCTION_SUSPEND feature selector. This Function Remote Wakeup field is reset to zero when the function is reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 429,
+      "bottomRightX": 591,
+      "bottomRightY": 445,
+      "content": "A GetStatus() request to any other interface in a function shall return all zeros.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 458,
+      "bottomRightX": 610,
+      "bottomRightY": 474,
+      "content": "A GetStatus() request to an endpoint returns the information shown in Figure 9-6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 485,
+      "bottomRightX": 666,
+      "bottomRightY": 503,
+      "content": "Figure 9-6. Information Returned by a Standard GetStatus() Request to an Endpoint",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 512,
+      "bottomRightX": 656,
+      "bottomRightY": 585,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Reserved (Reset to Zero) |   |   |   |   |   |   | Halt  |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D7 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-162.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 612,
+      "bottomRightX": 675,
+      "bottomRightY": 644,
+      "content": "The status fields defined by Figure 9-6 are returned by a STANDARD_STATUS type request to an Endpoint recipient.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 655,
+      "bottomRightX": 671,
+      "bottomRightY": 854,
+      "content": "The Halt feature is required to be implemented for all interrupt and bulk endpoint types. If the endpoint is currently halted, then the Halt feature is set to one. Otherwise, the Halt feature is reset to zero. The Halt feature may optionally be set with the SetFeature(ENDPOINT_HALT) request. When set by the SetFeature() request, the endpoint exhibits the same stall behavior as if the field had been set by a hardware condition. If the condition causing a halt has been removed, clearing the Halt feature via a ClearFeature(ENDPOINT_HALT) request results in the endpoint no longer returning a STALL Transaction Packet. Regardless of whether an endpoint has the Halt feature set, a ClearFeature(ENDPOINT_HALT) request always results in the data sequence being reinitialized to zero, and if Streams are enabled, the Stream State Machine shall be reinitialized to the Disabled state. The Halt feature is reset to zero after either a SetConfiguration() or SetInterface() request even if the requested configuration or interface is the same as the current configuration or interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 865,
+      "bottomRightX": 639,
+      "bottomRightY": 897,
+      "content": "Enhanced SuperSpeed devices do not support functional stall on control endpoints and hence do not require the Halt feature be implemented for any control endpoints.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

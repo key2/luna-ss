@@ -1,0 +1,129 @@
+{
+  "index": 248,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 105,
+      "bottomRightX": 694,
+      "bottomRightY": 123,
+      "content": "Table 7-9. Valid Packet Framing Symbol Order (Sx is One of SHP, DPHP, SDP, END or EDB)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 125,
+      "bottomRightX": 635,
+      "bottomRightY": 246,
+      "content": "|  Symbol 0 | Symbol 1 | Symbol 2 | Symbol 3 | Comment  |\n| --- | --- | --- | --- | --- |\n|  Sx | Sx | Sx | EPF | All symbols are valid  |\n|  Corrupt | Sx | Sx | EPF | First symbol corrupted  |\n|  Sx | Corrupt | Sx | EPF | Second symbol corrupted  |\n|  Sx | Sx | Corrupt | EPF | Third symbol corrupted  |\n|  Sx | Sx | Sx | Corrupt | EPF corrupted  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-96.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 259,
+      "bottomRightX": 337,
+      "bottomRightY": 276,
+      "content": "### 7.3.4.2 Header Packet Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 283,
+      "bottomRightX": 697,
+      "bottomRightY": 349,
+      "content": "Each header packet contains a CRC-5 and a CRC-16 to ensure that the data integrity of a header packet can be verified. A CRC-5 is used to detect bit errors in the Link Control Word. A CRC-16 is used to detect bit errors in the packet header. A header packet error can be detected using CRC-5 or CRC-16 checks.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 354,
+      "bottomRightX": 686,
+      "bottomRightY": 527,
+      "content": "- A header packet error shall be declared if the following conditions are true:\n  1. A valid HPSTART ordered set or DPHSTART ordered set is detected.\n  2. Either CRC-5 or CRC-16 check fails as defined in Section 7.2.1 or additionally for SuperSpeed USB, any K-symbol occurrence in the packet header or Link Control Word that prevents CRC-5 or CRC-16 checks from being completed.\n- A port receiving the header packet shall send an LBAD as defined in Section 7.2.4.1 if it detects a header packet error. The Link Error Count shall remain unchanged.\n- If a port fails to receive a header packet for three consecutive times, it shall transition to Recovery. The Link Error Count shall be incremented by one. Refer to Section 7.2.4.1.4 for details.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 535,
+      "bottomRightX": 447,
+      "bottomRightY": 553,
+      "content": "### 7.3.4.3 Rx Header Sequence Number Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 558,
+      "bottomRightX": 698,
+      "bottomRightY": 643,
+      "content": "Each port contains an Rx Header Sequence Number that is defined in Section 7.2.4.1 and initialized upon entry to U0. Upon receiving a header packet, a port is required to compare the Header Sequence Number embedded in the header packet with the Rx Header Sequence Number stored in its receiver. This ensures that header packets are transmitted and received in an orderly manner. A missing or corrupted header packet can be detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 648,
+      "bottomRightX": 682,
+      "bottomRightY": 755,
+      "content": "- An Rx Header Sequence Number error shall occur if the following conditions are met:\n  1. A header packet is received and no header packet error is detected.\n  2. The Header Sequence Number in the received header packet does not match the Rx Header Sequence Number.\n- A port detecting an Rx Header Packet Sequence Number error shall transition to Recovery.\n- The Link Error Count shall be incremented by one each time a transition to Recovery occurs.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 769,
+      "bottomRightX": 378,
+      "bottomRightY": 790,
+      "content": "### 7.3.5 Link Command Errors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 796,
+      "bottomRightX": 698,
+      "bottomRightY": 881,
+      "content": "A link command consists of four-symbol link command frame ordered set, LCSTART, followed by a two-symbol link command word, and its repeat. A link command is constructed such that any single symbol corruption within the link command frame ordered set will not invalidate the recognition of a link command. Additionally for SuperSpeedPlus USB, any single-bit error in the two link command words will not corrupt the correct parsing of a link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 885,
+      "bottomRightX": 657,
+      "bottomRightY": 902,
+      "content": "- A detection of a link command shall be declared if the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "7-37",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "index": 397,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 287,
+      "topLeftY": 98,
+      "bottomRightX": 538,
+      "bottomRightY": 336,
+      "content": "![img-243.jpeg](img-243.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-243.jpeg"
+    },
+    {
+      "topLeftX": 208,
+      "topLeftY": 348,
+      "bottomRightX": 615,
+      "bottomRightY": 365,
+      "content": "Figure 8-57. Device Detects Error in Data and Host Resends Data",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 385,
+      "bottomRightX": 665,
+      "bottomRightY": 420,
+      "content": "Note: In Figure 8-57 the host retries the data packet received with an error in the same service interval. It is not required to do so and may retry the transaction in the next service interval.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 282,
+      "topLeftY": 440,
+      "bottomRightX": 544,
+      "bottomRightY": 589,
+      "content": "![img-244.jpeg](img-244.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-244.jpeg"
+    },
+    {
+      "topLeftX": 287,
+      "topLeftY": 601,
+      "bottomRightX": 537,
+      "bottomRightY": 617,
+      "content": "Figure 8-58. Endpoint Sends STALL TP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 648,
+      "bottomRightX": 397,
+      "bottomRightY": 669,
+      "content": "### 8.12.5 Host Timing Information",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 674,
+      "bottomRightX": 689,
+      "bottomRightY": 827,
+      "content": "USB 3.0 host controllers do not broadcast regular start of frame (SOF) packets to all devices on a Enhanced SuperSpeed USB link. Host timing information is sent by the host via isochronous timestamp packets (ITP) when the root port link is in U0 around a bus interval boundary. Hubs forward isochronous timestamp packets (with any necessary modifications as described in Section 10.9.4.4) to any downstream port with a link in U0 and which has completed Port Configuration. The host shall provide isochronous timestamps based on a non-spread clock. Devices are responsible for keeping the link in U0 around bus interval boundaries when isochronous timestamps are required for device operation. A device should never keep the link in U0 for the sole purpose of receiving timestamps unless the timestamps are required for device operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 835,
+      "bottomRightX": 694,
+      "bottomRightY": 887,
+      "content": "Note: A device will receive an isochronous timestamp if its link is in U0 around a bus interval boundary. This means that devices without any isochronous endpoints or need for synchronization may discard isochronous timestamp packets without negative side effects.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "8-104",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

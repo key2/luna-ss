@@ -1,0 +1,115 @@
+{
+  "index": 99,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 28,
+      "bottomRightX": 378,
+      "bottomRightY": 46,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 245,
+      "topLeftY": 92,
+      "bottomRightX": 413,
+      "bottomRightY": 235,
+      "content": "![img-33.jpeg](img-33.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-33.jpeg"
+    },
+    {
+      "topLeftX": 521,
+      "topLeftY": 139,
+      "bottomRightX": 603,
+      "bottomRightY": 224,
+      "content": "![img-34.jpeg](img-34.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-34.jpeg"
+    },
+    {
+      "topLeftX": 515,
+      "topLeftY": 242,
+      "bottomRightX": 595,
+      "bottomRightY": 258,
+      "content": "SECTION P-P",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 284,
+      "bottomRightX": 419,
+      "bottomRightY": 442,
+      "content": "![img-35.jpeg](img-35.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-35.jpeg"
+    },
+    {
+      "topLeftX": 275,
+      "topLeftY": 458,
+      "bottomRightX": 353,
+      "bottomRightY": 474,
+      "content": "SECTION T-T",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 457,
+      "topLeftY": 286,
+      "bottomRightX": 693,
+      "bottomRightY": 468,
+      "content": "![img-36.jpeg](img-36.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-36.jpeg"
+    },
+    {
+      "topLeftX": 322,
+      "topLeftY": 506,
+      "bottomRightX": 489,
+      "bottomRightY": 619,
+      "content": "![img-37.jpeg](img-37.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-37.jpeg"
+    },
+    {
+      "topLeftX": 390,
+      "topLeftY": 627,
+      "bottomRightX": 469,
+      "bottomRightY": 643,
+      "content": "SECTION Q-Q",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 569,
+      "topLeftY": 649,
+      "bottomRightX": 701,
+      "bottomRightY": 668,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 977,
+      "bottomRightX": 158,
+      "bottomRightY": 995,
+      "content": "5-12",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

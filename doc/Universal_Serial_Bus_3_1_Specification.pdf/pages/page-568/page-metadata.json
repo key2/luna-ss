@@ -1,0 +1,111 @@
+{
+  "index": 567,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 103,
+      "bottomRightX": 721,
+      "bottomRightY": 539,
+      "content": "![img-283.jpeg](img-283.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-283.jpeg"
+    },
+    {
+      "topLeftX": 130,
+      "topLeftY": 542,
+      "bottomRightX": 508,
+      "bottomRightY": 553,
+      "content": "¹ Peripheral Device must disconnect on USB2.0 within tUSB2SwitchDisconnect of entering this state.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 130,
+      "topLeftY": 553,
+      "bottomRightX": 726,
+      "bottomRightY": 584,
+      "content": "² If USPORT-Powered on was entered from any state except USPORT.Disabled then this transition shall take place if Far-end Receiver Terminations (RRX-DC) are not detected after 8 successive Rx.Detect.Quiet to Rx.Detect.Active transitions. If USPORT-Powered on was entered from the USPORT.Disabled state, then this transition shall take place the first time that Far-end Receiver Terminations are not detected in the Rx.Detect.Active substate.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 130,
+      "topLeftY": 584,
+      "bottomRightX": 708,
+      "bottomRightY": 604,
+      "content": "³ Disabled count is incremented each time the \"Disabled\" state is entered from the \"Training Initiated\" state. Disabled count is reset to '0' each time the link completes Port Configuration.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 637,
+      "bottomRightX": 603,
+      "bottomRightY": 654,
+      "content": "Figure 10-26. Peripheral Upstream Device Port State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 668,
+      "bottomRightX": 357,
+      "bottomRightY": 685,
+      "content": "### 10.18.2.1 USDPORT-Powered-off",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 691,
+      "bottomRightX": 686,
+      "bottomRightY": 726,
+      "content": "The USDPORT-Powered-off state is the default state for a peripheral device. A peripheral device shall transition into this state if any of the following situations occur:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 730,
+      "bottomRightX": 372,
+      "bottomRightY": 747,
+      "content": "- From any state when VBUS is invalid.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 752,
+      "bottomRightX": 697,
+      "bottomRightY": 785,
+      "content": "In this state, the port's link shall be in the eSS.Disabled state and the USB 2.0 pull-up is not applied. The corresponding peripheral USB state shall be Attached.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-90",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

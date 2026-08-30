@@ -1,0 +1,146 @@
+{
+  "index": 85,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 93,
+      "topLeftY": 30,
+      "bottomRightX": 379,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 672,
+      "bottomRightY": 128,
+      "content": "service interval. Note, if an endpoint has no isochronous data to transmit when accessed by the host, it shall send a zero length packet in response to the request for data.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 683,
+      "bottomRightY": 249,
+      "content": "The host may access an endpoint at any point during the appropriate service interval. The isochronous endpoint should not assume a fixed spacing between transaction attempts. The isochronous endpoint can assume only that it will receive a transaction attempt within the service interval bound. Errors may prevent the successful exchange of data within the service interval bound; however, since the packets in an isochronous transaction are not acknowledged, a host/device has no way of knowing which packets were not received successfully and hence will not retry packets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 263,
+      "bottomRightX": 471,
+      "bottomRightY": 284,
+      "content": "### 4.4.8.3 Isochronous Transfer Data Sequences",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 288,
+      "bottomRightX": 683,
+      "bottomRightY": 372,
+      "content": "Isochronous endpoints always transmit data packets starting with sequence number zero in each service interval. Each successive data packet transmitted in the same service interval is sent with the next higher sequence number. The sequence number shall roll over from thirty one to zero when transmitting the thirty second packet. Isochronous endpoints do not support retries and cannot respond with flow control responses.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 386,
+      "bottomRightX": 557,
+      "bottomRightY": 404,
+      "content": "### 4.4.8.4 Special Considerations for Isochronous Transfers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 410,
+      "bottomRightX": 679,
+      "bottomRightY": 496,
+      "content": "For a general overview of isochronous data movements over USB, USB clock model, clock synchronization, and the different types of USB-defined synchronization types and their specific requirements, refer to the USB 2.0 Specification, Section 5.12. The following section presents the information necessary to implement Enhanced SuperSpeed isochronous endpoints that need an explicit feedback isochronous endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 501,
+      "bottomRightX": 308,
+      "bottomRightY": 519,
+      "content": "#### 4.4.8.4.1 Explicit Feedback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 523,
+      "bottomRightX": 698,
+      "bottomRightY": 642,
+      "content": "An Enhanced SuperSpeed asynchronous isochronous sink endpoint must provide explicit feedback to the host by indicating accurately what its desired data rate ($F_f$) is, relative to the USB bus interval frequency. This allows the host to continuously adjust the number of samples sent to the sink so that neither underflow, nor overflow, of the data buffer occurs. Likewise, an Enhanced SuperSpeed adaptive source endpoint must receive explicit feedback from the host so that it can accurately generate the number of samples required by the host. Feedback endpoints can be specified as described in Section 9.6.6 for the bmAttributes field of the endpoint descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 646,
+      "bottomRightX": 696,
+      "bottomRightY": 732,
+      "content": "To generate the desired data rate $F_f$, the device must measure its actual sampling rate $F_s$, referenced to the USB notion of time, i.e., the USB bus interval frequency. This specification requires the data rate $F_f$ to be resolved to better than one sample per second (1 Hz) in order to allow a high-quality source rate to be created and to tolerate delays and errors in the feedback loop. To achieve this accuracy, the measurement time $T_{meas}$ must be at least 1 second. Therefore:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 736,
+      "bottomRightX": 446,
+      "bottomRightY": 759,
+      "content": "$$T_{meas} = 2^K$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 766,
+      "bottomRightX": 674,
+      "bottomRightY": 818,
+      "content": "where $T_{meas}$ is now expressed in USB bus intervals and $K \\ge 13$ for Enhanced SuperSpeed devices (125 $\\mu$s bus intervals). However, in most devices, the actual sampling rate $F_s$ is derived from a master clock $F_m$ through a binary divider. Therefore:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 823,
+      "bottomRightX": 452,
+      "bottomRightY": 846,
+      "content": "$$F_m = F_s * 2^P$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 853,
+      "bottomRightX": 677,
+      "bottomRightY": 889,
+      "content": "where $P$ is a positive integer (including 0 if no higher-frequency master clock is available). The measurement time $T_{meas}$ can now be decreased by measuring $F_m$ instead of $F_s$ and:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 964,
+      "bottomRightX": 117,
+      "bottomRightY": 977,
+      "content": "4-16",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

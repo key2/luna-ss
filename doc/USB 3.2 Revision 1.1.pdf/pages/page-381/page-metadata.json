@@ -1,0 +1,112 @@
+{
+  "index": 380,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 350 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 91,
+      "bottomRightX": 675,
+      "bottomRightY": 416,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|   |  |  |  | However, it may use class-specific protocols on an interface basis. If this field is set to FFH, the device uses a vendor-specific protocol on a device basis.  |\n|  7 | bMaxPacketSize0 | 1 | Number | Maximum packet size for endpoint zero. The bMaxPacketSize0 value is used as the exponent for a 2^{bMaxPacketSize0} value; e.g., a bMaxPacketSize0 of 4 means a Max Packet size of 16 (2^{4} → 16). 09H is the only valid value in this field when operating at Gen X speed.  |\n|  8 | idVendor | 2 | ID | Vendor ID (assigned by the USB-IF)  |\n|  10 | idProduct | 2 | ID | Product ID (assigned by the manufacturer)  |\n|  12 | bcdDevice | 2 | BCD | Device release number in binary-coded decimal  |\n|  14 | iManufacturer | 1 | Index | Index of string descriptor describing manufacturer  |\n|  15 | iProduct | 1 | Index | Index of string descriptor describing product  |\n|  16 | iSerialNumber | 1 | Index | Index of string descriptor describing the device's serial number  |\n|  17 | bNumConfigurations | 1 | Number | Number of possible configurations  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-180.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 436,
+      "bottomRightX": 356,
+      "bottomRightY": 452,
+      "content": "### 9.6.2 Binary Device Object Store (BOS)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 458,
+      "bottomRightX": 672,
+      "bottomRightY": 520,
+      "content": "This section defines a flexible and extensible framework for describing and adding device-level capabilities to the set of USB standard specifications. As mentioned above, there exists a device descriptor, but all device-level capability extensions are defined using the following framework.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 532,
+      "bottomRightX": 672,
+      "bottomRightY": 670,
+      "content": "The BOS descriptor defines a root descriptor that is similar to the configuration descriptor, and is the base descriptor for accessing a family of related descriptors. A host can read a BOS descriptor and learn from the wTotalLength field the entire size of the device-level descriptor set, or it can read in the entire BOS descriptor set of device capabilities. The host accesses this descriptor using the GetDescriptor() request. The descriptor type in the GetDescriptor() request is set to BOS (see Table 9-12). There is no way for a host to read individual device capability descriptors. The entire set can only be accessed via reading the BOS descriptor with a GetDescriptor() request and using the length reported in the wTotalLength field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 302,
+      "topLeftY": 682,
+      "bottomRightX": 484,
+      "bottomRightY": 698,
+      "content": "Table 9-12. BOS Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 149,
+      "topLeftY": 708,
+      "bottomRightX": 732,
+      "bottomRightY": 823,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of descriptor  |\n|  1 | bDescriptorType | 1 | Constant | BOS Descriptor type  |\n|  2 | wTotalLength | 2 | Number | Length of this descriptor and all of its sub descriptors  |\n|  4 | bNumDeviceCaps | 1 | Number | The number of separate device capability descriptors in the BOS  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-181.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 843,
+      "bottomRightX": 673,
+      "bottomRightY": 906,
+      "content": "Individual technology-specific or generic device-level capabilities are reported via Device Capability descriptors. The format of the Device Capability descriptor is defined in Table 9-13. The Device Capability descriptor has a generic header, with a sub-type field (bDevCapabilityType) which defines the layout of the remainder of the descriptor. The codes",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

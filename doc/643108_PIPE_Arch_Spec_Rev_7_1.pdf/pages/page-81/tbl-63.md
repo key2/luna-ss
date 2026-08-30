@@ -1,0 +1,4 @@
+|  Bit | Default | Attribute | Required | Description  |
+| --- | --- | --- | --- | --- |
+|  [7] | 0h | Level | PCIe | **Margin Direction:** This field is used to control the time or voltage direction for margining. For timing margining, this field steps the time left (1'b0) or right (1'b1).^{1} For voltage margining, this field steps the voltage up (1'b0) or down (1'b1). This value can be changed only when the margining is stopped. This field should be ignored by PHYs that do not support individual time or voltage margining as advertised in the PHY datasheet.  |
+|  [6:0] | 0h | Level | PCIe | **Margin Offset:** This field is used to change the margin offset a number of steps from the default position. This value can be changed even during the margining process.  |

@@ -1,0 +1,146 @@
+{
+  "index": 417,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 387 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 95,
+      "bottomRightX": 676,
+      "bottomRightY": 403,
+      "content": "- From the DSPORT.Disabled state when a SetPortFeature(PORT_LINK_STATE)\n  Rx.Detect request is received for the port.\n- From the DSPORT.Disabled state when the hub's upstream port is reset. Note: The\n  hub shall issue a Warm Reset on the downstream port, if a device is detected in the\n  first Rx.Detect after entering this state, even if the upstream port reset is a hot reset.\n- From the DSPORT-Powered-off state or DSPORT.Disabled state when the hub's\n  upstream port is reset. Note: The hub shall issue a Warm Reset on the downstream\n  port after it has transitioned the port to the DSPORT.RxDetect state and detected a\n  far-end receiver, even if the upstream port reset is a hot reset\n- From the DSPORT.Resetting state if the port's link times out from any Polling\n  substate during a reset.\n- From the DSPORT.Training state if the port's link times out from any Polling substate\n  and the cPollingTimeout is less than 2 and the port is not enabled to enter\n  compliance or Polling substate which timed out is not Polling.LFPS. See definition of\n  PollingTimeout in Section 7.5.4.2 and Section 10.16.2.10 defining Set Port Feature\n  for enabling compliance entry.\n- From the DSPORT.Loopback state if the port's link performs a successful LFPS\n  handshake in Loopback.Exit.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 424,
+      "bottomRightX": 465,
+      "bottomRightY": 440,
+      "content": "In this state, the port's link shall be in the Rx.Detect state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 452,
+      "bottomRightX": 671,
+      "bottomRightY": 483,
+      "content": "Note: The port's link shall still perform connection detection normally from the Rx.Detect if\nthe hub upstream port's link is in U3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 495,
+      "bottomRightX": 310,
+      "bottomRightY": 511,
+      "content": "#### **10.3.1.3 DSPORT.Training**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 518,
+      "bottomRightX": 661,
+      "bottomRightY": 549,
+      "content": "A port transitions to this state from the DSPORT.Disconnected state when far-end receiver\nterminations are detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 561,
+      "bottomRightX": 449,
+      "bottomRightY": 577,
+      "content": "In this state, the port's link shall be in the Polling state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 589,
+      "bottomRightX": 302,
+      "bottomRightY": 604,
+      "content": "#### **10.3.1.4 DSPORT.ERROR**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 611,
+      "bottomRightX": 666,
+      "bottomRightY": 642,
+      "content": "A port shall transition to this state only when an Enhanced SuperSpeed device is connected\nand a serious error condition occurred while attempting to operate the link.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 654,
+      "bottomRightX": 504,
+      "bottomRightY": 670,
+      "content": "A port transitions to this state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 677,
+      "bottomRightX": 676,
+      "bottomRightY": 827,
+      "content": "- From the DSPORT.Enabled state if the link enters recovery and times out without\n  recovering.\n- From the DSPORT.Enabled state if U1 or U2 exit fails.\n- From the DSPORT.Loopback state if the port is the loopback master and the LFPS\n  handshake in Loopback.Exit fails.\n- From DSPORT.Enabled if Port Configuration fails as described in Section 8.4.6.\n- From the DSPORT.Training state if the port's link times out from any Polling substate\n  and cPollingTimeout is 2. See 7.5.4.2 for details of cPollingTimeout.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 847,
+      "bottomRightX": 480,
+      "bottomRightY": 864,
+      "content": "In this state, the port's link shall be in the eSS.Inactive state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

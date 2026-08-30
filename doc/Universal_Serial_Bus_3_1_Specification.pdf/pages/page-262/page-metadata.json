@@ -1,0 +1,147 @@
+{
+  "index": 261,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 301,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 96,
+      "bottomRightX": 396,
+      "bottomRightY": 115,
+      "content": "### 7.5.1.2.2 eSS.Disabled Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 684,
+      "bottomRightY": 169,
+      "content": "The requirements of a peripheral upstream port are the same as defined in Section 7.5.1.1.1. In addition, a peripheral upstream port shall implement a tDisabledCount counter. The operation of the tDisabledCount counter shall meet the following requirement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 174,
+      "bottomRightX": 677,
+      "bottomRightY": 190,
+      "content": "- The tDisabledCount counter shall be reset to zero upon one of the following two conditions:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 193,
+      "bottomRightX": 412,
+      "bottomRightY": 226,
+      "content": "1. Invalid VBUS\n2. Successful port configuration exchange",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 228,
+      "bottomRightX": 643,
+      "bottomRightY": 244,
+      "content": "- The tDisabledCount counter shall be incremented upon entry to eSS.Disabled.Default.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 252,
+      "bottomRightX": 415,
+      "bottomRightY": 268,
+      "content": "### 7.5.1.2.3 Exit from eSS.Disabled.Default",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 273,
+      "bottomRightX": 686,
+      "bottomRightY": 305,
+      "content": "- A peripheral upstream port shall transition to Rx.Detect if one of the following conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 308,
+      "bottomRightX": 598,
+      "bottomRightY": 343,
+      "content": "1. When VBUS transitions to valid.\n2. When a USB 2.0 bus reset is detected and tDisabledCount is less than 3.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 344,
+      "bottomRightX": 652,
+      "bottomRightY": 361,
+      "content": "- A peripheral upstream port shall transition to eSS.Disabled.Error if tDisabledCount is 3.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 370,
+      "bottomRightX": 400,
+      "bottomRightY": 385,
+      "content": "### 7.5.1.2.4 Exit from eSS.Disabled.Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 391,
+      "bottomRightX": 686,
+      "bottomRightY": 476,
+      "content": "- A peripheral upstream port shall transition to Rx.Detect upon PowerOn reset.\n- A self-powered peripheral upstream port shall transition to eSS.Disabled.Default upon detection of invalid VBUS.\n- A peripheral upstream port shall remain in eSS.Disabled.Error upon detection of USB 2.0 bus reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 502,
+      "bottomRightX": 639,
+      "bottomRightY": 768,
+      "content": "![img-178.jpeg](img-178.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-178.jpeg"
+    },
+    {
+      "topLeftX": 271,
+      "topLeftY": 780,
+      "bottomRightX": 552,
+      "bottomRightY": 797,
+      "content": "Figure 7-15. eSS.Disabled Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-50",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

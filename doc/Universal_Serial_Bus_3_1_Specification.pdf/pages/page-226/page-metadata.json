@@ -1,0 +1,66 @@
+{
+  "index": 225,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 381,
+      "bottomRightY": 108,
+      "content": "Table 7-4. Link Command Bit Definitions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 111,
+      "bottomRightX": 660,
+      "bottomRightY": 750,
+      "content": "|  Class |   | Type | b6~4 | Sub-Type  |\n| --- | --- | --- | --- | --- |\n|  b10~9 | Link Command | b8~7 |   | b3~0  |\n|  00 | LGOOD_n LRTY LBAD LCRD_x LCRD1_x LCRD2_x | 00: LGOOD_n | Reserved (000) | b3: Reserved b2~0: HP Sequence Number 000: LGOOD_0 001: LGOOD_1 010: LGOOD_2 011: LGOOD_3 100: LGOOD_4 101: LGOOD_5 110: LGOOD_6 111: LGOOD_7  |\n|   |   |  01: LCRD_x LCRD1_x LCRD2_x |   | b3: Reserved b2: Credit series 0: LCRD_x or LCRD1_x 1: LCRD2_x b1~0: Rx Header Buffer Credit 00: LCRD_A/LCRD1_A/LCRD2_A 01: LCRD_B/LCRD1_B/LCRD2_B 10: LCRD_C/LCRD1_C/LCRD2_C 11: LCRD_D/LCRD1_D/LCRD2_D  |\n|   |   |  10: LRTY 11: LBAD |   | Reserved (0000)  |\n|  01 | LGO_Ux LAU LXU LPMA | 00: LGO_Ux |   | 0001: LGO_U1 0010: LGO_U2 0011: LGO_U3 Others: Reserved  |\n|   |   |  01: LAU 10: LXU 11: LPMA |   | Reserved (0000)  |\n|  10 | LDN LUP | 00: LUP 11: LDN Others: Reserved |   | Reserved (0000)  |\n|  11: Reserved | Reserved | Reserved (0000) |  | Reserved (0000)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-90.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 760,
+      "bottomRightX": 689,
+      "bottomRightY": 827,
+      "content": "Link commands are defined for four usage cases. First, link commands are used to ensure the successful transfer of a packet. Second, link commands are used for link flow control. Third, link commands are used for link power management. And finally, special link commands are defined for a port to signal its presence in U0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 832,
+      "bottomRightX": 694,
+      "bottomRightY": 884,
+      "content": "Successful header packet transactions between the two link partners require proper header packet acknowledgement. Rx Header Buffer Credit exchange facilitates link flow control. Header packet acknowledgement and Rx Header Buffer Credit exchange are realized using different link",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-14",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "index": 179,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 191,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 61,
+      "content": "- 149 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 93,
+      "bottomRightX": 288,
+      "bottomRightY": 108,
+      "content": "### 7.3.4 Header Packet Errors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 114,
+      "bottomRightX": 487,
+      "bottomRightY": 130,
+      "content": "Several types of header packet errors are detected. They are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 136,
+      "bottomRightX": 425,
+      "bottomRightY": 195,
+      "content": "1. Missing of a header packet\n2. Invalid header packet due to CRC errors\n3. Mismatch of a Rx Header Sequence Number",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 210,
+      "bottomRightX": 672,
+      "bottomRightY": 257,
+      "content": "Regardless, the Link Error Count is incremented for only one class of errors in the link layer, and those are errors which will cause the link to transition to Recovery. For errors that will not cause the link to enter Recovery, the Link Error Count shall remain unchanged.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 269,
+      "bottomRightX": 288,
+      "bottomRightY": 284,
+      "content": "#### 7.3.4.1 Packet Framing Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 291,
+      "bottomRightX": 660,
+      "bottomRightY": 323,
+      "content": "A packet framing ordered set is constructed such that any single symbol corruption within the ordered set will not prevent its packet framing recognition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 334,
+      "bottomRightX": 671,
+      "bottomRightY": 395,
+      "content": "Header packet framing ordered sets and DPP framing ordered sets are all constructed using four symbol ordered sets. A header packet contains only one packet framing ordered set at the beginning of the packet defined in Section 7.2.1. A DPP begins with start packet framing ordered set and ends with end packet framing ordered set as defined in Section 7.2.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 408,
+      "bottomRightX": 671,
+      "bottomRightY": 498,
+      "content": "- A valid HPSTART ordered set, or a valid DPHSTART ordered set, or a valid DPP framing ordered set shall be declared if the following two conditions are met:\n  1. At least three of the four symbols in the four consecutive symbol periods are valid packet framing symbols.\n  2. The four symbols are in the order defined in Table 7-9.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 513,
+      "bottomRightX": 652,
+      "bottomRightY": 590,
+      "content": "Note: If an HPSTART ordered set or a DPHSTART ordered set has two or more symbols corrupted, a header packet will not be detectable and, therefore, result in missing of a header packet. Similarly, if a DPP framing ordered set is corrupted in Gen 1 operation, it will result in missing of a data packet payload. In Gen 2 operation, a corruption of a DPP framing ordered set will result in the loss of data packet payload boundary.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 602,
+      "bottomRightX": 672,
+      "bottomRightY": 729,
+      "content": "- Missing of a header packet shall result in a port transitioning to Recovery depending on which one of the following conditions becomes true first:\n  1. A port transmitting the header packet upon its PENDING_HP_TIMER timeout.\n  2. A port receiving the header packet upon detection of a Rx Header Sequence Number error.\n- Missing of a DPP framing ordered set in Gen 2 operation shall result in a port transitioning to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 242,
+      "topLeftY": 756,
+      "bottomRightX": 547,
+      "bottomRightY": 788,
+      "content": "**Table 7-9. Valid Packet Framing Symbol Order**\n**(Sx is One of SHP, DPHP, SDP, END or EDB)**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 797,
+      "bottomRightX": 642,
+      "bottomRightY": 924,
+      "content": "|  Symbol 0 | Symbol 1 | Symbol 2 | Symbol 3 | Comment  |\n| --- | --- | --- | --- | --- |\n|  Sx | Sx | Sx | EPF | All symbols are valid  |\n|  Corrupt | Sx | Sx | EPF | First symbol corrupted  |\n|  Sx | Corrupt | Sx | EPF | Second symbol corrupted  |\n|  Sx | Sx | Corrupt | EPF | Third symbol corrupted  |\n|  Sx | Sx | Sx | Corrupt | EPF corrupted  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-86.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

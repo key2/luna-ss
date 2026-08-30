@@ -1,0 +1,137 @@
+{
+  "index": 620,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 584,
+      "topLeftY": 30,
+      "bottomRightX": 701,
+      "bottomRightY": 45,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 695,
+      "bottomRightY": 143,
+      "content": "After a device has sent an ERDY associated with a bulk endpoint, the link should be kept in U0 until the host sends a request in response to the ERDY (or until the tERDYTimeout occurs, refer to Section 8.13).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 161,
+      "bottomRightX": 333,
+      "bottomRightY": 180,
+      "content": "### C.3.2.3 Interrupt Endpoints",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 185,
+      "bottomRightX": 563,
+      "bottomRightY": 203,
+      "content": "An interrupt endpoint is idle when both of the following conditions are met:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 206,
+      "bottomRightX": 686,
+      "bottomRightY": 259,
+      "content": "- Either an NRDY was sent, or the Packets Pending flag was set to zero in the last ACK packet received from the host.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 265,
+      "bottomRightX": 690,
+      "bottomRightY": 399,
+      "content": "After a device has sent an ERDY associated with an interrupt endpoint, the link should be kept in U0 until the host sends a request in response to the ERDY (or until the tERDYTimeout occurs) in order to achieve the subscribed interrupt service latency. However, when all transfers for a given service interval have been completed, the endpoint will not need the link until the next service interval. The device may be able to place its link in U1 or U2 during this time. The End of Burst flag can be used to determine when all transfers for a given service interval are completed. Note that hosts are required to initiate interrupt transfers far enough ahead of a transfer window to meet subscribed service requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 418,
+      "bottomRightX": 362,
+      "bottomRightY": 437,
+      "content": "### C.3.2.4 Isochronous Endpoints",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 442,
+      "bottomRightX": 700,
+      "bottomRightY": 510,
+      "content": "An isochronous endpoint is idle when all transfers for a given service interval have been completed, as indicated by the Last Packet flag. The endpoint will not need the link until the next service interval. Note that the host is required to send a PING packet far enough ahead of a transfer window to meet subscribed service requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 527,
+      "bottomRightX": 476,
+      "bottomRightY": 547,
+      "content": "### C.3.2.5 Devices That Need Timestamp Packets",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 551,
+      "bottomRightX": 691,
+      "bottomRightY": 652,
+      "content": "When a device needs timestamp information, it needs to ensure that its link is in U0 when the next bus interval boundary is reached in order to receive a timestamp packet. If the device’s link is not in U0, it should transition to U0 prior to the next bus interval boundary. The device must track when the bus interval boundary will occur. The device initiates a transition to U0 a period of time before the bus interval boundary occurs, where the period of time is the device-to-host link exit latency.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 679,
+      "bottomRightX": 660,
+      "bottomRightY": 727,
+      "content": "## C.4 Latency Tolerance Message (LTM) Implementation Example",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 738,
+      "bottomRightX": 684,
+      "bottomRightY": 807,
+      "content": "Computer systems typically maintain a high state of readiness to service devices even when the computer system is idle. LTM supports a mechanism for a system to reduce its state of readiness with the cooperation of Enhanced SuperSpeed devices. This may result in substantial system power savings without requiring additional cost to devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 814,
+      "bottomRightX": 691,
+      "bottomRightY": 865,
+      "content": "This section provides a device implementation example for LTM support. This example is based on a model using two device Latency Tolerance states, an active state and an idle state. Each state has a different Best Effort Latency Tolerance (BELT).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 980,
+      "bottomRightX": 701,
+      "bottomRightY": 995,
+      "content": "C-23",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

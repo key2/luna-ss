@@ -1,0 +1,129 @@
+{
+  "index": 190,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 522,
+      "bottomRightY": 111,
+      "content": "Table 6-20. Informative Gen 2 Transmitter Equalization Settings",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 136,
+      "bottomRightX": 566,
+      "bottomRightY": 352,
+      "content": "|  Host/Device Loss @ 5GHz (dB) | <3.5 | ≥3.5  |\n| --- | --- | --- |\n|  C_{-1} | 0.000 | -0.100  |\n|  C_{1} | -0.125 | -0.125  |\n|  Preshoot (dB) | 0.0 | 2.7  |\n|  De-emphasis (dB) | -2.5 | -3.3  |\n|  Va/Vd | 1.000 | 0.800  |\n|  Vb/Vd | 0.750 | 0.550  |\n|  Vc/Vd | 0.750 | 0.750  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-73.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 391,
+      "bottomRightX": 425,
+      "bottomRightY": 413,
+      "content": "### 6.7.6 Entry into Electrical Idle, U1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 420,
+      "bottomRightX": 671,
+      "bottomRightY": 469,
+      "content": "Electrical Idle is a steady state condition where the Transmitter Txp and Txn voltages are held constant at the same value and the Receiver Termination is within the range specified by Z$_{RX-DC}$. Electrical Idle is used in the power saving state of U1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 477,
+      "bottomRightX": 686,
+      "bottomRightY": 528,
+      "content": "The low impedance common mode and differential Receiver terminations values (see Table 6-21) must be met in Electrical Idle. The Transmitter can be in either a low or high impedance mode during Electrical Idle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 555,
+      "bottomRightX": 397,
+      "bottomRightY": 581,
+      "content": "## 6.8 Receiver Specifications",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 601,
+      "bottomRightX": 451,
+      "bottomRightY": 623,
+      "content": "### 6.8.1 Receiver Equalization Training",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 627,
+      "bottomRightX": 694,
+      "bottomRightY": 727,
+      "content": "The receiver equalization training sequence, detailed in Section 6.4.1.1 for Gen 1 operation and in Section 6.4.1.2 for Gen 2 operation, can be used to train the receiver equalizer. The TSEQ training sequence is designed to provide spectrally rich data patterns that are useful for training typical receiver equalization architectures. For Gen 1 operation, a high edge density pattern is interleaved with the data to help the CDR maintain bit lock. For Gen 2 operation the sequence is deemed sufficiently rich on its own.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 737,
+      "bottomRightX": 694,
+      "bottomRightY": 790,
+      "content": "During Gen 1 operation the TSEQ training sequence repeats 65536 times to allow for testing many coefficient settings. Also during Gen 1 operation no SKPs are inserted during the TSEQ training sequence. The frequency spectrum of the TSEQ sequence is shown in Figure 6-23.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 797,
+      "bottomRightX": 691,
+      "bottomRightY": 882,
+      "content": "During Gen 2 operation, the training period is ~8ms. The training pattern is periodic with a period of 16384 132-bit blocks (2162688UI). The much longer pattern greatly increases the richness of the pattern compared to Gen 1. The Gen 2 training pattern spectrum is essentially white. Due to the length of the Gen 2 training interval and the potential desire to examine the data, SKPs are inserted during polling.TSEQ.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 890,
+      "bottomRightX": 458,
+      "bottomRightY": 907,
+      "content": "Receiver equalization training is implementation specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "6-35",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

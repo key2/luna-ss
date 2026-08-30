@@ -1,0 +1,84 @@
+{
+  "index": 538,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 508 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 654,
+      "bottomRightY": 184,
+      "content": "- Upon completing the clock switching in one simplex link, a bit-level re-timer shall transmit TS1B OS in its other simplex link to signal its preceding re-timer.\n- Upon completing the clock switching at both simplex, a bit-level re-timer shall perform the ordered set switch. The symbol boundary shall be preserved when switching from the local TS1B OS to the received TS1 OS or TS1B OS.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 196,
+      "bottomRightX": 618,
+      "bottomRightY": 227,
+      "content": "Shown in Figure E-12 is an example of four bit-level re-timers performing the clock switching at both simplex.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 238,
+      "bottomRightX": 606,
+      "bottomRightY": 269,
+      "content": "Figure E-11. Sequential Bit-Level Re-timer Clock Switching Based on TS1A OS and TS1B OS",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 276,
+      "bottomRightX": 576,
+      "bottomRightY": 775,
+      "content": "![img-206.jpeg](img-206.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-206.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

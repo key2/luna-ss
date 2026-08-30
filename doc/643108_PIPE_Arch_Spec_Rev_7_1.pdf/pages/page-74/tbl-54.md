@@ -1,0 +1,3 @@
+|  Name | Active Level | Description | Relevant Protocols  |
+| --- | --- | --- | --- |
+|  TxSyncHeader[3:0] | N/A | **This signal is not used in the SerDes architecture.** PCIe mode: Only the lower two bits ([1:0]) are utilized. Provides the sync header for the PHY to use in the next 130b block. The PHY reads this value when the TxStartBlock signal is asserted. This signal is only used at the 8.0 GT/s, 16 GT/s, and 32 GT/s signaling rates. USB mode: Provides the sync header for the PHY to use in the next 132b block. The PHY reads this value when the TxStartBlock signal is asserted. This signal is only used at the 10 GT/s signaling rate. | PCIe and USB  |

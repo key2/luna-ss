@@ -1,0 +1,110 @@
+{
+  "index": 279,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 698,
+      "bottomRightY": 235,
+      "content": "- The LFPS receiver is used to control the test pattern sequencing.\n- Upon entry to Compliance Mode, the port shall wait until its eSS Tx DC common mode voltage meets the VTX-DC-CM specification defined in Table 6-18 before it starts to send the first compliance test pattern defined in Table 6-13.\n- The port shall transmit the next compliance test pattern continuously upon detection of a Ping.LFPS as defined in Section 6.9.1.\n- The port shall transmit the first compliance test pattern continuously upon detection of a Ping.LFPS and the test pattern has reached the final test pattern.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 248,
+      "bottomRightX": 386,
+      "bottomRightY": 266,
+      "content": "### 7.5.5.2 Exit from Compliance Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 268,
+      "bottomRightX": 633,
+      "bottomRightY": 322,
+      "content": "- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect upon detection of Warm Reset.\n- A downstream port shall transition to eSS.Disabled when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 337,
+      "bottomRightX": 204,
+      "bottomRightY": 356,
+      "content": "### 7.5.6 U0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 363,
+      "bottomRightX": 663,
+      "bottomRightY": 396,
+      "content": "U0 is the normal operational state where packets can be transmitted and received. U0 does not contain any substate machines.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 411,
+      "bottomRightX": 309,
+      "bottomRightY": 429,
+      "content": "### 7.5.6.1 U0 Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 431,
+      "bottomRightX": 698,
+      "bottomRightY": 644,
+      "content": "- The port shall meet the transmitter specifications defined in Table 6-17.\n- The port shall maintain the low-impedance receiver termination (RRX-DC) defined in Table 6-21.\n- The LFPS receiver shall be enabled.\n- The port shall enable a 1-ms timer (tU0RecoveryTimeout) to measure the time interval between two consecutive link commands. This timer will be reset and restarted every time a link command is received.\n- The port shall enable a 10-μs timer (tU0LTimeout). This timer shall be reset when the first symbol of any link command or packet is sent and restarted after the last symbol of any link command or packet is sent. This timer shall be active when the link is in logical idle.\n- A downstream port shall transmit a single LDN when the 10-μs timer (tU0LTimeout) expires.\n- An upstream port shall transmit a single LUP when the 10-μs timer (tU0LTimeout) expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 657,
+      "bottomRightX": 272,
+      "bottomRightY": 675,
+      "content": "### 7.5.6.2 Exit from U0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 677,
+      "bottomRightX": 693,
+      "bottomRightY": 890,
+      "content": "- The port shall transition to U1 upon successful completion of LGO_U1 entry sequence. Refer to Section 7.2.4.2 for details.\n- The port shall transition to U2 upon successful completion of LGO_U2 entry sequence. Refer to Section 7.2.4.2 for details.\n- The port shall transition to U3 upon successful completion of LGO_U3 entry sequence. Refer to Section 7.2.4.2 for details.\n- A downstream port shall transition to eSS.Inactive when it fails U3 entry on three consecutive attempts.\n- The port shall transition to Recovery upon any errors stated in Section 7.3 that will cause a link to transition to Recovery.\n- The port shall transition to Recovery upon detection of a TS1 ordered set.\n- The port shall transition to Recovery when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-68",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

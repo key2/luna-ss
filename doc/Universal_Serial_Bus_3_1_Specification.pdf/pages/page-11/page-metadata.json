@@ -1,0 +1,452 @@
+{
+  "index": 10,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 645,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Contents",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 91,
+      "bottomRightX": 700,
+      "bottomRightY": 125,
+      "content": "4.3.1.1 Comparing USB 2.0 and Enhanced SuperSpeed Transactions...4-3",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 126,
+      "bottomRightX": 700,
+      "bottomRightY": 141,
+      "content": "4.3.1.2 Introduction to Enhanced SuperSpeed Packets ...4-4",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 141,
+      "bottomRightX": 700,
+      "bottomRightY": 159,
+      "content": "4.4 Generalized Transfer Description ...4-4",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 160,
+      "bottomRightX": 700,
+      "bottomRightY": 175,
+      "content": "4.4.1 Data Bursting ...4-5",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 176,
+      "bottomRightX": 700,
+      "bottomRightY": 190,
+      "content": "4.4.2 IN Transfers ...4-5",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 191,
+      "bottomRightX": 700,
+      "bottomRightY": 206,
+      "content": "4.4.3 OUT Transfers...4-6",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 208,
+      "bottomRightX": 700,
+      "bottomRightY": 223,
+      "content": "4.4.4 Power Management and Performance ...4-7",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 224,
+      "bottomRightX": 700,
+      "bottomRightY": 240,
+      "content": "4.4.5 Control Transfers...4-8",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 241,
+      "bottomRightX": 700,
+      "bottomRightY": 255,
+      "content": "4.4.5.1 Control Transfer Packet Size...4-8",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 257,
+      "bottomRightX": 700,
+      "bottomRightY": 272,
+      "content": "4.4.5.2 Control Transfer Bandwidth Requirements...4-8",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 273,
+      "bottomRightX": 700,
+      "bottomRightY": 289,
+      "content": "4.4.5.3 Control Transfer Data Sequences ...4-9",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 290,
+      "bottomRightX": 700,
+      "bottomRightY": 304,
+      "content": "4.4.6 Bulk Transfers ...4-9",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 305,
+      "bottomRightX": 700,
+      "bottomRightY": 321,
+      "content": "4.4.6.1 Bulk Transfer Data Packet Size...4-9",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 323,
+      "bottomRightX": 700,
+      "bottomRightY": 338,
+      "content": "4.4.6.2 Bulk Transfer Bandwidth Requirements ...4-10",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 339,
+      "bottomRightX": 700,
+      "bottomRightY": 354,
+      "content": "4.4.6.3 Bulk Transfer Data Sequences...4-10",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 355,
+      "bottomRightX": 700,
+      "bottomRightY": 371,
+      "content": "4.4.6.4 Bulk Streams...4-10",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 372,
+      "bottomRightX": 700,
+      "bottomRightY": 387,
+      "content": "4.4.7 Interrupt Transfers...4-12",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 388,
+      "bottomRightX": 700,
+      "bottomRightY": 402,
+      "content": "4.4.7.1 Interrupt Transfer Packet Size ...4-13",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 404,
+      "bottomRightX": 700,
+      "bottomRightY": 420,
+      "content": "4.4.7.2 Interrupt Transfer Bandwidth Requirements ...4-13",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 421,
+      "bottomRightX": 700,
+      "bottomRightY": 436,
+      "content": "4.4.7.3 Interrupt Transfer Data Sequences ...4-14",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 437,
+      "bottomRightX": 700,
+      "bottomRightY": 452,
+      "content": "4.4.8 Isochronous Transfers...4-14",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 454,
+      "bottomRightX": 700,
+      "bottomRightY": 468,
+      "content": "4.4.8.1 Isochronous Transfer Packet Size...4-15",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 470,
+      "bottomRightX": 700,
+      "bottomRightY": 484,
+      "content": "4.4.8.2 Isochronous Transfer Bandwidth Requirements ...4-15",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 486,
+      "bottomRightX": 700,
+      "bottomRightY": 501,
+      "content": "4.4.8.3 Isochronous Transfer Data Sequences ...4-16",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 503,
+      "bottomRightX": 700,
+      "bottomRightY": 517,
+      "content": "4.4.8.4 Special Considerations for Isochronous Transfers...4-16",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 518,
+      "bottomRightX": 700,
+      "bottomRightY": 534,
+      "content": "4.4.8.4.1 Explicit Feedback...4-16",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 535,
+      "bottomRightX": 700,
+      "bottomRightY": 549,
+      "content": "4.4.9 Device Notifications...4-18",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 550,
+      "bottomRightX": 700,
+      "bottomRightY": 565,
+      "content": "4.4.10 Reliability...4-18",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 566,
+      "bottomRightX": 700,
+      "bottomRightY": 582,
+      "content": "4.4.10.1 Physical Layer...4-18",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 583,
+      "bottomRightX": 700,
+      "bottomRightY": 598,
+      "content": "4.4.10.2 Link Layer ...4-18",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 600,
+      "bottomRightX": 700,
+      "bottomRightY": 615,
+      "content": "4.4.10.3 Protocol Layer ...4-18",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 616,
+      "bottomRightX": 700,
+      "bottomRightY": 632,
+      "content": "4.4.11 Efficiency...4-18",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 639,
+      "bottomRightX": 700,
+      "bottomRightY": 657,
+      "content": "# 5 Mechanical ...5-1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 662,
+      "bottomRightX": 700,
+      "bottomRightY": 677,
+      "content": "5.1 Objective ...5-1",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 678,
+      "bottomRightX": 700,
+      "bottomRightY": 693,
+      "content": "5.2 Significant Features ...5-1",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 695,
+      "bottomRightX": 700,
+      "bottomRightY": 710,
+      "content": "5.2.1 Connectors...5-2",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 711,
+      "bottomRightX": 700,
+      "bottomRightY": 726,
+      "content": "5.2.1.1 USB 3.1 Standard-A Connector...5-2",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 727,
+      "bottomRightX": 700,
+      "bottomRightY": 742,
+      "content": "5.2.1.2 USB 3.1 Standard-B Connector...5-2",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 743,
+      "bottomRightX": 700,
+      "bottomRightY": 759,
+      "content": "5.2.1.3 USB 3.1 Micro-B Connector ...5-3",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 760,
+      "bottomRightX": 700,
+      "bottomRightY": 775,
+      "content": "5.2.1.4 USB 3.1 Micro-AB and USB 3.1 Micro-A Connectors ...5-3",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 776,
+      "bottomRightX": 700,
+      "bottomRightY": 791,
+      "content": "5.2.2 Allowed Cable Assemblies ...5-3",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 793,
+      "bottomRightX": 700,
+      "bottomRightY": 808,
+      "content": "5.2.3 Raw Cables...5-3",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 809,
+      "bottomRightX": 700,
+      "bottomRightY": 824,
+      "content": "5.3 Connector Mating Interfaces...5-4",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 825,
+      "bottomRightX": 700,
+      "bottomRightY": 840,
+      "content": "5.3.1 USB 3.1 Standard-A Connector...5-4",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 842,
+      "bottomRightX": 700,
+      "bottomRightY": 856,
+      "content": "5.3.1.1 Interface Definition ...5-4",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 858,
+      "bottomRightX": 700,
+      "bottomRightY": 873,
+      "content": "5.3.1.2 USB 3.1 Standard-A Reference Footprints ...5-13",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 875,
+      "bottomRightX": 700,
+      "bottomRightY": 890,
+      "content": "5.3.1.3 Pin Assignments and Description ...5-19",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 687,
+      "topLeftY": 983,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "xi",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

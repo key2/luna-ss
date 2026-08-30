@@ -1,0 +1,56 @@
+{
+  "index": 26,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 370,
+      "topLeftY": 46,
+      "bottomRightX": 419,
+      "bottomRightY": 61,
+      "content": "- xxvii -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 926,
+      "content": "Figure 8-66. Sample Smart Enhanced SuperSpeed Isochronous IN Transaction ... 308\nFigure 8-67. Sample Smart Enhanced SuperSpeed Isochronous OUT Transaction ... 309\nFigure 8-68. Sample Pipeline Isochronous IN Transactions ... 311\nFigure 9-1. Peripheral State Diagram and Hub State Diagram (Enhanced SuperSpeed Portion Only) ... 318\nFigure 9-2. wIndex Format when Specifying an Endpoint ... 330\nFigure 9-3. wIndex Format when Specifying an Interface ... 330\nFigure 9-4. Information Returned by a Standard GetStatus() Request to a Device ... 337\nFigure 9-5. Information Returned by a Standard GetStatus() Request to an Interface ... 338\nFigure 9-6. Information Returned by a Standard GetStatus() Request to an Endpoint ... 338\nFigure 9-7. Information Returned by a PTM GetStatus() Request to an Endpoint ... 339\nFigure 9-8. Example of Feedback Endpoint Relationships ... 367\nFigure 10-1. USB Hub Architecture ... 372\nFigure 10-2. SuperSpeed Portion of the USB Hub Architecture ... 373\nFigure 10-3. SuperSpeedPlus Portion of the Hub Architecture ... 374\nFigure 10-4. Simple USB Topology ... 375\nFigure 10-5. Route String Example ... 377\nFigure 10-6. SuperSpeed Hub Signaling Connectivity ... 378\nFigure 10-7. Resume Connectivity ... 379\nFigure 10-8. Typical SuperSpeed Hub Header Packet Buffer Architecture ... 380\nFigure 10-9. SuperSpeed Hub Data Buffer Traffic (Header Packet Buffer Only Shown for DS Port 1) ... 381\nFigure 10-10. Downstream Facing Hub Port State Machine ... 383\nFigure 10-11. Downstream Facing Hub Port Power Management State Machine ... 392\nFigure 10-12. Upstream Facing Hub Port State Machine ... 397\nFigure 10-13. Hub Connect (HCONNECT) State Machine ... 399\nFigure 10-14. Upstream Facing Hub Port Power Management State Machine ... 401\nFigure 10-15. Example SS Hub Header Packet Buffer Architecture - Downstream Traffic ... 406\nFigure 10-16. Example SS Hub Header Packet Buffer Architecture - Upstream Traffic ... 406\nFigure 10-17. Logical Representation of Upstream Flowing Buffers ... 408\nFigure 10-18. Logical Representation of Downstream Flowing Buffers ... 409\nFigure 10-19. Port Transmit State Machine ... 414\nFigure 10-20. Upstream Facing Port Rx State Machine ... 416\nFigure 10-21. Example Hub Controller Organization ... 425\nFigure 10-22. Relationship of Status, Status Change, and Control Information to Device States ... 426\nFigure 10-23. Port Status Handling Method ... 427\nFigure 10-24. Hub and Port Status Change Bitmap ... 428\nFigure 10-25. Example Hub and Port Change Bit Sampling ... 428\nFigure 10-26. Peripheral Upstream Device Port State Machine ... 457\nFigure 11-1. Compound Self-powered Hub ... 465\nFigure 11-2. Low-power Bus-powered Function ... 466\nFigure 11-3. High-power Bus-powered Function ... 466\nFigure 11-4. Self-powered Function ... 467\nFigure 11-5. Worst-case System Equivalent Resistance ... 468\nFigure 11-6. Typical Suspend Current Averaging Profile ... 469\nFigure D-1. Sample ERDY Transaction Packet ... 486\nFigure D-2. Sample Data Packet ... 486\nFigure D-3. Example placement of Gen 2 SKP Block, Idle Symbols, Link Command and Header Packet ... 487\nFigure D-4. Example placement of Gen 2 Data Packets and Idle Symbols ... 488\nFigure E-1. Link Segment Definition ... 490\nFigure E-2. Example Link Configuration of a 3-µs Host with a 10-µs Device ... 491\nFigure E-3. Example Link Configuration of a 10-µs Host with a 10-µs Device ... 491\nFigure E-4. Link Delay Budget in 3-re-timer Connectivity Model ... 492\nFigure E-5. Example Re-timer Architectures ... 493",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

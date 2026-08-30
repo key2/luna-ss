@@ -1,0 +1,92 @@
+{
+  "index": 212,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- 182 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 93,
+      "bottomRightX": 676,
+      "bottomRightY": 759,
+      "content": "- The port in Gen 2 operation shall transition to Polling.Configuration upon receiving eight consecutive and identical TS1 or TS2 ordered sets on each negotiated lane, excluding symbols 14 and 15 of TS1 or TS2 ordered sets.\n  Note: SYNC OS and SKP OS in between TS1 OS and/or TS2 OS do not disqualify the consecutive detection of TS1 OS and TS2 OS. Symbols 14 and 15 are used for TS1 or TS2 ordered set identifier or DC balance adjustment.\n- A downstream port in SuperSpeed operation shall transition to Rx.Detect upon the 12 ms timer timeout (tPollingActiveTimeout) and the following two conditions are met.\n  1. The conditions to transition to Polling.Configuration are not met.\n  2. cPollingTimeout is less than two.\n- A downstream port in SuperSpeed operation shall transition to eSS.Inactive upon the 12 ms timer timeout (tPollingActiveTimeout) and the following two conditions are met.\n  1. The conditions to transition to Polling.Configuration are not met.\n  2. cPollingTimeout is two.\n- An upstream port of a hub in SuperSpeed operation shall transition to Rx.Detect upon the 12 ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- An upstream port of a peripheral device in SuperSpeed operation shall transition to eSS.Disabled upon the 12 ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- A downstream port in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12 ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- An upstream port of a hub in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12 ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- An upstream port of a peripheral device in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12 ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 779,
+      "bottomRightX": 289,
+      "bottomRightY": 796,
+      "content": "#### **7.5.4.9 Polling.Configuration**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 800,
+      "bottomRightX": 640,
+      "bottomRightY": 833,
+      "content": "Polling.Configuration is a substate where the two link partners complete the Enhanced SuperSpeed training.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 843,
+      "bottomRightX": 421,
+      "bottomRightY": 860,
+      "content": "##### **7.5.4.9.1 Polling.Configuration Requirements**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 867,
+      "bottomRightX": 665,
+      "bottomRightY": 929,
+      "content": "- The port shall transmit identical TS2 ordered sets on each negotiated lane upon entry to this substate and set the link configuration field in the TS2 ordered set based on the following. Note that in Gen 2 operation, Symbols 14 and 15 of the TS2 ordered set may be different for DC balance.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

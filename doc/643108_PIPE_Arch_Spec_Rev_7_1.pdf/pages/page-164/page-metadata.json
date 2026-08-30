@@ -1,0 +1,103 @@
+{
+  "index": 163,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 121,
+      "bottomRightX": 333,
+      "bottomRightY": 146,
+      "content": "### 8.32 RxEqTraining",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 151,
+      "bottomRightX": 686,
+      "bottomRightY": 238,
+      "content": "For PCIe, there are several scenarios where the controller may request that the PHY perform receiver equalization. These may be in response to far end transmitter coefficient changes, loopback entry, rate changes, and support of no equalization on the transmitter side. For PCIe, the PHY sets the RxEqTrainDone bit in the Rx Status0 register to indicate completion of receiver equalization. Figure 8-41 shows the message bus sequence for managing PCIe receiver equalization.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 246,
+      "bottomRightX": 352,
+      "bottomRightY": 262,
+      "content": "Figure 8-41. PCIe Receiver Equalization",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 264,
+      "bottomRightX": 690,
+      "bottomRightY": 526,
+      "content": "![img-62.jpeg](img-62.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-62.jpeg"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 531,
+      "bottomRightX": 684,
+      "bottomRightY": 590,
+      "content": "For USB, the controller instructs the PHY to perform receiver equalization during Polling.ExEQ. For USB, receiver equalization is timer based and the RxEqTrainDone bit is not used. Figure 8-42 shows the message bus sequence for USB receiver equalization.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 598,
+      "bottomRightX": 348,
+      "bottomRightY": 614,
+      "content": "Figure 8-42. USB Receiver Equalization",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 619,
+      "bottomRightX": 690,
+      "bottomRightY": 873,
+      "content": "![img-63.jpeg](img-63.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-63.jpeg"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "164",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

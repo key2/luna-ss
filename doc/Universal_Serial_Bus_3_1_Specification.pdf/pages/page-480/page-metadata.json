@@ -1,0 +1,84 @@
+{
+  "index": 479,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 132,
+      "bottomRightX": 580,
+      "bottomRightY": 349,
+      "content": "![img-257.jpeg](img-257.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-257.jpeg"
+    },
+    {
+      "topLeftX": 302,
+      "topLeftY": 364,
+      "bottomRightX": 523,
+      "bottomRightY": 381,
+      "content": "**Figure 10-1. USB Hub Architecture**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 396,
+      "bottomRightX": 695,
+      "bottomRightY": 446,
+      "content": "When a USB hub connects on its upstream facing port at Gen 1 speed, it shall operate (and be referred to) as a SuperSpeed hub (including operating its downstream ports at no higher than Gen 1 speed).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 451,
+      "bottomRightX": 657,
+      "bottomRightY": 485,
+      "content": "When a USB hub connects on its upstream facing port at a speed above Gen 1 speed, it shall operate (and be referred to) as a SuperSpeedPlus hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 491,
+      "bottomRightX": 698,
+      "bottomRightY": 542,
+      "content": "When the hub upstream facing port is attached to an electrical environment that is only operating at high-speed or full-speed, then Enhanced SuperSpeed connectivity is not available to devices attached to downstream facing ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 545,
+      "bottomRightX": 698,
+      "bottomRightY": 681,
+      "content": "Figure 10-1 shows a high level block diagram of a four port USB hub and the locations of its upstream and downstream facing ports. A USB hub is the logical combination of two hubs: a USB 2.0 hub and an Enhanced SuperSpeed hub. Each hub operates independently on a separate data bus. Typically, the only signal shared logic between them is to control VBUS. If either the USB 2.0 hub or Enhanced SuperSpeed hub controllers requires a downstream port to be powered, power is turned on for the port. A USB hub connects on both interfaces upstream whenever possible. All exposed downstream ports on a USB hub shall support both Enhanced SuperSpeed and USB 2.0 connections. Host controller ports may have different requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 980,
+      "bottomRightX": 120,
+      "bottomRightY": 995,
+      "content": "10-2",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

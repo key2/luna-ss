@@ -1,0 +1,146 @@
+{
+  "index": 606,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 584,
+      "topLeftY": 30,
+      "bottomRightX": 701,
+      "bottomRightY": 45,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 92,
+      "bottomRightX": 684,
+      "bottomRightY": 127,
+      "content": "endpoint. When there are no more packets pending for all non-Stream endpoints on a device, the device may place its link in a low power state immediately.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 135,
+      "bottomRightX": 701,
+      "bottomRightY": 203,
+      "content": "For Stream endpoints, the Packet Pending flag is an indication of whether the host controller has any additional packets to transfer on the schedule associated with a given Stream. When there are no more packets pending for any Streams and for all endpoints on a device, the device may place its link in a low power state immediately.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 220,
+      "bottomRightX": 445,
+      "bottomRightY": 240,
+      "content": "### C.1.3.2 Support for Isochronous Transfers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 244,
+      "bottomRightX": 693,
+      "bottomRightY": 295,
+      "content": "If a link is in a low power state when an isochronous transfer is scheduled, the latency to transition to U0 from source to destination could potentially delay the transfer beyond its subscribed isochronous service interval.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 304,
+      "bottomRightX": 693,
+      "bottomRightY": 355,
+      "content": "To ensure that isochronous service contract guarantees are satisfied, a SuperSpeed mechanism (Ping) has been defined to bring all paths between the host and an isochronous endpoint to U0 as a routine step in servicing isochronous endpoints.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 363,
+      "bottomRightX": 690,
+      "bottomRightY": 431,
+      "content": "The host controller, with sufficient information to know how long any given path might take to become fully active, factors this link path exit latency into its isochronous service scheduler and uses the Ping protocol to ensure that the links are brought to a fully active state in time to meet the isochronous service contract.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 440,
+      "bottomRightX": 375,
+      "bottomRightY": 458,
+      "content": "The ping process consists of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 461,
+      "bottomRightX": 682,
+      "bottomRightY": 535,
+      "content": "- The host sends a PING packet to a device.\n- Hubs route the PING packet toward the targeted device.\n- The device responds to the PING packet by sending a PING_RESPONSE packet to the host.\n- The device keeps its link in U0 until it receives a subsequent packet from the host.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 540,
+      "bottomRightX": 693,
+      "bottomRightY": 607,
+      "content": "After sending a PING packet to one device and prior to receiving a PING_RESPONSE packet, the host may transfer data with other devices. Much like the Packet Deferring mechanism, the Ping mechanism enables efficient bus utilization while at the same time supporting significant power savings.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 625,
+      "bottomRightX": 416,
+      "bottomRightY": 645,
+      "content": "### C.1.3.3 Support for Interrupt Transfers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 649,
+      "bottomRightX": 688,
+      "bottomRightY": 735,
+      "content": "If any links between the host and a scheduled interrupt endpoint are in a low power state, the latency to transition the end to end pathway to U0 could potentially delay the transfer beyond the subscribed interrupt service interval. A host controller, possessing knowledge of link path exit latency between itself and any given device within the link hierarchy, is able to schedule interrupt transfers far enough in advance to compensate for these latencies.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 752,
+      "bottomRightX": 422,
+      "bottomRightY": 774,
+      "content": "### C.1.4 Device Power Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 779,
+      "bottomRightX": 694,
+      "bottomRightY": 829,
+      "content": "Device power management is directed primarily under software control, with various hardware mechanisms to support it. Device power management consists of some function level mechanisms plus some device and hub mechanisms.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 675,
+      "topLeftY": 980,
+      "bottomRightX": 701,
+      "bottomRightY": 995,
+      "content": "C-9",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

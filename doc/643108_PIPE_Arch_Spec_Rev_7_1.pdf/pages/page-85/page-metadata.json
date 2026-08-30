@@ -1,0 +1,122 @@
+{
+  "index": 84,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 138,
+      "bottomRightX": 377,
+      "bottomRightY": 152,
+      "content": "Table 7-7. Address 5h: PHY Rx Control2",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 157,
+      "bottomRightX": 696,
+      "bottomRightY": 218,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:3] | 0h | N/A | N/A | Reserved  |\n|  [2:0] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-69.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 233,
+      "bottomRightX": 483,
+      "bottomRightY": 253,
+      "content": "### 7.1.7 Address 6h: PHY Rx Control3",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 262,
+      "bottomRightX": 494,
+      "bottomRightY": 278,
+      "content": "This register is used to control receiver functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 292,
+      "bottomRightX": 377,
+      "bottomRightY": 305,
+      "content": "Table 7-8. Address 6h: PHY Rx Control3",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 310,
+      "bottomRightX": 696,
+      "bottomRightY": 680,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:3] | 0h | N/A | N/A | Reserved  |\n|  [2] | 0h | Level | PCIe | **InvalidRequest:** This field is used to indicate that the link evaluation feedback requested a link partner Tx EQ setting that was out of range. The MAC sets this bit to \"1\" when it detects an out-of-range error locally based on a calculated link partner transmitter coefficient based on the last valid link equalization feedback, or if it receives a NACK response from the link partner. The MAC resets this bit to \"0\" the next time it asserts RxEQEval. When a MAC sets this bit, it must subsequently ask the PHY to perform an RxEQ evaluation using the last valid setting a second time. This field is only applicable at the 8.0 GT/s, 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s signaling rates.  |\n|  [1] | 0h | Level | PCIe, USB4, and DisplayPort Rx (optional) | **RxEqInProgress:** This field is used by the MAC to indicate when a link equalization evaluation is in progress. The PHY may optionally use this field to enable and disable functionality that is only needed during link equalization evaluations. For PCIe: The MAC sets this bit to \"1\" at the same time as it sets RxEqEval to \"1\" in phase 2 or phase 3 of the link equalization process. The MAC resets this bit to \"0\" at the end of phase two or phase three.  |\n|  [0] | 0h | Level | PCIe, USB4, and DisplayPort Rx (optional) | **RxEqEval:** This field is set to \"1\" by the MAC to instruct the PHY to start the evaluation of the far-end transmitter Tx EQ settings. For PCIe, this field is only used at the 8.0 GT/s, 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s signaling rates.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-70.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 694,
+      "bottomRightX": 622,
+      "bottomRightY": 737,
+      "content": "### 7.1.8 Address 7h: Elastic Buffer Location Update Frequency",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 754,
+      "bottomRightX": 538,
+      "bottomRightY": 769,
+      "content": "Table 7-9. Address 7h: Elastic Buffer Location Update Frequency",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 773,
+      "bottomRightX": 696,
+      "bottomRightY": 884,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:0] | 5h | Level | No | **ElasticBufferLocationUpdateFrequency:** This field specifies the maximum update frequency to the ElasticBufferLocation field. The update frequency should not exceed 16×N symbol times, where N is the value programmed in this register. **Note:** This field is not used in the SerDes architecture.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-71.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "85",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

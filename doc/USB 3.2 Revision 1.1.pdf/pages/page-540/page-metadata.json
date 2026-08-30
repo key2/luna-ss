@@ -1,0 +1,84 @@
+{
+  "index": 539,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 509 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 92,
+      "bottomRightX": 591,
+      "bottomRightY": 125,
+      "content": "Figure E-12. Example of Four Bit-Level Re-timer Performing Sequential Clock Switching",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 131,
+      "bottomRightX": 668,
+      "bottomRightY": 649,
+      "content": "![img-207.jpeg](img-207.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-207.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 667,
+      "bottomRightX": 359,
+      "bottomRightY": 682,
+      "content": "### E.3.4.4.2 Polling.TSx Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 689,
+      "bottomRightX": 671,
+      "bottomRightY": 923,
+      "content": "- The lane polarity inversion detection and correction shall be completed before forwarding.\n- The re-timer shall monitor the status and progression of LTSSM.\n- Upon entry to this substate, a SRIS re-timer shall either transmit the local TS1 OS if received TS1 OS is not detected or forward the received TS1 OS if it's already recovered.\n- A SRIS re-timer shall preserve the OS boundary and in Gen 2 mode, maintain the scrambler synchronization when switching from the local TS1 OS to recovered TS1 OS or TS2 OS. A SRIS re-timer shall not forward any TS2 OS until both ports are ready to forward TS1/TS2 OS.\n- A SRIS re-timer shall perform the clock offset compensation based on the following.\n  - For SS operation, it shall perform the clock offset compensation as defined in Section E.4.1.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

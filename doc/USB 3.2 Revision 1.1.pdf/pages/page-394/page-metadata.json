@@ -1,0 +1,120 @@
+{
+  "index": 393,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 363 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 645,
+      "bottomRightY": 140,
+      "content": "in the configuration information. An interface descriptor is always returned as part of a configuration descriptor. Interface descriptors cannot be directly accessed with a GetDescriptor() or SetDescriptor() request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 152,
+      "bottomRightX": 663,
+      "bottomRightY": 228,
+      "content": "An interface may include alternate settings that allow the endpoints and/or their characteristics to be varied after the device has been configured. The default setting for an interface is always alternate setting zero. The SetInterface() request is used to select an alternate setting or to return to the default setting. The GetInterface() request returns the selected alternate setting.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 239,
+      "bottomRightX": 660,
+      "bottomRightY": 317,
+      "content": "Alternate settings allow a portion of the device configuration to be varied while other interfaces remain in operation. If a configuration has alternate settings for one or more of its interfaces, a separate interface descriptor and its associated endpoint and endpoint companion (when reporting its Enhanced SuperSpeed configuration) descriptors are included for each setting.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 329,
+      "bottomRightX": 665,
+      "bottomRightY": 451,
+      "content": "If a device configuration supported a single interface with two alternate settings, the configuration descriptor would be followed by an interface descriptor with the bInterfaceNumber and bAlternateSetting fields set to zero and then the endpoint and endpoint companion (when reporting its Enhanced SuperSpeed configuration) descriptors for that setting, followed by another interface descriptor and its associated endpoint and endpoint companion descriptors. The second interface descriptor's bInterfaceNumber field would also be set to zero, but the bAlternateSetting field of the second interface descriptor would be set to one.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 462,
+      "bottomRightX": 625,
+      "bottomRightY": 494,
+      "content": "If an interface uses only the Default Control Pipe, no endpoint descriptors follow the interface descriptor. In this case, the bNumEndpoints field shall be set to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 505,
+      "bottomRightX": 664,
+      "bottomRightY": 537,
+      "content": "An interface descriptor never includes the Default Control Pipe in the number of endpoints. Table 9-25 shows the standard interface descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 256,
+      "topLeftY": 549,
+      "bottomRightX": 532,
+      "bottomRightY": 565,
+      "content": "Table 9-25. Standard Interface Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 573,
+      "bottomRightX": 676,
+      "bottomRightY": 895,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of this descriptor in bytes  |\n|  1 | bDescriptorType | 1 | Constant | INTERFACE Descriptor Type  |\n|  2 | bInterfaceNumber | 1 | Number | Number of this interface. Zero-based value identifying the index in the array of concurrent interfaces supported by this configuration.  |\n|  3 | bAlternateSetting | 1 | Number | Value used to select this alternate setting for the interface identified in the prior field  |\n|  4 | bNumEndpoints | 1 | Number | Number of endpoints used by this interface (excluding the Default Control Pipe). If this value is zero, this interface only uses the Default Control Pipe.  |\n|  5 | bInterfaceClass | 1 | Class | Class code (assigned by the USB-IF). A value of zero is reserved for future standardization. If this field is set to FFH, the interface class is vendor-specific. All other values are reserved for assignment by the USB-IF.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-197.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

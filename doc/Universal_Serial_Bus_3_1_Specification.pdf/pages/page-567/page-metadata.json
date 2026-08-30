@@ -1,0 +1,74 @@
+{
+  "index": 566,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 699,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 696,
+      "bottomRightY": 162,
+      "content": "- If a device is connected on the USB 2.0 interface and it receives a USB 2.0 bus reset, the device shall enter the USPORT-Powered-On state within tCheckSuperSpeedOnReset time.\n- After a USB 2.0 reset, if the Enhanced SuperSpeed port enters the USPORT.Training state, the device shall disconnect on the USB 2.0 interface within tUSB2SwitchDisconnect time.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 167,
+      "bottomRightX": 672,
+      "bottomRightY": 202,
+      "content": "A device shall follow the requirements for an upstream facing hub port in Section 10.6 with the following exceptions and additions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 207,
+      "bottomRightX": 686,
+      "bottomRightY": 258,
+      "content": "- None of the conditions related to downstream port apply.\n- A peripheral device initiates transitions to U1 or U2 when otherwise allowed based on vendor specific algorithms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 273,
+      "bottomRightX": 595,
+      "bottomRightY": 295,
+      "content": "### 10.18.2 Peripheral Device Upstream Port State Machine",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 299,
+      "bottomRightX": 667,
+      "bottomRightY": 349,
+      "content": "The following sections provide a functional description of a state machine that exhibits correct peripheral device behavior for when to connect on Enhanced SuperSpeed or USB 2.0. Figure 10-26 is an illustration of the peripheral device upstream port state machine.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-89",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

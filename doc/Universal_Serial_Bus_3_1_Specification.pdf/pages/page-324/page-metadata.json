@@ -1,0 +1,48 @@
+{
+  "index": 323,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 31,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 410,
+      "bottomRightY": 110,
+      "content": "Table 8-12. Transaction Packet Subtype Field",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 112,
+      "bottomRightX": 694,
+      "bottomRightY": 370,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |   |\n| --- | --- | --- | --- |\n|  4 | 1:0 | **Subtype.** The subtype field is used to identify a specific type of TP.  |   |\n|   |   |  **Value** | **Type of TP**  |\n|   |   |  0000b | Reserved  |\n|   |   |  0001b | ACK  |\n|   |   |  0010b | NRDY  |\n|   |   |  0011b | ERDY  |\n|   |   |  0100b | STATUS  |\n|   |   |  0101b | STALL  |\n|   |   |  0110b | DEV_NOTIFICATION  |\n|   |   |  0111b | PING  |\n|   |   |  1000b | PING_RESPONSE  |\n|   |   |  1001b – 1111b | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-115.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "8-30",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

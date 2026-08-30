@@ -1,0 +1,121 @@
+{
+  "index": 98,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 68 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 673,
+      "bottomRightY": 229,
+      "content": "For every TSEQ, TS1 or TS2 Ordered Set transmitted, Transmitters shall evaluate the running DC Balance and transmit one of the DC Balance Symbols defined for Symbols 14 and 15 as defined by the algorithm below. If the number of 1s needs to be reduced, the DC Balance Symbols 20h (for Symbol 14) and 08h (for Symbol 15) are transmitted. If the number of 0s needs to be reduced, the DC Balance Symbols DFh (for Symbol 14) and F7h (for Symbol 15) are transmitted. If no change is required, the appropriate TS Identifier Symbol is transmitted. Any DC Balance Symbols transmitted for Symbols 14 or 15 bypass scrambling, while TS Identifier Symbols follow the standard scrambling rules. The following algorithm shall be used to control the DC Balance:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 236,
+      "bottomRightX": 667,
+      "bottomRightY": 370,
+      "content": "1. If the running DC Balance is > 31 at the end of Symbol 11 of the TS Ordered Set, transmit DFh for Symbol 14 and F7h for Symbol 15 to reduce the number of 0s, or 20h for Symbol 14 and 08h for Symbol 15 to reduce the number of 1s.\n2. Else, if the running DC Balance is > 15 at the end of Symbol 11 of the TS Ordered Set, transmit F7h for Symbol 15 to reduce the number of 0s, or 08h for Symbol 15 to reduce the number of 1s. Transmit the normal TS Identifier Symbol (scrambled) for Symbol 14.\n3. Else, transmit the normal TS Identifier Symbol (scrambled) for Symbols 14 and 15.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 385,
+      "bottomRightX": 667,
+      "bottomRightY": 415,
+      "content": "Receivers shall not check Symbols 14 and 15 when determining whether a TS Ordered Set is valid.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 428,
+      "bottomRightX": 668,
+      "bottomRightY": 519,
+      "content": "A new ordered set required for Gen 2 operation is the Start of Data Stream (SDS) Ordered set. This is only defined for Gen 2 operation and does not have a Gen 1 counterpart. It shall be transmitted during Polling.Idle, Recovery.Idle, and Hot Reset.Exit to define the transition from Ordered Set Blocks to a Data Stream. It shall not be transmitted at any other time. While not in the Loopback state, the Block following an SDS Ordered Set shall be a Data Block and the first Symbol of that Data Block is the first Symbol of the Data Stream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 532,
+      "bottomRightX": 504,
+      "bottomRightY": 547,
+      "content": "Table 6-7. Gen 2 TS1 Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 557,
+      "bottomRightX": 665,
+      "bottomRightY": 688,
+      "content": "|  Symbol Number | Symbol | Description  |\n| --- | --- | --- |\n|  0-3 | 1Eh | TS1 Identifier  |\n|  4 | 00h | Reserved for future use  |\n|  5 | See Table 6-6 | Link Functionality  |\n|  6-13 | 1Eh | TS1 Identifier  |\n|  14-15 | TS1 Identifier (1Eh) or a DC Balance Symbol | TS1 Identifier or DC balance  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-42.md"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 721,
+      "bottomRightX": 504,
+      "bottomRightY": 735,
+      "content": "Table 6-8. Gen 2 TS2 Ordered Set",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 747,
+      "bottomRightX": 665,
+      "bottomRightY": 878,
+      "content": "|  Symbol Number | Symbol | Description  |\n| --- | --- | --- |\n|  0-3 | 2Dh | TS2 Identifier  |\n|  4 | 00h | Reserved for future use  |\n|  5 | See Table 6-6 | Link Functionality  |\n|  6-13 | 2Dh | TS2 Identifier  |\n|  14-15 | TS2 Identifier (2Dh) or a DC Balance Symbol | TS2 Identifier or DC balance  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-43.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

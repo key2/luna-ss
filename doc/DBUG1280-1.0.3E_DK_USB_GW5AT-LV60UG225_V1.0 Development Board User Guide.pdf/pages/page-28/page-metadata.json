@@ -1,0 +1,75 @@
+{
+  "index": 27,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 36,
+      "bottomRightX": 216,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 538,
+      "topLeftY": 36,
+      "bottomRightX": 645,
+      "bottomRightY": 49,
+      "content": "3.10 Type-C Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 66,
+      "topLeftY": 97,
+      "bottomRightX": 257,
+      "bottomRightY": 116,
+      "content": "## 3.10.2 Pin Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 136,
+      "bottomRightX": 448,
+      "bottomRightY": 152,
+      "content": "Table 3-10 Pin Distribution of Type-C Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 67,
+      "topLeftY": 153,
+      "bottomRightX": 652,
+      "bottomRightY": 912,
+      "content": "|  Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  USB_TX2_P | D4 | SerDes Q0 | - | Type-C TX2+  |\n|  USB_TX2_N | C4 | SerDes Q0 | - | Type-C TX2-  |\n|  USB_RX2_P | B3 | SerDes Q0 | - | Type-C RX2+  |\n|  USB_RX2_N | A3 | SerDes Q0 | - | Type-C RX2-  |\n|  USB_TX1_P | D6 | SerDes Q0 | - | Type-C TX1+  |\n|  USB_TX1_N | C6 | SerDes Q0 | - | Type-C TX1-  |\n|  USB_RX1_P | B7 | SerDes Q0 | - | Type-C RX1+  |\n|  USB_RX1_N | A7 | SerDes Q0 | - | Type-C RX1-  |\n|  USB_AUX_DP | E7 | 1 | 2.5V | Type-C SUB1 channel  |\n|  USB_AUX_DN | E8 | 1 | 2.5V | Type-C SUB2 channel  |\n|  F_USB_CC1 | F8 | 1 | 2.5V | Type-C CC1  |\n|  F_USB_CC2 | E9 | 1 | 2.5V | Type-C CC2  |\n|  USB_PWR_EN | J11 | 5 | 3.3V | VBUS supply enable  |\n|  USB_CC_INT_L | G15 | 3 | 3.3V | FUSB302BMPX control signals  |\n|  USB_CC_SCL | G11 | 3 | 3.3V  |   |\n|  USB_CC_SDA | F11 | 3 | 3.3V  |   |\n|  USB_TX_DP | L15 | 5 | 3.3V | USB2.0 Signals  |\n|  USB_TX_DN | M15 | 5 | 3.3V  |   |\n|  USB_RX_DP | L13 | 5 | 3.3V  |   |\n|  USB_RX_DN | L14 | 5 | 3.3V  |   |\n|  USB_TERM_DP | K12 | 5 | 3.3V  |   |\n|  USB_TERM_DN | K13 | 5 | 3.3V  |   |\n|  USB_DP | J13 | 5 | 3.3V  |   |\n|  USB_D | J14 | 5 | 3.3V  |   |\n|  USB_DN | N14 | 5 | 3.3V  |   |\n|  USB_D | N15 | 5 | 3.3V  |   |\n|  USB_PULLUP_EN | K11 | 5 | 3.3V  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-17.md"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 168,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 610,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "21(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

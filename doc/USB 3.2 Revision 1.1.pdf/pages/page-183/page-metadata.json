@@ -1,0 +1,119 @@
+{
+  "index": 182,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 152 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 95,
+      "bottomRightX": 665,
+      "bottomRightY": 126,
+      "content": "LGOOD_n will be compared with the ACK Tx Header Sequence Number. The outcome of the comparison will determine if an ACK Tx Header Sequence Number error has occurred.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 138,
+      "bottomRightX": 662,
+      "bottomRightY": 287,
+      "content": "- An ACK Tx Header Sequence Number error shall be declared if the following conditions are met:\n  1. A valid LGOOD_n is received.\n  2. The Header Sequence Number in the received LGOOD_n does not match the ACK Tx Header Sequence Number.\n  3. The LGOOD_n is not for Header Sequence Number Advertisement.\n- A port detecting an ACK Tx Header Sequence Number error shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 314,
+      "bottomRightX": 439,
+      "bottomRightY": 330,
+      "content": "### 7.3.7 Header Sequence Number Advertisement Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 335,
+      "bottomRightX": 673,
+      "bottomRightY": 428,
+      "content": "Each port is required to first perform a Header Sequence Number Advertisement upon entry to U0. The details of a Header Sequence Number Advertisement are described in Section 7.2.4. A Header Sequence Number Advertisement is the first step of the link initialization to ensure that the link flow is maintained un-interrupted before and after Recovery. Any errors occurred during the Header Sequence Number Advertisement must be detected and proper error recovery must be initiated.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 440,
+      "bottomRightX": 667,
+      "bottomRightY": 620,
+      "content": "- A Header Sequence Number Advertisement error shall occur if one of the following conditions is true:\n  1. Upon PENDING_HP_TIMER timeout and the Header Sequence Number Advertisement not received\n  2. A header packet received before sending Header Sequence Number Advertisement\n  3. LCRD_x or LCRD1_x/LCRD2_x or LGO_Ux received before receiving Header Sequence Number Advertisement\n- A port detecting any Header Sequence Number Advertisement error shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 646,
+      "bottomRightX": 499,
+      "bottomRightY": 662,
+      "content": "### 7.3.8 SuperSpeed Rx Header Buffer Credit Advertisement Error",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 668,
+      "bottomRightX": 662,
+      "bottomRightY": 714,
+      "content": "Each port is required to perform the Rx Header Buffer Credit Advertisement after Header Sequence Number Advertisement upon entry to U0. The details of Rx Header Buffer Credit Advertisement are described in Section 7.2.4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 727,
+      "bottomRightX": 665,
+      "bottomRightY": 861,
+      "content": "- An Rx Header Buffer Credit Advertisement error shall occur if one of the following conditions is true:\n  1. Upon CREDIT_HP_TIMER timeout and no LCRD_x received.\n  2. A header packet received before sending LCRD_x.\n  3. LGO_Ux received before receiving LCRD_x.\n- A port detecting an Rx Header Buffer Credit Advertisement Error shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

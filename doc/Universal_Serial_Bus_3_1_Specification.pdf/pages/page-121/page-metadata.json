@@ -1,0 +1,130 @@
+{
+  "index": 120,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 435,
+      "bottomRightY": 112,
+      "content": "### 5.3.3.2 Pin Assignments and Description",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 118,
+      "bottomRightX": 652,
+      "bottomRightY": 135,
+      "content": "Table 5-4 and Table 5-5 show the pin assignments for the USB 3.1 Micro connector family.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 150,
+      "bottomRightX": 474,
+      "bottomRightY": 166,
+      "content": "Table 5-4. USB 3.1 Micro-B Connector Pin Assignments",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 167,
+      "bottomRightX": 624,
+      "bottomRightY": 411,
+      "content": "|  Pin Number | Signal Name | Description | Mating Sequence  |\n| --- | --- | --- | --- |\n|  1 | VBUS | Power | Second  |\n|  2 | D- | USB 2.0 differential pair | Last  |\n|  3 | D+  |   |   |\n|  4 | ID | OTG identification  |   |\n|  5 | GND | Ground for power return | Second  |\n|  6 | MicB_SSTX- | SuperSpeed transmitter differential pair | Last  |\n|  7 | MicB_SSTX+  |   |   |\n|  8 | GND_DRAIN | Ground for SuperSpeed signal return | Second  |\n|  9 | MicB_SSRX- | SuperSpeed receiver differential pair | Last  |\n|  10 | MicB_SSRX+  |   |   |\n|  Shell | Shield | Connector metal shell | First  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-36.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 411,
+      "bottomRightX": 394,
+      "bottomRightY": 425,
+      "content": "Note: Tx and Rx are defined from the device perspective.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 438,
+      "bottomRightX": 500,
+      "bottomRightY": 456,
+      "content": "Table 5-5. USB 3.1 Micro-AB/-A Connector Pin Assignments",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 458,
+      "bottomRightX": 624,
+      "bottomRightY": 701,
+      "content": "|  Pin Number | Signal Name | Description | Mating Sequence  |\n| --- | --- | --- | --- |\n|  1 | VBUS | Power | Second  |\n|  2 | D- | USB 2.0 differential pair | Last  |\n|  3 | D+  |   |   |\n|  4 | ID | OTG identification  |   |\n|  5 | GND | Ground for power return | Second  |\n|  6 | MicA_SSTX- | SuperSpeed receiver differential pair | Last  |\n|  7 | MicA_SSTX+  |   |   |\n|  8 | GND_DRAIN | Ground for SuperSpeed signal return | Second  |\n|  9 | MicA_SSRX- | SuperSpeed transmitter differential pair | Last  |\n|  10 | MicA_SSRX+  |   |   |\n|  Shell | Shield | Connector metal shell | First  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-37.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 702,
+      "bottomRightX": 443,
+      "bottomRightY": 716,
+      "content": "Note: Tx and Rx are defined when an OTG device serves as a host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 721,
+      "bottomRightX": 657,
+      "bottomRightY": 738,
+      "content": "The physical location of the pins in the connector is illustrated in Figure 5-12 to Figure 5-14.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 761,
+      "bottomRightX": 584,
+      "bottomRightY": 785,
+      "content": "## 5.4 Cable Construction and Wire Assignments",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 792,
+      "bottomRightX": 700,
+      "bottomRightY": 827,
+      "content": "This section discusses the USB 3.1 cables, including cable construction, wire assignments, and wire gauges. The performance requirements are specified in Section 5.6.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "5-33",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

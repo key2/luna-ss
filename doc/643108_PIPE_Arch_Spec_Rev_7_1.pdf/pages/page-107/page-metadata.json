@@ -1,0 +1,131 @@
+{
+  "index": 106,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 450,
+      "bottomRightY": 141,
+      "content": "#### 7.2.23 Address 407h: Tx Status7",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 152,
+      "bottomRightX": 356,
+      "bottomRightY": 167,
+      "content": "Table 7-50. Address 407h: Tx Status7",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 172,
+      "bottomRightX": 700,
+      "bottomRightY": 395,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe | LocalTxPresetCoefficients_Cminus2[5:0]: This field is part of a set of four coefficients for the preset on the LocalPresetIndex[5:0] after a GetLocalPresetCoefficients request for 64 GT/s or 128 GT/s. This field corresponds to precursor C-2. See LocalTxPresetCoefficients_Cminus1[5:0], LocalTxPresetCoefficients_Czero[5:0], and LocalTxPresetCoefficients_Cplus1[5:0] for the other coefficients.For lower operational rates, see LocalTxPresetCoefficients[17:0].The MAC will reflect these coefficient values on TxDeemph_Cminus2 when the MAC wants to apply this preset.This field is only updated by a PHY that requires dynamic preset coefficient updates.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-121.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 415,
+      "bottomRightX": 450,
+      "bottomRightY": 433,
+      "content": "#### 7.2.24 Address 408h: Tx Status8",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 445,
+      "bottomRightX": 356,
+      "bottomRightY": 459,
+      "content": "Table 7-51. Address 408h: Tx Status8",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 464,
+      "bottomRightX": 699,
+      "bottomRightY": 606,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe | LocalG6FS[5:0]: This field reflects the FS value for the PHY. These signals are only used by a PHY that requires dynamic preset coefficient updates. The FS value is valid for 64 GT/s.This field must be updated by the PHY before the first PhyStatus pulse after a rate change to 64 GT/s, or in response to GetLocalPresetCoefficients when LocalPresetIndex[5:0] >32 and <=44.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-122.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 625,
+      "bottomRightX": 450,
+      "bottomRightY": 644,
+      "content": "#### 7.2.25 Address 409h: Tx Status9",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 656,
+      "bottomRightX": 356,
+      "bottomRightY": 671,
+      "content": "Table 7-52. Address 409h: Tx Status9",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 676,
+      "bottomRightX": 698,
+      "bottomRightY": 796,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:6] | 0h | N/A | N/A | Reserved  |\n|  [5:0] | 0h | Level | PCIe | LocalG6LF[5:0]: This field reflects the LF value for the PHY. This signal is only used by a PHY that requires dynamic preset coefficient updates. The LF value is valid for 64 GT/s.LocalG6LF[5:0] must be sampled whenever LocalG6FS[5:0] is sampled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-123.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 814,
+      "bottomRightX": 463,
+      "bottomRightY": 834,
+      "content": "#### 7.2.26 Address 40Ah: Tx Status10",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "107",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

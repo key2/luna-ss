@@ -1,0 +1,209 @@
+{
+  "index": 419,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 62,
+      "content": "- 389 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 94,
+      "bottomRightX": 667,
+      "bottomRightY": 155,
+      "content": "Note: If the port initiates a hot reset on the link and the hot reset fails during the link Recovery state, a warm reset will be automatically tried. Refer to the Chapter 7 for details on this process. The port stays in the DSPORT.Resetting state throughout this process until the warm reset completes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 167,
+      "bottomRightX": 670,
+      "bottomRightY": 227,
+      "content": "When the downstream port link enters Rx.Detect.Active during a warm reset, the hub shall start a timer to count the time it is in Rx.Detect.Active or Rx.Detect.Quiet. If this timer exceeds tTimeForResetError while the link remains in Rx.Detect, the port shall transition to the DSPORT.Disconnected state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 240,
+      "bottomRightX": 329,
+      "bottomRightY": 256,
+      "content": "#### **10.3.1.7 DSPORT.Compliance**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 263,
+      "bottomRightX": 504,
+      "bottomRightY": 279,
+      "content": "A port transitions to this state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 285,
+      "bottomRightX": 458,
+      "bottomRightY": 300,
+      "content": "- When the link enters the Compliance Mode state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 322,
+      "bottomRightX": 318,
+      "bottomRightY": 337,
+      "content": "#### **10.3.1.8 DSPORT.Loopback**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 344,
+      "bottomRightX": 504,
+      "bottomRightY": 359,
+      "content": "A port transitions to this state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 366,
+      "bottomRightX": 624,
+      "bottomRightY": 396,
+      "content": "- From the DSPORT.Training state if the loopback bit is set in the received TS2 ordered sets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 418,
+      "bottomRightX": 466,
+      "bottomRightY": 433,
+      "content": "In this state, the port's link shall be in the Loopback state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 446,
+      "bottomRightX": 312,
+      "bottomRightY": 461,
+      "content": "#### **10.3.1.9 DSPORT.Disabled**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 468,
+      "bottomRightX": 670,
+      "bottomRightY": 499,
+      "content": "A port transitions to this state when the port receives a SetPortFeature(PORT_LINK_STATE) eSS.Disabled request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 513,
+      "bottomRightX": 483,
+      "bottomRightY": 527,
+      "content": "In this state, the port's link shall be in the eSS.Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 540,
+      "bottomRightX": 376,
+      "bottomRightY": 555,
+      "content": "#### **10.3.1.10 DSPORT.Powered-off-detect**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 562,
+      "bottomRightX": 672,
+      "bottomRightY": 653,
+      "content": "This state is entered when the downstream power state is logically off and an Enhanced SuperSpeed connection, rather than a USB 2.0 connection, is desired. To ensure that an Enhanced SuperSpeed connection is established, unlike the DSPORT.Powered-off state, terminations are maintained while in this state. This is the default DSPORT state at power-up if the hub does not support power switching. This state shall perform far-end receiver detection with the link in Rx.Detect, until any of the following conditions are true:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 660,
+      "bottomRightX": 557,
+      "bottomRightY": 721,
+      "content": "- A receiver is detected.\n- Any condition to \"power-off\" is met.\n- The conditions to \"repower\" the port as described below are met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 735,
+      "bottomRightX": 670,
+      "bottomRightY": 766,
+      "content": "A port shall transition into this state from the DSPORT.Powered-off-reset state when tReset time has been met and the conditions to \"repower\" are not met.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 778,
+      "bottomRightX": 451,
+      "bottomRightY": 794,
+      "content": "All the following conditions shall be met for \"repower\":",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 801,
+      "bottomRightX": 471,
+      "bottomRightY": 903,
+      "content": "- All \"power\" conditions are met.\n- SetPortFeature(PORT_POWER) request is received,\n  Or SetConfig(1) request is received,\n  Or Upstream Port Reset is detected,\n  Or Upstream Port VBUS transitioned from off to on.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

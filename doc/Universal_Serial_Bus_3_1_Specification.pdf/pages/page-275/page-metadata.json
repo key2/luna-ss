@@ -1,0 +1,155 @@
+{
+  "index": 274,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 92,
+      "bottomRightX": 543,
+      "bottomRightY": 127,
+      "content": "1. The conditions to transition to Polling.Configuration are not met.\n2. cPollingTimeout is two.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 130,
+      "bottomRightX": 694,
+      "bottomRightY": 445,
+      "content": "- An upstream port of a hub in SuperSpeed operation shall transition to Rx.Detect upon the 12-ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- An upstream port of a peripheral device in SuperSpeed operation shall transition to eSS.Disabled upon the 12-ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- A downstream port in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12-ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- An upstream port of a hub in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12-ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- An upstream port of a peripheral device in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 12-ms timer timeout (tPollingActiveTimeout) and the conditions to transition to Polling.Configuration are not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 461,
+      "bottomRightX": 340,
+      "bottomRightY": 479,
+      "content": "### 7.5.4.9 Polling.Configuration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 117,
+      "topLeftY": 484,
+      "bottomRightX": 687,
+      "bottomRightY": 517,
+      "content": "Polling.Configuration is a substate where the two link partners complete the Enhanced SuperSpeed training.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 523,
+      "bottomRightX": 443,
+      "bottomRightY": 542,
+      "content": "#### 7.5.4.9.1 Polling.Configuration Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 546,
+      "bottomRightX": 675,
+      "bottomRightY": 579,
+      "content": "- The port shall transmit identical TS2 ordered sets upon entry to this substate and set the link configuration field in the TS2 ordered set based on the following.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 581,
+      "bottomRightX": 607,
+      "bottomRightY": 597,
+      "content": "1. When directed, a downstream port shall set Reset bit in the TS2 ordered set.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 598,
+      "bottomRightX": 698,
+      "bottomRightY": 631,
+      "content": "Note: An upstream port can only set the Reset bit in the TS2 ordered set when in Hot Reset. Active. Refer to Section 7.5.12.3 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 634,
+      "bottomRightX": 659,
+      "bottomRightY": 668,
+      "content": "2. When directed, the port shall set Loopback bit in the TS2 ordered set.\n3. When directed, the port shall set the Disabling Scrambling bit in the TS2 ordered set.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 670,
+      "bottomRightX": 682,
+      "bottomRightY": 774,
+      "content": "- The port in SuperSpeedPlus operation shall insert a SYNC ordered set every 32 TS2 ordered sets.\n- The port in SuperSpeedPlus operation shall perform block alignment and scrambler synchronization as defined in Sections 6.3.2.3 and 6.4.1.2.4 of Chapter 6.\n- The port that fails to achieve a successful training with its link partner shall reconfigure itself for the next capability it supports.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 775,
+      "bottomRightX": 681,
+      "bottomRightY": 809,
+      "content": "Note: An example of this is, when a SuperSpeedPlus port fails to reach successful handshake with its link partner, it shall re-configure itself for SuperSpeed operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 812,
+      "bottomRightX": 665,
+      "bottomRightY": 828,
+      "content": "- A 12-ms timer (tPollingConfigurationTimeout) shall be started upon entry to this substate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 835,
+      "bottomRightX": 410,
+      "bottomRightY": 853,
+      "content": "#### 7.5.4.9.2 Exit from Polling.Configuration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 857,
+      "bottomRightX": 655,
+      "bottomRightY": 890,
+      "content": "- The port in SuperSpeed operation shall transition to Polling.Idle when the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-63",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "index": 71,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 93,
+      "topLeftY": 29,
+      "bottomRightX": 380,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 237,
+      "bottomRightY": 114,
+      "content": "### 4.2.1 Pipes",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 119,
+      "bottomRightX": 701,
+      "bottomRightY": 237,
+      "content": "An Enhanced SuperSpeed pipe is an association between an endpoint on a device and software on the host. Pipes represent the ability to move data between software on the host via a memory buffer and an endpoint on a device and have the same behavior as defined in the *Universal Serial Bus Specification, Revision 2.0*. The main difference is that when a non-isochronous Enhanced SuperSpeed endpoint is busy it returns a Not Ready (NRDY) response and must send an Endpoint Ready (ERDY) notification when it wants to be serviced again. The host will then reschedule the transaction at the next available opportunity within the constraints of the transfer type.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 260,
+      "bottomRightX": 554,
+      "bottomRightY": 284,
+      "content": "## 4.3 Enhanced SuperSpeed Protocol Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 289,
+      "bottomRightX": 683,
+      "bottomRightY": 374,
+      "content": "As mentioned in the Architecture Overview Chapter, the Enhanced SuperSpeed protocol is architected to take advantage of the dual-simplex physical layer. All USB 2.0 transfer types are supported by the Enhanced SuperSpeed protocol. The differences between the USB 2.0 protocol and the Enhanced SuperSpeed protocol are first discussed followed by a brief description of the packets used in the Enhanced SuperSpeed protocol.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 388,
+      "bottomRightX": 406,
+      "bottomRightY": 409,
+      "content": "### 4.3.1 Differences from USB 2.0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 415,
+      "bottomRightX": 663,
+      "bottomRightY": 466,
+      "content": "The Enhanced SuperSpeed bus is backward compatible with USB 2.0 at the framework level. However, there are some fundamental differences between the USB 2.0 and the Enhanced SuperSpeed protocol:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 470,
+      "bottomRightX": 699,
+      "bottomRightY": 884,
+      "content": "- • USB 2.0 uses a three-part transaction (Token, Data, and Handshake) while the Enhanced SuperSpeed protocol uses the same three parts differently. For OUTs, the token is incorporated in the data packet; while for INs, the Token is replaced by a handshake.\n- • USB 2.0 does not support bursting while the Enhanced SuperSpeed protocol supports continuous bursting.\n- • USB 2.0 is a half-duplex broadcast bus while the Enhanced SuperSpeed bus is a dual-simplex unicast bus which allows concurrent IN and OUT transactions.\n- • USB 2.0 uses a polling model while the Enhanced SuperSpeed protocol uses asynchronous notifications.\n- • USB 2.0 does not have a Streaming capability while the Enhanced SuperSpeed protocol supports Streaming for bulk endpoints.\n- • USB 2.0 offers no mechanism for isochronous capable devices to enter the low power USB bus state between service intervals. The Enhanced SuperSpeed bus allows isochronous capable devices to autonomously enter low-power link states between service intervals or within a service interval. An Enhanced SuperSpeed host shall transmit a PING packet to the targeted isochronous device before the service interval to allow time for the path to transition back to the active power state before initiating the isochronous transfer.\n- • USB 2.0 offers no mechanism for a device to inform the host how much latency the device can tolerate if the system enters lower system power states. Thus a host may not enter lower system power states as it might impact a device's performance because it lacks an understanding of a device's power policy. USB 3.1 provides a mechanism to allow Enhanced SuperSpeed devices to inform the host of their latency tolerance using Latency Tolerance Messaging. The host may use this information to establish a system power policy that accounts for the devices' latency tolerance.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 962,
+      "bottomRightX": 112,
+      "bottomRightY": 977,
+      "content": "4-2",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

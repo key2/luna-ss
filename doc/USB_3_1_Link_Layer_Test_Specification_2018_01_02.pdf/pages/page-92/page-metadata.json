@@ -1,0 +1,191 @@
+{
+  "index": 91,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 235,
+      "bottomRightY": 108,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 116,
+      "bottomRightX": 240,
+      "bottomRightY": 130,
+      "content": "7.2.4.1.1#6,8,17,22",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 138,
+      "bottomRightX": 206,
+      "bottomRightY": 152,
+      "content": "7.4.2#2,4,10",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 161,
+      "bottomRightX": 198,
+      "bottomRightY": 175,
+      "content": "7.5.4.6.1#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 182,
+      "bottomRightX": 198,
+      "bottomRightY": 197,
+      "content": "7.5.4.7.2#3",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 206,
+      "bottomRightX": 203,
+      "bottomRightY": 220,
+      "content": "7.5.10.4.1#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 228,
+      "bottomRightX": 214,
+      "bottomRightY": 243,
+      "content": "7.5.12.3.1#1,2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 251,
+      "bottomRightX": 203,
+      "bottomRightY": 264,
+      "content": "7.5.12.3.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 273,
+      "bottomRightX": 203,
+      "bottomRightY": 288,
+      "content": "7.5.12.4.1#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 295,
+      "bottomRightX": 203,
+      "bottomRightY": 309,
+      "content": "7.5.12.4.2#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 319,
+      "bottomRightX": 254,
+      "bottomRightY": 334,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 341,
+      "bottomRightX": 709,
+      "bottomRightY": 777,
+      "content": "1. Do steps 1 to 5 of the Link Initialization Sequence.\n2. The LVS prompts the test operator to initiate a Hot Reset on the PUT through USB30CV.\n3. The LVS waits for the PUT to send TS1s.\n4. The test fails if the PUT does not transmit TS1s before tU0RecoveryTimeout expires.\n5. The LVS transmits TS1 ordered sets and waits to receive TS2 ordered sets with the Reset bit asserted.\n6. The test fails if the PUT does not transmit at least sixteen TS2 ordered sets with Reset bit asserted.\n7. The LVS transmits at least sixteen TS2 ordered sets with the Reset bit asserted, and then transmits two consecutive TS2 ordered sets with the Reset bit de-asserted.\n8. The test fails if any of the following occur:\n  a. After LVS transmitted TS2 ordered sets with Reset bit de-asserted, the PUT does not transmit four consecutive TS2 ordered sets with the Reset bit de-asserted, when tHotResetActiveTimeout expires\n  b. The PUT transmits anything other than TS2 ordered sets, before the LVS transmits TS2 ordered sets with the Reset bit de-asserted.\n9. The LVS transmits Idle Symbols for Gen 1, or SDS Ordered Set followed by Idle Symbols for Gen 2.\n10. The test fails if upon entering U0, the PUT does not transmit the Header Sequence Number Advertisement and the (Type 1/Type 2) Rx Header Buffer Credit Advertisement before their respective timeouts, PENDING_HP_TIMER and (Type 1/Type 2) CREDIT_HP_TIMER, expire.\n11. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.\n12. The test fails if the PUT retransmits Port Capability or Port Configuration LMPs.\n13. The test fails if the Port Configuration exchange sequences are not successful and the link does not stay in U0 for at least 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 837,
+      "bottomRightX": 560,
+      "bottomRightY": 853,
+      "content": "### TD.7.30 Recovery on three consecutive failed RX Header Packets Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 857,
+      "bottomRightX": 678,
+      "bottomRightY": 886,
+      "content": "This test verifies that the PUT will enter Recovery if it fails to receive a header packet three consecutive times.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 894,
+      "bottomRightX": 234,
+      "bottomRightY": 908,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 915,
+      "bottomRightX": 208,
+      "bottomRightY": 930,
+      "content": "7.2.4.1.1#7,9",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "84",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "index": 551,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 521 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 666,
+      "bottomRightY": 138,
+      "content": "- The re-timer shall disable and reset the tHotResetActiveTimeout timer and start the tHotResetExitTimeout timer upon detecting successful TS2 OS based Hot Reset.Active handshake.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 152,
+      "bottomRightX": 325,
+      "bottomRightY": 167,
+      "content": "# E.3.14.2 Exit from Hot Reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 175,
+      "bottomRightX": 654,
+      "bottomRightY": 324,
+      "content": "- The re-timer shall transition to U0 upon observing successful Hot Reset.Exit handshake or any link command.\n- The re-timer shall transition to Rx.Detect if one of the following conditions is met.\n  o Upon timeout of the tHotResetActiveTimeout timer and no successful Hot Reset.Active handshake is observed.\n  o Upon timeout of the tHotResetExitTimeout timer and no successful Hot Reset.Exit handshake is observed.\n  o Upon detecting Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 336,
+      "bottomRightX": 405,
+      "bottomRightY": 351,
+      "content": "# E.4 SRIS Re-timer Clock Offset Compensation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 358,
+      "bottomRightX": 673,
+      "bottomRightY": 402,
+      "content": "A SRIS re-timer is expected to implement a reference clock to facilitate its data transmission. Shown in Figure E-15 is an example block diagram of a SRIS re-timer implementation based on separate reference clock.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 416,
+      "bottomRightX": 640,
+      "bottomRightY": 432,
+      "content": "Figure E-15. Example Block Diagram of a Re-timer Operating in Gen 2 Mode",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 441,
+      "bottomRightX": 670,
+      "bottomRightY": 670,
+      "content": "![img-210.jpeg](img-210.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-210.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 680,
+      "bottomRightX": 274,
+      "bottomRightY": 695,
+      "content": "# E.4.1 Gen 1x1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 701,
+      "bottomRightX": 672,
+      "bottomRightY": 778,
+      "content": "In Gen 1x1 operation, SKP OS defined for the clock offset compensation only considers the need by a host or device. There is no additional SKP OS budgeted for SRIS re-timers when in U0, Polling.TSx, Recovery, Hot Reset and PassThrough Loopback. A SRIS re-timer shall perform its clock offset compensation in those states based on implementation specific mechanisms, which are out of the scope of this appendix.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 792,
+      "bottomRightX": 274,
+      "bottomRightY": 806,
+      "content": "# E.4.2 Gen 1x2 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 813,
+      "bottomRightX": 612,
+      "bottomRightY": 828,
+      "content": "Re-timers shall perform its clock offset compensation as defined in Section 6.4.3.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 836,
+      "bottomRightX": 547,
+      "bottomRightY": 851,
+      "content": "- The maximum re-timer delay tDretimer shall not exceed 300 ns.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 866,
+      "bottomRightX": 260,
+      "bottomRightY": 881,
+      "content": "# E.4.3 Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 889,
+      "bottomRightX": 612,
+      "bottomRightY": 904,
+      "content": "Re-timers shall perform its clock offset compensation as defined in Section 6.4.3.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

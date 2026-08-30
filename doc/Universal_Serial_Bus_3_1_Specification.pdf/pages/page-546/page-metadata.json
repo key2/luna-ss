@@ -1,0 +1,75 @@
+{
+  "index": 545,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 93,
+      "bottomRightX": 414,
+      "bottomRightY": 116,
+      "content": "## 10.15.2 Class-specific Descriptors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 129,
+      "bottomRightX": 299,
+      "bottomRightY": 148,
+      "content": "### 10.15.2.1 Hub Descriptor",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 154,
+      "bottomRightX": 524,
+      "bottomRightY": 170,
+      "content": "Table 10-5 outlines the various fields contained in the hub descriptor.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 184,
+      "bottomRightX": 440,
+      "bottomRightY": 201,
+      "content": "Table 10-5. Enhanced SuperSpeed Hub Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 204,
+      "bottomRightX": 699,
+      "bottomRightY": 811,
+      "content": "|  Offset | Field | Size | Description  |\n| --- | --- | --- | --- |\n|  0 | bDescLength | 1 | Number of bytes in this descriptor, including this byte. (12 bytes)  |\n|  1 | bDescriptorType | 1 | Descriptor Type, value: 2AH for Enhanced SuperSpeed hub descriptor  |\n|  2 | bNbrPorts | 1 | Number of downstream facing ports that this hub supports. The maximum number of ports of ports a hub can support is 15.  |\n|  3 | wHubCharacteristics | 2 | D1...D0: Logical Power Switching Mode 00: Ganged power switching (all ports' power at once) 01: Individual port power switching 1X: Reserved D2: Identifies a Compound Device 0: Hub is not part of a compound device. 1: Hub is part of a compound device. D4...D3: Over-current Protection Mode 00: Global Over-current Protection. The hub reports over-current as a summation of all ports' current draw, without a breakdown of individual port over-current status. 01: Individual Port Over-current Protection. The hub reports over-current on a per-port basis. Each port has an over-current status. 1X: No Over-current Protection. This option is allowed only for bus-powered hubs that do not implement over-current protection. D15...D5: Reserved  |\n|  5 | bPwrOn2PwrGood | 1 | Time (in 2-ms intervals) from the time the power-on sequence begins on a port until power is good on that port. The USB system software uses this value to determine how long to wait before accessing a powered-on port. This value is set to zero if power-switching is not supported by the hub.  |\n|  6 | bHubContrCurrent | 1 | Maximum current requirements of the Hub Controller electronics when the hub is operating on both USB 2.0 and Enhanced SuperSpeed expressed in units of aCurrentUnit (i.e., 50 = 50* aCurrentUnit mA). Note that the encoding of this field is different if the encoding used is the USB 2.0 specification for USB 2.0 hubs. A USB hub shall report the current requirements when it is only operating on USB 2.0 (not Enhanced SuperSpeed) in the USB 2.0 hub descriptor.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-226.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-68",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

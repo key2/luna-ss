@@ -1,0 +1,75 @@
+{
+  "index": 173,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 133,
+      "bottomRightX": 229,
+      "bottomRightY": 148,
+      "content": "Figure 9-3. L0 to L1",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 152,
+      "bottomRightX": 690,
+      "bottomRightY": 488,
+      "content": "![img-72.jpeg](img-72.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-72.jpeg"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 494,
+      "bottomRightX": 686,
+      "bottomRightY": 539,
+      "content": "To cause the link to exit the 1 state, the MAC transitions the PHY from the P1 state to the P0 state, waits for the PHY to indicate that it is ready to transmit (by the assertion of PhyStatus), and then begins transmitting training sequence ordered sets (TS1s).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 550,
+      "bottomRightX": 507,
+      "bottomRightY": 565,
+      "content": "Note: This is an example when the PHY is running at 2.5 GT/s.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "174",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

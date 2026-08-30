@@ -1,0 +1,57 @@
+{
+  "index": 57,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 61,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 911,
+      "content": "|  8.4.8.5#2 | If Delta(RxITP) is less than 7500, the device shall apply Delta(RxITP) and Correction(RxITP) values and the LDM Link Delay to set the value of the PTM Delta Counter at the time an ITP is received (tITUFP) using the formula shown (see section 8.4.8.5). | NT  |\n| --- | --- | --- |\n|  8.4.8.5#3 | If Delta(RxITP) is less than 7500, a device shall use the values of Bus Interval Counter(RxITP) and Delta(RxITP) subfields received in the ITP to set the value of the PTM But Interval Counter at the time an ITP is received (tITUFP) using the formula shown (see section 8.4.8.5). | NT  |\n|  Subsection reference: 8.4.8.6 PTM Bus Interval Boundary Host Calculation  |   |   |\n|  8.4.8.6#1 | A host shall maintain an ITP Delay Counter that is incremented by the PTM Clock. | NT  |\n|  8.4.8.6#2 | The host shall transmit downstream ITPs using these current values for the ITP Isochronous Timestamp Bus Interval Counter(TxITP) and Delay(TxITP) fields, and set the Correction(TxITP) field to zero. | NT  |\n|  Subsection reference: 8.4.8.7 PTM Hub ITP Regeneration  |   |   |\n|  8.4.8.7#1 | A hub shall maintain an ITP Delay Counter that is incremented by the PTM Clock. | NT  |\n|  8.4.8.7#2 | If an ITP is received by a PTM capable hub and the Delayed(DL) bit is not set, then the hub shall set the ITP Delay Counter to zero and for each downstream port in U0, the hub shall queue the ITP for transmission. | NT  |\n|  8.4.8.7#3 | When a PTM capable hub transmits an ITP, it shall copy the value of Bus Interval Boundary(RxITP) to the BUS Interval Boundary(TxITP) subfield of the Isochronous Timestamp field in the downstream ITP. | NT  |\n|  8.4.8.7#4 | When a PTM capable hub transmits an ITP, it shall calculate the value of Delta(TxITP) subfield using the formula shown (see section 8.4.8.7). | NT  |\n|  8.4.8.7#5 | When a PTM capable hub transmits an ITP, it shall re-calculate the CRC-16 for the modified ITP. | NT  |\n|  8.4.8.7#6 | If an ITP is received by a PTM capable hub and the Delayed (DL) bit is set, then the hub shall forward the received ITP without modification. | NT  |\n|  8.4.8.7#7 | The Isochronous Timestamp values used in the ITP being transmitted shall be the values present at the time of transmission (not time queued for transmission but actual transmission, see section 8.4.8.6). | NT  |\n|  Subsection reference: 8.4.8.9 LDM Rules  |   |   |\n|  8.4.8.9#1 | A Responder shall not send a LDM Response without first receiving a LDM Request LMP. | NT  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-51.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "50",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

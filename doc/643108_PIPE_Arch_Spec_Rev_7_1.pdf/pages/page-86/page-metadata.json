@@ -1,0 +1,158 @@
+{
+  "index": 85,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 473,
+      "bottomRightY": 141,
+      "content": "### 7.1.9 Address 8h: PHY Rx Control4",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 150,
+      "bottomRightX": 508,
+      "bottomRightY": 165,
+      "content": "This register is used to control the receiver functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 179,
+      "bottomRightX": 367,
+      "bottomRightY": 193,
+      "content": "Table 7-10. Address 8h: PHY Rx Control4",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 198,
+      "bottomRightX": 687,
+      "bottomRightY": 493,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:2] | 0h | N/A | N/A | Reserved  |\n|  [1] | 0h | 1-cycle | PCIe and USB | **ElasticBufferResetControl:** When asserted, this signal causes the PHY to initiate an EB reset sequence. See Section 8.15.3.1 for details. **Note:** This field is not used in the SerDes architecture.  |\n|  [0] | 0h | Level | PCIe and USB | **BlockAlignControl:** This field controls whether the PHY performs a block alignment. When BlockAlignControl=0 the PHY disables searching for the EIEOS (PCIe)/SYNC OS (USB) on a bit boundary. When BlockAlignControl = 1 the PHY enables searching for the EIEOS(PCIe)/SYNC OS (USB) on a bit boundary. A MAC must set BlockAlignControl to the same value for all active lanes in a link. A MAC must set BlockAlignControl to \"0\" when in a datastream and must set it to \"1\" otherwise. This field is only used at the PCIe 8.0 GT/s, 16 GT/s, and 32 GT/s signaling rates and at the USB 10.0 GT/s signaling rate. When the PHY is in Loopback Follower mode it ignores the BlockAlignControl and is responsible for maintaining alignment. **Note:** This field is not used in the SerDes architecture.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-72.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 508,
+      "bottomRightX": 479,
+      "bottomRightY": 527,
+      "content": "### 7.1.10 Address 9h: PHY Rx Control 5",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 536,
+      "bottomRightX": 430,
+      "bottomRightY": 551,
+      "content": "This register controls receiver functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 559,
+      "bottomRightX": 372,
+      "bottomRightY": 573,
+      "content": "Table 7-11. Address 9h: PHY Rx Control 5",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 579,
+      "bottomRightX": 687,
+      "bottomRightY": 675,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:1] | 0h | N/A | N/A | Reserved  |\n|  [0] | 1h^{1} | Level | USB4 and DisplayPort | **RxLaneEnable:** This field is set to \"1\" by the MAC to instruct the PHY to enable the receiver. The PHY indicates completion of this operation via the RxLaneReady register bit.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-73.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 678,
+      "bottomRightX": 381,
+      "bottomRightY": 690,
+      "content": "1. The default value of RxLaneEnable for the RX2 region is 0h.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 711,
+      "bottomRightX": 496,
+      "bottomRightY": 730,
+      "content": "### 7.1.11 Address 400h: PHY Tx Control0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 738,
+      "bottomRightX": 526,
+      "bottomRightY": 753,
+      "content": "This register is used to control the transmitter functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 768,
+      "bottomRightX": 477,
+      "bottomRightY": 783,
+      "content": "Table 7-12. Address 400h: PHY Tx Control0 (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 787,
+      "bottomRightX": 686,
+      "bottomRightY": 832,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:2] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-74.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 955,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "86",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

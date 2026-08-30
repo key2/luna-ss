@@ -1,0 +1,74 @@
+{
+  "index": 546,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 516 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 673,
+      "bottomRightY": 615,
+      "content": "- The re-timer shall implement a specific U3 standby (U3S) state such that upon observing the failure of the U3 LFPS exit handshake, it remains in U3S and is ready for another U3 LFPS exit handshake event. The re-timer shall implement the following while in U3S.\n  o It shall maintain its operational state similar to U1.\n  o It shall implement a one-second timer to monitor the absence of U3 LFPS exit event. The re-timer shall transition from U3S to U3 upon the one-second timer expiration and no U3 LFPS exit signal is observed.\n- Upon detecting the U3 LFPS exit signal, the re-timer shall perform one of the following.\n  o If it is capable of exiting from U3 and completing the subsequent link training, it shall propagate the received U3 LFPS exit signal from LP1 within 100 µs and forward the U3 LFPS exit signal from LP2 within 1 µs.\n  o If it is not ready to exit from U3, it shall not forward the received U3 LFPS exit signal. The re-timer shall transition itself to U3S.\n- The re-timer shall distinguish between U3 LFPS exit handshake and Warm Reset based on specification defined in Section E.3.1.\n- The re-timer shall establish its eSS operating condition within 2 ms upon detecting and forwarding the U3 LFPS exit signal.\n- Upon observing the successful completion of U3 LFPS exit handshake, if the re-timer has not established its eSS operating condition, it shall continue the LFPS transmission until it is ready for eSS operation.\n  Note: the situation may exist that the re-timer's eSS operating condition may not be established upon successful U3 LFPS exit handshake. To make sure that the maximum gap of electrical idle between the LFPS transmission and the eSS transmission does not exceed the specification defined in Section 6.9.2, the re-timer shall continue the LFPS transmission until it is ready to transmit eSS signal.\n- The re-timer shall be prepared to detect Polling.LFPS signal. This is a corner case where a device may be reconnected within a period so short that the re-timer is not able to declare a disconnect event.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 629,
+      "bottomRightX": 283,
+      "bottomRightY": 643,
+      "content": "### E.3.10.2 Exit from U3",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 651,
+      "bottomRightX": 673,
+      "bottomRightY": 928,
+      "content": "- The re-timer shall transition to Recovery if the following two conditions are both met.\n  o Upon observing the successful completion of the U3 LFPS exit handshake meeting the U3 wakeup signaling defined in Section 6.9.2 and additional conditions defined in Section E.3.1.\n  o The re-timer is ready for eSS operation.\n- The re-timer shall remain in U3S upon failure to achieve a successful U3 LFPS exit handshake meeting the U3 wakeup signaling in Section 6.9.2.\n- The re-timer shall transition to Rx.Detect if one of the following conditions is met.\n  o Upon detection of a far-end high-impedance receiver termination (ZRX-HIGH-IMP-DC-POS) defined in Table 6-22 and removal of the receiver termination at its own corresponding port mirroring the far-end receiver termination.\n  o Upon detecting Warm Reset. Refer to Section E.3.1 for Warm Reset detection.\n- The re-timer shall transition to Rx.Detect if Polling.LFPS signal is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

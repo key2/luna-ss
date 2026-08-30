@@ -1,0 +1,129 @@
+{
+  "index": 446,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 593,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 694,
+      "bottomRightY": 128,
+      "content": "the recipient is an endpoint. If the recipient is an endpoint, then the lower byte of wIndex identifies the endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 139,
+      "bottomRightX": 694,
+      "bottomRightY": 157,
+      "content": "Refer to Table 9-7 for a definition of which feature selector values are defined for which recipients.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 167,
+      "bottomRightX": 686,
+      "bottomRightY": 202,
+      "content": "The FUNCTION_SUSPEND feature is only defined for an interface recipient. The lower byte of wIndex shall be set to the first interface that is part of that function.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 212,
+      "bottomRightX": 697,
+      "bottomRightY": 348,
+      "content": "The U1/U2_ENABLE feature is only defined for a device recipient and wIndex shall be set to zero. Setting the U1/U2_ENABLE feature allows the device to initiate U1/U2 entry respectively. A device shall support the U1/U2_ENABLE feature when in the Configured state only. System software must not enable the device to initiate U1 if the time for U1 System Exit Latency initiated by Host plus one Bus Interval time is greater than the minimum of the service intervals of any periodic endpoints in the device. In addition, system software must not enable the device to initiate U2 if the time for U2 System Exit Latency initiated by Host plus one Bus Interval time is greater than the minimum of the service intervals of any periodic endpoints in the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 358,
+      "bottomRightX": 684,
+      "bottomRightY": 426,
+      "content": "The LTM_ENABLE feature is only defined for a device recipient and wIndex shall be set to zero. Setting the LTM_ENABLE feature allows the device to send Latency Tolerance Messages. A device shall support the LTM_ENABLE feature if it is in the Configured state and supports the LTM capability.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 437,
+      "bottomRightX": 692,
+      "bottomRightY": 507,
+      "content": "The LDM_ENABLE feature is only defined for a device recipient and wIndex shall be set to zero. Setting the LDM_ENABLE feature allows the device to execute the LDM protocol. A device shall support the LDM_ENABLE feature if it is in the Address or Configured states and supports the PTM capability.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 516,
+      "bottomRightX": 676,
+      "bottomRightY": 551,
+      "content": "A SetFeature() request that references a feature that cannot be set or that does not exist causes a STALL Transaction Packet to be returned in the Status stage of the request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 567,
+      "bottomRightX": 303,
+      "bottomRightY": 584,
+      "content": "Table 9-9. Suspend Options",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 586,
+      "bottomRightX": 702,
+      "bottomRightY": 755,
+      "content": "|  Bit | Description  |   |\n| --- | --- | --- |\n|  0 | **Value** | **Meaning**  |\n|   |  0 | Normal operation state (default)  |\n|   |  1 | Low power suspend state  |\n|  1 | **Value** | **Meaning**  |\n|   |  0 | Function Remote Wake Disabled (Default)  |\n|   |  1 | Function Remote Wake Enabled  |\n|  2-7 | Reserved  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-168.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 769,
+      "bottomRightX": 700,
+      "bottomRightY": 839,
+      "content": "If the feature selector is FUNCTION_SUSPEND, then the most significant byte of wIndex is used to specify Suspend options. The recipient of a SetFeature (FUNCTION_SUSPEND...) shall be the first interface in the function; and, hence, the bmRequestType shall be set to one. The valid encodings for the FUNCTION_SUSPEND suspend options are listed in Table 9-9.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 848,
+      "bottomRightX": 535,
+      "bottomRightY": 867,
+      "content": "If wLength is non-zero, then the behavior of the device is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "9-29",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

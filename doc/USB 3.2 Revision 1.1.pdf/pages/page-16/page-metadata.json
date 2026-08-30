@@ -1,0 +1,57 @@
+{
+  "index": 15,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 376,
+      "topLeftY": 46,
+      "bottomRightX": 415,
+      "bottomRightY": 61,
+      "content": "- xvi -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 915,
+      "content": "|  8.12.6.2 | Host Flexibility in Performing SuperSpeed Isochronous Transactions | 309  |\n| --- | --- | --- |\n|  8.12.6.3 | SuperSpeedPlus Isochronous Transactions | 310  |\n|  8.12.6.4 | Host Flexibility in Performing SuperSpeedPlus Isochronous Transactions | 311  |\n|  8.12.6.5 | Device Response to Isochronous IN Transactions | 312  |\n|  8.12.6.6 | Host Processing of Isochronous IN Transactions | 312  |\n|  8.12.6.7 | Device Response to an Isochronous OUT Data Packet | 313  |\n|  8.13 | Timing Parameters | 313  |\n|  9 | Device Framework | 317  |\n|  9.1 | USB Device States | 317  |\n|  9.1.1 | Visible Device States | 317  |\n|  9.1.1.1 | Attached | 320  |\n|  9.1.1.2 | Powered | 320  |\n|  9.1.1.3 | Default | 321  |\n|  9.1.1.4 | Address | 321  |\n|  9.1.1.5 | Configured | 321  |\n|  9.1.1.6 | Suspended | 322  |\n|  9.1.1.7 | Error | 322  |\n|  9.1.2 | Bus Enumeration | 322  |\n|  9.2 | Generic Device Operations | 323  |\n|  9.2.1 | Dynamic Attachment and Removal | 323  |\n|  9.2.2 | Address Assignment | 323  |\n|  9.2.3 | Configuration | 323  |\n|  9.2.4 | Data Transfer | 324  |\n|  9.2.5 | Power Management | 324  |\n|  9.2.5.1 | Power Budgeting | 324  |\n|  9.2.5.2 | Changing Device Suspend State | 325  |\n|  9.2.5.3 | Function Suspend | 326  |\n|  9.2.5.4 | Changing Function Suspend State | 326  |\n|  9.2.6 | Request Processing | 326  |\n|  9.2.6.1 | Request Processing Timing | 327  |\n|  9.2.6.2 | Reset/Resume Recovery Time | 327  |\n|  9.2.6.3 | Set Address Processing | 327  |\n|  9.2.6.4 | Standard Device Requests | 327  |\n|  9.2.6.5 | Class-specific Requests | 327  |\n|  9.2.6.6 | Speed Dependent Descriptors | 328  |\n|  9.2.7 | Request Error | 328  |\n|  9.3 | USB Device Requests | 328  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-13.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "index": 64,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 93,
+      "bottomRightX": 611,
+      "bottomRightY": 124,
+      "content": "G. Repetition of four skip ordered sets followed by 1,416 symbols (word aligned)\nH. Repetition of four skip ordered sets followed by 1,415 symbols (word misaligned)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 138,
+      "bottomRightX": 359,
+      "bottomRightY": 152,
+      "content": "Combinations to be tested for Gen 2 PUT:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 167,
+      "bottomRightX": 329,
+      "bottomRightY": 182,
+      "content": "For Each SKP Symbol count x in X:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 197,
+      "bottomRightX": 707,
+      "bottomRightY": 285,
+      "content": "A. Repeat Sequence 01 with all SKP OSs containing x SKP symbols.\nB. Repeat Sequence 01 with all SKP OSs containing x SKP symbols, with one SKP symbol including a bit error.\nC. Repeat Sequence 02 with all SKP OSs containing x SKP symbols.\nD. Repeat Sequence 02 with all SKP OSs containing x SKP symbols, with one SKP symbol including a bit error.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 300,
+      "bottomRightX": 372,
+      "bottomRightY": 315,
+      "content": "Received SKP symbol counts in Gen 2 PUT:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 330,
+      "bottomRightX": 515,
+      "bottomRightY": 361,
+      "content": "X = {4,8,12,16,20,24,28,32,36} if PUT includes no captive re-timer\nX = {8,12,16,20,24,28,32} if PUT includes one captive re-timer",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 390,
+      "bottomRightX": 349,
+      "bottomRightY": 406,
+      "content": "Sequences of Repetition for Gen 2 PUT:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 420,
+      "bottomRightX": 232,
+      "bottomRightY": 435,
+      "content": "Sequence 01:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 435,
+      "bottomRightX": 299,
+      "bottomRightY": 463,
+      "content": "a. Forty (40) blocks\nb. One SKP OS",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 479,
+      "bottomRightX": 232,
+      "bottomRightY": 493,
+      "content": "Sequence 02:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 494,
+      "bottomRightX": 392,
+      "bottomRightY": 552,
+      "content": "a. One hundred and nine (109) blocks\nb. Two SKP OS\nc. One block\nd. One SKP OS",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 583,
+      "bottomRightX": 234,
+      "bottomRightY": 597,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 605,
+      "bottomRightX": 344,
+      "bottomRightY": 621,
+      "content": "(No Physical Layer assertions defined)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 629,
+      "bottomRightX": 253,
+      "bottomRightY": 644,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 650,
+      "bottomRightX": 705,
+      "bottomRightY": 779,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence.\n2. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms. Skips will be generated according to Combination A described above.\n3. The test passes if the exchanges are successful, no timeout is detected, no recovery is entered, all packets are successfully received, all credits are restored and the link stays in U0 for at least 50ms.\n4. Repeat the steps with the next combination listed above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 838,
+      "bottomRightX": 301,
+      "bottomRightY": 854,
+      "content": "### TD.6.3 Elasticity Buffer Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 858,
+      "bottomRightX": 671,
+      "bottomRightY": 889,
+      "content": "This test verifies that the PUT's elasticity buffer supports the required frequency range, from -5,300 to 300ppm.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "57",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

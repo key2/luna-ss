@@ -1,0 +1,147 @@
+{
+  "index": 89,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 103,
+      "bottomRightX": 289,
+      "bottomRightY": 124,
+      "content": "## 5.2.1 Connectors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 131,
+      "bottomRightX": 475,
+      "bottomRightY": 148,
+      "content": "The USB 3.1 specification defines the following connectors:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 152,
+      "bottomRightX": 466,
+      "bottomRightY": 245,
+      "content": "- Enhanced SuperSpeed Standard-A plug and receptacle\n- Enhanced SuperSpeed Standard-B plug and receptacle\n- Enhanced SuperSpeed Micro-B plug and receptacle\n- Enhanced SuperSpeed Micro-A plug\n- Enhanced SuperSpeed Micro-AB receptacle",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 249,
+      "bottomRightX": 686,
+      "bottomRightY": 300,
+      "content": "All SuperSpeed connectors have the same mating interfaces and are compatible with each other. The USB Enhanced SuperSpeed Gen 2 connectors have unique electrical requirements to support the Gen 2 speed in addition to the Gen 1 speed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 304,
+      "bottomRightX": 428,
+      "bottomRightY": 322,
+      "content": "Table 5-1 lists the compatible plugs and receptacles.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 335,
+      "bottomRightX": 394,
+      "bottomRightY": 352,
+      "content": "Table 5-1. Plugs Accepted By Receptacles",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 354,
+      "bottomRightX": 544,
+      "bottomRightY": 531,
+      "content": "|  Receptacle (Standard or PD) | Plugs Accepted (Standard or PD)  |\n| --- | --- |\n|  USB 2.0 Standard-A | USB 2.0 Standard-A or USB 3.1 Standard-A  |\n|  USB 3.1 Standard-A | USB 3.1 Standard-A or USB 2.0 Standard-A  |\n|  USB 2.0 Standard-B | USB 2.0 Standard-B  |\n|  USB 3.1 Standard-B | USB 3.1 Standard-B or USB 2.0 Standard-B  |\n|  USB 2.0 Micro-B | USB 2.0 Micro-B  |\n|  USB 3.1 Micro-B | USB 3.1 Micro-B or USB 2.0 Micro-B  |\n|  USB 2.0 Micro-AB | USB 2.0 Micro-B or USB 2.0 Micro-A  |\n|  USB 3.1 Micro-AB | USB 3.1 Micro-B, USB 3.1 Micro-A, USB 2.0 Micro-B, or USB 2.0 Micro-A  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-33.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 545,
+      "bottomRightX": 417,
+      "bottomRightY": 564,
+      "content": "### 5.2.1.1 USB 3.1 Standard-A Connector",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 571,
+      "bottomRightX": 685,
+      "bottomRightY": 622,
+      "content": "The USB 3.1 Standard-A connector is defined as the host connector. It has the same mating interface as the USB 2.0 Standard-A connector, but with additional pins for two more differential pairs and a drain. Refer to Section 5.3.1.3 for pin assignments and descriptions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 625,
+      "bottomRightX": 663,
+      "bottomRightY": 678,
+      "content": "A USB 3.1 Standard-A receptacle accepts either a USB 3.1 Standard-A plug or a USB 2.0 Standard-A plug. Similarly, a USB 3.1 Standard-A plug may be mated with either a USB 3.1 Standard-A receptacle or a USB 2.0 Standard-A receptacle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 682,
+      "bottomRightX": 690,
+      "bottomRightY": 732,
+      "content": "A unique color coding is recommended for the USB 3.1 Standard-A connector plastic housings to help users distinguish the USB 3.1 Standard-A connector from the USB 2.0 Standard-A connector (refer to Section 5.3.1.4 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 747,
+      "bottomRightX": 417,
+      "bottomRightY": 766,
+      "content": "### 5.2.1.2 USB 3.1 Standard-B Connector",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 772,
+      "bottomRightX": 693,
+      "bottomRightY": 856,
+      "content": "The USB 3.1 Standard-B connector is defined for relatively large, stationary peripherals, such as external hard drives and printers. It is defined so that the USB 3.1 Standard-B receptacle accepts either a USB 3.1 Standard-B plug, or a USB 2.0 Standard-B plug. Inserting a USB 3.1 Standard-B plug into a USB 2.0 Standard-B receptacle is physically disallowed (refer to Section 5.3.2 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 978,
+      "bottomRightX": 150,
+      "bottomRightY": 994,
+      "content": "5-2",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

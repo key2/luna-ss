@@ -1,0 +1,101 @@
+{
+  "index": 598,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 93,
+      "bottomRightX": 409,
+      "bottomRightY": 123,
+      "content": "# C Power Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 158,
+      "bottomRightX": 662,
+      "bottomRightY": 193,
+      "content": "This appendix offers a system level overview of Enhanced SuperSpeed's power management features and capabilities. The following topics are also included:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 196,
+      "bottomRightX": 622,
+      "bottomRightY": 270,
+      "content": "- Examples of how end to end low power link state exit latencies are calculated\n- A discussion of device-initiated link power management policies\n- An example device implementation for Latency Tolerance Messaging\n- System power considerations for SuperSpeed versus High Speed device interfaces",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 293,
+      "bottomRightX": 584,
+      "bottomRightY": 318,
+      "content": "## C.1 SuperSpeed Power Management Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 329,
+      "bottomRightX": 649,
+      "bottomRightY": 364,
+      "content": "The SuperSpeed architecture has been defined with platform power efficiency as a primary objective. Some of the key power efficiency enhancements include:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 368,
+      "bottomRightX": 683,
+      "bottomRightY": 476,
+      "content": "- Elimination of continuous device polling\n- Elimination of broadcast packet transmission through hubs\n- Introduction of link power management states enabling aggressive power savings when idle\n- Host and device initiated transition to low power states\n- Device and individual Function level suspend capabilities enabling devices to remove power from all, or only those portions of their circuitry that are not in use",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 491,
+      "bottomRightX": 401,
+      "bottomRightY": 514,
+      "content": "### C.1.1 Link Power Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 517,
+      "bottomRightX": 698,
+      "bottomRightY": 586,
+      "content": "Link power management enables a link to be placed into a lower power state when the link partners are idle. The longer a pair of link partners remain idle, the deeper the power savings that can be achieved by progressing from U0 (link active) to U1 (link standby with fast exit), to U2 (link standby with slower exit), and finally to U3 (suspend).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 594,
+      "bottomRightX": 701,
+      "bottomRightY": 713,
+      "content": "After being configured by software, the U1 and U2 link states are entered and exited via hardware autonomous control. Hardware autonomous transitions for the U1 and U2 link states enable faster response times. This, in turn, translates to better power savings when entering a power saving state, and less impact on the operational state when exiting. The U3 link state however is entered only under software control, typically after a software inactivity timeout, and is exited either by software (host initiated exit) or hardware (remote wakeup). The U3 link state is directly coupled to the device's suspend state (refer to Section C.1.4).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 675,
+      "topLeftY": 981,
+      "bottomRightX": 699,
+      "bottomRightY": 996,
+      "content": "C-1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

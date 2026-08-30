@@ -1,0 +1,165 @@
+{
+  "index": 89,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 59 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 100,
+      "bottomRightX": 351,
+      "bottomRightY": 118,
+      "content": "# IMPLEMENTATION NOTE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 126,
+      "bottomRightX": 253,
+      "bottomRightY": 141,
+      "content": "# Disabling Scrambling",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 154,
+      "bottomRightX": 667,
+      "bottomRightY": 231,
+      "content": "Disabling scrambling is intended to help simplify test and debug equipment. Control of the exact data patterns is useful in a test and debug environment. Since scrambling is reset at the physical layer, there is no reasonable way to reliably control the state of the data transitions through software. The Disable Scrambling bit is provided in the training sequence for this purpose.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 243,
+      "bottomRightX": 672,
+      "bottomRightY": 273,
+      "content": "The mechanism(s) and/or interface(s) used to notify the physical layer to disable scrambling is component implementation specific and beyond the scope of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 285,
+      "bottomRightX": 453,
+      "bottomRightY": 301,
+      "content": "For more information on scrambling, refer to Appendix B.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 313,
+      "bottomRightX": 412,
+      "bottomRightY": 329,
+      "content": "# 6.3.1.4 8b/10b Decode Errors for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 335,
+      "bottomRightX": 671,
+      "bottomRightY": 413,
+      "content": "An 8b/10b Decode error shall occur when a received Symbol does not match any of the valid 8b/10b Symbols listed in Appendix A. Any received 8b/10b Symbol that does not match any of the valid 8b/10b Symbols listed in Appendix A shall be forwarded to the link layer by substituting a K28.4 symbol (refer to Table 6-2). 8b/10b errors may not directly initiate Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 425,
+      "bottomRightX": 253,
+      "bottomRightY": 440,
+      "content": "# 6.3.2 Gen 2 Encoding",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 446,
+      "bottomRightX": 667,
+      "bottomRightY": 479,
+      "content": "A Gen 2 link, operating at 10 Gbps, shall use the encoding rules described in this subsection. The encoding is a scrambled 128b/132b encoding.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 492,
+      "bottomRightX": 398,
+      "bottomRightY": 505,
+      "content": "# 6.3.2.1 Serialization and Deserialization of Data",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 512,
+      "bottomRightX": 672,
+      "bottomRightY": 559,
+      "content": "Data is serialized and transmitted from LSB to MSB as shown below. For Gen 2 operation a Symbol is defined to be 1 byte of information that may or may not be scrambled according to the scrambling rules.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 570,
+      "bottomRightX": 584,
+      "bottomRightY": 587,
+      "content": "Figure 6-10. Gen 2 Serialization and Deserialization Order",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 597,
+      "bottomRightX": 605,
+      "bottomRightY": 770,
+      "content": "![img-21.jpeg](img-21.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-21.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

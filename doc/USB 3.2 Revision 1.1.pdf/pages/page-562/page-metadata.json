@@ -1,0 +1,138 @@
+{
+  "index": 561,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 531 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 92,
+      "bottomRightX": 602,
+      "bottomRightY": 110,
+      "content": "Figure E-25. Illustration of a Typical USB 3.2 Topology with LRD",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 208,
+      "topLeftY": 130,
+      "bottomRightX": 588,
+      "bottomRightY": 243,
+      "content": "![img-220.jpeg](img-220.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-220.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 279,
+      "bottomRightX": 671,
+      "bottomRightY": 357,
+      "content": "The pre- and post-channel fixtures include signal integrity impairments (loss and reflection) typically seen in a USB 3.2 host or device. The pre- and post-channel fixtures may include multiple ports to cover a range of insertion losses that an LRD is expected to support. The pre- and post-channel fixtures are standardized by USB-IF. Refer to the USB-IF whitepaper \"LRD Test Fixtures\" for details (to be developed).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 367,
+      "bottomRightX": 671,
+      "bottomRightY": 430,
+      "content": "The standard USB 3.2 test fixtures include the existing USB 3.2 transmitter and receiver test fixtures defined by USB-IF. Refer to USB 3.1 Electrical Test Fixture Topologies & Tools (https://usb.org/sites/default/files/documents/usb3p1_fixture_topologies_11-8-2017_0.pdf) for descriptions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 441,
+      "bottomRightX": 673,
+      "bottomRightY": 503,
+      "content": "The electrical requirements listed in sections E.6.4.2 to E.6.4.6 are informative. The normative compliance requirement is a full channel compliance eye test discussed in E.6.4.7. Furthermore, any system that uses re-driver should go through existing USB compliance test to ensure proper system level compliance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 514,
+      "bottomRightX": 673,
+      "bottomRightY": 563,
+      "content": "Although the electrical requirements are informative, re-driver vendors are strongly encouraged to provide these data in their product datasheet. This is because these electrical data are critical in system implementation, tuning, and debug, if needed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 573,
+      "bottomRightX": 301,
+      "bottomRightY": 590,
+      "content": "### E.6.4.2 Linearity Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 595,
+      "bottomRightX": 649,
+      "bottomRightY": 627,
+      "content": "Linearity is a key performance indicator for an LRD. Excessive nonlinearity from an LRD may interfere with link training and degrade eye margins.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 638,
+      "bottomRightX": 663,
+      "bottomRightY": 687,
+      "content": "Both low frequency or DC linearity and high frequency or AC linearity are specified. Those linearity tests use the LRD EVB to measure the relationship between LRD input and output signal amplitudes, with the following steps and processes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 697,
+      "bottomRightX": 675,
+      "bottomRightY": 908,
+      "content": "- For DC linearity measurement, set a signal generator / BERT to a 20 MHz clock pattern, or 20-MHz sine wave.\n- For AC linearity test, a 5-GHz sine wave shall be used.\n- The calibration structure, a through connection (see Figure E-27) without the LRD, is used to calibrate the input signal amplitude. The signal generator / BERT is connected to the scope via the through and signal amplitude seen from the scope is the input amplitude. The signal generator/ BERT is tuned such that the amplitudes measured by the scope are about from 50 mV to 1200 mV.\n- The signal generator/BERT can now be connected to the scope with the LRD in between and the output amplitudes can be measured by the scope. DC blocking capacitors shall be used if they are not included in the EVB.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

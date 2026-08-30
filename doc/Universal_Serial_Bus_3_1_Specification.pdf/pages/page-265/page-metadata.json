@@ -1,0 +1,245 @@
+{
+  "index": 264,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 306,
+      "bottomRightY": 110,
+      "content": "### 7.5.3.3 Rx.Detect.Reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 116,
+      "bottomRightX": 690,
+      "bottomRightY": 184,
+      "content": "Rx.Detect.Reset is a substate designed for the two ports to synchronize their operations on Warm Reset. In this substate, a downstream port shall generate Warm Reset when directed. If an upstream port enters Rx.Detect upon detection of Warm Reset, it shall remain in this substate until the completion of Warm Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 189,
+      "bottomRightX": 588,
+      "bottomRightY": 207,
+      "content": "For a port entering Rx.Detect not due to a Warm Reset, it shall exit immediately.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 212,
+      "bottomRightX": 413,
+      "bottomRightY": 230,
+      "content": "#### 7.5.3.3.1 Rx.Detect.Reset Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 236,
+      "bottomRightX": 686,
+      "bottomRightY": 267,
+      "content": "If a port enters Rx.Detect upon a Warm Reset, the following requirements shall be applied. Refer to Section 6.9.3 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 273,
+      "bottomRightX": 641,
+      "bottomRightY": 305,
+      "content": "- A downstream port shall transmit Warm Reset for the duration of tReset as defined in Table 6-29.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 308,
+      "bottomRightX": 672,
+      "bottomRightY": 356,
+      "content": "Note: This includes the case when Hot Reset attempt fails in Recovery. Refer to Section 7.4.2 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 360,
+      "bottomRightX": 659,
+      "bottomRightY": 378,
+      "content": "- An upstream port shall remain in this state until it detects the completion of Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 383,
+      "bottomRightX": 381,
+      "bottomRightY": 399,
+      "content": "#### 7.5.3.3.2 Exit from Rx.Detect.Reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 406,
+      "bottomRightX": 677,
+      "bottomRightY": 438,
+      "content": "- The port shall transition directly to Rx.Detect.Active if the entry to Rx.Detect is not due to a Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 443,
+      "bottomRightX": 454,
+      "bottomRightY": 461,
+      "content": "Note: Warm Reset is not present during power-on.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 463,
+      "bottomRightX": 678,
+      "bottomRightY": 496,
+      "content": "- A downstream port shall transition to Rx.Detect.Active after it transmits Warm Reset for the duration of tReset as defined in Table 6-29.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 499,
+      "bottomRightX": 531,
+      "bottomRightY": 514,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 516,
+      "bottomRightX": 678,
+      "bottomRightY": 549,
+      "content": "- An upstream port shall transition to Rx.Detect.Active when it receives no more LFPS Warm Reset signaling from the downstream port as defined in Section 6.9.3.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 564,
+      "bottomRightX": 310,
+      "bottomRightY": 583,
+      "content": "### 7.5.3.4 Rx.Detect.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 589,
+      "bottomRightX": 680,
+      "bottomRightY": 622,
+      "content": "Rx.Detect.Active is a substate to detect the presence of an Enhanced SuperSpeed link partner. A port will perform a far-end receiver termination detection as defined in Section 6.11.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 637,
+      "bottomRightX": 417,
+      "bottomRightY": 655,
+      "content": "### 7.5.3.5 Rx.Detect.Active Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 656,
+      "bottomRightX": 691,
+      "bottomRightY": 672,
+      "content": "- The transmitter shall initiate a far-end receiver termination detection described in Section 6.11.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 675,
+      "bottomRightX": 682,
+      "bottomRightY": 709,
+      "content": "- The number of far-end receiver termination detection events shall be counted by an upstream port. The detection of far-end receiver termination is defined in Section 6.11.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 712,
+      "bottomRightX": 698,
+      "bottomRightY": 762,
+      "content": "Note: This count value is used by a peripheral device to determine when it needs to transition to eSS.Disabled. It is also used by a hub to control its downstream port state machine. Refer to Section 10.3.1.1 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 777,
+      "bottomRightX": 381,
+      "bottomRightY": 794,
+      "content": "### 7.5.3.6 Exit from Rx.Detect.Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 796,
+      "bottomRightX": 645,
+      "bottomRightY": 829,
+      "content": "- The port shall transition to Polling upon detection of a far-end low-impedance receiver termination ($R_{RX-DC}$) defined in Table 6-21.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 832,
+      "bottomRightX": 690,
+      "bottomRightY": 865,
+      "content": "- A downstream port shall transition to Rx.Detect.Quiet when a far-end low-impedance receiver termination ($R_{RX-DC}$) defined in Table 6-21 is not detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 867,
+      "bottomRightX": 531,
+      "bottomRightY": 885,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-53",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

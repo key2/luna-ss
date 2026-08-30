@@ -1,0 +1,39 @@
+{
+  "index": 7,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 95,
+      "topLeftY": 91,
+      "bottomRightX": 543,
+      "bottomRightY": 902,
+      "content": "|  Gourgen Oganessyan | Intersil Corporation  |\n| --- | --- |\n|  Michael Vrazel | Intersil Corporation  |\n|  Toshiyuki Moritake | Japan Aviation Electronics Industry Ltd. (JAE)  |\n|  Takeharu Naito | Japan Aviation Electronics Industry Ltd. (JAE)  |\n|  Mark Saubert | Japan Aviation Electronics Industry Ltd. (JAE)  |\n|  Toshio Shimoyama | Japan Aviation Electronics Industry Ltd. (JAE)  |\n|  Takamitsu Wada | Japan Aviation Electronics Industry Ltd. (JAE)  |\n|  Roy Chestnut | LeCroy Corporation  |\n|  Christopher Forker | LeCroy Corporation  |\n|  Linden Hsu | LeCroy Corporation  |\n|  Daniel H Jacobs | LeCroy Corporation  |\n|  David Li | LeCroy Corporation  |\n|  Mike Micheletti | LeCroy Corporation  |\n|  Michael Romm | LeCroy Corporation  |\n|  Chris Webb | LeCroy Corporation  |\n|  Tomoki Harada | Lenovo  |\n|  Ariel Delos Reyes | Lotes Co., Ltd.  |\n|  Smark Huo | Lotes Co., Ltd.  |\n|  Regina Liu-Hwang | Lotes Co., Ltd.  |\n|  Harvey Newman | LSI Corporation  |\n|  Dave Thompson | LSI Corporation  |\n|  Srinivas Vura | LSI Corporation  |\n|  Josue Castillo | Luxshare-ICT  |\n|  Alan Kinningham | Luxshare-ICT  |\n|  John Lin | Luxshare-ICT  |\n|  Stone Lin | Luxshare-ICT  |\n|  Pat Young | Luxshare-ICT  |\n|  John Garney | MCCI Corporation  |\n|  Peter Harrison | Nokia Corporation  |\n|  Mika Tolvanen | Nokia Corporation  |\n|  Panu Ylihaavisto | Nokia Corporation  |\n|  Jason Chen | NXP Semiconductors  |\n|  Gerrit den Besten | NXP Semiconductors  |\n|  Bart Vertenten | NXP Semiconductors  |\n|  Ho Wai Wong-Lam | NXP Semiconductors  |\n|  Jagoun Koo | Samsung Electronics Co., Ltd.  |\n|  Cheolho Lee | Samsung Electronics Co., Ltd.  |\n|  Jun Bum Lee | Samsung Electronics Co., Ltd.  |\n|  Alvin Cox | Seagate Technology LLC  |\n|  Steven Davis | Seagate Technology LLC  |\n|  Bahar Ghaffari | Seagate Technology LLC  |\n|  Henry (John) Hein | Seagate Technology LLC  |\n|  Tony Priborsky | Seagate Technology LLC  |\n|  Tom Skaar | Seagate Technology LLC  |\n|  Dan Smith | Seagate Technology LLC  |\n|  Mark Bohm | SMSC  |\n|  Jerome DeRoo | STMicroelectronics  |\n|  Benoit Mercier | STMicroelectronics  |\n|  Subramaniam Aravindhan | Synopsys, Inc.  |\n|  Bala Babu | Synopsys, Inc.  |\n|  Sanjay Dave | Synopsys, Inc.  |\n|  Gervais Fong | Synopsys, Inc.  |\n|  Kevin Heilman | Synopsys, Inc.  |\n|  Eric Huang | Synopsys, Inc.  |\n|  Behram Minwalla | Synopsys, Inc.  |\n|  Saleem Mohammad | Synopsys, Inc.  |\n|  Matthew Myers | Synopsys, Inc.  |\n|  Tri Nguyen | Synopsys, Inc.  |\n|  John Stonick | Synopsys, Inc.  |\n|  Zongyao Wen | Synopsys, Inc.  |\n|  Paul Wyborny | Synopsys, Inc.  |\n|  Sarah Boen | Tektronix, Inc.  |\n|  Darren Gray | Tektronix, Inc.  |\n|  Srikrishna N.H. | Tektronix, Inc.  |\n|  Randy White | Tektronix, Inc.  |\n|  Jim McGrath | Tyco Electronics Corp., a TE Connectivity Ltd. company  |\n|  Josh Moody | Tyco Electronics Corp., a TE Connectivity Ltd. company  |\n|  Scott Shuey | Tyco Electronics Corp., a TE Connectivity Ltd. company  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-9.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 982,
+      "bottomRightX": 109,
+      "bottomRightY": 995,
+      "content": "viii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

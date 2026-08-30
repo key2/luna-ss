@@ -1,0 +1,75 @@
+{
+  "index": 112,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 82 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 92,
+      "bottomRightX": 581,
+      "bottomRightY": 108,
+      "content": "Table 6-18. Transmitter Normative Electrical Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 128,
+      "topLeftY": 114,
+      "bottomRightX": 664,
+      "bottomRightY": 873,
+      "content": "|  Symbol | Parameter | Gen 1 (5.0 GT/s) | Gen 2 (10 GT/s) | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  UI | Unit Interval | 199.94 (min) 200.06 (max) | 99.97 (min) 100.03 (max) | ps | The specified UI is equivalent to a tolerance of ±300 ppm for each device. Period does not account for SSC induced variations.  |\n|  V_{TX-DIFF-PP} | Differential p-p Tx voltage swing | 0.8 (min) 1.2 (max) | 0.8 (min) 1.2 (max) | V | Nominal is 1 V p-p  |\n|  V_{TX-DIFF-PP-LOW} | Low-Power Differential p-p Tx voltage swing | 0.4 (min) 1.2 (max) | 0.4 (min) 1.2 (max) | V | Refer to Section 6.7.2. There is no de-emphasis requirement in this mode. De-emphasis is implementation specific for this mode.  |\n|  V_{TX-DE-RATIO} | Tx de-emphasis | 3.0 (min) 4.0 (max) | See section 6.7.5.2. | dB | Nominal is 3.5 dB for Gen 1 operation. Gen 2 transmitter equalization requirements are described in section 6.7.5.2.  |\n|  R_{TX-DIFF-DC} | DC differential impedance | 72 (min) 120 (max) | 72 (min) 120 (max) | Ω |   |\n|  V_{TX-RCV-DETECT} | The amount of voltage change allowed during Receiver Detection | 0.6 (max) | 0.6 (max) | V | Detect voltage transition should be an increase in voltage on the pin looking at the detect signal to avoid a high impedance requirement when an \"off\" receiver's input goes below ground.  |\n|  C_{AC-COUPLING} | AC Coupling Capacitor | 75 (min) 265 (max) | 75 (min) 265 (max) | nF | All Transmitters shall be AC coupled. The AC coupling is required either within the media or within the transmitting component itself.  |\n|  t_{CDR_SLEW_MAX} | Maximum slew rate | 10 | Not applicable | ms/s | See the jitter white paper for details on this measurement. This is a df/ft specification; refer to Section 6.5.4 for details.  |\n|  SSC_{disk} | SSC df/dt | 1250 (max) | 1250 (max) | ppm/μs | See note 1.  |\n|  V_{TX-DC+AC_CONN} (See notes 2 and 3) | Instantaneous DC+AC voltages at the connector side of the AC coupling capacitors. | -0.5 (min1) -0.3 (min2) 1.0 (max) | -0.5 (min1) -0.3 (min2) 1.0 (max) | V | The absolute single-ended voltage seen by the receiver. This requirement applies to all link states and during power-on, and power-off. (min1, max) is measured with a 200KΩ receiver load, and (min2, max) is measured with a 50Ω receiver load.  |\n|  V_{TX-CM-IDLE-DELTA} | Transmitter idle common-mode voltage change | +600 (max) -600 (min) | +600 (max) -600 (min) | mV | The maximum allowed instantaneous common-mode voltage at TP2 while the transmitter is in U2 or U3 and not actively transmitting LFPS. Note that this is an absolute voltage spec referenced to the receive-side termination ground but serves the purpose of limiting the magnitude and/or slew rate of Tx common mode changes.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-54.md"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 877,
+      "bottomRightX": 648,
+      "bottomRightY": 927,
+      "content": "Note 1: Measured over a 0.5μs interval using CP10. The measurements shall be low pass filtered using a filter with 3 dB cutoff frequency that is 60 times the modulation rate. The filter stopband rejection shall be greater or equal to a second order low-pass of 20 dB per decade. Evaluation of the maximum df/dt is achieved by inspection of the low-pass filtered waveform.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

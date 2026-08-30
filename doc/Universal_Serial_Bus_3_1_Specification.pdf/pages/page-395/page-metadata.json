@@ -1,0 +1,102 @@
+{
+  "index": 394,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 286,
+      "topLeftY": 98,
+      "bottomRightX": 538,
+      "bottomRightY": 502,
+      "content": "![img-239.jpeg](img-239.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-239.jpeg"
+    },
+    {
+      "topLeftX": 208,
+      "topLeftY": 515,
+      "bottomRightX": 617,
+      "bottomRightY": 532,
+      "content": "Figure 8-53. Host Detects Error in Data and Device Resends Data",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 552,
+      "bottomRightX": 665,
+      "bottomRightY": 586,
+      "content": "Note: In Figure 8-53 the host retries the data packet received with an error in the same service interval. It is not required to do so and may retry the transaction in the next service interval.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 604,
+      "bottomRightX": 390,
+      "bottomRightY": 623,
+      "content": "### 8.12.4.2 Interrupt OUT Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 628,
+      "bottomRightX": 694,
+      "bottomRightY": 695,
+      "content": "When the host wants to start an Interrupt OUT transaction to an endpoint, it sends the first DP with the expected sequence number. The host may send more packets to the endpoint in the same service interval if the endpoint supports a burst size greater than one. If an endpoint was able to receive that data from the host, it sends an ACK TP to acknowledge the successful receipt of data.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 704,
+      "bottomRightX": 691,
+      "bottomRightY": 757,
+      "content": "Note that the host always initializes the first DP sequence number to zero in the first transfer it performs to an endpoint after the endpoint is initialized (via a Set Configuration or Set Interface or ClearFeature (ENDPOINT_HALT) command – refer to Chapter 9 for details on these commands).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 764,
+      "bottomRightX": 687,
+      "bottomRightY": 832,
+      "content": "As long as a device returns ACK TPs in response to the host sending data packets and the transfer is not complete, the host shall continue to send data to the device during every service interval for that endpoint. A device shall acknowledge the successful reception of the DP or ask the host to retry the transaction if the data packet was corrupted.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 835,
+      "bottomRightX": 673,
+      "bottomRightY": 867,
+      "content": "In response to the OUT data sent by the host an interrupt endpoint shall respond as described in Section 8.11.3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 995,
+      "content": "8-101",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

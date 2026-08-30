@@ -1,0 +1,149 @@
+{
+  "index": 267,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 237 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 211,
+      "topLeftY": 92,
+      "bottomRightX": 576,
+      "bottomRightY": 110,
+      "content": "Table 8-17. STALL TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 119,
+      "bottomRightX": 652,
+      "bottomRightY": 218,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to STALL.  |\n|  3 | 1:4 | Reserved (Rsvd).  |\n|  52 | 1:12 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-117.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 239,
+      "bottomRightX": 517,
+      "bottomRightY": 254,
+      "content": "### 8.5.6 Device Notification (DEV_NOTIFICATION) Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 261,
+      "bottomRightX": 666,
+      "bottomRightY": 336,
+      "content": "This TP can only be sent by a device. It is used by devices to inform the host of an asynchronous change in a device or interface state, e.g., to identify the function within a device that caused the device to perform a remote wake operation. This TP is not sent from a particular endpoint but from the device in general. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 223,
+      "topLeftY": 349,
+      "bottomRightX": 564,
+      "bottomRightY": 365,
+      "content": "Figure 8-23. Device Notification Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 376,
+      "bottomRightX": 655,
+      "bottomRightY": 484,
+      "content": "![img-116.jpeg](img-116.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-116.jpeg"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 513,
+      "bottomRightX": 617,
+      "bottomRightY": 529,
+      "content": "Table 8-18. Device Notification TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 540,
+      "bottomRightX": 652,
+      "bottomRightY": 772,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to DEV_NOTIFICATION.  |\n|  4 | 1:4 | Notification Type. The field identifies the type of the device notification. **Value****Type of Notification Packet** 0000b Reserved 0001b FUNCTION_WAKE 0010b LATENCY_TOLERANCE_MESSAGE 0011b BUS_INTERVAL_ADJUSTMENT_MESSAGE 0100b HOST_ROLE_REQUEST^{1} 0101b SUBLINK_SPEED^{2} 0110b - 1111b Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-118.md"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 775,
+      "bottomRightX": 181,
+      "bottomRightY": 786,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 791,
+      "bottomRightX": 638,
+      "bottomRightY": 815,
+      "content": "1. This Notification Type value shall be reserved for OTG use. Refer to Section 5.5 of the USB 3.0 OTG and EH Supplement for the definition of the respective Device Notification TP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 818,
+      "bottomRightX": 630,
+      "bottomRightY": 844,
+      "content": "2. This Device Notification is required for devices operating in SuperSpeedPlus mode. This Device Notification is optional for devices operating in SuperSpeed mode.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

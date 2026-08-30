@@ -1,0 +1,129 @@
+{
+  "index": 139,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 133,
+      "bottomRightX": 332,
+      "bottomRightY": 147,
+      "content": "Figure 8-30. Elastic Buffer Overflow",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 151,
+      "bottomRightX": 690,
+      "bottomRightY": 382,
+      "content": "![img-51.jpeg](img-51.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-51.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 392,
+      "bottomRightX": 349,
+      "bottomRightY": 410,
+      "content": "### 8.15.3.1 Elastic Buffer Reset",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 418,
+      "bottomRightX": 684,
+      "bottomRightY": 461,
+      "content": "The MAC can set the ElasticBufferResetControl bit (see Section 7.1.9) to initiate an EB reset sequence in the PHY. The PHY must complete the EB reset sequence within 16 PCLK cycles as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 467,
+      "bottomRightX": 583,
+      "bottomRightY": 543,
+      "content": "1. Assert RxStatus to value of 1xx with RxValid.\n2. Hold RxStatus to 1xx while maintaining RxValid and RxDataValid.\n3. Move pointers back to their initial state.\n4. Release RxStatus to indicate clean data is being forwarded again.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 563,
+      "bottomRightX": 288,
+      "bottomRightY": 588,
+      "content": "## 8.16 Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 592,
+      "bottomRightX": 684,
+      "bottomRightY": 677,
+      "content": "- For USB and PCIe modes, the PHY must support an internal loopback as described in the corresponding base specification.\n- For SATA the PHY may optionally support an internal loopback mode when EncodeDecodeBypass is asserted.\n- In the SerDes architecture, loopback is handled in the MAC instead of the PHY.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 684,
+      "bottomRightX": 684,
+      "bottomRightY": 757,
+      "content": "The PHY begins to loopback data when the MAC asserts TxDetectRx/Loopback while doing normal data transmission (that is, when TxElecIdle is deasserted). The PHY must, within the specified receive and transmit latencies, stop transmitting data from the parallel interface, and begin to loopback received symbols. While doing loopback, the PHY continues to present received data on the parallel interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 763,
+      "bottomRightX": 657,
+      "bottomRightY": 807,
+      "content": "The PHY stops looping back received data when the MAC deasserts TxDetectRx/Loopback. Transmission of data on the parallel interface must begin within the specified transmit latency.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 813,
+      "bottomRightX": 684,
+      "bottomRightY": 871,
+      "content": "The following timing diagram shows the example timing for the beginning loopback. In this example, the receiver is receiving a repeating stream of bytes, Rx-a through Rx-z. Similarly, the MAC is causing the PHY to transmit a repeating stream of bytes Tx-a through Tx-z. When the MAC asserts TxDetectRx/Loopback to the PHY, the PHY",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "140",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

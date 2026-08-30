@@ -1,0 +1,103 @@
+{
+  "index": 437,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 109,
+      "bottomRightX": 662,
+      "bottomRightY": 158,
+      "content": "Feature selectors are used when enabling or setting features, such as function remote wakeup, specific to a device, interface, or endpoint. The values for the feature selectors are given in Table 9-7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 177,
+      "bottomRightX": 364,
+      "bottomRightY": 191,
+      "content": "Table 9-7. Standard Feature Selectors",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 196,
+      "bottomRightX": 594,
+      "bottomRightY": 508,
+      "content": "|  Feature Selector | Recipient | Value  |\n| --- | --- | --- |\n|  ENDPOINT_HALT | Endpoint | 0  |\n|  FUNCTION_SUSPEND | Interface | 0  |\n|  DEVICE_REMOTE_WAKEUP | Device | 1  |\n|  TEST_MODE | Device | 2  |\n|  b_hnp_enable | Device | 3  |\n|  a_hnp_support | Device | 4  |\n|  a_alt_hnp_support | Device | 5  |\n|  WUSB_DEVICE | Device | 6  |\n|  U1_ENABLE | Device | 48  |\n|  U2_ENABLE | Device | 49  |\n|  LTM_ENABLE | Device | 50  |\n|  B3_NTF_HOST_REL^{2} | Device | 51  |\n|  |   |   |\n|  B3_RSP_ENABLE^{2} | Device | 52  |\n|  LDM_ENABLE | Device | 53  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-153.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 522,
+      "bottomRightX": 696,
+      "bottomRightY": 640,
+      "content": "If an unsupported or invalid request is made to a device, the device responds by returning a STALL Transaction Packet in the Data or Status stage of the request. If the device detects the error in the Setup stage, it is preferred that the device returns a STALL Transaction Packet at the earlier of the Data or Status stage. Receipt of an unsupported or invalid request does not cause the Halt feature on the control pipe to be set. If, for any reason, the device becomes unable to communicate via its Default Control Pipe due to an error condition, the device shall be reset to clear the condition and restart the Default Control Pipe.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 659,
+      "bottomRightX": 302,
+      "bottomRightY": 678,
+      "content": "### 9.4.1 Clear Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 685,
+      "bottomRightX": 451,
+      "bottomRightY": 702,
+      "content": "This request is used to clear or disable a specific feature.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 715,
+      "bottomRightX": 700,
+      "bottomRightY": 796,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B | CLEAR_FEATURE | Feature Selector | Zero | Zero | None  |\n|  00000001B |   |   | Interface  |   |   |\n|  00000010B |   |   | Endpoint  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-154.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 875,
+      "bottomRightX": 667,
+      "bottomRightY": 907,
+      "content": "$^{2}$ This Feature Selector value shall be reserved for OTG use. Refer to Section 6.4 of the USB 3.0 OTG and EH Supplement for its definition.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "9-20",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

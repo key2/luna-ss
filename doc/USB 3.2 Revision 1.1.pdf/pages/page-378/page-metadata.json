@@ -1,0 +1,66 @@
+{
+  "index": 377,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 347 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 256,
+      "topLeftY": 92,
+      "bottomRightX": 533,
+      "bottomRightY": 108,
+      "content": "Table 9-10. Device Parameters and Events",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 119,
+      "bottomRightX": 688,
+      "bottomRightY": 889,
+      "content": "|  Parameter | Event  |   |   |   |   |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|   |  Warm Reset | Hot Reset | Set Address 0 | Set Address | Set Configuration | Set Interface | ClearFeature (STALL) | Disconnect  |\n|  Device Address | X | X | X | Y |  |  |  | X  |\n|  Device Configuration Value | X | X | X |  | Y |  |  | X  |\n|  Alternate Interface Setting | X | X | X |  | X | Y |  | X  |\n|  U1_SEL/U1_PEL/U2_SEL/U2_PEL | X | X | X |  |  |  |  | X  |\n|  HALT_ENDPOINT | X | X | X |  | X | X (if the EP is affected) | X | X  |\n|  FUNCTION REMOTE WAKEUP | X | X | X |  | X | X |  | X  |\n|  Isochronous Delay | X | X | X |  |  |  |  | X  |\n|  U2_Inactivity_Timeout | X | X | X |  |  |  |  | X  |\n|  Force_LinkPM_Accept | X | X | X |  |  |  |  | X  |\n|  U1/U2 Enable | X | X | X |  |  |  |  | X  |\n|  LTM_ENABLE | X | X | X |  |  |  |  | X  |\n|  LDM_ENABLE | X | X | X |  |  |  |  | X  |\n|  HeaderSequence Number related to DPs | X | X | X |  | X | X (if the EP is affected) | X | X  |\n|  Hub Depth | X | X | X |  | X |  |  | X  |\n|  Downstream U1_Inactivity Timeout/U2_Inactivity Timeout (Applicable to host and hub) | X | X | X |  |  |  |  | X (Hub Upstream or Hub/Host Downstream)  |\n|  Port Configuration Information | X |  |  |  |  |  |  | X  |\n|  Disallow/Allow FW Update | X | X |  |  |  |  |  | X  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-178.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

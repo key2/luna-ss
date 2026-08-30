@@ -1,0 +1,148 @@
+{
+  "index": 246,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 216 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 277,
+      "topLeftY": 92,
+      "bottomRightX": 510,
+      "bottomRightY": 110,
+      "content": "Figure 8-9. Port Configuration LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 140,
+      "topLeftY": 121,
+      "bottomRightX": 652,
+      "bottomRightY": 226,
+      "content": "![img-102.jpeg](img-102.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-102.jpeg"
+    },
+    {
+      "topLeftX": 624,
+      "topLeftY": 236,
+      "bottomRightX": 650,
+      "bottomRightY": 246,
+      "content": "U-098",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 268,
+      "bottomRightX": 656,
+      "bottomRightY": 286,
+      "content": "Table 8-9. Port Configuration LMP Format (Differences with Port Capability LMP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 108,
+      "topLeftY": 294,
+      "bottomRightX": 682,
+      "bottomRightY": 510,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | **SubType.** This field shall be set to *Port Configuration*.  |\n|  7 | 0:9 | **Link speed.** When operating at Gen 1x1 speed, this field describes the link speed at which the upstream port shall operate. Only one of the bits in this field shall be set in the Port Configuration LMP sent by the link partner configured in the downstream mode. **Bits****Description** 0 If this bit is set to 1, then this device shall operate at LANE_SPEED_MANTISSA_GEN1. 6:1 Reserved. When not operating at Gen 1x1 speed, this field is Reserved and shall be set to zero.  |\n|  80 | 0:16b | **Reserved.**  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-106.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 529,
+      "bottomRightX": 667,
+      "bottomRightY": 578,
+      "content": "A port configured in the downstream mode shall send the Port Configuration LMP to the upstream port. The port sending this LMP shall select only one bit for the **Link Speed** field. The **Link Speed** field shall only be used when the port is operating at Gen 1x1 speed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 588,
+      "bottomRightX": 673,
+      "bottomRightY": 620,
+      "content": "If a downstream capable port cannot work with its link partner, then the downstream capable port shall signal an error as described in Section 10.16.2.6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 625,
+      "bottomRightX": 331,
+      "bottomRightY": 640,
+      "content": "### 8.4.7 Port Configuration Response",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 647,
+      "bottomRightX": 639,
+      "bottomRightY": 694,
+      "content": "This LMP is sent by the upstream port in response to a Port Configuration. It is used to indicate acceptance or rejection of the Port Configuration LMP. Only the fields that are different from the Port Capability LMP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 706,
+      "bottomRightX": 649,
+      "bottomRightY": 737,
+      "content": "All Enhanced SuperSpeed ports that support upstream port capability shall be capable of sending this LMP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 749,
+      "bottomRightX": 649,
+      "bottomRightY": 780,
+      "content": "If the downstream port does not receive this LMP within tPortConfiguration time, it shall signal an error as described in Section 10.16.2.6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

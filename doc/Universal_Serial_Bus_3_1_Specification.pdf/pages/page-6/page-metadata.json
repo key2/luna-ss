@@ -1,0 +1,67 @@
+{
+  "index": 5,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 97,
+      "topLeftY": 92,
+      "bottomRightX": 499,
+      "bottomRightY": 468,
+      "content": "|  Kazuhiro Saito | Japan Aviation Electronics Industry Ltd. (JAE)  |\n| --- | --- |\n|  Hitoshi Kawamura | Mitsumi  |\n|  Takashi Kawasaki | Mitsumi  |\n|  Atsushi Nishio | Mitsumi  |\n|  Yasuhiko Shinohara | Mitsumi  |\n|  Tom Lu | Molex Inc.  |\n|  Edmund Poh | Molex Inc.  |\n|  Scott Sommers | Molex Inc.  |\n|  Jason Squire | Molex Inc.  |\n|  Dat Ba Nguyen | NTS/National Technical System  |\n|  Jan Fahllund | Nokia  |\n|  Richard Petrie | Nokia  |\n|  Panu Ylihaavisto | Nokia  |\n|  Martin Furuhjelm | Seagate Technology LLC  |\n|  Julian Gorfajn | Seagate Technology LLC  |\n|  Marc Hildebrant | Seagate Technology LLC  |\n|  Tony Priborsky | Seagate Technology LLC  |\n|  Harold To | Seagate Technology LLC  |\n|  Robert Lefferts | Synopsys, Inc.  |\n|  Saleem Mohammad | Synopsys, Inc.  |\n|  Matthew Myers | Synopsys, Inc.  |\n|  Daniel Weinlader | Synopsys, Inc.  |\n|  Mike Engbretson | Tektronix, Inc.  |\n|  Thomas Grzysiewicz | Tyco Electronics  |\n|  Masaaki Iwasaki | Tyco Electronics  |\n|  Kazukiyo Osada | Tyco Electronics  |\n|  Hiroshi Shirai | Tyco Electronics  |\n|  Scott Shuey | Tyco Electronics  |\n|  Masaru Ueno | Tyco Electronics  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-5.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 499,
+      "bottomRightX": 691,
+      "bottomRightY": 565,
+      "content": "The authors of this specification would like to recognize the following people who participated in the USB 3.1 Bus Specification technical workgroups. Additionally we would like to acknowledge the many others throughout industry who provided feedback and contributed to the development of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 576,
+      "bottomRightX": 286,
+      "bottomRightY": 592,
+      "content": "### Promoter Company Employees",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 97,
+      "topLeftY": 594,
+      "bottomRightX": 386,
+      "bottomRightY": 905,
+      "content": "|  Alan Berkema | Hewlett Packard  |\n| --- | --- |\n|  Norton Ewart | Hewlett Packard  |\n|  Monji Jabori | Hewlett Packard  |\n|  Rahul Lakdawala | Hewlett Packard  |\n|  Jim Mann | Hewlett Packard  |\n|  Linden McClure | Hewlett Packard  |\n|  Mike Bell | Intel Corporation  |\n|  Huimin Chen | Intel Corporation  |\n|  Kuan-Yu Chen | Intel Corporation  |\n|  Bob Dunstan | Intel Corporation  |\n|  Benjamin Graniello | Intel Corporation  |\n|  Howard Heck | Intel Corporation  |\n|  John Howard | Intel Corporation  |\n|  Rahman Ismail | Intel Corporation  |\n|  Yun Ling | Intel Corporation  |\n|  Steve McGowan | Intel Corporation  |\n|  Sridharan Ranganathan | Intel Corporation  |\n|  Kaleb Ruof | Intel Corporation  |\n|  Brad Saunders | Intel Corporation  |\n|  Sarah Sharp | Intel Corporation  |\n|  Ronald Swartz | Intel Corporation  |\n|  Jennifer Tsai | Intel Corporation  |\n|  Karthi Vadivelu | Intel Corporation  |\n|  Randy Aull | Microsoft Corporation  |\n|  Vivek Gupta | Microsoft Corporation  |\n|  Toby Nixon | Microsoft Corporation  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-6.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 982,
+      "bottomRightX": 104,
+      "bottomRightY": 995,
+      "content": "vi",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

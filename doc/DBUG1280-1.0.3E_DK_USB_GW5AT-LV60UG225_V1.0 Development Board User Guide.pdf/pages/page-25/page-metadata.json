@@ -1,0 +1,148 @@
+{
+  "index": 24,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 72,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 561,
+      "topLeftY": 35,
+      "bottomRightX": 646,
+      "bottomRightY": 48,
+      "content": "3.8 I2C Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 96,
+      "bottomRightX": 231,
+      "bottomRightY": 117,
+      "content": "### 3.8 I2C Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 144,
+      "bottomRightX": 216,
+      "bottomRightY": 163,
+      "content": "### 3.8.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 181,
+      "bottomRightX": 630,
+      "bottomRightY": 258,
+      "content": "The development board includes one I2C interface as the host communication interface. The host can monitor the voltages of FPGA VCC, MIPI, VCCX, SerDes, and each BANK through this interface. The connection diagram of I2C interface is shown in Figure 3-7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 267,
+      "bottomRightX": 449,
+      "bottomRightY": 284,
+      "content": "Figure 3-7 Connection Diagram of I2C Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 170,
+      "topLeftY": 299,
+      "bottomRightX": 641,
+      "bottomRightY": 465,
+      "content": "![img-12.jpeg](img-12.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-12.jpeg"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 487,
+      "bottomRightX": 248,
+      "bottomRightY": 506,
+      "content": "### 3.8.2 Pin Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 526,
+      "bottomRightX": 439,
+      "bottomRightY": 541,
+      "content": "Table 3-7 J21 Pin Distribution of I2C Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 544,
+      "bottomRightX": 653,
+      "bottomRightY": 656,
+      "content": "|  J21 Pin No. | Signal Name | I/O Level | Description  |\n| --- | --- | --- | --- |\n|  1 | IN3221_SCL | 3.3V | Serial bus clock line  |\n|  2 | IN3221_SDA | 3.3V | Serial bus data line  |\n|  3 | GND | - | GND  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-14.md"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 669,
+      "bottomRightX": 216,
+      "bottomRightY": 695,
+      "content": "### 3.9 Key & LED",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 718,
+      "bottomRightX": 216,
+      "bottomRightY": 738,
+      "content": "### 3.9.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 757,
+      "bottomRightX": 647,
+      "bottomRightY": 835,
+      "content": "There is one user key on the development board. The user key is connected to the general IO of FPGA BANK8. The corresponding IO input voltage of the FPGA is low when the key is pressed while high when the key is not pressed. The connection diagram is shown in Figure 3-8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 72,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 957,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 611,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "18(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

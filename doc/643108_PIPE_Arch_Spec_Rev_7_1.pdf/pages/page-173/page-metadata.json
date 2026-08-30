@@ -1,0 +1,84 @@
+{
+  "index": 172,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 133,
+      "bottomRightX": 248,
+      "bottomRightY": 148,
+      "content": "Figure 9-2. L0s to L0",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 152,
+      "bottomRightX": 700,
+      "bottomRightY": 393,
+      "content": "![img-71.jpeg](img-71.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-71.jpeg"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 407,
+      "bottomRightX": 648,
+      "bottomRightY": 449,
+      "content": "## 9.2 Active PM to L1 and Back to L0 - - PCIe Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 457,
+      "bottomRightX": 696,
+      "bottomRightY": 528,
+      "content": "This example shows one way a PIPE PHY can be controlled to perform Active State Power Management on a link for the sequence of the link being in L0 state, transitioning to L1 state, and then transitioning back to L0 state. This example assumes that the PHY is on an endpoint (that is, it is facing upstream) and that the endpoint has met all the requirements (as specified in the base specification) for entering L1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 535,
+      "bottomRightX": 696,
+      "bottomRightY": 581,
+      "content": "After the MAC has had the PHY send PM_Active_State_Request_L1 messages, and has received the PM_Request_ACK message from the upstream port, it then transmits an electrical idle ordered set, and has the PHY transmitter go idle and enter P1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 967,
+      "content": "173",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

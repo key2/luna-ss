@@ -1,0 +1,57 @@
+{
+  "index": 416,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 90,
+      "bottomRightX": 705,
+      "bottomRightY": 359,
+      "content": "|  Name | Description | Min | Max | Units  |\n| --- | --- | --- | --- | --- |\n|  tHostTPFTimeout | When the host times out waiting for Device Notification packet after receiving TP with TPF set. | 7.6 | 25 | ms  |\n|  tDeviceTPFNotification | Time after sending last symbol of TP with TPF set until sending first symbol of corresponding Device Notification packet |  | 400 | ns  |\n|  tITPRegenerationLimit | The jitter introduced by hub in Delta subfield of a transmitted ITP. | -0 | -33 | μs  |\n|  tLDMRequestTimeout | Time by which an upstream facing port shall timeout a previously sent LDM Request. |  | 125 | μs  |\n|  tLDMResponseDelay | Time by which a Responder shall time out the generation of a LDM Response LMP. | 125 |  | μs  |\n|  tLDMResponseTime | Time between receiving the last framing symbol of a LDM TS Request LMP and transmitting the first framing symbol of a LDM TS Response LMP. |  | 3 | μs  |\n|  tTPTransmissionDelay | The default transmission delay time used by software for transmitting a TP. | 40 | 40 | ns  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-144.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 363,
+      "bottomRightX": 299,
+      "bottomRightY": 381,
+      "content": "¹ (tIsochTimestampGranularity/4096)",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 388,
+      "bottomRightX": 561,
+      "bottomRightY": 407,
+      "content": "² This value was chosen to be greater than the link Pending HP Credit timeout (see Chapter 7)",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-123",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

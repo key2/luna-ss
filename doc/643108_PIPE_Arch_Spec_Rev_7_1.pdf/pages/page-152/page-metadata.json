@@ -1,0 +1,57 @@
+{
+  "index": 151,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 538,
+      "bottomRightY": 137,
+      "content": "Table 8-4. Parameters Advertised in PHY Datasheet (Sheet 7 of 7)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 687,
+      "bottomRightY": 893,
+      "content": "|  Parameter | Description  |\n| --- | --- |\n|  RXMarginingMaxTimingOffset[6:0]^{1} | Offset at maximum step value as percentage of nominal UI. Allowable values: 20–50. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingMaxLanes[5:0]^{1} | Maximum number of lanes that can be margined simultaneously. Allowable values: 1–32. Recommended value=number of lanes the PHY supports. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingSampleReportingMethod^{1} | Indicates whether a sample frequency or a sample count is reported. This value is encoded as follows: 0 – Sample Count Reported 1 – Sample Frequency Reported The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingMaxTimingOffsetChange[6:0] | Maximum number of steps margin offset can be changed with one command during timing margining. Allowable values: 1–127. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMarginingMaxVoltageOffsetChange[6:0] | Maximum number of steps margin offset can be changed with one command during voltage margining. Allowable values: 1–127. The PHY needs to specify this value for PCIe at 16 GT/s, 32 GT/s, 64 GT/s, and 128 GT/s.  |\n|  RXMessageBusWriteBufferDepth[3:0] | The PHY indicates the number of write buffer entries that it has implemented to receive writes from the MAC, where one entry can hold the three bytes of information associated with each write transaction.  |\n|  TXMessageBusMinWriteBufferDepth[3:0] | The PHY indicates the minimum number of write buffer entries it expects the MAC to implement to receive writes from the PHY. Allowable values: 0–8. The MAC may choose to implement more than the minimum required by the PHY; however, there may not be any benefit in doing so.  |\n|  WidthChangeHandshakeRequirement | The PHY indicates whether it needs the MAC to use the PclkChangeOk/PclkChangeAck handshake for rate plus width changes.  |\n|  RateChangeHandshakeRequirement | The PHY indicates whether it needs the MAC to use the PclkChangeOK/PclkChangeAck handshake for all rate changes.  |\n|  AsynchReceiverDetectSupport | The PHY indicates whether it supports asynchronous receiver detection in PCIe P2 power state.  |\n|  EIOS to Valid Electrical Idle Transition Time (PCIe mode) | The PHY indicates the value of T_{TX-IDLE-SET-TO-IDLE}.  |\n|  Datapath Options Supported | The PHY indicates whether it supports SerDes architecture and original PIPE. The PHY specifies how it should be configured to use one or the other option.  |\n|  Control Path Options Supported | The PHY indicates whether it supports the Low Pin Count signal interface and the legacy signal interface. The PHY specifies how it should be configured to use one or the other option.  |\n|  PCIeRxEqTrainRequirement | The PHY indicates whether it needs the controller to implement support for RxEqTraining/RxEqTrainDone handshake for PCIe.  |\n|  PhyRecalRequirement | The PHY indicates whether it needs the controller to implement support for PhyIORecalRequest, IORecal, and IORecalDone.  |\n|  PAM4RestrictedLevelsRequirement | The PHY indicates whether it requires the controller to implement the PAM4RestrictedLevels field in the PHY RX Control1 message bus register.  |\n|  RxInPhase01EqRequirement | The PHY indicates whether it requires the controller to implement the RxInPhase01Equalization field in the PHY RX Control1 message bus register.  |\n|  MaxRxClkFrequency | The PHY advertises the maximum RxCLK frequency that it guarantees not to exceed even if RxValid is deasserted.  |\n|  MinimumMacCLKReset#AssertionPulse | PHYs that support the MacCLK feature specify the minimum MacCLKReset# assertion pulse duration required.  |\n|  MaxSSCEnableDisableTime | The PHY indicates the maximum time it takes to complete SSC enable or disable.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-140.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "152",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

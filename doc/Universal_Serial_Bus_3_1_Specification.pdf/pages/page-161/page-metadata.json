@@ -1,0 +1,113 @@
+{
+  "index": 160,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 287,
+      "topLeftY": 141,
+      "bottomRightX": 534,
+      "bottomRightY": 251,
+      "content": "![img-125.jpeg](img-125.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-125.jpeg"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 262,
+      "bottomRightX": 583,
+      "bottomRightY": 371,
+      "content": "![img-126.jpeg](img-126.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-126.jpeg"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 382,
+      "bottomRightX": 649,
+      "bottomRightY": 493,
+      "content": "![img-127.jpeg](img-127.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-127.jpeg"
+    },
+    {
+      "topLeftX": 323,
+      "topLeftY": 513,
+      "bottomRightX": 500,
+      "bottomRightY": 529,
+      "content": "Figure 6-5. Channel Models",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 560,
+      "bottomRightX": 390,
+      "bottomRightY": 581,
+      "content": "### 6.2.1 Measurement Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 587,
+      "bottomRightX": 694,
+      "bottomRightY": 688,
+      "content": "The normative eye diagram is to be measured through compliance channels that represent long and short channels in order to cover the range of losses seen by real applications. These reference channels for testing at Gen 1 speed are described in the USB 3.0 SuperSpeed Equalizer Design Guidelines white paper. Reference channels for testing Gen 2 speed are described in a companion white paper posted on the USB-IF website. The eye diagram is measured using the appropriate clock recovery function described in Section 6.5.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 699,
+      "bottomRightX": 700,
+      "bottomRightY": 754,
+      "content": "Due to non-ideal channel characteristics, the eye diagram at the receiver may be completely closed. Informative receiver equalization functions are provided in Section 6.8.2 that are optimized for the compliance channels and are used to open the receiver eyes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 763,
+      "bottomRightX": 684,
+      "bottomRightY": 833,
+      "content": "This methodology allows a silicon vendor to design the channel and the component as a matched pair. It is expected that a silicon component will have layout guidelines that must be followed in order for the component to meet the overall specification and the eye diagram at the end of the compliance channel.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 840,
+      "bottomRightX": 643,
+      "bottomRightY": 876,
+      "content": "Note that simultaneous USB 2.0 and SuperSpeed or SuperSpeedPlus operation is a testing requirement for compliance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 995,
+      "content": "6-5",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

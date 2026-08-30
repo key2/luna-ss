@@ -1,0 +1,121 @@
+{
+  "index": 206,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 642,
+      "bottomRightY": 132,
+      "content": "### 6.9.5 SuperSpeedPlus LFPS Based PWM Message (LBPM)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 135,
+      "bottomRightX": 700,
+      "bottomRightY": 218,
+      "content": "LBPM is defined as a low power signaling mechanism for two SuperSpeedPlus ports to communicate with each other based on LFPS signals. The adoption of Pulse Width Modulation (PWM) is to embed the transmitting clock in data and to allow for easy data recovery at the receiver based on LFPS clock defined in Table 6-28. This section describes the concept and construction of LBPM. Refer to Chapter 7 for use of LBPM.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 238,
+      "bottomRightX": 565,
+      "bottomRightY": 257,
+      "content": "#### 6.9.5.1 Introduction to LFPS Based PWM Signaling (LBPS)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 261,
+      "bottomRightX": 671,
+      "bottomRightY": 313,
+      "content": "LBPS is based on PWM with embedded transmit clock and is basically constructed with two distinctive electrical states, which are LFPS signaling state and EI state. As is shown in Figure 6-34, two logic states are defined based on LBPS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 319,
+      "bottomRightX": 694,
+      "bottomRightY": 397,
+      "content": "- Logic '0' is defined within the unit interval of tPWM as one-third of LFPS signal followed by two-third of EI.\n- Logic '1' is defined within the unit interval of tPWM as two-third of LFPS signal followed by one-third of EI.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 407,
+      "bottomRightX": 565,
+      "bottomRightY": 425,
+      "content": "The specification of the transmit and receive LBPS is defined in Table 6-32.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 451,
+      "bottomRightX": 652,
+      "bottomRightY": 649,
+      "content": "![img-158.jpeg](img-158.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-158.jpeg"
+    },
+    {
+      "topLeftX": 276,
+      "topLeftY": 665,
+      "bottomRightX": 549,
+      "bottomRightY": 683,
+      "content": "Figure 6-34. Logic Representation of LBPS",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 711,
+      "bottomRightX": 458,
+      "bottomRightY": 728,
+      "content": "Table 6-32. LBPS Transmit and Receive Specification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 730,
+      "bottomRightX": 694,
+      "bottomRightY": 832,
+      "content": "|   | Unit | Transmit |   |   | Receive  |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|   |   |  Min | TYP | Max | Min | TYP | Max  |\n|  tPWM | μs | 2 | 2.2 | 2.4 |  |  |   |\n|  tLFPS-0 | μs | 0.5 |  | 0.80 | 0.45 |  | 0.85  |\n|  tLFPS-1 | μs | 1.33 |  | 1.80 | 1.28 |  | 1.85  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-86.md"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 995,
+      "content": "6-51",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "index": 140,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 694,
+      "bottomRightY": 144,
+      "content": "where NEXT(f) is the near-end crosstalk between the SuperSpeed Gen 2 signal pairs. The contribution of USB 2 D+/D- pair to SuperSpeed signal pairs is relatively small and is not included in IXT for simplicity.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 151,
+      "bottomRightX": 694,
+      "bottomRightY": 218,
+      "content": "More detailed discussion of ILfitatNq, IMR and IXT is given in a USB-IF whitepaper Establishing USB SuperSpeed Gen 2 Channel and Cable Assembly High Speed Compliance Specification. The USB-IF also provides a standard tool to convert measured cable assembly S-parameters into ILfitatNq, IMR and IXT.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 221,
+      "bottomRightX": 314,
+      "bottomRightY": 239,
+      "content": "### 5.6.1.3.2.4 Pass/Fail Criteria",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 248,
+      "bottomRightX": 691,
+      "bottomRightY": 365,
+      "content": "SuperSpeed Gen 2 channel performance is based on ILfitatNq, IMR, and IXT. In general, a channel with more loss, more reflection, and more crosstalk has less margin. Channel margin is measured with BER (bit error ratio) eye height (eH) and eye width (eW) at BER=10⁻¹². The correlation between eH and eW and the channel metrics ILfitatNq, IMR, and IXT is established following the methodology described in the USB-IF whitepaper Establishing USB SuperSpeed Gen 2 Channel and Cable Assembly High Speed Compliance Specification. For each channel with a metrics ILfitatNq, IMR, and IXT, eH and eW is calculated:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 375,
+      "bottomRightX": 680,
+      "bottomRightY": 404,
+      "content": "$$eH = f_H (ILfitatNq, IMR, IXT) \\tag{5-5}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 399,
+      "bottomRightX": 382,
+      "bottomRightY": 418,
+      "content": "$$eW = f_W (ILfitatNq, IMR, IXT)$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 425,
+      "bottomRightX": 666,
+      "bottomRightY": 461,
+      "content": "Note that the effect of Tx and Rx equalization, jitter, and sampling noise is included in the eye height and eye width calculations. The pass/fail criteria are then expressed as",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 466,
+      "bottomRightX": 680,
+      "bottomRightY": 495,
+      "content": "$$eH = f_H (ILfitatNq, IMR, IXT) > 0 \\tag{5-6}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 489,
+      "bottomRightX": 404,
+      "bottomRightY": 509,
+      "content": "$$eW = f_W (ILfitatNq, IMR, IXT) > 0$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 517,
+      "bottomRightX": 151,
+      "bottomRightY": 532,
+      "content": "and",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 539,
+      "bottomRightX": 309,
+      "bottomRightY": 556,
+      "content": "$$ILfitatNq \\ge -22 \\text{ dB}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 561,
+      "bottomRightX": 680,
+      "bottomRightY": 580,
+      "content": "$$IMR \\le 60 \\text{ mV} \\tag{5-7}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 585,
+      "bottomRightX": 272,
+      "bottomRightY": 601,
+      "content": "$$IXT \\le 25 \\text{ mV}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 607,
+      "bottomRightX": 673,
+      "bottomRightY": 676,
+      "content": "Equation (5-6) is an open-eye (at BER=10⁻¹²) requirement, while Equation (5-7) constrains the maximum channel loss, multi-reflection, and crosstalk. A SuperSpeed Gen 2 cable assembly is considered pass if both Equations (5-6) and (5-7) are satisfied. Figure 5-26 shows pass and fail examples.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "5-53",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

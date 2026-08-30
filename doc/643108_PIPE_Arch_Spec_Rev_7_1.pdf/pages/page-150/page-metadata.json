@@ -1,0 +1,57 @@
+{
+  "index": 149,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 538,
+      "bottomRightY": 137,
+      "content": "Table 8-4. Parameters Advertised in PHY Datasheet (Sheet 5 of 7)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 687,
+      "bottomRightY": 873,
+      "content": "|  Parameter | Description  |\n| --- | --- |\n|  EncodeDecodeBypassSupport[3:0] | The PHY indicates whether it supports optional EncodeDecodeBypass mode at each signaling rate. [0] Rate[1:0] = 0 [1] Rate[1:0] = 1 [2] Rate[1:0] = 2 [3] Rate[1:0] = 3 The support value for each rate is encoded as follows: 0 - No support for EncodeDecodeBypass 1 - Support for EncodeDecodeBypass  |\n|  NoDeemphasisSupport[1:0] | The PHY indicates whether it supports an optional No De-emphasis signaling mode at 2.5 and 5.0 GT/s signaling rates. [0] Support at 2.5 GT/s [1] Support at 5.0 GT/s The support value for each rate is encoded as follows: 0 - No support for a no de-emphasis signaling mode. 1 - Support for a no de-emphasis signaling mode.  |\n|  SupportedLFPresets | List of presets the PHY supports at 8 GT/s, 16 GT/s, and 32 GT/s for half swing in addition to the 5 required by the base specification.  |\n|  PCLK Mode[1:0] | The PHY indicates whether it supports PCLK as a PHY output or PCLK as a PHY input. [0] Supports PCLK as an output [1] Supports PCLK as an input The support value for each rate is encoded as follows: 0 - No support 1 - Support Configuration for a PHY that supports both PCLK modes is PHY specific.  |\n|  PHYClockInsertionDelay | A PHY that supports \"PCLK as an input\" mode must report the maximum delay and the minimum delay (insertion delay) for any sequential logic at the MAC/PHY interface that will use PCLK in the PHY in picoseconds.  |\n|  SupportedPhyModes | List of all modes the PHY supports for the PHY Mode[1:0] input.  |\n|  MaximumPCIExpressRate | Value for DataRate input corresponding to the maximum rate the PHY supports while in PCIe mode. This field is undefined if the PHY does not support PCIe mode.  |\n|  MaximumSataRate | Value for the DataRate input corresponding to the maximum rate the PHY supports while in SATA Mode. This field is undefined if the PHY does not support SATA mode.  |\n|  ListofSupportedSataModes | List of all supported signaling rate, width, PCLK rate combinations supported in Table 3-2.  |\n|  ListofSupportedPCIExpressModes | List of all supported signaling rate, width, PCLK rate combinations supported in Table 3-1.  |\n|  MaximumEntriesInElasticityBuffer | Maximum number of entries that can be stored in the elasticity buffer. The PHY reports the maximum number of entries for each operational mode the PHY supports.  |\n|  ElasticityBufferEntrySize | Size of a data entry in the elasticity buffer in bits. The PHY reports this size for each operation mode the PHY supports.  |\n|  MaximumElasticBufferLocationUpdateFrequency | Maximum update frequency the PHY supports for updating the ElasticBufferLocation register. This field is only relevant for original PIPE architecture.  |\n|  MinimumElasticBufferLocationUpdateFrequency | Minimum update frequency the PHY supports for updating the ElasticBufferLocation register. This field is only relevant for original PIPE architecture.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-138.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "150",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

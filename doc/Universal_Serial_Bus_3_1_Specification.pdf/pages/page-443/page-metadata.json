@@ -1,0 +1,157 @@
+{
+  "index": 442,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 593,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 690,
+      "bottomRightY": 128,
+      "content": "entry. The U2 Enable field can be modified by the SetFeature() and ClearFeature() requests using the U2_ENABLE feature selector. This field is reset to zero when the device is reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 136,
+      "bottomRightX": 691,
+      "bottomRightY": 220,
+      "content": "The LTM Enable field indicates whether the device is currently enabled to send Latency Tolerance Messages. If D4 is set to zero, the device is disabled from sending Latency Tolerance Messages, otherwise; it is enabled to send Latency Tolerance Messages. The LTM Enable field can be modified by the SetFeature() and ClearFeature() requests using the LTM_ENABLE feature selector. This field is reset to zero when the device is reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 228,
+      "bottomRightX": 635,
+      "bottomRightY": 263,
+      "content": "A GetStatus() request to the first interface in a function returns the information shown in Figure 9-5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 287,
+      "bottomRightX": 676,
+      "bottomRightY": 392,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Reserved (Reset to Zero) |   |   |   |   |   | Function Remote Wakeup | Function Remote Wake Capable  |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D7 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-161.md"
+    },
+    {
+      "topLeftX": 648,
+      "topLeftY": 396,
+      "bottomRightX": 673,
+      "bottomRightY": 407,
+      "content": "U-084",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 422,
+      "bottomRightX": 671,
+      "bottomRightY": 440,
+      "content": "Figure 9-5. Information Returned by a Standard GetStatus() Request to an Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 461,
+      "bottomRightX": 696,
+      "bottomRightY": 495,
+      "content": "The status fields defined by Figure 9-5 are returned by a STANDARD_STATUS type request to an Interface recipient.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 504,
+      "bottomRightX": 695,
+      "bottomRightY": 623,
+      "content": "The Function Remote Wake Capable field indicates whether the function supports remote wake up. The Function Remote Wakeup field indicates whether the function is currently enabled to request remote wakeup. The default mode for functions that support function remote wakeup is disabled. If D1 is reset to zero, the ability of the function to signal remote wakeup is disabled. If D1 is set to one, the ability of the function to signal remote wakeup is enabled. The Function Remote Wakeup field can be modified by the SetFeature() requests using the FUNCTION_SUSPEND feature selector. This Function Remote Wakeup field is reset to zero when the function is reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 631,
+      "bottomRightX": 576,
+      "bottomRightY": 648,
+      "content": "A GetStatus() request to any other interface in a function shall return all zeros.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 656,
+      "bottomRightX": 593,
+      "bottomRightY": 674,
+      "content": "A GetStatus() request to an endpoint returns the information shown in Figure 9-6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 698,
+      "bottomRightX": 676,
+      "bottomRightY": 770,
+      "content": "|  D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  Reserved (Reset to Zero) |   |   |   |   |   |   | Halt  |\n|  D15 | D14 | D13 | D12 | D11 | D10 | D7 | D8  |\n|  Reserved (Reset to Zero)  |   |   |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-162.md"
+    },
+    {
+      "topLeftX": 648,
+      "topLeftY": 775,
+      "bottomRightX": 673,
+      "bottomRightY": 785,
+      "content": "U-085",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 800,
+      "bottomRightX": 673,
+      "bottomRightY": 818,
+      "content": "Figure 9-6. Information Returned by a Standard GetStatus() Request to an Endpoint",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 840,
+      "bottomRightX": 696,
+      "bottomRightY": 876,
+      "content": "The status fields defined by Figure 9-6 are returned by a STANDARD_STATUS type request to an Endpoint recipient.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "9-25",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "index": 428,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 62,
+      "content": "- 398 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 94,
+      "bottomRightX": 674,
+      "bottomRightY": 124,
+      "content": "In this state, the port's link shall be in the eSS.Disabled state and the corresponding hub USB state shall be Attached.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 137,
+      "bottomRightX": 674,
+      "bottomRightY": 183,
+      "content": "Note: If the port enters this state because far end receiver terminations are not detected and VBUS is present, it may immediately transition to USPORT.Powered on without removing near end terminations.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 196,
+      "bottomRightX": 333,
+      "bottomRightY": 210,
+      "content": "#### **10.5.1.2 USPORT.Powered-on**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 218,
+      "bottomRightX": 541,
+      "bottomRightY": 233,
+      "content": "A port shall transition into this state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 239,
+      "bottomRightX": 676,
+      "bottomRightY": 353,
+      "content": "- From the USPORT.Powered-off state when VBUS becomes valid.\n- From the USPORT.Error state when the link receives a warm reset or if Far-end Terminations are removed.\n- From the USPORT.Connected/Enabled state when the link receives a Warm Reset.\n- From the USPORT.Training state if the port's link times out from any Polling substate or if the port receives a Warm (LFPS) Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 373,
+      "bottomRightX": 676,
+      "bottomRightY": 435,
+      "content": "In this state, the port's link shall be in the Rx.Detect state. The corresponding hub USB state shall be Powered (Far-end Receiver Termination substate). While in this state, if the USB 2.0 portion of the hub enters the suspended state, the total hub current draw from VBUS shall not exceed the suspend current limit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 447,
+      "bottomRightX": 310,
+      "bottomRightY": 463,
+      "content": "#### **10.5.1.3 USPORT.Training**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 469,
+      "bottomRightX": 614,
+      "bottomRightY": 500,
+      "content": "A port transitions to this state from the USPORT.Powered-on state when Enhanced SuperSpeed far-end receiver terminations are detected.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 513,
+      "bottomRightX": 656,
+      "bottomRightY": 543,
+      "content": "In this state, the port's link shall be in the Polling state. The corresponding hub USB state shall be Powered (Link Training substate).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 556,
+      "bottomRightX": 377,
+      "bottomRightY": 571,
+      "content": "#### **10.5.1.4 USPORT.Connected/Enabled**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 578,
+      "bottomRightX": 670,
+      "bottomRightY": 624,
+      "content": "A port transitions to this state from the USPORT.Training state when its link enters U0 from Polling.Idle. A port remains in this state during hot reset. When a hot reset is completed, the corresponding hub USB state shall transition to Default.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 636,
+      "bottomRightX": 602,
+      "bottomRightY": 667,
+      "content": "In this state, the port's link shall be in the U0, U1, U2, U3, or Recovery state. The corresponding hub USB state shall be Default, Address, or Configured.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 679,
+      "bottomRightX": 645,
+      "bottomRightY": 709,
+      "content": "When the link enters U0 the port shall start the port configuration process as defined in Section 8.4.6.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 723,
+      "bottomRightX": 656,
+      "bottomRightY": 769,
+      "content": "The port may send link management packets or link commands but shall not transmit any other packets except to respond to default control endpoint requests while in the USPORT.Connected state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 781,
+      "bottomRightX": 291,
+      "bottomRightY": 796,
+      "content": "#### **10.5.1.5 USPORT.Error**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 803,
+      "bottomRightX": 667,
+      "bottomRightY": 834,
+      "content": "A port transitions to this state when a serious error condition occurred while attempting to operate the link. A port transitions to this state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 846,
+      "bottomRightX": 676,
+      "bottomRightY": 878,
+      "content": "- From the USPORT.Connected/Enabled state if the link enters Recovery and times out without recovering.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 898,
+      "bottomRightX": 653,
+      "bottomRightY": 929,
+      "content": "In this state, the port's link shall be in the eSS.Inactive state. The corresponding hub USB state shall be Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "index": 67,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 93,
+      "bottomRightX": 672,
+      "bottomRightY": 214,
+      "content": "- SuperSpeedPlus hubs ensure compatibility with SuperSpeed devices connected to its downstream facing ports.\n- Detects when packets encounter a port that is in a low-power state. The hub transitions the targeted port out of the low-power state and notifies the host and device (in-band) that the packet encountered a port in a low-power state.\n- Updates the host timestamp packet based on the link delay and the delay in the hub before forwarding it to all downstream ports that are not in a low-power state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 251,
+      "bottomRightX": 239,
+      "bottomRightY": 272,
+      "content": "### 3.2.7 Hosts",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 279,
+      "bottomRightX": 697,
+      "bottomRightY": 345,
+      "content": "A USB 3.1 host interacts with USB devices through a host controller. To support the dual-bus architecture of USB 3.1, a host controller must include both Enhanced SuperSpeed and USB 2.0 elements, which can simultaneously manage control, status and information exchanges between the host and devices over each bus.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 350,
+      "bottomRightX": 664,
+      "bottomRightY": 385,
+      "content": "The host includes an implementation-specific number of root downstream ports for Enhanced SuperSpeed and USB 2.0. Through these ports the host:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 389,
+      "bottomRightX": 679,
+      "bottomRightY": 499,
+      "content": "- Detects the attachment and removal of USB devices\n- Manages control flow between the host and USB devices\n- Manages data flow between the host and USB devices\n- Collects status and activity statistics\n- Provides power to attached USB devices\n- A SuperSpeedPlus host is required to implement USB PTM (Precision Time Management)..",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 503,
+      "bottomRightX": 623,
+      "bottomRightY": 520,
+      "content": "USB System Software inherits its architectural requirements from USB 2.0, including:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 525,
+      "bottomRightX": 470,
+      "bottomRightY": 598,
+      "content": "- Device enumeration and configuration\n- Scheduling of periodic and asynchronous data transfers\n- Device and function power management\n- Device and bus management information",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 620,
+      "bottomRightX": 616,
+      "bottomRightY": 645,
+      "content": "## 3.3 Enhanced SuperSpeed Bus Data Flow Models",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 651,
+      "bottomRightX": 693,
+      "bottomRightY": 685,
+      "content": "The data flow models for the Enhanced SuperSpeed bus are described in Chapter 4. The Enhanced SuperSpeed bus inherits the data flow models from USB 2.0, including:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 689,
+      "bottomRightX": 701,
+      "bottomRightY": 894,
+      "content": "- Data and control exchanges between the host and devices are via sets of either unidirectional or bi-directional pipes.\n- Data transfers occur between host software and a particular endpoint on a device. The endpoint is associated with a particular function on the device. These associations between host software to endpoints related to a particular function are called pipes. A device may have more than one active pipe. There are two types of pipes: stream and message. Stream data has no USB-defined structure, while message does. Pipes have associations of data bandwidth, transfer service type (see below), and endpoint characteristics, like direction and buffer size.\n- Most pipes come into existence when the device is configured by system software. However, one message pipe, the Default Control Pipe, always exists once a device has been powered and is in the default state, to provide access to the device's configuration, status, and control information.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 962,
+      "bottomRightX": 119,
+      "bottomRightY": 977,
+      "content": "3-16",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

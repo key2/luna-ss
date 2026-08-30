@@ -1,0 +1,146 @@
+{
+  "index": 21,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 53,
+      "bottomRightX": 186,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 120,
+      "bottomRightX": 368,
+      "bottomRightY": 144,
+      "content": "## 2.3 USB4 PHY Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 151,
+      "bottomRightX": 679,
+      "bottomRightY": 194,
+      "content": "The USB4 PHY Layer handles the low level USB4 protocol and signaling. This includes features such as data serialization and de-serialization, analog buffers, and receiver detection.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 201,
+      "bottomRightX": 394,
+      "bottomRightY": 216,
+      "content": "Some key features of the USB4 PHY:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 222,
+      "bottomRightX": 687,
+      "bottomRightY": 383,
+      "content": "- A standard PHY interface enables multiple IP sources for USB4 Link Layer and provides a target interface for USB4 PHY vendors\n- Supports 10 GT/s and/or 20 GT/s serial data transmission rate in combination with a 40-bit parallel interface to transmit and receive USB4 data using PAM2 signaling\n- Supports 40 GT/s serial data transmission rate in combination with a 56-bit parallel interface to transmit and receive USB4 data using PAM3 signaling\n- Data and clock recovery from serial stream on the USB4 bus\n- Holding registers to stage transmit and receive data\n- Low Frequency Periodic Signaling (LFPS)",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 403,
+      "bottomRightX": 367,
+      "bottomRightY": 427,
+      "content": "## 2.4 SATA PHY Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 433,
+      "bottomRightX": 687,
+      "bottomRightY": 505,
+      "content": "The SATA PHY layer handles the low-level SATA protocol and signaling. This includes features such as analog buffers, data serialization and deserialization, 8b/10b encoding and decoding, and elastic buffers. The primary focus of this block is to shift the clock domain of the data from the SATA rate to one that is compatible with the general logic in the ASIC.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 513,
+      "bottomRightX": 415,
+      "bottomRightY": 527,
+      "content": "Some key features of the SATA PHY are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 534,
+      "bottomRightX": 686,
+      "bottomRightY": 735,
+      "content": "- A standard PHY interface that enables multiple IP sources for SATA controllers and provides a target interface for SATA PHY vendors\n- Support of 1.5 GT/s only, or 1.5 GT/s and 3.0 GT/s, or 1.5 GT/s, or 3.0 GT/s, and 6.0 GT/s serial data transmission rate\n- Utilizes 8-bit, 16-bit, or 32-bit parallel interface to transmit and receive SATA data\n- Allows integration of high-speed components into a single functional block as seen in the device designer\n- Data and clock recovery from serial stream on the SATA bus\n- Holding registers to stage transmit and receive data\n- 8b/10b encode/decode and error indication\n- COMINIT and COMRESET transmission and reception",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 756,
+      "bottomRightX": 440,
+      "bottomRightY": 780,
+      "content": "## 2.5 DisplayPort PHY Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 786,
+      "bottomRightX": 687,
+      "bottomRightY": 815,
+      "content": "The DisplayPort PHY layer handles the low-level DisplayPort protocol and signaling. This includes features such as data serialization and de-serialization, and analog buffers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 822,
+      "bottomRightX": 553,
+      "bottomRightY": 838,
+      "content": "Some key features of the DisplayPort PHY include the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 843,
+      "bottomRightX": 679,
+      "bottomRightY": 872,
+      "content": "- A standard PHY interface that enables multiple IP sources for the DisplayPort link layer and provides a target interface for the DisplayPort PHY vendors",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 954,
+      "bottomRightX": 107,
+      "bottomRightY": 966,
+      "content": "22",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 491,
+      "topLeftY": 954,
+      "bottomRightX": 690,
+      "bottomRightY": 966,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

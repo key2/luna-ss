@@ -1,0 +1,75 @@
+{
+  "index": 554,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 103,
+      "bottomRightX": 356,
+      "bottomRightY": 121,
+      "content": "Table 10-12. Port Status Type Codes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 123,
+      "bottomRightX": 707,
+      "bottomRightY": 284,
+      "content": "|  Port Status Type | Value (wValue, low-byte) | Port Status Length (wLength) | Description  |\n| --- | --- | --- | --- |\n|  PORT_STATUS | 00H | 4 | Returns Port Status Request information  |\n|  PD_STATUS^{1} | 01H | 8 | PD Status of the specified port on a PDUSB Hub.  |\n|  EXT_PORT_STATUS | 02H | 8 | Returns Extended Port Status Request information  |\n|  Reserved | 03-FFH | NA | Reserved for future use  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-240.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 287,
+      "bottomRightX": 698,
+      "bottomRightY": 353,
+      "content": "It is a Request Error if the Port Status Type equals EXT_PORT_STATUS and the hub that does not define a SuperSpeedPlus USB Capability descriptor, or if the Port Status Type equals a reserved value, or if wValue or wLength are other than as specified in Table 10-7, or if wIndex specifies a port that does not exist.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 359,
+      "bottomRightX": 652,
+      "bottomRightY": 377,
+      "content": "If the hub is not configured, the behavior of the hub in response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 847,
+      "bottomRightX": 452,
+      "bottomRightY": 865,
+      "content": "$^{1}$ Refer to the USB Power Delivery Specification Revision 1.0",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "10-77",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

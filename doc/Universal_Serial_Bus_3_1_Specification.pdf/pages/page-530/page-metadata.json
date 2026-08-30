@@ -1,0 +1,173 @@
+{
+  "index": 529,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 93,
+      "bottomRightX": 699,
+      "bottomRightY": 144,
+      "content": "in the upstream port header packet queue, the hub shall prioritize a non-data packet header over a data packet header packet if one is waiting at the front of a downstream queue or from the hub controller. Otherwise, the arbitration algorithm the hub uses is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 145,
+      "bottomRightX": 696,
+      "bottomRightY": 197,
+      "content": "Note: These arbitration requirements only apply across multiple downstream ports and the hub controller. For a single source (downstream port or hub controller), packets must be transmitted in the ordered received or generated.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 202,
+      "bottomRightX": 523,
+      "bottomRightY": 220,
+      "content": "### 10.9.4.4.4 SuperSpeedPlus Hub Downstream Facing Port",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 224,
+      "bottomRightX": 322,
+      "bottomRightY": 240,
+      "content": "- If a valid DP is received then:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 242,
+      "bottomRightX": 696,
+      "bottomRightY": 310,
+      "content": "1. If the port is operating at Gen 1 speed then set the transfer type of the DP to the value of DFP.SAVE_TT. See Section 10.9.4.4.2.\n2. If the transfer type is asynchronous and the AW field value is zero, modify the AW field of the received DPH by setting the DPH.AW field to DFP.AW. See Section 10.8.6.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 312,
+      "bottomRightX": 680,
+      "bottomRightY": 345,
+      "content": "- The header packet is buffered awaiting arbitration for transmission on the upstream port (see Section 10.8.6).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 359,
+      "bottomRightX": 325,
+      "bottomRightY": 378,
+      "content": "### 10.9.4.5 Rx Link Command",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 384,
+      "bottomRightX": 658,
+      "bottomRightY": 418,
+      "content": "In the Rx Link Command state, the port receiver is actively processing received symbols and looking for the speed specific indication of the end of a link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 423,
+      "bottomRightX": 655,
+      "bottomRightY": 458,
+      "content": "A port shall transition to the Rx Link Command state when it receives a valid speed specific indication of the beginning of a link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 471,
+      "bottomRightX": 364,
+      "bottomRightY": 489,
+      "content": "### 10.9.4.6 Process Link Command",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 495,
+      "bottomRightX": 694,
+      "bottomRightY": 546,
+      "content": "Once the link command is received, the port shall perform all additional processing necessary for the link command. Any such processing shall not block the port from immediately returning to the Rx Default state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 590,
+      "bottomRightX": 381,
+      "bottomRightY": 613,
+      "content": "## 10.10 Suspend and Resume",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 621,
+      "bottomRightX": 699,
+      "bottomRightY": 739,
+      "content": "Hubs must support suspend and resume both as a USB device and in terms of propagating suspend and resume signaling. Global suspend/resume refers to the entire bus being suspended or resumed without affecting any hub's downstream facing port states; selective suspend/resume refers to a downstream facing port of a hub being suspended or resumed without affecting the hub state. Enhanced SuperSpeed hubs only support selective suspend and resume. They do not support global suspend and resume. Selective suspend/resume is implemented via requests to a hub. Device-initiated resume is called remote-wakeup.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 743,
+      "bottomRightX": 699,
+      "bottomRightY": 777,
+      "content": "The hub follows the same suspend requirements as an Enhanced SuperSpeed device on its upstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 781,
+      "bottomRightX": 694,
+      "bottomRightY": 816,
+      "content": "When a hub downstream port link is in the U3 state, the following requirements apply to the hub if it receives wakeup signaling from its link partner on that downstream port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 819,
+      "bottomRightX": 694,
+      "bottomRightY": 908,
+      "content": "- If the hub upstream port's link is not in U3, the hub shall drive remote wakeup signaling on the downstream link where the wakeup signaling was received in tHubDriveRemoteWakeDownstream.\n- If the hub upstream port's link is in U3, the hub shall drive wakeup signaling on its upstream port in tHubPropRemoteWakeUpstream.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-52",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

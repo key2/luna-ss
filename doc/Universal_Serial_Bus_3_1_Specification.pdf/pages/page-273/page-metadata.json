@@ -1,0 +1,128 @@
+{
+  "index": 272,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 430,
+      "bottomRightY": 111,
+      "content": "### 7.5.4.6.1 Polling.PortConfig Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 114,
+      "bottomRightX": 689,
+      "bottomRightY": 200,
+      "content": "- The operation of the 12-ms timer (tPollingLBPMLFPSTimeout) shall continue without reset upon entry to the substate from Polling.PortMatch.\n- Upon entry to this state, the port shall place its transmitter in electrical idle if it is preparing its PHY re-configuration according to PHY Capability LBPM negotiated in Polling.PortMatch. The port shall perform the following PHY re-configuration.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 201,
+      "bottomRightX": 667,
+      "bottomRightY": 306,
+      "content": "1. The transmitter DC common mode voltage shall be within specification (VTX-CM-DCACTIVE-IDLE-DELTA) defined in Table 6-18.\n2. The port shall maintain its low-impedance receiver termination (RRX-DC) defined in Table 6-21.\n3. The port shall be ready to transmit TSEQ OS.\n4. The port shall be ready to receive TSEQ OS for receiver equalization training.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 307,
+      "bottomRightX": 667,
+      "bottomRightY": 342,
+      "content": "- Upon completion of PHY re-configuration, the port shall transmit consecutive PHY Ready LBPMs to notify its link partner. Refer to Table 7-13 for PHY Ready LBPM definition.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 348,
+      "bottomRightX": 397,
+      "bottomRightY": 366,
+      "content": "### 7.5.4.6.2 Exit from Polling.PortConfig",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 370,
+      "bottomRightX": 674,
+      "bottomRightY": 600,
+      "content": "- The port shall transition to Polling.RxEQ when four consecutive and matched PHY Ready LBPMs are sent after two consecutive and matched PHY Ready LBPMs are received.\n- A downstream port shall transition to Rx.Detect upon the 12-ms timer timeout (tPollingLBPMLFPSTimeout) and cPollingTimeout is less than two.\n- A downstream port shall transition to eSS.Inactive upon the 12-ms timer timeout (tPollingLBPMLFPSTimeout) and cPollingTimeout is two.\n- An upstream port of a hub shall transition to Rx.Detect upon the 12-ms timer timeout (tPollingLBPMLFPSTimeout) and the conditions to transition to Polling.RxEQ are not met.\n- A peripheral device shall transition to eSS.Disabled upon the 12-ms timer timeout (tPollingLBPMLFPSTimeout) and the conditions to transition to Polling.RxEQ are not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 615,
+      "bottomRightX": 286,
+      "bottomRightY": 635,
+      "content": "### 7.5.4.7 Polling.RxEQ",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 639,
+      "bottomRightX": 671,
+      "bottomRightY": 673,
+      "content": "Polling.RxEQ is a substate for receiver equalization training. A port is required to complete its receiver equalization training.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 680,
+      "bottomRightX": 396,
+      "bottomRightY": 698,
+      "content": "### 7.5.4.7.1 Polling.RxEQ Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 701,
+      "bottomRightX": 673,
+      "bottomRightY": 773,
+      "content": "- The detection and correction of the lane polarity inversion in SuperSpeed operation shall be enabled, as is described in Section 6.4.2.\n- The port shall transmit the corresponding TSEQ ordered sets defined in Table 6-2.\n- The port shall complete receiver equalizer training upon exit from this substate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 774,
+      "bottomRightX": 700,
+      "bottomRightY": 893,
+      "content": "Note: A situation may exist where the port entering Polling.RxEQ earlier is transmitting TSEQ ordered sets while its link partner is still sending Polling.LFPS to satisfy the exit conditions from Polling.LFPS or Polling.LFPSPlus to Polling.RxEQ. In this situation, if its link partner is in electrical idle, near-end cross talk may cause the port to train its Rx equalizer using its own TSEQ ordered sets. To avoid a receiver from training itself, a port may either ignore the beginning part (about 30 μs) of the TSEQ ordered sets, or continue the equalizer training until it completes the transmission of TSEQ ordered sets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-61",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

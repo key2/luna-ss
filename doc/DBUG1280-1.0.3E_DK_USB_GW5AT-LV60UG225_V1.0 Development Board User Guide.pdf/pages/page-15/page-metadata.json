@@ -1,0 +1,75 @@
+{
+  "index": 14,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 36,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 557,
+      "topLeftY": 36,
+      "bottomRightX": 646,
+      "bottomRightY": 49,
+      "content": "3.2 Power Supply",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 66,
+      "topLeftY": 97,
+      "bottomRightX": 273,
+      "bottomRightY": 116,
+      "content": "# 3.2.2 Power Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 136,
+      "bottomRightX": 401,
+      "bottomRightY": 153,
+      "content": "Figure 3-1 Power Distribution Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 70,
+      "topLeftY": 157,
+      "bottomRightX": 650,
+      "bottomRightY": 744,
+      "content": "![img-6.jpeg](img-6.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-6.jpeg"
+    },
+    {
+      "topLeftX": 74,
+      "topLeftY": 943,
+      "bottomRightX": 168,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 617,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "8(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

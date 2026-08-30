@@ -1,0 +1,165 @@
+{
+  "index": 298,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 117,
+      "bottomRightX": 318,
+      "bottomRightY": 138,
+      "content": "### 8.3 Packet Formats",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 153,
+      "bottomRightX": 684,
+      "bottomRightY": 219,
+      "content": "Packet byte and bit definitions in this section are described in an un-encoded data format. The effects of symbols added to the serial stream (i.e., to frame packets or control or modify the link), bit encoding, bit scrambling, and link level framing have been removed for the sake of clarity. Refer to Chapters 6 and 7 for detailed information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 238,
+      "bottomRightX": 447,
+      "bottomRightY": 258,
+      "content": "#### 8.3.1 Fields Common to all Headers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 263,
+      "bottomRightX": 696,
+      "bottomRightY": 315,
+      "content": "All Enhanced SuperSpeed headers start with the Type field that is used to determine how to interpret the packet. At a high level this tells the recipient of the packet what to do with it: either to use it to manage the link or to move and control the flow of data between a device and the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 333,
+      "bottomRightX": 529,
+      "bottomRightY": 353,
+      "content": "##### 8.3.1.1 Reserved Values and Reserved Field Handling",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 357,
+      "bottomRightX": 606,
+      "bottomRightY": 374,
+      "content": "Reserved fields and Reserved values shall not be used in a vendor-specific manner.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 382,
+      "bottomRightX": 680,
+      "bottomRightY": 399,
+      "content": "A transmitter shall set all Reserved fields to zero and a receiver shall ignore any Reserved field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 409,
+      "bottomRightX": 692,
+      "bottomRightY": 459,
+      "content": "A transmitter shall not set a defined field to a reserved value and a receiver shall ignore any packet that has any of its defined fields set to a reserved value. Note that the receiver shall acknowledge the packet and return credit for the same as per the requirement specified in Section 7.2.4.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 467,
+      "bottomRightX": 671,
+      "bottomRightY": 485,
+      "content": "Note: SuperSpeedPlus hosts, hubs and devices use some fields previously marked as Reserved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 503,
+      "bottomRightX": 264,
+      "bottomRightY": 521,
+      "content": "##### 8.3.1.2 Type Field",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 526,
+      "bottomRightX": 698,
+      "bottomRightY": 561,
+      "content": "The Type field is a 5-bit field that identifies the format of the packet. The type is used to determine how the packet is to be used or forwarded by intervening links.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 579,
+      "bottomRightX": 335,
+      "bottomRightY": 595,
+      "content": "Table 8-1. Type Field Description",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 598,
+      "bottomRightX": 700,
+      "bottomRightY": 765,
+      "content": "|  Width(bits) | Offset(DW:bit) | Description  |   |\n| --- | --- | --- | --- |\n|  5 | 0:0 | Type. These 5 bits identify the packet's Type.  |   |\n|   |   |  Value | Description  |\n|   |   |  00000b | Link Management Packet.  |\n|   |   |  00100b | Transaction Packet  |\n|   |   |  01000b | Data Packet Header  |\n|   |   |  01100b | Isochronous Timestamp Packet  |\n|   |   |  All other values are Reserved.  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-103.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 779,
+      "bottomRightX": 244,
+      "bottomRightY": 797,
+      "content": "##### 8.3.1.3 CRC-16",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 803,
+      "bottomRightX": 684,
+      "bottomRightY": 853,
+      "content": "All header packets have a 16-bit CRC field. This field is the CRC calculated over the preceding 12 bytes in the header packet. Refer to Section 7.2.1.1.2 for the polynomial used to calculate this value.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-5",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

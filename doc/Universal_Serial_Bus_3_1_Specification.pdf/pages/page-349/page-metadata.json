@@ -1,0 +1,57 @@
+{
+  "index": 348,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 340,
+      "topLeftY": 106,
+      "bottomRightX": 405,
+      "bottomRightY": 124,
+      "content": "BULK IN",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 141,
+      "bottomRightX": 621,
+      "bottomRightY": 804,
+      "content": "![img-219.jpeg](img-219.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-219.jpeg"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 833,
+      "bottomRightX": 586,
+      "bottomRightY": 850,
+      "content": "Figure 8-33. Sample Concurrent BULK IN Transactions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "8-55",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

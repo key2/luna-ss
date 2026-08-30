@@ -1,0 +1,120 @@
+{
+  "index": 557,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 527 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 660,
+      "bottomRightY": 124,
+      "content": "Note that the RLSM behavioral requirement described in this section is intended for future implementations to achieve maximum interoperability.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 136,
+      "bottomRightX": 638,
+      "bottomRightY": 154,
+      "content": "Figure E-22. Re-driver in Active Tracking Line Configuration and Operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 226,
+      "topLeftY": 162,
+      "bottomRightX": 568,
+      "bottomRightY": 682,
+      "content": "![img-217.jpeg](img-217.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-217.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 714,
+      "bottomRightX": 214,
+      "bottomRightY": 728,
+      "content": "### E.6.3.2 Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 735,
+      "bottomRightX": 626,
+      "bottomRightY": 767,
+      "content": "Disabled is an optional power-on initial state. The re-driver shall meet the following requirement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 779,
+      "bottomRightX": 622,
+      "bottomRightY": 839,
+      "content": "- It shall be in its lowest power state and wait for direction to enter operation.\n- It shall present its high impedance to ground of ZRX-HIGH-IMP-DC-POS defined in Table 6-22 at its receiver.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 852,
+      "bottomRightX": 542,
+      "bottomRightY": 868,
+      "content": "The re-driver shall perform the state transition based on the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 881,
+      "bottomRightX": 382,
+      "bottomRightY": 895,
+      "content": "- The next state is Connect if directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

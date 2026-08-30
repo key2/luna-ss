@@ -1,0 +1,138 @@
+{
+  "index": 355,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 325 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 668,
+      "bottomRightY": 156,
+      "content": "Device power management is comprised of Device Suspend and Function Suspend. Device Suspend refers to a device-wide state that is entered when its upstream link is placed in U3. Function Suspend refers to a state of an individual function within a device. Suspending a device with more than one function effectively suspends all the functions within the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 167,
+      "bottomRightX": 647,
+      "bottomRightY": 198,
+      "content": "Note that placing all functions in the device into Function Suspend does not suspend the device. A device is suspended only when its upstream link is placed in U3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 211,
+      "bottomRightX": 346,
+      "bottomRightY": 225,
+      "content": "### 9.2.5.2 Changing Device Suspend State",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 232,
+      "bottomRightX": 663,
+      "bottomRightY": 279,
+      "content": "Device Suspend is entered and exited intrinsically as part of the suspend entry and exit processes (refer to Section 9.1.1.6). The minimum device state information that shall be maintained through the duration of each Suspended USB Device State is listed in Table 9-2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 222,
+      "topLeftY": 290,
+      "bottomRightX": 564,
+      "bottomRightY": 307,
+      "content": "Table 9-2. Preserved USB Suspend State Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 314,
+      "bottomRightX": 652,
+      "bottomRightY": 759,
+      "content": "|  Parameter | Suspended USB Device State^{1, 2}  |   |\n| --- | --- | --- |\n|   | **Address** | **Configured**  |\n|  U1_SEL/U1_PEL/U2_SEL/U2_PEL | Yes | Yes  |\n|  HALT_ENDPOINT | N/A | Yes  |\n|  FUNCTION REMOTE WAKEUP | Yes | Yes  |\n|  Isochronous Delay | N/A | Yes  |\n|  U2_Inactivity_Timeout | Yes | Yes  |\n|  Force_LinkPM_Accept | Yes | Yes  |\n|  U1/U2 Enable | Yes | Yes  |\n|  LTM_ENABLE | Yes | Yes  |\n|  LDM_ENABLE | Yes | Yes  |\n|  Data Sequence | N/A | Yes  |\n|  Hub Depth | Yes | Yes  |\n|  Downstream U1_Inactivity Timeout/ U2_Inactivity Timeout (Applicable to hubs) | Yes | Yes  |\n|  Port Configuration Information | Yes | Yes  |\n|  Device Configuration/Interface Setting Information | N/A | Yes  |\n|  Device Address | Yes | Yes  |\n|  Header Sequence Number (HSN) | Yes | Yes  |\n|  Downstream port state | Yes | Yes  |\n|  Link Speed | Yes | Yes  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-145.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 760,
+      "bottomRightX": 660,
+      "bottomRightY": 775,
+      "content": "$^{1}$ No parameters other than HSN, are preserved in the Default Suspended USB Device State.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 775,
+      "bottomRightX": 673,
+      "bottomRightY": 805,
+      "content": "$^{2}$ \"Yes\" indicates a parameter that shall be preserved in the respective Suspended USB Device State.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 827,
+      "bottomRightX": 673,
+      "bottomRightY": 844,
+      "content": "Some additional Class specific device state information may also be retained during suspend.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 855,
+      "bottomRightX": 656,
+      "bottomRightY": 917,
+      "content": "A device shall send a Function Wake Notification after driving resume signaling (refer to Section 6.9.1 and Section 7.5.9). If the device has not been accessed for longer than tNotification (refer to Section 8.13) since sending the last Function Wake Notification, the device shall send the Function Wake Notification again until it has been accessed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

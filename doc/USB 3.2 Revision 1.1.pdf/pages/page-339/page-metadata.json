@@ -1,0 +1,102 @@
+{
+  "index": 338,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 61,
+      "content": "Revision 1.1",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 62,
+      "bottomRightX": 177,
+      "bottomRightY": 77,
+      "content": "June 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 308 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 61,
+      "content": "Universal Serial Bus 3.2",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 62,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 143,
+      "topLeftY": 92,
+      "bottomRightX": 645,
+      "bottomRightY": 110,
+      "content": "Figure 8-66. Sample Smart Enhanced SuperSpeed Isochronous IN Transaction",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 193,
+      "topLeftY": 124,
+      "bottomRightX": 592,
+      "bottomRightY": 865,
+      "content": "![img-157.jpeg](img-157.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-157.jpeg"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 866,
+      "bottomRightX": 486,
+      "bottomRightY": 877,
+      "content": "Note: ep1/ep2 service interval 8 = Bus intervals, each expected to return 10 packets each.",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 569,
+      "topLeftY": 879,
+      "bottomRightX": 592,
+      "bottomRightY": 889,
+      "content": "U-172",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

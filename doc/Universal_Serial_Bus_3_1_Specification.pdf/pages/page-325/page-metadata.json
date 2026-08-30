@@ -1,0 +1,75 @@
+{
+  "index": 324,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 576,
+      "bottomRightY": 130,
+      "content": "#### 8.5.1 Acknowledgement (ACK) Transaction Packet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 135,
+      "bottomRightX": 321,
+      "bottomRightY": 152,
+      "content": "This TP is used for two purposes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 157,
+      "bottomRightX": 694,
+      "bottomRightY": 243,
+      "content": "- For IN endpoints, this TP is sent by the host to request data from a device as well as to acknowledge the previously received data packet.\n- For OUT endpoints, this TP is sent by a device to acknowledge receipt of the previous data packet sent by the host, as well as to inform the host of the number of data packet buffers it has available after receipt of this packet.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 155,
+      "topLeftY": 263,
+      "bottomRightX": 666,
+      "bottomRightY": 370,
+      "content": "![img-204.jpeg](img-204.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-204.jpeg"
+    },
+    {
+      "topLeftX": 294,
+      "topLeftY": 389,
+      "bottomRightX": 531,
+      "bottomRightY": 406,
+      "content": "Figure 8-18. ACK Transaction Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 995,
+      "content": "8-31",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

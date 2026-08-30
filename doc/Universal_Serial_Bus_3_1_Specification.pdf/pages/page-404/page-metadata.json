@@ -1,0 +1,48 @@
+{
+  "index": 403,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 90,
+      "bottomRightX": 702,
+      "bottomRightY": 567,
+      "content": "![img-249.jpeg](img-249.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-249.jpeg"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 569,
+      "bottomRightX": 645,
+      "bottomRightY": 588,
+      "content": "Figure 8-63. Sample Enhanced SuperSpeed Isochronous OUT Transaction",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "8-110",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "index": 3,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 46,
+      "content": "# Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 95,
+      "topLeftY": 92,
+      "bottomRightX": 413,
+      "bottomRightY": 891,
+      "content": "|  Tomas Perez-Rodriguez | Microsoft Corporation  |\n| --- | --- |\n|  Mukund Sankaranarayan | Microsoft Corporation  |\n|  Nathan Sherman | Microsoft Corporation  |\n|  Glen Slick | Microsoft Corporation  |\n|  David Wooten | Microsoft Corporation  |\n|  Rob Young | Microsoft Corporation  |\n|  Nobuo Furuya | NEC Corporation  |\n|  Hiroshi Kariya | NEC Corporation  |\n|  Masami Katagiri | NEC Corporation  |\n|  Yuichi Mizoguchi | NEC Corporation  |\n|  Kats Nakazawa | NEC Corporation  |\n|  Nobuyuki Mizukoshi | NEC Corporation  |\n|  Yutaka Noguchi | NEC Corporation  |\n|  Hajime Nozaki | NEC Corporation  |\n|  Kenji Oguma | NEC Corporation  |\n|  Satoshi Ohtani | NEC Corporation  |\n|  Takanori Saeki | NEC Corporation  |\n|  Eiji Sakai | NEC Corporation  |\n|  Hiro Sakamoto | NEC Corporation  |\n|  Hajime Sakuma | NEC Corporation  |\n|  Makoto Sato | NEC Corporation  |\n|  Hock Seow | NEC Corporation  |\n|  'Peter' Chu Tin Teng | NEC Corporation  |\n|  Yoshiyuki Tomoda | NEC Corporation  |\n|  Satomi Yamauchi | NEC Corporation  |\n|  Yoshiyuki Yamada | NEC Corporation  |\n|  Susumu Yasuda | NEC Corporation  |\n|  Alan Chang | ST-NXP Wireless  |\n|  Wing Yan Chung | ST-NXP Wireless  |\n|  Socol Constantin | ST-NXP Wireless  |\n|  Knud Holtvoeth | NXP Semiconductors, B.V.  |\n|  Linus Kerk | ST-NXP Wireless  |\n|  Martin Klein | NXP Semiconductors, B.V.  |\n|  Geert Knapen | NXP Semiconductors, B.V.  |\n|  Chee Ee Lee | ST-NXP Wireless  |\n|  Christian Paquet | NXP Semiconductors, B.V.  |\n|  Veerappan Rajaram | ST-NXP Wireless  |\n|  Shaun Reemeyer | ST-NXP Wireless  |\n|  Dave Sroka | ST-NXP Wireless  |\n|  Chee-Yen TEE | ST-NXP Wireless  |\n|  Jerome Tjia | ST-NXP Wireless  |\n|  Bart Vertenten | NXP Semiconductors, B.V.  |\n|  Hock Meng Yeo | ST-NXP Wireless  |\n|  Olivier Alavoine | Texas Instruments.  |\n|  David Arciniega | Texas Instruments  |\n|  Richard Baker | Texas Instruments  |\n|  Sujoy Chakravarty | Texas Instruments  |\n|  T. Y. Chan | Texas Instruments  |\n|  Romit Dasgupta | Texas Instruments.  |\n|  Alex Davidson | Texas Instruments  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-2.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 981,
+      "bottomRightX": 105,
+      "bottomRightY": 995,
+      "content": "iv",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

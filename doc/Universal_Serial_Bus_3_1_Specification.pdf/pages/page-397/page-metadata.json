@@ -1,0 +1,67 @@
+{
+  "index": 396,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 276,
+      "topLeftY": 98,
+      "bottomRightX": 553,
+      "bottomRightY": 289,
+      "content": "![img-241.jpeg](img-241.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-241.jpeg"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 300,
+      "bottomRightX": 677,
+      "bottomRightY": 319,
+      "content": "Figure 8-55. Host Stops Servicing Interrupt OUT Transaction Once NRDY is Received",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 286,
+      "topLeftY": 351,
+      "bottomRightX": 538,
+      "bottomRightY": 593,
+      "content": "![img-242.jpeg](img-242.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-242.jpeg"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 606,
+      "bottomRightX": 684,
+      "bottomRightY": 626,
+      "content": "Figure 8-56. Host Resumes Sending Interrupt OUT Transaction After Device Sent ERDY",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "8-103",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

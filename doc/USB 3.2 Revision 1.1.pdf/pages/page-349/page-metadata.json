@@ -1,0 +1,93 @@
+{
+  "index": 348,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 318 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 92,
+      "bottomRightX": 591,
+      "bottomRightY": 125,
+      "content": "Figure 9-1. Peripheral State Diagram and Hub State Diagram\n(Enhanced SuperSpeed Portion Only)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 134,
+      "bottomRightX": 695,
+      "bottomRightY": 776,
+      "content": "![img-160.jpeg](img-160.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-160.jpeg"
+    },
+    {
+      "topLeftX": 153,
+      "topLeftY": 776,
+      "bottomRightX": 507,
+      "bottomRightY": 788,
+      "content": "¹ Refer to Note 2 in Figure 10-25 Peripheral Device Upstream Port State Machine.",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 154,
+      "topLeftY": 788,
+      "bottomRightX": 526,
+      "bottomRightY": 802,
+      "content": "² Refer to sections 10.16.2.6 and 10.16.2.7 for the conditions that cause this transition.",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 824,
+      "bottomRightX": 668,
+      "bottomRightY": 888,
+      "content": "Figure 9-1 is a combined state diagram for both peripherals and hubs. Note that a USB Hub has two discrete state diagrams, one for the Enhanced SuperSpeed portion shown in Figure 9-1 and another for the non-SuperSpeed portion that may be found in Figure 9-1 in the USB 2.0 Specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

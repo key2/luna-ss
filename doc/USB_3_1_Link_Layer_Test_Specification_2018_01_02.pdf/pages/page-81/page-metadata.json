@@ -1,0 +1,182 @@
+{
+  "index": 80,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 116,
+      "bottomRightX": 235,
+      "bottomRightY": 130,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 137,
+      "bottomRightX": 180,
+      "bottomRightY": 151,
+      "content": "7.3.4#4",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 159,
+      "bottomRightX": 254,
+      "bottomRightY": 175,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 181,
+      "bottomRightX": 696,
+      "bottomRightY": 264,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence, with the exception that the LVS will send an LGOOD_0 for the first LMP packet as expected, but will send an LGOOD_n with n ≠ 1 for the second LMP packet.\n2. The test passes if the PUT goes to recovery within tRecoveryTransition after reception of the incorrect LGOOD_n.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 345,
+      "bottomRightX": 371,
+      "bottomRightY": 364,
+      "content": "# TD.7.15 Wrong LCRD_X Sequence Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 365,
+      "bottomRightX": 677,
+      "bottomRightY": 396,
+      "content": "This test verifies that the PUT will go to recovery when it receives an incorrect LCRD_X or LCRD1_X sequence.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 418,
+      "bottomRightX": 235,
+      "bottomRightY": 432,
+      "content": "# Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 440,
+      "bottomRightX": 180,
+      "bottomRightY": 453,
+      "content": "7.3.4#5",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 462,
+      "bottomRightX": 254,
+      "bottomRightY": 477,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 484,
+      "bottomRightX": 696,
+      "bottomRightY": 612,
+      "content": "1. Do steps 1 to 4 of the Link Initialization Sequence, with the exception that the LVS will send an LCRD_A or LCRD1_A for the first LMP packet as expected, but will send an LCRD_X or LCRD1_X with X ≠ B for the second LMP packet.\n2. The test passes if the PUT goes to recovery within tRecoveryTransition after reception of the incorrect LCRD_X or LCRD1_X.\n3. For a Gen 1 device, skip the remaining steps.\n4. The LVS and PUT complete the Link Initialization Sequence.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 620,
+      "bottomRightX": 434,
+      "bottomRightY": 635,
+      "content": "■ If the LVS is configured as a Downstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 641,
+      "bottomRightX": 527,
+      "bottomRightY": 725,
+      "content": "a. LVS issues a GetDeviceDescriptor() request for the PUT.\nb. LVS transmits an LCRD2_A in response to the IN DP.\nc. LVS issues a GetDeviceDescriptor() request for the PUT.\nd. LVS transmits an LCRD2_X with X ≠ B for the IN DP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 732,
+      "bottomRightX": 424,
+      "bottomRightY": 748,
+      "content": "■ If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 755,
+      "bottomRightX": 704,
+      "bottomRightY": 868,
+      "content": "a. The LVS prompts the test operator to have the PUT send two GetDeviceDescriptor requests through USB30CV and then press “OK”.\nb. The test fails if two GetDeviceDescriptor requests have not been received and the test operator has pressed “OK”.\nc. LVS transmits an LCRD2_A in response to the first SETUP DP.\nd. LVS transmits an LCRD2_X with X ≠ B for the second SETUP DP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 876,
+      "bottomRightX": 698,
+      "bottomRightY": 905,
+      "content": "5. The test passes if the PUT goes to Recovery within tRecoveryTransition after reception of the incorrect LCRD2_X.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "73",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

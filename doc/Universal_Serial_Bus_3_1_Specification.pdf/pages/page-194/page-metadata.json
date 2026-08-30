@@ -1,0 +1,129 @@
+{
+  "index": 193,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 690,
+      "bottomRightY": 128,
+      "content": "Figure 6-25 is a plot of the Compliance EQ transfer functions with the values for each of the input parameters.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 148,
+      "bottomRightX": 690,
+      "bottomRightY": 552,
+      "content": "![img-148.jpeg](img-148.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-148.jpeg"
+    },
+    {
+      "topLeftX": 234,
+      "topLeftY": 564,
+      "bottomRightX": 588,
+      "bottomRightY": 583,
+      "content": "Figure 6-25. Gen 2 Compliance Rx EQ Transfer Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 602,
+      "bottomRightX": 307,
+      "bottomRightY": 620,
+      "content": "### 6.8.2.2.2 Reference DFE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 629,
+      "bottomRightX": 695,
+      "bottomRightY": 678,
+      "content": "In addition to the 1st order CTLE, a one-tap reference DFE is used in transmitter compliance testing. The DFE behavior is described by equation (12) and Figure 6-26. The limits on dI are 0 to 50mV.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 692,
+      "bottomRightX": 337,
+      "bottomRightY": 715,
+      "content": "(12) $$y_k = x_k - d_1 \\operatorname{sgn}(y_{k-1})$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 725,
+      "bottomRightX": 462,
+      "bottomRightY": 744,
+      "content": "where yk is the DFE differential output voltage",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 180,
+      "topLeftY": 750,
+      "bottomRightX": 518,
+      "bottomRightY": 769,
+      "content": "y*k is the decision function output voltage, |y*k| = 1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 774,
+      "bottomRightX": 454,
+      "bottomRightY": 793,
+      "content": "xk is the DFE differential input voltage",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 799,
+      "bottomRightX": 429,
+      "bottomRightY": 816,
+      "content": "dI is the DFE feedback coefficient",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 823,
+      "bottomRightX": 391,
+      "bottomRightY": 841,
+      "content": "k is the sample index in UI",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "6-38",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

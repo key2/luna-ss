@@ -1,0 +1,103 @@
+{
+  "index": 153,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 689,
+      "bottomRightY": 144,
+      "content": "Connector and cable assembly designers, as well as system implementers should pay attention to receptacle and cable plug shielding to ensure a low-impedance grounding path. The following are guidelines for EMI and RFI management:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 148,
+      "bottomRightX": 698,
+      "bottomRightY": 548,
+      "content": "- The quality of raw cables should be ensured. The intra-pair skew or the differential to common mode conversion of the SuperSpeed pairs has a significant impact on cable EMI performance and should be controlled within the limits of this specification.\n- The cable external braid should be terminated to the cable plug metal shell as close to 360° as possible. Without appropriate shielding termination, even a perfect cable with zero intra-pair skew may not meet EMI requirements.\n- The wire termination contributes to the differential-to-common-mode conversion. The breakout distance for the wire termination should be kept as small as possible for EMI, RFI, and signal integrity. If possible, symmetry should be maintained for the two lines within a differential pair.\n- The mating interface between the receptacle and cable plug should have a sufficient number of grounding fingers, or springs, to provide a continuous return path from the cable plug to system ground. Friction locks should not compromise ground return connections.\n- The receptacle connectors should be designed with a back-shield as part of the receptacle connector metal shell. The back-shield should have connections to adjacent shell surfaces and provide multiple connections for ground termination. The back-shield should be designed with a short return path to the chassis ground.\n- The receptacle connectors should be connected to metal chassis or enclosures through grounding fingers, screws, or any other way to mitigate EMI and RFI.\n- Plug connectors should have back-shields when possible.\n- Outer connector shell surfaces in the mated configuration should have a maximum aperture size of 2 mm. This applies to both mounted connectors (e.g., soldered to a circuit board) and connectors used in cable assemblies. See Figure 5-34.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 580,
+      "bottomRightX": 209,
+      "bottomRightY": 599,
+      "content": "Aperture",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 601,
+      "bottomRightX": 295,
+      "bottomRightY": 688,
+      "content": "![img-118.jpeg](img-118.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-118.jpeg"
+    },
+    {
+      "topLeftX": 446,
+      "topLeftY": 600,
+      "bottomRightX": 510,
+      "bottomRightY": 619,
+      "content": "Aperture",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 363,
+      "topLeftY": 620,
+      "bottomRightX": 462,
+      "bottomRightY": 677,
+      "content": "![img-119.jpeg](img-119.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-119.jpeg"
+    },
+    {
+      "topLeftX": 586,
+      "topLeftY": 617,
+      "bottomRightX": 652,
+      "bottomRightY": 635,
+      "content": "Aperture",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 723,
+      "bottomRightX": 558,
+      "bottomRightY": 740,
+      "content": "Figure 5-34. Examples of Connector Apertures",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-66",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

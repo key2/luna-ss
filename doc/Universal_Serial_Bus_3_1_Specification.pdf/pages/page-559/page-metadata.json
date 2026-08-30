@@ -1,0 +1,48 @@
+{
+  "index": 558,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 412,
+      "bottomRightY": 110,
+      "content": "Table 10-14. Port Change Field, wPortChange",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 111,
+      "bottomRightX": 705,
+      "bottomRightY": 704,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0 | Connect Status Change (C_PORT_CONNECTION): Indicates a change has occurred in the port's Current Connect Status. The hub device sets this field as described in Section 10.3.1. **Value****Meaning** 0 No change has occurred to Current Connect status 1 Current Connect status has changed  |\n|  1-2 | Reserved  |\n|  3 | Over-Current Indicator Change (C_PORT_OVER_CURRENT): This field applies only to hubs that report over-current conditions on a per-port basis (as reported in the hub descriptor). **Value****Meaning** 0 No change has occurred to Over-Current Indicator 1 Over-Current Indicator has changed If the hub does not report over-current on a per-port basis, then this field is always zero.  |\n|  4 | Reset Change (C_PORT_RESET): This field is set when reset processing for any type of reset on this port is complete. **Value****Meaning** 0 No change 1 Reset complete  |\n|  5 | BH Reset Change (C_BH_PORT_RESET): This field is set when a warm reset processing on this port is complete **Value****Meaning** 0 No change 1 Reset complete  |\n|  6 | Port Link State Change (C_PORT_LINK_STATE): This field is set when the port link status has changed as described below. **Value****Meaning** 0 No change 1 Link Status has changed  |\n|  7 | Port Config Error (C_PORT_CONFIG_ERROR): This field is set when the port fails to configure its link partner. **Value****Meaning** 0 Port Link Configuration was successful 1 Port Link Configuration was unsuccessful  |\n|  8-15 | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-243.md"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 697,
+      "bottomRightY": 994,
+      "content": "10-81",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

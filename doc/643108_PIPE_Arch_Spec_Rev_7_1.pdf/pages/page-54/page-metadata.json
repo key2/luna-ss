@@ -1,0 +1,57 @@
+{
+  "index": 53,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 501,
+      "bottomRightY": 138,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 6 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 690,
+      "bottomRightY": 745,
+      "content": "|  Name | Active Level | Description |   |   |   | Relevant Protocols  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  PowerDown[3:0] DisplayPort mode | N/A | DisplayPort mode power states: [3][2][1][0] Description 0 0 0 0 POWER_STATE_0 operational state 0 0 0 1 POWER_STATE_1 PHY-specific 0 0 1 0 POWER_STATE_2 PHY-specific 0 0 1 1 POWER_STATE_3 PHY-specific 0 1 0 0 POWER_STATE_4 PHY-specific 0 1 0 1 POWER_STATE_5 PHY-specific 0 1 1 0 POWER_STATE_6 PHY-specific 0 1 1 1 POWER_STATE_7 PHY-specific 1 0 0 0 POWER_STATE_8 PHY-specific 1 0 0 1 POWER_STATE_9 PHY-specific 1 0 1 0 POWER_STATE_10 PHY-specific 1 0 1 1 POWER_STATE_11 PHY-specific 1 1 0 0 POWER_STATE_12 PHY-specific 1 1 0 1 POWER_STATE_13 PHY-specific 1 1 1 0 POWER_STATE_14 PHY-specific 1 1 1 1 POWER_STATE_15 PHY-specific A PIPE-compliant DPRx PHY is recommended to support the following power states, although the mapping to the above power state encodings is PHY implementation specific: |   |   |   | DisplayPort  |\n|   |   |  Main Link Rx | Aux Link | Exit Latency | Required  |   |\n|   |   |  Enabled | Enabled | N/A | Yes  |   |\n|   |   |  Disabled | Enabled for differential signal monitoring | <1 ms | Yes  |   |\n|   |   |  Disabled | Enabled for differential signal monitoring | <80 ms | No  |   |\n|   |   |  Disabled | Enabled | <0.5 | Yes for eDP only  |   |\n|   |   |  Disabled | Enabled | <20 us | Yes for eDP only  |   |\n|   |   |  A PIPE compliant DPTX PHY is recommended to support the following power states, although the mapping to specific power state encodings is PHY implementation specific:  |   |   |   |   |\n|   |   |  Main Link TX | Aux Link | DP_PWR  |   |   |\n|   |   |  Enabled | Enabled | Enabled  |   |   |\n|   |   |  Disabled | Enabled | Enabled  |   |   |\n|   |   |  If PowerDown changes during IORecal, RxEqEval, or RxEqTraining operations, the PHY must abort the request and return the handshake acknowledgment.  |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-26.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 955,
+      "bottomRightX": 105,
+      "bottomRightY": 966,
+      "content": "54",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "index": 286,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 256 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 530,
+      "bottomRightY": 109,
+      "content": "In Table 8-28, DPP Error may be due to one or more of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 116,
+      "bottomRightX": 577,
+      "bottomRightY": 200,
+      "content": "- CRC incorrect\n- DPP aborted\n- DPP missing\n- Data length in the DPH does not match the actual data payload length",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 232,
+      "bottomRightX": 586,
+      "bottomRightY": 266,
+      "content": "Table 8-28. Host Responses to Data Received from a Device (Bulk, Control, and Interrupt Endpoints)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 274,
+      "bottomRightX": 673,
+      "bottomRightY": 540,
+      "content": "|  DPH has Invalid Values | Data Packet Payload Error | Host Can Accept Data | TP Returned by Host  |\n| --- | --- | --- | --- |\n|  Yes | Do not care | Do not care | Discard data and do not send any TP.  |\n|  No | Yes | Do not care | Discard data and send an ACK TP with the **Retry** bit set, requesting for zero or more DPs with the **Sequence Number** field set to the sequence number of the DP that was corrupted.  |\n|  No | No | No | Discard data; send an ACK TP with the **Retry** bit set requesting for one or more DPs with the **Sequence Number** field set to the sequence number of the DP that the host was unable to receive. The ACK TP shall have the **Host Error** bit set to one to indicate that the host was unable to accept the data.  |\n|  No | No | Yes | Accept data and send an ACK TP requesting for zero or more DPs with the **Sequence Number** field set to the sequence number of the next DP expected. This is also an implicit acknowledgement that this DP was received successfully.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-132.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 561,
+      "bottomRightX": 448,
+      "bottomRightY": 577,
+      "content": "### 8.11.3 Device Response to Data Received from the Host",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 584,
+      "bottomRightX": 661,
+      "bottomRightY": 630,
+      "content": "TP responses by a device to data received from the host for bulk, control, and interrupt endpoints are shown in Table 8-29. A DPH is considered to be invalid if one or more of the following conditions exist:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 637,
+      "bottomRightX": 657,
+      "bottomRightY": 771,
+      "content": "- It has an incorrect Device Address\n- Its endpoint number and direction does not refer to an endpoint that is part of the current configuration\n- It does not have the expected sequence number\n- Its Data length in the DPH is greater than the endpoint's maximum packet size\n- Its TT does not match the endpoint type (for a device operating in SuperSpeedPlus mode).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 793,
+      "bottomRightX": 529,
+      "bottomRightY": 808,
+      "content": "In Table 8-29, DPP Error may be due to one or more of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 815,
+      "bottomRightX": 578,
+      "bottomRightY": 897,
+      "content": "- CRC incorrect\n- DPP aborted\n- DPP missing\n- Data length in the DPH does not match the actual data payload length",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

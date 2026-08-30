@@ -1,0 +1,119 @@
+{
+  "index": 491,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 106,
+      "bottomRightX": 619,
+      "bottomRightY": 128,
+      "content": "### 10.2.3 Downstream/Upstream Port Link State Transitions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 133,
+      "bottomRightX": 697,
+      "bottomRightY": 267,
+      "content": "The hub shall evaluate the link power state of its downstream ports such that it propagates the highest link state of any of its downstream ports to its upstream port when there is no pending upstream traffic. U0 is the highest link state, followed by U1, then U2, then U3, then Rx.Detect, and then eSS.Disabled. The order of the other link states is undefined and implementation dependent. If an upstream port link state transition would result in an upstream port link state that has been disabled by software, the hub shall transition the upstream port link to the next highest U-state that is enabled. The hub never automatically attempts to transition the hub upstream port to U3 or lower state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 273,
+      "bottomRightX": 676,
+      "bottomRightY": 324,
+      "content": "The downstream port state machines presented in this chapter provide the specific timing requirements for changing the upstream port link state in response to downstream port link state changes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 328,
+      "bottomRightX": 684,
+      "bottomRightY": 379,
+      "content": "The hub also shall initiate a link state transition on the appropriate downstream port whenever it receives a packet that is routed to downstream port that is not in U0. The hub upstream port state machines provided in this chapter provide the specific timing requirements for these transitions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 384,
+      "bottomRightX": 673,
+      "bottomRightY": 418,
+      "content": "If enabled, port status change interrupts, e.g., due to a connect event on a downstream port, will cause the upstream link to initiate a transition to U0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 440,
+      "bottomRightX": 465,
+      "bottomRightY": 463,
+      "content": "### 10.3 Hub Downstream Facing Ports",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 471,
+      "bottomRightX": 689,
+      "bottomRightY": 505,
+      "content": "The following sections provide a functional description of a state machine that exhibits the correct required behavior for a downstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 510,
+      "bottomRightX": 681,
+      "bottomRightY": 594,
+      "content": "Figure 10-10 is an illustration of the downstream facing port state machine. Each of the states is described in Section 10.4.2. In the diagram below, some of the entry conditions into states are shown without origin. These conditions have multiple origin states and the individual transitions lines are not shown to simplify the diagram. The description of the entered state indicates from which states the transition is applicable.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 616,
+      "bottomRightX": 202,
+      "bottomRightY": 634,
+      "content": "# NOTE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 641,
+      "bottomRightX": 668,
+      "bottomRightY": 675,
+      "content": "For the root hub, the signals from the upstream facing port state machines are implementation dependent.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-14",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

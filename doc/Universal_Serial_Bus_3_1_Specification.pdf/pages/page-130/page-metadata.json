@@ -1,0 +1,84 @@
+{
+  "index": 129,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 92,
+      "bottomRightX": 698,
+      "bottomRightY": 245,
+      "content": "Table 5-11 shows the wire connections for the USB 3.1 Micro-A to USB 3.1 Micro-B cable assembly. The ID pin on a USB 3.1 Micro-A plug shall be connected to the GND pin. The ID pin on a USB 3.1 Micro-B plug shall be a no-connect or connected to ground by a resistance of greater than Rb_PLUG_ID (1 MΩ minimum). See the Universal Serial Bus Power Delivery Specification for additional details regarding electrical connections to ID pins. An OTG device is required to be able to detect whether a USB 3.1 Micro-A or USB 3.1 Micro-B plug is inserted by determining if the ID pin resistance to ground is less than Ra_PLUG_ID (10 Ω maximum) or if the resistance to ground is greater than Rb_PLUG_ID. Any ID resistance less than Ra_PLUG_ID shall be treated as ID = FALSE and any resistance greater than Rb_PLUG_ID shall be treated as ID = TRUE.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 258,
+      "bottomRightX": 571,
+      "bottomRightY": 275,
+      "content": "Table 5-11. USB 3.1 Micro-A to USB 3.1 Micro-B Cable Assembly Wiring",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 278,
+      "bottomRightX": 706,
+      "bottomRightY": 527,
+      "content": "|  USB 3.1 Micro-A Plug |   | Wire |   | USB 3.1 Micro-B Plug  |   |\n| --- | --- | --- | --- | --- | --- |\n|  Pin Number | Signal Name | Wire Number | Signal Name | Pin Number | Signal Name  |\n|  1 | VBUS | 1 | PWR | 1 | VBUS  |\n|  2 | D- | 2 | D- | 2 | D-  |\n|  3 | D+ | 3 | D+ | 3 | D+  |\n|  4 | ID (see Note 1) | No Connect |   | 4 | ID (see Note 2)  |\n|  5 | GND | 4 | GND_PWRrt | 5 | GND  |\n|  6 | MicA_SSTX- | 5 | P1- | 9 | MicB_SSRX-  |\n|  7 | MicA_SSTX+ | 6 | P1+ | 10 | MicB_SSRX+  |\n|  8 | GND_DRAIN | 7 and 10 | P1_Drain P2_Drain | 8 | GND_DRAIN  |\n|  9 | MicA_SSRX- | 8 | P2- | 6 | MicB_SSTX-  |\n|  10 | MicA_SSRX+ | 9 | P2+ | 7 | MicB_SSTX+  |\n|  Shell | Shield | Braid | Shield | Shell | Shield  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-43.md"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 529,
+      "bottomRightX": 158,
+      "bottomRightY": 540,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 542,
+      "bottomRightX": 259,
+      "bottomRightY": 554,
+      "content": "1. Connect to the GND.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 140,
+      "topLeftY": 556,
+      "bottomRightX": 519,
+      "bottomRightY": 570,
+      "content": "2. No connect or connect to ground by a resistance greater than 1 MΩ minimum.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-42",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

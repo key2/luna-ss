@@ -1,0 +1,129 @@
+{
+  "index": 129,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 121,
+      "bottomRightX": 611,
+      "bottomRightY": 144,
+      "content": "## 8.6 Selectable De-Emphasis – PCIe Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 151,
+      "bottomRightX": 686,
+      "bottomRightY": 249,
+      "content": "While in the P0 power state and transmitting at 5.0 GT/s, 8.0 GT/s, 16 GT/s, 32 GT/s, 64 GT/s, or 128 GT/s, the PHY can be instructed to change the value of the transmitter equalization. When the signaling rate is 5.0 GT/s and the MAC changes TxDeemph, the PHY must be capable of transmitting with the new setting within 128 ns. When the signaling rate is 8.0 GT/s, 16 GT/s, 32 GT/s, 64 GT/s, or 128 GT/s and the MAC changes TxDeemph, the PHY must be capable of transmitting with the new setting within 256 ns.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 258,
+      "bottomRightX": 657,
+      "bottomRightY": 288,
+      "content": "There is a limited set of legal TxDeemph and Rate combinations that a MAC can select. See the PCIe base specification for a complete description.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 294,
+      "bottomRightX": 684,
+      "bottomRightY": 324,
+      "content": "The MAC must ensure that TxDeemph is selecting -3.5 db whenever Rate is selecting 2.5 GT/s.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 333,
+      "bottomRightX": 392,
+      "bottomRightY": 348,
+      "content": "Figure 8-18. Selecting Tx De-Emphasis Value",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 385,
+      "bottomRightX": 652,
+      "bottomRightY": 545,
+      "content": "![img-39.jpeg](img-39.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-39.jpeg"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 547,
+      "bottomRightX": 415,
+      "bottomRightY": 566,
+      "content": "Selecting Tx De-emphasis value",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 610,
+      "bottomRightX": 655,
+      "bottomRightY": 652,
+      "content": "## 8.7 Receiver Detection – PCIe Mode and USB Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 660,
+      "bottomRightX": 686,
+      "bottomRightY": 804,
+      "content": "While in the P1 or optionally P2 power state and PCIe mode or in the P2 or P3 power state and USB mode, the PHY can be instructed to perform a receiver detection operation to determine if there is a receiver at the other end of the link. Basic operation of receiver detection is that the MAC requests the PHY to do a receiver detect sequence by asserting TxDetectRx/Loopback. When the PHY has completed the receiver detect sequence, it asserts PhyStatus for one clock and drives the RxStatus signals to the appropriate code. After the receiver detection has completed (as signaled by the assertion of PhyStatus), the MAC must deassert TxDetectRx/Loopback before initiating another receiver detection, a power state transition, or signaling a rate change.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 811,
+      "bottomRightX": 684,
+      "bottomRightY": 897,
+      "content": "Once the MAC has requested a receiver detect sequence (by asserting TxDetectRx/Loopback), the MAC must leave TxDetectRx/Loopback asserted until after the PHY has signaled completion by the assertion of PhyStatus. When receiver detection is performed in USB mode with the PHY in P3 or PCIe in P2, the PHY asserts PhyStatus and signals the appropriate receiver detect value until the MAC deasserts TxDetectRx/Loopback.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "130",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

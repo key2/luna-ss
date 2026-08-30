@@ -1,0 +1,164 @@
+{
+  "index": 565,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 92,
+      "bottomRightX": 676,
+      "bottomRightY": 128,
+      "content": "It is a Request Error if wValue is not a feature selector listed in Table 10-9, if wIndex specifies a port that does not exist, or if wLength is not as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 132,
+      "bottomRightX": 555,
+      "bottomRightY": 148,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 172,
+      "bottomRightX": 463,
+      "bottomRightY": 196,
+      "content": "### 10.17 Host Root (Downstream) Ports",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 202,
+      "bottomRightX": 676,
+      "bottomRightY": 253,
+      "content": "The root ports of a USB host have similar functional requirements to the downstream ports of a USB hub. This section summarizes which requirements also apply to the root port of a host and identifies any additional or different requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 258,
+      "bottomRightX": 672,
+      "bottomRightY": 292,
+      "content": "A host root port shall follow the requirements for a downstream facing hub port in Section 10.2 except for Section 10.2.3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 297,
+      "bottomRightX": 672,
+      "bottomRightY": 330,
+      "content": "A host root port shall follow the requirements for a downstream facing hub port in Section 10.3 with the following exceptions and additions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 335,
+      "bottomRightX": 697,
+      "bottomRightY": 507,
+      "content": "- None of the transitions and/or transition conditions based on the state of the hub upstream port apply to a root port.\n- A host shall have control mechanisms in the host interface that allow software to achieve equivalent behavior to hub downstream port behavior in response to SetPortFeature or ClearPortFeature requests documented in Section 10.3.\n- A host shall implement port status bits consistent with the downstream port state descriptions in Section 10.3.\n- A host is required to provide a mechanism to correlate each USB 2.0 port with any Enhanced SuperSpeed port that shares the same physical connector. Note that this is similar to the requirement for USB hubs in Section 10.3.3.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 512,
+      "bottomRightX": 672,
+      "bottomRightY": 547,
+      "content": "A host root port shall follow the requirements for a downstream facing hub port in Section 10.4 with the same general exceptions already noted in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 552,
+      "bottomRightX": 665,
+      "bottomRightY": 586,
+      "content": "A host shall implement port status bits through the host interface that are equivalent to all port status bit definitions in this chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 591,
+      "bottomRightX": 682,
+      "bottomRightY": 625,
+      "content": "A host shall have mechanisms to achieve equivalent control over its root ports as provided by the SetPortFeature, ClearPortFeature, and GetPortStatus requests documented in this chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 647,
+      "bottomRightX": 496,
+      "bottomRightY": 671,
+      "content": "### 10.18 Peripheral Device Upstream Ports",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 678,
+      "bottomRightX": 697,
+      "bottomRightY": 728,
+      "content": "The upstream port of a USB peripheral device has similar functional requirements to the upstream port of a USB hub. This section summarizes which requirements also apply to the upstream port of a peripheral device and identifies any additional or different requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 742,
+      "bottomRightX": 479,
+      "bottomRightY": 765,
+      "content": "### 10.18.1 Peripheral Device Upstream Ports",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 770,
+      "bottomRightX": 684,
+      "bottomRightY": 803,
+      "content": "A peripheral device shall follow the requirements for an upstream facing hub port in Section 10.5 with the following exceptions and additions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 808,
+      "bottomRightX": 679,
+      "bottomRightY": 878,
+      "content": "- A peripheral device shall not attempt to connect on the USB 2.0 interface when the port is in the USPORT.Connected state.\n- A peripheral device shall not attempt to connect on the USB 2.0 interface unless the port has entered the USPORT.Powered-off state and VBUS is still present as shown in Figure 10-12.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-88",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

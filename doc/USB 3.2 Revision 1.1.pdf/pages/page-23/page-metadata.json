@@ -1,0 +1,57 @@
+{
+  "index": 22,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 418,
+      "bottomRightY": 61,
+      "content": "- xxiii -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 91,
+      "bottomRightX": 678,
+      "bottomRightY": 911,
+      "content": "|  E.3.8 | U1 | 513  |\n| --- | --- | --- |\n|   | E.3.8.1 U1 Requirements | 513  |\n|   | E.3.8.2 Exit from U1 | 514  |\n|  E.3.9 | U2 | 515  |\n|   | E.3.9.1 U2 Requirements | 515  |\n|   | E.3.9.2 Exit from U2 | 515  |\n|  E.3.10 | U3 | 515  |\n|   | E.3.10.1 U3 Requirements | 515  |\n|   | E.3.10.2 Exit from U3 | 516  |\n|  E.3.11 | Recovery | 517  |\n|   | E.3.11.1 Exit from Recovery.TSx | 517  |\n|   | E.3.11.2 Recovery.TSx | 517  |\n|   | E.3.11.3 Recovery.Idle | 518  |\n|  E.3.12 | PassThrough Loopback | 519  |\n|   | E.3.12.1 PassThrough Loopback Requirements | 519  |\n|   | E.3.12.2 Exit from PassThrough Loopback | 520  |\n|  E.3.13 | Local Loopback | 520  |\n|   | E.3.13.1 Local Loopback Requirements | 520  |\n|   | E.3.13.2 Exit from Local Loopback.Active | 520  |\n|   | E.3.13.3 Exit from Local Loopback.Exit | 520  |\n|  E.3.14 | Hot Reset | 520  |\n|   | E.3.14.1 Hot Reset Requirements | 520  |\n|   | E.3.14.2 Exit from Hot Reset | 521  |\n|  E.4 | SRIS Re-timer Clock Offset Compensation | 521  |\n|   | E.4.1 Gen 1x1 Operation | 521  |\n|   | E.4.2 Gen 1x2 Operation | 521  |\n|   | E.4.3 Gen 2 Operation | 521  |\n|  E.5 | Bit-Level Re-timer Jitter Transfer Function | 522  |\n|  E.6 | Re-driver Architectural Overview and Requirement | 524  |\n|   | E.6.1 Re-driver Link Topology | 524  |\n|   | E.6.2 Re-driver Power Management | 525  |\n|   | E.6.3 Re-driver Behavioral Requirement | 525  |\n|   | E.6.3.1 LD Functional Requirements | 526  |\n|   | E.6.3.2 Disabled | 527  |\n|   | E.6.3.3 Connect | 528  |\n|   | E.6.3.4 Active | 529  |\n|   | E.6.3.5 Slumber | 529  |\n|  E.6.4 | LRD Electrical Requirements | 530  |\n|   | E.6.4.1 Test Fixtures | 530  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-16.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

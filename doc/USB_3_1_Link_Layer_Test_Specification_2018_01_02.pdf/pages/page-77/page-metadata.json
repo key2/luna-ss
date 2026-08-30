@@ -1,0 +1,146 @@
+{
+  "index": 76,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 61,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 93,
+      "bottomRightX": 702,
+      "bottomRightY": 200,
+      "content": "8. The LVs will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port, LDN when it is configured as a Downstream Port).\n9. The test passes if the exchanges are successful, no timeout is detected, no recovery is entered, the PUT responds to the invalid packets with an LBAD, all other packets are successfully received, all credits are restored and the link stays in U0 for at least 50ms.\n10. Repeat steps 7 through 9 for Condition B listed above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 258,
+      "bottomRightX": 419,
+      "bottomRightY": 273,
+      "content": "### TD.7.8 TX Header Packet Retransmission Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 278,
+      "bottomRightX": 632,
+      "bottomRightY": 293,
+      "content": "This test verifies that the PUT will correctly retransmit a header packet on receipt of an LBAD.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 299,
+      "bottomRightX": 234,
+      "bottomRightY": 314,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 321,
+      "bottomRightX": 211,
+      "bottomRightY": 334,
+      "content": "7.2.4.1.3#1, 2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 343,
+      "bottomRightX": 253,
+      "bottomRightY": 358,
+      "content": "#### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 366,
+      "bottomRightX": 688,
+      "bottomRightY": 420,
+      "content": "1. Do steps 1 to 3 of the Link Initialization Sequence.\n2. The LVS and the PUT will exchange the Port Configuration transaction, but in this case the LVS will respond to the first packet sent by the PUT with an LBAD.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 425,
+      "bottomRightX": 433,
+      "bottomRightY": 440,
+      "content": "■ If the LVS is configured as a Downstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 449,
+      "bottomRightX": 699,
+      "bottomRightY": 645,
+      "content": "a. LVS waits for the PUT's Port Capability LMP.\nb. LVS verifies that the Port Capability LMP is valid.\nc. LVS responds to the PUT with an LBAD.\nd. LVS waits for the PUT to transmit an LRTY.\ne. LVS waits for the retransmitted packet.\nf. LVS verifies that the retransmitted packet is the same as the first packet sent by the device.\ng. LVS transmits its Port Capability LMP and Port Configuration LMP.\nh. LVS waits for the PUT Port Configuration Response LMP.\ni. LVS verifies the PUT's Port Configuration Response LMP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 651,
+      "bottomRightX": 424,
+      "bottomRightY": 667,
+      "content": "■ If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 674,
+      "bottomRightX": 699,
+      "bottomRightY": 894,
+      "content": "a. LVS waits for the PUT's Port Capability LMP.\nb. LVS verifies that the Port Capability LMP is valid.\nc. LVS transmits its Port Capability LMP.\nd. LVS responds to the PUT with an LBAD.\ne. LVS waits for the PUT to transmit an LRTY.\nf. LVS waits for the retransmitted packet.\ng. LVS verifies that the retransmitted packet is the same as the first packet sent by the device.\nh. LVS waits for the PUT's Port Configuration LMP.\ni. LVS verifies that the Port Configuration LMP is valid.\nj. LVS transmits its Port Configuration Response LMP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "69",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

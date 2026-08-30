@@ -1,0 +1,110 @@
+{
+  "index": 165,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 93,
+      "bottomRightX": 285,
+      "bottomRightY": 172,
+      "content": "- TSEQ Ordered Set\n- SYNC Ordered Set\n- SKP Ordered Set\n- SDS Ordered Set",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 189,
+      "bottomRightX": 460,
+      "bottomRightY": 210,
+      "content": "### 6.3.2.3 Data Scrambling for Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 214,
+      "bottomRightX": 677,
+      "bottomRightY": 230,
+      "content": "The scrambler used for Gen 2 operation is different than the scrambler used for Gen 1 operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 230,
+      "bottomRightX": 621,
+      "bottomRightY": 247,
+      "content": "The LFSR uses the following polynomial: G(X) = X²³ + X²¹ + X¹⁶ + X⁸ + X⁵ + X² + 1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 256,
+      "bottomRightX": 429,
+      "bottomRightY": 273,
+      "content": "The scrambler has the following modes of operation:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 276,
+      "bottomRightX": 587,
+      "bottomRightY": 331,
+      "content": "1. The scrambler advances and is XORed with the data.\n2. The scrambler advances and is bypassed (not XORed with the data).\n3. The scrambler does not advance and is bypassed (not XORed with the data).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 337,
+      "bottomRightX": 335,
+      "bottomRightY": 352,
+      "content": "The scrambling rules are as follows:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 357,
+      "bottomRightX": 698,
+      "bottomRightY": 709,
+      "content": "1. The 4 bits of the Block Header bypass and do not advance the scrambler.\n2. TS1, TS2 and TSEQ:\n  a. Symbol 0 of a TS1, TS2, or TSEQ Ordered Set bypass and advances the scrambler.\n  b. Symbols 1 to 13 are scrambled.\n  c. Symbols 14 and 15 bypass the scrambler and the scrambler advances if being used for DC balance. If they are not being used for DC balance then they are scrambled.\n3. SKP Ordered Sets bypass and do not advance the scrambler.\n4. SDS Ordered Sets bypass the scrambler, but the scrambler advances.\n5. All symbols of a SYNC Ordered Set bypass the scrambler. The scrambling LFSR is initialized after the last Symbol of a SYNC Ordered Set is transmitted. The descrambling LFSR is initialized after the last Symbol of a SYNC Ordered Set is received.\n6. Receivers evaluate Symbol 0 of Control Blocks to determine whether to advance their LFSR. If Symbol 0 of the Block is SKP or SKPEND then the LFSR is not advanced for any Symbol of that Block. Otherwise, the LFSR is advanced for all Symbols of the Block.\n7. All 16 Symbols of a Data Block are scrambled and advance the scrambler.\n8. For Symbols that need to be scrambled the least significant bit is scrambled first and the most significant bit is scrambled last.\n9. The seed value for the LFSR is 1D BFBCh.\n10. Every 16384 TSEQ sets a SYNC Ordered Set shall be inserted to reset scrambler and to aid in block alignment.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 715,
+      "bottomRightX": 477,
+      "bottomRightY": 732,
+      "content": "Figure 6-11 depicts the LFSR for the scrambling polynomial.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "6-10",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

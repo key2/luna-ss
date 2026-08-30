@@ -1,0 +1,120 @@
+{
+  "index": 405,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 375 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 93,
+      "bottomRightX": 667,
+      "bottomRightY": 138,
+      "content": "The following sections present the typical flow for connection management in various types of systems for the simple topology shown in Figure 10-4 when the host system is first powered on.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 152,
+      "bottomRightX": 671,
+      "bottomRightY": 182,
+      "content": "Note: These connection examples outline cases where the system operates as expected. The handling of error cases are specified later in this chapter.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 281,
+      "topLeftY": 195,
+      "bottomRightX": 506,
+      "bottomRightY": 212,
+      "content": "Figure 10-4. Simple USB Topology",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 223,
+      "topLeftY": 221,
+      "bottomRightX": 542,
+      "bottomRightY": 586,
+      "content": "![img-165.jpeg](img-165.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-165.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 608,
+      "bottomRightX": 475,
+      "bottomRightY": 623,
+      "content": "### 10.1.1 Connecting to an Enhanced SuperSpeed Capable Host",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 631,
+      "bottomRightX": 638,
+      "bottomRightY": 662,
+      "content": "When the host is powered off, the hub does not provide power to its downstream ports unless the hub supports power applications (refer to Section 10.3.1.1).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 674,
+      "bottomRightX": 599,
+      "bottomRightY": 705,
+      "content": "When a hub is connected to a powered port and it detects Enhanced SuperSpeed connectivity, by default the following is the typical sequence of events:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 718,
+      "bottomRightX": 670,
+      "bottomRightY": 906,
+      "content": "- The upstream facing port will train at the fastest speed supported by its link partner as defined in the link chapter.\n- Simultaneously, the hub powers its downstream ports and trains each link at the fastest speed supported by its link partner.\n- If a downstream port trained at a higher speed than the upstream port then the downstream port shall retrain at a speed no faster than the upstream port.\n- Hub connects both as an Enhanced SuperSpeed hub device and as a high-speed hub device.\n- Host system begins hub enumeration at high-speed and Gen X speed.\n- Host system begins device enumeration at Gen X speed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

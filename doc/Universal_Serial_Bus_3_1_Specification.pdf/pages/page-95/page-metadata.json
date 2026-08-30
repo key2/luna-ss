@@ -1,0 +1,58 @@
+{
+  "index": 94,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 340,
+      "topLeftY": 131,
+      "bottomRightX": 561,
+      "bottomRightY": 251,
+      "content": "![img-17.jpeg](img-17.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-17.jpeg"
+    },
+    {
+      "topLeftX": 197,
+      "topLeftY": 335,
+      "bottomRightX": 652,
+      "bottomRightY": 604,
+      "content": "![img-18.jpeg](img-18.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-18.jpeg"
+    },
+    {
+      "topLeftX": 209,
+      "topLeftY": 664,
+      "bottomRightX": 616,
+      "bottomRightY": 682,
+      "content": "Figure 5-1. USB 3.1 Standard-A Receptacle Interface Dimensions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 676,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-7",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

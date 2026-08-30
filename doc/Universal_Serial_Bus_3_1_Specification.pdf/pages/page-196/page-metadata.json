@@ -1,0 +1,120 @@
+{
+  "index": 195,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 697,
+      "bottomRightY": 144,
+      "content": "specification and not meet all the values in this table (many of which are not measurable in a finished product). Similarly, a receiver that meets all the values in this table is not guaranteed to be in full compliance with the normative part of this specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 162,
+      "bottomRightX": 465,
+      "bottomRightY": 177,
+      "content": "Table 6-22. Receiver Informative Electrical Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 180,
+      "bottomRightX": 704,
+      "bottomRightY": 540,
+      "content": "|  Symbol | Parameter | Gen 1 (5.0 GT/s) | Gen 2 (10 GT/s) | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  V_{RX-DIFF-PP-POST-EQ} | Differential Rx peak-to-peak voltage | 30 (min) | 30 (min) | mV | Measured after the Rx EQ function (Section 6.8.2).  |\n|  t_{RX-TJ} | Max Rx inherent timing error | 0.45 (max) | 0.394 (max) | UI | Measured after the Rx EQ function (Section 6.8.2).  |\n|  t_{RX-DJ-DD} | Max Rx inherent deterministic timing error | 0.285 (max) | 0.21 (max) | UI | Maximum Rx inherent deterministic timing error  |\n|  C_{RX-PARASITIC} | Rx input capacitance for return loss | 1.1 (max) | 1.0 (max) | pF |   |\n|  V_{RX-CM-AC-P} | Rx AC common mode voltage | 150 (max) | 150 (max) | mV Peak | Measured at Rx pins into a pair of 50 Ω terminations into ground. Includes Tx and channel conversion, AC range up to 5 GHz  |\n|  V_{RX-CM-DC-ACTIVE-IDLE-DELTA_P} | Rx AC common mode voltage during the U1 to U0 transition | 200 (max) | 200 (max) | mV Peak | Measured at Rx pins into a pair of 50 Ω terminations into ground. Includes Tx and channel conversion, AC range up to 5 GHz  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-75.md"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 553,
+      "bottomRightX": 353,
+      "bottomRightY": 573,
+      "content": "### 6.8.4 Receiver Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 579,
+      "bottomRightX": 552,
+      "bottomRightY": 597,
+      "content": "The entry and exit process for receiver loopback is described in Chapter 7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 605,
+      "bottomRightX": 689,
+      "bottomRightY": 673,
+      "content": "Receiver loopback must be retimed. Direct connection from the Rx amplifier to the transmitter is not allowed for loopback mode. The receiver shall continue to process SKPs as appropriate. SKP symbols shall be consumed or inserted as required for proper clock tolerance compensation. Over runs or under runs of the clock tolerance buffers will reset the buffers to the neutral position.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 681,
+      "bottomRightX": 623,
+      "bottomRightY": 698,
+      "content": "During loopback the receiver shall process the Bit Error Rate Test (BERT) commands.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 707,
+      "bottomRightX": 695,
+      "bottomRightY": 759,
+      "content": "Loopback shall occur in the 10-bit domain for Gen 1 operation and in the 132-bit domain for Gen 2 operation. No error correction is allowed. All symbols shall be transmitted as received with the exception of SKP and BERT commands.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 776,
+      "bottomRightX": 457,
+      "bottomRightY": 796,
+      "content": "#### 6.8.4.1 Loopback BERT for Gen 1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 800,
+      "bottomRightX": 692,
+      "bottomRightY": 885,
+      "content": "During loopback the receiver processes the BERT ordered sets BRST, BDAT, and BERC. These ordered sets are described in Table 6-23 through Table 6-26. BRST and BDAT are looped back as received. BERC ordered sets are not looped back but are replaced with BCNT ordered sets. Any time a BRST is received, the error count register EC is set to 0 and the scrambling LFSR is set to 0FFFFh. Any number of consecutive BRST ordered sets may be received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "6-40",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

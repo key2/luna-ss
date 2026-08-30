@@ -1,0 +1,85 @@
+{
+  "index": 456,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 593,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 108,
+      "bottomRightX": 452,
+      "bottomRightY": 124,
+      "content": "Table 9-13. Format of a Device Capability Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 128,
+      "bottomRightX": 700,
+      "bottomRightY": 227,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of this descriptor.  |\n|  1 | bDescriptorType | 1 | Constant | Descriptor type: DEVICE CAPABILITY Type.  |\n|  2 | bDevCapabilityType | 1 | Number | Valid values are listed in Table 9-14.  |\n|  3 | Capability-Dependent | Var | Variable | Capability-specific format.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-178.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 231,
+      "bottomRightX": 673,
+      "bottomRightY": 283,
+      "content": "Device Capability descriptors are always returned as part of the BOS information returned by a GetDescriptor(BOS) request. A Device Capability cannot be directly accessed with a GetDescriptor() or SetDescriptor() request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 300,
+      "bottomRightX": 387,
+      "bottomRightY": 317,
+      "content": "Table 9-14. Device Capability Type Codes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 319,
+      "bottomRightX": 708,
+      "bottomRightY": 663,
+      "content": "|  Capability Code | Value | Description  |\n| --- | --- | --- |\n|  Wireless_USB | 01H | Defines the set of Wireless USB-specific device level capabilities  |\n|  USB 2.0 EXTENSION | 02H | USB 2.0 Extension Descriptor  |\n|  SUPERSPEED_USB | 03H | Defines the set of SuperSpeed USB specific device level capabilities  |\n|  CONTAINER_ID | 04H | Defines the instance unique ID used to identify the instance across all operating modes  |\n|  PLATFORM | 05H | Defines a device capability specific to a particular platform/operating system  |\n|  POWER_DELIVERY_CAPABILITY | 06H | Defines the various PD Capabilities of this device  |\n|  BATTERY_INFO_CAPABILITY | 07H | Provides information on each battery supported by the device  |\n|  PD_CONSUMER_PORT_CAPABILITY | 08H | The consumer characteristics of a port on the device  |\n|  PD_PROVIDER_PORT_CAPABILITY | 09H | The provider characteristics of a port on the device  |\n|  SUPERSPEED_PLUS | 0AH | Defines the set of SuperSpeed Plus USB specific device level capabilities  |\n|  PRECISION_TIME_MEASUREMENT | 0BH | Precision Time Measurement (PTM) Capability Descriptor  |\n|  Wireless_USB_Ext | 0CH | Defines the set of Wireless USB 1.1-specific device level capabilities  |\n|  Reserved | 00H, 0D-FFH | Reserved for future use  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-179.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 669,
+      "bottomRightX": 688,
+      "bottomRightY": 722,
+      "content": "The following section defines the USB 2.0 Extension Descriptor, the SuperSpeed USB Device Capability, the SuperSpeedPlus Capability and the Container ID (if supported) that a USB device shall return when operating at Gen X speed or in any of the USB 2.0 speeds.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "9-39",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

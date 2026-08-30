@@ -1,0 +1,443 @@
+{
+  "index": 33,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 100,
+      "bottomRightX": 147,
+      "bottomRightY": 118,
+      "content": "# Tables",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 122,
+      "bottomRightX": 700,
+      "bottomRightY": 138,
+      "content": "Table 3-1. Comparing Enhanced SuperSpeed Bus to USB 2.0 Bus...3-4",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 139,
+      "bottomRightX": 699,
+      "bottomRightY": 154,
+      "content": "Table 5-1. Plugs Accepted By Receptacles...5-2",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 155,
+      "bottomRightX": 699,
+      "bottomRightY": 170,
+      "content": "Table 5-2. USB 3.1 Standard-A Connector Pin Assignments ...5-19",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 171,
+      "bottomRightX": 699,
+      "bottomRightY": 187,
+      "content": "Table 5-3. USB 3.1 Standard-B Connector Pin Assignments ...5-25",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 188,
+      "bottomRightX": 699,
+      "bottomRightY": 203,
+      "content": "Table 5-4. USB 3.1 Micro-B Connector Pin Assignments ...5-33",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 204,
+      "bottomRightX": 699,
+      "bottomRightY": 219,
+      "content": "Table 5-5. USB 3.1 Micro-AB/-A Connector Pin Assignments ...5-33",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 220,
+      "bottomRightX": 699,
+      "bottomRightY": 236,
+      "content": "Table 5-6. Cable Wire Assignments ...5-35",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 237,
+      "bottomRightX": 699,
+      "bottomRightY": 252,
+      "content": "Table 5-7. Reference Wire Gauges ...5-35",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 253,
+      "bottomRightX": 699,
+      "bottomRightY": 269,
+      "content": "Table 5-8. USB 3.1 Standard-A to USB 3.1 Standard-B Cable Assembly Wiring...5-38",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 270,
+      "bottomRightX": 699,
+      "bottomRightY": 286,
+      "content": "Table 5-9. USB 3.1 Standard-A to USB 3.1 Standard-A Cable Assembly Wiring...5-38",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 287,
+      "bottomRightX": 699,
+      "bottomRightY": 302,
+      "content": "Table 5-10. USB 3.1 Standard-A to USB 3.1 Micro-B Cable Assembly Wiring ...5-40",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 303,
+      "bottomRightX": 699,
+      "bottomRightY": 318,
+      "content": "Table 5-11. USB 3.1 Micro-A to USB 3.1 Micro-B Cable Assembly Wiring ...5-42",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 319,
+      "bottomRightX": 699,
+      "bottomRightY": 335,
+      "content": "Table 5-12. USB 3.1 Micro-A to USB 3.1 Standard-B Cable Assembly Wiring ...5-43",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 336,
+      "bottomRightX": 699,
+      "bottomRightY": 351,
+      "content": "Table 5-13. SDP Differential Insertion Loss Examples for Gen 2 speed ...5-46",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 352,
+      "bottomRightX": 699,
+      "bottomRightY": 383,
+      "content": "Table 5-14. SDP Differential Insertion Loss Examples for Gen 2 speed with Coaxial\nConstruction...5-46",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 384,
+      "bottomRightX": 699,
+      "bottomRightY": 399,
+      "content": "Table 5-15. Design Targets ...5-49",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 400,
+      "bottomRightX": 699,
+      "bottomRightY": 416,
+      "content": "Table 5-16. Durability Ratings ...5-58",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 417,
+      "bottomRightX": 699,
+      "bottomRightY": 432,
+      "content": "Table 5-17. Environmental Test Conditions...5-61",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 433,
+      "bottomRightX": 699,
+      "bottomRightY": 449,
+      "content": "Table 5-18. Reference Materials¹ ...5-62",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 450,
+      "bottomRightX": 699,
+      "bottomRightY": 466,
+      "content": "Table 6-1. Special Symbols...6-12",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 467,
+      "bottomRightX": 699,
+      "bottomRightY": 481,
+      "content": "Table 6-2. Gen 1 TSEQ Ordered Set ...6-14",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 482,
+      "bottomRightX": 699,
+      "bottomRightY": 498,
+      "content": "Table 6-3. Gen 1 TS1 Ordered Set...6-14",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 499,
+      "bottomRightX": 699,
+      "bottomRightY": 513,
+      "content": "Table 6-4. Gen 1 TS2 Ordered Set...6-15",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 514,
+      "bottomRightX": 699,
+      "bottomRightY": 529,
+      "content": "Table 6-5. Gen 1/Gen 2 Link Configuration...6-15",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 530,
+      "bottomRightX": 699,
+      "bottomRightY": 546,
+      "content": "Table 6-6. Gen 2 TS1 Ordered Set...6-17",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 547,
+      "bottomRightX": 699,
+      "bottomRightY": 562,
+      "content": "Table 6-7. Gen 2 TS2 Ordered Set...6-17",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 563,
+      "bottomRightX": 699,
+      "bottomRightY": 579,
+      "content": "Table 6-8. Gen 2 TSEQ Ordered Set ...6-17",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 580,
+      "bottomRightX": 699,
+      "bottomRightY": 595,
+      "content": "Table 6-9. Gen 2 SYNC Ordered Set ...6-17",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 596,
+      "bottomRightX": 699,
+      "bottomRightY": 611,
+      "content": "Table 6-10. SDS Ordered Set ...6-17",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 612,
+      "bottomRightX": 699,
+      "bottomRightY": 628,
+      "content": "Table 6-11. Gen 1 SKP Ordered Set Structure...6-19",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 629,
+      "bottomRightX": 699,
+      "bottomRightY": 644,
+      "content": "Table 6-12. Gen 2 SKP Ordered Set...6-20",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 645,
+      "bottomRightX": 699,
+      "bottomRightY": 660,
+      "content": "Table 6-13. Compliance Pattern Sequences ...6-21",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 662,
+      "bottomRightX": 699,
+      "bottomRightY": 677,
+      "content": "Table 6-14. Gen 2 Compliance Pattern ...6-22",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 678,
+      "bottomRightX": 699,
+      "bottomRightY": 693,
+      "content": "Table 6-15. Informative Jitter Budgeting at the Silicon Pads...6-22",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 694,
+      "bottomRightX": 699,
+      "bottomRightY": 710,
+      "content": "Table 6-16. SSC Parameters ...6-25",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 711,
+      "bottomRightX": 699,
+      "bottomRightY": 726,
+      "content": "Table 6-17. Transmitter Normative Electrical Parameters...6-30",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 727,
+      "bottomRightX": 699,
+      "bottomRightY": 742,
+      "content": "Table 6-18. Transmitter Informative Electrical Parameters at Silicon Pads...6-31",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 743,
+      "bottomRightX": 699,
+      "bottomRightY": 759,
+      "content": "Table 6-19. Normative Transmitter Eye Mask at Test Point TP1 ...6-32",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 760,
+      "bottomRightX": 699,
+      "bottomRightY": 775,
+      "content": "Table 6-20. Informative Gen 2 Transmitter Equalization Settings ...6-35",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 776,
+      "bottomRightX": 699,
+      "bottomRightY": 792,
+      "content": "Table 6-21. Receiver Normative Electrical Parameters ...6-39",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 793,
+      "bottomRightX": 699,
+      "bottomRightY": 808,
+      "content": "Table 6-22. Receiver Informative Electrical Parameters ...6-40",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 809,
+      "bottomRightX": 699,
+      "bottomRightY": 824,
+      "content": "Table 6-23. BRST ...6-41",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 825,
+      "bottomRightX": 699,
+      "bottomRightY": 840,
+      "content": "Table 6-24. BDAT ...6-41",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 841,
+      "bottomRightX": 699,
+      "bottomRightY": 856,
+      "content": "Table 6-25. BERC ...6-41",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 857,
+      "bottomRightX": 699,
+      "bottomRightY": 872,
+      "content": "Table 6-26. BCNT ...6-41",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 873,
+      "bottomRightX": 699,
+      "bottomRightY": 890,
+      "content": "Table 6-27. Input Jitter Requirements for Rx Tolerance Testing...6-43",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 983,
+      "bottomRightX": 120,
+      "bottomRightY": 994,
+      "content": "xxxiv",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

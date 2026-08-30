@@ -1,0 +1,210 @@
+{
+  "index": 279,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 249 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 92,
+      "bottomRightX": 500,
+      "bottomRightY": 110,
+      "content": "Figure 8-32. Route String Detail",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 127,
+      "bottomRightX": 716,
+      "bottomRightY": 202,
+      "content": "![img-123.jpeg](img-123.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-123.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 211,
+      "bottomRightX": 672,
+      "bottomRightY": 256,
+      "content": "In Figure 8-32, the value in Hub@Tier1 field is the downstream port number of the hub connected directly to one of the root ports on the host to which a second hub is attached and so on.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 269,
+      "bottomRightX": 296,
+      "bottomRightY": 285,
+      "content": "#### 8.9.1 Route String Port Field",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 292,
+      "bottomRightX": 648,
+      "bottomRightY": 309,
+      "content": "This 4-bit wide field in the Route String represents the port in the hub being addressed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 319,
+      "bottomRightX": 335,
+      "bottomRightY": 334,
+      "content": "#### 8.9.2 Route String Port Field Width",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 341,
+      "bottomRightX": 668,
+      "bottomRightY": 373,
+      "content": "The Route String Port field width is fixed at 4 bits, limiting the maximum number of ports a hub may support to 15.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 385,
+      "bottomRightX": 240,
+      "bottomRightY": 399,
+      "content": "#### 8.9.3 Port Number",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 407,
+      "bottomRightX": 666,
+      "bottomRightY": 469,
+      "content": "The specific port on a hub to which the packet is directed is identified by the value in the Route String Port field. When addressing the hub controller then the Port Number field at the hub's tier level shall be set to zero in the Route String. The hub's downstream ports are addressed beginning with one and count up sequentially.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 481,
+      "bottomRightX": 319,
+      "bottomRightY": 496,
+      "content": "### 8.10 Transaction Packet Usages",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 503,
+      "bottomRightX": 649,
+      "bottomRightY": 548,
+      "content": "TPs are used to report the status of data transactions and can return values indicating successful reception of data packets, command acceptance or rejection, flow control, and halt conditions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 567,
+      "bottomRightX": 351,
+      "bottomRightY": 581,
+      "content": "#### 8.10.1 Flow Control Conditions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 589,
+      "bottomRightX": 671,
+      "bottomRightY": 650,
+      "content": "This section describes the interaction between the host and a device when an endpoint returns a flow control response. The flow control is at an end-to-end level between the host and the endpoint on the device. Only bulk, control and interrupt endpoints may send flow control responses. Isochronous endpoints shall not send flow control responses.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 662,
+      "bottomRightX": 657,
+      "bottomRightY": 693,
+      "content": "An IN endpoint shall be considered to be in a flow control condition if it returns one of the following responses to an ACK TP:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 706,
+      "bottomRightX": 652,
+      "bottomRightY": 759,
+      "content": "- Responding with an NRDY TP; note that an endpoint shall wait until it receives an ACK TP for the last DP it transmitted before it can send an NRDY TP\n- Sending a DP with the EOB field set to 1 in the DPH",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 779,
+      "bottomRightX": 671,
+      "bottomRightY": 811,
+      "content": "An OUT endpoint shall be considered to be in a flow control condition if it returns one of the following responses to a DP:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 823,
+      "bottomRightX": 449,
+      "bottomRightY": 862,
+      "content": "- Responding with an NRDY TP\n- Sending an ACK TP with the NumP field set to 0",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 883,
+      "bottomRightX": 668,
+      "bottomRightY": 930,
+      "content": "The Packets Pending field is only valid when set by the host and does not affect whether or not an endpoint enters the flow control state. Refer to Section 8.11 for further details on host and device TP responses.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

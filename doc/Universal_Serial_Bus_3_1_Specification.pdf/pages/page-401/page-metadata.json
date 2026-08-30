@@ -1,0 +1,76 @@
+{
+  "index": 400,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 286,
+      "topLeftY": 99,
+      "bottomRightX": 538,
+      "bottomRightY": 428,
+      "content": "![img-246.jpeg](img-246.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-246.jpeg"
+    },
+    {
+      "topLeftX": 188,
+      "topLeftY": 440,
+      "bottomRightX": 636,
+      "bottomRightY": 458,
+      "content": "Figure 8-60. Enhanced SuperSpeed Isochronous IN Transaction Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 313,
+      "topLeftY": 519,
+      "bottomRightX": 512,
+      "bottomRightY": 826,
+      "content": "![img-247.jpeg](img-247.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-247.jpeg"
+    },
+    {
+      "topLeftX": 180,
+      "topLeftY": 841,
+      "bottomRightX": 645,
+      "bottomRightY": 858,
+      "content": "Figure 8-61. Enhanced SuperSpeed Isochronous OUT Transaction Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 878,
+      "bottomRightX": 663,
+      "bottomRightY": 895,
+      "content": "The first DP or ACK TP in each service interval shall start with the sequence number set to 0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-107",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

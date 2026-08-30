@@ -1,0 +1,150 @@
+{
+  "index": 268,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 238 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 366,
+      "bottomRightY": 108,
+      "content": "### 8.5.6.1 Function Wake Device Notification",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 115,
+      "bottomRightX": 549,
+      "bottomRightY": 131,
+      "content": "Figure 8-24. Function Wake Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 141,
+      "bottomRightX": 652,
+      "bottomRightY": 251,
+      "content": "|  Device Address | Reserved |   |   | Type | DWORD 0  |\n| --- | --- | --- | --- | --- | --- |\n|  Reserved |   | Interface | Notification Type | SubType | DWORD 1  |\n|  Reserved |   |   |   |   | DWORD 2  |\n|  Link Control Word |   | CRC-16 |   |   | DWORD 3  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-119.md"
+    },
+    {
+      "topLeftX": 241,
+      "topLeftY": 280,
+      "bottomRightX": 547,
+      "bottomRightY": 295,
+      "content": "Table 8-19. Function Wake Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 154,
+      "topLeftY": 304,
+      "bottomRightX": 637,
+      "bottomRightY": 437,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to DEV_NOTIFICATION.  |\n|  4 | 1:4 | Notification Type. FUNCTION_WAKE  |\n|  8 | 1:8 | Interface. This field identifies the first interface in the function that caused the device to perform a remote wake operation.  |\n|  48 | 1:16 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-120.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 457,
+      "bottomRightX": 477,
+      "bottomRightY": 472,
+      "content": "### 8.5.6.2 Latency Tolerance Message (LTM) Device Notification",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 478,
+      "bottomRightX": 649,
+      "bottomRightY": 510,
+      "content": "Latency Tolerance Message Device Notification is an optional normative feature enabling more power efficient platform operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 522,
+      "bottomRightX": 588,
+      "bottomRightY": 539,
+      "content": "Figure 8-25. Latency Tolerance Message Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 548,
+      "bottomRightX": 652,
+      "bottomRightY": 657,
+      "content": "|  Device Address | Reserved |   |   | Type | DWORD 0  |\n| --- | --- | --- | --- | --- | --- |\n|  Reserved |   | BELT |   | Notification Type | SubType  |\n|  Reserved |   |   |   |   | DWORD 1  |\n|  Link Control Word |   |   | CRC-16 |   | DWORD 2  |\n|   |   |   |   |   | DWORD 3  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-121.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 688,
+      "bottomRightX": 586,
+      "bottomRightY": 704,
+      "content": "Table 8-20. Latency Tolerance Message Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 713,
+      "bottomRightX": 664,
+      "bottomRightY": 792,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | SubType. This field shall be set to DEV_NOTIFICATION.  |\n|  4 | 1:4 | Notification Type. LATENCY_TOLERANCE_MESSAGE.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-122.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "index": 577,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 348,
+      "bottomRightY": 128,
+      "content": "### 11.4.1.4 Self-powered Devices",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 136,
+      "bottomRightX": 694,
+      "bottomRightY": 271,
+      "content": "Figure 11-4 shows a typical self-powered device. The device controller is powered either from the upstream bus via a low-power regulator or from the local power supply. The advantage of the former scheme is that it permits detection and enumeration of a self-powered device whose local power supply is turned off. The maximum upstream power that the device controller can draw is one unit load, and the regulator block must implement inrush current limiting. The amount of power that the device block may draw is limited only by the local power supply. Because the local power supply is not required to power any downstream bus ports, it does not need to implement current limiting, soft start, or power switching.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 276,
+      "bottomRightX": 538,
+      "bottomRightY": 467,
+      "content": "![img-287.jpeg](img-287.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-287.jpeg"
+    },
+    {
+      "topLeftX": 299,
+      "topLeftY": 477,
+      "bottomRightX": 524,
+      "bottomRightY": 495,
+      "content": "Figure 11-4. Self-powered Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 523,
+      "bottomRightX": 483,
+      "bottomRightY": 546,
+      "content": "### 11.4.2 Steady-State Voltage Drop Budget",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 555,
+      "bottomRightX": 591,
+      "bottomRightY": 572,
+      "content": "The steady-state voltage drop budget is derived from the following assumptions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 576,
+      "bottomRightX": 699,
+      "bottomRightY": 772,
+      "content": "- The nominal 5 V ± 5% source (host or hub) is 4.75 V to 5.25 V.\n- The voltage supplied at the connector of hub or root ports shall be between 4.45 V to 5.25 V.\n- The maximum voltage drop (for detachable cables) between the A-series plug and B-series plug on VBUS is 171 mV.\n- The maximum current for the calculations is 0.9 A.\n- The maximum voltage drop for all cables between upstream and downstream on GND is 171 mV.\n- The maximum voltage drop for all mated connectors is 27 mV.\n- All hubs and peripheral devices shall be able to provide configuration information with as little as 4.00 V at the device end of their B-series receptacle. Both low and high-power devices need to be operational with this minimum voltage.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 777,
+      "bottomRightX": 665,
+      "bottomRightY": 812,
+      "content": "Figure 11-5 shows the minimum allowable voltages. Note that under transient conditions, the supply at the device can drop to 3.67 V for a brief moment.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "11-6",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

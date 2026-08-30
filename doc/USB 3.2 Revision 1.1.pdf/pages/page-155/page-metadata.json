@@ -1,0 +1,121 @@
+{
+  "index": 154,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 61,
+      "content": "Revision 1.1",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 62,
+      "bottomRightX": 177,
+      "bottomRightY": 77,
+      "content": "June 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 124 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 61,
+      "content": "Universal Serial Bus 3.2",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 62,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 121,
+      "bottomRightX": 347,
+      "bottomRightY": 135,
+      "content": "### 7.2.2.2 Link Command Word Definition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 141,
+      "bottomRightX": 673,
+      "bottomRightY": 190,
+      "content": "Link command word is 16 bits long with the 11-bit link command information protected by a 5-bit CRC-5 (see Figure 7-13). The 11-bit link command information is defined in Table 7-4. The calculation of CRC-5 is the same as Link Control Word illustrated in Figure 7-7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 249,
+      "topLeftY": 202,
+      "bottomRightX": 538,
+      "bottomRightY": 218,
+      "content": "Figure 7-13. Link Command Word Structure",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 234,
+      "topLeftY": 228,
+      "bottomRightX": 554,
+      "bottomRightY": 364,
+      "content": "![img-75.jpeg](img-75.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-75.jpeg"
+    },
+    {
+      "topLeftX": 260,
+      "topLeftY": 407,
+      "bottomRightX": 527,
+      "bottomRightY": 421,
+      "content": "Table 7-4. Link Command Bit Definitions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 431,
+      "bottomRightX": 676,
+      "bottomRightY": 890,
+      "content": "|  Class |   | Type | b6~4 | Sub-Type  |   |\n| --- | --- | --- | --- | --- | --- |\n|  b10~9 | Link Command | b8~7 |   | b3~0  |   |\n|  00 | LGOOD_n LRTY LBAD LCRD_x LCRD1_x LCRD2_x | 00: LGOOD_n | Reserved (000) | SuperSpeed operation: b3: Reserved; b2~0: HP Sequence Number 000: LGOOD_0, 001: LGOOD_1, ...111: LGOOD_7 SuperSpeedPlus operation: b3~0: HP Sequence Number 0000: LGOOD_0, 0001: LGOOD_1, ... 1111: LGOOD_15  |   |\n|   |   |  01: LCRD_x LCRD1_x LCRD2_x |   | Gen 1x1, Gen 1x2, Gen 2x1: b3: Reserved b2: Credit series 0: LCRD_x or LCRD1_x 1: LCRD2_x b1~0: Rx Header Buffer Credit 00: LCRD_A/LCRD1_A/LCRD2_A 01: LCRD_B/LCRD1_B/LCRD2_B 10: LCRD_C/LCRD1_C/LCRD2_C 11: LCRD_D/LCRD1_D/LCRD2_D | Gen 2x2: b3: Credit series 0: LCRD1_x 1: LCRD2_x b2~0: Rx Header Buffer Credit 000: LCRD1_A/LCRD2_A 001: LCRD1_B/LCRD2_B 010: LCRD1_C/LCRD2_C 011: LCRD1_D/LCRD2_D 100: LCRD1_E/LCRD2_E 101: LCRD1_F/LCRD2_F 110: LCRD1_G/LCRD2_G  |\n|   |   |  10: LRTY 11: LBAD |   | Reserved (0000)  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-79.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

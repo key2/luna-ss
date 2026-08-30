@@ -1,0 +1,47 @@
+{
+  "index": 10,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 600,
+      "topLeftY": 54,
+      "bottomRightX": 705,
+      "bottomRightY": 95,
+      "content": "intel.",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 122,
+      "bottomRightX": 705,
+      "bottomRightY": 218,
+      "content": "8-7 Control Signal Decode Table – SATA Mode ... 155\n8-8 Posted-to-Posted Writes ... 158\n8-9 Defined Register Groups ... 159\n8-10 Lane Margining at the Receiver Sequences ... 160\n10-1 The MAC Layer ... 187\nA-1 DisplayPort AUX Signals ... 189",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 951,
+      "bottomRightX": 299,
+      "bottomRightY": 968,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 682,
+      "topLeftY": 951,
+      "bottomRightX": 705,
+      "bottomRightY": 968,
+      "content": "11",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

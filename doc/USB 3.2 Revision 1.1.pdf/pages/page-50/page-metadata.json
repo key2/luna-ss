@@ -1,0 +1,93 @@
+{
+  "index": 49,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 46,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 19 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 92,
+      "bottomRightX": 557,
+      "bottomRightY": 110,
+      "content": "Figure 3-2. USB 3.2 Terminology Reference Model",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 133,
+      "topLeftY": 126,
+      "bottomRightX": 657,
+      "bottomRightY": 392,
+      "content": "![img-2.jpeg](img-2.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-2.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 412,
+      "bottomRightX": 675,
+      "bottomRightY": 443,
+      "content": "The Enhanced SuperSpeed bus is a layered communications architecture that is comprised of the following elements:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 457,
+      "bottomRightX": 666,
+      "bottomRightY": 683,
+      "content": "- Enhanced SuperSpeed Interconnect. The Enhanced SuperSpeed interconnect is the manner in which devices are connected to and communicate with the host over the Enhanced SuperSpeed bus. This includes the topology of devices connected to the bus, the communications layers, the relationships between them and how they interact to accomplish information exchanges between the host and devices.\n- Devices. Enhanced SuperSpeed devices are sources or sinks of information exchanges. They implement the required device-end, Enhanced SuperSpeed communications layers to accomplish information exchanges between a driver on the host and one or more logical functions on the device.\n- Host. An Enhanced SuperSpeed host is a source or sink of information. It implements the required host-end, Enhanced SuperSpeed communications layers to accomplish information exchanges over the bus. It owns the Enhanced SuperSpeed data activity schedule and management of the Enhanced SuperSpeed bus and all devices connected to it.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 698,
+      "bottomRightX": 673,
+      "bottomRightY": 745,
+      "content": "Figure 3-3 illustrates a reference diagram of the Enhanced SuperSpeed interconnect represented as communications layers through a topology of host, zero to five levels of hubs, and devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "index": 363,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 333 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 183,
+      "topLeftY": 97,
+      "bottomRightX": 583,
+      "bottomRightY": 123,
+      "content": "The INTERFACE_POWER descriptor is defined in the current revision of the USB Interface Power Management Specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 148,
+      "bottomRightX": 666,
+      "bottomRightY": 195,
+      "content": "Feature selectors are used when enabling or setting features, such as function remote wakeup, specific to a device, interface, or endpoint. The values for the feature selectors are given in Table 9-7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 269,
+      "topLeftY": 206,
+      "bottomRightX": 520,
+      "bottomRightY": 221,
+      "content": "Table 9-7. Standard Feature Selectors",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 231,
+      "bottomRightX": 607,
+      "bottomRightY": 569,
+      "content": "|  Feature Selector | Recipient | Value  |\n| --- | --- | --- |\n|  ENDPOINT_HALT | Endpoint | 0  |\n|  FUNCTION_SUSPEND | Interface | 0  |\n|  DEVICE_REMOTE_WAKEUP | Device | 1  |\n|  TEST_MODE | Device | 2  |\n|  b_hnp_enable | Device | 3  |\n|  a_hnp_support | Device | 4  |\n|  a_alt_hnp_support | Device | 5  |\n|  WUSB_DEVICE | Device | 6  |\n|  U1_ENABLE | Device | 48  |\n|  U2_ENABLE | Device | 49  |\n|  LTM_ENABLE | Device | 50  |\n|  B3_NTF_HOST_REL^{1} | Device | 51  |\n|  |   |   |\n|  B3_RSP_ENABLE^{1} | Device | 52  |\n|  LDM_ENABLE | Device | 53  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-153.md"
+    },
+    {
+      "topLeftX": 188,
+      "topLeftY": 571,
+      "bottomRightX": 599,
+      "bottomRightY": 597,
+      "content": "$^{1}$ This Feature Selector value shall be reserved for OTG use. Refer to Section 6.4 of the USB 3.0 OTG and EH Supplement for its definition.",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 622,
+      "bottomRightX": 673,
+      "bottomRightY": 729,
+      "content": "If an unsupported or invalid request is made to a device, the device responds by returning a STALL Transaction Packet in the Data or Status stage of the request. If the device detects the error in the Setup stage, it is preferred that the device returns a STALL Transaction Packet at the earlier of the Data or Status stage. Receipt of an unsupported or invalid request does not cause the Halt feature on the control pipe to be set. If, for any reason, the device becomes unable to communicate via its Default Control Pipe due to an error condition, the device shall be reset to clear the condition and restart the Default Control Pipe.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 741,
+      "bottomRightX": 242,
+      "bottomRightY": 756,
+      "content": "### 9.4.1 Clear Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 763,
+      "bottomRightX": 457,
+      "bottomRightY": 778,
+      "content": "This request is used to clear or disable a specific feature.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 790,
+      "bottomRightX": 676,
+      "bottomRightY": 867,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B | CLEAR_FEATURE | Feature Selector | Zero | Zero | None  |\n|  00000001B |   |   | Interface  |   |   |\n|  00000010B |   |   | Endpoint  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-154.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 871,
+      "bottomRightX": 666,
+      "bottomRightY": 904,
+      "content": "Feature selector values in wValue shall be appropriate to the recipient. Only device feature selector values may be used when the recipient is a device, only interface feature selector",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

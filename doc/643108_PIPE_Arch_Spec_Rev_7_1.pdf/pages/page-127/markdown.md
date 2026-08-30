@@ -1,0 +1,19 @@
+intel.
+
+### 8.4.2 USB Mode
+
+The signaling rate of the link, PCLK rate, or the Data Bus Width can be changed only when the PHY is in the P0 or P2 power state and TxElecIdle and RxStandby are asserted. Any combination of at least two of the rate and width and PCLK rate, can be changed simultaneously. The MAC is not allowed to change only one of the three. When the MAC changes the Rate signal, and/or the Width signal, and/or the PCLK rate signal in PCLK as PHY Output mode, the PHY performs the rate change and/or the width change and/or the PCLK rate change and signals its completion with a single cycle assertion of PhyStatus. The MAC must not perform any operational sequences, power state transitions, deassert TxElecIdle or RxStandby, or further signaling rate changes until the PHY has indicated that the signaling rate change has completed. The sequence is the same in PCLK as PHY Input mode except the MAC needs to know when the input PCLK rate or Rate can be safely changed. After the MAC changes PCLK_Rate the change to the PCLK can happen only after the PclkChangeOk output has been driven high by the PHY. The MAC changes the input PCLK, and then handshakes by asserting PclkChangeAck. The PHY responds by asserting PhyStatus for one input PCLK cycle and deasserts PclkChangeOk on the trailing edge of PhyStatus. Note that PclkChangeOk is only used by the PHY if the MAC changes the PCLK_Rate or Rate. The MAC deasserts PclkChangeAck when PclkChangeOk is sampled low and may deassert an TxElecIdle and/or RxStandby after the PhyStatus is sampled high.
+
+Some PHY architectures may allow a speed change and a power state change to occur at the same time as a rate, width, or rate change. If a PHY supports this, the MAC must change the rate, width, or rate at the same PCLK edge that it changes the PowerDown signals. This can happen when transitioning the PHY from P0 to either P2 or P3 states. The completion mechanisms are the same as previously defined for the power state changes and indicate not only that the power state change is complete, but also that the rate, width, or rate change is complete.
+
+### 8.4.3 SATA Mode
+
+The signaling rate of the link, PCLK rate, or the data bus width can be changed only when the PHY is in POWER_STATE_0 a prnd TxElecIdle and RxStandby are asserted, or in a low-power state where the PCLK is provided. When the MAC changes the Rate signal, and/or the Width signal, and/or the PCLK rate signal in PCLK as PHY Output mode, the PHY performs the rate change, the width change, or the PCLK rate change and signals its completion with a single cycle assertion of PhyStatus. The MAC must not perform any operational sequences, power state transitions, deassert TxElecIdle, or RxStandby, or further signaling rate or width changes until the PHY has indicated that the change has completed.
+
+The sequence is the same in the PCLK as the PHY Input mode except the MAC needs to know when the input PCLK rate can be safely changed. After the MAC changes PCLK_Rate, the change to the PCLK can happen only after the PclkChangeOk output has been driven high by the PHY. The MAC changes the input PCLK, and then handshakes by asserting PclkChangeAck. The PHY responds by asserting PhyStatus for one input PCLK cycle and deasserts PclkChangeOk on the trailing edge of PhyStatus. Note that PclkChangeOk is only used by the PHY if the MAC changes PCLK_Rate. The MAC deasserts PclkChangeAck when PclkChangeOk is sampled low and may deassert TxElecIdle and/or RxStandby after PhyStatus is sampled high.
+
+There are instances where conditions indicate both a speed change, width, and PCLK rate change and a power state change for the PHY. In such cases, the MAC must change the signaling rate, width, or rate, before changing the power state.
+
+Reference Number: 643108, Revision: 7.1
+
+127

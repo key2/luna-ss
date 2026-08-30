@@ -1,0 +1,119 @@
+{
+  "index": 280,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 698,
+      "bottomRightY": 45,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 690,
+      "bottomRightY": 126,
+      "content": "- The port shall transition to eSS.Inactive when PENDING_HP_TIMER times out for the fourth consecutive time.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 133,
+      "bottomRightX": 680,
+      "bottomRightY": 165,
+      "content": "Note: This implies the link has transitioned to Recovery for three consecutive times and each time the transition to Recovery is due to PENDING_HP_TIMER timeout.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 171,
+      "bottomRightX": 531,
+      "bottomRightY": 223,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to eSS.Inactive when directed.\n- An upstream port shall transition to eSS.Disabled when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 226,
+      "bottomRightX": 692,
+      "bottomRightY": 276,
+      "content": "Note: After entry to U0 and the successful completion of training and link initialization, both ports are required to exchange port capabilities information using Port Capability LMPs within tPortConfiguration time as defined in Section 8.4.5. This includes the following scenarios:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 279,
+      "bottomRightX": 672,
+      "bottomRightY": 365,
+      "content": "1. Entry to U0 from polling directly;\n2. Entry to U0 indirectly from Polling through Hot Reset;\n3. Entry to U0 from Recovery and port configuration has not been successfully completed after exiting from Polling. In this case, both ports shall continue the port configuration process by completing the remaining LMP exchanges.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 367,
+      "bottomRightX": 676,
+      "bottomRightY": 415,
+      "content": "If the port has not received a Port Capability LMP within tPortConfiguration time, a downstream port shall be directed to transition to eSS.Inactive and an upstream port shall be directed to transition to eSS.Disabled.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 419,
+      "bottomRightX": 647,
+      "bottomRightY": 452,
+      "content": "- A downstream port shall transition to Recovery upon not receiving any link commands within 1 ms (tU0RecoveryTimeout).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 456,
+      "bottomRightX": 696,
+      "bottomRightY": 570,
+      "content": "Note: Not receiving any link commands including LUP within 1 ms implies either a link is under serious error condition, or an upstream port has been removed. To accommodate for both situations, a downstream port will transition to Recovery and attempt to retrain the link. If the retraining fails, it will then transition to eSS.Inactive. During eSS.Inactive, a downstream port will attempt a far-end receiver termination detection. If it determines that a far-end low-impedance receiver termination ($R_{RX-DC}$) defined in Table 6-21 is not present, it will enter Rx.Detect. Otherwise, it will wait for software intervention.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 577,
+      "bottomRightX": 680,
+      "bottomRightY": 665,
+      "content": "- An upstream port shall transition to Recovery if it does not receive any link command or any packet (as specified in Section 7.2.4.1.4) within 1 ms (tU0RecoveryTimeout).\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.\n- An upstream port shall transition to eSS.Disabled upon detection of VBUS off.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 671,
+      "bottomRightX": 673,
+      "bottomRightY": 704,
+      "content": "Note: this condition only applies to a self-powered upstream port. eSS.Disabled is a logical power-off state for a self-powered upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 673,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-69",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

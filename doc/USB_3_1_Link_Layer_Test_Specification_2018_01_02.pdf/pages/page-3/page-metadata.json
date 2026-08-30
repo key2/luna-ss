@@ -1,0 +1,66 @@
+{
+  "index": 2,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 234,
+      "bottomRightY": 61,
+      "content": "Chapter 1: Introduction",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 358,
+      "topLeftY": 48,
+      "bottomRightX": 430,
+      "bottomRightY": 60,
+      "content": "Revision 0.94",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 60,
+      "content": "1/2/2017",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 93,
+      "bottomRightX": 224,
+      "bottomRightY": 109,
+      "content": "# Revision History",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 114,
+      "bottomRightX": 691,
+      "bottomRightY": 726,
+      "content": "|  Revision | Issue Date | Comments  |\n| --- | --- | --- |\n|  0.5 | 6/1/2009 | Initial revision for internal review only.  |\n|  0.8 | 2/4/10 | First revision for external review  |\n|  0.9RC | 10/20/2010 | Revision incorporating changes due to errata  |\n|  1.0RC | 6/15/11 | First 1.0 Revision for external review  |\n|  1.0 | 10/26/2011 |   |\n|  1.1 | 9/13/12 | Editorial changes and small test edits  |\n|  1.1.1 | 5/17/2013 | Added debug port test and a timer change  |\n|  1.1.2 | 6/6/13 | TD 7.1, 26, 38 updates  |\n|  1.1.3 | 6/14/13 | TD 7.6, 7.37 updates  |\n|  1.1.4 | 8/2/13 | License Information  |\n|  1.1.5 | 10/3/13 | TD 7.27-29 updates  |\n|  0.5 | 12/10/13 | Initially updated asserts and some tests to USB 3.1 Test Spec  |\n|  0.6 | 3/12/14 | Updated TDs to USB 3.1 Test Spec  |\n|  0.65 | 10/3/14 | Updated TDs 6.2 and 7.39, a few tests implemented  |\n|  0.7 | 12/18/14 | Updates to TDs 7.6 and 7.36  |\n|  0.75 | 1/23/15 | Updates to TD 7.1 for ECN  |\n|   | 3/27/15 | Added TDs 7.40 and 7.41 to cover a CH 9 assert and tPollingLFPSTimeout update  |\n|  0.76 | 3/31/15 | Version increment for new tests and TD 7.41 terminology  |\n|  0.9 | 6/24/15 | TD 7.40 updated for long host far-end term detect  |\n|  0.91 | 8/6/15 | TD 7.7 updated to remove extraneous step, TD 7.12 updated step numbers for clarity  |\n|  0.92 | 11/19/15 | TD 7.40 updates to remove transition to eSS.Disabled  |\n|  0.93 | 9/22/16 | TD 6.2 updated to account for clock limitation  |\n|  0.93 | 11/30/16 | TD 7.30 updated to include note that LVS must not contribute to a timeout error  |\n|  0.93.5 | 3/10/17 | Re-Timer updates added to a number of TDs, Table 4-1 updated  |\n|  0.94 | 1/2/17 | More Re-Timer updates added to a handful of TDs, tRecoveryTimeout added, Polling.LFPS handshake end test  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-0.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

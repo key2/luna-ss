@@ -1,0 +1,111 @@
+{
+  "index": 121,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 429,
+      "bottomRightY": 137,
+      "content": "Table 8-1. USB4 PHY Power States (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 686,
+      "bottomRightY": 375,
+      "content": "|  State | Description | PowerDown Encoding | Suggested USB4 Link State Mapping | Common Mode | LFPS Detector^{1} | PLL | RxTerm | Total Latency^{2}  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n|  P2 | Rx+Tx off med exit | 0x2 | CL1/2 | ON | ON | ON/OFF (see notes for P2) | ON | 25 us  |\n|  P3 | Shutdown | 0x3 | CLd | ON/OFF (PHY implementation choice) | OFF | OFF | OFF | 1ms  |\n|  P4 | Rx+Tx off slow exit | 0x4 | CL2 | ON | ON | OFF | ON | 100 us  |\n|  P0tx | Tx off Rx on | 0x5 | CL0s.Tx | ON | OFF | ON | ON | 10 us  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-130.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 377,
+      "bottomRightX": 684,
+      "bottomRightY": 389,
+      "content": "1. LFPS detector enablement is controlled by the MAC in the case that the PHY implements the \"RxEIDetectDisable\" control wire.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 389,
+      "bottomRightX": 684,
+      "bottomRightY": 430,
+      "content": "2. The total latency is defined as the time interval to enter a state and exit back to P0. The intention is to ensure the return to a fully active state in the case of wake event race scenario. Budget includes turn OFF and ON of PLL when the power state allows. In the case that the PHY has completed the entry phase, this delay can be considered as the exit latency budget in which the PHY can take extra power optimizations.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 440,
+      "bottomRightX": 457,
+      "bottomRightY": 456,
+      "content": "Additional descriptions of each power state are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 462,
+      "bottomRightX": 684,
+      "bottomRightY": 729,
+      "content": "- P0: Fully active the power state. The transmitter and receiver are ON.\n- P0rx: Transmitter only power state. The receiver is OFF. Suitable for unidirectional traffic (for instance, transmitting the tunneled DisplayPort traffic).\n- P1: Transmitter and receiver are OFF. This power state provides power savings while meeting low latency exit requirements.\n- P2: Similar to P1 but with an increased total latency budget. The MAC is permitted to turn off the PLL in this state.\n- P3: Shutdown mode, this is the lowest power consumption state. The link is virtually disconnected (CLd). Wake events are propagated via a sideband channel so common mode and LFPS detector are turned off. This state is suitable for deep sleep.\n- P4: Transmitter and receiver are OFF with a total latency of up to 100 us delay. This state is suitable where higher exit latencies are tolerated (for example, storage devices).\n- P0tx: Receiver only mode, the transmitter is OFF. Suitable for unidirectional traffic (for example, receiving tunneled DP traffic).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 751,
+      "bottomRightX": 519,
+      "bottomRightY": 772,
+      "content": "### 8.3.4 Power Management – SATA Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 778,
+      "bottomRightX": 686,
+      "bottomRightY": 836,
+      "content": "The power management signals allow the PHY to minimize power consumption. The PHY must meet all timing constraints provided in the SATA specification regarding clock recovery and link training for the various power states. The PHY must also meet all termination requirements for transmitters and receivers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 965,
+      "content": "122",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

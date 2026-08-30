@@ -1,0 +1,130 @@
+{
+  "index": 115,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 85 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 209,
+      "topLeftY": 92,
+      "bottomRightX": 583,
+      "bottomRightY": 110,
+      "content": "Figure 6-20. Tx Normative Setup with Reference Channel",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 120,
+      "bottomRightX": 561,
+      "bottomRightY": 375,
+      "content": "![img-32.jpeg](img-32.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-32.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 413,
+      "bottomRightX": 474,
+      "bottomRightY": 428,
+      "content": "### 6.7.4 Tx Compliance Reference Receiver Equalizer Function",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 435,
+      "bottomRightX": 668,
+      "bottomRightY": 481,
+      "content": "The normative transmitter eye is captured at the end of the reference channel. At this point the eye may be closed. To open the eye so it can be measured a reference Rx equalizer, is applied to the signal. Details of the reference equalizer are contained in Section 6.8.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 494,
+      "bottomRightX": 311,
+      "bottomRightY": 509,
+      "content": "### 6.7.5 Transmitter De-emphasis",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 515,
+      "bottomRightX": 258,
+      "bottomRightY": 531,
+      "content": "#### 6.7.5.1 Gen 1 (5GT/sec)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 537,
+      "bottomRightX": 639,
+      "bottomRightY": 584,
+      "content": "The channel budgets and eye diagrams were derived using a VTX-DE-RATIO of transmit de-emphasis for both the Host and the Device reference channels. An example differential peak-to-peak de-emphasis waveform is shown in Figure 6-21.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 272,
+      "topLeftY": 595,
+      "bottomRightX": 515,
+      "bottomRightY": 611,
+      "content": "Figure 6-21. De-Emphasis Waveform",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 621,
+      "bottomRightX": 573,
+      "bottomRightY": 912,
+      "content": "![img-33.jpeg](img-33.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-33.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

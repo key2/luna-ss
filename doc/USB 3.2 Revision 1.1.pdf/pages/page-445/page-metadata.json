@@ -1,0 +1,66 @@
+{
+  "index": 444,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 81,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 63,
+      "content": "- 414 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 81,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 93,
+      "bottomRightX": 534,
+      "bottomRightY": 113,
+      "content": "**Figure 10-19. Port Transmit State Machine**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 122,
+      "topLeftY": 133,
+      "bottomRightX": 679,
+      "bottomRightY": 852,
+      "content": "![img-180.jpeg](img-180.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-180.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

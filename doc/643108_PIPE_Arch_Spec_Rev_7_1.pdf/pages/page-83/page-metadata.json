@@ -1,0 +1,94 @@
+{
+  "index": 82,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 472,
+      "bottomRightY": 137,
+      "content": "Table 7-5. Address 3h: PHY Rx Control0 (Sheet 2 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 670,
+      "content": "|  Bit | Default | Attribute | Required | Description  |   |\n| --- | --- | --- | --- | --- | --- |\n|  [0] | 0h | Level | PCIe (optional), SATA (optional), and USB (optional) | **Elasticity Buffer Mode:** This field is used to select the elasticity buffer operating mode.  |   |\n|   |   |   |   |  Value | Description  |\n|   |   |   |   |  0 | Nominal half full buffer mode  |\n|   |   |   |   |  1 | Nominal empty buffer Mode  |\n|   |   |   |   |  This field can only be changed when the receiver is OFF and the Pclk is running, for example, the P0 with RXStandby is asserted or P1. This field is not valid when TxDetectRx/Loopback is asserted. The PHY is responsible for switching to Nominal Half Full Buffer mode when loopback follower is requested. The Process Control System (PCS) is responsible for making the stream switch and abiding by the *PCIe Base Specification* rules for follower loopback stream switching, for instance, switch on the 10b boundary in 8b/10b modes. **Note:** This field is not used in the SerDes architecture. |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-66.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 686,
+      "bottomRightX": 483,
+      "bottomRightY": 707,
+      "content": "### 7.1.5 Address 4h: PHY Rx Control1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 714,
+      "bottomRightX": 518,
+      "bottomRightY": 730,
+      "content": "This register is used to control the receiver functionality.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 743,
+      "bottomRightX": 472,
+      "bottomRightY": 760,
+      "content": "Table 7-6. Address 4h: PHY Rx Control1 (Sheet 1 of 2)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 762,
+      "bottomRightX": 696,
+      "bottomRightY": 807,
+      "content": "|  Bit | Default | Attribute | Required | Description  |\n| --- | --- | --- | --- | --- |\n|  [7:3] | 0h | N/A | N/A | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-67.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "83",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

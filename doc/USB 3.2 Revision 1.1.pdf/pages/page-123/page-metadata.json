@@ -1,0 +1,138 @@
+{
+  "index": 122,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 46,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 92 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 211,
+      "topLeftY": 92,
+      "bottomRightX": 576,
+      "bottomRightY": 110,
+      "content": "Figure 6-28. Gen 2 Compliance Rx EQ Transfer Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 124,
+      "bottomRightX": 668,
+      "bottomRightY": 506,
+      "content": "![img-43.jpeg](img-43.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-43.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 542,
+      "bottomRightX": 295,
+      "bottomRightY": 556,
+      "content": "### 6.8.2.2.2 Reference DFE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 563,
+      "bottomRightX": 667,
+      "bottomRightY": 609,
+      "content": "In addition to the 1st order CTLE, a one-tap reference DFE is used in transmitter compliance testing. The DFE behavior is described by equation (15) and Figure 6-29. The limits on d₁ are 0 to 50mV.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 623,
+      "bottomRightX": 322,
+      "bottomRightY": 649,
+      "content": "$$y_k = x_k - d_1 \\operatorname{sgn}(y_{k-1}) \\tag{15}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 663,
+      "bottomRightX": 492,
+      "bottomRightY": 680,
+      "content": "where $y_k$ is the DFE differential output voltage",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 691,
+      "bottomRightX": 554,
+      "bottomRightY": 709,
+      "content": "$y^*_k$ is the decision function output voltage, $|y^*_k| = 1$",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 721,
+      "bottomRightX": 483,
+      "bottomRightY": 737,
+      "content": "$x_k$ is the DFE differential input voltage",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 749,
+      "bottomRightX": 454,
+      "bottomRightY": 764,
+      "content": "$d_1$ is the DFE feedback coefficient",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 776,
+      "bottomRightX": 417,
+      "bottomRightY": 793,
+      "content": "$k$ is the sample index in UI",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

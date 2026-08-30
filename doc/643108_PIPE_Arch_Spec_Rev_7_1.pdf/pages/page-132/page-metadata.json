@@ -1,0 +1,102 @@
+{
+  "index": 131,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 121,
+      "bottomRightX": 535,
+      "bottomRightY": 144,
+      "content": "## 8.9 Transmitting LFPS – USB Mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 151,
+      "bottomRightX": 686,
+      "bottomRightY": 279,
+      "content": "When the PHY is in P1 and the MAC wants to transmit LFPS, the MAC deasserts TxElecIdle and the PHY should generate valid LFPS until TxElecIdle is asserted. The MAC must assert TxElecIdle before transitioning the PHY to P0. The length of time TxElecIdle is deasserted is varied for different events. When the PHY is in P0 and the MAC wants to transmit LFPS, the MAC must assert both TxElecIdle and TxDetectRx/Loopback for the desired duration of an LFPS burst. The PHY is required to complete a full LFPS period before transitioning to SuperSpeed data, and, as a consequence, it may drop SuperSpeed data if these requests overlap. This requirement does not apply to TxOnesZeros requests. See Chapter 6 in the USB 3.0 specification for more details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 289,
+      "bottomRightX": 272,
+      "bottomRightY": 304,
+      "content": "Figure 8-21. LFPS Transmit",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 307,
+      "bottomRightX": 690,
+      "bottomRightY": 407,
+      "content": "![img-42.jpeg](img-42.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-42.jpeg"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 421,
+      "bottomRightX": 674,
+      "bottomRightY": 463,
+      "content": "## 8.10 Transmitting LFPS – USB4 and DisplayPort Modes",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 471,
+      "bottomRightX": 684,
+      "bottomRightY": 585,
+      "content": "By default, the PHY is responsible for transmitting LFPS. See Section 8.24 for relevant PIPE control signals. The MAC can configure the PHY to allow the MAC to transmit LFPS on the parallel data interface TxData by setting the MacTransmitLFPS field in the PHY Common Control0 register prior to transitioning the link to P0 PowerDown state. The advantage of enabling the MAC to generate LFPS is that it provides easier timing control for switchover to high speed data at a clean LPFS cycle boundary. This section describes the sequence required for the MAC to use the parallel data interface to transmit LFPS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 593,
+      "bottomRightX": 686,
+      "bottomRightY": 737,
+      "content": "Figure 8-22 illustrates the requirements that must be adhered to for the MAC to transmit LFPS. When the MAC wants to transmit LFPS, it must inform the PHY in advance (t1) by asserting TxDetectRxLoopback while TxElecIdle is asserted; this allows the PHY to make any internal transmitter adjustments necessary to meeting LFPS electrical requirements. The MAC must deassert TxElecIdle (t2) when it starts transmitting LFPS. When the MAC wants to resume transmitting regular high-speed data, it must inform the PHY in advance (t3) by asserting TxElecIdle and deasserting TxDetectRx/Loopback; this allows the PHY to make any internal transmitter adjustments necessary for high-speed data transmission. High-speed data transmission resumes when TxElecIdle deasserts (t4).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 954,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "132",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 953,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

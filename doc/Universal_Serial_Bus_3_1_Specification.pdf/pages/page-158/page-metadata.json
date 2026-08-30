@@ -1,0 +1,76 @@
+{
+  "index": 157,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 296,
+      "topLeftY": 99,
+      "bottomRightX": 526,
+      "bottomRightY": 449,
+      "content": "![img-121.jpeg](img-121.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-121.jpeg"
+    },
+    {
+      "topLeftX": 360,
+      "topLeftY": 461,
+      "bottomRightX": 465,
+      "bottomRightY": 476,
+      "content": "Gen 1 transmitter",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 514,
+      "bottomRightX": 556,
+      "bottomRightY": 829,
+      "content": "![img-122.jpeg](img-122.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-122.jpeg"
+    },
+    {
+      "topLeftX": 360,
+      "topLeftY": 856,
+      "bottomRightX": 464,
+      "bottomRightY": 871,
+      "content": "Gen 2 transmitter",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 290,
+      "topLeftY": 884,
+      "bottomRightX": 533,
+      "bottomRightY": 901,
+      "content": "Figure 6-2. Transmitter Block Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 111,
+      "bottomRightY": 994,
+      "content": "6-2",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

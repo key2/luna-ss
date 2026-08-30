@@ -1,0 +1,66 @@
+{
+  "index": 461,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 164,
+      "bottomRightX": 480,
+      "bottomRightY": 183,
+      "content": "### 9.6.2.5 SuperSpeedPlus USB Device Capability",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 187,
+      "bottomRightX": 698,
+      "bottomRightY": 239,
+      "content": "This section defines the required device-level capabilities descriptor which shall be implemented by all SuperSpeedPlus devices. This capability descriptor cannot be directly accessed with a GetDescriptor() or SetDescriptor() request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 256,
+      "bottomRightX": 374,
+      "bottomRightY": 272,
+      "content": "Table 9-19. SuperSpeedPlus Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 274,
+      "bottomRightX": 700,
+      "bottomRightY": 723,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of descriptor  |\n|  1 | bDescriptorType | 1 | Constant | DEVICE CAPABILITY Descriptor type  |\n|  2 | bDevCapabilityType | 1 | Constant | Capability type: SUPERSPEED_PLUS  |\n|  3 | bReserved | 1 | Number | This field is reserved and shall be set to zero.  |\n|  4 | bmAttributes | 4 | Bitmap | Bitmap encoding of supported SuperSpeedPlus features: **Bit****Description** 4:0 **Sublink Speed Attribute Count** (SSAC). The number of Sublink Speed Attribute bitmaps. A SuperSpeedPlus device shall report at least one SSAC. The number of Sublink Speed Attributes = SSAC + 1. 8:5 **Sublink Speed ID Count** (SSIC). The number of unique Sublink Speed IDs supported by the device. The number of Sublink Speed IDs = SSIC + 1. 31:9 **Reserved**.  |\n|  8 | wFunctionalitySupport | 2 | Number | The device shall support full functionality at all reported bandwidths at or above the minimum bandwidth described via this field. **Bit****Description** 3:0 **Sublink Speed Attribute ID** (SSID). This field indicates the minimum lane speed 7:4 **Reserved**. Shall be set to zero. 11:8 **Min Rx Lane Count**. This field indicates the minimum receive lane count. 15:12 **Min Tx Lane Count**. This field indicates the minimum transmit lane count.  |\n|  9 | wReserved | 2 | Number | Reserved. Shall be set to zero.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-185.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "9-44",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

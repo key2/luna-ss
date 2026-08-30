@@ -1,0 +1,148 @@
+{
+  "index": 553,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 92,
+      "bottomRightX": 340,
+      "bottomRightY": 110,
+      "content": "### 10.16.2.5 Get Port Error Count",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 116,
+      "bottomRightX": 691,
+      "bottomRightY": 167,
+      "content": "This request returns the number of link errors detected by the hub on the port indicated by wIndex. This value is reset to zero whenever the device goes through a Reset (refer to Section 7.3) or at power up.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 169,
+      "bottomRightX": 700,
+      "bottomRightY": 225,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10100011B | GET_PORT_ERR_COUNT | Zero | Port | Two | Number of Link Errors  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-238.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 230,
+      "bottomRightX": 565,
+      "bottomRightY": 247,
+      "content": "The port number shall be a valid port number for that hub, greater than zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 252,
+      "bottomRightX": 695,
+      "bottomRightY": 286,
+      "content": "It is a Request Error if wValue or wLength are other than as specified above or if wIndex specifies a port that does not exist.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 290,
+      "bottomRightX": 652,
+      "bottomRightY": 307,
+      "content": "If the hub is not configured, the behavior of the hub in response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 322,
+      "bottomRightX": 301,
+      "bottomRightY": 339,
+      "content": "### 10.16.2.6 Get Port Status",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 345,
+      "bottomRightX": 662,
+      "bottomRightY": 361,
+      "content": "This request returns the current port status and the current value of the port status change bits.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 364,
+      "bottomRightX": 714,
+      "bottomRightY": 435,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10100011B | GET_STATUS | Port Status Type | Port | Port Status Length | Port Status and Change Status  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-239.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 440,
+      "bottomRightX": 565,
+      "bottomRightY": 457,
+      "content": "The port number shall be a valid port number for that hub, greater than zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 461,
+      "bottomRightX": 680,
+      "bottomRightY": 527,
+      "content": "The first word of PORT_STATUS or EXT_PORT_STATUS data contains the wPortStatus field (refer to Table 10-13). The second word of PORT_STATUS or EXT_PORT_STATUS data contains the wPortChange field (refer to Table 10-14). An EXT_PORT_STATUS request shall return an additional dword of data that contains dwExtPortStatus field (refer to Table 10-15).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 534,
+      "bottomRightX": 676,
+      "bottomRightY": 568,
+      "content": "The bit locations in the wPortStatus and wPortChange fields correspond in a one-to-one fashion where applicable.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 572,
+      "bottomRightX": 690,
+      "bottomRightY": 607,
+      "content": "The wValue field specifies the Port Status Type in the low order byte (refer to Table 10-11 and the high order byte is reserved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-76",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "index": 52,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 46,
+      "bottomRightX": 413,
+      "bottomRightY": 61,
+      "content": "- 22 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 93,
+      "bottomRightX": 286,
+      "bottomRightY": 108,
+      "content": "### 3.2.1.3 Dual-Lane Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 114,
+      "bottomRightX": 652,
+      "bottomRightY": 146,
+      "content": "Dual-lane operation is supported for USB Type-C-based applications only. Requirements specific to dual-lane operation include the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 152,
+      "bottomRightX": 676,
+      "bottomRightY": 281,
+      "content": "- Data Striping applies to data blocks but control blocks are duplicated on both lanes.\n- Data Scrambling operates on a per lane basis with a different seed value defined for each lane.\n- Ordered Sets are transmitted simultaneously on each lane within skew constraints. TS1 and TS2 transmit/receive sequences proceed in sync across both lanes and clock offset compensation using SKP ordered sets is performed on a per lane basis.\n- At the receiver input, a maximum lane-to-lane skew of 6400 ps is allowed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 292,
+      "bottomRightX": 671,
+      "bottomRightY": 354,
+      "content": "To manage dual-lane operation, the Configuration Lane is Lane 0 as established at each port by the CC pin decoding defined by the USB Type-C specification. All LFPS signaling and LBPM messaging is only transmitted on this lane. Receiver Detect is only required on this lane and Ux Exit functionality is only required in the Configuration Lane's receiver.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 366,
+      "bottomRightX": 513,
+      "bottomRightY": 383,
+      "content": "Compliance features also include support for dual-lane operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 395,
+      "bottomRightX": 223,
+      "bottomRightY": 410,
+      "content": "### 3.2.2 Link Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 416,
+      "bottomRightX": 664,
+      "bottomRightY": 478,
+      "content": "The Enhanced SuperSpeed link layer specifications are detailed in Chapter 7. An Enhanced SuperSpeed link is a logical and physical connection of two ports. The connected ports are called link partners. The link layer defines the logical portion of a port and the communications between link partners.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 491,
+      "bottomRightX": 230,
+      "bottomRightY": 506,
+      "content": "The link layer has:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 513,
+      "bottomRightX": 675,
+      "bottomRightY": 648,
+      "content": "- State machines for managing its end of the physical connection. These include physical layer initialization and event management, i.e., connect, removal, and power management. Also included is initializing and configuring dual-lane operation.\n- State machines and buffering for managing information exchanges with the link partner. It implements protocols for flow control, reliable delivery (port to port) of packet headers, and link power management. The different link packet types are defined in Chapter 7.\n- Buffering for data and protocol layer information elements.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 663,
+      "bottomRightX": 234,
+      "bottomRightY": 679,
+      "content": "The link layer also:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 685,
+      "bottomRightX": 672,
+      "bottomRightY": 792,
+      "content": "- Provides correct framing of sequences of bytes into packets during transmission; e.g., insertion of packet delimiters\n- Detects received packets, including packet delimiters and error checks of received header packets (for reliable delivery)\n- Provides an appropriate interface to the protocol layer for pass-through of protocol-layer packet information exchanges",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 806,
+      "bottomRightX": 205,
+      "bottomRightY": 822,
+      "content": "The link layer:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 828,
+      "bottomRightX": 660,
+      "bottomRightY": 927,
+      "content": "- Manages the state of its PHY (i.e., its end of the physical connection), including power management and events (connection, removal, and wake).\n- Transmits and receives byte streams, with additional signals that qualify the byte stream as control sequences or data. The physical layer includes discrete transmit and receive physical links, therefore, a port is able to simultaneously transmit and receive control and data information.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

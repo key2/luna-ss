@@ -1,0 +1,102 @@
+{
+  "index": 156,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 94,
+      "bottomRightX": 109,
+      "bottomRightY": 119,
+      "content": "6",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 94,
+      "bottomRightX": 345,
+      "bottomRightY": 124,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 174,
+      "bottomRightX": 688,
+      "bottomRightY": 514,
+      "content": "![img-120.jpeg](img-120.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-120.jpeg"
+    },
+    {
+      "topLeftX": 287,
+      "topLeftY": 536,
+      "bottomRightX": 535,
+      "bottomRightY": 553,
+      "content": "Figure 6-1. SuperSpeed Physical Layer",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 583,
+      "bottomRightX": 382,
+      "bottomRightY": 607,
+      "content": "## 6.1 Physical Layer Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 627,
+      "bottomRightX": 675,
+      "bottomRightY": 678,
+      "content": "The physical layer defines the signaling technology for the SuperSpeed and SuperSpeedPlus busses. This chapter defines the electrical requirements of the SuperSpeed and SuperSpeedPlus physical layers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 687,
+      "bottomRightX": 691,
+      "bottomRightY": 755,
+      "content": "This section defines the electrical-layer parameters required for operation of SuperSpeed and SuperSpeedPlus components. Normative specifications are required. Informative specifications may assist product designers and testers in understanding the intended behavior of the SuperSpeed and SuperSpeedPlus busses.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 781,
+      "bottomRightX": 413,
+      "bottomRightY": 806,
+      "content": "## 6.2 Physical Layer Functions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 817,
+      "bottomRightX": 694,
+      "bottomRightY": 835,
+      "content": "The functions of the physical layer are shown in Figure 6-2, Figure 6-3, Figure 6-4, and Figure 6-5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "6-1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "index": 362,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 666,
+      "bottomRightY": 144,
+      "content": "Note: A transition condition that is italicized shall be interpreted as a comment, not a required condition. For example, the “Stream n Active and Ready” text of the Idle to Start Stream transition of Figure 8-39.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 152,
+      "bottomRightX": 698,
+      "bottomRightY": 203,
+      "content": "Note: Any CStream data payload may be zero-length. The use of zero-length DPs on a Stream pipe (other than for Prime Pipe or Start Stream reject operations) is defined by the Device Class associated with the endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 212,
+      "bottomRightX": 692,
+      "bottomRightY": 247,
+      "content": "Note: An IN Data or Burst Transaction is terminated with an ACK TP with NumP = 0. This ACK TP is referred to as a \"Terminating ACK\" in the following sections.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 256,
+      "bottomRightX": 384,
+      "bottomRightY": 273,
+      "content": "### 8.12.1.4.2 Device IN Stream Protocol",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 284,
+      "bottomRightX": 687,
+      "bottomRightY": 317,
+      "content": "This section defines the Enhanced SuperSpeed packet exchanges that transition the device side of the Stream Protocol from one state to another on an IN bulk endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 325,
+      "bottomRightX": 698,
+      "bottomRightY": 376,
+      "content": "In the following text, a Device IN Stream state transition is assumed to occur at the point the device sends the first bit of the first symbol of a state machine related message to the host, or at the point the device first decodes state machine related message from the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 385,
+      "bottomRightX": 597,
+      "bottomRightY": 402,
+      "content": "For an IN pipe, Endpoint Buffers in the host receive Function Data from a device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-69",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

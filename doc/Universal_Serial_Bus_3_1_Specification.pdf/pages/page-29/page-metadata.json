@@ -1,0 +1,416 @@
+{
+  "index": 28,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 645,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Contents",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 92,
+      "bottomRightX": 154,
+      "bottomRightY": 113,
+      "content": "# Figures",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 114,
+      "bottomRightX": 700,
+      "bottomRightY": 131,
+      "content": "Figure 2-1. Port and Link Pictorial ...2-9",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 132,
+      "bottomRightX": 699,
+      "bottomRightY": 146,
+      "content": "Figure 3-1. USB 3.1 Dual Bus System Architecture...3-2",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 148,
+      "bottomRightX": 698,
+      "bottomRightY": 163,
+      "content": "Figure 3-2. USB 3.1 Cable ...3-3",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 164,
+      "bottomRightX": 699,
+      "bottomRightY": 179,
+      "content": "Figure 3-3. USB 3.1 Terminology Reference Model ...3-5",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 180,
+      "bottomRightX": 699,
+      "bottomRightY": 212,
+      "content": "Figure 3-4. Enhanced SuperSpeed Bus Communications Layers and Power Management\nElements...3-6",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 213,
+      "bottomRightX": 699,
+      "bottomRightY": 228,
+      "content": "Figure 3-5. Examples of Supported USB 3.1 USB Physical Device Topologies...3-13",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 229,
+      "bottomRightX": 699,
+      "bottomRightY": 245,
+      "content": "Figure 3-6. SuperSpeed Only Enhanced SuperSpeed Peripheral Device Configuration..3-13",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 246,
+      "bottomRightX": 699,
+      "bottomRightY": 261,
+      "content": "Figure 3-7. Enhanced SuperSpeed Device Configuration ...3-13",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 262,
+      "bottomRightX": 699,
+      "bottomRightY": 278,
+      "content": "Figure 3-8. Multiple SuperSpeed Bus Instances in an Enhanced SuperSpeed System...3-15",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 279,
+      "bottomRightX": 699,
+      "bottomRightY": 294,
+      "content": "Figure 4-1. Enhanced SuperSpeed IN Transaction Protocol ...4-6",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 295,
+      "bottomRightX": 699,
+      "bottomRightY": 310,
+      "content": "Figure 4-2. Enhanced SuperSpeed OUT Transaction Protocol ...4-7",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 311,
+      "bottomRightX": 699,
+      "bottomRightY": 327,
+      "content": "Figure 4-3. Enhanced SuperSpeed IN Stream Example...4-11",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 328,
+      "bottomRightX": 699,
+      "bottomRightY": 343,
+      "content": "Figure 5-1. USB 3.1 Standard-A Receptacle Interface Dimensions ...5-7",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 344,
+      "bottomRightX": 699,
+      "bottomRightY": 376,
+      "content": "Figure 5-2. Example USB 3.1 Standard-A Receptacle with Grounding Springs and Required\ncontact zones on the Standard-A Plug...5-9",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 377,
+      "bottomRightX": 699,
+      "bottomRightY": 392,
+      "content": "Figure 5-3. Example USB 3.1 Standard-A Mid-Mount Receptacles with Insertion Detect 5-10",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 393,
+      "bottomRightX": 699,
+      "bottomRightY": 409,
+      "content": "Figure 5-4. USB 3.1 Standard-A Plug Interface Dimensions...5-13",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 410,
+      "bottomRightX": 699,
+      "bottomRightY": 440,
+      "content": "Figure 5-5. Example Footprint for the USB 3.1 Standard-A Receptacle - Through-Hole with\nBack-Shield...5-16",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 442,
+      "bottomRightX": 699,
+      "bottomRightY": 473,
+      "content": "Figure 5-6. Example Footprint for the USB 3.1 Standard-A Receptacle - Mid-Mount\nStandard Mount Through-Hole with Insertion Detect...5-17",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 474,
+      "bottomRightX": 699,
+      "bottomRightY": 507,
+      "content": "Figure 5-7. Example Footprint for the USB 3.1 Standard-A Receptacle - Mid-Mount Reverse\nMount Through-Hole with Insertion Detect ...5-18",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 508,
+      "bottomRightX": 699,
+      "bottomRightY": 538,
+      "content": "Figure 5-8. Illustration of Color Coding Recommendation for USB 3.1 Standard-A\nConnector ...5-20",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 540,
+      "bottomRightX": 699,
+      "bottomRightY": 554,
+      "content": "Figure 5-9. USB 3.1 Standard-B Receptacle Interface Dimensions ...5-22",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 555,
+      "bottomRightX": 699,
+      "bottomRightY": 570,
+      "content": "Figure 5-10. USB 3.1 Standard-B Plug Interface Dimensions...5-23",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 571,
+      "bottomRightX": 699,
+      "bottomRightY": 587,
+      "content": "Figure 5-11. Reference Footprint for the USB 3.1 Standard-B Receptacle ...5-24",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 589,
+      "bottomRightX": 699,
+      "bottomRightY": 603,
+      "content": "Figure 5-12. USB 3.1 Micro-B and -AB Receptacles Interface Dimensions ...5-27",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 604,
+      "bottomRightX": 699,
+      "bottomRightY": 620,
+      "content": "Figure 5-13. USB 3.1 Micro-B and Micro-A Plug Interface Dimensions ...5-30",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 621,
+      "bottomRightX": 699,
+      "bottomRightY": 636,
+      "content": "Figure 5-14. Reference Footprint for the USB 3.1 Micro-B or Micro-AB Receptacle ...5-32",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 637,
+      "bottomRightX": 699,
+      "bottomRightY": 652,
+      "content": "Figure 5-15. Illustration of a USB 3.1 Cable Cross-Section ...5-34",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 653,
+      "bottomRightX": 699,
+      "bottomRightY": 670,
+      "content": "Figure 5-16. USB 3.1 Standard-A to USB 3.1 Standard-B Cable Assembly ...5-37",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 671,
+      "bottomRightX": 699,
+      "bottomRightY": 686,
+      "content": "Figure 5-17. USB 3.1 Micro-B Plug Cable Overmold Dimensions...5-39",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 687,
+      "bottomRightX": 699,
+      "bottomRightY": 701,
+      "content": "Figure 5-18. USB 3.1 Micro-A Cable Overmold Dimensions...5-41",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 702,
+      "bottomRightX": 699,
+      "bottomRightY": 718,
+      "content": "Figure 5-19. Typical Plug Orientation ...5-44",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 719,
+      "bottomRightX": 699,
+      "bottomRightY": 734,
+      "content": "Figure 5-20. Recommended Ground Void Dimension for USB Standard-A Receptacle...5-47",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 735,
+      "bottomRightX": 699,
+      "bottomRightY": 751,
+      "content": "Figure 5-21. Impedance Limits of a Mated Connector for Gen 2 Speed ...5-48",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 752,
+      "bottomRightX": 699,
+      "bottomRightY": 767,
+      "content": "Figure 5-22. Illustration of Cable Assembly Mounted on Test Fixture ...5-49",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 768,
+      "bottomRightX": 699,
+      "bottomRightY": 783,
+      "content": "Figure 5-23. Illustration of Cable Assembly with Reference Host and Device ...5-50",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 784,
+      "bottomRightX": 699,
+      "bottomRightY": 800,
+      "content": "Figure 5-24. Illustration of Insertion Loss Fit at Nyquist Frequency...5-51",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 801,
+      "bottomRightX": 699,
+      "bottomRightY": 816,
+      "content": "Figure 5-25. Example of Insertion Loss Deviation ...5-52",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 817,
+      "bottomRightX": 699,
+      "bottomRightY": 833,
+      "content": "Figure 5-26. Pass/Fail Examples...5-54",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 834,
+      "bottomRightX": 699,
+      "bottomRightY": 849,
+      "content": "Figure 5-27. Illustration of Peak-to-Peak Crosstalk...5-55",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 850,
+      "bottomRightX": 699,
+      "bottomRightY": 865,
+      "content": "Figure 5-28. Differential-to-Common-Mode Conversion Requirement for Gen 2...5-56",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 866,
+      "bottomRightX": 699,
+      "bottomRightY": 883,
+      "content": "Figure 5-29. Set Up For Cable SE Measurement (subject to change) ...5-56",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 884,
+      "bottomRightX": 699,
+      "bottomRightY": 899,
+      "content": "Figure 5-30. 4-Axes Continuity Test ...5-60",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 675,
+      "topLeftY": 983,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "xxix",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

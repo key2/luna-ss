@@ -1,0 +1,103 @@
+{
+  "index": 114,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 141,
+      "bottomRightX": 357,
+      "bottomRightY": 157,
+      "content": "Figure 8-5. MacCLK Lane",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 161,
+      "bottomRightX": 700,
+      "bottomRightY": 380,
+      "content": "![img-26.jpeg](img-26.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-26.jpeg"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 408,
+      "bottomRightX": 463,
+      "bottomRightY": 423,
+      "content": "The following rules apply to each MacCLK lane:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 428,
+      "bottomRightX": 695,
+      "bottomRightY": 654,
+      "content": "- MacCLKPHYMode, MacCLKRate, MacCLKSSCEnable, MacCLKReq, MacCLKAck must be at a valid value at MacCLKReset# deassertion.\n- MacCLKPHYMode must not change after MacCLKReset# deassertion.\n- Once MacCLK is running, it must remain stable until MacCLKReq is deasserted.\n- Signals that affect MacCLK frequency are sampled only on the rising edge of MacCLKReq.\n- MacCLKRate is permitted to change only when MacCLKReq and MacCLKAck are deasserted.\n- MACCLKSSCEnable is permitted to be dynamically asserted or deasserted while MacCLK is running. The PHY specifies the maximum time it takes to complete a SSC enable or disable via the MaxSSCEnableDisableTime parameter.\n- MacCLKRate defines an override encoding that indicates that a vendor specific mechanism of specifying MacCLK frequency is used.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 682,
+      "bottomRightX": 696,
+      "bottomRightY": 725,
+      "content": "Figure 8-6 illustrates basic MacCLK operation that follows the above described rules. In this example, MacCLK is requested at an initial rate; subsequently, MacCLKReq and MacCLKAck deassert before a new rate is requested.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 729,
+      "bottomRightX": 465,
+      "bottomRightY": 744,
+      "content": "Figure 8-6. Basic MacCLK Lane Operation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 749,
+      "bottomRightX": 700,
+      "bottomRightY": 869,
+      "content": "![img-27.jpeg](img-27.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-27.jpeg"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "115",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "index": 69,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 264,
+      "bottomRightY": 63,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 659,
+      "topLeftY": 48,
+      "bottomRightX": 712,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 93,
+      "bottomRightX": 650,
+      "bottomRightY": 110,
+      "content": "13. The LVS and PUT continue the test with the Link Initialization Sequence starting at step two.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 138,
+      "bottomRightX": 255,
+      "bottomRightY": 154,
+      "content": "# Subtest 2 (TD 7.1.2):",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 161,
+      "bottomRightX": 704,
+      "bottomRightY": 310,
+      "content": "1. The LVS transmits Polling.LFPS bursts with an SCD1 signature.\n2. The test fails if a PUT that does not contain a captive re-timer does not transmit at least 16 Polling.LFPS bursts.\n3. The LVS switches to regular Polling.LFPS bursts after transmitting 4 SCD1 and receiving 16 Polling.LFPS bursts, or after receiving 4 Polling.LFPS and tPollingSCDLFPSTimeout has expired – whichever comes first.\n4. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 317,
+      "bottomRightX": 708,
+      "bottomRightY": 445,
+      "content": "a. The PUT does not transmit at least four consecutive Polling.LFPS bursts after receiving one Polling.LFPS burst (Note: The received Polling.LFPS burst may be part of an SCD1 from the LVS, or may be from a regular Polling.LFPS burst after the LVS transitions)\nb. The PUT transitions away from Polling.LFPS before the LVS sends at least two consecutive Polling.LFPS bursts.\nc. The PUT does not transition from Polling.LFPS before tPollingLFPSTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 451,
+      "bottomRightX": 690,
+      "bottomRightY": 534,
+      "content": "5. The test fails if the PUT has transmitted more than 6 LFPS after receiving 1 regular (non-SCD) Polling.LFPS burst and the Number of LFPS tx'd before receiving \\(1 > 18\\) - the Number of LFPS tx'd after receiving 1.\n6. Continue to Subtest 1 (TD 7.1.1) step 5.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 569,
+      "bottomRightX": 250,
+      "bottomRightY": 585,
+      "content": "# Subtest 3 (TD 7.1.3)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 593,
+      "bottomRightX": 385,
+      "bottomRightY": 630,
+      "content": "1. The LVS transmits Polling.LFPS bursts.\n2. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 637,
+      "bottomRightX": 707,
+      "bottomRightY": 832,
+      "content": "a. The PUT does not switch to SuperSpeed operation after transmitting 4 SCD1 and receiving 16 Polling.LFPS.\nb. For a PUT with no captive re-timer, the PUT does not transmit 16 regular Polling.LFPS\nc. The PUT does not transmit at least four consecutive regular Polling.LFPS bursts after receiving one Polling.LFPS burst.\nd. For a PUT with no captive re-timer, the PUT does not transition to Polling.RxEQ after transmitting 16 regular Polling.LFPS.\ne. For a PUT with a captive re-timer, the PUT does not transition to Polling.RxEQ after transmitting 4 regular Polling.LFPS.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 838,
+      "bottomRightX": 371,
+      "bottomRightY": 854,
+      "content": "3. Continue to Subtest 1 (TD 7.1.1) step 5.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 890,
+      "bottomRightX": 250,
+      "bottomRightY": 905,
+      "content": "# Subtest 4 (TD 7.1.4)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 912,
+      "bottomRightX": 499,
+      "bottomRightY": 928,
+      "content": "1. The LVS transmits Polling.LFPS bursts with an SCD1 signature.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 935,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "62",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

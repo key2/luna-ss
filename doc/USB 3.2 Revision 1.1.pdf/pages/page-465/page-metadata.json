@@ -1,0 +1,151 @@
+{
+  "index": 464,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 434 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 112,
+      "bottomRightX": 377,
+      "bottomRightY": 126,
+      "content": "Endpoint Descriptor (for Status Change Endpoint)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 127,
+      "bottomRightX": 496,
+      "bottomRightY": 265,
+      "content": "|  bLength | 7  |\n| --- | --- |\n|  bDescriptorType | ENDPOINT Descriptor type  |\n|  bEndpointAddress | Implementation-dependent; Bit 7: Direction = In(1)  |\n|  bmAttributes | Transfer Type = Interrupt (19)  |\n|  wMaxPacketSize | 2  |\n|  bInterval | 8 (maximum allowable interval)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-220.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 283,
+      "bottomRightX": 439,
+      "bottomRightY": 296,
+      "content": "Endpoint Companion Descriptor (for Status Change Endpoint)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 297,
+      "bottomRightX": 496,
+      "bottomRightY": 417,
+      "content": "|  bLength | 6  |\n| --- | --- |\n|  bDescriptorType | SUPERSPEED_USB_ENDPOINT_COMPANION Descriptor type  |\n|  bMaxBurst | 0  |\n|  bmAttributes | 0  |\n|  wBytesPerInterval | 2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-221.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 438,
+      "bottomRightX": 527,
+      "bottomRightY": 455,
+      "content": "# Hub Descriptors for USB hub operating in SuperSpeedPlus mode",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 457,
+      "bottomRightX": 373,
+      "bottomRightY": 471,
+      "content": "Device Descriptor (SuperSpeedPlus information)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 472,
+      "bottomRightX": 496,
+      "bottomRightY": 642,
+      "content": "|  bLength | 18  |\n| --- | --- |\n|  bDescriptorType | DEVICE Descriptor type  |\n|  bcdUSB | 310H  |\n|  bDeviceClass | HUB_CLASSCODE (9)  |\n|  bDeviceSubClass | 0  |\n|  bDeviceProtocol | 3  |\n|  bMaxPacketSize0 | 9  |\n|  bNumConfigurations | 1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-222.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 659,
+      "bottomRightX": 196,
+      "bottomRightY": 673,
+      "content": "BOS Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 675,
+      "bottomRightX": 496,
+      "bottomRightY": 762,
+      "content": "|  bLength | 5  |\n| --- | --- |\n|  bDescriptorType | BOS Descriptor type  |\n|  wTotalLength | 73  |\n|  bNumDeviceCaps | 3  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-223.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 779,
+      "bottomRightX": 210,
+      "bottomRightY": 792,
+      "content": "USB 2.0 Extension",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 794,
+      "bottomRightX": 496,
+      "bottomRightY": 881,
+      "content": "|  bLength | 7  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | USB 2.0 EXTENSION  |\n|  bmAttributes | 2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-224.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "index": 549,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 106,
+      "bottomRightX": 364,
+      "bottomRightY": 123,
+      "content": "Table 10-8. Hub Class Request Codes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 126,
+      "bottomRightX": 601,
+      "bottomRightY": 341,
+      "content": "|  bRequest | Value  |\n| --- | --- |\n|  GET_STATUS | 0  |\n|  CLEAR_FEATURE | 1  |\n|  RESERVED (used in previous specifications for GET_STATE) | 2  |\n|  SET_FEATURE | 3  |\n|  RESERVED | 4-5  |\n|  GET_DESCRIPTOR | 6  |\n|  SET_DESCRIPTOR | 7  |\n|  RESERVED (used in USB 2.0 specification) | 8-11  |\n|  SET_HUB_DEPTH | 12  |\n|  GET_PORT_ERR_COUNT | 13  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-230.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 348,
+      "bottomRightX": 656,
+      "bottomRightY": 381,
+      "content": "Table 10-9 gives the valid feature selectors for the hub class. Refer to Section 10.16.2.1 and Section 10.16.2.8 for a description of the features.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 395,
+      "bottomRightX": 378,
+      "bottomRightY": 411,
+      "content": "Table 10-9. Hub Class Feature Selectors",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 415,
+      "bottomRightX": 578,
+      "bottomRightY": 802,
+      "content": "|  Feature Selector | Recipient | Value  |\n| --- | --- | --- |\n|  C_HUB_LOCAL_POWER | Hub | 0  |\n|  C_HUB_OVER_CURRENT | Hub | 1  |\n|  PORT_CONNECTION | Port | 0  |\n|  PORT_OVER_CURRENT | Port | 3  |\n|  PORT_RESET | Port | 4  |\n|  PORT_LINK_STATE | Port | 5  |\n|  PORT_POWER | Port | 8  |\n|  C_PORT_CONNECTION | Port | 16  |\n|  C_PORT_OVER_CURRENT | Port | 19  |\n|  C_PORT_RESET | Port | 20  |\n|  RESERVED (used in USB 2.0 specification) | Port | 21  |\n|  PORT_U1_TIMEOUT | Port | 23  |\n|  PORT_U2_TIMEOUT | Port | 24  |\n|  C_PORT_LINK_STATE | Port | 25  |\n|  C_PORT_CONFIG_ERROR | Port | 26  |\n|  PORT_REMOTE_WAKE_MASK | Port | 27  |\n|  BH_PORT_RESET | Port | 28  |\n|  C_BH_PORT_RESET | Port | 29  |\n|  FORCE_LINKPM_ACCEPT | Port | 30  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-231.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-72",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

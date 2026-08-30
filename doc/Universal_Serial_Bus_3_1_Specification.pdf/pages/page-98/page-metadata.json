@@ -1,0 +1,67 @@
+{
+  "index": 97,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 101,
+      "bottomRightX": 647,
+      "bottomRightY": 374,
+      "content": "![img-27.jpeg](img-27.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-27.jpeg"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 377,
+      "bottomRightX": 359,
+      "bottomRightY": 410,
+      "content": "Spring fingers on the side of\nreceptacle shell are EMI functional",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 219,
+      "topLeftY": 437,
+      "bottomRightX": 605,
+      "bottomRightY": 799,
+      "content": "![img-28.jpeg](img-28.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-28.jpeg"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 819,
+      "bottomRightX": 680,
+      "bottomRightY": 837,
+      "content": "Figure 5-3. Example USB 3.1 Standard-A Mid-Mount Receptacles with Insertion Detect",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-10",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

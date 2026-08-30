@@ -1,0 +1,103 @@
+{
+  "index": 123,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 93 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 254,
+      "topLeftY": 92,
+      "bottomRightX": 535,
+      "bottomRightY": 110,
+      "content": "Figure 6-29. Gen 2 reference DFE Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 215,
+      "topLeftY": 121,
+      "bottomRightX": 576,
+      "bottomRightY": 344,
+      "content": "![img-44.jpeg](img-44.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-44.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 369,
+      "bottomRightX": 341,
+      "bottomRightY": 382,
+      "content": "### 6.8.3 Receiver Electrical Parameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 390,
+      "bottomRightX": 665,
+      "bottomRightY": 421,
+      "content": "Normative specifications are to be measured at TP3 in Figure 6-6. Peak (p) and peak- peak (p-p) are defined in Section 6.6.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 217,
+      "topLeftY": 432,
+      "bottomRightX": 571,
+      "bottomRightY": 447,
+      "content": "Table 6-22. Receiver Normative Electrical Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 458,
+      "bottomRightX": 671,
+      "bottomRightY": 900,
+      "content": "|  Symbol | Parameter | Gen 1 (5.0 GT/s) | Gen 2 (10 GT/s) | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  UI | Unit Interval | 199.94 (min) 200.06 (max) | 99.97 (min) 100.03 (max) | ps | UI does not account for SSC caused variations.  |\n|  R_{RX-DC} | Receiver DC common mode impedance | 18 (min) 30 (max) | 18 (min) 30 (max) | Ω | DC impedance limits are needed to guarantee Receiver detect. Measured with respect to ground over a voltage of 500 mV maximum.  |\n|  R_{RX-DIFF-DC} | DC differential impedance | 72 (min) 120 (max) | 72 (min) 120 (max) | Ω |   |\n|  Z_{RX-HIGH-IMP-DC-POS}^{1} | DC Input CM Input Impedance for V>0 during Reset or power down | 10k (min) | 10k (min) | Ω | Rx low frequency CM impedance with the Rx terminations not powered. Defined at the transmitter side of the AC cap as min(delta_V/delta_I) upon application of a positive Tx step of any size up to +500mV from steady state.  |\n|  V_{RX-LFPS-DET-DIFFp-p} | LFPS Detect Threshold | 100 (min) 300 (max) | 100 (min) 300 (max) | mV | Below the minimum is noise. Must wake up above the maximum.  |\n|  C_{RX-AC-COUPLING} | AC Coupling Capacitor | 297 (min) 363 (max) | 297 (min) 363 (max) | nF | Receivers may be AC coupled if desired. If used, the AC coupling is required to be either within the media or within the receiving component.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-59.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

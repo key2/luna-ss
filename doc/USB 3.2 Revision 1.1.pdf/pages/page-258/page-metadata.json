@@ -1,0 +1,173 @@
+{
+  "index": 257,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 227 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 176,
+      "topLeftY": 95,
+      "bottomRightX": 639,
+      "bottomRightY": 196,
+      "content": "1. Copy the value of Bus Interval Boundary(RxITP) to the Bus Interval Boundary(TxITP) subfield of the Isochronous Timestamp field in the downstream ITP.\n2. Calculate the value of Delta(TxITP) subfield using the following method: Determine the Delta value at time the ITP shall be transmitted (tITPDFP) using the formula:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 385,
+      "topLeftY": 203,
+      "bottomRightX": 472,
+      "bottomRightY": 218,
+      "content": "$$Delta_{(tITPDFP)} =$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 270,
+      "topLeftY": 224,
+      "bottomRightX": 587,
+      "bottomRightY": 256,
+      "content": "$$\\begin{array}{c} LDM \\text{ Link Delay} + Delta_{(RxITP)} + \\\\ (ITP \\text{ Delay Counter} - wHubDelay) - Correction_{(RxITP)} \\end{array}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 199,
+      "topLeftY": 263,
+      "bottomRightX": 536,
+      "bottomRightY": 279,
+      "content": "Where $Delta_{(tITPDFP)}$ is the $Delta$ value at time tITPDFP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 288,
+      "bottomRightX": 665,
+      "bottomRightY": 336,
+      "content": "If $Delta_{(tITPDFP)}$ is greater than or equal to zero and less than 7500, the hub shall set $Delta(TxITP)$ equal to $Delta(tITPDFP)$ and the $Correction(TxITP)$ value to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 346,
+      "bottomRightX": 668,
+      "bottomRightY": 377,
+      "content": "If $Delta(tITPDFP)$ is greater than or equal to 7500, the hub shall set $Delta(TxITP)$ equal to 7500.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 385,
+      "bottomRightX": 667,
+      "bottomRightY": 420,
+      "content": "If $Delta(tITPDFP)$ is negative the hub shall set $Delta(TxITP)$ to zero and calculate the $Correction(TxITP)$ value using the following formula:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 329,
+      "topLeftY": 427,
+      "bottomRightX": 527,
+      "bottomRightY": 442,
+      "content": "$$Correction(TxITP) = - Delta_{(tITPDFP)}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 447,
+      "bottomRightX": 481,
+      "bottomRightY": 462,
+      "content": "3. Re-calculate the CRC-16 for the modified ITP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 484,
+      "bottomRightX": 668,
+      "bottomRightY": 515,
+      "content": "If an ITP is received by a PTM capable hub and the Delayed (DL) bit is set, then the hub shall apply the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 528,
+      "bottomRightX": 448,
+      "bottomRightY": 544,
+      "content": "- Forward the received ITP without modification.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 565,
+      "bottomRightX": 671,
+      "bottomRightY": 640,
+      "content": "The Isochronous Timestamp values used in the ITP being transmitted shall be the values present at the time of transmission; e.g., if other packets are queued for transmission at the time the ITP is queued, the values used shall not be the values present at the time of queuing, but adjusted for the actual time of transmission (tITPDFP). Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 654,
+      "bottomRightX": 238,
+      "bottomRightY": 668,
+      "content": "### 8.4.8.8 Performance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 676,
+      "bottomRightX": 673,
+      "bottomRightY": 754,
+      "content": "Figure 8-16 illustrates the various components of a LDM Exchange path that contribute to the overall performance of the LDM mechanism. The Requester to Responder and Responder to Requester paths apply to LDM TS Request and TS Response LMPs, respectively. The Requester Rx path applies to ITPs received by an upstream facing port and the Responder Tx path applies to ITPs transmitted by a downstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

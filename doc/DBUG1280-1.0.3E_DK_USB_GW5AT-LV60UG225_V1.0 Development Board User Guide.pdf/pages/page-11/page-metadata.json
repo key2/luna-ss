@@ -1,0 +1,139 @@
+{
+  "index": 10,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 72,
+      "topLeftY": 35,
+      "bottomRightX": 241,
+      "bottomRightY": 48,
+      "content": "2 Development Board Introduction",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 502,
+      "topLeftY": 35,
+      "bottomRightX": 646,
+      "bottomRightY": 48,
+      "content": "2.2 A Development Board Kit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 89,
+      "bottomRightX": 416,
+      "bottomRightY": 106,
+      "content": "performance and compatibility design.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 114,
+      "bottomRightX": 634,
+      "bottomRightY": 231,
+      "content": "DK_USB_GW5AT-LV60UG225_V1.0 development board applies to DDR3 high-speed storage, SDI and MIPI high-speed communication, integrates SDI-IN, SDI-OUT, MIPI CPHY, MIPI DPHY, HDMI, Type-C interfaces, supporting FPGA's MIPI C-PHY, MIPI D-PHY, USB 3.0, and 3G/6G SDI function evaluation, hardware verification, and software learning and debugging, etc.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 239,
+      "bottomRightX": 646,
+      "bottomRightY": 298,
+      "content": "The development board adopts Gowin GW5AT-LV60UG225 FPGA device. For the internal resources of the chip, see DS981, GW5AT series of FPGA Products Data Sheet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 64,
+      "topLeftY": 314,
+      "bottomRightX": 363,
+      "bottomRightY": 339,
+      "content": "## 2.2 A Development Board Kit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 356,
+      "bottomRightX": 557,
+      "bottomRightY": 374,
+      "content": "The development board kit includes the following items:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 382,
+      "bottomRightX": 630,
+      "bottomRightY": 442,
+      "content": "1. DK_USB_GW5AT-LV60UG225_V1.0 development board\n2. 12V power (Input: AC 100-240V~50/60Hz 0.6A, output: DC12V 2A)\n3. Mini USB-B Cable",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 449,
+      "bottomRightX": 385,
+      "bottomRightY": 467,
+      "content": "Figure 2-2 A Development Board Kit",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 475,
+      "bottomRightX": 464,
+      "bottomRightY": 702,
+      "content": "![img-2.jpeg](img-2.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-2.jpeg"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 704,
+      "bottomRightX": 454,
+      "bottomRightY": 818,
+      "content": "![img-3.jpeg](img-3.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-3.jpeg"
+    },
+    {
+      "topLeftX": 464,
+      "topLeftY": 825,
+      "bottomRightX": 642,
+      "bottomRightY": 921,
+      "content": "① DK_USB_GW5AT-LV60UG225_V1.0 development board\n② 12V power supply adapter\n③ Mini USB-B Cable",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 72,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 617,
+      "topLeftY": 944,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "4(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

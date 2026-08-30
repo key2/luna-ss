@@ -1,0 +1,150 @@
+{
+  "index": 127,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 191,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 46,
+      "bottomRightX": 413,
+      "bottomRightY": 61,
+      "content": "- 97 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 336,
+      "topLeftY": 92,
+      "bottomRightX": 454,
+      "bottomRightY": 108,
+      "content": "**Table 6-24. BRST**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 220,
+      "topLeftY": 118,
+      "bottomRightX": 565,
+      "bottomRightY": 182,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0 | K28.5 | COM  |\n|  1 | K28.7 | BRST  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-64.md"
+    },
+    {
+      "topLeftX": 334,
+      "topLeftY": 217,
+      "bottomRightX": 454,
+      "bottomRightY": 232,
+      "content": "**Table 6-25. BDAT**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 220,
+      "topLeftY": 243,
+      "bottomRightX": 565,
+      "bottomRightY": 314,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  D0.0 <0:n> | Logical Idle (refer to Appendix B) | Scrambled 0 Rolls over after 2^{16} - 1 symbols  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-65.md"
+    },
+    {
+      "topLeftX": 336,
+      "topLeftY": 349,
+      "bottomRightX": 454,
+      "bottomRightY": 365,
+      "content": "**Table 6-26. BERC**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 220,
+      "topLeftY": 375,
+      "bottomRightX": 565,
+      "bottomRightY": 481,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0 | K28.3 | BERC  |\n|  1 | K28.3 | BERC  |\n|  2 | K28.3 | BERC  |\n|  3 | K28.3 | BERC  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-66.md"
+    },
+    {
+      "topLeftX": 336,
+      "topLeftY": 515,
+      "bottomRightX": 454,
+      "bottomRightY": 530,
+      "content": "**Table 6-27. BCNT**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 541,
+      "bottomRightX": 592,
+      "bottomRightY": 646,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0 | K28.3 | BERC  |\n|  0 | K28.3 | BERC  |\n|  EC<0:7> | DCODE | Error count (not scrambled)  |\n|  EC<0:7> | DCODE | Error count (not scrambled)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-67.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 684,
+      "bottomRightX": 440,
+      "bottomRightY": 699,
+      "content": "### 6.8.5 Normative Receiver Tolerance Compliance Test",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 705,
+      "bottomRightX": 671,
+      "bottomRightY": 798,
+      "content": "The receiver tolerance test is tested using the appropriate compliance reference channel for Gen 1 or Gen 2 operation depending upon the rate being tested. A pattern generator shall send the rate appropriate compliance test pattern with added jitter through the compliance reference channels to the receiver. The receiver shall loop back the data and any difference in the pattern sent from the pattern generator and returned will be an error. When running the compliance tests, the receiver shall be put into loopback mode.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 809,
+      "bottomRightX": 667,
+      "bottomRightY": 841,
+      "content": "Additional details on the receiver compliance test are contained in the reference document, *USB SuperSpeed Compliance Methodology*.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

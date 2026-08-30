@@ -1,0 +1,128 @@
+{
+  "index": 220,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 190 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 673,
+      "bottomRightY": 177,
+      "content": "- If the port has not received a Port Capability LMP within tPortConfiguration time, a downstream port shall be directed to transition to eSS.Inactive and an upstream port shall be directed to transition to eSS.Disabled.\n- A downstream port shall transition to Recovery upon not receiving any link commands within 1 ms (tU0RecoveryTimeout).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 182,
+      "bottomRightX": 671,
+      "bottomRightY": 304,
+      "content": "Note: Not receiving any link commands including LUP within 1 ms implies either a link is under serious error condition, or an upstream port has been removed. To accommodate for both situations, a downstream port will transition to Recovery and attempt to retrain the link. If the retraining fails, it will then transition to eSS.Inactive. During eSS.Inactive, a downstream port will attempt a far-end receiver termination detection. If it determines that a far-end low-impedance receiver termination (R_RX-DC) defined in Table 6-22 is not present, it will enter Rx.Detect. Otherwise, it will wait for software intervention.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 312,
+      "bottomRightX": 667,
+      "bottomRightY": 425,
+      "content": "- An upstream port shall transition to Recovery if it does not receive any link command or any packet (as specified in Section 7.2.4.1.4) within 1 ms (tU0RecoveryTimeout).\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.\n- An upstream port shall transition to eSS.Disabled upon detection of VBUS off.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 430,
+      "bottomRightX": 666,
+      "bottomRightY": 462,
+      "content": "Note: this condition only applies to a self-powered upstream port. eSS.Disabled is a logical power-off state for a self-powered upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 481,
+      "bottomRightX": 179,
+      "bottomRightY": 495,
+      "content": "### 7.5.7 U1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 504,
+      "bottomRightX": 666,
+      "bottomRightY": 537,
+      "content": "U1 is a low power state where no packets are to be transmitted and both ports agree to enter a link state where an Enhanced SuperSpeed PHY can be placed into a low power state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 547,
+      "bottomRightX": 649,
+      "bottomRightY": 563,
+      "content": "U1 does not contain any substates. Transitions to other states are shown in Figure 7-22.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 576,
+      "bottomRightX": 264,
+      "bottomRightY": 591,
+      "content": "### 7.5.7.1 U1 Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 599,
+      "bottomRightX": 665,
+      "bottomRightY": 885,
+      "content": "- The transmitter DC common mode voltage shall be within specification (V_TX-CM-DC-ACTIVE-IDLE-DELTA) defined in Table 6-19 on each negotiated lane.\n- The port shall maintain its low-impedance receiver termination (R_RX-DC) defined in Table 6-22. If the port is in x2 operation, it shall enable its low-impedance receiver termination (R_RX-DC) on each negotiated lane.\n- The port shall enable its U1 exit detect functionality as defined in Section 6.9.2. If the port is in x2 operation, it shall enable this functionality on the Configuration Lane.\n- The port shall enable its LFPS transmitter when it initiates the exit from U1. If the port is in x2 operation, it shall initiate the exit from U1 on the Configuration Lane.\n- The port shall enable its U2 inactivity timer upon entry to this state if the U2 inactivity timer has a non-zero timeout value.\n- A downstream port shall enable its Ping.LFPS detection. If the port is in x2 operation, it shall enable its Ping.LFPS detection on the Configuration Lane.\n- A downstream port shall enable a 300 ms timer (tU1PingTimeout). This timer will be reset and restarted when a Ping.LFPS is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "index": 530,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 500 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 272,
+      "topLeftY": 92,
+      "bottomRightX": 515,
+      "bottomRightY": 110,
+      "content": "Figure E-7. Polling Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 124,
+      "bottomRightX": 630,
+      "bottomRightY": 593,
+      "content": "![img-202.jpeg](img-202.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-202.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 608,
+      "bottomRightX": 282,
+      "bottomRightY": 625,
+      "content": "### E.3.4.1 Polling.SpeedDetect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 630,
+      "bottomRightX": 588,
+      "bottomRightY": 646,
+      "content": "Polling.SpeedDetect is a substate that covers the following substates in LTSSM.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 653,
+      "bottomRightX": 272,
+      "bottomRightY": 714,
+      "content": "- Polling.LFPS\n- Polling.LFPSPlus\n- Polling.PortMatch",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 726,
+      "bottomRightX": 442,
+      "bottomRightY": 741,
+      "content": "The re-timer's responsibility in this substate includes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 748,
+      "bottomRightX": 671,
+      "bottomRightY": 800,
+      "content": "- Forward the LFPS based signals include Polling.LFPS, SCD1/SCD2, and LBPM.\n- Decode the LFPS signal including SCD1, SCD2, and LBPM to determine the negotiated data rate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 814,
+      "bottomRightX": 413,
+      "bottomRightY": 829,
+      "content": "#### E.3.4.1.1 Polling.SpeedDetect Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 837,
+      "bottomRightX": 671,
+      "bottomRightY": 867,
+      "content": "- The re-timer shall decode the following received LFPS signals and monitor the status and progression of LTSSM.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 873,
+      "bottomRightX": 285,
+      "bottomRightY": 910,
+      "content": "- Polling.LFPS\n- SCD1/SCD2",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

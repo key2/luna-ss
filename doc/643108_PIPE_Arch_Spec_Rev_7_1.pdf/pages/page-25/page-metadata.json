@@ -1,0 +1,56 @@
+{
+  "index": 24,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 602,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 121,
+      "bottomRightX": 403,
+      "bottomRightY": 146,
+      "content": "## 2.8 Configurable Pairs",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 151,
+      "bottomRightX": 697,
+      "bottomRightY": 253,
+      "content": "Support for configurable Rx and Tx differential pairs was added in version 5.0 of the PIPE specification. This configurability was primarily added to support Type-C alternate mode protocols such as DisplayPort and USB4; however, other applications are possible. Up to two differential pairs are assumed to be operational at any given time. Supported lane combinations are one Rx pair and one Tx pair, two Tx pairs, or two Rx pairs; each combination shares a single set of PIPE per-lane signals. See Section 7 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 968,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 967,
+      "content": "25",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

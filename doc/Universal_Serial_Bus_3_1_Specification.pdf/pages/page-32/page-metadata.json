@@ -1,0 +1,29 @@
+{
+  "index": 31,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 91,
+      "bottomRightX": 716,
+      "bottomRightY": 893,
+      "content": "Figure 8-33. Sample Concurrent BULK IN Transactions ...8-55\nFigure 8-34. Sample Concurrent BULK and Isochronous IN Transactions ...8-56\nFigure 8-35. Legend for State Machines...8-62\nFigure 8-36. Sample BULK IN Sequence ...8-64\nFigure 8-37. Sample BULK OUT Sequence ...8-65\nFigure 8-38. General Stream Protocol State Machine (SPSM) ...8-66\nFigure 8-39. Device IN Stream Protocol State Machine (DISPSM)...8-70\nFigure 8-40. Device IN Move Data State Machine (DIMDSM) ...8-73\nFigure 8-41. Device OUT Stream Protocol State Machine (DOSPSM) ...8-76\nFigure 8-42. Device OUT Move Data State Machine (DOMDSM)...8-79\nFigure 8-43. Host IN Stream Protocol State Machine (HISPSM) ...8-82\nFigure 8-44. Host IN Move Data State Machine (HIMDSM)...8-85\nFigure 8-45. Host OUT Stream Protocol State Machine (HOSPSM)...8-88\nFigure 8-46. Host OUT Move Data State Machine (HOMDSM) ...8-91\nFigure 8-47. Control Read Sequence ...8-95\nFigure 8-48. Control Write Sequence ...8-96\nFigure 8-49. Host Sends Interrupt IN Transaction in Each Service Interval ...8-99\nFigure 8-50. Host Stops Servicing Interrupt IN Transaction Once NRDY is Received ...8-100\nFigure 8-51. Host Resumes IN Transaction after Device Sent ERDY ...8-100\nFigure 8-52. Endpoint Sends STALL TP...8-100\nFigure 8-53. Host Detects Error in Data and Device Resends Data...8-101\nFigure 8-54. Host Sends Interrupt OUT Transaction in Each Service Interval...8-102\nFigure 8-55. Host Stops Servicing Interrupt OUT Transaction Once NRDY is Received ...8-103\nFigure 8-56. Host Resumes Sending Interrupt OUT Transaction After Device Sent ERDY8-103\nFigure 8-57. Device Detects Error in Data and Host Resends Data...8-104\nFigure 8-58. Endpoint Sends STALL TP...8-104\nFigure 8-59. Multiple Active Isochronous Endpoints with Aligned Service Interval\nBoundaries...8-106\nFigure 8-60. Enhanced SuperSpeed Isochronous IN Transaction Format...8-107\nFigure 8-61. Enhanced SuperSpeed Isochronous OUT Transaction Format...8-107\nFigure 8-62. Sample Enhanced SuperSpeed Isochronous IN Transaction ...8-109\nFigure 8-63. Sample Enhanced SuperSpeed Isochronous OUT Transaction ...8-110\nFigure 8-64. Sample Enhanced SuperSpeed Isochronous IN Transaction ...8-111\nFigure 8-65. Sample Enhanced SuperSpeed Isochronous OUT Transaction ...8-112\nFigure 8-66. Sample Smart Enhanced SuperSpeed Isochronous IN Transaction ...8-114\nFigure 8-67. Sample Smart Enhanced SuperSpeed Isochronous OUT Transaction ...8-115\nFigure 8-68. Sample Pipeline Isochronous IN Transactions ...8-118\nFigure 9-1. Peripheral State Diagram and Hub State Diagram (Enhanced SuperSpeed\nPortion Only)...9-2\nFigure 9-2. wIndex Format when Specifying an Endpoint...9-15\nFigure 9-3. wIndex Format when Specifying an Interface ...9-15\nFigure 9-4. Information Returned by a Standard GetStatus() Request to a Device ...9-24\nFigure 9-5. Information Returned by a Standard GetStatus() Request to an Interface ...9-25\nFigure 9-6. Information Returned by a Standard GetStatus() Request to an Endpoint...9-25\nFigure 9-7. Information Returned by a PTM GetStatus() Request to an Endpoint...9-26\nFigure 9-8. Example of Feedback Endpoint Relationships...9-54\nFigure 10-1. USB Hub Architecture . =...10-2\nFigure 10-2. SuperSpeed Portion of the USB Hub Architecture==...10-3\nFigure 10-3. SuperSpeedPlus Portion of the Hub Architecture== ...10-4",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 995,
+      "content": "xxxii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

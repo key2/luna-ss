@@ -1,0 +1,110 @@
+{
+  "index": 614,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 586,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 99,
+      "bottomRightX": 321,
+      "bottomRightY": 117,
+      "content": "# U1 → U0 Transition Latency",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 129,
+      "bottomRightX": 688,
+      "bottomRightY": 162,
+      "content": "The host initiates the transition by transmitting LFPS. At this point, both link partners' transitions from U1 → to U0 are executed in parallel.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 175,
+      "bottomRightX": 691,
+      "bottomRightY": 207,
+      "content": "The exit latency is characterized by the largest of the two device exit latencies: Dev1:U1DEL and RP1:U1DEL",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 221,
+      "bottomRightX": 321,
+      "bottomRightY": 239,
+      "content": "# U2 → U0 Transition Latency",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 251,
+      "bottomRightX": 688,
+      "bottomRightY": 299,
+      "content": "In this example it is assumed that at least one of the link partners (e.g., the RP1) is enabled for U2. The host initiates the transition by transmitting LFPS. At this point both link partners execute transition from U2 → to U0 in parallel.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 313,
+      "bottomRightX": 691,
+      "bottomRightY": 344,
+      "content": "The exit latency is characterized by the largest of the two device exit latencies: Dev1:U2DEL and RP1:U2DEL",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 369,
+      "bottomRightX": 381,
+      "bottomRightY": 385,
+      "content": "# C.2.1.2 Device Initiated Transition",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 392,
+      "bottomRightX": 519,
+      "bottomRightY": 408,
+      "content": "These transition latencies are the same as for the host initiated cases.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 413,
+      "bottomRightX": 599,
+      "bottomRightY": 447,
+      "content": "- U1 End to End Exit Latency is the larger of Dev1:U1DEL and RP1:U1DEL\n- U2 End to End Exit Latency is the larger of Dev1:U2DEL and RP1:U2DEL",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "C-17",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

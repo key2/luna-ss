@@ -1,0 +1,209 @@
+{
+  "index": 286,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 83,
+      "topLeftY": 92,
+      "bottomRightX": 460,
+      "bottomRightY": 111,
+      "content": "### 7.5.10.4.1 Recovery.Configuration Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 114,
+      "bottomRightX": 677,
+      "bottomRightY": 147,
+      "content": "- The port shall transmit identical TS2 ordered sets upon entry to this substate and set the link configuration field in the TS2 ordered set based on the following:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 150,
+      "bottomRightX": 619,
+      "bottomRightY": 165,
+      "content": "1. When directed, a downstream port shall set Reset bit in the TS2 ordered set.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 167,
+      "bottomRightX": 670,
+      "bottomRightY": 200,
+      "content": "Note: An upstream port can only set the Reset bit in the TS2 ordered set when in Hot Reset. Active. Refer to Section 7.5.12.3 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 202,
+      "bottomRightX": 670,
+      "bottomRightY": 237,
+      "content": "2. When directed, the port shall set Loopback bit in the TS2 ordered set.\n3. When directed, the port shall set the Disabling Scrambling bit in the TS2 ordered set.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 240,
+      "bottomRightX": 679,
+      "bottomRightY": 328,
+      "content": "- A 6-ms timer (tRecoveryConfigurationTimeout) shall be started upon entry to this substate.\n- The port in SuperSpeedPlus operation shall insert a SYNC ordered set every 32 TS2 ordered sets.\n- The port in SuperSpeedPlus operation shall perform block alignment and scrambler synchronization as defined in Sections 6.3.2.3 and 6.4.1.2.1 of Chapter 6.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 333,
+      "bottomRightX": 433,
+      "bottomRightY": 352,
+      "content": "### 7.5.10.4.2 Exit from Recovery.Configuration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 355,
+      "bottomRightX": 664,
+      "bottomRightY": 388,
+      "content": "- The port in SuperSpeed operation shall transition to Recovery.Idle after the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 390,
+      "bottomRightX": 672,
+      "bottomRightY": 440,
+      "content": "1. Eight consecutive and identical TS2 ordered sets are received.\n2. Sixteen TS2 ordered sets are sent after receiving the first of the eight consecutive and identical TS2 ordered sets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 443,
+      "bottomRightX": 693,
+      "bottomRightY": 475,
+      "content": "- The port in SuperSpeedPlus operation shall transition to Recovery.Idle when the following two conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 478,
+      "bottomRightX": 672,
+      "bottomRightY": 546,
+      "content": "1. Eight consecutive and identical TS2 ordered sets, excluding symbols 14 and 15, are received.\n2. Sixteen TS2 ordered sets are sent after receiving the first of the eight consecutive and identical TS2 ordered sets, excluding symbols 14 and 15.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 549,
+      "bottomRightX": 604,
+      "bottomRightY": 565,
+      "content": "- The port shall transition to eSS.Inactive when the following conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 566,
+      "bottomRightX": 689,
+      "bottomRightY": 617,
+      "content": "1. Either the Ux_EXIT_TIMER or the 6-ms timer (tRecoveryConfigurationTimeout) times out.\n2. For a downstream port, the transition to Recovery is not to attempt a Hot Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 620,
+      "bottomRightX": 652,
+      "bottomRightY": 636,
+      "content": "- A downstream port shall transition to Rx.Detect when the following conditions are met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 638,
+      "bottomRightX": 689,
+      "bottomRightY": 689,
+      "content": "1. Either the Ux_EXIT_TIMER or the 6-ms timer (tRecoveryConfigurationTimeout) times out.\n2. The transition to Recovery is to attempt a Hot Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 692,
+      "bottomRightX": 633,
+      "bottomRightY": 745,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 760,
+      "bottomRightX": 288,
+      "bottomRightY": 779,
+      "content": "### 7.5.10.5 Recovery.Idle",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 783,
+      "bottomRightX": 671,
+      "bottomRightY": 818,
+      "content": "Recovery.Idle is a substate where a port decodes the link configuration field defined in the TS2 ordered set received during Recovery.Configuration and determines the next state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 823,
+      "bottomRightX": 397,
+      "bottomRightY": 842,
+      "content": "### 7.5.10.5.1 Recovery.Idle Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 846,
+      "bottomRightX": 687,
+      "bottomRightY": 899,
+      "content": "- A 2-ms timer (tRecoveryIdleTimeout) shall be started upon entry to this substate.\n- The port in SuperSpeed operation shall transmit Idle Symbols if the next state is U0. The port may transmit Idle Symbols if the next state is Loopback or HotReset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "7-75",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

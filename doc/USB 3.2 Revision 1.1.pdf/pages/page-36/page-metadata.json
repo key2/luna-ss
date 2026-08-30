@@ -1,0 +1,75 @@
+{
+  "index": 35,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 380,
+      "topLeftY": 46,
+      "bottomRightX": 410,
+      "bottomRightY": 61,
+      "content": "- 5 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 94,
+      "bottomRightX": 325,
+      "bottomRightY": 110,
+      "content": "## 2 Terms and Abbreviations",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 122,
+      "bottomRightX": 656,
+      "bottomRightY": 169,
+      "content": "This chapter lists and defines terms and abbreviations used throughout this specification. Note, for terms and abbreviations not defined here, use their generally accepted or dictionary meaning.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 186,
+      "bottomRightX": 683,
+      "bottomRightY": 909,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  ACK | Handshake packet indicating a positive acknowledgment.  |\n|  ACK Tx Header Sequence Number | The expected header sequence number in the link control word to be acknowledged.  |\n|  active device | A device that is powered and is not in the Suspend state.  |\n|  asynchronous data | Data transferred at irregular intervals with relaxed latency requirements.  |\n|  attached | A downstream device is attached to an upstream device when there is a physical connection between the two.  |\n|  AWG# | The measurement of a wire's cross section, as defined by the American Wire Gauge standard.  |\n|  bandwidth | The amount of data transmitted per unit of time, typically bits per second (bps) or bytes per second (Bps).  |\n|  big endian | A method of storing data that places the most significant byte of multiple-byte values at a lower storage address. For example, a 16-bit integer stored in big endian format places the least significant byte at the higher address and the most significant byte at the lower address. See also little endian.  |\n|  bit | A unit of information used by digital computers. Represents the smallest piece of addressable memory within a computer. A bit expresses the choice between two possibilities and is typically represented by a logical one (1) or zero (0).  |\n|  bps | Transmission rate expressed in bits per second.  |\n|  Bps | Transmission rate expressed in bytes per second.  |\n|  buffer | Storage used to compensate for a difference in data rates or time of occurrence of events, when transmitting data from one device to another.  |\n|  bulk transfer | One of the four USB transfer types. Bulk transfers are non-periodic, large bursty communication typically used for a transfer that can use any available bandwidth and can also be delayed until bandwidth is available. See also transfer type.  |\n|  bus enumeration | Detecting, identifying, and configuring USB devices.  |\n|  bus interval | The period that establishes the integral boundary of service intervals. It is equivalent to the Microframe interval (THSFRAM) defined in the USB 2.0 specification, Table 7-8.  |\n|  bus instance | A bus instance refers to a link and its children operating at the same Gen X speed.  |\n|  byte | A data element that is 8 bits in size.  |\n|  cable | Raw cable with no plugs attached.  |\n|  cable assembly | Cable attached with plugs.  |\n|  captive cable | Cable assembly that has a Type-A plug on one end and that is either permanently attached or has a vendor specific connector on the other end.  |\n|  capabilities | Those attributes of a USB device that are administrated by the host.  |\n|  CDR | Circuit that performs the Clock and Data Recovery function.  |\n|  characteristics | Those qualities of a USB device that are unchangeable; for example, the device class is a device characteristic.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-21.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

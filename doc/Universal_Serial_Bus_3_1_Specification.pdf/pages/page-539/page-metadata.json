@@ -1,0 +1,84 @@
+{
+  "index": 538,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 91,
+      "bottomRightX": 700,
+      "bottomRightY": 246,
+      "content": "|  Configuration Descriptor |   | Hub Device Status (Self Power) | Explanation  |\n| --- | --- | --- | --- |\n|  MaxPower | bmAttributes (Self Powered)  |   |   |\n|  >0 | 1 | 0 | This hub is capable of both self- and bus-powered operating modes. It is currently only available as a bus-powered hub.  |\n|  > 0 | 1 | 1 | This hub draws power from both the bus and its local power supply. It is currently available as a self-powered hub.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-205.md"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 253,
+      "bottomRightX": 694,
+      "bottomRightY": 387,
+      "content": "A self-powered hub has a local power supply, but may optionally draw one unit load from its upstream connection. This allows the interface to function when local power is not available (refer to Section 11.4.1.1). When local power is removed (either a hub-wide over-current condition or local supply is off), a hub of this type remains in the Configured state but transitions all ports (whether removable or non-removable) to the Powered-off state. While local power is off, all port status and change information read as zero and all SetPortFeature() requests are ignored (request is treated as a no-operation). The hub will use the Status Change endpoint to notify the USB system software of the hub event (refer to Section 10.13.4 for details on hub status).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 392,
+      "bottomRightX": 681,
+      "bottomRightY": 443,
+      "content": "The MaxPower field in the configuration descriptor is used to report to the system the maximum power the hub will draw from VBUS when the configuration is selected. The external devices attaching to the hub will report their individual power requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 447,
+      "bottomRightX": 700,
+      "bottomRightY": 515,
+      "content": "A compound device may power both the hub electronics and the permanently attached devices from VBUS. The entire load may be reported in the hubs' configuration descriptor with the permanently attached devices each reporting self-powered, with zero MaxPower in their respective configuration descriptors.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 520,
+      "bottomRightX": 694,
+      "bottomRightY": 604,
+      "content": "A bus powered hub shall be able to supply any power not used by the hub electronics or permanently attached devices for the selected configuration to the exposed downstream ports. The hub shall be able to provide the power with any split across the exposed downstream ports (i.e., if the hub can provide 600 mA to two exposed downstream ports, it must be able to provide 450 mA to one and 150 mA to the other, 300 mA to each, etc.).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 609,
+      "bottomRightX": 695,
+      "bottomRightY": 644,
+      "content": "Note: Software shall ensure that at least 150 mA is available for each exposed downstream port on a bus powered hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 697,
+      "bottomRightY": 994,
+      "content": "10-61",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

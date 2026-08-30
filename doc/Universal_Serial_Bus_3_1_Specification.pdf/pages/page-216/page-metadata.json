@@ -1,0 +1,67 @@
+{
+  "index": 215,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 31,
+      "bottomRightX": 301,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 221,
+      "topLeftY": 99,
+      "bottomRightX": 602,
+      "bottomRightY": 228,
+      "content": "![img-165.jpeg](img-165.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-165.jpeg"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 239,
+      "bottomRightX": 694,
+      "bottomRightY": 271,
+      "content": "Figure 7-3. Enhanced SuperSpeed Header Packet with HPSTART, Packet Header, and Link Control Word",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 193,
+      "topLeftY": 294,
+      "bottomRightX": 630,
+      "bottomRightY": 481,
+      "content": "![img-166.jpeg](img-166.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-166.jpeg"
+    },
+    {
+      "topLeftX": 282,
+      "topLeftY": 492,
+      "bottomRightX": 541,
+      "bottomRightY": 509,
+      "content": "Figure 7-4. SuperSpeedPlus DPH Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 111,
+      "bottomRightY": 994,
+      "content": "7-4",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

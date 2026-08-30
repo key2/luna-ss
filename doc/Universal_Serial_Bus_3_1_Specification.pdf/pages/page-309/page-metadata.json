@@ -1,0 +1,147 @@
+{
+  "index": 308,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 673,
+      "bottomRightY": 144,
+      "content": "The PTM Bus Interval Counter shall be incremented when the PTM Delta Counter wraps. The PTM Bus Interval Counter is a modulus 16k counter, i.e. incrementing from 0 to 16,383, then wrapping back to 0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 154,
+      "bottomRightX": 659,
+      "bottomRightY": 187,
+      "content": "The time synchronization mechanism within the device of the PTM Clock to the bus interval boundary is implementation-specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 196,
+      "bottomRightX": 694,
+      "bottomRightY": 228,
+      "content": "Hosts shall implement a set of PTM Bus Interval Boundary Counters. The host is the source of the bus interval boundary for a PTM Domain.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 238,
+      "bottomRightX": 557,
+      "bottomRightY": 256,
+      "content": "Hubs are not required to implement PTM Bus Interval Boundary Counters.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 263,
+      "bottomRightX": 570,
+      "bottomRightY": 282,
+      "content": "PTM capable devices shall implement PTM Bus Interval Boundary Counters.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 299,
+      "bottomRightX": 265,
+      "bottomRightY": 316,
+      "content": "### 8.4.8.2 LDM Protocol",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 326,
+      "bottomRightX": 684,
+      "bottomRightY": 375,
+      "content": "The LDM protocol is executed with a series of Exchanges between a Requester and a Responder, and ITPs transmitted by Responders to measure the LDM Link Delay illustrates the LDM Timestamp Exchanges.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 380,
+      "bottomRightX": 491,
+      "bottomRightY": 397,
+      "content": "The following rules apply to LDM Requesters and Responders:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 410,
+      "bottomRightX": 539,
+      "bottomRightY": 479,
+      "content": "- A LDM Requester is an upstream facing port.\n- A LDM Responder is a downstream facing port.\n- A LDM Requester and a LDM Responder are paired on a USB link.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 133,
+      "topLeftY": 492,
+      "bottomRightX": 744,
+      "bottomRightY": 738,
+      "content": "![img-197.jpeg](img-197.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-197.jpeg"
+    },
+    {
+      "topLeftX": 265,
+      "topLeftY": 776,
+      "bottomRightX": 559,
+      "bottomRightY": 793,
+      "content": "Figure 8-11. Link Delay Measurement Protocol",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 813,
+      "bottomRightX": 696,
+      "bottomRightY": 830,
+      "content": "The following rules apply to LDM Requests and Responses, and LDM Requesters and Responders:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 842,
+      "bottomRightX": 700,
+      "bottomRightY": 894,
+      "content": "- When a LDM Requester transmits a LDM Request LMP, it uses the value of its PTM Local Time Source as the t1 timestamp. When the LDM Requester receives a LDM Response LMP it uses the value of its PTM Local Time Source as the t4 timestamp.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "8-15",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

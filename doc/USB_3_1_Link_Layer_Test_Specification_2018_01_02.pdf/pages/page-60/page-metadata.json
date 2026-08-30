@@ -1,0 +1,57 @@
+{
+  "index": 59,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 61,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 512,
+      "content": "|  10.3.1.6#6 | If the port initiates a hot reset on the link and the hot reset TS1/TS2 handshake fails, a warm reset is automatically tried. | 7.31  |\n| --- | --- | --- |\n|  10.3.1.6#7 | When the downstream port link enters Rx.Detect.Active during a warm reset, the hub shall start a timer to count the time it is in Rx.Detect.Active. If this timer exceeds tTimeForResetError while the link remains in Rx.Detect.Active, the port shall transition to the DSPORT.Disconnected state. | 7.32  |\n|  Subsection reference: 10.4 Hub Downstream Facing Port Power Management  |   |   |\n|  Subsection reference: 10.4.2 Hub Downstream Facing Port State Descriptions  |   |   |\n|  Subsection reference: 10.4.2.1 Enabled U0 States  |   |   |\n|  10.4.2.1#14 | Hub shall ensure that there is no race condition between a link partner initiating a U1/U2 request and transitioning to U0 based on SetPortFeature(PORT_LINK_STATE) request. | NT  |\n|  XHCI Specification Chapter 5 Test Assertions: Register Interface  |   |   |\n|  Subsection reference: xHCI 5.4 Host Controller Operational Registers  |   |   |\n|  Subsection reference: xHCI 5.4.8 Port Status and Control Register (PORTSC)  |   |   |\n|  5.4.8 | The xHC shall set the PLC bit of the PORTSC register of a USB3 port to '1' when an Error occurs (the link transitions from any state -> Inactive). | NT  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-53.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "52",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

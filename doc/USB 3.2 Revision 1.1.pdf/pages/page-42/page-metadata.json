@@ -1,0 +1,57 @@
+{
+  "index": 41,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 48,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 11 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 47,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 90,
+      "bottomRightX": 688,
+      "bottomRightY": 917,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  PRBS | Pseudo-Random Bit Stream.  |\n|  protocol | A specific set of rules, procedures, or conventions relating to format and timing of data transmission between two devices.  |\n|  PTM | Refer to Precision Time Measurement.  |\n|  PTM Clock | A signal source with a period of t1sochTimestampGranularity units, used to advance various PTM time clocks and time sources.  |\n|  PTM Domain | The set of LDM Responders associated with a PTM Root.  |\n|  PTM Local Time Source | The time clock associated with a LDM Requester or Responder which is advanced by PTM Clock transitions.  |\n|  PTM Root | A PTM Root is a LDM Responder and the source of the bus interval boundary for a PTM Domain, i.e. the USB host controller.  |\n|  receptacle | Connector mounted on the host or device, to be mated with the plug.  |\n|  Remote Rx Header Buffer Credit | The availability of a single free Rx Header Buffer from a link partner.  |\n|  request | A request made to a USB device contained within the data portion of a SETUP packet.  |\n|  root hub | A USB hub directly attached to or integrated into the host controller.  |\n|  root port | The downstream port on a root hub.  |\n|  reserved | Reserved identifies fields and values that are not defined for use by this specification. A transmitter sets all reserved fields to zero and a receiver ignores reserved fields. A transmitter does not set a reserved value and a receiver ignores any reserved values.  |\n|  Rx Header Buffer Credit Advertisement | The exchange of the Remote Rx Header Buffer Credits between the link partners upon entry to U0.  |\n|  Rx Header Sequence Number | The expected header sequence number of a header packet received from a link partner.  |\n|  Rx Port | The collection of receivers attached lanes in a port. See Figure 2-1.  |\n|  scrambling | The process of changing an eight-bit character in a pseudo-random way. See descrambling.  |\n|  SCD | SuperSpeedPlus Capability Declaration  |\n|  SDP | Shielded Differential Pair.  |\n|  service interval | An integral multiple of bus intervals within which a periodic endpoint must be serviced.  |\n|  service jitter | The deviation of service delivery from its scheduled delivery time.  |\n|  Soft Error Count | The count of the number of single bit errors that have been recovered without Recovery entry. See also Link Error Count.  |\n|  SSC | Spread Spectrum Clock.  |\n|  stage | One part of the sequence composing a control transfer; stages include the Setup stage, the Data stage, and the Status stage.  |\n|  stream endpoint | A SuperSpeed bulk endpoint whose SuperSpeed Endpoint Companion Descriptor bmAttributes field declares a MaxStreams value that is greater than 0.  |\n|  stream pipe | A pipe that transfers data as a stream of samples with no defined USB structure.  |\n|  sublink | The collection Rx or Tx lanes between a DFP and a UFP. See Figure 2-1.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-27.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

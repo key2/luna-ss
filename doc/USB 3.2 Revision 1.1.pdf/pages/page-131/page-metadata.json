@@ -1,0 +1,113 @@
+{
+  "index": 130,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 100 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 634,
+      "bottomRightY": 110,
+      "content": "The detailed use of LFPS signaling is specified in the following sections and Chapter 7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 302,
+      "topLeftY": 121,
+      "bottomRightX": 486,
+      "bottomRightY": 138,
+      "content": "Figure 6-32. LFPS Signaling",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 150,
+      "bottomRightX": 657,
+      "bottomRightY": 329,
+      "content": "![img-47.jpeg](img-47.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-47.jpeg"
+    },
+    {
+      "topLeftX": 225,
+      "topLeftY": 370,
+      "bottomRightX": 561,
+      "bottomRightY": 387,
+      "content": "Table 6-29. Normative LFPS Electrical Specification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 108,
+      "topLeftY": 396,
+      "bottomRightX": 684,
+      "bottomRightY": 635,
+      "content": "|  Symbol | Minimum | Typical | Maximum | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  tPeriod | 20 |  | 100 | ns |   |\n|  tPeriod for SuperSpeedPlus | 20 |  | 80 | ns |   |\n|  V_{CM-AC-LFPS} |  |  | V_{TX-CM-AC-PP-ACTIVE} | mV | See Table 6-19  |\n|  V_{CM-LFPS-Active} |  |  | 10 | mV |   |\n|  V_{TX-DIFF-PP-LFPS} | 800 |  | 1200 | mV | Peak-peak differential amplitude  |\n|  V_{TX-DIFF-PP-LFPS-LP} | 400 |  | 600 | mV | Low power peak-peak differential amplitude  |\n|  tRiseFall2080 |  |  | 4 | ns | Measured at TP2, as shown in Figure 6-20.  |\n|  Duty cycle | 40 |  | 60 | % | Measured at compliance TP2, as shown in Figure 6-20.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-69.md"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 667,
+      "bottomRightX": 596,
+      "bottomRightY": 684,
+      "content": "Table 6-30. LFPS Transmitter Timing for SuperSpeed Designs$^{1}$",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 692,
+      "bottomRightX": 669,
+      "bottomRightY": 911,
+      "content": "|   | tBurst |   |   |   | tRepeat  |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|   |  Min | Typ | Max | Minimum Number of LFPS Cycles^{2} | Min | Typ | Max  |\n|  Polling.LFPS | 0.6 μs | 1.0 μs | 1.4 μs |  | 6 μs | 10 μs | 14 μs  |\n|  Ping.LFPS^{8} | 40 ns |  | 200 ns | 2 | 160 ms | 200 ms | 240 ms  |\n|  Ping.LFPS for SuperSpeedPlus^{9} | 40 ns |  | 160ns | 2 | 160 ms | 200 ms | 240 ms  |\n|  tReset^{3} | 80 ms | 100 ms | 120 ms |  |  |  |   |\n|  U1 Exit^{4,5} | 900 ns^{7} |  | 2 ms |  |  |  |   |\n|  U2 / Loopback Exit^{4,5} | 80 μs^{7} |  | 2 ms |  |  |  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-70.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

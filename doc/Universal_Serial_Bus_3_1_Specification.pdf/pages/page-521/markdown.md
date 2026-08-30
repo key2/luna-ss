@@ -1,0 +1,34 @@
+Hub, Host Downstream Port, and Device Upstream Port Specification
+
+### 10.8.7 SuperSpeedPlus Upstream Flowing Packet Modifications
+
+When the upstream port of a SuperSpeedPlus hub is operating at greater than Gen 1 speed and the hub Downstream Controller receives a valid IN/ACK TP that is routed to a downstream port (DFPi) that is operating at Gen 1 speed, the Downstream Controller shall:
+
+1) Save the transfer type (SAVE_TT) of the TP for that DFPi.
+
+When the hub Downstream Controller receives a valid DPH packet from DFPi, the Downstream Controller shall:
+
+1) If the transfer type for this DFPi has been saved and the DPH is not a deferred DPH, set the transfer type of the DP to the saved value (DFPi.SAVE_TT).
+2) If the AW field value of the received DPH is zero and the transfer type is Control or Bulk, modify the AW field of the received DPH by setting the DPH.AW field to DFPi.AW
+3) If the DPH was modified, recompute the CRC-16 for the DPH.
+
+This packet modification shall be done when the packet is received.
+
+When the hub Upstream Controller selects (as described in Section 10.8.6.4) a Control/Bulk packet (S_DP) to transmit on the upstream port and there are multiple downstream ports (DFPi) with buffered Control/Bulk DPs awaiting transmission, the Upstream Controller shall:
+
+1) For each DFPi, determine a candidate buffered Control/Bulk DP (C_DPi) for that DFPi that would be selected for upstream transmission if there were no other DFPi's with buffered Control/Bulk DPs.
+2) Compute the sum (SUM_AW) of the AWs of the C_DPi's.
+3) If the SUM_AW is different than the current value of the S_DP DPH.AW, modify the AW field of the S_DP DPH by replacing the AW value with SUM_AW
+4) If the DPH was modified, recompute the CRC-16 for the S_DP DPH.
+
+This modification shall be done before the packet is routed to the upstream port for transmission. Note that in the above descriptions, a packet may appear to have its CRC-16 recomputed twice. Hub implementations are encouraged to be structured so that the correct CRC-16 value only needs to be computed once after all required modifications have been made.
+
+### 10.8.8 SuperSpeedPlus Downstream Controller
+
+The Downstream Controller for each downstream port shall be responsible for updating the ITP fields as described in Section 8.4.8.8 before forwarding the ITP on all downstream ports in U0. See Chapter 8 for the format of an ITP.
+
+### 10.9 Port State Machines
+
+In the following descriptions of port state machines, there are references to the first or last symbol of a header packet. The first symbol of a header packet is the first DPHP or SHP (Section 7.2.1.1.1). The last symbol of a SuperSpeedPlus DPH header packet is the last byte of the replicated length (if present) or the last byte of the LCW (if the replicated length field is not present). The last symbol of a SuperSpeedPlus non-DPH header packet and all SuperSpeed header packets is the last byte of the LCW.
+
+10-43

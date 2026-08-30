@@ -1,0 +1,39 @@
+{
+  "index": 473,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 117,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 711,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  3 | bmAttributes | 1 | Bitmap | If this is a Bulk Endpoint: BitsDescription 4:0 MaxStreams. The maximum number of streams this endpoint supports. Valid values are from 0 to 16, where a value of 0 indicates that the endpoint does not define streams. For the values 1 to 16, the number of streams supported equals 2^{MaxStream}. 7:5 Reserved. These bits are reserved and shall be set to zero. If this is a Control or Interrupt Endpoint: BitsDescription 7:0 Reserved. These bits are reserved and shall be set to zero. If this is an isochronous endpoint: BitsDescription 1:0 Mult. A zero based value that determines the maximum number of packets within a service interval that this endpoint supports. Maximum number of packets = (bMaxBurst + 1) x (Mult + 1) The maximum value that can be set in this field is 2. This field shall be set to zero if the bMaxBurst field is set to zero. 6:2 Reserved. These bits are reserved and shall be set to zero. 7 SSP ISO Companion. If this field is set to one then a SuperSpeedPlus Isochronous Endpoint Companion descriptor shall immediately follow this descriptor and the value in the Mult field shall be ignored. The actual Mult shall be determined as follows: dwBytesPerInterval/bMaxBurst/wMaxPacketSize rounded up to the nearest integer value..  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-195.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "9-56",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

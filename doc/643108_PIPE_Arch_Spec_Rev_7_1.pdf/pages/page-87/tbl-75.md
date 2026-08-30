@@ -1,0 +1,3 @@
+|  Bit | Default | Attribute | Required | Description  |
+| --- | --- | --- | --- | --- |
+|  [1:0] | 0h | Level | SATA | **Tx Pattern[1:0]:** This field controls which pattern the PHY sends at the Gen1 rate when sending OOB or initialization signaling. The PHY transmits this pattern at the Gen 1 rate regardless of what rate the PHY is configured at. 0 ALIGN 1 D24.3 2 D10.2 3 Reserved See Section 8.23 for a more detailed description of the usage of these pins. **Note:** This field is not used in the SerDes architecture.  |

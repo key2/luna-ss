@@ -1,0 +1,111 @@
+{
+  "index": 1,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 94,
+      "bottomRightX": 299,
+      "bottomRightY": 124,
+      "content": "# Revision History",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 152,
+      "bottomRightX": 702,
+      "bottomRightY": 254,
+      "content": "|  Revision | Comments | Issue Date  |\n| --- | --- | --- |\n|  1.0 | Initial release. USB 3.0 | November 12, 2008  |\n|   | Incorporated errata and ECNs | June 6, 2011  |\n|  1.0 | Initial release. USB 3.1 | July 26, 2013  |\n|  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-0.md"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 343,
+      "bottomRightX": 336,
+      "bottomRightY": 356,
+      "content": "# INTELLECTUAL PROPERTY DISCLAIMER",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 365,
+      "bottomRightX": 698,
+      "bottomRightY": 445,
+      "content": "THIS SPECIFICATION IS PROVIDED TO YOU \"AS IS\" WITH NO WARRANTIES WHATSOEVER, INCLUDING ANY WARRANTY OF MERCHANTABILITY, NON-INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE. THE AUTHORS OF THIS SPECIFICATION DISCLAIM ALL LIABILITY, INCLUDING LIABILITY FOR INFRINGEMENT OF ANY PROPRIETARY RIGHTS, RELATING TO USE OR IMPLEMENTATION OF INFORMATION IN THIS SPECIFICATION. THE PROVISION OF THIS SPECIFICATION TO YOU DOES NOT PROVIDE YOU WITH ANY LICENSE, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, TO ANY INTELLECTUAL PROPERTY RIGHTS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 760,
+      "bottomRightX": 333,
+      "bottomRightY": 773,
+      "content": "Please send comments to techsup@usb.org",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 781,
+      "bottomRightX": 565,
+      "bottomRightY": 795,
+      "content": "For industry information, refer to the USB Implementers Forum web page at http://www.usb.org",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 825,
+      "bottomRightX": 591,
+      "bottomRightY": 839,
+      "content": "All product names are trademarks, registered trademarks, or servicemarks of their respective owners.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 847,
+      "bottomRightX": 679,
+      "bottomRightY": 873,
+      "content": "Copyright © 2007-2013, Hewlett-Packard Company, Intel Corporation, Microsoft Corporation, Renesas Corporation, ST-Ericsson, and Texas Instruments.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 883,
+      "bottomRightX": 215,
+      "bottomRightY": 896,
+      "content": "All rights reserved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 983,
+      "bottomRightX": 101,
+      "bottomRightY": 994,
+      "content": "ii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "index": 231,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 201 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 677,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 95,
+      "bottomRightX": 364,
+      "bottomRightY": 110,
+      "content": "**7.5.11.3.2 Exit from Loopback.Active**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 117,
+      "bottomRightX": 671,
+      "bottomRightY": 252,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.\n- When directed, the loopback master shall transition to Loopback.Exit.\n- The loopback slave shall transition to Loopback.Exit upon detection of Loopback LFPS exit handshake signal meeting Loopback LFPS exit signaling defined in Section 6.9.2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 273,
+      "bottomRightX": 293,
+      "bottomRightY": 288,
+      "content": "**7.5.11.4 Loopback.Exit**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 295,
+      "bottomRightX": 657,
+      "bottomRightY": 326,
+      "content": "Loopback.Exit is a substate where a loopback master has completed the loopback test and starts the exit from Loopback.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 338,
+      "bottomRightX": 378,
+      "bottomRightY": 354,
+      "content": "**7.5.11.4.1 Loopback.Exit Requirements**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 361,
+      "bottomRightX": 668,
+      "bottomRightY": 451,
+      "content": "- A 2 ms timer (tLoopbackExitTimeout) shall be started upon entry to the substate.\n- The LFPS transmitter and the LFPS receiver shall be enabled. In x2 operation, the LFPS transmitter shall be enabled on the Configuration Lane only.\n- The port shall transmit and receive Loopback LFPS exit handshake signal defined in Section 6.9.2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 473,
+      "bottomRightX": 350,
+      "bottomRightY": 488,
+      "content": "**7.5.11.4.2 Exit from Loopback.Exit**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 496,
+      "bottomRightX": 671,
+      "bottomRightY": 631,
+      "content": "- The port shall transition to Rx.Detect upon a successful Loopback LFPS exit handshake defined in Section 6.9.2.\n- The port shall transition to eSS.Inactive upon the 2 ms timer timeout (tLoopbackExitTimeout) and the condition to transition to Rx.Detect is not met.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

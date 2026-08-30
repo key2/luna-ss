@@ -1,0 +1,57 @@
+{
+  "index": 349,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 299,
+      "topLeftY": 106,
+      "bottomRightX": 457,
+      "bottomRightY": 124,
+      "content": "# BULK IN and ISOC IN",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 141,
+      "bottomRightX": 609,
+      "bottomRightY": 796,
+      "content": "![img-220.jpeg](img-220.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-220.jpeg"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 833,
+      "bottomRightX": 638,
+      "bottomRightY": 850,
+      "content": "Figure 8-34. Sample Concurrent BULK and Isochronous IN Transactions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "8-56",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

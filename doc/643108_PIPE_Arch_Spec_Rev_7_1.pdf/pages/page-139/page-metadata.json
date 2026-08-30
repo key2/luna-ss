@@ -1,0 +1,102 @@
+{
+  "index": 138,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 392,
+      "bottomRightY": 141,
+      "content": "### 8.15.3 Elastic Buffer Errors",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 148,
+      "bottomRightX": 697,
+      "bottomRightY": 264,
+      "content": "For elastic buffer errors, an underflow should be signaled during the clock cycle or clock cycles when a spurious symbol is moved across the parallel interface. The symbol moved across the interface should be the EDB symbol (for PCIe or SATA) or SUB symbol (for USB). In the following timing diagram, the PHY is receiving a repeating set of symbols Rx-a through Rx-z. The elastic buffer underflows causing the EDB symbol (for PCIe) or SUB symbol (for USB) to be inserted between the Rx-g and Rx-h Symbols. The PHY drives RxStatus to indicate buffer underflow during the clock cycle when the EDB (for PCIe) or SUB (for USB) is presented on the parallel interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 278,
+      "bottomRightX": 140,
+      "bottomRightY": 290,
+      "content": "**Note:**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 276,
+      "bottomRightX": 684,
+      "bottomRightY": 331,
+      "content": "The underflow is not signaled when the PHY is operating in Nominal Empty buffer mode. In this mode SKP ordered sets are moved across the interface whenever data needs to be inserted or the RxDataValid signal is used. The RxDataValid method is preferred.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 339,
+      "bottomRightX": 350,
+      "bottomRightY": 354,
+      "content": "Figure 8-29. Elastic Buffer Underflow",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 359,
+      "bottomRightX": 699,
+      "bottomRightY": 589,
+      "content": "![img-50.jpeg](img-50.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-50.jpeg"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 594,
+      "bottomRightX": 697,
+      "bottomRightY": 710,
+      "content": "For an elastic buffer overflow, the overflow should be signaled during the clock cycle where the dropped symbol or symbols would have appeared in the data stream. For the 16-bit interface, it is not possible, or necessary, for the MAC to determine exactly where in the data stream the symbol was dropped. In the following timing diagram, the PHY is receiving a repeating set of symbols Rx-a through Rx-z. The elastic buffer overflows causing the symbol Rx-g to be discarded. The PHY drives RxStatus to indicate buffer overflow during the clock cycle when Rx-g would have appeared on the parallel interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 298,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 699,
+      "bottomRightY": 965,
+      "content": "139",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

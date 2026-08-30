@@ -1,0 +1,48 @@
+{
+  "index": 44,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 555,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Terms and Abbreviations",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 904,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  DFP | Downstream Facing Port (aka downstream port). See Figure 2-1.  |\n|  disconnected (unconnected) | A downstream device is disconnected from an upstream device when it is attached to the upstream device, and when the downstream device has not asserted Rx terminations for SuperSpeed signaling or has not asserted either the D+ or D- data line in order to enter low-speed, full-speed, or high-speed signaling.  |\n|  downstream | The direction of data flow from the host or away from the host. A downstream port is the port on a hub electrically farthest from the host that generates downstream data traffic from the hub. Downstream ports receive upstream data traffic.  |\n|  downstream port | The port on a host or a hub to which a device is connected. For example, a system's root ports are downstream ports.  |\n|  downstream sublink | The collection of lanes between the DFP Tx and the UFP Rx. See Figure 2-1.  |\n|  DP | Data Packet which consists of a Data Packet Header followed by a Data Packet Payload.  |\n|  DPH | Data Packet Header. Contains the data packet's address, route string, length, and other information about the packet.  |\n|  DPP | Data Packet Payload. Contains the data packet's data and a 32-bit CRC.  |\n|  DPPABORT | Frame ordered set used to abort a data packet payload.  |\n|  DPPEND | Frame ordered set used to denote the end of a data packet payload.  |\n|  DPPSTART | Frame ordered set used to denote the start of a data packet payload.  |\n|  driver | When referring to hardware, an I/O pad that drives an external load. When referring to software, a program responsible for interfacing to a hardware device, that is, a device driver.  |\n|  DSPORT | Notation indicating the state machine of a downstream facing port of a hub. Refer to Section 10.3.  |\n|  dual simplex | Two data paths that independently carry traffic in each direction.  |\n|  DWORD | Double word. A data element that is two words (i.e., 4 bytes or 32 bits) in size.  |\n|  dynamic insertion and removal | The ability to attach and remove devices while the host is in operation.  |\n|  endpoint | See device endpoint.  |\n|  endpoint address | The combination of an endpoint number and an endpoint direction on a USB device. Each endpoint address supports data transfer in one direction.  |\n|  endpoint direction | The direction of data transfer on the USB. The direction can be either IN or OUT. IN refers to transfers to the host; OUT refers to transfers from the host.  |\n|  endpoint number | A four-bit value between 0H and FH, inclusive, associated with an endpoint on a USB device.  |\n|  Enhanced SuperSpeed | An adjective referring to any valid collection of USB defined features defined for the bus that runs over the SSRx and SSTx differential pairs in a USB 3.0 or USB 3.1 system. It is used in place of phrases like SuperSpeed/SuperSpeedPlus.  |\n|  external port | See port.  |\n|  frame number | The bus interval counter value within the ITP divided by 8 (integer division).  |\n|  full-duplex | Computer data transmission occurring in both directions simultaneously.  |\n|  full-speed | USB operation at 12 Mbps. See also low-speed and high-speed.  |\n|  function | A set of one or more related interfaces on a USB device that exposes a capability to a software client.  |\n|  Gbps | Transmission rate expressed in gigabits per second (1,000,000,000 bits per second).  |\n|  Gen 1 | Gen 1 is an adjective used to refer to the Physical layer associated with a 5.0 Gbps signaling rate. The original USB SuperSpeed Phy and a Gen 1 Phy refer to the same Phy.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-25.md"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 963,
+      "bottomRightX": 269,
+      "bottomRightY": 979,
+      "content": "For USB Contributor Review Only",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "2-3",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

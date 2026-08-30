@@ -1,0 +1,155 @@
+{
+  "index": 452,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 422 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 678,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 96,
+      "bottomRightX": 673,
+      "bottomRightY": 259,
+      "content": "- If the downstream port to which the packet is being routed is operating in SuperSpeed mode and the header packet is a valid IN/ACK, save the transfer type (DFP.SAVE_TT) of the IN/ACK. The DFP.SAVE_TT is preserved until the next IN/ACK is received that is routed to the same downstream port. See Section 10.9.4.4.4.\n- If the header packet is routed to the hub controller:\n  1. The header packet is processed by the hub controller.\n  2. The header packet is removed from the Upstream Receive buffer.\n  3. A response to the header packet is buffered awaiting arbitration for transmission on the upstream port if required.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 279,
+      "bottomRightX": 454,
+      "bottomRightY": 295,
+      "content": "#### **10.9.4.4.3 SuperSpeed Hub Downstream Facing Port**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 302,
+      "bottomRightX": 572,
+      "bottomRightY": 318,
+      "content": "- The header packet is queued for transmission on the upstream port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 323,
+      "bottomRightX": 660,
+      "bottomRightY": 445,
+      "content": "If the queue for the upstream port is full, the header packet is queued as soon as a space is available in the upstream port queue. The hub shall process subsequent header packets while the upstream port queue is full. If header packets have been received on more than one downstream port or are queued to be sent by the hub controller when a space becomes available in the upstream port header packet queue, the hub shall prioritize a non-data packet header over a data packet header packet if one is waiting at the front of a downstream queue or from the hub controller. Otherwise, the arbitration algorithm the hub uses is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 451,
+      "bottomRightX": 669,
+      "bottomRightY": 498,
+      "content": "Note: These arbitration requirements only apply across multiple downstream ports and the hub controller. For a single source (downstream port or hub controller), packets must be transmitted in the ordered received or generated.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 518,
+      "bottomRightX": 478,
+      "bottomRightY": 535,
+      "content": "#### **10.9.4.4.4 SuperSpeedPlus Hub Downstream Facing Port**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 541,
+      "bottomRightX": 678,
+      "bottomRightY": 683,
+      "content": "- If a valid DP is received then:\n  1. If the port is operating in SuperSpeed mode then set the transfer type of the DP to the value of DFP.SAVE_TT. See Section 10.9.4.4.2.\n  2. If the transfer type is asynchronous and the AW field value is zero, modify the AW field of the received DPH by setting the DPH.AW field to DFP.AW. See Section 10.8.6.\n- The header packet is buffered awaiting arbitration for transmission on the upstream port (see Section 10.8.6).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 704,
+      "bottomRightX": 315,
+      "bottomRightY": 719,
+      "content": "#### **10.9.4.5 Rx Link Command**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 725,
+      "bottomRightX": 671,
+      "bottomRightY": 757,
+      "content": "In the Rx Link Command state, the port receiver is actively processing received symbols and looking for the speed specific indication of the end of a link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 769,
+      "bottomRightX": 668,
+      "bottomRightY": 800,
+      "content": "A port shall transition to the Rx Link Command state when it receives a valid speed specific indication of the beginning of a link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 812,
+      "bottomRightX": 344,
+      "bottomRightY": 827,
+      "content": "#### **10.9.4.6 Process Link Command**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 833,
+      "bottomRightX": 618,
+      "bottomRightY": 881,
+      "content": "Once the link command is received, the port shall perform all additional processing necessary for the link command. Any such processing shall not block the port from immediately returning to the Rx Default state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

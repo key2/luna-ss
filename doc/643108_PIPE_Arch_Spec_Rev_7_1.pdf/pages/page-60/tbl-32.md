@@ -1,0 +1,3 @@
+|  Name | Active Level | Description | Relevant Protocols  |
+| --- | --- | --- | --- |
+|  PCLK Rate[4:0] | N/A | Control the PIPE PCLK rate SATA Mode: 0 37.5 MHz 1 75 MHz 2 150 MHz 3 300 MHz 4 600 MHz All others Reserved PCIe Mode: 0 62.5 MHz 1 125 MHz 2 250 MHz 3 500 MHz 4 1000 MHz 5 2000 MHz 6 4000 MHz All others Reserved USB Mode: 0 125 MHz 1 250 MHz 2 312.5 MHz (10 GT/s) 3 500 MHz 4 625 MHz (10 GT/s) 5 1250 MHz (10 GT/s) All others Reserved | PCIe, SATA, USB, and DisplayPort  |

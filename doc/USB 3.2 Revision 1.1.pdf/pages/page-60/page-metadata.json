@@ -1,0 +1,111 @@
+{
+  "index": 59,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 29 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 663,
+      "bottomRightY": 244,
+      "content": "- SuperSpeed hubs actively participate in the (end-to-end) protocol in several ways, including:\n- Routes out-bound packets to explicit downstream ports.\n- Routes in-bound packets from a downstream port to the upstream port.\n- Propagates the timestamp packet to all downstream ports not in a low-power state.\n- Detects when packets encounter a port that is in a low-power state. The hub transitions the targeted port out of the low-power state and notifies the host and device (in-band) that the packet encountered a port in a low-power state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 258,
+      "bottomRightX": 330,
+      "bottomRightY": 273,
+      "content": "### 3.2.6.2.2 SuperSpeedPlus Hub",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 280,
+      "bottomRightX": 660,
+      "bottomRightY": 358,
+      "content": "A SuperSpeedPlus hub serves a special role when its upstream facing port is operating at Gen 1x2 or any Gen X speed beyond Gen 1. A SuperSpeedPlus hub isolates downstream signaling environments from the upstream signaling environment utilizing a store-and-forward architecture. Figure 3-7 illustrates a SuperSpeedPlus host connected to a mixture of SuperSpeedPlus hubs and devices and SuperSpeed hubs and devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 370,
+      "bottomRightX": 673,
+      "bottomRightY": 507,
+      "content": "In contrast to the SuperSpeed hub, which is characterized as a repeater/forwarder hub architecture, the SuperSpeedPlus hub is characterized as a store-and-forward hub because it can receive one or more entire DPs before transmitting up or downstream. The store-and-forward architecture of a SuperSpeedPlus hub allows a host to schedule multiple endpoint bursts, across multiple endpoints, for both in-bound and out-bound flows, as long as they bursts are to SuperSpeedPlus endpoints. The SuperSpeedPlus host is also able to use the same SuperSpeedPlus scheduling rules across SuperSpeed endpoints on different downstream SuperSpeed bus instances. The SuperSpeedPlus host must use SuperSpeed only bus scheduling rules for all SuperSpeed endpoints on the same SuperSpeed bus instance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 518,
+      "bottomRightX": 661,
+      "bottomRightY": 537,
+      "content": "Figure 3-7. Multiple SuperSpeed Bus Instances in an Enhanced SuperSpeed System",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 549,
+      "bottomRightX": 615,
+      "bottomRightY": 857,
+      "content": "![img-7.jpeg](img-7.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-7.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 876,
+      "bottomRightX": 628,
+      "bottomRightY": 924,
+      "content": "A SuperSpeedPlus hub consists of three logical components: a SuperSpeedPlus hub controller, a SuperSpeedPlus upstream controller and a SuperSpeedPlus downstream controller (one for each downstream facing port).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

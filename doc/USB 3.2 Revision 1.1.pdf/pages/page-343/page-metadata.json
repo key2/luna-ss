@@ -1,0 +1,157 @@
+{
+  "index": 342,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 312 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 657,
+      "bottomRightY": 123,
+      "content": "A device shall support all possible pipelined Isochronous IN transactions allowed by these rules.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 137,
+      "bottomRightX": 492,
+      "bottomRightY": 152,
+      "content": "### 8.12.6.5 Device Response to Isochronous IN Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 159,
+      "bottomRightX": 673,
+      "bottomRightY": 189,
+      "content": "Table 8-33 lists the possible responses a device may make in response to an ACK TP. An ACK TP is considered to be invalid if any of the following conditions exist:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 203,
+      "bottomRightX": 656,
+      "bottomRightY": 337,
+      "content": "- It has an incorrect Device Address\n- Its endpoint number and direction does not refer to an endpoint that is part of the current configuration\n- It does not have the expected sequence number\n- It has the deferred bit set in it\n- Its TT does not match the endpoint type (for devices operating in SuperSpeedPlus mode).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 358,
+      "bottomRightX": 593,
+      "bottomRightY": 374,
+      "content": "Table 8-33. Device Responses to Isochronous IN Transactions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 176,
+      "topLeftY": 384,
+      "bottomRightX": 614,
+      "bottomRightY": 570,
+      "content": "|  ACK TP Received Invalid | Device Can Transmit Data | Action Taken  |\n| --- | --- | --- |\n|  Yes | Do not care | Return no response  |\n|  No | No | Return zero length data packet with sequence number 0  |\n|  No | Yes | Return N data packets with sequence numbers 0 to N-1. Each packet except the last shall be MaxPacketSize bytes. The last packet can be less than or equal to MaxPacketSize bytes. The last packet shall have the LPF flag set.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-137.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 590,
+      "bottomRightX": 486,
+      "bottomRightY": 605,
+      "content": "### 8.12.6.6 Host Processing of Isochronous IN Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 611,
+      "bottomRightX": 671,
+      "bottomRightY": 657,
+      "content": "Table 8-34 lists the host processing of data from an IN transaction. The host never returns a response to isochronous IN data received. In Table 8-34, DP Error may be due to one or more of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 671,
+      "bottomRightX": 667,
+      "bottomRightY": 776,
+      "content": "- CRC-32 incorrect\n- DPP aborted\n- DPP missing\n- DPH TT is not set to Isochronous (from a device operating in SuperSpeedPlus mode)\n- Data length in the DPH does not match the actual data payload length.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 797,
+      "bottomRightX": 649,
+      "bottomRightY": 827,
+      "content": "If the host receives a corrupted data packet, it discards the remaining data in the current service interval and informs host software of the error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 241,
+      "topLeftY": 840,
+      "bottomRightX": 546,
+      "bottomRightY": 855,
+      "content": "Table 8-34. Host Responses to IN Transactions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 151,
+      "topLeftY": 865,
+      "bottomRightX": 640,
+      "bottomRightY": 926,
+      "content": "|  Data Packet Error | Host Can Accept Data | Host Data Processing  |\n| --- | --- | --- |\n|  Yes | N/A | Discard data  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-138.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

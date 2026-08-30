@@ -1,0 +1,137 @@
+{
+  "index": 623,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 684,
+      "bottomRightY": 125,
+      "content": "In preparation for a transition from U0 to U2, a device in LT-active should perform the following actions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 130,
+      "bottomRightX": 557,
+      "bottomRightY": 182,
+      "content": "1. The device transitions to LT-idle.\n2. The device sends an LTM with a BELT value of at least tBELTdefault.\n3. The device initiates a transition to U2 from U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 189,
+      "bottomRightX": 684,
+      "bottomRightY": 222,
+      "content": "In preparation for a transition from U1 to U2, a device in LT-active should perform the following actions:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 227,
+      "bottomRightX": 557,
+      "bottomRightY": 297,
+      "content": "1. The device transitions its link to U0 prior to U2 entry.\n2. The device transitions to LT-idle.\n3. The device sends an LTM with a BELT value of at least tBELTdefault.\n4. The device initiates a transition to U2 from U0.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 304,
+      "bottomRightX": 695,
+      "bottomRightY": 373,
+      "content": "In the latter case, since the device must transition its link to U0 prior to U2 entry, the device must detect the U2 inactivity timer expiration enough in advance to avoid the possibility that its link partner will have already transitioned from U1 directly to U2. For example, the device may initiate a transition to U0 1 μs before the U2 inactivity timer expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 390,
+      "bottomRightX": 372,
+      "bottomRightY": 411,
+      "content": "### C.4.2 Other Considerations",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 418,
+      "bottomRightX": 607,
+      "bottomRightY": 434,
+      "content": "The following are additional considerations associated with device support of LTM:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 438,
+      "bottomRightX": 698,
+      "bottomRightY": 593,
+      "content": "- The BELT represents a latency tolerance for an entire peripheral device. The BELT value must be aggregated across all endpoints within the device, including all functions within a composite device. The smallest BELT value across all endpoints should be selected. For LTM purposes, isochronous endpoints are ignored when determining the BELT value.\n- If LTM is supported by a device, LTM should be disabled prior to placing the device into suspend (refer to the PORT_LINK_STATE feature selector in Chapter 10). Devices send an updated LTM when LTM is enabled, or immediately before LTM is disabled, as defined in Chapter 8. Disabling LTM in this way ensures that a suspended device does not keep the system in a high state of readiness, wasting power.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 615,
+      "bottomRightX": 639,
+      "bottomRightY": 662,
+      "content": "### C.5 SuperSpeed vs. High Speed Power Management Considerations",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 676,
+      "bottomRightX": 679,
+      "bottomRightY": 742,
+      "content": "Some devices may operate well with a High Speed (480 Mbps) interface, but can substantially reduce system power consumption if implemented with a SuperSpeed interface. In addition to device power consumption, system power consumption should be considered when selecting the interface for a new device design.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 752,
+      "bottomRightX": 692,
+      "bottomRightY": 802,
+      "content": "When a device is actively transferring data, system components are also transferring that data. For some systems, the power consumption of system components is much larger than a USB device's contribution to the system's power consumption.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 811,
+      "bottomRightX": 684,
+      "bottomRightY": 880,
+      "content": "Under typical circumstances, the faster the data transfer completes, the faster system components can return to a low power state. Transferring data faster can save power, on average, over time. Examples of system components include a Host Controller, a DRAM controller, DRAM components, a microprocessor with a cache that needs to snoop DRAM accesses, etc.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 119,
+      "bottomRightY": 994,
+      "content": "C-26",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

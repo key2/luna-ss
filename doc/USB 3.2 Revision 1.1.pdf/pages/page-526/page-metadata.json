@@ -1,0 +1,146 @@
+{
+  "index": 525,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- 495 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 93,
+      "bottomRightX": 333,
+      "bottomRightY": 109,
+      "content": "### **E.2.2.1 Physical Layer Requirements**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 114,
+      "bottomRightX": 570,
+      "bottomRightY": 130,
+      "content": "A re-timer shall conform to the following requirement at the physical layer.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 137,
+      "bottomRightX": 664,
+      "bottomRightY": 189,
+      "content": "- It shall meet all the physical layer requirements defined in Chapter 6.\n- For a bit level re-timer, it shall meet additional jitter transfer function requirement defined in Section E.5.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 203,
+      "bottomRightX": 309,
+      "bottomRightY": 218,
+      "content": "### **E.2.2.2 Link Layer Requirements**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 224,
+      "bottomRightX": 647,
+      "bottomRightY": 271,
+      "content": "The purpose for re-timers to implement partial link layer function is to achieve protocol awareness such that the re-timer operation is in concert with the host and device. A re-timer shall implement the following capabilities.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 278,
+      "bottomRightX": 672,
+      "bottomRightY": 512,
+      "content": "- LFPS based Polling.LFPS, SCD1/SCD2, and LBPM tracking and decoding. A re-timer shall monitor Polling.LFPS and SCD1/SCD2 to determine SuperSpeedPlus operation and decode LBPM to determine port configuration negotiated between the host and device. Refer to Section E.3.4 for details.\n- TS2 ordered set decoding. A re-timer shall decode the link configuration field in TS2 ordered set to determine the link operation during Polling.Idle or Recovery.Idle. Refer to Sections E.3.4.5 and E.3.11 for details.\n- Link command tracking. A re-timer shall track the link command and HPs to synchronize its link operation with the host and device. This includes but is not limited to determining the re-timer's upstream port to host and downstream port to device and tracking link power management. Refer to Section E.3.7 for details.\n- Packet boundary tracking. A SRIS re-timer in SS operation shall track the packet boundary to perform the clock offset compensation. Refer to Section E.4.1 for details.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 525,
+      "bottomRightX": 318,
+      "bottomRightY": 540,
+      "content": "### **E.2.2.3 x2 Re-timer Requirements**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 546,
+      "bottomRightX": 649,
+      "bottomRightY": 578,
+      "content": "In addition to meeting the general re-timer requirements defined in Sections E.2.2.1 and E.2.2.2, a re-timer in x2 operation shall also meet the following requirement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 583,
+      "bottomRightX": 675,
+      "bottomRightY": 861,
+      "content": "- It shall establish the Configuration Lane when directed. Note that it is implementation specific for a captive re-timer or a re-timer in an active cable to determine the Configuration Lane.\n- The re-timer shall perform the lane-to-lane deskew meeting requirements defined in Table 6-34. Specifically,\n  - The re-timer shall complete the lane-to-lane deskew before switching from the local TS1 OS to received TS1 or TS2 OS. The re-timer may perform the lane-to-lane deskew based on either TS1 OS, TS2 OS, or SKP OS in Gen 1x2 operation, or SYNC OS in Gen 2x2 operation.\n  - The re-timer shall preserve the OS boundary when switching from the local TS1 OS to received TS1 OS or TS2 OS to maintain transmitter lane-to-lane skew.\n- The far-end receiver termination detection and the LFPS based operation shall be performed only on the Configuration Lane.\n- The maximum re-timer delay (tDRe-timer) shall be 300 ns in Gen 1x2 operation, and 200 ns in Gen 2x2 operation.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 877,
+      "bottomRightX": 472,
+      "bottomRightY": 892,
+      "content": "### **E.3 Re-timer Training and Status State Machine (RTSSM)**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 898,
+      "bottomRightX": 664,
+      "bottomRightY": 930,
+      "content": "The primary responsibility of a re-timer is to maintain connectivity between the host and device. This includes but is not limited to monitoring the state of connectivity between the",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

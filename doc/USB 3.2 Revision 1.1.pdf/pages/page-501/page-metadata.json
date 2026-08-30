@@ -1,0 +1,129 @@
+{
+  "index": 500,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 470 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 93,
+      "bottomRightX": 666,
+      "bottomRightY": 139,
+      "content": "any bypass capacitor directly connected across the VBUS lines in the device plus any capacitive effects visible through the regulator in the device. The 27 Ω resistance represents one unit load of current drawn by the device during connect.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 152,
+      "bottomRightX": 670,
+      "bottomRightY": 289,
+      "content": "- If more bypass capacitance is required in the device, then the device must incorporate some form of VBUS surge current limiting, such that it matches the characteristics of the above load.\n- The hub downstream facing port VBUS power lines must be bypassed (CHPB) with no less than 120 μF of low-ESR capacitance per hub. Standard bypass methods should be used to minimize inductance and resistance between the bypass capacitors and the connectors to reduce droop. The bypass capacitors themselves should have a low dissipation factor to allow decoupling at higher frequencies.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 299,
+      "bottomRightX": 615,
+      "bottomRightY": 315,
+      "content": "The upstream facing port of a hub is also required to meet the above requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 328,
+      "bottomRightX": 667,
+      "bottomRightY": 390,
+      "content": "A high-power bus-powered device that is switching from a lower power configuration to a higher power configuration must not cause droop >330 mV on the VBUS at its upstream hub. The device can meet this by ensuring that changes in the capacitive load it presents do not exceed 10 μF.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 401,
+      "bottomRightX": 305,
+      "bottomRightY": 417,
+      "content": "### 11.4.4.2 Dynamic Detach",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 423,
+      "bottomRightX": 671,
+      "bottomRightY": 561,
+      "content": "When a device is detached from the network with power flowing in the cable, the inductance of the cable will cause a large flyback voltage to occur on the open end of the device cable. This flyback voltage is not destructive. Proper bypass measures on the hub ports will suppress any coupled noise. This will require some low capacitance, very low inductance bypass capacitors on each hub port connector. The flyback voltage and the noise it creates are also moderated by the bypass capacitance on the device end of the cable. Also, there must be some minimum capacitance on the device end of the cable to ensure that the inductive flyback on the open end of the cable does not cause the voltage on the device end to reverse polarity. A minimum of 1.0 μF is recommended for bypass across VBUS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 572,
+      "bottomRightX": 337,
+      "bottomRightY": 587,
+      "content": "### 11.4.5 VBUS Electrical Characteristics",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 261,
+      "topLeftY": 594,
+      "bottomRightX": 527,
+      "bottomRightY": 609,
+      "content": "Table 11-2. DC Electrical Characteristics",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 621,
+      "bottomRightX": 667,
+      "bottomRightY": 870,
+      "content": "|  Parameter | Symbol | Min. (Single/Dual lane) | Max. (Single/Dual lane) | Units  |\n| --- | --- | --- | --- | --- |\n|  **Supply Voltage:**  |   |   |   |   |\n|  Port (downstream connector) | VBUS | 4.75 | 5.50 | V  |\n|  Port (upstream connector) | VBUS | 4.0 |  | V  |\n|  **Supply Current:**  |   |   |   |   |\n|  High-power Hub Port (out) | ICCPRT | 900 / 1500 |  | mA  |\n|  Low-power Hub Port (out) | ICCUPT | 150 / 250 |  | mA  |\n|  High-power Peripheral Device (in) | ICCHPF |  | 900 / 1500 | mA  |\n|  Low-power Peripheral Device (in) | ICCLPF |  | 150 / 250 | mA  |\n|  Unconfigured Device (in) | ICCINIT |  | 150 | mA  |\n|  Suspended High-power Device | ICCS |  | 2.5 | mA  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-267.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

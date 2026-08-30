@@ -1,0 +1,227 @@
+{
+  "index": 192,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 162 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 661,
+      "bottomRightY": 124,
+      "content": "for details regarding the behavior of a peripheral device. Refer to Sections 10.3 to 10.6 for behaviors regarding a hub's upstream port and downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 136,
+      "bottomRightX": 654,
+      "bottomRightY": 181,
+      "content": "eSS.Disabled does not contain any substates in the case of downstream ports and hub upstream ports. For a peripheral upstream port, it contains two substates, eSS.Disabled.Default and eSS.Disabled.Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 194,
+      "bottomRightX": 614,
+      "bottomRightY": 210,
+      "content": "eSS.Disabled is also a logical power-off state for a self-powered hub upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 221,
+      "bottomRightX": 669,
+      "bottomRightY": 253,
+      "content": "eSS.Disabled.Default is also a logical power-off state for a self-powered peripheral upstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 264,
+      "bottomRightX": 619,
+      "bottomRightY": 281,
+      "content": "A downstream port shall transition to this state from any other state when directed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 293,
+      "bottomRightX": 656,
+      "bottomRightY": 323,
+      "content": "A self-powered hub or peripheral upstream port shall transition to this state when VBUS is not valid.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 337,
+      "bottomRightX": 517,
+      "bottomRightY": 352,
+      "content": "### 7.5.1.1 eSS.Disabled for Downstream Ports and Hub Upstream Ports",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 358,
+      "bottomRightX": 669,
+      "bottomRightY": 374,
+      "content": "eSS.Disabled for Downstream Ports and Hub Upstream Ports does not contain any substates.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 387,
+      "bottomRightX": 370,
+      "bottomRightY": 402,
+      "content": "#### 7.5.1.1.1 eSS.Disabled Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 410,
+      "bottomRightX": 657,
+      "bottomRightY": 501,
+      "content": "- VBUS may be present during eSS.Disabled.\n- The port's receiver termination shall present high impedance to ground of ZRX-HIGH-IMP-DC-POS defined in Table 6-22.\n- The port shall be disabled from transmitting and receiving LFPS and Enhanced SuperSpeed signals.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 520,
+      "bottomRightX": 341,
+      "bottomRightY": 535,
+      "content": "#### 7.5.1.1.2 Exit from eSS.Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 544,
+      "bottomRightX": 670,
+      "bottomRightY": 596,
+      "content": "- A downstream port shall transition to Rx.Detect when directed.\n- An upstream port shall transition to Rx.Detect only when VBUS transitions to valid or when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 619,
+      "bottomRightX": 481,
+      "bottomRightY": 634,
+      "content": "### 7.5.1.2 eSS.Disabled for Upstream Ports of Peripheral Devices",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 640,
+      "bottomRightX": 661,
+      "bottomRightY": 672,
+      "content": "eSS.Disabled of a peripheral device operates similarly to hub upstream ports, except that it only attempts a limited number of Enhanced SuperSpeed attempts upon USB 2.0 bus reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 684,
+      "bottomRightX": 393,
+      "bottomRightY": 698,
+      "content": "#### 7.5.1.2.1 eSS.Disabled Substate Machine",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 706,
+      "bottomRightX": 571,
+      "bottomRightY": 722,
+      "content": "eSS.Disabled of a peripheral device has two substates shown in Figure 7-15.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 734,
+      "bottomRightX": 286,
+      "bottomRightY": 771,
+      "content": "- eSS.Disabled.Default\n- eSS.Disabled.Error",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 794,
+      "bottomRightX": 618,
+      "bottomRightY": 810,
+      "content": "eSS.Disabled.Default is a logical power-off state for a self-powered peripheral device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 822,
+      "bottomRightX": 370,
+      "bottomRightY": 837,
+      "content": "#### 7.5.1.2.2 eSS.Disabled Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 844,
+      "bottomRightX": 670,
+      "bottomRightY": 891,
+      "content": "The requirements of a peripheral upstream port are the same as defined in Section 7.5.1.1.1. In addition, a peripheral upstream port shall implement a tDisabledCount counter. The operation of the tDisabledCount counter shall meet the following requirement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "index": 460,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 61,
+      "content": "- 430 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 92,
+      "bottomRightX": 671,
+      "bottomRightY": 199,
+      "content": "The USB system software examines hub descriptor information to determine the hub's characteristics. By examining the hub's characteristics, the USB system software ensures that illegal power topologies are not allowed by not powering on the hub's ports if doing so would violate the USB power topology. The device status and configuration information can be used to determine whether the hub can be used in a given topology. Table 10-4 summarizes the information and how it can be used to determine the current power requirements of the hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 211,
+      "bottomRightX": 557,
+      "bottomRightY": 227,
+      "content": "**Table 10-4. Hub Power Operating Mode Summary**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 237,
+      "bottomRightX": 671,
+      "bottomRightY": 589,
+      "content": "|  Configuration Descriptor |   | Hub Device Status (Self Power) | Explanation  |\n| --- | --- | --- | --- |\n|  MaxPower | bmAttributes (Self Powered)  |   |   |\n|  0 | 0 | N/A | N/A This is an illegal combination.  |\n|  0 | 1 | 0 | N/A A device which is only self-powered, but does not have local power, cannot connect to the bus and communicate.  |\n|  0 | 1 | 1 | Self-powered only hub and local power source is good. Hub status also indicates local power good. Hub functionality is valid anywhere depth restriction is not violated.  |\n|  >0 | 0 | N/A | Bus-powered only hub. Downstream facing ports may not be powered unless allowed in current topology. Hub device status reporting self-powered is meaningless if *bmAttributes.self-powered* is zero.  |\n|  >0 | 1 | 0 | This hub is capable of both self- and bus-powered operating modes. It is currently only available as a bus-powered hub.  |\n|  > 0 | 1 | 1 | This hub draws power from both the bus and its local power source. It is currently available as a self-powered hub.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-212.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 610,
+      "bottomRightX": 675,
+      "bottomRightY": 748,
+      "content": "A traditional self-powered hub has a local power source, but may optionally draw one unit load from its upstream connection. This allows the interface to function when local power is not available (refer to Section 11.4.1.1). When local power is removed (either a hub-wide over-current condition or local supply is off), a hub of this type remains in the Configured state but transitions all ports (whether removable or non-removable) to the Powered-off state. While local power is off, all port status and change information read as zero and all SetPortFeature() requests are ignored (request is treated as a no-operation). The hub will use the Status Change endpoint to notify the USB system software of the hub event (refer to Section 10.13.4 for details on hub status).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 759,
+      "bottomRightX": 672,
+      "bottomRightY": 807,
+      "content": "The *MaxPower* field in the configuration descriptor is used to report to the system the maximum power the hub will draw from USB power when the configuration is selected. The external devices attaching to the hub will report their individual power requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 818,
+      "bottomRightX": 674,
+      "bottomRightY": 911,
+      "content": "A hub that draws power from USB PD (via its upstream port) or from USB Type-C Current shall report its operating power using the PD Consumer Port Descriptor capability in its BOS Descriptor. System software can determine the current power contract by querying the downstream port on which such a hub is connected. A compound device may power both the hub electronics and the permanently attached devices from USB power or from USB PD (via UFP) or from USB Type-C Current. The entire load may be reported in the hubs'",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

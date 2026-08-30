@@ -1,0 +1,128 @@
+{
+  "index": 559,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 529 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 92,
+      "bottomRightX": 660,
+      "bottomRightY": 198,
+      "content": "○ The far-end low-impedance receiver termination (R_RX-DC) defined in Table 6-22 is detected at both ports of the config lane.\n○ The Polling.LFPS signal is received at either port if the LFPS receiver in the LD is enabled.\n○ When directed by RLSM. Note that the opposite sublink may have received Polling.LFPS implying the presence of R_RX-DC.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 204,
+      "bottomRightX": 386,
+      "bottomRightY": 219,
+      "content": "• The next state is Disabled if directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 232,
+      "bottomRightX": 200,
+      "bottomRightY": 246,
+      "content": "### E.6.3.4 Active",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 254,
+      "bottomRightX": 671,
+      "bottomRightY": 301,
+      "content": "Active is a state where the re-driver is either forwarding the LFPS signal or SS signal. It maps the LTSSM states of Polling, U0, Recovery, Loopback, Hot Reset, Compliance Mode, and Rx.Detect sub-state of Rx.Detect.Reset. The re-driver shall meet the following requirement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 313,
+      "bottomRightX": 671,
+      "bottomRightY": 695,
+      "content": "• It shall enable its low-impedance receiver termination (R_RX-DC) at config lane. It may enable its low-impedance receiver termination (R_RX-DC) at non-config lane in x1 operation.\n• It shall forward the received LFPS on the config lane, and SS signal on both lanes if it is x2 operation.\n• It shall monitor the input status and manage the LD and LRD operation during various LTSSM link state in Active.\n• It shall implement a 24 ms tEITimeout timer to monitor the duration of EI. This timer shall be started when LFPS EI or the transition from SS signal to LFPS EI is detected. It shall be reset and disabled if an input signal is detected. Note that this timer is intended to ensure that the link enters U3 or eSS.Inactive, and to overcome any EI during Polling to remain in Active.\n• It shall remain in this state if EI is declared and the tEITimeout timer has not expired.\n• It shall monitor the duration of the LFPS signal. If it is Warm Reset, it shall perform the following at then of Warm Reset\n  ○ It shall perform the far-end receiver termination detection at its DFP.\n  ○ It shall block any Polling.LFPS signal it may receive at its DFP while performing the far-end receiver termination detection at its DFP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 708,
+      "bottomRightX": 543,
+      "bottomRightY": 724,
+      "content": "The re-driver shall perform the state transition based on the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 736,
+      "bottomRightX": 667,
+      "bottomRightY": 840,
+      "content": "• The next state is Disabled if Directed.\n• The next state is Slumber if directed or when the tEITimeout timer has expired and the input remains in EI.\n• The next state is Connect if the far-end low-impedance receiver termination (R_RX-DC) defined in Table 6-22 is not detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 853,
+      "bottomRightX": 211,
+      "bottomRightY": 867,
+      "content": "### E.6.3.5 Slumber",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 875,
+      "bottomRightX": 667,
+      "bottomRightY": 921,
+      "content": "Slumber is a state where the input is in EI and the re-driver is in a low power state. It maps the USB link states of U3, and eSS.Inactive. The re-driver shall meet the following requirement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

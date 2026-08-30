@@ -1,0 +1,57 @@
+{
+  "index": 31,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 62,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 893,
+      "content": "|  7.5.1.2.4#3 | A self-powered peripheral upstream port shall remain in eSS.Disabled.Error upon detection of USB 2.0 bus reset. | NT  |\n| --- | --- | --- |\n|  Subsection reference: 7.5.2 eSS.Inactive  |   |   |\n|  Subsection reference: 7.5.2.3 eSS.Inactive.Quiet  |   |   |\n|  Subsection reference: 7.5.2.3.1 eSS.Inactive.Quiet Requirement  |   |   |\n|  7.5.2.3.1#1 | The function of the far-end receiver termination detection shall be disabled. | NT  |\n|  Subsection reference: 7.5.2.3.2 Exit from eSS.Inactive.Quiet  |   |   |\n|  7.5.2.3.2#1 | The port shall transition to eSS.Inactive.Disconnect.Detect upon the eSSInactiveQuietTimeout timer timeout. | NT  |\n|  7.5.2.3.2#2 | A downstream port shall transition to Rx.Detect when Warm Reset is issued. | NT  |\n|  7.5.2.3.2#3 | An upstream port shall transition to Rx.Detect upon detection of Warm Reset. | NT  |\n|  Subsection reference: 7.5.2.4 eSS.Inactive.Disconnect.Detect  |   |   |\n|  Subsection reference: 7.5.2.4.1 eSS.Inactive.Disconnect.Detect Requirements  |   |   |\n|  7.5.2.4.1#1 | The transmitter shall perform the far-end receiver termination detection when in eSS.Inactive.Disconnect.Detect. | NT  |\n|  Subsection reference: 7.5.2.4.2 Exit from eSS.Inactive.Disconnect.Detect  |   |   |\n|  7.5.2.4.2#1 | The port shall transition to Rx.Detect when a far-end low-impedance receiver termination (RRX-DC) is not detected. | NT  |\n|  7.5.2.4.2#2 | The port shall transition to eSS.Inactive.Quiet when a far-end low-impedance receiver termination (RRX-DC) is detected. | NT  |\n|  Subsection reference: 7.5.3 Rx.Detect  |   |   |\n|  Subsection reference: 7.5.3.3 Rx.Detect.Reset  |   |   |\n|  Subsection reference: 7.5.3.3.1 Rx.Detect.Reset Requirements  |   |   |\n|  7.5.3.3.1#1 | A downstream port shall transmit Warm Reset for the duration of tReset. | 7.31  |\n|  7.5.3.3.1#2 | An upstream port shall remain in this state until it detects the completion of Warm Reset. | NT  |\n|  Subsection reference: 7.5.3.3.2 Exit from Rx.Detect.Reset  |   |   |\n|  7.5.3.3.2#1 | The port shall transition directly to Rx.Detect.Active when the entry to Rx.Detect is not due to a Warm Reset. | NT  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-25.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 947,
+      "content": "24",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

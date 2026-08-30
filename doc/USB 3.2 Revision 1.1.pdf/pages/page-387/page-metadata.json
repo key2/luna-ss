@@ -1,0 +1,148 @@
+{
+  "index": 386,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 61,
+      "content": "Revision 1.1",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 62,
+      "bottomRightX": 177,
+      "bottomRightY": 77,
+      "content": "June 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 356 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 61,
+      "content": "Universal Serial Bus 3.2",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 62,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 238,
+      "bottomRightY": 108,
+      "content": "### 9.6.2.3 Container ID",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 673,
+      "bottomRightY": 222,
+      "content": "This section defines the device-level Container ID descriptor which shall be implemented by all USB hubs, and is optional for other devices. If this descriptor is provided when operating in one mode, it shall be provided when operating in any mode. This descriptor may be used by a host in order to identify a unique device instance across all operating modes. If a device can also connect to a host through other technologies, the same Container ID value contained in this descriptor should also be provided over those other technologies in a technology specific manner.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 232,
+      "bottomRightX": 595,
+      "bottomRightY": 266,
+      "content": "This capability descriptor cannot be directly accessed with a GetDescriptor() or SetDescriptor() request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 275,
+      "topLeftY": 278,
+      "bottomRightX": 513,
+      "bottomRightY": 294,
+      "content": "Table 9-17. Container ID Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 303,
+      "bottomRightX": 676,
+      "bottomRightY": 521,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of descriptor  |\n|  1 | bDescriptorType | 1 | Constant | DEVICE CAPABILITY Descriptor type  |\n|  2 | bDevCapabilityType | 1 | Constant | Capability type: CONTAINER_ID  |\n|  3 | bReserved | 1 | Number | This field is reserved and shall be set to zero.  |\n|  4 | ContainerID | 16 | UUID | This is a 128-bit number that is unique to a device instance that is used to uniquely identify the device instance across all modes of operation. This same value may be provided over other technologies as well to allow the host to identify the device independent of means of connectivity. Refer to IETF RFC 4122 for details on generation of a UUID.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-187.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 542,
+      "bottomRightX": 279,
+      "bottomRightY": 557,
+      "content": "### 9.6.2.4 Platform Descriptor",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 563,
+      "bottomRightX": 655,
+      "bottomRightY": 626,
+      "content": "The Platform Descriptor contains a 128-bit UUID value that is defined and published independently by the platform/operating system vendor, and is used to identify a unique platform specific device capability. The descriptor may also contain one or more bytes of data associated with the capability.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 287,
+      "topLeftY": 638,
+      "bottomRightX": 501,
+      "bottomRightY": 654,
+      "content": "Table 9-18. Platform Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 663,
+      "bottomRightX": 673,
+      "bottomRightY": 849,
+      "content": "|  Offset | Field | Size | Value | Description  |\n| --- | --- | --- | --- | --- |\n|  0 | bLength | 1 | Number | Size of descriptor  |\n|  1 | bDescriptorType | 1 | Constant | DEVICE CAPABILITY Descriptor type  |\n|  2 | bDevCapabilityType | 1 | Constant | Capability type: PLATFORM  |\n|  3 | bReserved | 1 | Number | This field is reserved and shall be set to zero.  |\n|  4 | PlatformCapabilityUUID | 16 | UUID | This is a 128-bit number that uniquely identifies a platform specific capability of the device.  |\n|  20 | CapabilityData | Variable | Binary | This is a variable-length field containing data associated with the platform specific capability. This field may be zero bytes in length.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-188.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

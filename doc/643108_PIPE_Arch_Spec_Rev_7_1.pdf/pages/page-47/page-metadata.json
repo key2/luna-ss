@@ -1,0 +1,76 @@
+{
+  "index": 46,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 138,
+      "bottomRightX": 403,
+      "bottomRightY": 154,
+      "content": "Table 6-2. Tx Data Interface Output Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 157,
+      "bottomRightX": 696,
+      "bottomRightY": 313,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  Tx+, Tx- | N/A | The Tx differential outputs from the PHY. All transmitters must be AC-coupled to the media. See Section 4.3.1.2 of the PCI Express Base Specification or Section 6.2.2 of the USB 3.2 Specification. | PCIe, SATA, USB, DisplayPort Tx, and USB4  |\n|  Tx2+, Tx2- | N/A | The Tx2 differential outputs from the PHY. All transmitters must be AC-coupled to the media. | DisplayPort Tx, USB4  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-18.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 334,
+      "bottomRightX": 396,
+      "bottomRightY": 349,
+      "content": "Table 6-3. Rx Data Interface Input Signals",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 351,
+      "bottomRightX": 696,
+      "bottomRightY": 435,
+      "content": "|  Name | Active Level | Description | Relevant Protocols  |\n| --- | --- | --- | --- |\n|  Rx+, Rx- | N/A | The Rx differential inputs to the PHY | PCIe, SATA, USB, DisplayPort Rx, and USB4  |\n|  Rx2+, Rx2- | N/A | The Rx2 differential inputs to the PHY | DisplayPort Rx, USB4  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-19.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 297,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "47",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

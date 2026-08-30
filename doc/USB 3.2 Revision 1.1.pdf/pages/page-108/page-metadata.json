@@ -1,0 +1,183 @@
+{
+  "index": 107,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 77 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 345,
+      "bottomRightY": 109,
+      "content": "The equations for these functions are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 115,
+      "topLeftY": 123,
+      "bottomRightX": 346,
+      "bottomRightY": 164,
+      "content": "$$H_{CDR}(s) = \\frac{2s\\zeta\\omega_n + \\omega_n^2}{s^2 + 2s\\zeta\\omega_n + \\omega_n^2} \\tag{1}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 180,
+      "bottomRightX": 140,
+      "bottomRightY": 195,
+      "content": "and",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 115,
+      "topLeftY": 210,
+      "bottomRightX": 329,
+      "bottomRightY": 251,
+      "content": "$$JTF(s) = \\frac{s^2}{s^2 + 2\\zeta\\omega_n s + \\omega_n^2} \\tag{2}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 267,
+      "bottomRightX": 662,
+      "bottomRightY": 299,
+      "content": "where $\\omega_n$ is the natural frequency and $\\zeta$ is the damping factor. The relationship to the 3 dB frequency is",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 115,
+      "topLeftY": 311,
+      "bottomRightX": 401,
+      "bottomRightY": 365,
+      "content": "$$\\omega_{3dB} = \\omega_n \\left( 1 + 2\\zeta^2 + \\left[ (1 + 2\\zeta^2)^2 + 1 \\right]^{\\frac{1}{2}} \\right)^{\\frac{1}{2}} \\tag{3}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 383,
+      "bottomRightX": 671,
+      "bottomRightY": 451,
+      "content": "As shown in Figure 6-14, for Gen 1 operation the corner frequency is $\\omega_{3dB} = 2\\pi 10^7$ and $\\zeta = 0.707$. For Gen 2 operation refer to Figure 6-15 with $\\omega_{3dB} = 2\\pi 1.5 \\times 10^7$ and $\\zeta = 0.707$. These transfer functions have a maximum peaking of 2 dB.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 462,
+      "bottomRightX": 413,
+      "bottomRightY": 477,
+      "content": "### 6.5.3 Normative Spread Spectrum Clocking (SSC)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 483,
+      "bottomRightX": 663,
+      "bottomRightY": 560,
+      "content": "All ports are required to have Spread Spectrum Clocking (SSC) modulation. Providing the same SSC clock to two different components is allowed but not required, the SSC can be generated asynchronously. The SSC profile is not specified and is vendor specific. The SSC modulation requirement is listed in Table 6-17. The SSC modulation may not violate the phase slew rate described in Section 6.5.4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 302,
+      "topLeftY": 572,
+      "bottomRightX": 486,
+      "bottomRightY": 587,
+      "content": "Table 6-17. SSC Parameters",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 102,
+      "topLeftY": 598,
+      "bottomRightX": 690,
+      "bottomRightY": 699,
+      "content": "|  Symbol | Description | Limits |   | Units | Note  |\n| --- | --- | --- | --- | --- | --- |\n|   |   |  Min | Max  |   |   |\n|  t_{SSC-MOD-RATE} | Modulation Rate | 30 | 33 | kHz |   |\n|  t_{SSC-FREQ-DEVIATION} | SSC deviation | +0/-4000 +0/-2000 | +0/-5000 +0/-3000 | ppm | 1, 2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-53.md"
+    },
+    {
+      "topLeftX": 108,
+      "topLeftY": 700,
+      "bottomRightX": 139,
+      "bottomRightY": 712,
+      "content": "Note:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 716,
+      "bottomRightX": 667,
+      "bottomRightY": 740,
+      "content": "1. The data rate is modulated from 0 ppm to -5000 ppm of the nominal data rate frequency and scales with data rate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 744,
+      "bottomRightX": 333,
+      "bottomRightY": 758,
+      "content": "2. This is measured below 2 MHz only.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 767,
+      "bottomRightX": 610,
+      "bottomRightY": 784,
+      "content": "An example of the period modulation from triangular SSC is shown in Figure 6-16.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "index": 299,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 269 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 202,
+      "topLeftY": 92,
+      "bottomRightX": 585,
+      "bottomRightY": 110,
+      "content": "Figure 8-40. Device IN Move Data State Machine (DIMDSM)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 122,
+      "bottomRightX": 652,
+      "bottomRightY": 472,
+      "content": "![img-131.jpeg](img-131.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-131.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 495,
+      "bottomRightX": 671,
+      "bottomRightY": 586,
+      "content": "The Device IN Move Data State Machine (DIMDSM) is entered from the Start Stream or Idle states as described above. The entry into the DIMDSM immediately transitions to the INMvData Device state. The DIMDSM allows either the device to terminate the Move Data operation because it has exhausted its Function Data associated with a Stream or the host to terminate the Move Data operation because it has exhausted its Endpoint Buffer space associated with a Stream.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 598,
+      "bottomRightX": 652,
+      "bottomRightY": 645,
+      "content": "The DIMDSM always exits to the Idle state. The Retry (Rty=1) flag shall never be set in a packet that causes a DIMDSM exit. A Stream pipe remains in the Move Data state during packet retries.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 657,
+      "bottomRightX": 659,
+      "bottomRightY": 704,
+      "content": "Note: The Stream ID value shall be CStream for all packets exchanged in the Move Data state. If a Stream ID value other than CStream is detected while in the DIMDSM, the device should halt the endpoint.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 716,
+      "bottomRightX": 655,
+      "bottomRightY": 761,
+      "content": "Note: if CStream is not Active upon initially entering the Move Data state, the device may reject the Stream proposal with an NRDY or STALL the pipe, as defined by the associated Device Class.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 774,
+      "bottomRightX": 311,
+      "bottomRightY": 787,
+      "content": "### 8.12.1.4.2.7 INMvData Device",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 797,
+      "bottomRightX": 666,
+      "bottomRightY": 828,
+      "content": "This state is initially entered from the Start Stream state or the Idle state. In this state the device prepares a DP to send to the host or may reject a HIMD from the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 840,
+      "bottomRightX": 649,
+      "bottomRightY": 886,
+      "content": "DP(CStream, EOB=0) - If the device's Endpoint Data for CStream is greater than one Max Packet Size, then the device may send a DP to the host with EOB = 0 and transition to the INMvData Host state. The DPP shall contain CStream data.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "index": 166,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 136 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 95,
+      "bottomRightX": 671,
+      "bottomRightY": 125,
+      "content": "- A port shall transition directly to Recovery if it fails to receive a header packet three consecutive times. A port shall not issue the third LBAD upon the third error.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 147,
+      "bottomRightX": 500,
+      "bottomRightY": 162,
+      "content": "#### 7.2.4.1.6 Receiving Data Packet Header in Gen 2 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 170,
+      "bottomRightX": 676,
+      "bottomRightY": 762,
+      "content": "- Upon receiving a DPH, the following verifications shall be performed by a port:\n  1. CRC-5\n  2. CRC-16\n  3. Matching between the Header Sequence Number in the received header packet and the Rx Header Sequence Number\n  4. The availability of an Rx Buffer to store a header packet or a data packet.\n- A DPH is defined as “received properly” when it has passed all four criteria described above. A port shall ignore the length field replica.\n- When a DPH has been received properly, a port shall issue a single LGOOD_n with “n” corresponding to the Rx Header Sequence Number and increment the Rx Header Sequence Number by one (or roll over to 0 if the maximum Header Sequence Number is reached).\n- A port shall consume one Type 1 or Type 2 Rx Buffer Credit until it has been processed and a Rx Buffer is available.\n- When a DPH is not “received properly”, one of the following shall occur:\n  1. If the DPH has one or more CRC-5 or CRC-16 errors, but the two length field replica are valid and identical, a port shall issue a single LBAD and track the associated DPP that immediately follows the DPH. A port shall ignore all the packets received subsequently until an LRTY has been received, or the link has entered Recovery. Refer to Section 7.2.4.1.1 for additional rules applicable when a port enters U0 from Recovery.\n     Note: a valid length field is 0~1024. Refer to Section 7.2.1.2 for details.\n  2. If any one of the following conditions occurs, a port shall transition to Recovery.\n     a. The two length field replica is not identical.\n     b. The Header Sequence Number in the received DPH does not match the Rx Header Sequence Number.\n     c. The Rx Buffer does not have enough space to store the received DP\n- After transmitting LBAD, a port shall continue to issue LCRD1_x or LCRD2_x if its corresponding Type 1 or Type 2 Rx Buffer Credit is made available.\n- A port shall transition directly to Recovery if it fails to receive a data packet header three consecutive times. A port shall not issue the third LBAD upon the third error.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 769,
+      "bottomRightX": 426,
+      "bottomRightY": 784,
+      "content": "#### 7.2.4.1.7 SuperSpeed Rx Header Buffer Credit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 790,
+      "bottomRightX": 664,
+      "bottomRightY": 850,
+      "content": "Each port is required to have four Rx Header Buffer Credits in its receiver. This is referred to the Local Rx Header Buffer Credit. The number of the Local Rx Header Buffer Credits represents the number of header packets a port can accept and is managed by the Local Rx Header Buffer Credit Count.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 864,
+      "bottomRightX": 667,
+      "bottomRightY": 909,
+      "content": "- A port shall consume one Local Rx Header Buffer Credit if a header packet is “received properly”. The Local Rx Header Buffer Credit Count shall be decremented by one.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

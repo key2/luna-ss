@@ -1,0 +1,191 @@
+{
+  "index": 140,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 110 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 95,
+      "bottomRightX": 376,
+      "bottomRightY": 111,
+      "content": "### 6.11.3 Upper Limit on Channel Capacitance",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 116,
+      "bottomRightX": 676,
+      "bottomRightY": 179,
+      "content": "The interconnect total capacitance to ground seen by the Receiver Detection circuit shall not exceed 3 nF to ground, including capacitance added by attached test instrumentation. This limit is needed to guarantee proper operation during Receiver detect. Note that this capacitance is separate and distinct from the AC coupling capacitance value.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 191,
+      "bottomRightX": 222,
+      "bottomRightY": 206,
+      "content": "### 6.12 Re-timers",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 212,
+      "bottomRightX": 445,
+      "bottomRightY": 228,
+      "content": "Requirements for re-timers are defined in Appendix E.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 240,
+      "bottomRightX": 306,
+      "bottomRightY": 256,
+      "content": "### 6.13 Dual-lane Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 262,
+      "bottomRightX": 224,
+      "bottomRightY": 278,
+      "content": "#### 6.13.1 Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 284,
+      "bottomRightX": 675,
+      "bottomRightY": 346,
+      "content": "Dual-lane operation refers to Gen 1x2 or Gen 2x2 operation. In x2 operation, connect detect and the start-up speed negotiation are performed only on a single lane referred to as the Configuration Lane. Refer to the USB Type-C Specification for identification of the Configuration Lane between the DFP and UFP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 357,
+      "bottomRightX": 664,
+      "bottomRightY": 404,
+      "content": "Note that the preceding requirements pertain to implementations using USB Type-C cables and connectors. For other implementations, the method for determining the Configuration Lane is implementation specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 417,
+      "bottomRightX": 312,
+      "bottomRightY": 433,
+      "content": "#### 6.13.2 Capability Determination",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 438,
+      "bottomRightX": 647,
+      "bottomRightY": 470,
+      "content": "x2 capability is determined during Polling.PortMatch based on the PHY Capability LBPM described in Table 7-14 of Section 7.5.4.5.1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 482,
+      "bottomRightX": 260,
+      "bottomRightY": 498,
+      "content": "#### 6.13.3 Lane Numbering",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 503,
+      "bottomRightX": 419,
+      "bottomRightY": 519,
+      "content": "Lane 0 shall be mapped to the Configuration Lane.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 532,
+      "bottomRightX": 241,
+      "bottomRightY": 548,
+      "content": "#### 6.13.4 Data Striping",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 554,
+      "bottomRightX": 636,
+      "bottomRightY": 586,
+      "content": "Data blocks shall be striped. Data striping is aligned to Lane 0, an example of which is shown in Figure 6-40.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 597,
+      "bottomRightX": 591,
+      "bottomRightY": 613,
+      "content": "Control blocks shall be duplicated on both lanes, and are therefore not striped.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 624,
+      "bottomRightX": 667,
+      "bottomRightY": 672,
+      "content": "Transmission of packets and link commands including framing symbols may be initiated on either lane. Example: transmission of the last byte of a data packet on Lane 0, and the first byte of a subsequent packet or link command on Lane 1.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

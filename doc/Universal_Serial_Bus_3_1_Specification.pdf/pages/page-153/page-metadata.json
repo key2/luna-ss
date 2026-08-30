@@ -1,0 +1,66 @@
+{
+  "index": 152,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 222,
+      "topLeftY": 100,
+      "bottomRightX": 580,
+      "bottomRightY": 782,
+      "content": "![img-117.jpeg](img-117.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-117.jpeg"
+    },
+    {
+      "topLeftX": 264,
+      "topLeftY": 791,
+      "bottomRightX": 561,
+      "bottomRightY": 808,
+      "content": "Figure 5-33. Mated USB 3.1 Micro-B Connector",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 823,
+      "bottomRightX": 409,
+      "bottomRightY": 845,
+      "content": "### 5.8.2 EMI and RFI Management",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 851,
+      "bottomRightX": 700,
+      "bottomRightY": 886,
+      "content": "Systems that include USB 3.1 connectors and cable assemblies need to meet the relevant EMI/EMC regulations.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "5-65",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

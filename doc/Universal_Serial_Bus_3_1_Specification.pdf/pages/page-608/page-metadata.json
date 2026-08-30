@@ -1,0 +1,146 @@
+{
+  "index": 607,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 92,
+      "bottomRightX": 324,
+      "bottomRightY": 111,
+      "content": "### C.1.4.1 Function Suspend",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 116,
+      "bottomRightX": 663,
+      "bottomRightY": 166,
+      "content": "A function may be placed into function suspend independent of other functions using the FUNCTION_SUSPEND feature. The FUNCTION_SUSPEND feature is also used to enable function remote wakeup (refer to Chapter 9 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 176,
+      "bottomRightX": 701,
+      "bottomRightY": 243,
+      "content": "If a composite device has at least one of its functions in suspend while other functions remain active, i.e., the device's upstream port is not in U3, a mechanism is needed for a suspended function to signal a remote wakeup. This is done with the Function Wake device notification packet (refer to Chapter 8 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 261,
+      "bottomRightX": 308,
+      "bottomRightY": 280,
+      "content": "### C.1.4.2 Device Suspend",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 285,
+      "bottomRightX": 692,
+      "bottomRightY": 336,
+      "content": "Device suspend is a device-wide state entered and exited intrinsically as a result of a device's upstream port entering and exiting the U3 state. A device may be transitioned into device suspend regardless of the function suspend state of any function within the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 344,
+      "bottomRightX": 695,
+      "bottomRightY": 395,
+      "content": "Devices may implement a switched power rail and remove power from large portions of the device while in suspend. Some device state information must be retained in a persistent state during suspend (refer to Chapter 9 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 413,
+      "bottomRightX": 356,
+      "bottomRightY": 432,
+      "content": "### C.1.4.3 Host Initiated Suspend",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 438,
+      "bottomRightX": 257,
+      "bottomRightY": 455,
+      "content": "#### Suspending a Device",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 463,
+      "bottomRightX": 633,
+      "bottomRightY": 480,
+      "content": "The host transitions a device into the suspend state according to the following sequence:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 485,
+      "bottomRightX": 687,
+      "bottomRightY": 628,
+      "content": "- Enable remote wakeup, if needed\n- A SetPortFeature(PORT_LINK_STATE, U3) request is issued to the downstream port of which the targeted device is its link partner.\n- The downstream port initiates U3 entry by sending an LGO_U3 link command.\n- The device sends an LAU link command (acceptance is non-negotiable).\n- The downstream port sends an LPMA link command.\n- Both link partners transition their transmitters to electrical idle and enter the U3 state (refer to Chapter 7 for details).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 635,
+      "bottomRightX": 354,
+      "bottomRightY": 652,
+      "content": "#### Suspending the USB Link Hierarchy",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 660,
+      "bottomRightX": 692,
+      "bottomRightY": 728,
+      "content": "A link hierarchy of devices and hubs is placed into suspend on a device by device basis under host software control. First, all peripheral devices in the hierarchy are placed into suspend. Then the hubs connected to the peripheral devices are placed into suspend. This is repeated all the way up the hierarchy until reaching the root ports of the USB hierarchy.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 737,
+      "bottomRightX": 660,
+      "bottomRightY": 770,
+      "content": "Note that by using the same technique a select subset of a given USB link hierarchy could be suspended rather then the whole of it if so desired.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 981,
+      "bottomRightX": 120,
+      "bottomRightY": 996,
+      "content": "C-10",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

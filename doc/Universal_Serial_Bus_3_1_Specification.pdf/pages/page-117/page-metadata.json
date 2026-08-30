@@ -1,0 +1,75 @@
+{
+  "index": 116,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 164,
+      "topLeftY": 97,
+      "bottomRightX": 654,
+      "bottomRightY": 788,
+      "content": "![img-77.jpeg](img-77.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-77.jpeg"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 809,
+      "bottomRightX": 229,
+      "bottomRightY": 822,
+      "content": "NOTES:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 825,
+      "bottomRightX": 585,
+      "bottomRightY": 841,
+      "content": "1. Dimensions that are labeled REF may vary from manufacturer to manufacturer.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 187,
+      "topLeftY": 843,
+      "bottomRightX": 562,
+      "bottomRightY": 858,
+      "content": "2. General tolerance is +/-0.05mm, otherwise the specified tolerances apply.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 572,
+      "topLeftY": 863,
+      "bottomRightX": 699,
+      "bottomRightY": 880,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "5-29",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "index": 619,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 94,
+      "bottomRightX": 652,
+      "bottomRightY": 146,
+      "content": "- Protocol level endpoint flow control conditions, e.g., an endpoint having sent an NRDY\n- Device class and device implementation\n- U1 and U2 device-to-host exit latencies",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 154,
+      "bottomRightX": 700,
+      "bottomRightY": 240,
+      "content": "U1 and U2 device-to-host exit latencies are the total latency to transition all links in the path between the device and the host to U0, when exit is initiated by the device. The device may assume a device-to-host exit latency based on the worst case exit latency (device connected five hubs deep). The device may alternatively use the device-to-host exit latency provided with the U1PEL and U2PEL fields of the SET_SEL request (refer to Chapter 9).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 256,
+      "bottomRightX": 457,
+      "bottomRightY": 279,
+      "content": "### C.3.2 Entry Conditions for U1 and U2",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 284,
+      "bottomRightX": 700,
+      "bottomRightY": 368,
+      "content": "A device should initiate U1 or U2 when idle conditions are met for all its endpoints. A device typically initiates U1. However, if a device is able to determine that its link will not be needed for a long time, then the device may be able to initiate U2. For example, WiFi has a protocol where its radio may be shut off for long periods, e.g., 100 ms, and since the link is not needed during this time it may be placed in U2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 376,
+      "bottomRightX": 686,
+      "bottomRightY": 426,
+      "content": "A device should initiate U2 if it is able to determine its link is not needed for a period of time that exceeds the U2 device-to-host exit latency (plus an appropriate guard band). The device should initiate U1 in all other cases.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 435,
+      "bottomRightX": 686,
+      "bottomRightY": 519,
+      "content": "Devices should consider the device-to-host exit latency when determining whether to initiate U1 and U2 entry. The host-to-device exit latency and the device-to-host exit latency are both considered by host software when determining whether to enable U1 or U2 on each link. Devices are enabled to initiate U1 and U2 with the U1_Enable and U2_Enable feature selectors (refer to Chapter 9).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 528,
+      "bottomRightX": 700,
+      "bottomRightY": 581,
+      "content": "The following subsections offer recommendations for determining when an endpoint is idle, or does not need to use the link for a known period, based on endpoint type. Idle conditions may be determined in other implementation specific ways.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 598,
+      "bottomRightX": 322,
+      "bottomRightY": 616,
+      "content": "### C.3.2.1 Control Endpoints",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 622,
+      "bottomRightX": 534,
+      "bottomRightY": 639,
+      "content": "A control endpoint is idle when all of the following conditions are met:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 643,
+      "bottomRightX": 684,
+      "bottomRightY": 732,
+      "content": "- Device is in the configured state\n- Device is not in the midst of a control transfer\n- Either an NRDY was sent, or the Packets Pending flag was set to zero in the last ACK packet received from the host\n- Device does not have a pending ERDY",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 748,
+      "bottomRightX": 302,
+      "bottomRightY": 767,
+      "content": "### C.3.2.2 Bulk Endpoints",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 772,
+      "bottomRightX": 531,
+      "bottomRightY": 788,
+      "content": "A bulk endpoint is idle when both of the following conditions are met:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 794,
+      "bottomRightX": 684,
+      "bottomRightY": 846,
+      "content": "- Either an NRDY was sent, or the Packets Pending flag was set to zero in the last ACK packet received from the host\n- Device does not have a pending ERDY",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 852,
+      "bottomRightX": 684,
+      "bottomRightY": 903,
+      "content": "Some devices can also determine that their link is not needed for a known period of time. For example, a mass storage device may need to spin up a spindle to service a request. Since the spin up time can be hundreds of milliseconds, the device should place its link in U2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 120,
+      "bottomRightY": 994,
+      "content": "C-22",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

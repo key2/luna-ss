@@ -1,0 +1,149 @@
+{
+  "index": 269,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 239 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 91,
+      "bottomRightX": 665,
+      "bottomRightY": 344,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |   |\n| --- | --- | --- | --- |\n|  12 | 1:8 | **BELT.** This field describes the Best Effort Latency Tolerance value, representing the time in nanoseconds that a device can wait for service before experiencing unintended operational side effects.  |   |\n|   |   |  **Bits** | **Description**  |\n|   |   |  9:0 | LatencyValue (ns)  |\n|   |   |  11:10 | LatencyScale  |\n|   |   |  **Value** | **Description**  |\n|   |   |  00b | Reserved  |\n|   |   |  01b | LatencyValue is to be multiplied by 1024  |\n|   |   |  10b | LatencyValue is to be multiplied by 32,768  |\n|   |  | 11b | LatencyValue is to be multiplied by 1,048,576  |\n|  44 | 1:20 | **Reserved.**  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-123.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 365,
+      "bottomRightX": 474,
+      "bottomRightY": 380,
+      "content": "### 8.5.6.3 Bus Interval Adjustment Message Device Notification",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 386,
+      "bottomRightX": 549,
+      "bottomRightY": 402,
+      "content": "The Bus Interval Adjustment Message Device Notification is deprecated.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 416,
+      "bottomRightX": 607,
+      "bottomRightY": 431,
+      "content": "Figure 8-26. Bus Interval Adjustment Message Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 440,
+      "bottomRightX": 652,
+      "bottomRightY": 548,
+      "content": "![img-117.jpeg](img-117.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-117.jpeg"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 580,
+      "bottomRightX": 605,
+      "bottomRightY": 595,
+      "content": "Table 8-21. Bus Interval Adjustment Message Device Notification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 149,
+      "topLeftY": 604,
+      "bottomRightX": 676,
+      "bottomRightY": 737,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | **SubType.** This field shall be set to *DEV_NOTIFICATION*.  |\n|  4 | 1:4 | **Notification Type.** BUS_INTERVAL_ADJUSTMENT_MESSAGE.  |\n|  8 | 1:8 | **Reserved.**  |\n|  16 | 1:16 | **Bus Interval Adjustment.** This field is a two's complement value ranging from -32768 to +32767 expressed in BusIntervalAdjustmentGranularity units.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-124.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 765,
+      "bottomRightX": 325,
+      "bottomRightY": 779,
+      "content": "### 8.5.6.4 Function Wake Notification",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 787,
+      "bottomRightX": 672,
+      "bottomRightY": 834,
+      "content": "A function may signal that it wants to exit from device suspend (after transitioning the link to U0) or function suspend by sending a Function Wake Device Notification to the host if it is enabled for remote wakeup. Refer to Section 9.2.5 for more details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 847,
+      "bottomRightX": 335,
+      "bottomRightY": 862,
+      "content": "### 8.5.6.5 Latency Tolerance Messaging",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 868,
+      "bottomRightX": 673,
+      "bottomRightY": 913,
+      "content": "Latency Tolerance Messaging is an optional normative USB power management feature that utilizes reported BELT (Best Effort Latency Tolerance) values to enable more power efficient platform operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

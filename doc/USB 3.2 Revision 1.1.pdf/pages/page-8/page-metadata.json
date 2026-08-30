@@ -1,0 +1,56 @@
+{
+  "index": 7,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 375,
+      "topLeftY": 46,
+      "bottomRightX": 415,
+      "bottomRightY": 61,
+      "content": "- viii -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 925,
+      "content": "3.2.4.2 Error Handling...25\n3.2.5 Enhanced SuperSpeed Power Management ...25\n3.2.6 Devices...26\n3.2.6.1 Peripheral Devices...26\n3.2.6.2 Hubs...28\n3.2.7 Hosts...30\n3.3 Enhanced SuperSpeed Bus Data Flow Models ...31\n4 Enhanced SuperSpeed Data Flow Model ...32\n4.1 Implementer Viewpoints ...32\n4.2 Enhanced SuperSpeed Communication Flow ...32\n4.2.1 Pipes ...32\n4.3 Enhanced SuperSpeed Protocol Overview ...33\n4.3.1 Differences from USB 2.0 ...33\n4.3.1.1 Comparing USB 2.0 and Enhanced SuperSpeed Transactions ...34\n4.3.1.2 Introduction to Enhanced SuperSpeed Packets...34\n4.4 Generalized Transfer Description ...35\n4.4.1 Data Bursting...36\n4.4.2 IN Transfers ...36\n4.4.3 OUT Transfers ...37\n4.4.4 Power Management and Performance ...38\n4.4.5 Control Transfers ...39\n4.4.5.1 Control Transfer Packet Size ...39\n4.4.5.2 Control Transfer Bandwidth Requirements...39\n4.4.5.3 Control Transfer Data Sequences...40\n4.4.6 Bulk Transfers ...40\n4.4.6.1 Bulk Transfer Data Packet Size ...40\n4.4.6.2 Bulk Transfer Bandwidth Requirements...41\n4.4.6.3 Bulk Transfer Data Sequences...41\n4.4.6.4 Bulk Streams...41\n4.4.7 Interrupt Transfers...43\n4.4.7.1 Interrupt Transfer Packet Size ...44\n4.4.7.2 Interrupt Transfer Bandwidth Requirements ...44\n4.4.7.3 Interrupt Transfer Data Sequences...45\n4.4.8 Isochronous Transfers ...45\n4.4.8.1 Isochronous Transfer Packet Size...46\n4.4.8.2 Isochronous Transfer Bandwidth Requirements...46\n4.4.8.3 Isochronous Transfer Data Sequences ...47\n4.4.8.4 Special Considerations for Isochronous Transfers ...47\n4.4.9 Device Notifications...49\n4.4.10 Reliability...49",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

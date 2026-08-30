@@ -1,0 +1,94 @@
+{
+  "index": 331,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 301 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 92,
+      "bottomRightX": 625,
+      "bottomRightY": 110,
+      "content": "Figure 8-60. Enhanced SuperSpeed Isochronous IN Transaction Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 268,
+      "topLeftY": 121,
+      "bottomRightX": 523,
+      "bottomRightY": 451,
+      "content": "![img-151.jpeg](img-151.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-151.jpeg"
+    },
+    {
+      "topLeftX": 156,
+      "topLeftY": 484,
+      "bottomRightX": 632,
+      "bottomRightY": 502,
+      "content": "Figure 8-61. Enhanced SuperSpeed Isochronous OUT Transaction Format",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 296,
+      "topLeftY": 512,
+      "bottomRightX": 494,
+      "bottomRightY": 820,
+      "content": "![img-152.jpeg](img-152.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-152.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 842,
+      "bottomRightX": 673,
+      "bottomRightY": 917,
+      "content": "The first DP or ACK TP in each service interval shall start with the sequence number set to 0.\n\nFor isochronous transactions that include multiple data packets in a service interval the sequence number is increased by one for each subsequent DP. The DP after sequence number 31 uses a sequence number of zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

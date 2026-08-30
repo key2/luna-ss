@@ -1,0 +1,111 @@
+{
+  "index": 126,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 103,
+      "bottomRightX": 671,
+      "bottomRightY": 126,
+      "content": "### 5.5.3 USB 3.1 Standard-A to USB 3.1 Micro-B Cable Assembly",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 131,
+      "bottomRightX": 690,
+      "bottomRightY": 232,
+      "content": "Figure 5-17 shows the USB 3.1 Micro-B plug overmold dimensions for a USB 3.1 Standard-A to USB 3.1 Micro-B cable assembly. The USB 3.1 Standard-A plug overmold dimensions are found in Figure 5-16. Due to increased wire sizes required for some PD cable implementations, the overmold dimensions for PD cables have larger maximum dimensions than the non-PD cables specified. See the *Universal Serial Bus Power Delivery Specification* for the maximum overmold dimensions of PD cable assemblies.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 252,
+      "bottomRightX": 637,
+      "bottomRightY": 704,
+      "content": "![img-93.jpeg](img-93.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-93.jpeg"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 761,
+      "bottomRightX": 224,
+      "bottomRightY": 773,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 775,
+      "bottomRightX": 504,
+      "bottomRightY": 788,
+      "content": "1. Any surface may have texturing up to 0.3 mm below the surface.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 788,
+      "bottomRightX": 527,
+      "bottomRightY": 802,
+      "content": "2. A square area around the letter B may be lowered as much as 0.5 mm.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 802,
+      "bottomRightX": 525,
+      "bottomRightY": 844,
+      "content": "3. USB authorized icon, connector type letter designation (i.e., B), color of the insulator body, and maximum dimensions are mandatory. Overmold outer configuration, color, and final shape are reference.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 190,
+      "topLeftY": 844,
+      "bottomRightX": 418,
+      "bottomRightY": 859,
+      "content": "4. Pin 4 is not connected to pin 5 inside the plug.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 214,
+      "topLeftY": 887,
+      "bottomRightX": 610,
+      "bottomRightY": 904,
+      "content": "Figure 5-17. USB 3.1 Micro-B Plug Cable Overmold Dimensions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 979,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "5-39",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "index": 466,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 436 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 92,
+      "bottomRightX": 410,
+      "bottomRightY": 106,
+      "content": "Configuration Descriptor (SuperSpeedPlus information)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 108,
+      "bottomRightX": 496,
+      "bottomRightY": 291,
+      "content": "|  bLength | 9  |\n| --- | --- |\n|  bDescriptorType | CONFIGURATION Descriptor type  |\n|  wTotalLength | 31  |\n|  bNumInterfaces | 1  |\n|  bConfigurationValue | X  |\n|  iConfiguration | Y  |\n|  bmAttributes | Z  |\n|  bMaxPower | The maximum amount of bus power the hub will consume in this configuration  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-229.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 308,
+      "bottomRightX": 222,
+      "bottomRightY": 321,
+      "content": "Interface Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 323,
+      "bottomRightX": 496,
+      "bottomRightY": 514,
+      "content": "|  bLength | 9  |\n| --- | --- |\n|  bDescriptorType | INTERFACE Descriptor type  |\n|  bInterfaceNumber | 0  |\n|  bAlternateSetting | 0  |\n|  bNumEndpoints | 1  |\n|  bInterfaceClass | HUB_CLASSCODE (9)  |\n|  bInterfaceSubClass | 0  |\n|  bInterfaceProtocol | 0  |\n|  iInterface | 1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-230.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 530,
+      "bottomRightX": 376,
+      "bottomRightY": 544,
+      "content": "Endpoint Descriptor (for Status Change Endpoint)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 545,
+      "bottomRightX": 496,
+      "bottomRightY": 684,
+      "content": "|  bLength | 7  |\n| --- | --- |\n|  bDescriptorType | ENDPOINT Descriptor type  |\n|  bEndpointAddress | Implementation-dependent; Bit 7: Direction = In(1)  |\n|  bmAttributes | Transfer Type = Interrupt (19)  |\n|  wMaxPacketSize | 2  |\n|  bInterval | 8 (maximum allowable interval)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-231.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 701,
+      "bottomRightX": 438,
+      "bottomRightY": 715,
+      "content": "Endpoint Companion Descriptor (for Status Change Endpoint)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 716,
+      "bottomRightX": 496,
+      "bottomRightY": 836,
+      "content": "|  bLength | 6  |\n| --- | --- |\n|  bDescriptorType | SUPERSPEED_USB_ENDPOINT_COMPANION Descriptor type  |\n|  bMaxBurst | 0  |\n|  bmAttributes | 0  |\n|  wBytesPerInterval | 2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-232.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

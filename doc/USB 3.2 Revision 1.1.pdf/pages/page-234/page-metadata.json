@@ -1,0 +1,128 @@
+{
+  "index": 233,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 203 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 677,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 95,
+      "bottomRightX": 660,
+      "bottomRightY": 185,
+      "content": "- The port Configuration information shall remain unchanged (refer to Section 8.4.6 for details).\n- The port shall maintain its transmitter specifications defined in Table 6-18.\n- The port shall maintain its low-impedance receiver termination (R$_{RX-DC}$) defined in Table 6-22 on each negotiated lane.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 207,
+      "bottomRightX": 309,
+      "bottomRightY": 222,
+      "content": "#### **7.5.12.3 Hot Reset.Active**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 229,
+      "bottomRightX": 675,
+      "bottomRightY": 245,
+      "content": "Hot Reset.Active is a substate where a port will perform the reset as defined in Section 7.4.2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 258,
+      "bottomRightX": 394,
+      "bottomRightY": 272,
+      "content": "##### **7.5.12.3.1 Hot Reset.Active Requirements**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 280,
+      "bottomRightX": 669,
+      "bottomRightY": 310,
+      "content": "- Upon entry to this substate, the port shall first transmit at least 16 TS2 ordered sets continuously on each negotiated lane with the Reset bit asserted.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 316,
+      "bottomRightX": 672,
+      "bottomRightY": 423,
+      "content": "Note: Depending on the time delay between the two ports entering Hot Reset, when the downstream port is transmitting the first 16 TS2 ordered sets with the Reset bit asserted, it may still receive part of the TS2 ordered sets from the upstream port exiting from Polling.Configuration or Recovery.Configuration. The downstream port shall ignore those TS2 ordered sets. Also upon entry to this substate, both ports shall ignore the Disabling Scrambling bit in the link configuration field of the TS2 Ordered Set. This bit is only decoded in Polling.Idle or Recovery.Idle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 429,
+      "bottomRightX": 677,
+      "bottomRightY": 610,
+      "content": "- A 12 ms timer (tHotResetActiveTimeout) shall be started upon entry to this substate.\n- A downstream port shall continue to transmit TS2 ordered sets on each negotiated lane with the Reset bit asserted until the upstream port transitions from sending TS2 ordered sets with the Reset bit asserted to sending the TS2 ordered sets with the Reset bit de-asserted on each negotiated lane.\n- An upstream port shall transmit TS2 ordered sets with the Reset bit asserted while performing the Hot Reset on each negotiated lane.\n- An upstream port shall transmit TS2 ordered sets with the Reset bit de-asserted after completing the Hot Reset on each negotiated lane.\n- The port shall perform Hot Reset described in Hot Reset requirement of this section.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 631,
+      "bottomRightX": 366,
+      "bottomRightY": 646,
+      "content": "##### **7.5.12.3.2 Exit from Hot Reset.Active**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 654,
+      "bottomRightX": 681,
+      "bottomRightY": 906,
+      "content": "- The port shall transition to Hot Reset.Exit when the following three conditions are met on each negotiated lane.\n  1. At least 16 TS2 ordered sets with the Reset bit asserted are transmitted.\n  2. Two consecutive TS2 ordered sets are received with the Reset bit de-asserted.\n  3. Four consecutive TS2 ordered sets with the Reset bit de-asserted are sent after receiving one TS2 ordered set with the Reset bit de-asserted.\n- The port shall transition to eSS.Inactive upon the 12 ms timer timeout (tHotResetActiveTimeout) and the conditions to transition to Hot Reset.Exit are not met.\n- The port in SuperSpeedPlus operation may ignore SDS OS if corrupted.\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

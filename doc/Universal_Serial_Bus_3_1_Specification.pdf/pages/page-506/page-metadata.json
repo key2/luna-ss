@@ -1,0 +1,111 @@
+{
+  "index": 505,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 89,
+      "bottomRightX": 726,
+      "bottomRightY": 663,
+      "content": "![img-269.jpeg](img-269.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-269.jpeg"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 670,
+      "bottomRightX": 704,
+      "bottomRightY": 696,
+      "content": "¹ If Port Configuration fails, the port shall transition to the USPORT.Powered-off state with the link in eSS.Disabled state and USB Device in the Attached state. V_BUS may still be present on the upstream port. V_BUS must be toggled to transition to the USPORT.Powered state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 683,
+      "topLeftY": 699,
+      "bottomRightX": 708,
+      "bottomRightY": 710,
+      "content": "U-150A",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 747,
+      "bottomRightX": 584,
+      "bottomRightY": 764,
+      "content": "Figure 10-12. Upstream Facing Hub Port State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 777,
+      "bottomRightX": 538,
+      "bottomRightY": 800,
+      "content": "### 10.5.1 Upstream Facing Port State Descriptions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 805,
+      "bottomRightX": 352,
+      "bottomRightY": 821,
+      "content": "Refer to Figure 9-1 for hub USB states.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 836,
+      "bottomRightX": 346,
+      "bottomRightY": 854,
+      "content": "#### 10.5.1.1 USPORT.Powered-off",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 859,
+      "bottomRightX": 580,
+      "bottomRightY": 878,
+      "content": "The USPORT.Powered-off state is the default state for an upstream facing port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 882,
+      "bottomRightX": 561,
+      "bottomRightY": 899,
+      "content": "A port shall transition into this state if any of the following situations occur:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 981,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-28",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

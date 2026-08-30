@@ -1,0 +1,137 @@
+{
+  "index": 544,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 514 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 92,
+      "bottomRightX": 666,
+      "bottomRightY": 124,
+      "content": "○ As LP1 defined in Section 6.9.2 initiating the U1 LFPS exit handshake within 500 ns at the other side of the connector upon detecting U1 LFPS exit signal.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 131,
+      "bottomRightX": 655,
+      "bottomRightY": 207,
+      "content": "• A re-timer may receive Polling.LFPS from a host while in U1. This is a corner case where a host may declare device disconnect earlier than a re-timer. Before a re-timer declares device disconnect, a host may transition from U1 to Rx.Detect declaring a new event of device connect, and subsequently transition to Polling transmitting Polling.LFPS signal. A re-timer shall perform one of the following.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 212,
+      "bottomRightX": 662,
+      "bottomRightY": 370,
+      "content": "○ If a re-timer forwards LFPS signal in U1 and determines that it is Polling.LFPS, it shall stop forwarding the LFPS signal, and transition to Rx.Detect.\n○ If a re-timer performing simultaneous U1 LFPS exit treats the LFPS burst of the first Polling.LFPS signal as U1 LFPS exit signal from LP1, it may initiate simultaneous U1 LFPS exit towards device as LP1, while acknowledging to host with U1 LFPS exit handshake as LP2. It shall be expected that its UFP LTSSM may be in Recovery, and its DFP LTSSM still in U1. If it has determined the received LFPS signal is Polling.LFPS, it shall transition to Rx.Detect.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 377,
+      "bottomRightX": 645,
+      "bottomRightY": 408,
+      "content": "• The re-timer shall distinguish between U1 LFPS exit handshake and Warm Reset based on specification defined in Section E.3.1.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 415,
+      "bottomRightX": 671,
+      "bottomRightY": 506,
+      "content": "• The re-timer shall enable an U2 inactivity timer upon entry to this state if the U2 inactivity timer has a non-zero timeout value between 0x01H and 0xFEH. It shall set its timeout value to be at least 500 μs more than the value defined in the U2 inactivity timeout LMP. Note this is to make sure that re-timer remains in U1 until the device has entered U2 and no Ping.LFPS is to be transmitted. Refer to Section 10.6.1 for PM timer accuracy requirement.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 513,
+      "bottomRightX": 671,
+      "bottomRightY": 544,
+      "content": "• The re-timer shall enable a 300 ms timer (tU1PingTimeout). This timer will be reset and restarted when a Ping.LFPS is received.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 550,
+      "bottomRightX": 664,
+      "bottomRightY": 627,
+      "content": "• In x2 operation, the transmitter DC common mode voltage of the non-Configuration Lane shall be also within specification (VTX-CM-DC-ACTIVE-IDLE-DELTA) defined in Table 6-19 on each both lanes. The receiver's low-impedance receiver termination (RRX-DC) defined in Table 6-22 shall also be maintained on the non-Configuration Lane.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 640,
+      "bottomRightX": 235,
+      "bottomRightY": 653,
+      "content": "### E.3.8.2 Exit from U1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 663,
+      "bottomRightX": 660,
+      "bottomRightY": 767,
+      "content": "• The re-timer shall transition to Recovery upon successful completion of a LFPS handshake meeting the U1 LFPS exit handshake signaling in Section 6.9.2 and additional conditions defined in Section E.3.1.\n• The re-timer shall transition to U2 upon the timeout of the U2 inactivity timer.\n• The re-timer shall transition to Rx.Detect if one of the following three conditions is met.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 773,
+      "bottomRightX": 655,
+      "bottomRightY": 908,
+      "content": "○ Upon the 300 ms timer (tU1PingTimeout) expiration and removal of the receiver termination at its own corresponding port mirroring the far-end receiver termination.\n○ Upon detecting Warm Reset. Refer to Section E.3.1 for Warm Reset detection.\n○ Upon the 2 ms LFPS handshake timer timeout (tNoLFPSResponseTimeout) and a successful LFPS handshake meeting the U1 LFPS exit handshake signaling in Section 6.9.2 is not achieved.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 199,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "index": 15,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 72,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 49,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 537,
+      "topLeftY": 35,
+      "bottomRightX": 646,
+      "bottomRightY": 49,
+      "content": "3.3 Download Module",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 95,
+      "bottomRightX": 292,
+      "bottomRightY": 118,
+      "content": "### 3.3 Download Module",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 144,
+      "bottomRightX": 216,
+      "bottomRightY": 163,
+      "content": "### 3.3.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 181,
+      "bottomRightX": 629,
+      "bottomRightY": 237,
+      "content": "The development board has a Mini USB-B download port (J11) designed to program the programs to external SPI FLASH or download them to SRAM.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 196,
+      "topLeftY": 250,
+      "bottomRightX": 565,
+      "bottomRightY": 269,
+      "content": "The download connection diagram is show in Figure 3-2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 279,
+      "bottomRightX": 435,
+      "bottomRightY": 296,
+      "content": "Figure 3-2 Connection Diagram of Download",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 303,
+      "bottomRightX": 646,
+      "bottomRightY": 414,
+      "content": "![img-7.jpeg](img-7.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-7.jpeg"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 434,
+      "bottomRightX": 248,
+      "bottomRightY": 454,
+      "content": "### 3.3.2 Pin Distribution",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 473,
+      "bottomRightX": 361,
+      "bottomRightY": 489,
+      "content": "Table 3-1 JTAG Pin Distribution",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 492,
+      "bottomRightX": 652,
+      "bottomRightY": 632,
+      "content": "|  Signal Name | FPGA Pin No. | BANK | I/O Level | Description  |\n| --- | --- | --- | --- | --- |\n|  F_TCK | C15 | 12 | 3.3V | JTAG signal  |\n|  F_TDO | D15 | 12 | 3.3V  |   |\n|  F_TDI | B15 | 12 | 3.3V  |   |\n|  F_TMS | E15 | 12 | 3.3V  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-3.md"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 645,
+      "bottomRightX": 161,
+      "bottomRightY": 667,
+      "content": "### 3.4 Clock",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 693,
+      "bottomRightX": 216,
+      "bottomRightY": 711,
+      "content": "### 3.4.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 731,
+      "bottomRightX": 642,
+      "bottomRightY": 849,
+      "content": "The development board provides multiple FPGA clock sources, including one 24 MHz single-ended clock, one 148.5 MHz differential clock, and two 200 MHz differential clocks. Among them, the 148.5 MHz differential clock and one of the 200MHz differential clocks are connected the FPGA SerDes high-speed clock pins. The clock pin distribution is shown in Figure 3-3.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 72,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 957,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 617,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "9(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

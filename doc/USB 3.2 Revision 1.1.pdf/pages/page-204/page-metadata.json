@@ -1,0 +1,104 @@
+{
+  "index": 203,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 173 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 97,
+      "bottomRightX": 662,
+      "bottomRightY": 232,
+      "content": "![img-81.jpeg](img-81.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-81.jpeg"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 247,
+      "bottomRightX": 665,
+      "bottomRightY": 317,
+      "content": "(b). Example case 2: LP2 enters Polling after LP1 and is able to recognize Polling.LFPS bursts in SCD1 with varying tRepeat and transition to Polling.RxEQ after satisfying all the exit conditions. LP1 upon completing the SS Polling.LFPS handshake, having transmitted at least four SCD1 and found no SCD1 with the sixteen received Polling.LFPS bursts, will start transmit Polling.LFPS burst with non-varying tRepeat until the tPollingSCDLFPSTimeout timer expiration.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 358,
+      "bottomRightX": 667,
+      "bottomRightY": 493,
+      "content": "![img-82.jpeg](img-82.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-82.jpeg"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 507,
+      "bottomRightX": 671,
+      "bottomRightY": 603,
+      "content": "(c). Example case 3: LP2 enters Polling before LP1 and is not able to recognize the Polling.LFPS bursts in received SCD1. LP1 after finding no SCD1 or SCD2 within the sixteen received Polling.LFPS bursts, starts send the Polling.LFPS bursts with non-varying tRepeat, thus leading LP2 to satisfy all exit conditions. The last condition for LP1 to satisfy its exit condition to Polling.LFPS is to complete either sixteen Polling.LFPS transmission or upon the tPollingSCDLFPSTimeout timer expiration, whichever comes first. In this example, LP1 completes sixteen Polling.LFPS bursts transmission first.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 645,
+      "bottomRightX": 667,
+      "bottomRightY": 778,
+      "content": "![img-83.jpeg](img-83.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-83.jpeg"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 792,
+      "bottomRightX": 671,
+      "bottomRightY": 889,
+      "content": "(d). Example case 4: LP2 enters Polling after LP1 and is not able to recognize the Polling.LFPS bursts in received SCD1. LP1 after finding no SCD1 within sixteen Polling.LFPS bursts, starts send the Polling.LFPS bursts with non-varying tRepeat after sending four SCD1. LP2 then satisfies all exit conditions and enters Polling.RxEQ. The last condition for LP1 to satisfy its exit condition to Polling.LFPS is to complete either sixteen Polling.LFPS transmission or upon the tPollingSCDLFPSTimeout timer expiration, whichever comes first. In this example, the tPollingSCDLFPSTimeout timer expires first.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

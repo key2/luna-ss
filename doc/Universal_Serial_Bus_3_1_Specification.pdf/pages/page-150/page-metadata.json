@@ -1,0 +1,192 @@
+{
+  "index": 149,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 103,
+      "bottomRightX": 265,
+      "bottomRightY": 124,
+      "content": "### 5.7.3 Materials",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 687,
+      "bottomRightY": 182,
+      "content": "This specification does not specify materials for connectors and cables. Connector and cable manufactures should select appropriate materials based on performance requirements. Table 5-18 below is provided for reference only.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 188,
+      "bottomRightX": 162,
+      "bottomRightY": 203,
+      "content": "Note:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 204,
+      "bottomRightX": 645,
+      "bottomRightY": 238,
+      "content": "Connector and cable manufacturers shall comply with contact plating requirements per the following options:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 243,
+      "bottomRightX": 182,
+      "bottomRightY": 260,
+      "content": "Option I",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 265,
+      "bottomRightX": 195,
+      "bottomRightY": 282,
+      "content": "Receptacle",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 286,
+      "bottomRightX": 602,
+      "bottomRightY": 304,
+      "content": "Contact area: (Min) 0.05 μm Au + (Min) 0.75 μm Ni-Pd on top of (Min) 2.0 μm Ni",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 308,
+      "bottomRightX": 158,
+      "bottomRightY": 325,
+      "content": "Plug",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 330,
+      "bottomRightX": 602,
+      "bottomRightY": 348,
+      "content": "Contact area: (Min) 0.05 μm Au + (Min) 0.75 μm Ni-Pd on top of (Min) 2.0 μm Ni",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 364,
+      "bottomRightX": 186,
+      "bottomRightY": 380,
+      "content": "Option II",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 385,
+      "bottomRightX": 195,
+      "bottomRightY": 402,
+      "content": "Receptacle",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 407,
+      "bottomRightX": 466,
+      "bottomRightY": 424,
+      "content": "Contact area: (Min) 0.75 μm Au on top of (Min) 2.0 μm Ni",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 429,
+      "bottomRightX": 158,
+      "bottomRightY": 446,
+      "content": "Plug",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 451,
+      "bottomRightX": 469,
+      "bottomRightY": 468,
+      "content": "Contact area: (Min) 0.75 μm Au on top of (Min) 2.0 μm Ni.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 472,
+      "bottomRightX": 686,
+      "bottomRightY": 507,
+      "content": "Other material parameters, which connector and cable manufacturers select based on performance parameters, are listed below in Table 5-18 for reference only.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 519,
+      "bottomRightX": 329,
+      "bottomRightY": 537,
+      "content": "Table 5-18. Reference Materials¹",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 540,
+      "bottomRightX": 699,
+      "bottomRightY": 787,
+      "content": "|  Component | Materials | Comments  |\n| --- | --- | --- |\n|  Cable | Conductor: copper with tin or silver plating |   |\n|   |  SDP Shield: AL foil or AL/mylar foil |   |\n|   |  Coxial shield: copper strand |   |\n|   |  Braid: Tin plated copper or aluminum |   |\n|   |  Jacket: PVC or halogen free substitute material |   |\n|  Cable Overmold | Thermoset or thermoplastic |   |\n|  Connector Shell | Copper alloy or stainless steel, depending on durability requirement |   |\n|  |   |   |\n|  |   |   |\n|  |   |   |\n|  |   |   |\n|  Housing | Thermoplastics capable of withstanding lead-free soldering temperature. |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-52.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 791,
+      "bottomRightX": 481,
+      "bottomRightY": 809,
+      "content": "¹ Halogen-free materials should be considered for all plastics.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 979,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-62",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

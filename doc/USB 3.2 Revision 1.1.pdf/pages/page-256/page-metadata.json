@@ -1,0 +1,218 @@
+{
+  "index": 255,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 225 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 95,
+      "bottomRightX": 663,
+      "bottomRightY": 131,
+      "content": "Note: Field, or subfield names that reference a received ITP shall use the subscript (RxITP) and field, or subfield names that reference a transmitted ITP shall use the subscript (TxITP).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 143,
+      "bottomRightX": 275,
+      "bottomRightY": 157,
+      "content": "### 8.4.8.4.1 Calculation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 165,
+      "bottomRightX": 663,
+      "bottomRightY": 210,
+      "content": "The LDM Link Delay is calculated by the Requester when a Timestamp Exchange completes. The LDM Link Delay is the measured link delay adjusted to ensure compatibility with non-PTM aware software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 223,
+      "bottomRightX": 631,
+      "bottomRightY": 253,
+      "content": "The LMP Transmission Time is the time it takes to transmit a TP including framing and encoding at UI nominal.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 266,
+      "bottomRightX": 306,
+      "bottomRightY": 280,
+      "content": "Where UI nominal is defined as:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 290,
+      "topLeftY": 293,
+      "bottomRightX": 498,
+      "bottomRightY": 325,
+      "content": "$$UI \\text{ nominal} = \\frac{(UI \\text{ max}) + (UI \\text{ min})}{2}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 336,
+      "bottomRightX": 470,
+      "bottomRightY": 351,
+      "content": "Refer to Section 6.7 for the definition of UI min and UI max.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 365,
+      "bottomRightX": 657,
+      "bottomRightY": 396,
+      "content": "The LMP Transmission Time for a link operating at Gen 1x1 speed is 200 UI * UI nominal (i.e. 40 ns @ 5 Gbps). The LMP Transmission Time for a Link operating at Gen 1x2 is 20 ns.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 408,
+      "bottomRightX": 673,
+      "bottomRightY": 469,
+      "content": "It takes either 164 or 168 UI, depending on block alignment, to transfer a TP over a link operating at Gen 2x1 speed. The statistical average is 165 UI. Therefore, the LMP Transmission Time for a link operating at Gen 2x1 speed is 165 UI * UI nominal (i.e. 16.5 ns @ 10 Gbps). The LMP Transmission Time for a Link operating at Gen 2x2 is 8.25 ns.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 481,
+      "bottomRightX": 671,
+      "bottomRightY": 497,
+      "content": "If LDM Valid is zero, then the LDM Link Delay shall be calculated using the following formula:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 509,
+      "bottomRightX": 603,
+      "bottomRightY": 525,
+      "content": "$$LDM \\text{ Link Delay} = LMP \\text{ Transmission Time} - tLMP \\text{ Transmission Delay}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 537,
+      "bottomRightX": 668,
+      "bottomRightY": 599,
+      "content": "If LDM Valid is one, then the received LDM TS Response LMP of a Timestamp Exchange provides the Requester with the Response Delay field which defines the delay between when the LDM Request was received and the LDM Response was transmitted by the Responder (t3 - t2).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 611,
+      "bottomRightX": 652,
+      "bottomRightY": 673,
+      "content": "When the LDM TS Response LMP of a Timestamp Exchange is received, a Requester has accumulated the timestamps t1 and t4 that can be combined with the Response Delay (t3 - t2 timestamp) received from the Responder to calculate the value of LDM Link Delay using the following formula:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 683,
+      "bottomRightX": 664,
+      "bottomRightY": 713,
+      "content": "$$LDM \\text{ Link Delay} = \\frac{(t4 - t1) - (\\text{Response Delay})}{2} + LMP \\text{ Transmission Time} - tLMP \\text{ Transmission Delay}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 724,
+      "bottomRightX": 672,
+      "bottomRightY": 802,
+      "content": "The values t1, t4, and Response Delay indicate the timestamps captured during the LDM Exchanges as illustrated in Figure 8-11. The default LMP transmission time (tLMPTransmissionDelay) is corrected by the actual LMP Transmission Time of the link. After the LDM Link Delay calculation is complete, the values of timestamps t1 and t4 in the Requester LDM Context will be overwritten with the values of the next Timestamp Exchange.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 814,
+      "bottomRightX": 433,
+      "bottomRightY": 828,
+      "content": "### 8.4.8.5 PTM Bus Interval Boundary Device Calculation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 836,
+      "bottomRightX": 571,
+      "bottomRightY": 851,
+      "content": "The bus interval boundary is calculated by a device when an ITP is received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 864,
+      "bottomRightX": 376,
+      "bottomRightY": 879,
+      "content": "An ITP provides a device with three values:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 895,
+      "bottomRightX": 621,
+      "bottomRightY": 910,
+      "content": "- The Bus Interval Counter(RxITP) subfield contains the current Frame Number.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

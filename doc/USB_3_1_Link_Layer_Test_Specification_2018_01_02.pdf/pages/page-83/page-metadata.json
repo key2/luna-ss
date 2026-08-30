@@ -1,0 +1,218 @@
+{
+  "index": 82,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 61,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 93,
+      "bottomRightX": 686,
+      "bottomRightY": 154,
+      "content": "c. An Upstream Facing PUT sends any other packets or LFPS signals.\nd. A Downstream Facing PUT sends any other packets or LFPS signals besides a Warm Reset.\ne. The PUT enters recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 161,
+      "bottomRightX": 427,
+      "bottomRightY": 176,
+      "content": "4. Do steps 1 to 3 of the Link Initialization Sequence.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 182,
+      "bottomRightX": 469,
+      "bottomRightY": 198,
+      "content": "5. The LVS waits for the Port Capability LMP from the PUT.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 206,
+      "bottomRightX": 427,
+      "bottomRightY": 221,
+      "content": "6. LVS verifies that the Port Capability LMP is valid.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 228,
+      "bottomRightX": 656,
+      "bottomRightY": 259,
+      "content": "7. The LVS transmits the Port Capability LMP, but does not transmit the Port Configuration LMP (downstream LVS port) or Port Configuration Response LMP (upstream LVS port).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 266,
+      "bottomRightX": 385,
+      "bottomRightY": 282,
+      "content": "8. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 289,
+      "bottomRightX": 708,
+      "bottomRightY": 341,
+      "content": "a. The PUT does not transmit the Port Capability LMP.\nb. The PUT transitions to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) before tPortConfiguration deadline.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 349,
+      "bottomRightX": 690,
+      "bottomRightY": 392,
+      "content": "i. For a PUT with a captive re-timer, the PUT transitions to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) before tPortConfiguration + tU0Recovery deadline.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 400,
+      "bottomRightX": 684,
+      "bottomRightY": 431,
+      "content": "c. The PUT does not transition to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) after tPortConfiguration expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 438,
+      "bottomRightX": 666,
+      "bottomRightY": 483,
+      "content": "i. For a PUT with a captive re-timer, the PUT does not transition to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) after tPortConfiguration + tU0Recovery expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 492,
+      "bottomRightX": 686,
+      "bottomRightY": 551,
+      "content": "d. An Upstream Facing PUT sends any other packets or LFPS signals.\ne. A Downstream Facing PUT sends any other packets or LFPS signals besides a Warm Reset.\nf. The PUT enters recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 558,
+      "bottomRightX": 424,
+      "bottomRightY": 574,
+      "content": "9. Do steps 1 to 3 of the Link Initialization Sequence",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 581,
+      "bottomRightX": 693,
+      "bottomRightY": 627,
+      "content": "10. The LVS does not transmit the Port Capability LMP, but does send the Port Configuration LMP (downstream LVS port) or Port Configuration Response LMP if a Port Configuration LMP is received (upstream LVS port).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 634,
+      "bottomRightX": 388,
+      "bottomRightY": 649,
+      "content": "11. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 655,
+      "bottomRightX": 708,
+      "bottomRightY": 709,
+      "content": "a. The PUT does not transmit the Port Capability LMP.\nb. The PUT transitions to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) before tPortConfiguration deadline.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 716,
+      "bottomRightX": 690,
+      "bottomRightY": 760,
+      "content": "i. For a PUT with a captive re-timer, the PUT transitions to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) before tPortConfiguration + tU0Recovery deadline.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 769,
+      "bottomRightX": 682,
+      "bottomRightY": 800,
+      "content": "c. The PUT does not transition to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) after tPortConfiguration expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 232,
+      "topLeftY": 806,
+      "bottomRightX": 666,
+      "bottomRightY": 852,
+      "content": "i. For a PUT with a captive re-timer, the PUT does not transition to eSS.Inactive (downstream PUT) or eSS.Disabled (upstream PUT) after tPortConfiguration + tU0Recovery expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 858,
+      "bottomRightX": 686,
+      "bottomRightY": 920,
+      "content": "d. An Upstream Facing PUT sends any other packets or LFPS signals.\ne. A Downstream Facing PUT sends any other packets or LFPS signals besides a Warm Reset.\nf. The PUT enters recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "75",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

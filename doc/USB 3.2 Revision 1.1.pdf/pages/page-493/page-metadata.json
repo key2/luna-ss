@@ -1,0 +1,174 @@
+{
+  "index": 492,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 61,
+      "content": "- 462 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 94,
+      "bottomRightX": 394,
+      "bottomRightY": 111,
+      "content": "## 11 Interoperability and Power Delivery",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 122,
+      "bottomRightX": 660,
+      "bottomRightY": 169,
+      "content": "This chapter defines interoperability and power delivery requirements for USB 3.2. Areas covered include USB 3.2 host and device support for USB 2.0 operation, and USB 3.2 VBUS power consumption limits.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 181,
+      "bottomRightX": 675,
+      "bottomRightY": 227,
+      "content": "Table 11-1 lists the compatibility matrix for USB 3.2 and USB 2.0. The implication of identifying a host port as supporting USB 3.2 is that both hardware and software support for USB 3.2 is in place; otherwise the port shall only be identified as a USB 2.0 port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 235,
+      "topLeftY": 239,
+      "bottomRightX": 554,
+      "bottomRightY": 256,
+      "content": "**Table 11-1. USB 3.2 and USB 2.0 Interoperability**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 148,
+      "topLeftY": 265,
+      "bottomRightX": 636,
+      "bottomRightY": 372,
+      "content": "|  USB Host Port | USB Device Compatibility | Connected Mode  |\n| --- | --- | --- |\n|  USB 2.0 | USB 2.0 | USB 2.0 high-speed, full-speed, or low-speed  |\n|   |  USB 3.2 | USB 2.0 high-speed, full-speed, or low-speed  |\n|  USB 3.2 | USB 2.0 | USB 2.0 high-speed, full-speed, or low-speed  |\n|   |  USB 3.2 | USB 3.2 SuperSpeed or SuperSpeedPlus mode  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-266.md"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 388,
+      "bottomRightX": 650,
+      "bottomRightY": 420,
+      "content": "It should be noted that USB 3.2 devices are not required to be backward compatible with USB 1.1 host ports although supporting full-speed and low-speed modes are allowed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 431,
+      "bottomRightX": 359,
+      "bottomRightY": 447,
+      "content": "### 11.1 USB 3.2 Host Support for USB 2.0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 453,
+      "bottomRightX": 675,
+      "bottomRightY": 530,
+      "content": "USB 3.2-capable ports on hosts shall also support USB 2.0 operation in order to enable backward compatibility with USB 2.0 devices. It should be noted, however, that USB 3.2-capable hosts are not required to support Enhanced SuperSpeed operation on all of the ports available on the host, i.e., some USB 3.2-capable hosts may have a mix of USB 2.0-only and USB 3.2-capable ports.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 542,
+      "bottomRightX": 671,
+      "bottomRightY": 649,
+      "content": "To address the situation where a USB 3.2 device is connected to a USB 2.0-only port on a USB 3.2-capable host, after establishing a USB 2.0 high-speed connection with the device, it is recommended that the host inform the user that the device will support Enhanced SuperSpeed operation if it is moved to a USB 3.2-capable port on the same host. If a USB 3.2 device is connected to a USB 3.2-capable host via a USB 2.0 hub, it is recommended that the host inform the user that the device will support Enhanced SuperSpeed operation if it is moved to an appropriate host port or if the hub is replaced with a USB 3.1 hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 662,
+      "bottomRightX": 676,
+      "bottomRightY": 723,
+      "content": "When a USB 3.2 hub is connected to a host's USB 3.2-capable port, both USB 3.2 Enhanced SuperSpeed and USB 2.0 high-speed bus connections shall be allowed to connect and operate in parallel. There is no requirement for a USB 3.1-capable host to support multiple parallel connections to peripheral devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 735,
+      "bottomRightX": 667,
+      "bottomRightY": 767,
+      "content": "The USB 2.0 capabilities of a USB 3.2 host shall be designed to the USB 2.0 specification and shall meet the USB 2.0 compliance requirements.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 779,
+      "bottomRightX": 356,
+      "bottomRightY": 795,
+      "content": "### 11.2 USB 3.2 Hub Support for USB 2.0",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 800,
+      "bottomRightX": 667,
+      "bottomRightY": 832,
+      "content": "All ports, both upstream and downstream, on USB 3.2 hubs shall support USB 2.0 operation in order to enable backward compatibility with USB 2.0 devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 843,
+      "bottomRightX": 663,
+      "bottomRightY": 905,
+      "content": "When another USB 3.2 hub is connected in series with a USB 3.2 hub, both SuperSpeed and USB 2.0 high-speed bus connections shall be allowed to connect and operate in parallel. There is no requirement for a USB 3.2 hub to support multiple parallel connections to peripheral devices.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

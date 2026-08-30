@@ -1,0 +1,157 @@
+{
+  "index": 482,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 452 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 663,
+      "bottomRightY": 123,
+      "content": "It is a Request Error if wValue is greater than 4 or if wIndex or wLength are not as specified above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 136,
+      "bottomRightX": 569,
+      "bottomRightY": 154,
+      "content": "If the hub is not configured, the hub's response to this request is undefined.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 165,
+      "bottomRightX": 305,
+      "bottomRightY": 179,
+      "content": "### 10.16.2.10 Set Port Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 187,
+      "bottomRightX": 430,
+      "bottomRightY": 203,
+      "content": "This request sets a value reported in the port status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 212,
+      "bottomRightX": 676,
+      "bottomRightY": 314,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex |   | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  00100011B | SET_FEATURE | Feature Selector | Selector or Timeout Value or Remote Wake Mask | Port | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-257.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 334,
+      "bottomRightX": 652,
+      "bottomRightY": 396,
+      "content": "The port number shall be a valid port number for that hub, greater than zero. The port number is in the least significant byte (bits 7..0) of the wIndex field. The most significant byte of wIndex is zero, except when the feature selector is PORT_U1_TIMEOUT or PORT_U2_TIMEOUT or PORT_LINK_STATE or PORT_REMOTE_WAKE_MASK.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 408,
+      "bottomRightX": 652,
+      "bottomRightY": 469,
+      "content": "Setting a feature enables that feature or starts a process associated with that feature; see Table 10-9 for the feature selector definitions that apply to a port as a recipient. Status change may not be acknowledged using this request. Features that can be set with this request are:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 481,
+      "bottomRightX": 339,
+      "bottomRightY": 654,
+      "content": "- PORT_RESET\n- BH_PORT_RESET\n- PORT_POWER\n- PORT_U1_TIMEOUT\n- PORT_U2_TIMEOUT\n- PORT_LINK_STATE\n- PORT_REMOTE_WAKE_MASK\n- FORCE_LINKPM_ACCEPT",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 675,
+      "bottomRightX": 672,
+      "bottomRightY": 722,
+      "content": "When the feature selector is PORT_U1_TIMEOUT, the most significant byte (bits 15..8) of the wIndex field specifies the Timeout value for the U1 inactivity timer. Refer to Section 10.4.2.1 for a detailed description of how the U1 inactivity timer value is used.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 733,
+      "bottomRightX": 341,
+      "bottomRightY": 750,
+      "content": "The following are permissible values:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 260,
+      "topLeftY": 762,
+      "bottomRightX": 529,
+      "bottomRightY": 778,
+      "content": "Table 10-16. U1 Timeout Value Encoding",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 260,
+      "topLeftY": 787,
+      "bottomRightX": 529,
+      "bottomRightY": 918,
+      "content": "|  Value | Description  |\n| --- | --- |\n|  00H | Zero (Default)  |\n|  01H | 1 μs  |\n|  02H | 2 μs  |\n|  03H | 3 μs  |\n|  ... | ...  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-258.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

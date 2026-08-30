@@ -1,0 +1,148 @@
+{
+  "index": 242,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 212 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 264,
+      "bottomRightY": 106,
+      "content": "#### 8.4.2 Set Link Function",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 115,
+      "bottomRightX": 645,
+      "bottomRightY": 146,
+      "content": "The Set Link Function LMP shall be used to configure functionality that can be changed without leaving the active (U0) state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 159,
+      "bottomRightX": 665,
+      "bottomRightY": 236,
+      "content": "Upon receipt of an LMP with the Force_LinkPM_Accept bit asserted, the port shall accept all LGO_U1 and LGO_U2 Link Commands until the port receives an LMP with the Force_LinkPM_Accept bit de-asserted. After port receives an LMP with the Force_LinkPM_Accept bit de-asserted, port will function in normal mode doing power management based on packet pending state of device's endpoints.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 247,
+      "bottomRightX": 655,
+      "bottomRightY": 294,
+      "content": "The device must stay in U1 or U2 until the downstream port initiates exit to U0. Software must ensure that there are no pending packets at the link level before issuing a SetPortFeature command that generates an LGO_U1 or LGO_U2 link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 305,
+      "bottomRightX": 656,
+      "bottomRightY": 336,
+      "content": "During normal operation, this feature shall only be used if all other means of lowering the link state from U0 to U1 or U2 fail.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 349,
+      "bottomRightX": 623,
+      "bottomRightY": 394,
+      "content": "This LMP is sent by a hub to a device connected on a specific port when it receives a SetPortFeature (FORCE_LINKPM_ACCEPT) command. Refer to Section 10.16.2.2 and Section 10.16.2.10 for more details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 407,
+      "bottomRightX": 660,
+      "bottomRightY": 456,
+      "content": "Note: Improper use of the Force_LinkPM_Accept functionality can impact the performance of the link significantly and in some cases (when used during normal operation only) may lead to the device being unable to return to proper operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 282,
+      "topLeftY": 466,
+      "bottomRightX": 506,
+      "bottomRightY": 481,
+      "content": "Figure 8-5. Set Link Function LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 492,
+      "bottomRightX": 652,
+      "bottomRightY": 620,
+      "content": "![img-98.jpeg](img-98.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-98.jpeg"
+    },
+    {
+      "topLeftX": 301,
+      "topLeftY": 639,
+      "bottomRightX": 487,
+      "bottomRightY": 653,
+      "content": "Table 8-4. Set Link Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 665,
+      "bottomRightX": 666,
+      "bottomRightY": 884,
+      "content": "|  Width(bits) | Offset(DW:bit) | Description  |   |\n| --- | --- | --- | --- |\n|  4 | 0:5 | Subtype. This field shall be set to Set Link Function for a Set Link Function LMP.  |   |\n|  7 | 0:9 | Set Link Function. These 7 bits identify the Set Link Function.  |   |\n|   |   |  Bits | Description  |\n|   |   |  0 | Reserved.  |\n|   |   |  1 | Force_LinkPM_Accept  |\n|   |   |   | Value Meaning  |\n|   |   |   | 0 De-assert  |\n|   |   |   | 1 Assert  |\n|   |   |  6:2 | Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-100.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

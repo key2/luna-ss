@@ -1,0 +1,146 @@
+{
+  "index": 169,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 139 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 678,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 95,
+      "bottomRightX": 660,
+      "bottomRightY": 126,
+      "content": "Note: A port that has received an out of order LGOOD_n implies a lost or corrupted link command and shall initiate transition to Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 147,
+      "bottomRightX": 426,
+      "bottomRightY": 163,
+      "content": "#### 7.2.4.1.11 Receiving LCRD_x/LCRD1_x/LCRD2_x",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 169,
+      "bottomRightX": 678,
+      "bottomRightY": 406,
+      "content": "- A port in SuperSpeed operation shall adjust its Remote Rx Header Buffer Credit Count based on the received LCRD_x:\n  1. A port shall increment its Remote Rx Header Buffer Credit Count by one upon receipt of LCRD_x.\n  2. A port shall transition to Recovery if it receives an out of order LCRD_x.\n     Note: A port that has received an out of order credit implies a lost or corrupted link command and shall transition to Recovery.\n- A port in SuperSpeedPlus operation shall adjust accordingly its Remote Type 1 and Type 2 Rx Buffer Credit Count based on the received LCRD1_x and LCRD2_x:\n  1. A port shall increment accordingly its Remote Type 1 or Type 2 Rx Buffer Credit Count by one upon receipt of LCRD1_x or LCRD2_x.\n  2. A port shall transition to Recovery if it receives an out of order LCRD1_x or LCRD2_x.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 427,
+      "bottomRightX": 302,
+      "bottomRightY": 442,
+      "content": "#### 7.2.4.1.12 Receiving LBAD",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 449,
+      "bottomRightX": 658,
+      "bottomRightY": 495,
+      "content": "Upon receipt of LBAD, a port shall send a single LRTY before retransmitting all the header packets in the Tx Header Buffers or Type 1/Type 2 Tx Header Buffers that have not been acknowledged with LGOOD_n. Additional rules in the following shall apply.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 507,
+      "bottomRightX": 672,
+      "bottomRightY": 635,
+      "content": "1. A hub shall set the DL bit in the Link Control Word on all re-sent header packets and recalculate CRC-5. When retransmitting a DP in SuperSpeed operation, a hub shall drop the DPP. When retransmitting a DP in SuperSpeedPlus operation, a hub shall drop the DPP and replace it with a nullified DPP. Refer to Section 7.2.1.2.2 for definition of a nullified DPP.\n2. The host or a peripheral device may optionally set the DL bit in the Link Control Word on any re-sent header packets and recalculate CRC-5. If the retried packet is a DP and the DL bit in DPH is clear, the DPH shall be followed by a DPP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 640,
+      "bottomRightX": 648,
+      "bottomRightY": 672,
+      "content": "Note: Resending an ITP invalidates the isochronous timestamp value. CRC-16 is unchanged in a retried header packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 677,
+      "bottomRightX": 669,
+      "bottomRightY": 709,
+      "content": "Upon receipt of LBAD, a port shall send a single LRTY if there is no unacknowledged header packet in the Tx Header Buffers or Type 1/Type 2 Tx Header Buffers.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 205,
+      "topLeftY": 714,
+      "bottomRightX": 660,
+      "bottomRightY": 730,
+      "content": "Note: This is an error condition where LBAD is created due to a link error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 751,
+      "bottomRightX": 323,
+      "bottomRightY": 767,
+      "content": "#### 7.2.4.1.13 Transmitter Timers",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 773,
+      "bottomRightX": 669,
+      "bottomRightY": 895,
+      "content": "A PENDING_HP_TIMER is specified to cover the period of time from when a header packet is sent to a link partner, to when the header packet is acknowledged by a link partner. This is measured at the connector of the HP initiator from when the last symbol of HP is transmitted to when the last symbol of the corresponding LGOOD_n or LBAD is received. The purpose of this time limit is to allow a port to detect if the header packet acknowledgement sent by its link partner is lost or corrupted. The timeout value for the PENDING_HP_TIMER is listed in Table 7-7. The operation of the PENDING_HP_TIMER shall be based on the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

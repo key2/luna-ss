@@ -1,0 +1,48 @@
+{
+  "index": 95,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 368,
+      "bottomRightY": 139,
+      "content": "**Table 7-25. MAC Registers (Sheet 2 of 2)**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 142,
+      "bottomRightX": 683,
+      "bottomRightY": 608,
+      "content": "|  Byte Address | Register Name | Notes  |\n| --- | --- | --- |\n|  12'h10 | RX1: Rx Status 6 | -  |\n|  12'h11-12'h1FF | RX1: Reserved | -  |\n|  12'h200 to 12'h3FF | RX2: Same registers are defined in this region for RX2 as for RX1 above. | -  |\n|  12'h400 | TX1: Tx Status0 | -  |\n|  12'h401 | TX1: Tx Status1 | -  |\n|  12'h402 | TX1: Tx Status2 | -  |\n|  12'h403 | TX1: Tx Status3 | -  |\n|  12'h404 | TX1: Tx Status4 | -  |\n|  12'h405 | TX1: Tx Status5 | -  |\n|  12'h406 | TX1: Tx Status6 | -  |\n|  12'h407 | TX1: Tx Status7 | -  |\n|  12'h408 | TX1: Tx Status8 | -  |\n|  12'h409 | TX1: Tx Status9 | -  |\n|  12'h40A | TX1: Tx Status10 | -  |\n|  12'h40B | TX1: Tx Status11 | -  |\n|  12'h40C | TX1: TX Status12 | -  |\n|  12'h40D-12'h5FF | TX1: Reserved | -  |\n|  12'h600-12'h7FF | TX2: Same registers are defined in this region for TX2 as for TX1 above. | -  |\n|  12'h800 | CMN1: Near End Loopback Status | -  |\n|  12'h801-12'h9FF | CMN1: Reserved | -  |\n|  12'hA00-12'hBFF | CMN2: Reserved Same registers are defined in this region for CMN2 as for CMN1 above. | -  |\n|  12'hC00-12'hFFF | VDR: Reserved | -  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-94.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 951,
+      "bottomRightX": 107,
+      "bottomRightY": 966,
+      "content": "96",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 489,
+      "topLeftY": 951,
+      "bottomRightX": 693,
+      "bottomRightY": 968,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

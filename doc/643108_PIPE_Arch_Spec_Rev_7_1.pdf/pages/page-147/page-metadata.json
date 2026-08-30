@@ -1,0 +1,57 @@
+{
+  "index": 146,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 122,
+      "bottomRightX": 550,
+      "bottomRightY": 137,
+      "content": "Table 8-4. Parameters Advertised in PHY Datasheet (Sheet 2 of 7)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 696,
+      "bottomRightY": 754,
+      "content": "|  Parameter | Description  |\n| --- | --- |\n|  PHY lock time | Amount of time for the PHY receiver to obtain reliable bit and symbol lock after valid symbols are present at the receiver. The PHY reports the time for each operational mode the PHY supports.  |\n|  P0s to P0 transition time PCIe Mode. | Amount of time for the PHY to return to P0 state, after having been in the P0s state. Time is measured from when the MAC sets the **PowerDown** signals to P0 until the PHY asserts **PhyStatus**. PHY asserts **PhyStatus** when it is ready to begin data transmission and reception.  |\n|  P1 to P0 transition time. PCIe Mode. | Amount of time for the PHY to return to P0 state, after having been in the P1 state. Time is measured from when the MAC sets the **PowerDown** signals to P0 until the PHY asserts **PhyStatus**. PHY asserts **PhyStatus** when it is ready to begin data transmission and reception.  |\n|  P2 to P0 transition time PCIe Mode. | Amount of time for the PHY to go to P0 state, after having been in the P2 state. Time is measured from when the MAC sets the **PowerDown** signals to P1 until the PHY deasserts **PhyStatus**.  |\n|  P1 to P0 transition time. USB Mode. | Amount of time for the PHY to return to P0 state, after having been in the P1 state. Time is measured from when the MAC sets the **PowerDown** signals to P0 until the PHY asserts **PhyStatus**. PHY asserts **PhyStatus** when it is ready to begin data transmission and reception.  |\n|  P2 to P0 transition time. USB Mode. | Amount of time for the PHY to return to P0 state, after having been in the P2 state. Time is measured from when the MAC sets the **PowerDown** signals to P0 until the PHY asserts **PhyStatus**. PHY asserts **PhyStatus** when it is ready to begin data transmission and reception.  |\n|  P3 to P0 transition time USB Mode. | Amount of time for the PHY to go to P0 state, after having been in the P3 state. Time is measured from when the MAC sets the **PowerDown** signals to P0 until the PHY deasserts **PhyStatus**. PHY asserts **PhyStatus** when it is ready to begin data transmission and reception.  |\n|  Power state transition times between two power states that provide PCLK. | Amount of time for the PHY to transition to a new power state. Time is measured from when the MAC sets the **PowerDown** signals to POWER_STATE_X until the PHY asserts **PhyStatus**. PHY asserts **PhyStatus** when it is ready to begin data transmission and reception. The PHY reports this transition between each pair of power states it supports in each PHY mode it supports.  |\n|  Power state transition times between a power state without PCLK and a power state with PCLK. | Amount of time for the PHY to go to a power state providing PCLK, after having been in a power state that does not provide PCLK. Time is measured from when the MAC sets the **PowerDown** signals to the new power state until the PHY deasserts **PhyStatus**. The PHY reports this time for each possible transition between a power state that does not provide PCLK and a power state that does provide PCLK. The PHY reports this transition time between each pair of power states it supports in each PHY mode it supports.  |\n|  Power state transition times between a power state without PCLK and a power state without PCLK. | Amount of time for the PHY to go to a power state without PCLK, after having been in a power state that does not provide PCLK. Time is measured from when the MAC sets the **PowerDown** signals to the new power state until the PHY deasserts **PhyStatus**. The PHY reports this time for each possible transition between a power state that does not provide PCLK and a power state that does not provide PCLK. The PHY reports this transition time between each pair of power states it supports in each PHY mode it supports.  |\n|  Supported power states. | The PHY lists each power state it supports for each PHY mode it supports. For each power state supported it reports whether PCLK is provided, the exit latency to the active power state, whether RxElecIdle is supported in the state, and the common mode state. **Note:** This is done for all states not already listed separately.  |\n|  L1 Substate Management Mechanism | The PHY reports which of the following mechanisms it supports for L1 substate management: - Exclusively managed via PowerDown[3:0] - Managed via RxEIDetectDisable and TxCommonModeDisable - Both of the previous mechanisms are supported.  |\n|  RxEIDetectDisableSupported States for PCIe Mode | For PCIe mode, the PHY specifies which PowerDown states the MAC can use RxEIDetectDisable to disable the receiver Electrical Idle detect logic for power savings.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-135.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "147",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "index": 456,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 426 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 425,
+      "bottomRightY": 109,
+      "content": "### 10.13.2 Hub Information Architecture and Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 673,
+      "bottomRightY": 191,
+      "content": "Figure 10-22 shows how status, status change, and control information relate to device states. Hub descriptors and Hub/Port Status and Control are accessible through the default control pipe. The Hub descriptors may be read at any time. When a hub detects a change on a port or when the hub changes its own state, the Status Change endpoint transfers data to the host in the form specified in Section 10.13.4.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 203,
+      "bottomRightX": 673,
+      "bottomRightY": 281,
+      "content": "Hub or port status change bits can be set because of hardware or software events. When set, these bits remain set until cleared directly by the USB system software through a ClearPortFeature() request or by a hub reset. While a change bit is set, the hub continues to report a status change when the Status Change endpoint is read until all change bits have been cleared by the USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 292,
+      "bottomRightX": 645,
+      "bottomRightY": 323,
+      "content": "Figure 10-22. Relationship of Status, Status Change, and Control Information to Device States",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 332,
+      "bottomRightX": 652,
+      "bottomRightY": 547,
+      "content": "![img-183.jpeg](img-183.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-183.jpeg"
+    },
+    {
+      "topLeftX": 623,
+      "topLeftY": 552,
+      "bottomRightX": 648,
+      "bottomRightY": 562,
+      "content": "U-159",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 585,
+      "bottomRightX": 675,
+      "bottomRightY": 616,
+      "content": "The USB system software uses the interrupt pipe associated with the Status Change endpoint to detect changes in hub and port status.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

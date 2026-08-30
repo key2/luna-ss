@@ -1,0 +1,236 @@
+{
+  "index": 256,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 226 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 525,
+      "topLeftY": 48,
+      "bottomRightX": 678,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 98,
+      "bottomRightX": 675,
+      "bottomRightY": 169,
+      "content": "- The Delta(RxITP) subfield contains the delay from the start of the currently received ITP to the previous bus interval boundary.\n- The Correction(RxITP) field contains any negative delay that the ITP accumulated as it passed through hubs.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 176,
+      "bottomRightX": 586,
+      "bottomRightY": 193,
+      "content": "If Delta(RxITP) is greater than or equal to 7500, the device shall ignore the ITP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 207,
+      "bottomRightX": 678,
+      "bottomRightY": 255,
+      "content": "If Delta(RxITP) is less than 7500, the device shall apply Delta(RxITP) and Correction(RxITP) values and the LDM Link Delay (determined from preceding TS Exchanges) to set the value of the PTM Delta Counter at the time an ITP is received (tITUFP) using the following formula:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 310,
+      "topLeftY": 266,
+      "bottomRightX": 477,
+      "bottomRightY": 282,
+      "content": "$$PTM\\ Delta\\ Counter_{(tITUFP)} =$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 143,
+      "topLeftY": 296,
+      "bottomRightX": 647,
+      "bottomRightY": 313,
+      "content": "$$MODULUS(ISOCH\\_DELAY + LDM\\ Link\\ Delay + Delta(RxITP) - Correction(RxITP), 7500)$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 324,
+      "bottomRightX": 671,
+      "bottomRightY": 357,
+      "content": "Where MODULUS(number, divisor) returns the integer remainder after number is divided by divisor and ISOCH_DELAY is the value written to the device by a SET_ISOCH_DELAY request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 370,
+      "bottomRightX": 673,
+      "bottomRightY": 418,
+      "content": "At the same time, a device shall use the values of Bus Interval Counter(RxITP) and Delta(RxITP) subfields received in the ITP to set the value of the PTM Bus Interval Counter at the time an ITP is received (tITUFP) using the following formula:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 291,
+      "topLeftY": 429,
+      "bottomRightX": 496,
+      "bottomRightY": 445,
+      "content": "$$PTM\\ Bus\\ Interval\\ Counter_{(tITUFP)} =$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 459,
+      "bottomRightX": 650,
+      "bottomRightY": 476,
+      "content": "$$Bus\\ Interval\\ Counter(RxITP) + ROUNDDOWN((LDM\\ Link\\ Delay + Delta(RxITP)) / 7500))$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 488,
+      "bottomRightX": 621,
+      "bottomRightY": 505,
+      "content": "Where ROUNDDOWN (n) rounds n down, towards zero, to the nearest integer value.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 516,
+      "bottomRightX": 676,
+      "bottomRightY": 548,
+      "content": "This combination of setting the PTM Delta Counter and the PTM Bus Interval Counter defines the bus interval boundary time in the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 559,
+      "bottomRightX": 650,
+      "bottomRightY": 592,
+      "content": "The time synchronization mechanism within the device itself (e.g. to the PTM Local Time Source) is implementation-specific.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 603,
+      "bottomRightX": 607,
+      "bottomRightY": 620,
+      "content": "Figure 8-12 illustrates the tITUFP and tITDFP timing points of an ITP transaction.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 631,
+      "bottomRightX": 423,
+      "bottomRightY": 647,
+      "content": "#### 8.4.8.6 PTM Bus Interval Boundary Host Calculation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 652,
+      "bottomRightX": 671,
+      "bottomRightY": 702,
+      "content": "A host shall maintain a PTM Delta Counter and a PTM Bus Interval Counter. The host shall transmit downstream ITPs using these current values for the ITP Isochronous Timestamp Bus Interval Counter(TxITP) and Delay(TxITP) fields, and set the Correction(TxITP) field to zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 714,
+      "bottomRightX": 321,
+      "bottomRightY": 730,
+      "content": "#### 8.4.8.7 PTM Hub ITP Regeneration",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 737,
+      "bottomRightX": 600,
+      "bottomRightY": 754,
+      "content": "A hub shall maintain an ITP Delay Counter that is incremented by the PTM Clock.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 765,
+      "bottomRightX": 664,
+      "bottomRightY": 797,
+      "content": "If an ITP is received by a PTM capable hub and the Delayed (DL) bit is not set, then the hub shall apply the following rules:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 808,
+      "bottomRightX": 365,
+      "bottomRightY": 825,
+      "content": "- Set the ITP Delay Counter to zero.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 829,
+      "bottomRightX": 667,
+      "bottomRightY": 860,
+      "content": "A PTM capable hub shall apply the following rules independently for each downstream port in U0:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 873,
+      "bottomRightX": 652,
+      "bottomRightY": 928,
+      "content": "- When an ITP is received, then the hub shall queue an ITP for transmission on this downstream facing port.\n- When transmitting an ITP, a hub shall:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

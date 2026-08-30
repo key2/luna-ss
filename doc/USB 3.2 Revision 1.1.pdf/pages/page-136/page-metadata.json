@@ -1,0 +1,168 @@
+{
+  "index": 135,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 105 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 657,
+      "bottomRightY": 110,
+      "content": "Figure 6-35 is an example of Polling.LFPS based binary representation in the time domain.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 121,
+      "bottomRightX": 558,
+      "bottomRightY": 137,
+      "content": "Table 6-32. Binary Representation of Polling.LFPS",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 242,
+      "topLeftY": 146,
+      "bottomRightX": 549,
+      "bottomRightY": 232,
+      "content": "|  tRepeat (us) | Logic value  |\n| --- | --- |\n|  6~9 | '0'  |\n|  11~14 | '1'  |\n|  9~11 | illegal  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-73.md"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 266,
+      "bottomRightX": 620,
+      "bottomRightY": 284,
+      "content": "Figure 6-35. Example of Binary Representation based on Polling.LFPS",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 294,
+      "bottomRightX": 708,
+      "bottomRightY": 456,
+      "content": "![img-50.jpeg](img-50.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-50.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 467,
+      "bottomRightX": 397,
+      "bottomRightY": 481,
+      "content": "### 6.9.4.2 SCD1/SCD2 Definition and Transmission",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 487,
+      "bottomRightX": 657,
+      "bottomRightY": 520,
+      "content": "SCD1 is defined as \"0010\" and SCD2 is defined as \"1101\". The transmission of SCD1/SCD2 shall be based on the following.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 532,
+      "bottomRightX": 673,
+      "bottomRightY": 617,
+      "content": "- The transmission shall be LSb first, and consecutive SCD1/SCD2 shall be transmitted back to back. Shown in Figure 6-36 (a) and (b) are examples of consecutive SCD1/SCD2 transmission.\n- The transmission shall be completed with and extra tBurst followed by electrical idle (EI) of at least 2x the maximum allowable tRepeat value as shown in Figure 6-36 (c).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 270,
+      "topLeftY": 636,
+      "bottomRightX": 520,
+      "bottomRightY": 653,
+      "content": "Figure 6-36. SCD1/SCD2 transmission",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 662,
+      "bottomRightX": 654,
+      "bottomRightY": 768,
+      "content": "![img-51.jpeg](img-51.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-51.jpeg"
+    },
+    {
+      "topLeftX": 195,
+      "topLeftY": 780,
+      "bottomRightX": 591,
+      "bottomRightY": 798,
+      "content": "(a). Illustration of back-to-back (consecutive) SCD1 transmission.",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 814,
+      "bottomRightX": 686,
+      "bottomRightY": 897,
+      "content": "![img-52.jpeg](img-52.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-52.jpeg"
+    },
+    {
+      "topLeftX": 126,
+      "topLeftY": 901,
+      "bottomRightX": 662,
+      "bottomRightY": 919,
+      "content": "(b). Illustration of consecutive SCD1 and SCD2 transmission without end of SCD between",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

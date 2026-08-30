@@ -1,0 +1,85 @@
+{
+  "index": 199,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 697,
+      "bottomRightY": 162,
+      "content": "An LFPS message is encoded based on the variation of tBurst. tRepeat is defined as a time interval when the next LFPS message is transmitted. The LFPS messages include Polling.LFPS and Ping.LFPS, as defined in Table 6-29. There are also LFPS signaling defined by a for U1/U2 and Loopback exit, U3 wakeup, and Warm Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 169,
+      "bottomRightX": 628,
+      "bottomRightY": 186,
+      "content": "The detailed use of LFPS signaling is specified in the following sections and Chapter 7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 148,
+      "topLeftY": 212,
+      "bottomRightX": 674,
+      "bottomRightY": 404,
+      "content": "![img-152.jpeg](img-152.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-152.jpeg"
+    },
+    {
+      "topLeftX": 322,
+      "topLeftY": 417,
+      "bottomRightX": 501,
+      "bottomRightY": 435,
+      "content": "Figure 6-29. LFPS Signaling",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 463,
+      "bottomRightX": 447,
+      "bottomRightY": 479,
+      "content": "Table 6-28. Normative LFPS Electrical Specification",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 482,
+      "bottomRightX": 705,
+      "bottomRightY": 699,
+      "content": "|  Symbol | Minimum | Typical | Maximum | Units | Comments  |\n| --- | --- | --- | --- | --- | --- |\n|  tPeriod | 20 |  | 100 | ns |   |\n|  tPeriod for SuperSpeedPlus | 20 |  | 80 | ns |   |\n|  V_{CM-AC-LFPS} |  |  | V_{TX-CM-AC-PP-ACTIVE} | mV | See Table 6-18  |\n|  V_{CM-LFPS-Active} |  |  | 10 | mV |   |\n|  V_{TX-DIFF-PP-LFPS} | 800 |  | 1200 | mV | Peak-peak differential amplitude  |\n|  V_{TX-DIFF-PP-LFPS-LP} | 400 |  | 600 | mV | Low power peak-peak differential amplitude  |\n|  tRiseFall2080 |  |  | 4 | ns | Measured at compliance TP1, as shown in Figure 6-19.  |\n|  Duty cycle | 40 |  | 60 | % | Measured at compliance TP1, as shown in Figure 6-19.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-82.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "6-44",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

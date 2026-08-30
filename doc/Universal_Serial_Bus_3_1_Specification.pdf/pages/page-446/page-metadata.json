@@ -1,0 +1,166 @@
+{
+  "index": 445,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 696,
+      "bottomRightY": 179,
+      "content": "Configured state: If the specified configuration value is zero, then the device enters the Address state. If the specified configuration value matches the configuration value from a configuration descriptor, then that configuration is selected and the device remains in the Configured state. Otherwise, the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 196,
+      "bottomRightX": 313,
+      "bottomRightY": 218,
+      "content": "### 9.4.8 Set Descriptor",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 221,
+      "bottomRightX": 686,
+      "bottomRightY": 254,
+      "content": "This request is optional and may be used to update existing descriptors or new descriptors may be added.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 268,
+      "bottomRightX": 700,
+      "bottomRightY": 354,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  00000000B | SET_DESCRIPTOR | Descriptor Type and Descriptor Index | Language ID (refer to Section 9.6.7) or zero | Descriptor Length | Descriptor  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-166.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 361,
+      "bottomRightX": 698,
+      "bottomRightY": 480,
+      "content": "The wValue field specifies the descriptor type in the high byte (refer to Table 9-6) and the descriptor index in the low byte. The descriptor index is used to select a specific descriptor (only for configuration and string descriptors) when several descriptors of the same type are implemented in a device. For example, a device can implement several configuration descriptors. For other standard descriptors that can be set via a SetDescriptor() request, a descriptor index of zero shall be used. The range of values used for a descriptor index is from 0 to one less than the number of descriptors of that type (excluding string descriptors) implemented by the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 491,
+      "bottomRightX": 657,
+      "bottomRightY": 540,
+      "content": "The wIndex field specifies the Language ID for string descriptors or is reset to zero for other descriptors. The wLength field specifies the number of bytes to transfer from the host to the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 551,
+      "bottomRightX": 684,
+      "bottomRightY": 570,
+      "content": "The only allowed values for descriptor type are device, configuration, and string descriptor types.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 581,
+      "bottomRightX": 567,
+      "bottomRightY": 598,
+      "content": "If this request is not supported, the device will respond with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 604,
+      "bottomRightX": 665,
+      "bottomRightY": 639,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 644,
+      "bottomRightX": 681,
+      "bottomRightY": 663,
+      "content": "Address state: If supported, this is a valid request when the device is in the Address state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 668,
+      "bottomRightX": 667,
+      "bottomRightY": 700,
+      "content": "Configured state: If supported, this is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 720,
+      "bottomRightX": 287,
+      "bottomRightY": 739,
+      "content": "### 9.4.9 Set Feature",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 747,
+      "bottomRightX": 435,
+      "bottomRightY": 763,
+      "content": "This request is used to set or enable a specific feature.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 776,
+      "bottomRightX": 700,
+      "bottomRightY": 848,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex |   | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  00000000B | SET_FEATURE | Feature | Suspend | Zero | Zero | None  |\n|  00000001B |  | Selector | Options | Interface |  |   |\n|  00000010B |  |  |  | Point |  |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-167.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 855,
+      "bottomRightX": 698,
+      "bottomRightY": 906,
+      "content": "Feature selector values in wValue shall be appropriate to the recipient. Only device feature selector values may be used when the recipient is a device; only interface feature selector values may be used when the recipient is an interface; and only endpoint feature selector values may be used when",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 118,
+      "bottomRightY": 994,
+      "content": "9-28",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

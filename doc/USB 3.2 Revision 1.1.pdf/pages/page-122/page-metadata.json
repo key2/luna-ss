@@ -1,0 +1,174 @@
+{
+  "index": 121,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 91 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 94,
+      "bottomRightX": 432,
+      "bottomRightY": 111,
+      "content": "$$\\omega_{p1} = 2\\pi f_{p1} \\text{ is the first pole frequency}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 123,
+      "bottomRightX": 447,
+      "bottomRightY": 139,
+      "content": "$$\\omega_{p2} = 2\\pi f_{p2} \\text{ is the second pole frequency}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 151,
+      "bottomRightX": 665,
+      "bottomRightY": 182,
+      "content": "Figure 6-27 is a plot of the Compliance EQ transfer functions with the values for each of the input parameters.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 193,
+      "bottomRightX": 586,
+      "bottomRightY": 211,
+      "content": "Figure 6-27. Gen 1 Tx Compliance Rx EQ Transfer Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 160,
+      "topLeftY": 223,
+      "bottomRightX": 625,
+      "bottomRightY": 567,
+      "content": "![img-42.jpeg](img-42.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-42.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 588,
+      "bottomRightX": 371,
+      "bottomRightY": 603,
+      "content": "### 6.8.2.2 Gen 2 Reference Equalizer Function",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 609,
+      "bottomRightX": 299,
+      "bottomRightY": 624,
+      "content": "#### 6.8.2.2.1 Reference CTLE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 632,
+      "bottomRightX": 673,
+      "bottomRightY": 678,
+      "content": "Equation (14) describes the frequency response for the Gen 2 reference continuous time linear equalizer (CTLE) that is used for compliance testing. The equation describes the same first order CTLE as contained in equation (13).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 692,
+      "bottomRightX": 378,
+      "bottomRightY": 756,
+      "content": "$$H(s) = A_{ac} \\omega_{p2} \\frac{s + \\frac{A_{dc}}{A_{ac}} \\omega_{p1}}{(s + \\omega_{p1})(s + \\omega_{p2})} \\tag{14}$$",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 768,
+      "bottomRightX": 457,
+      "bottomRightY": 785,
+      "content": "where $A_{ac}$ is the high frequency peak gain",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 797,
+      "bottomRightX": 351,
+      "bottomRightY": 812,
+      "content": "$A_{dc}$ is the DC gain",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 825,
+      "bottomRightX": 432,
+      "bottomRightY": 843,
+      "content": "$\\omega_{p1} = 2\\pi f_{p1}$ is the first pole frequency",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 855,
+      "bottomRightX": 447,
+      "bottomRightY": 871,
+      "content": "$\\omega_{p2} = 2\\pi f_{p2}$ is the second pole frequency",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 883,
+      "bottomRightX": 663,
+      "bottomRightY": 913,
+      "content": "Figure 6-28 is a plot of the Compliance EQ transfer functions with the values for each of the input parameters.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

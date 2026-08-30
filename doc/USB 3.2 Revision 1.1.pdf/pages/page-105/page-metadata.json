@@ -1,0 +1,221 @@
+{
+  "index": 104,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 74 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 217,
+      "content": "|  CP14 | 64 1's and 0's | With de-emphasis defined in section 6.7.5.2 (no pre-shoot). Repeating 64 1's and then 64 0's at 10 Gb/s. This is not 128b132b encoded.  |\n| --- | --- | --- |\n|  CP15 | 64 1's and 0's | With pre-shoot and de-emphasis defined in section 6.7.5.2. Repeating 64 1's and then 64 0's at 10 Gb/s. This is not 128b132b encoded.  |\n|  CP16 | 64 1's and 0's | No de-emphasis or pre-shoot. Repeating 64 1's and then 64 0's at 10 Gb/s. This is not 128b132b encoded.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-50.md"
+    },
+    {
+      "topLeftX": 118,
+      "topLeftY": 218,
+      "bottomRightX": 507,
+      "bottomRightY": 232,
+      "content": "Note: Unless otherwise noted, scrambling is disabled for compliance patterns.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 258,
+      "bottomRightX": 340,
+      "bottomRightY": 273,
+      "content": "### 6.4.4.1 Gen 2 Compliance Pattern CP9",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 280,
+      "bottomRightX": 668,
+      "bottomRightY": 326,
+      "content": "The Gen 2 compliance pattern comprises a pseudo-random data pattern that is used to test transmitter and receiver compliance. The pattern repeats every 65536 symbols and starts with a SYNC Ordered Set so as to reset the scrambler and mark the beginning of the pattern.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 269,
+      "topLeftY": 338,
+      "bottomRightX": 518,
+      "bottomRightY": 354,
+      "content": "Table 6-15. Gen 2 Compliance Pattern",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 364,
+      "bottomRightX": 676,
+      "bottomRightY": 441,
+      "content": "|  Symbol Number | Value | Description  |\n| --- | --- | --- |\n|  0-15 | SYNC ordered set | Compliance pattern starts with a SYNC to signal the beginning of the pattern and reset the scrambler  |\n|  16-65535 | 00h | Data symbol 00h that is scrambled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-51.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 462,
+      "bottomRightX": 253,
+      "bottomRightY": 476,
+      "content": "### 6.5 Clock and Jitter",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 483,
+      "bottomRightX": 329,
+      "bottomRightY": 500,
+      "content": "#### 6.5.1 Informative Jitter Budgeting",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 505,
+      "bottomRightX": 673,
+      "bottomRightY": 597,
+      "content": "The jitter for USB 3.1 is budgeted among the components that comprise the end to end connections: the transmitter, channel (including packaging, connectors, and cables), and the receiver. The jitter budget is derived at the silicon pads. The Dj distribution is the dual Dirac method. Table 6-16 lists Tx, Rx, and channel jitter budgets. These budgets provide the basis for the normative transmitter jitter specifications defined in Section 6.7.3 and the receiver jitter tolerance specifications defined in Section 6.8.5.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 609,
+      "bottomRightX": 588,
+      "bottomRightY": 626,
+      "content": "Table 6-16. Informative Jitter Budgeting at the Silicon Pads⁷",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 635,
+      "bottomRightX": 622,
+      "bottomRightY": 775,
+      "content": "|  Jitter Contribution (ps) | Gen 1 (5 GT/s) |   |   | Gen 2 (10 GT/s)  |   |   |\n| --- | --- | --- | --- | --- | --- | --- |\n|   |  Rj¹,² | Dj³ | Tj⁴ at 10⁻¹² | Rj¹,² | Dj³ | Tj⁴ at 10⁻¹²  |\n|  Tx⁶ | 2.42 | 41 | 75 | 1.00 | 17 | 31.1  |\n|  Media⁵ | 2.13 | 45 | 75 | 0.00 | 36 | 36.0  |\n|  Rx | 2.42 | 57 | 91 | 1.00 | 27.1 | 41.2  |\n|  Total | 4.03 | 143 | 200 | 1.41 | 80.1 | 100  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-52.md"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 778,
+      "bottomRightX": 206,
+      "bottomRightY": 790,
+      "content": "Notes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 794,
+      "bottomRightX": 466,
+      "bottomRightY": 807,
+      "content": "1. Rj is the sigma value assuming a Gaussian distribution.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 809,
+      "bottomRightX": 578,
+      "bottomRightY": 823,
+      "content": "2. Rj Total is computed as the Root Sum Square of the individual Rj components.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 825,
+      "bottomRightX": 401,
+      "bottomRightY": 839,
+      "content": "3. Dj budget is using the Dual Dirac method.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 841,
+      "bottomRightX": 437,
+      "bottomRightY": 855,
+      "content": "4. Tj at a 10⁻¹² BER is calculated as 14.068 * Rj + Dj.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 857,
+      "bottomRightX": 668,
+      "bottomRightY": 870,
+      "content": "5. The media budget includes the cancellation of ISI from the appropriate Rx equalization function.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 872,
+      "bottomRightX": 409,
+      "bottomRightY": 886,
+      "content": "6. Tx is measured after application of the JTF.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 889,
+      "bottomRightX": 652,
+      "bottomRightY": 914,
+      "content": "7. In this table, Tx jitter is defined at TP1, Rx jitter is defined at TP4, and media jitter is defined from TP1 to TP4.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

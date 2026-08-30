@@ -1,0 +1,84 @@
+{
+  "index": 399,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 90,
+      "bottomRightX": 700,
+      "bottomRightY": 472,
+      "content": "![img-245.jpeg](img-245.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-245.jpeg"
+    },
+    {
+      "topLeftX": 234,
+      "topLeftY": 476,
+      "bottomRightX": 588,
+      "bottomRightY": 508,
+      "content": "Figure 8-59. Multiple Active Isochronous Endpoints with Aligned Service Interval Boundaries",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 539,
+      "bottomRightX": 413,
+      "bottomRightY": 558,
+      "content": "### 8.12.6 Isochronous Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 564,
+      "bottomRightX": 695,
+      "bottomRightY": 632,
+      "content": "The following sections define the Isochronous transaction protocols for SuperSpeed and SuperSpeedPlus devices. The SuperSpeedPlus protocol relaxes restrictions on how a host may schedule Isochronous transactions to/from a SuperSpeedPlus device and adds the ability to pipeline transaction requests to an endpoint in order to improve the efficiency of the bus.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 650,
+      "bottomRightX": 553,
+      "bottomRightY": 671,
+      "content": "### 8.12.6.1 Enhanced SuperSpeed Isochronous Transactions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 675,
+      "bottomRightX": 700,
+      "bottomRightY": 774,
+      "content": "IN isochronous transactions are shown in Figure 8-60 and OUT isochronous transactions are shown in Figure 8-61. For INs, the host issues an ACK TP followed by a data phase in which the endpoint transmits data for INs. For OUTs, the host simply transmits data when there is data to be sent in the current service interval. Isochronous transactions do not support retry capability. The TT field shall be set to Isochronous by hosts and peripheral devices operating above Gen 1 speed; see Table 8-13.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "8-106",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

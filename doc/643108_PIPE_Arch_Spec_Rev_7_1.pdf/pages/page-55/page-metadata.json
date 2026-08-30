@@ -1,0 +1,57 @@
+{
+  "index": 54,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 122,
+      "bottomRightX": 511,
+      "bottomRightY": 137,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 7 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 809,
+      "content": "| Name | Active Level | Description | Relevant Protocols |\n| --- | --- | --- | --- |\n| ShortChannelPowerControl[1:0] | N/A | This signal is optionally supported by the PHYs to enable multi-chip package solutions that can be optimized for power due to a shorter channel reach. This signal must be stable before Reset# is deasserted and cannot change value until the next Reset# assertion. Possible settings (see the PHY parameter \"ShortChannelPowerControlSettingsSupported\" for details associated with each setting): • PowerControlSetting0 (00b): Normal operation • PowerControlSetting1 (01b): The most aggressive power-optimized setting for MCP (required if the ShortChannelPowerControl[1:0] signal is implemented) • PowerControlSetting2 (10b): Optionally supported • PowerControlSetting3 (11b): Optionally supported **Note:** For all ShortChannelPowerControl[1:0] settings that correspond to an MCP solution, it is strongly recommended to bypass receiver detection as described earlier in Section 2.7. | PCIe |\n| RxEIDetectDisable | High | PCIe: Optionally implemented to facilitate PCIe L1 substate management. When asserted, this signal asynchronously disables the receiver electrical idle detect logic, forcing the RxElecIdle PHY output to a value of \"1\". If this signal transitions to deasserted after being asserted, the RxElecIdle output must be forced to a high value until the electrical idle detect logic is functional. The PHY may choose to support managing L1 substates via this signal and the TxCommonModeDisable signal instead of the PowerDown[3:0] signal. In this case, the PowerDown[3:0] signal must be held at a constant value through the L1 substate transitions. In addition to the legacy states, the following are the minimum combinations required to be implemented by designs that support L1 substates: | PCIe, USB, USB4 |\n| **PCLK State** | **TX Common Mode State** | **RxElecIdle Supported** | **When to return PhyStatus when exiting?** | **Exit Latency to P0** |\n| Off | TxCommonModeDisable = '1' | RxEIDetectDisable='1' | Before transmit common mode established | Implementation Specific |\n| Off | TxCommonModeDisable='0' | RxEIDetectDisable='1' | N/A | Implementation Specific |\n| RxEIDetectDisable may be optionally implemented by the PHY to allow the MAC to disable receiver Electrical Idle detect logic to provide power savings in states in addition to L1. A PHY must advertise in its datasheet which PowerDown states it supports use of RxEIDetectDisable, via the parameter RxEIDetectDisableSupportedStates. USB/USB4: This signal may be optionally implemented by the PHY to allow the MAC to disable the LFPS circuit to provide power savings. The PHY datasheet specifies whether this usage is available. This signals is asynchronous for USB/USB4. |\n| RxEIDetectDisable2 | High | USB4: This signal is used in asymmetric mode and corresponds to the Rx2 differential pair. Refer to RxEIDetectDisable for more details. | USB4 |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-27.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "55",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

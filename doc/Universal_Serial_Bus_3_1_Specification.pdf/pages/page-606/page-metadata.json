@@ -1,0 +1,157 @@
+{
+  "index": 605,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 284,
+      "bottomRightY": 111,
+      "content": "# C_PORT_LINK_STATE",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 119,
+      "bottomRightX": 691,
+      "bottomRightY": 154,
+      "content": "This flag is used to signal completion of a transition from U3 → U0. Specifically, assertion of this flag results from a host initiated wakeup on a downstream port.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 162,
+      "bottomRightX": 691,
+      "bottomRightY": 212,
+      "content": "Once the C_PORT_LINK_STATE flag is set, a port status change event is sent to system software indicating that the downstream port and its link partner have completed the transition to the U0 state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 220,
+      "bottomRightX": 686,
+      "bottomRightY": 272,
+      "content": "Note that C_PORT_LINK_STATE is not asserted in the event of a remote wakeup. As discussed previously, in the event of a Remote Wakeup the associated function sends the host a Function Wake device notification packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 280,
+      "bottomRightX": 270,
+      "bottomRightY": 297,
+      "content": "# PORT_U1_TIMEOUT",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 306,
+      "bottomRightX": 680,
+      "bottomRightY": 339,
+      "content": "This feature is used to enable and disable U1 entry on downstream ports. It also specifies the U1 inactivity timeout value.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 342,
+      "bottomRightX": 660,
+      "bottomRightY": 479,
+      "content": "|  Timeout Value | U1 Transition Capabilities | U1 Transition Initiation  |\n| --- | --- | --- |\n|  00H | U1 transitions disabled; will not initiate or accept link partner requests | n/a  |\n|  01H-FEH | U1 transitions enabled; port will initiate and accept link partner requests | Following timer expiration using specified Timeout Value  |\n|  FFH | U1 transition initiation disabled; will accept transition requests from its link partner | n/a  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-271.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 509,
+      "bottomRightX": 270,
+      "bottomRightY": 526,
+      "content": "# PORT_U2_TIMEOUT",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 536,
+      "bottomRightX": 671,
+      "bottomRightY": 568,
+      "content": "This feature is used to enable and disable U2 on downstream ports, and also to set an inactivity timeout for initiating a transition to U2.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 129,
+      "topLeftY": 570,
+      "bottomRightX": 660,
+      "bottomRightY": 709,
+      "content": "|  Timeout Value | U2 Transition Capabilities | U2 Transition Initiation  |\n| --- | --- | --- |\n|  00H | U2 transitions disabled; will not initiate or accept link partner requests | n/a  |\n|  01H-FEH | U2 transitions enabled; port will initiate and accept link partner requests | Following timer expiration using specified Timeout Value  |\n|  FFH | Direct U1 → U2 transition is disabled; will accept U2 transition requests (if current link state is U0) from its link partner | n/a  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-272.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 726,
+      "bottomRightX": 666,
+      "bottomRightY": 760,
+      "content": "Other hub port controls can impact link power management behavior, e.g., the PORT_RESET feature, but are not covered here (refer to Chapter 10 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 776,
+      "bottomRightX": 642,
+      "bottomRightY": 798,
+      "content": "### C.1.3 Other Link Power Management Support Mechanisms",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 812,
+      "bottomRightX": 348,
+      "bottomRightY": 832,
+      "content": "#### C.1.3.1 Packets Pending Flag",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 836,
+      "bottomRightX": 698,
+      "bottomRightY": 887,
+      "content": "Devices may use the Packets Pending flag (refer to Chapter 8) to help decide when to place their link in a low power state. The Packets Pending flag provides an indication of whether the host controller has any additional packets to transfer on the schedule associated with a given non-Stream",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 112,
+      "bottomRightY": 994,
+      "content": "C-8",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

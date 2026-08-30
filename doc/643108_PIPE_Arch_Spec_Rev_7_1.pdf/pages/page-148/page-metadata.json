@@ -1,0 +1,57 @@
+{
+  "index": 147,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 538,
+      "bottomRightY": 137,
+      "content": "Table 8-4. Parameters Advertised in PHY Datasheet (Sheet 3 of 7)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 687,
+      "bottomRightY": 877,
+      "content": "|  Parameter | Description  |   |   |   |\n| --- | --- | --- | --- | --- |\n|  ShortChannelPowerControlSettingsSupported | The PHY lists each power control setting that it supports via the ShortChannelPowerControl[1:0] signals. For each power control setting it supports, the PHY provides details of the optimizations made, which may include (but are not limited to) the following: Channel loss (for instance, 5 dB, 10 dB, 15 dB, 25 dB), DFE receiver equalization activity factor (for instance, completely turned off or reduced DFE taps), whether CTLE is turned on or off, and whether clock recovery is shared or per lane. The following table should be filled in and published:  |   |   |   |\n|   |  PowerControlSetting | Description (Suggested) | pJ/bit | Optimization (or Specify Setting not Supported)  |\n|   |  00b (PowerControlSetting0) | Normal operation | Vendor-specified | N/A  |\n|   |  01b (PowerControlSetting1) | Most power optimized setting for <=5dB channel and half swing transmitter | Vendor-specified | Vendor-defined  |\n|   |  10b (PowerControlSetting2) | Most power optimized setting for <=10dB channel and half swing transmitter | Vendor-specified | Vendor-defined  |\n|   |  11b (PowerControlSetting3) | Vendor-defined | Vendor-specified | Vendor-defined  |\n|  LFPS Circuit Disable for USB Mode | The PHY reports whether the MAC can use RxEIDetectDisable to disable the LFPS circuit for power savings.  |   |   |   |\n|  LFPS Circuit Disable for USB4 Mode | The PHY reports whether the MAC can use RxEIDetectDisable to disable the LFPS circuit for power savings.  |   |   |   |\n|  Simultaneous Rate and Power State Change | The PHY reports if it supports simultaneous rate and power state changes for each PHY mode it supports.  |   |   |   |\n|  Data Rate change time. PCIe Mode and SATA Mode. | Amount of time the PHY takes to perform a data rate change. Time is measured from when the MAC changes Rate to when the PHY signals rate change is complete with the single clock assertion of PhyStatus. There may be separate values for each possible change between different supported rates for each supported PHY mode.  |   |   |   |\n|  Transmit Margin values supported. PCIe Mode and USB Mode. | Transmitter voltage levels. [2][1][0] Description 0 0 0 TxMargin value 0 = 0 0 1 TxMargin value 1 = 0 1 0 TxMargin value 2 = 0 1 1 TxMargin value 3 = 1 0 0 TxMargin value 4 = 1 0 1 TxMargin value 5 = 1 1 0 TxMargin value 6 = 1 1 1 TxMargin value 7 =  |   |   |   |\n|  Max Equalization Settings for C_{-1} | Reports the maximum number of settings supported by the PHY for the 8.0 GT/s, 16 GT/s, and 32 GT/s equalization. The maximum number of settings must be less than 64.  |   |   |   |\n|  Max Equalization Settings for C_{0} | Reports the maximum number of settings supported by the PHY for the 8.0 GT/s, 16 GT/s, and 32 GT/s equalization. The maximum number of settings must be less than 64.  |   |   |   |\n|  Max Equalization Settings for C_{1} | Reports the maximum number of settings supported by the PHY for the 8.0 GT/s, 16 GT/s, and 32 GT/s equalization. The maximum number of settings must be less than 64.  |   |   |   |\n|  Default Equalization settings for full swing preset Pn. | Reports the recommended setting values for C_{-1}, C_{0}, C_{1} for each full swing preset. Note: This should be reported separately per rate.  |   |   |   |\n|  Default Equalization settings for half swing preset Pn. | Reports the recommended setting values for C_{-1}, C_{0}, C_{1} for each half swing preset. Note: This should be reported separately per rate.  |   |   |   |\n|  Default Equalization settings for recommended Tx EQ value of 0 dB preshoot and -2.5 dB de-emphasis. | Reports the recommended setting values for C_{-1}, C_{0}, C_{1} for the USB 3.1 0 dB preshoot and -2.5 dB de-emphasis recommended Tx EQ setting.  |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-136.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 955,
+      "bottomRightX": 111,
+      "bottomRightY": 966,
+      "content": "148",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

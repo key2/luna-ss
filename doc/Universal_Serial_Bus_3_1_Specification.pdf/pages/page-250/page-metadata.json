@@ -1,0 +1,138 @@
+{
+  "index": 249,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 92,
+      "bottomRightX": 657,
+      "bottomRightY": 143,
+      "content": "1. At least three of the four symbols in four consecutive symbol periods are valid link command symbols.\n2. The four symbols are in the order described in Table 7-10.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 147,
+      "bottomRightX": 693,
+      "bottomRightY": 230,
+      "content": "- For SuperSpeed USB, a valid link command is declared if both link command words are the same, they both contain valid link command information as defined in Table 7-4, and they both pass the CRC-5 check.\n- For SuperSpeedPlus USB, a valid link command is declared if one of the following conditions is met:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 235,
+      "bottomRightX": 695,
+      "bottomRightY": 317,
+      "content": "1. Both link command words are the same, they contain valid link command information as defined in Table 7-4, and they pass the CRC-5 check.\n2. One of the link command words contains valid link command information as defined in Table 7-4, and passes the CRC-5 check, and the other link command word either contains invalid link command information, or fails the CRC-5 check.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 322,
+      "bottomRightX": 689,
+      "bottomRightY": 409,
+      "content": "- An invalid link command is declared upon detection of a link command and the conditions to meet a valid link command are not met.\n- An invalid link command shall be ignored.\n- A port detecting missing of LGOOD_n or LCRD_x or LCRD1_x/LCRD2_x shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 411,
+      "bottomRightX": 689,
+      "bottomRightY": 511,
+      "content": "Note: Missing LGOOD_n is declared when two consecutive LGOOD_n received are not in numerical order. Missing LGOOD_n, or LBAD, or LRTY can also be inferred upon PENDING_HP_TIMER timeout. Missing LCRD_x or LCRD1_x/LCRD2_x is declared when two consecutive LCRD_x or LCRD1_x/LCRD2_x received are not in alphabetical order, or upon CREDIT_HP_TIMER or Type 1/Type 2 CREDIT_HP_TIMER times out and LCRD_x or LCRD1_x/LCRD2_x is not received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 513,
+      "bottomRightX": 631,
+      "bottomRightY": 528,
+      "content": "- A port detecting missing of LGO_Ux, or LAU, or LXU shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 532,
+      "bottomRightX": 673,
+      "bottomRightY": 564,
+      "content": "Note: Detection of missing LGO_Ux, or LAU, or LXU is declared upon PM_LC_TIMER timeout and LAU or LXU is not received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 569,
+      "bottomRightX": 621,
+      "bottomRightY": 602,
+      "content": "- A downstream port detecting missing of LUP shall transition to Recovery (refer to Section 7.5.6 for LUP detection).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 607,
+      "bottomRightX": 673,
+      "bottomRightY": 640,
+      "content": "Note: Missing of LPMA will not transition the link to Recovery. It will only cause an Ux entry delay for the port accepting LGO_Ux (refer to Section 7.2.4.2 for details).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 644,
+      "bottomRightX": 691,
+      "bottomRightY": 711,
+      "content": "- An upstream port detecting missing of LDN shall transition to Recovery (refer to Section 7.5.6 for LDN detection).\n- The Link Error Count shall be incremented by one each time a transition to Recovery occurs due to an error.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 727,
+      "bottomRightX": 419,
+      "bottomRightY": 742,
+      "content": "Table 7-10. Valid Link Command Symbol Order",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 747,
+      "bottomRightX": 664,
+      "bottomRightY": 865,
+      "content": "|  Symbol 0 | Symbol 1 | Symbol 2 | Symbol 3 | Comment  |\n| --- | --- | --- | --- | --- |\n|  SLC | SLC | SLC | EPF | All symbols are valid  |\n|  Corrupt | SLC | SLC | EPF | First SLC corrupted  |\n|  SLC | Corrupt | SLC | EPF | Second SLC corrupted  |\n|  SLC | SLC | Corrupt | EPF | Third SLC corrupted  |\n|  SLC | SLC | SLC | Corrupt | EPF corrupted  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-97.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-38",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

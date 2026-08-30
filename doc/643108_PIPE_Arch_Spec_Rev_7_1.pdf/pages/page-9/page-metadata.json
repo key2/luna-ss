@@ -1,0 +1,452 @@
+{
+  "index": 8,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 698,
+      "bottomRightY": 93,
+      "content": "intel.",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 120,
+      "bottomRightX": 218,
+      "bottomRightY": 151,
+      "content": "# Tables",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 177,
+      "bottomRightX": 700,
+      "bottomRightY": 207,
+      "content": "2-1 Phy Requirements for Legacy Pin Interface versus the Low Pin Count Interface, and Original PIPE versus SerDes Architecture Support 24",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 208,
+      "bottomRightX": 699,
+      "bottomRightY": 222,
+      "content": "3-1 PCIe Mode - Possible PCLK Rates and Data Widths 28",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 223,
+      "bottomRightX": 699,
+      "bottomRightY": 238,
+      "content": "3-2 PCIe Mode (SerDes Only) - Possible RXCLK Rates and Data Widths 30",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 239,
+      "bottomRightX": 699,
+      "bottomRightY": 253,
+      "content": "3-3 USB Mode - Possible PCLK or RXCLK Rates and Data Widths 31",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 254,
+      "bottomRightX": 699,
+      "bottomRightY": 268,
+      "content": "3-4 SATA Mode - Possible PCLK Rates and Data Widths 31",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 270,
+      "bottomRightX": 699,
+      "bottomRightY": 285,
+      "content": "3-5 SATA Mode (SerDes Only) - Possible RXCLK Rates and Data Widths 31",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 286,
+      "bottomRightX": 699,
+      "bottomRightY": 300,
+      "content": "3-6 DPTX and DPRX Mode - Possible PCLK or RXCLK Rates and Data Widths 32",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 301,
+      "bottomRightX": 699,
+      "bottomRightY": 315,
+      "content": "3-7 USB4 Mode - Possible PCLK or RXCLK Rates and Data Widths 33",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 316,
+      "bottomRightX": 699,
+      "bottomRightY": 331,
+      "content": "6-1 Tx Data Interface Input Signals 46",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 332,
+      "bottomRightX": 699,
+      "bottomRightY": 346,
+      "content": "6-2 Tx Data Interface Output Signals 47",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 347,
+      "bottomRightX": 699,
+      "bottomRightY": 361,
+      "content": "6-3 Rx Data Interface Input Signals 47",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 363,
+      "bottomRightX": 699,
+      "bottomRightY": 378,
+      "content": "6-4 Rx Data Interface Output Signals 48",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 379,
+      "bottomRightX": 699,
+      "bottomRightY": 393,
+      "content": "6-5 Command Interface Input Signals 49",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 394,
+      "bottomRightX": 699,
+      "bottomRightY": 409,
+      "content": "6-6 Command Interface Output Signals 62",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 410,
+      "bottomRightX": 699,
+      "bottomRightY": 424,
+      "content": "6-7 Status Interface Input Signals 63",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 425,
+      "bottomRightX": 699,
+      "bottomRightY": 439,
+      "content": "6-8 Status Interface Output Signals 64",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 440,
+      "bottomRightX": 699,
+      "bottomRightY": 455,
+      "content": "6-9 Message Bus Interface Signals 66",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 456,
+      "bottomRightX": 699,
+      "bottomRightY": 471,
+      "content": "6-10 Message Bus Commands 67",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 472,
+      "bottomRightX": 699,
+      "bottomRightY": 486,
+      "content": "6-11 Command Only Message Bus Transaction Timing (NOP, write_ack) 67",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 487,
+      "bottomRightX": 699,
+      "bottomRightY": 502,
+      "content": "6-12 Command+Address Message Bus Transaction Timing (Read) 68",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 503,
+      "bottomRightX": 699,
+      "bottomRightY": 517,
+      "content": "6-13 Command+Data Message Bus Transaction Timing (Read Completion) 68",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 518,
+      "bottomRightX": 699,
+      "bottomRightY": 546,
+      "content": "6-14 Command+Address+Data Message Bus Transaction Timing (Write_uncommitted, Write_committed) 68",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 547,
+      "bottomRightX": 699,
+      "bottomRightY": 561,
+      "content": "6-15 SerDes Only: Rx data Interface Output Signals 69",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 562,
+      "bottomRightX": 699,
+      "bottomRightY": 578,
+      "content": "6-16 SerDes Only: Command Interface Input Signals 70",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 579,
+      "bottomRightX": 699,
+      "bottomRightY": 592,
+      "content": "6-17 MacCLK Lane Input Signals 71",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 593,
+      "bottomRightX": 699,
+      "bottomRightY": 608,
+      "content": "6-18 MacCLK Lane Output Signals 72",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 609,
+      "bottomRightX": 699,
+      "bottomRightY": 624,
+      "content": "6-19 Original PIPE Only: Tx Data Interface Input Signals 72",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 625,
+      "bottomRightX": 699,
+      "bottomRightY": 639,
+      "content": "6-20 Original PIPE Only: Rx data Interface Output Signals 73",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 640,
+      "bottomRightX": 699,
+      "bottomRightY": 654,
+      "content": "6-21 Command Interface Input Signals 73",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 655,
+      "bottomRightX": 699,
+      "bottomRightY": 671,
+      "content": "6-22 Original PIPE Only: Command Interface Output Signals 74",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 672,
+      "bottomRightX": 699,
+      "bottomRightY": 686,
+      "content": "6-23 Original PIPE Only: Status Interface Output Signals 75",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 687,
+      "bottomRightX": 699,
+      "bottomRightY": 700,
+      "content": "6-24 External Input Signals 75",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 701,
+      "bottomRightX": 699,
+      "bottomRightY": 717,
+      "content": "6-25 External Output Signals 76",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 718,
+      "bottomRightX": 699,
+      "bottomRightY": 732,
+      "content": "7-1 PHY Registers 80",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 733,
+      "bottomRightX": 699,
+      "bottomRightY": 748,
+      "content": "7-2 Address 0h: Rx Margin Control0 81",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 749,
+      "bottomRightX": 699,
+      "bottomRightY": 763,
+      "content": "7-3 Address 1h: Rx Margin Control1 81",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 764,
+      "bottomRightX": 699,
+      "bottomRightY": 778,
+      "content": "7-4 Address 2h: Elastic Buffer Control 82",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 779,
+      "bottomRightX": 699,
+      "bottomRightY": 794,
+      "content": "7-5 Address 3h: PHY Rx Control0 82",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 795,
+      "bottomRightX": 699,
+      "bottomRightY": 809,
+      "content": "7-6 Address 4h: PHY Rx Control1 83",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 810,
+      "bottomRightX": 699,
+      "bottomRightY": 824,
+      "content": "7-7 Address 5h: PHY Rx Control2 85",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 825,
+      "bottomRightX": 699,
+      "bottomRightY": 840,
+      "content": "7-8 Address 6h: PHY Rx Control3 85",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 841,
+      "bottomRightX": 699,
+      "bottomRightY": 856,
+      "content": "7-9 Address 7h: Elastic Buffer Location Update Frequency 85",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 857,
+      "bottomRightX": 699,
+      "bottomRightY": 871,
+      "content": "7-10 Address 8h: PHY Rx Control4 86",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 872,
+      "bottomRightX": 699,
+      "bottomRightY": 887,
+      "content": "7-11 Address 9h: PHY Rx Control 5 86",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 888,
+      "bottomRightX": 699,
+      "bottomRightY": 902,
+      "content": "7-12 Address 400h: PHY Tx Control0 86",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 953,
+      "bottomRightX": 297,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 690,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "9",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

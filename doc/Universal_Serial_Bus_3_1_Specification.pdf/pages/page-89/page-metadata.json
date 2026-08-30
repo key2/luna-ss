@@ -1,0 +1,119 @@
+{
+  "index": 88,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 93,
+      "bottomRightX": 290,
+      "bottomRightY": 120,
+      "content": "# 5 Mechanical",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 153,
+      "bottomRightX": 672,
+      "bottomRightY": 187,
+      "content": "This chapter defines form, fit, and function of the USB 3.1 connectors and cable assemblies. It contains the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 193,
+      "bottomRightX": 408,
+      "bottomRightY": 283,
+      "content": "- Connector mating interfaces\n- Cables and cable assemblies\n- Electrical requirements\n- Mechanical and environmental requirements\n- Implementation notes and guidelines",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 287,
+      "bottomRightX": 668,
+      "bottomRightY": 322,
+      "content": "The intention of this chapter is to enable connector, system, and device designers and manufacturers to build, qualify, and use the USB 3.1 connectors, cables, and cable assemblies.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 326,
+      "bottomRightX": 660,
+      "bottomRightY": 360,
+      "content": "If any part of this chapter conflicts with the USB 2.0 specification, the USB 3.1 specification supersedes the USB 2.0 specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 365,
+      "bottomRightX": 694,
+      "bottomRightY": 500,
+      "content": "With some clearly noted exceptions, USB 3.1 connectors and cable assemblies provide the same functionally as the previously defined USB 3.0 connectors and cables assemblies. The primary differences are that USB 3.1 connectors and cable assemblies are specifically intended to support 10Gbps SuperSpeed USB operation and USB 3.1 connectors and cable assemblies include features and requirements associated with improved EMI/RFI performance. From the perspective of interface mating interoperability, USB 3.0 connectors and cable assemblies are the same as USB 3.1 connectors and cable assemblies therefore, only USB 3.1 is listed for interface interoperability requirements and is inclusive of USB 3.0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 522,
+      "bottomRightX": 257,
+      "bottomRightY": 546,
+      "content": "## 5.1 Objective",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 553,
+      "bottomRightX": 618,
+      "bottomRightY": 570,
+      "content": "The mechanical layer specification has been developed with the following objectives:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 574,
+      "bottomRightX": 676,
+      "bottomRightY": 720,
+      "content": "- Supporting Gen 1 speed (5Gbps) and Gen 2 speed (10Gbps)\n- Backward compatible with USB 2.0\n- Minimizing connector form factor variations\n- Providing the system designer features that allow implementations to comply with EMI and RFI requirements\n- Supporting On-The-Go (OTG)\n- Supporting compatibility with the Universal Serial Bus Power Delivery Specification\n- Low cost",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 743,
+      "bottomRightX": 363,
+      "bottomRightY": 767,
+      "content": "## 5.2 Significant Features",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 774,
+      "bottomRightX": 690,
+      "bottomRightY": 841,
+      "content": "This section identifies the significant features of the USB 3.1 (Enhanced SuperSpeed) connectors and cable assemblies' specification. The purpose of this section is not to present all technical details associated with each major feature, but rather to highlight their existence. Where appropriate, this section references other parts of the document where additional details are found.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 675,
+      "topLeftY": 979,
+      "bottomRightX": 699,
+      "bottomRightY": 994,
+      "content": "5-1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "index": 213,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 116,
+      "bottomRightX": 302,
+      "bottomRightY": 139,
+      "content": "## 7.1 Byte Ordering",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 146,
+      "bottomRightX": 694,
+      "bottomRightY": 198,
+      "content": "Multiple byte fields in a packet or a link command are moved over to the bus in little-endian order, i.e., the least significant byte (LSB) first, and the most significant byte (MSB) last. Figure 7-2 shows an example of byte ordering.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 197,
+      "topLeftY": 216,
+      "bottomRightX": 626,
+      "bottomRightY": 562,
+      "content": "![img-164.jpeg](img-164.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-164.jpeg"
+    },
+    {
+      "topLeftX": 329,
+      "topLeftY": 573,
+      "bottomRightX": 494,
+      "bottomRightY": 592,
+      "content": "Figure 7-2. Byte Ordering",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 604,
+      "bottomRightX": 429,
+      "bottomRightY": 627,
+      "content": "### 7.1.1 SuperSpeed USB Line Code",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 631,
+      "bottomRightX": 626,
+      "bottomRightY": 666,
+      "content": "Each byte of a packet or link command will be encoded in the physical layer using 8b/10b encoding. Refer to Section 6.3.1.3 regarding 8b/10b encoding and bit ordering.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 680,
+      "bottomRightX": 467,
+      "bottomRightY": 702,
+      "content": "### 7.1.2 SuperSpeedPlus USB Line Code",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 706,
+      "bottomRightX": 700,
+      "bottomRightY": 841,
+      "content": "To improve the effective throughput for SuperSpeedPlus USB, 128b/132b line code is employed to replace 8b/10b line code used in SuperSpeed USB. Two block types are defined based on 128b/132b line code. A control block is defined to transmit TSEQ, TS1, TS2, SYNC, SDS, and SKP ordered sets. A data block is defined to transmit packets, link commands, and Idle Symbols. Refer to Section 6.3 for 128b/132b block definition and bit ordering. Each symbol within a data block is scrambled by default, unless disabled otherwise by the Disabling Scrambling bit asserted in the TS2 ordered set received in Polling.Configuration or Recovery.Configuration. Refer to Sections 7.5.4.9 and 7.5.10.4 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 112,
+      "bottomRightY": 994,
+      "content": "7-2",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

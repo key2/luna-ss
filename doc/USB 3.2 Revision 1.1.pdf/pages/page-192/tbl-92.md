@@ -1,0 +1,3 @@
+|  Name | Initial State | Timeout to Next State | Timeout Values  |
+| --- | --- | --- | --- |
+|  Notes: 1. Implementations are recommended to consider system states when choosing when to use a larger value of the tRxDetectQuietTimeoutDFP timer. Using a smaller value when the system is active and a larger value when the system is in a standby/sleep or other idle state allows for higher responsiveness to connect events during active states while enabling power savings in an idle system state. 2. Upon Polling timeout, a port shall transition to different states. Refer to Section 7.5.4.3 for details. 3. The accuracy of U2 inactivity timer is specified in Section 10.4.1.  |   |   |   |

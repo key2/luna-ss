@@ -1,0 +1,102 @@
+{
+  "index": 353,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 109,
+      "bottomRightX": 469,
+      "bottomRightY": 129,
+      "content": "### 8.11.4 Device Response to a SETUP DP",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 135,
+      "bottomRightX": 698,
+      "bottomRightY": 202,
+      "content": "A SETUP DP is a special DP that is identified by the Setup field set to one and addressed to any control endpoint. SETUP is a special type of host-to-device data transaction that permits the host to initiate a command that the device shall perform. Upon receiving a SETUP DP, a device shall respond as shown in Table 8-30.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 211,
+      "bottomRightX": 567,
+      "bottomRightY": 227,
+      "content": "A SETUP DPH shall be considered invalid if it has any one of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 232,
+      "bottomRightX": 639,
+      "bottomRightY": 358,
+      "content": "- Incorrect Device Address\n- Endpoint number and direction does not refer to an endpoint that is part of the current configuration\n- Endpoint number does not refer to a control endpoint\n- Non-zero sequence number\n- Data length is not set to eight\n- TT does not match the endpoint type (for a device not operating at Gen 1 speed).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 365,
+      "bottomRightX": 527,
+      "bottomRightY": 381,
+      "content": "In Table 8-30, DPP Error may be due to one or more of the following:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 387,
+      "bottomRightX": 587,
+      "bottomRightY": 460,
+      "content": "- CRC incorrect\n- DPP aborted\n- DPP missing\n- Data length in the Setup DPH does not match the actual data payload length.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 475,
+      "bottomRightX": 641,
+      "bottomRightY": 492,
+      "content": "Table 8-30. Device Responses to SETUP Transactions (Only for Control Endpoints)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 495,
+      "bottomRightX": 699,
+      "bottomRightY": 725,
+      "content": "|  DPH has Invalid Values | DPH has Deferred Bit Set | Data Packet Payload Error | TP Returned by Device  |\n| --- | --- | --- | --- |\n|  Yes | N/A | N/A | Discard DP.  |\n|  No | Yes | N/A | The device shall send an ERDY TP indicating that it is ready to receive the SETUP DP.  |\n|  No | No | Yes | Discard SETUP DP, send an ACK TP with the sequence number set to zero, the rty bit set and the NumP field set to one.  |\n|  No | No | No | Send an ACK TP with the sequence number set to one (thereby indicating that this SETUP DP was received successfully). The value in the NumP field indicates to the host whether the device wants to flow control the Data/Status stage or not. Refer to Section 8.12.2 for details.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-136.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 116,
+      "bottomRightY": 994,
+      "content": "8-60",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

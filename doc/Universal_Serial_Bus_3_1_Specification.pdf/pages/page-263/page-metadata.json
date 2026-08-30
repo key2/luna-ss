@@ -1,0 +1,209 @@
+{
+  "index": 262,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 637,
+      "topLeftY": 31,
+      "bottomRightX": 698,
+      "bottomRightY": 46,
+      "content": "Link Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 93,
+      "bottomRightX": 294,
+      "bottomRightY": 113,
+      "content": "### 7.5.2 eSS.Inactive",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 119,
+      "bottomRightX": 694,
+      "bottomRightY": 204,
+      "content": "eSS.Inactive is a state where a link has failed Enhanced SuperSpeed operation. A downstream port can only exit from this state when directed, or upon detection of an absence of a far-end receiver termination (R_RX-DC) specified in Table 6-21, or upon a Warm Reset. An upstream port can only exit to Rx.Detect upon a Warm Reset, or upon detecting an absence of a far-end receiver termination (R_RX-DC) specified in Table 6-21.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 208,
+      "bottomRightX": 682,
+      "bottomRightY": 259,
+      "content": "During eSS.Inactive, a port periodically performs a far-end receiver termination detection. If a disconnection is detected, a port will return to Rx.Detect. If a disconnect is not detected, the link will stay in eSS.Inactive until software intervention.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 273,
+      "bottomRightX": 423,
+      "bottomRightY": 290,
+      "content": "#### 7.5.2.1 eSS.Inactive Substate Machines",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 297,
+      "bottomRightX": 567,
+      "bottomRightY": 314,
+      "content": "eSS.Inactive contains the following substate machines shown in Figure 7-16:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 319,
+      "bottomRightX": 333,
+      "bottomRightY": 352,
+      "content": "- eSS.Inactive.Disconnect.Detect\n- eSS.Inactive.Quiet",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 369,
+      "bottomRightX": 386,
+      "bottomRightY": 387,
+      "content": "#### 7.5.2.2 eSS.Inactive Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 389,
+      "bottomRightX": 658,
+      "bottomRightY": 441,
+      "content": "- VBUS shall be present.\n- The receiver termination shall meet the requirement (R_RX-DC) specified in Table 6-21.\n- The transmitter common mode is not required to be within specification during this state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 456,
+      "bottomRightX": 322,
+      "bottomRightY": 473,
+      "content": "#### 7.5.2.3 eSS.Inactive.Quiet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 479,
+      "bottomRightX": 698,
+      "bottomRightY": 513,
+      "content": "eSS.Inactive.Quiet is a substate defined in which a port has disabled its far-end receiver termination detection so that extra power can be saved while waiting for software intervention.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 519,
+      "bottomRightX": 428,
+      "bottomRightY": 538,
+      "content": "##### 7.5.2.3.1 eSS.Inactive.Quiet Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 543,
+      "bottomRightX": 641,
+      "bottomRightY": 578,
+      "content": "- The function of the far-end receiver termination detection shall be disabled.\n- A 12-ms timer (teSSInactiveQuietTimeout) shall be started upon entry to the substate.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 584,
+      "bottomRightX": 396,
+      "bottomRightY": 600,
+      "content": "##### 7.5.2.3.2 Exit from eSS.Inactive.Quiet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 606,
+      "bottomRightX": 658,
+      "bottomRightY": 695,
+      "content": "- The port shall transition to eSS.Inactive.Disconnect.Detect upon the 12-ms timer timeout (teSSInactiveQuietTimeout).\n- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect when Warm Reset is issued.\n- An upstream port shall transition to Rx.Detect upon detection of Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 711,
+      "bottomRightX": 419,
+      "bottomRightY": 728,
+      "content": "#### 7.5.2.4 eSS.Inactive.Disconnect.Detect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 734,
+      "bottomRightX": 698,
+      "bottomRightY": 785,
+      "content": "eSS.Inactive.Disconnect.Detect is a substate in which a port will perform the far-end receiver termination detection in order to determine if its link partner is disconnected during eSS.Inactive, or if the transition to eSS.Inactive is due to a disconnect from its link partner.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 791,
+      "bottomRightX": 515,
+      "bottomRightY": 809,
+      "content": "##### 7.5.2.4.1 eSS.Inactive.Disconnect.Detect Requirements",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 814,
+      "bottomRightX": 686,
+      "bottomRightY": 830,
+      "content": "The transmitter shall perform the far-end receiver termination detection described in Section 6.11.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 837,
+      "bottomRightX": 483,
+      "bottomRightY": 854,
+      "content": "##### 7.5.2.4.2 Exit from eSS.Inactive.Disconnect.Detect",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 859,
+      "bottomRightX": 662,
+      "bottomRightY": 893,
+      "content": "- The port shall transition to Rx.Detect when a far-end low-impedance receiver termination (R_RX-DC) meeting specification defined in Table 6-21 is not detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 697,
+      "bottomRightY": 994,
+      "content": "7-51",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

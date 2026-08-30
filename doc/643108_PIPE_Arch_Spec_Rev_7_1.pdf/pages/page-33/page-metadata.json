@@ -1,0 +1,93 @@
+{
+  "index": 32,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 138,
+      "bottomRightX": 586,
+      "bottomRightY": 153,
+      "content": "Table 3-7. USB4 Mode – Possible PCLK or RXCLK Rates and Data Widths",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 157,
+      "bottomRightX": 696,
+      "bottomRightY": 418,
+      "content": "|  Mode | PCLK/RXCLK | Data Width^{1}  |\n| --- | --- | --- |\n|  10 GT/s USB4 | 1.25 GHz | 10 bits  |\n|   |  625 MHz | 20 bits  |\n|   |  312.5 MHz | 40 bits  |\n|  20 GT/s USB4 | 2.5 GHz | 10 bits  |\n|   |  1.25 GHz | 20 bits  |\n|   |  625 MHz | 40 bits  |\n|  40 GT/s (25.6 GT/s PAM3) | 914 MHz | 56 bits  |\n|  10.3125 GT/s USB4 (Thunderbolt™ 2) | 1.2890625 GHz | 10 bits  |\n|   |  644.53125 MHz | 20 bits  |\n|   |  322.265625 MHz | 40 bits  |\n|  20.625 GT/s USB4 (Thunderbolt™ 2) | 2.578125 GHz | 10 bits  |\n|   |  1.2890625 GHz | 20 bits  |\n|   |  644.53125 MHz | 40 bits  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-16.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 420,
+      "bottomRightX": 696,
+      "bottomRightY": 444,
+      "content": "1. While the data widths are 10, 20, or 40 bits for consistency with other protocols, USB4 only utilizes only 8 out of every 10 bits of data since it uses block encoding. See Section 6.1.1 for more details.",
+      "confidenceScores": null,
+      "type": "references"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 483,
+      "bottomRightX": 139,
+      "bottomRightY": 497,
+      "content": "**Note:**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 483,
+      "bottomRightX": 696,
+      "bottomRightY": 536,
+      "content": "When a MAC that implements the TXDataValid signal is using a mode that does not use TXDataValid the MAC shall keep TXDataValid asserted. When a PHY that implements RXDataValid is in a mode that does not use RXDataValid the PHY mustkeep RXDataValid asserted.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 542,
+      "bottomRightX": 696,
+      "bottomRightY": 642,
+      "content": "There may be PIPE implementations that support multiples of these configurations. PHY implementations that support multiple configurations at the same rate must support the width and PCLK rate control signals. A PHY that supports multiple rates in PCIe mode or SATA mode or USB mode must support configurations across all supported rates that are fixed at the PCLK rate. A PHY that supports multiple rates in PCIe mode or SATA mode must support configurations across all supported rates that are fixed data path width.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 297,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 684,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "33",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

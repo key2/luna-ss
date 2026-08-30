@@ -1,0 +1,10 @@
+|  Characteristic | Enhanced SuperSpeed USB | USB 2.0  |
+| --- | --- | --- |
+|  Data Rate | Gen 1 (5.0 Gbps), Gen 2 (10 Gbps) | low-speed (1.5 Mbps), full-speed (12 Mbps), and high-speed (480 Mbps)  |
+|  Data Interface | Dual-simplex, four-wire differential signaling separate from USB 2.0 signaling Simultaneous bi-directional data flows | Half-duplex two-wire differential signaling Unidirectional data flow with negotiated directional bus transitions  |
+|  Cable signal count | Six: Four for Enhanced SuperSpeed data path, two for USB 2.0 data path | Two: Two for low-speed/full-speed/high-speed (USB 2.0) data path  |
+|  Bus transaction protocol | Host directed, asynchronous traffic flow Packet traffic is explicitly routed | Host directed, polled traffic flow Packet traffic is broadcast to all devices.  |
+|  Power management | Multi-level link power management supporting idle, sleep, and suspend states. Link-, Device-, and Function-level power management. | Port-level suspend with two levels of entry/exit latency Device-level power management  |
+|  Bus power | Same as for USB 2.0 with a 50% increase for unconfigured power and an 80% increase for configured power | Support for low/high bus-powered devices with lower power limits for un-configured and suspended devices  |
+|  Port State | Port hardware detects connect events and brings the port into operational state ready for Enhanced SuperSpeed data communication. | Port hardware detects connect events. System software uses port commands to transition the port into an enabled state (i.e., can do USB data communication flows).  |
+|  Data transfer types | USB 2.0 types with Enhanced SuperSpeed constraints. Bulk has streams capability (refer to Section 3.3) | Four data transfer types: control, bulk, Interrupt, and Isochronous  |

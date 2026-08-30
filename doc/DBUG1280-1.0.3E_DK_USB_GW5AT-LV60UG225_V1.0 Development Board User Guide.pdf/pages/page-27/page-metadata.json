@@ -1,0 +1,120 @@
+{
+  "index": 26,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 35,
+      "bottomRightX": 218,
+      "bottomRightY": 50,
+      "content": "3 Development Board Circuit",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 533,
+      "topLeftY": 35,
+      "bottomRightX": 652,
+      "bottomRightY": 50,
+      "content": "3.10 Type-C Interface",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 66,
+      "topLeftY": 96,
+      "bottomRightX": 283,
+      "bottomRightY": 121,
+      "content": "## 3.10 Type-C Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 66,
+      "topLeftY": 145,
+      "bottomRightX": 226,
+      "bottomRightY": 164,
+      "content": "### 3.10.1 Introduction",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 182,
+      "bottomRightX": 656,
+      "bottomRightY": 278,
+      "content": "The development board leads a Type-C interface, supporting USB 2.0 and USB 3.0 data transmission. The USB 2.0 is implemented using the Gowin USB 2.0 SoftPHY IP solution, connected to the FPGA through an RC circuit. For detailed information on the peripheral circuitry, please refer to IPUG781, Gowin USB 2.0 SoftPHY IP user guide.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 287,
+      "bottomRightX": 656,
+      "bottomRightY": 385,
+      "content": "The Type-C interface on the development board connects two SerDes signals to the FPGA, USB 3.0 is implemented with the Gowin USB 3.0 PHY IP. As of November 2024, IP V1.2 supports one SerDes lane signal and only allows single-sided plug on the Type-C interface. Future updates will add support for reversible plug.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 394,
+      "bottomRightX": 204,
+      "bottomRightY": 409,
+      "content": "Note!",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 417,
+      "bottomRightX": 609,
+      "bottomRightY": 434,
+      "content": "The CC circuit on the development board has not been verified. Use with caution!",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 440,
+      "bottomRightX": 477,
+      "bottomRightY": 458,
+      "content": "Figure 3-10 Connection Diagram of Type-C Interface",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 170,
+      "topLeftY": 469,
+      "bottomRightX": 638,
+      "bottomRightY": 821,
+      "content": "![img-15.jpeg](img-15.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-15.jpeg"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 940,
+      "bottomRightX": 168,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 609,
+      "topLeftY": 940,
+      "bottomRightX": 653,
+      "bottomRightY": 956,
+      "content": "20(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

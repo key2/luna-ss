@@ -1,0 +1,201 @@
+{
+  "index": 142,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 112 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 244,
+      "topLeftY": 92,
+      "bottomRightX": 543,
+      "bottomRightY": 110,
+      "content": "Table 6-34. Lane-to-Lane Skew Requirements",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 164,
+      "topLeftY": 119,
+      "bottomRightX": 625,
+      "bottomRightY": 266,
+      "content": "|  Test Point | Max Skew (ps) | Description  |\n| --- | --- | --- |\n|  TP1 | 1300 | Tx Si Output  |\n|  TP2 | 2000 | Tx Product Output/Cable Input  |\n|  TP3 | 4600 | Cable Output/Rx Product Input  |\n|  TP4 | 6400 | Rx Si Input  |\n|  TP1Ro, TP3Ro | 1300 | Output from Re-timer  |\n|  TP1Ri, TP3Ri | 4800 | Input to Re-timer  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-75.md"
+    },
+    {
+      "topLeftX": 170,
+      "topLeftY": 272,
+      "bottomRightX": 513,
+      "bottomRightY": 288,
+      "content": "Note: refer to Figure 6-6 for definition of the test points.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 323,
+      "bottomRightX": 285,
+      "bottomRightY": 336,
+      "content": "### 6.13.9 Compliance Patterns",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 344,
+      "bottomRightX": 536,
+      "bottomRightY": 359,
+      "content": "Compliance patterns shall be transmitted independently on each lane.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 366,
+      "bottomRightX": 662,
+      "bottomRightY": 471,
+      "content": "- A Port shall transmit the same compliance pattern on all supported lanes. While in compliance mode, the transmitted compliance pattern shall advance for all supported lanes upon receiving a Ping.LFPS on either lane as defined in Section 6.4.4.\n- CP0 and CP9 use the scrambler seeds defined in Section 6.13.5.\n- All compliance patterns, including CP4, shall be transmitted on all lanes",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 486,
+      "bottomRightX": 274,
+      "bottomRightY": 502,
+      "content": "### 6.13.10 Receiver Detection",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 509,
+      "bottomRightX": 565,
+      "bottomRightY": 524,
+      "content": "Receiver termination detection is required on the Configuration Lane only.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 537,
+      "bottomRightX": 671,
+      "bottomRightY": 552,
+      "content": "The LTSSM flow for disconnect detection remains the same as for single-lane configurations.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 565,
+      "bottomRightX": 272,
+      "bottomRightY": 580,
+      "content": "### 6.13.11 Receiver Loopback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 587,
+      "bottomRightX": 526,
+      "bottomRightY": 602,
+      "content": "Receiver loopback for x2 operation is performed on a per lane basis.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 615,
+      "bottomRightX": 444,
+      "bottomRightY": 631,
+      "content": "All lanes shall exit from loopback upon receiving LFPS.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 644,
+      "bottomRightX": 190,
+      "bottomRightY": 657,
+      "content": "### 6.13.12 LFPS",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 666,
+      "bottomRightX": 570,
+      "bottomRightY": 681,
+      "content": "LFPS signals are transmitted on the Configuration Lane only. This includes:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 687,
+      "bottomRightX": 403,
+      "bottomRightY": 815,
+      "content": "- Polling.LFPS (including SCD1 and SCD2)\n- LBPM\n- Ping.LFPS\n- Warm Reset\n- U1/U2/U3 exit\n- Loopback exit",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 830,
+      "bottomRightX": 203,
+      "bottomRightY": 844,
+      "content": "### 6.13.13 Ux Exit",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 852,
+      "bottomRightX": 600,
+      "bottomRightY": 884,
+      "content": "While in U1/U2/U3, the port shall enable exit functionality in the receiver on the Configuration Lane.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

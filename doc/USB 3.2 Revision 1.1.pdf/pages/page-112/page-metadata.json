@@ -1,0 +1,139 @@
+{
+  "index": 111,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 81 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 206,
+      "topLeftY": 92,
+      "bottomRightX": 583,
+      "bottomRightY": 111,
+      "content": "Figure 6-18. Single-ended and Differential Voltage Levels",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 126,
+      "bottomRightX": 621,
+      "bottomRightY": 399,
+      "content": "![img-30.jpeg](img-30.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-30.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 435,
+      "bottomRightX": 314,
+      "bottomRightY": 452,
+      "content": "### 6.6.3 Tx and Rx Input Parasitics",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 457,
+      "bottomRightX": 620,
+      "bottomRightY": 474,
+      "content": "Tx and Rx input parasitics are specified by the lumped circuit shown in Figure 6-19.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 251,
+      "topLeftY": 484,
+      "bottomRightX": 538,
+      "bottomRightY": 502,
+      "content": "Figure 6-19. Device Termination Schematic",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 240,
+      "topLeftY": 512,
+      "bottomRightX": 550,
+      "bottomRightY": 731,
+      "content": "![img-31.jpeg](img-31.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-31.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 745,
+      "bottomRightX": 647,
+      "bottomRightY": 778,
+      "content": "In this circuit, the input buffer is simplified to a termination resistance in parallel with a parasitic capacitor. This simplified circuit is the load impedance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 790,
+      "bottomRightX": 318,
+      "bottomRightY": 805,
+      "content": "### 6.7 Transmitter Specifications",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 812,
+      "bottomRightX": 360,
+      "bottomRightY": 826,
+      "content": "#### 6.7.1 Transmitter Electrical Parameters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 834,
+      "bottomRightX": 652,
+      "bottomRightY": 865,
+      "content": "Peak (p) and peak-peak (p-p) are defined in Section 6.6.2. All quantities are measured at TP2 in Figure 6-6 unless otherwise specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

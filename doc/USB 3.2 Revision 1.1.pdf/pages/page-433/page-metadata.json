@@ -1,0 +1,164 @@
+{
+  "index": 432,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 402 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 349,
+      "bottomRightY": 108,
+      "content": "### 10.6.1 Upstream Facing Port PM Timer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 115,
+      "bottomRightX": 675,
+      "bottomRightY": 207,
+      "content": "The hub upstream port maintains a logical PM timer for keeping track of when the U2 inactivity timeout is exceeded. No standard U1 inactivity timeout is defined. The U2 inactivity timeout is set when a U2 Inactivity Timeout LMP is received. The PM timer is reset when the hub upstream port link enters U1. The PM timer shall be accurate to +500/-0 μs. Other requirements for the timer are defined in the upstream port PM state machine descriptions.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 218,
+      "bottomRightX": 427,
+      "bottomRightY": 233,
+      "content": "### 10.6.2 Hub Upstream Facing Port State Descriptions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 241,
+      "bottomRightX": 317,
+      "bottomRightY": 254,
+      "content": "#### 10.6.2.1 Enabled U0 States",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 263,
+      "bottomRightX": 638,
+      "bottomRightY": 295,
+      "content": "There are four enabled U0 states that differ only in the U1 and U2 Enable settings. The following rules apply globally to all Enabled U0 states:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 307,
+      "bottomRightX": 643,
+      "bottomRightY": 375,
+      "content": "- The upstream port shall not initiate a transition to U1 or U2 if there are pending packets to transmit on the upstream port.\n- The upstream port shall accept U1 or U2 transitions from the link partner if the Force_LinkPM_Accept bit is set to one (refer to Section 8.4.2).",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 396,
+      "bottomRightX": 630,
+      "bottomRightY": 412,
+      "content": "The port behaves as follows for the various combinations of U1 and U2 Enable values:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 425,
+      "bottomRightX": 311,
+      "bottomRightY": 440,
+      "content": "U1_ENABLE = 0, U2_ENABLE = 0",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 453,
+      "bottomRightX": 671,
+      "bottomRightY": 634,
+      "content": "- This is the default state before the hub has received any SetFeature(U1/U2_ENABLE) requests.\n- The PM timer may be disabled and the PM timer values shall be ignored.\n- The port's link shall accept U1 entry requests by its link partner unless the hub has one or more packets/link commands to transmit on the port or one or more of the hub downstream ports has a link in U0 or recovery.\n- The port's link shall accept U2 entry requests by its link partner unless the hub has one or more packets/link commands to transmit on the port or one or more of the hub downstream ports has a link in U0, U1, or recovery.\n- The port's link shall not attempt to initiate transitions to U1 or U2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 654,
+      "bottomRightX": 311,
+      "bottomRightY": 671,
+      "content": "U1_ENABLE = 1, U2_ENABLE = 0",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 684,
+      "bottomRightX": 667,
+      "bottomRightY": 863,
+      "content": "- The port's link shall not initiate a U2 transition.\n- The port's link shall accept all U2 entry requests by the link partner unless the hub has one or more packets/link commands to transmit on the port or one or more of the hub downstream ports has a link in U0, U1 or recovery.\n- The port's link shall accept U1 entry requests by its link partner unless the hub has one or more packets/link commands to transmit on the port or one or more of the hub downstream ports has a link in U0 or recovery.\n- The PM timer may be disabled and the PM timer values shall be ignored.\n- The port's link shall initiate a transition to U1 if all the hub downstream ports are in U1 or a lower link state.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 885,
+      "bottomRightX": 311,
+      "bottomRightY": 901,
+      "content": "U1_ENABLE = 0, U2_ENABLE = 1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 914,
+      "bottomRightX": 448,
+      "bottomRightY": 930,
+      "content": "- The port's link shall not initiate a U1 transition.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

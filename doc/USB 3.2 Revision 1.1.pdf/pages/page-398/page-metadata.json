@@ -1,0 +1,93 @@
+{
+  "index": 397,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 367 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 208,
+      "topLeftY": 92,
+      "bottomRightX": 580,
+      "bottomRightY": 110,
+      "content": "Figure 9-8. Example of Feedback Endpoint Relationships",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 155,
+      "topLeftY": 119,
+      "bottomRightX": 633,
+      "bottomRightY": 342,
+      "content": "![img-161.jpeg](img-161.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-161.jpeg"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 367,
+      "bottomRightX": 671,
+      "bottomRightY": 413,
+      "content": "For high-speed bulk and control OUT endpoints, the bInterval field is only used for compliance purposes; the host controller is not required to change its behavior based on the value in this field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 426,
+      "bottomRightX": 358,
+      "bottomRightY": 441,
+      "content": "### 9.6.7 SuperSpeed Endpoint Companion",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 447,
+      "bottomRightX": 673,
+      "bottomRightY": 555,
+      "content": "This descriptor shall only be returned by Enhanced SuperSpeed devices that are operating at Gen X speed. Each endpoint described in an interface is followed by a SuperSpeed Endpoint Companion descriptor. This descriptor is returned as part of the configuration information returned by a GetDescriptor(Configuration) request and cannot be directly accessed with a GetDescriptor() or SetDescriptor() request. The Default Control Pipe does not have an Endpoint Companion descriptor. The Endpoint Companion descriptor shall immediately follow the endpoint descriptor it is associated with in the configuration information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

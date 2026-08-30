@@ -1,0 +1,124 @@
+{
+  "index": 114,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 291,
+      "topLeftY": 99,
+      "bottomRightX": 517,
+      "bottomRightY": 201,
+      "content": "![img-71.jpeg](img-71.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-71.jpeg"
+    },
+    {
+      "topLeftX": 226,
+      "topLeftY": 233,
+      "bottomRightX": 420,
+      "bottomRightY": 267,
+      "content": "Subject to change by individual connector\nmanufacturer to assure specified performance\nand intermateability.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 173,
+      "topLeftY": 268,
+      "bottomRightX": 459,
+      "bottomRightY": 522,
+      "content": "![img-72.jpeg](img-72.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-72.jpeg"
+    },
+    {
+      "topLeftX": 487,
+      "topLeftY": 298,
+      "bottomRightX": 626,
+      "bottomRightY": 458,
+      "content": "![img-73.jpeg](img-73.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-73.jpeg"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 544,
+      "bottomRightX": 375,
+      "bottomRightY": 570,
+      "content": "KEY B\nSHIELD DIMENSIONS",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 169,
+      "topLeftY": 583,
+      "bottomRightX": 424,
+      "bottomRightY": 808,
+      "content": "![img-74.jpeg](img-74.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-74.jpeg"
+    },
+    {
+      "topLeftX": 516,
+      "topLeftY": 544,
+      "bottomRightX": 607,
+      "bottomRightY": 570,
+      "content": "KEY AB\nSHIELD DIMENSIONS",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 426,
+      "topLeftY": 583,
+      "bottomRightX": 660,
+      "bottomRightY": 787,
+      "content": "![img-75.jpeg](img-75.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-75.jpeg"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 835,
+      "bottomRightX": 494,
+      "bottomRightY": 851,
+      "content": "NOTE : Chamfer metals are optional with no sharp edges.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 185,
+      "topLeftY": 868,
+      "bottomRightX": 638,
+      "bottomRightY": 886,
+      "content": "Figure 5-12. USB 3.1 Micro-B and -AB Receptacles Interface Dimensions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 698,
+      "bottomRightY": 993,
+      "content": "5-27",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

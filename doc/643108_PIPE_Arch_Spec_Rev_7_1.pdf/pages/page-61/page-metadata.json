@@ -1,0 +1,57 @@
+{
+  "index": 60,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 54,
+      "bottomRightX": 696,
+      "bottomRightY": 92,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 520,
+      "bottomRightY": 137,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 13 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 754,
+      "content": "| Name | Active Level | Description | Relevant Protocols |\n| --- | --- | --- | --- |\n|  |  | DisplayPort mode: | PCIe, SATA, USB, and DisplayPort |\n| Value | Rate |\n| 0 | 40.5 MHz |\n| 1 | 67.5 MHz |\n| 2 | 81 MHz |\n| 3 | 135 MHz |\n| 4 | 162 MHz |\n| 5 | 202.5 MHz |\n| 6 | 270 MHz |\n| 7 | 405 MHz |\n| 8 | 540 MHz |\n| 9 | 810 MHz |\n| 10 | 54 MHz |\n| 11 | 60.75 MHz |\n| 12 | 108 MHz |\n| 13 | 121.5 MHz |\n| 14 | 160 MHz |\n| 15 | 216 MHz |\n| 16 | 243 MHz |\n| 17 | 324 MHz |\n| 18 | 432 MHz |\n| 19 | 312.5 MHz |\n| 20 | 421.875 MHz |\n| 21 | 625 MHz |\n| All others | Reserved |\n| USB4 mode: This signal is not used.PIPE implementations that do not support more than one PCLK rate for any analog signaling rate do not implement this signal. |\n| RXTermination | High | Controls presence of receiver terminations: | USB, PCIe, DisplayPort RX, USB4 |\n| Value | Description |\n| 0 | Terminations removed |\n| 1 | Terminations present |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-33.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 955,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "61",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

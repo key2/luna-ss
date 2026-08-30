@@ -1,0 +1,57 @@
+{
+  "index": 29,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 61,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 893,
+      "content": "|  7.4.2#6 | An upstream port shall enable its LFPS receiver and Warm Reset detector in all link states except eSS.Disabled. | NT  |\n| --- | --- | --- |\n|  7.4.2#7 | Upon a completion of a Warm Reset, a downstream port shall reset its Link Error Count. | NT  |\n|  7.4.2#8 | Upon a completion of a Warm Reset, Port Configuration information of an upstream port shall be reset to default values. | 7.31  |\n|  7.4.2#9 | Upon a completion of a Warm Reset, the PHY level variables shall be reinitialized or retrained. | NT  |\n|  7.4.2#10 | Upon a completion of a Warm Reset, the LTSSM of a port shall transition to U0 through Rx.Detect and Polling. | 7.31  |\n|  7.4.2#11 | When a PORT_RESET is directed, when the downstream port is in U3, or Loopback, or Compliance Mode, or eSS.Inactive, it shall use Warm Reset. | 7.34  |\n|  7.4.2#12 | When a PORT_RESET is directed, when the downstream port is in U0, it shall use Hot Reset. | 7.29  |\n|  7.4.2#13 | When a PORT_RESET is directed, when the downstream port is in U1 or U2, it shall exit U1 or U2 using the LFPS exit handshake, transition to Recovery and then transition to Hot Reset. | NT  |\n|  7.4.2#14 | When a PORT_RESET is directed, when a downstream port is in a transitory state of Polling or Recovery, it shall use Hot Reset. | NT  |\n|  7.4.2#15 | When a PORT_RESET is directed, when a Hot Reset fails due to a LFPS handshake timeout, a downstream port shall transition to eSS.Inactive. | NT  |\n|  7.4.2#16 | When a PORT_RESET is directed, when a Hot Reset fails due to a TS1/TS2 handshake timeout, a downstream port shall transition to Rx.Detect and attempt a Warm Reset. | 7.31  |\n|  7.4.2#17 | When a PORT_RESET is directed, when the downstream port is in eSS.Disabled, an Inband Reset is prohibited. | NT  |\n|  7.4.2#18 | When BH_PORT_RESET is directed, a downstream port shall initiate a Warm Reset in all the link states except eSS.Disabled and transition to Rx.Detect. | NT  |\n|  7.4.2#19 | When BH_PORT_RESET is directed, an upstream port shall enable its LFPS receiver and Warm Reset detector in all the link states except eSS.Disabled. | NT  |\n|  7.4.2#20 | When BH_PORT_RESET is directed, an upstream port receiving Warm Reset shall transition to Rx.Detect. | NT  |\n|  Subsection reference: 7.5 Link Training and Status State Machine (LTSSM)  |   |   |\n|  Subsection reference: 7.5.1 eSS.Disabled  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-23.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 420,
+      "bottomRightY": 947,
+      "content": "22",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 309,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

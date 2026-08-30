@@ -1,0 +1,56 @@
+{
+  "index": 216,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- 186 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 93,
+      "bottomRightX": 676,
+      "bottomRightY": 410,
+      "content": "- An upstream port of a hub in SuperSpeed operation shall transition to Rx.Detect upon the 2 ms timer timeout (tPollingIdleTimeout) and the conditions to transition to U0 are not met.\n- An upstream port of a peripheral device in SuperSpeed operation shall transition to eSS.Disabled upon the 2 ms timer timeout (tPollingIdleTimeout) and the conditions to transition to U0 are not met.\n- A downstream port in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 2 ms timer timeout (tPollingIdleTimeout) and the conditions to transition U0 are not met.\n- An upstream port of a hub in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 2 ms timer timeout (tPollingIdleTimeout) and the conditions to transition to U0 are not met.\n- An upstream port of a peripheral device in SuperSpeedPlus operation shall transition to Polling.PortMatch to negotiate for alternative operation upon the 2 ms timer timeout (tPollingIdleTimeout) and the conditions to transition to U0 are not met.\n- A downstream port shall transition to Rx.Detect when Warm Reset is directed.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

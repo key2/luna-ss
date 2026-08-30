@@ -1,0 +1,58 @@
+{
+  "index": 105,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 31,
+      "bottomRightX": 376,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 132,
+      "topLeftY": 100,
+      "bottomRightX": 731,
+      "bottomRightY": 486,
+      "content": "![img-45.jpeg](img-45.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-45.jpeg"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 517,
+      "bottomRightX": 642,
+      "bottomRightY": 849,
+      "content": "![img-46.jpeg](img-46.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-46.jpeg"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 862,
+      "bottomRightX": 694,
+      "bottomRightY": 894,
+      "content": "Figure 5-7. Example Footprint for the USB 3.1 Standard-A Receptacle - Mid-Mount Reverse Mount Through-Hole with Insertion Detect",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-18",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "index": 621,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 30,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 690,
+      "bottomRightY": 144,
+      "content": "In the following subsections, first a description of BELT and its relationship to overall system exit latency is given. This is followed by a description of a device state machine implementation example.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 162,
+      "bottomRightX": 591,
+      "bottomRightY": 184,
+      "content": "### C.4.1 Device State Machine Implementation Example",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 189,
+      "bottomRightX": 657,
+      "bottomRightY": 223,
+      "content": "This section describes an example of a typical device implementation. It assumes the device implementation supports both U1 and U2 in conjunction with LTM.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 231,
+      "bottomRightX": 569,
+      "bottomRightY": 248,
+      "content": "In this example, two device Latency Tolerance states (LT-states) are defined:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 253,
+      "bottomRightX": 684,
+      "bottomRightY": 323,
+      "content": "- LT-idle state: the device is idle and can tolerate a larger latency from the system (this is the default state).\n- LT-active state: the device has determined a need to perform data transfers with the host and wants a shorter latency from the system.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 328,
+      "bottomRightX": 378,
+      "bottomRightY": 344,
+      "content": "A state machine is illustrated in Figure C-8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 268,
+      "topLeftY": 369,
+      "bottomRightX": 557,
+      "bottomRightY": 436,
+      "content": "![img-298.jpeg](img-298.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-298.jpeg"
+    },
+    {
+      "topLeftX": 318,
+      "topLeftY": 451,
+      "bottomRightX": 504,
+      "bottomRightY": 467,
+      "content": "Figure C-8. LT State Diagram",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 486,
+      "bottomRightX": 686,
+      "bottomRightY": 521,
+      "content": "The device described by this implementation example is designed to accommodate the worst case value for U1SEL during LT-active, and the worst case value for U2SEL during LT-idle.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 529,
+      "bottomRightX": 407,
+      "bottomRightY": 547,
+      "content": "The following device design goals are to be met:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 551,
+      "bottomRightX": 519,
+      "bottomRightY": 587,
+      "content": "- Design for a minimum LTM BELT of 1 ms when in LT-idle\n- Design for a minimum LTM BELT of 125 μs when in LT-active",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 602,
+      "bottomRightX": 338,
+      "bottomRightY": 620,
+      "content": "#### C.4.1.1 LTM-Idle State BELT",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 626,
+      "bottomRightX": 694,
+      "bottomRightY": 727,
+      "content": "The device determines its LT-idle state BELT value by subtracting U2SEL from the total latency it can tolerate. To achieve a minimum LT-idle state BELT of 1 ms, the total latency the device must be able to tolerate is 1 ms plus the worst case value for U2SEL, or a total of approximately 3.1 ms (refer to Section C.1.5.1). The worst case U2SEL is based on a worst case device-to-host U2 exit latency of 2.053 ms for t1 (2.047 ms device exit latency plus 1 μs for each of five hubs), plus 0.003 ms for t2, plus 0.001 ms for t4, plus some guard band.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 736,
+      "bottomRightX": 676,
+      "bottomRightY": 770,
+      "content": "For system implementations where U2SEL is less than its worst case value, the device reports a BELT value larger than 1 ms.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 88,
+      "topLeftY": 787,
+      "bottomRightX": 358,
+      "bottomRightY": 806,
+      "content": "#### C.4.1.2 LTM-Active State BELT",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 812,
+      "bottomRightX": 696,
+      "bottomRightY": 897,
+      "content": "The device determines its LT-active state BELT value by subtracting U1SEL from the total latency it can tolerate. To achieve a minimum LT-active state BELT of 125 μs, the total latency the device must be able to tolerate is 125 μs plus the maximum value for U1SEL, or a total of approximately 145 μs. The worst case U1SEL is based on a worst case device-to-host U1 exit latency of 15 μs for t1 (10 μs device exit latency plus 1 μs for each of five hubs), plus 3.1 μs for t2, plus 1.3 μs for t4,",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 119,
+      "bottomRightY": 994,
+      "content": "C-24",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

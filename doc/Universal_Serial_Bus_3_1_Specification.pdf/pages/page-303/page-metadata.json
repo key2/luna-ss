@@ -1,0 +1,104 @@
+{
+  "index": 302,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 108,
+      "bottomRightX": 307,
+      "bottomRightY": 123,
+      "content": "Table 8-4. Set Link Function",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 128,
+      "bottomRightX": 700,
+      "bottomRightY": 332,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | **Subtype**. This field shall be set to *Set Link Function* for a Set Link Function LMP.  |\n|  7 | 0:9 | **Set Link Function**. These 7 bits identify the Set Link Function. **Bits****Description** 0 Reserved. 1 Force_LinkPM_Accept **Value****Meaning** 0 De-assert 1 Assert 6:2 Reserved.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-107.md"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 353,
+      "bottomRightX": 371,
+      "bottomRightY": 375,
+      "content": "### 8.4.3 U2 Inactivity Timeout",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 379,
+      "bottomRightX": 660,
+      "bottomRightY": 413,
+      "content": "The U2 Inactivity Timeout LMP shall be used to define the timeout from U1 to U2. Refer to Section 10.6 for details on this LMP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 163,
+      "topLeftY": 437,
+      "bottomRightX": 661,
+      "bottomRightY": 563,
+      "content": "![img-192.jpeg](img-192.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-192.jpeg"
+    },
+    {
+      "topLeftX": 292,
+      "topLeftY": 574,
+      "bottomRightX": 532,
+      "bottomRightY": 593,
+      "content": "Figure 8-6. U2 Inactivity Timeout LMP",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 621,
+      "bottomRightX": 398,
+      "bottomRightY": 638,
+      "content": "Table 8-5. U2 Inactivity Timer Functionality",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 640,
+      "bottomRightX": 700,
+      "bottomRightY": 743,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 0:5 | **Subtype**. This field shall be set to *U2 Inactivity Timeout* for a U2 Inactivity Timeout LMP.  |\n|  8 | 0:9 | **U2 Inactivity Timeout**. These 8 bits represent the U2 Inactivity Timeout value. The value placed in this field is the same value that is sent to the hub in a Set Port Feature (PORT_U2_TIMEOUT) command. Refer to Section 10.16.2.10 for details on the encoding of this field.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-108.md"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "8-9",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

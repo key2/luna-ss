@@ -1,0 +1,75 @@
+{
+  "index": 434,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 593,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 117,
+      "bottomRightX": 425,
+      "bottomRightY": 141,
+      "content": "## 9.4 Standard Device Requests",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 153,
+      "bottomRightX": 684,
+      "bottomRightY": 204,
+      "content": "This section describes the standard device requests defined for all devices. Table 9-4 outlines the standard device requests, while Table 9-5 and Table 9-6 give the standard request codes and descriptor types, respectively.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 211,
+      "bottomRightX": 691,
+      "bottomRightY": 263,
+      "content": "Devices shall respond to standard device requests, even if the device has not yet been assigned an address or has not been configured. If a standard request defines a persistent parameter that can be modified, the reset/default value for that parameter, unless otherwise specified, is zero.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 281,
+      "bottomRightX": 359,
+      "bottomRightY": 297,
+      "content": "Table 9-4. Standard Device Requests",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 299,
+      "bottomRightX": 710,
+      "bottomRightY": 827,
+      "content": "|  bmRequestType | bRequest | wValue |   | wIndex |   | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  00000000B 00000001B 00000010B | CLEAR_FEATURE | Feature Selector |   | Zero Interface Endpoint |   | Zero | None  |\n|  10000000B | GET_CONFIGURATION | Zero |   | Zero |   | One | Configuration Value  |\n|  10000000B | GET_DESCRIPTOR | Descriptor Type and Descriptor Index |   | Zero or Language ID |   | Descriptor Length | Descriptor  |\n|  10000001B | GET_INTERFACE | Zero |   | Interface |   | One | Alternate Interface  |\n|  10000000B 10000001B 10000010B | GET_STATUS | Zero | Status Type | Zero Interface Endpoint |   | Two | Device, Interface, or Endpoint Status  |\n|  00000000B | SET_ADDRESS | Device Address |   | Zero |   | Zero | None  |\n|  00000000B | SET_CONFIGURATION | Configuration Value |   | Zero |   | Zero | None  |\n|  00000000B | SET_DESCRIPTOR | Descriptor Type and Descriptor Index |   | Zero or Language ID |   | Descriptor Length | Descriptor  |\n|  00000000B 00000001B 00000010B | SET_FEATURE | Feature Selector |   | Options | Zero Interface Endpoint | Zero | None  |\n|  00000001B | SET_INTERFACE | Alternate Setting |   | Interface |   | Zero | None  |\n|  00000000B | SET_ISOCH_DELAY | Delay in ns |   | Zero |   | Zero | None  |\n|  00000000B | SET_SEL | Zero |   | Zero |   | Six | Exit Latency Values  |\n|  10000010B | SYNCH_FRAME | Zero |   | Endpoint |   | Two | Frame Number  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-150.md"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "9-17",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

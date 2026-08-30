@@ -1,0 +1,66 @@
+{
+  "index": 178,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 92,
+      "bottomRightX": 622,
+      "bottomRightY": 128,
+      "content": "TR-35-2004, INCITS Technical Report for Information Technology – Fibre Channel – Methodologies for Jitter and Signal Quality Specification (FC-MJSQ).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 136,
+      "bottomRightX": 691,
+      "bottomRightY": 220,
+      "content": "The clock recovery function is given by Equations 1-3. A schematic of the general clock recovery function is shown in Figure 6-12. As shown, the clock recovery circuit has a low pass response. After the recovered clock is compared (subtracted) to the data, the overall clock recovery becomes a high pass function. This is shown with the appropriate bandwidths in Figure 6-13 for Gen 1 operation and in Figure 6-14 for Gen 2 operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 270,
+      "topLeftY": 243,
+      "bottomRightX": 556,
+      "bottomRightY": 488,
+      "content": "![img-134.jpeg](img-134.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-134.jpeg"
+    },
+    {
+      "topLeftX": 184,
+      "topLeftY": 502,
+      "bottomRightX": 638,
+      "bottomRightY": 519,
+      "content": "Figure 6-12. Jitter Filtering – “Golden PLL” and Jitter Transfer Functions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "6-23",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

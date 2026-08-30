@@ -1,0 +1,74 @@
+{
+  "index": 77,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 53,
+      "bottomRightX": 186,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 119,
+      "bottomRightX": 648,
+      "bottomRightY": 191,
+      "content": "# 7 PIPE Message Bus Address Spaces",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 219,
+      "bottomRightX": 687,
+      "bottomRightY": 335,
+      "content": "The PIPE specification defines 12-bit address spaces to enable the message bus interface; the MAC and the PHY each implement a unique 12-bit address space as shown in Figure 7-1. These address spaces are used to host registers associated with certain PIPE operations. The MAC and PHY access specific bits in the registers to initiate operations, to participate in handshakes, or to indicate status. The MAC initiates requests on the message bus interface to access registers hosted in the PHY address space. The PHY initiates requests on the message bus interface to access registers hosted in the MAC address space.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 341,
+      "bottomRightX": 687,
+      "bottomRightY": 542,
+      "content": "Each 12-bit address space is divided into four main regions: the receiver address region, the transmitter address region, the common address region, and the vendor-specific address region. The receiver address region is used to configure and report the status related to receiver operation; it spans the 1024-KB region from 12'h000 to 12'h3FF and supports up to two receivers with 512 KB allocated to each. The transmitter address region is used to configure and report status related to transmitter operation; it spans the 1024-KB region from 12'h400 to 12'h7FF and supports up to two transmitters: TX1 and TX2, with a 512 KB region associated with each. The common address region hosts the registers relevant to both receiver and transmitter operation; it spans the 1024-KB region from 12'h800 to 12'hBFF and supports up two sets of Rx/Tx pairs with 512 KB allocated towards the common registers for each pair. The vendor-specific address region is the 1024K region from 12'hC00 to 12'hFFF, which enables individual vendors to define registers as needed outside of those defined in this PIPE specification.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 549,
+      "bottomRightX": 687,
+      "bottomRightY": 606,
+      "content": "As noted in the previous paragraphs, the address space is defined to support configurable Rx/Tx pairs. Up to two differential pairs are assumed to be operational at any one time. Supported combinations are one Rx and one Tx pair, two Tx pairs, or two Rx pairs.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 90,
+      "topLeftY": 953,
+      "bottomRightX": 107,
+      "bottomRightY": 966,
+      "content": "78",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 491,
+      "topLeftY": 953,
+      "bottomRightX": 689,
+      "bottomRightY": 966,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

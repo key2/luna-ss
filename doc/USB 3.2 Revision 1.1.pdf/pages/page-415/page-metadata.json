@@ -1,0 +1,66 @@
+{
+  "index": 414,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 384 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 94,
+      "bottomRightX": 631,
+      "bottomRightY": 111,
+      "content": "**Table 10-1. Downstream Facing Hub Port State Machine Diagram Legend**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 149,
+      "topLeftY": 120,
+      "bottomRightX": 709,
+      "bottomRightY": 918,
+      "content": "|  Key | Description  |\n| --- | --- |\n|  1st.lfps.timeout | First LFPS Timeout after Receiving SetPortFeature(PORT_LINK_STATE)=Compliance Mode  |\n|  clear.port.power | Received ClearPortFeature(PORT_POWER)  |\n|  connect.detected | Connect Detected  |\n|  device.connected | Device is connected as reported by LTSSM receiver detection, except when detected for DSPORT-Powered-off-reset or DSPORT-Powered-off-detect states.  |\n|  disconnect.detected | Disconnect Detected  |\n|  ds.power.switches | Hub reports non-zero value in bPwrOn2PwrGood field of hub descriptor. Hub supports power switching.  |\n|  ds.vbus.source = off | Downstream port VBUS is Off due to loss of Local Power Source when hub is self-powered.  |\n|  ds.vbus.source = on | Downstream port VBUS may be On. Local Power Source is On or the hub is bus-powered.  |\n|  entered.U0 | Link Transitions from Polling.Idle to U0  |\n|  link.in.loopback | Loopback bit set in received TS2 ordered sets  |\n|  loopback.exit.bad | Loopback exit LFPS handshake failed (applies only if Downstream Port is loopback master)  |\n|  loopback.exit.good | Loopback exit LFPS handshake successful  |\n|  overcurrent | Over-current is active.  |\n|  polling.timeout | Any Polling substate times out  |\n|  polling.timeout.count | See Chapter 7 for definition of cPollingTimeout  |\n|  port.config.failed | Port Configuration Fails (refer to Section 8.4.6)  |\n|  ready.to.turn.off.term | Ready to turn off receiver termination. Warm reset tReset duration was met or no device is connected or port was in a powered on state and not performing a warm reset or optionally when downstream port is power switched and USB 2.0 hub has also turned off power to the port. These conditions ensure that a device connected to this downstream port will not drop to Compliance when termination is removed.  |\n|  recovery.fails | Link Exits Recovery after Timeout  |\n|  repower | Repowering conditions defined in Section 10.3.1.10 are met  |\n|  reset.done | Reset Completes Successfully  |\n|  set.config = 0 | Received SetConfig(0) request  |\n|  set.config = 1 | Received SetConfig(1) request  |\n|  set.port.compliance | Received SetPortFeature(PORT_LINK_STATE) = Compliance Mode.  |\n|  set.port.power | Received SetPortFeature(PORT_POWER)  |\n|  set.reset | Received SetPortFeature(PORT_RESET)  |\n|  set.rx.detect | Received SetPortFeature(PORT_LINK_STATE) = Rx.Detect  |\n|  set.ss.disabled | Received SetPortFeature(PORT_LINK_STATE) = eSS.Disabled  |\n|  set.warm.reset | Received SetPortFeature(PORT_BH_RESET)  |\n|  speed.change | The upstream port trained to a lower speed than a downstream port speed.  |\n|  treset | Warm Reset has been signaled for tReset duration.  |\n|  us.port.reset | Received in-band reset on Upstream Port  |\n|  us.ss.disabled | Upstream port transitioned to eSS.Disabled.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-208.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

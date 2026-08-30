@@ -1,0 +1,57 @@
+{
+  "index": 29,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 375,
+      "topLeftY": 46,
+      "bottomRightX": 415,
+      "bottomRightY": 61,
+      "content": "- xxx -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 91,
+      "bottomRightX": 676,
+      "bottomRightY": 927,
+      "content": "|  Table 8-26. Isochronous Timestamp Packet Format | 248  |\n| --- | --- |\n|  Table 8-27. Device Responses to TP Requesting Data (Bulk, Control, and Interrupt Endpoints) | 255  |\n|  Table 8-28. Host Responses to Data Received from a Device (Bulk, Control, and Interrupt Endpoints) | 256  |\n|  Table 8-29. Device Responses to OUT Transactions (Bulk, Control, and Interrupt Endpoints) | 257  |\n|  Table 8-30. Device Responses to SETUP Transactions (Only for Control Endpoints) | 258  |\n|  Table 8-31. Status Stage Responses | 292  |\n|  Table 8-32. ACK TP and DPs for Pipelined Isochronous IN Transactions | 310  |\n|  Table 8-33. Device Responses to Isochronous IN Transactions | 312  |\n|  Table 8-34. Host Responses to IN Transactions | 312  |\n|  Table 8-35. Device Responses to OUT Data Packets | 313  |\n|  Table 8-36. Timing Parameters | 314  |\n|  Table 9-1. Visible Enhanced SuperSpeed Device States | 319  |\n|  Table 9-2. Preserved USB Suspend State Parameters | 325  |\n|  Table 9-3. Format of Setup Data | 329  |\n|  Table 9-4. Standard Device Requests | 331  |\n|  Table 9-5. Standard Request Codes | 331  |\n|  Table 9-6. Descriptor Types | 332  |\n|  Table 9-7. Standard Feature Selectors | 333  |\n|  Table 9-8. Standard Status Type Codes | 336  |\n|  Table 9-9. Suspend Options | 343  |\n|  Table 9-10. Device Parameters and Events | 347  |\n|  Table 9-11. Standard Device Descriptor | 349  |\n|  Table 9-12. BOS Descriptor | 350  |\n|  Table 9-13. Format of a Device Capability Descriptor | 351  |\n|  Table 9-14. Device Capability Type Codes | 351  |\n|  Table 9-15. USB 2.0 Extension Descriptor | 353  |\n|  Table 9-16. SuperSpeed Device Capability Descriptor | 354  |\n|  Table 9-17. Container ID Descriptor | 356  |\n|  Table 9-18. Platform Descriptor | 356  |\n|  Table 9-19. SuperSpeedPlus Descriptor | 357  |\n|  Table 9-20. PTM Capability Descriptor | 359  |\n|  Table 9-21. Configuration Summary Descriptor | 359  |\n|  Table 9-22. FWStatus Capability | 360  |\n|  Table 9-23. Standard Configuration Descriptor | 360  |\n|  Table 9-24. Standard Interface Association Descriptor | 362  |\n|  Table 9-25. Standard Interface Descriptor | 363  |\n|  Table 9-26. Standard Endpoint Descriptor | 364  |\n|  Table 9-27. Example of Feedback Endpoint Numbers | 366  |\n|  Table 9-28. SuperSpeed Endpoint Companion Descriptor | 368  |\n|  Table 9-29. SuperSpeedPlus Isochronous Endpoint Companion Descriptor | 370  |\n|  Table 9-30. String Descriptor Zero, Specifying Languages Supported by the Device | 370  |\n|  Table 9-31. UNICODE String Descriptor | 371  |\n|  Table 9-32. Constants | 371  |\n|  Table 10-1. Downstream Facing Hub Port State Machine Diagram Legend | 384  |\n|  Table 10-2. Downstream USB Standard-A Port VBus Requirements | 386  |\n|  Table 10-3. Downstream Flowing Header Packet Processing Actions | 419  |\n|  Table 10-4. Hub Power Operating Mode Summary | 430  |\n|  Table 10-5. Enhanced SuperSpeed Hub Descriptor | 437  |\n|  Table 10-6. Hub Responses to Standard Device Requests | 439  |\n|  Table 10-7. Hub Class Requests | 440  |\n|  Table 10-8. Hub Class Request Codes | 440  |\n|  Table 10-9. Hub Class Feature Selectors | 441  |\n|  Table 10-10. Hub Status Field, *wHubStatus* | 443  |\n|  Table 10-11. Hub Change Field, *wHubChange* | 443  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-20.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

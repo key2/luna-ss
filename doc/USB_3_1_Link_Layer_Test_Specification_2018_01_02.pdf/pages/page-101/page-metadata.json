@@ -1,0 +1,146 @@
+{
+  "index": 100,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 650,
+      "bottomRightY": 267,
+      "content": "14. The LVS does not transmit the TS1 ordered sets during Polling.Active.\n15. The test fails if the PUT does not transition to Rx.Detect after tPollingActiveTimeout.\n16. The LVS and PUT transition through Polling.LFPS to Polling.Configuration.\n17. The LVS does not transmit the TS2 ordered sets during Polling.Configuration.\n18. The test fails if the PUT does not transition to Rx.Detect after tPollingConfigurationTimeout.\n19. The LVS and PUT transition through Polling.LFPS to Polling.Active.\n20. The LVS does not transmit the TS1 ordered sets during Polling.Active.\n21. The test fails if the PUT does not transition to eSS.Inactive after tPollingActiveTimeout.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 325,
+      "bottomRightX": 503,
+      "bottomRightY": 343,
+      "content": "### TD.7.41 SetAddress TPF Bit Test (Gen 2 Upstream Port Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 345,
+      "bottomRightX": 610,
+      "bottomRightY": 359,
+      "content": "This test verifies that the PUT sets the TPF bit at the end of a SetAddress Control Transfer.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 369,
+      "bottomRightX": 235,
+      "bottomRightY": 381,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 390,
+      "bottomRightX": 189,
+      "bottomRightY": 404,
+      "content": "8.5.6.7#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 415,
+      "bottomRightX": 254,
+      "bottomRightY": 430,
+      "content": "#### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 435,
+      "bottomRightX": 584,
+      "bottomRightY": 495,
+      "content": "1. Perform the Link Initialization Sequence to bring the LVS and PUT link to U0.\n2. The LVS sends a SetAddress command to the PUT.\n3. The test fails if:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 503,
+      "bottomRightX": 710,
+      "bottomRightY": 555,
+      "content": "a. The SetAddress control transfer does not complete.\nb. The ACK response to the STATUS packet of the control transfer does not have the TPF bit set to 1.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 631,
+      "bottomRightX": 458,
+      "bottomRightY": 648,
+      "content": "### TD.7.42 Symbol to Block Alignment Test (Gen 2 Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 651,
+      "bottomRightX": 257,
+      "bottomRightY": 665,
+      "content": "Condition to be tested:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 673,
+      "bottomRightX": 435,
+      "bottomRightY": 911,
+      "content": "A. Start every Packet in the 0th symbol of a block.\nB. Start every Packet in the 1st symbol of a block.\nC. Start every Packet in the 2nd symbol of a block.\nD. Start every Packet in the 3rd symbol of a block.\nE. Start every Packet in the 4th symbol of a block.\nF. Start every Packet in the 5th symbol of a block.\nG. Start every Packet in the 6th symbol of a block.\nH. Start every Packet in the 7th symbol of a block.\nI. Start every Packet in the 8th symbol of a block.\nJ. Start every Packet in the 9th symbol of a block.\nK. Start every Packet in the 10th symbol of a block.\nL. Start every Packet in the 11th symbol of a block.\nM. Start every Packet in the 12th symbol of a block.\nN. Start every Packet in the 13th symbol of a block.\nO. Start every Packet in the 14th symbol of a block.\nP. Start every Packet in the 15th symbol of a block.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "93",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

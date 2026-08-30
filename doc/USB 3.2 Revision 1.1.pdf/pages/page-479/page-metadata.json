@@ -1,0 +1,138 @@
+{
+  "index": 478,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 60,
+      "content": "Revision 1.1",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 62,
+      "bottomRightX": 176,
+      "bottomRightY": 77,
+      "content": "June 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 448 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 60,
+      "content": "Universal Serial Bus 3.2",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 595,
+      "topLeftY": 62,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 92,
+      "bottomRightX": 198,
+      "bottomRightY": 108,
+      "content": "# PORT_SPEED",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 121,
+      "bottomRightX": 663,
+      "bottomRightY": 167,
+      "content": "This value in this field is only valid when the PORT_ENABLE bit is set to one and the Port Status Type is set to PORT_STATUS. A value of zero in this field indicates that an Enhanced SuperSpeed device is attached. All other values in this field are reserved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 179,
+      "bottomRightX": 666,
+      "bottomRightY": 225,
+      "content": "System Software can determine the actual speed at which the device is operating by using the Get Port Status request with the Port Status Type set to EXT_PORT_STATUS (see Section 10.16.2.6.3).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 237,
+      "bottomRightX": 424,
+      "bottomRightY": 253,
+      "content": "This field can only be read by USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 266,
+      "bottomRightX": 346,
+      "bottomRightY": 281,
+      "content": "### 10.16.2.6.2 Port Status Change Bits",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 287,
+      "bottomRightX": 671,
+      "bottomRightY": 379,
+      "content": "Port status change bits are used to indicate changes in port status bits that are not the direct result of requests. Port status change bits can be cleared with a ClearPortFeature() request or by a hub reset. Hubs may allow setting of the status change bits with a SetPortFeature() request for diagnostic purposes. If a hub does not support setting of the status change bits, it may either treat the request as a Request Error or as a functional no-operation. Table 10-14 describes the various bits in the wPortChange field.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 245,
+      "topLeftY": 391,
+      "bottomRightX": 542,
+      "bottomRightY": 408,
+      "content": "Table 10-14. Port Change Field, wPortChange",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 116,
+      "topLeftY": 418,
+      "bottomRightX": 673,
+      "bottomRightY": 854,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0 | Connect Status Change (C_PORT_CONNECTION): Indicates a change has occurred in the port's Current Connect Status. The hub device sets this field as described in Section 10.3.1. **Value****Meaning** 0 No change has occurred to Current Connect status 1 Current Connect status has changed  |\n|  1-2 | Reserved  |\n|  3 | Over-Current Indicator Change (C_PORT_OVER_CURRENT): This field applies only to hubs that report over-current conditions on a per-port basis (as reported in the hub descriptor). **Value****Meaning** 0 No change has occurred to Over-Current Indicator 1 Over-Current Indicator has changed If the hub does not report over-current on a per-port basis, then this field is always zero.  |\n|  4 | Reset Change (C_PORT_RESET): This field is set when reset processing for any type of reset on this port is complete. **Value****Meaning** 0 No change 1 Reset complete  |\n|  5 | BH Reset Change (C_BH_PORT_RESET): This field is set when a warm reset processing on this port is complete **Value****Meaning** 0 No change 1 Reset complete  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-251.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

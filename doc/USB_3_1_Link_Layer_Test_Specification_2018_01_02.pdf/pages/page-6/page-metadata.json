@@ -1,0 +1,56 @@
+{
+  "index": 5,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 235,
+      "bottomRightY": 61,
+      "content": "Chapter 1: Introduction",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 358,
+      "topLeftY": 48,
+      "bottomRightX": 430,
+      "bottomRightY": 60,
+      "content": "Revision 0.94",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 666,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 60,
+      "content": "1/2/2017",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 92,
+      "bottomRightX": 700,
+      "bottomRightY": 926,
+      "content": "Subsection reference: 7.5.4.2 Polling Requirements ...26\nSubsection reference: 7.5.4.3 Polling.LFPS ...26\nSubsection reference: 7.5.4.3.1 Polling.LFPS Requirements ...26\nSubsection reference: 7.5.4.3.2 Exit from Polling.LFPS ...27\nSubsection reference: 7.5.4.4 Polling.LFPSPlus ...28\nSubsection reference: 7.5.4.4.1 Polling.LFPSPlus Requirements ...28\nSubsection reference: 7.5.4.4.2 Exit from Polling.LFPSPlus ...28\nSubsection reference: 7.5.4.5 Polling.PortMatch ...29\nSubsection reference: 7.5.4.5.2 Polling.PortMatch Requirements ...29\nSubsection reference: 7.5.4.5.3 Exit from Polling.PortMatch ...29\nSubsection reference: 7.5.4.6 Polling.PortConfig ...30\nSubsection reference: 7.5.4.6.1 Polling.PortConfig Requirements ...30\nSubsection reference: 7.5.4.6.2 Exit from Polling.PortConfig ...30\nSubsection reference: 7.5.4.7 Polling.RxEQ ...31\nSubsection reference: 7.5.4.7.1 Polling.RxEQ Requirements ...31\nSubsection reference: 7.5.4.7.2 Exit from Polling.RxEQ ...31\nSubsection reference: 7.5.4.8 Polling.Active ...31\nSubsection reference: 7.5.4.8.1 Polling.Active Requirements ...31\nSubsection reference: 7.5.4.8.2 Exit from Polling.Active ...31\nSubsection reference: 7.5.4.9 Polling.Configuration ...32\nSubsection reference: 7.5.4.9.1 Polling.Configuration Requirements ...32\nSubsection reference: 7.5.4.9.2 Exit from Polling.Configuration ...33\nSubsection reference: 7.5.4.10 Polling.Idle ...34\nSubsection reference: 7.5.4.10.1 Polling.Idle Requirements ...34\nSubsection reference: 7.5.4.10.2 Exit form Polling.Idle ...34\nSubsection reference: 7.5.5 Compliance Mode ...35\nSubsection reference: 7.5.5.1 Compliance Mode Requirements ...36\nSubsection reference: 7.5.5.2 Exit from Compliance Mode ...36\nSubsection reference: 7.5.6 U0 ...36\nSubsection reference: 7.5.6.1 U0 Requirements ...36\nSubsection reference: 7.5.6.2 Exit from U0 ...36\nSubsection reference: 7.5.7 U1 ...37\nSubsection reference : 7.5.7.1 U1 Requirements ...37\nSubsection reference: 7.5.7.2 Exit from U1 ...37\nSubsection reference: 7.5.8 U2 ...38\nSubsection reference: 7.5.8.1 U2 Requirements ...38\nSubsection reference: 7.5.8.2 Exit from U2 ...38\nSubsection reference: 7.5.9 U3 ...38\nSubsection reference: 7.5.9.1 U3 Requirements ...39\nSubsection reference: 7.5.9.2 Exit from U3 ...39\nSubsection reference: 7.5.10 Recovery ...39\nSubsection reference: 7.5.10.3 Recovery.Active ...39\nSubsection reference: 7.5.10.3.1 Recovery.Active Requirements ...39\nSubsection reference: 7.5.10.3.2 Exit from Recovery.Active ...40\nSubsection reference: 7.5.10.4 Recovery.Configuration ...40\nSubsection reference: 7.5.10.4.1 Recovery.Configuration Requirements ...40\nSubsection reference: 7.5.10.4.2 Exit from Recovery.Configuration ...40\nSubsection reference: 7.5.10.5 Recovery.Idle ...41\nSubsection reference: 7.5.10.5.1 Recovery.Idle Requirements ...41\nSubsection reference: 7.5.10.5.2 Exit from Recovery.Idle ...42\nSubsection reference: 7.5.11 Loopback ...42\nSubsection reference: 7.5.11.3.1 Loopback.Active Requirements ...42\nSubsection reference: 7.5.11.3.2 Exit from Loopback.Active ...42\nSubsection reference: 7.5.11.4 Loopback.Exit ...43\nSubsection reference: 7.5.11.4.1 Loopback.Exit Requirements ...43\nSubsection reference: 7.5.11.4.2 Exit from Loopback.Exit ...43",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 969,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

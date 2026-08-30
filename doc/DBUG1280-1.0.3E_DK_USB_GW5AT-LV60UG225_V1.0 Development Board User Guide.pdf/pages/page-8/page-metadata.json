@@ -1,0 +1,110 @@
+{
+  "index": 7,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 73,
+      "topLeftY": 35,
+      "bottomRightX": 169,
+      "bottomRightY": 48,
+      "content": "1 About This Guide",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 584,
+      "topLeftY": 35,
+      "bottomRightX": 646,
+      "bottomRightY": 49,
+      "content": "1.1 Purpose",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 332,
+      "topLeftY": 200,
+      "bottomRightX": 653,
+      "bottomRightY": 267,
+      "content": "# 1 About This Guide",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 331,
+      "bottomRightX": 184,
+      "bottomRightY": 357,
+      "content": "## 1.1 Purpose",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 370,
+      "bottomRightX": 649,
+      "bottomRightY": 428,
+      "content": "The DK_USB_GW5AT-LV60UG225_V1.0 development board (hereinafter referred to as “the development board”) user guide consists of following three parts:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 436,
+      "bottomRightX": 644,
+      "bottomRightY": 513,
+      "content": "- A brief introduction to the features of the development board.\n- An introduction to the development board system architecture and hardware resources.\n- An introduction to the hardware circuits, functions and pin distribution.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 65,
+      "topLeftY": 528,
+      "bottomRightX": 298,
+      "bottomRightY": 550,
+      "content": "## 1.2 Related Documents",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 166,
+      "topLeftY": 570,
+      "bottomRightX": 624,
+      "bottomRightY": 606,
+      "content": "The latest user guides are available on the GOWINSEMI Website. You can find the related documents at www.gowinsemi.com:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 167,
+      "topLeftY": 617,
+      "bottomRightX": 652,
+      "bottomRightY": 733,
+      "content": "- DS981, GW5AT series of FPGA Products Data Sheet\n- UG1222, GW5AT-60 Pinout\n- UG983, GW5AT series of FPGA Products Package and Pinout User Guide\n- UG718, Arora V 60K FPGA Products Programming and Configuration User Guide",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 167,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 618,
+      "topLeftY": 943,
+      "bottomRightX": 646,
+      "bottomRightY": 957,
+      "content": "1(23)",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

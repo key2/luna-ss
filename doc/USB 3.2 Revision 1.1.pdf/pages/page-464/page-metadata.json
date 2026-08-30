@@ -1,0 +1,132 @@
+{
+  "index": 463,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 374,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 433 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 112,
+      "bottomRightX": 296,
+      "bottomRightY": 125,
+      "content": "SuperSpeed USB Device Capability",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 126,
+      "bottomRightX": 496,
+      "bottomRightY": 297,
+      "content": "|  bLength | 10  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | SUPERSPEED_USB  |\n|  bmAttributes | Implementation-dependent  |\n|  wSpeedsSupported | 14  |\n|  bFunctionalitySupport | 1  |\n|  bU1DevExitLat | Implementation-dependent  |\n|  wU2DevExitLat | Implementation-dependent  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-216.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 313,
+      "bottomRightX": 180,
+      "bottomRightY": 326,
+      "content": "ContainerID",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 328,
+      "bottomRightX": 496,
+      "bottomRightY": 437,
+      "content": "|  bLength | 20  |\n| --- | --- |\n|  bDescriptorType | DEVICE CAPABILITY Descriptor type  |\n|  bDevCapabilityType | CONTAINER_ID  |\n|  bReserved | 0  |\n|  ContainerID | Implementation-dependent  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-217.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 456,
+      "bottomRightX": 620,
+      "bottomRightY": 488,
+      "content": "The hub shall also return SuperSpeedPlus USB Device Capability and Precision Time Measurement capability as defined for a hub operating in SuperSpeedPlus mode.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 499,
+      "bottomRightX": 387,
+      "bottomRightY": 513,
+      "content": "Configuration Descriptor (SuperSpeed information)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 514,
+      "bottomRightX": 496,
+      "bottomRightY": 697,
+      "content": "|  bLength | 9  |\n| --- | --- |\n|  bDescriptorType | CONFIGURATION Descriptor type  |\n|  wTotalLength | 31  |\n|  bNumInterfaces | 1  |\n|  bConfigurationValue | X  |\n|  iConfiguration | Y  |\n|  bmAttributes | Z  |\n|  bMaxPower | The maximum amount of bus power the hub will consume in this configuration  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-218.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 715,
+      "bottomRightX": 222,
+      "bottomRightY": 727,
+      "content": "Interface Descriptor",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 729,
+      "bottomRightX": 496,
+      "bottomRightY": 921,
+      "content": "|  bLength | 9  |\n| --- | --- |\n|  bDescriptorType | INTERFACE Descriptor type  |\n|  bInterfaceNumber | 0  |\n|  bAlternateSetting | 0  |\n|  bNumEndpoints | 1  |\n|  bInterfaceClass | HUB_CLASSCODE {9}  |\n|  bInterfaceSubClass | 0  |\n|  bInterfaceProtocol | 0  |\n|  iInterface | 1  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-219.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

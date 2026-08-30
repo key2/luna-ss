@@ -1,0 +1,66 @@
+{
+  "index": 320,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 290 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 276,
+      "topLeftY": 92,
+      "bottomRightX": 513,
+      "bottomRightY": 110,
+      "content": "Figure 8-47. Control Read Sequence",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 123,
+      "bottomRightX": 535,
+      "bottomRightY": 663,
+      "content": "![img-138.jpeg](img-138.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-138.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

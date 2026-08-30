@@ -1,0 +1,23 @@
+Mechanical
+
+![img-29.jpeg](img-29.jpeg)
+
+![img-30.jpeg](img-30.jpeg)
+
+![img-31.jpeg](img-31.jpeg)
+
+![img-32.jpeg](img-32.jpeg)
+
+SECTION P-P
+
+NOTES:
+
+1) NON-DIMENSIONED GEOMETRY FOR REFERENCE ONLY,
+SUBJECT TO CHANGE
+
+2) DRAWING FOR MATING INTERFACE DIMENSIONS ONLY,
+VIEWS MAY NOT SHOW REALISTIC MANUFACTURING CONDITION.
+
+Continued on next page
+
+5-11

@@ -1,0 +1,148 @@
+{
+  "index": 205,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 175 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 660,
+      "bottomRightY": 124,
+      "content": "Figure 7-19 provides an example timing diagram of a SSP port switching to SS operation in the Polling.LFPSPlus substate.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 131,
+      "topLeftY": 135,
+      "bottomRightX": 656,
+      "bottomRightY": 167,
+      "content": "Figure 7-19. Example Timing Diagrams of a SSP Port Switching to SS Operation in Polling.LFPSPlus",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 177,
+      "bottomRightX": 661,
+      "bottomRightY": 300,
+      "content": "![img-84.jpeg](img-84.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-84.jpeg"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 334,
+      "bottomRightX": 269,
+      "bottomRightY": 349,
+      "content": "### 7.5.4.5 Polling.PortMatch",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 355,
+      "bottomRightX": 666,
+      "bottomRightY": 447,
+      "content": "Polling.PortMatch is a substate where the two ports in SuperSpeedPlus operation perform the LBPM handshake, for announcing, matching, and deciding the operation on the highest common capability between the two link partners. The LBPM handshake includes two stages of operation. The first stage is to announce PHY Capability LBPM as defined in Table 7-13 below. The second stage is for each port to decode PHY Capability LBPM and adjust to the highest common PHY Capability by transmitting PHY Capability Match.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 461,
+      "bottomRightX": 508,
+      "bottomRightY": 476,
+      "content": "#### 7.5.4.5.1 PHY Capability LBPM Definition, Rank and Fallback",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 482,
+      "bottomRightX": 657,
+      "bottomRightY": 512,
+      "content": "SuperSpeedPlus port Capability is defined based on the following LBPM. Refer to 6.9.5 for LBPM details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 285,
+      "topLeftY": 525,
+      "bottomRightX": 503,
+      "bottomRightY": 541,
+      "content": "Table 7-13. PHY LBPM Definition",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 550,
+      "bottomRightX": 676,
+      "bottomRightY": 842,
+      "content": "|  LBPM Type |   | LBPM Subtype  |   |   |   |   |   |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  b0 | b1 | b2 | b3 | b4 | b5 | b6 | b7  |\n|  [b1:b0] = 00 : PHY Capability |   | [b3:b2] = 00 : 5 Gbps [b3:b2] = 01 : 10 Gbps [b3:b2] = 10/11 : Reserved |   | Reserved (00) |   | 0 : single-lane 1 : dual-lane | Reserved (00)  |\n|  [b1:b0] = 01 : PHY Ready | In single-lane operation: Reserved (000000)  |   |   |   |   |   |   |\n|   |   |  x2 re-timer to announce its presence: [b4:b2] = 000 : no re-timers [b4:b2] = 001 - 111 : number of re-timers and re-timer address index. Refer to Section E.3.4.2.1 for details. |   |   | Reserved (0) | x2 operation: 0 : UFP 1 : DFP | x2 operation: For DFP: 0 : Config Done. DFP ready to exit 1 : RT Config. DFP to address re-timers For UFP: Reserved (0)  |\n|  [b1:b0] = 10/11 : Reserved |   | Reserved  |   |   |   |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-93.md"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 844,
+      "bottomRightX": 643,
+      "bottomRightY": 869,
+      "content": "Note: The encoding and decoding of LBPM is LTSSM state dependent. Only one LBPM type (PHY Capability LBPM) is defined in Polling.PortMatch.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 893,
+      "bottomRightX": 673,
+      "bottomRightY": 927,
+      "content": "Two types of LBPM are defined. PHY Capability LBPM is used to announce a port's PHY capabilities. The initial value shall describe a port's highest PHY capability. The announced",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

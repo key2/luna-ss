@@ -1,0 +1,85 @@
+{
+  "index": 552,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 104,
+      "bottomRightX": 396,
+      "bottomRightY": 120,
+      "content": "Table 10-10. Hub Status Field, wHubStatus",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 123,
+      "bottomRightX": 690,
+      "bottomRightY": 400,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0 | Local Power Source: This is the source of the local power supply. This field indicates whether hub power (for other than the SIE) is being provided by an external source or from the USB. This field allows the USB system software to determine the amount of power available from a hub to downstream devices. 0 = Local power supply good 1 = Local power supply lost (inactive)  |\n|  1 | Over-current: If the hub supports over-current reporting on a hub basis, this field indicates that the sum of all the ports' current has exceeded the specified maximum and all ports have been placed in the Powered-off-reset state. If the hub reports over-current on a per-port basis or has no over-current detection capabilities, this field is always zero. The hub shall only report over-current if it is physically unable to meet the sum of all ports' current draws. For more details on over-current protection, refer to the USB 2.0 Specification, Section 7.2.1.2.1. 0 = No over-current condition currently exists. 1 = A hub over-current condition exists.  |\n|  2-15 | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-236.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 404,
+      "bottomRightX": 671,
+      "bottomRightY": 437,
+      "content": "There are no defined feature selector values for these status bits and they can neither be set nor cleared by the USB system software.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 452,
+      "bottomRightX": 411,
+      "bottomRightY": 468,
+      "content": "Table 10-11. Hub Change Field, wHubChange",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 471,
+      "bottomRightX": 690,
+      "bottomRightY": 672,
+      "content": "|  Bit | Description  |\n| --- | --- |\n|  0 | Local Power Status Change (C_HUB_LOCAL_POWER): This field indicates that a change has occurred in the hub's Local Power Source field in wHubStatus. This field is initialized to zero when the hub receives a bus reset. 0 = No change has occurred to Local Power Status. 1 = Local Power Status has changed.  |\n|  1 | Over-Current Change (C_HUB_OVER_CURRENT): This field indicates if a change has occurred in the Over-Current field in wHubStatus. This field is initialized to zero when the hub receives a bus reset. 0 = No change has occurred to the Over-Current Status. 1 = Over-Current Status has changed.  |\n|  2-15 | Reserved  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-237.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 678,
+      "bottomRightX": 686,
+      "bottomRightY": 778,
+      "content": "Hubs may allow setting of these change bits with SetHubFeature() requests in order to support diagnostics. If the hub does not support setting of these bits, it shall either treat the SetHubFeature() request as a Request Error or as a functional no-operation. When set, these bits may be cleared by a ClearHubFeature() request. A request to set a feature that is already set or to clear a feature that is already clear has no effect and the hub shall treat this as a functional no-operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "10-75",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

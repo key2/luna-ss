@@ -1,0 +1,102 @@
+{
+  "index": 155,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 125 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 90,
+      "bottomRightX": 676,
+      "bottomRightY": 369,
+      "content": "|  Class |   | Type | b6~4 | Sub-Type  |\n| --- | --- | --- | --- | --- |\n|  b10~9 | Link Command | b8~7 |   | b3~0  |\n|  01 | LGO_Ux LAU LXU LPMA | 00: LGO_Ux |  | 0001: LGO_U1 0010: LGO_U2 0011: LGO_U3 Others: Reserved  |\n|   |   |  01: LAU 10: LXU 11: LPMA |   | Reserved (0000)  |\n|  10 | LDN LUP | 00: LUP 11: LDN Others: Reserved |   | Reserved (0000)  |\n|  11: Reserved | Reserved | Reserved (0000) |   | Reserved (0000)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-80.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 381,
+      "bottomRightX": 655,
+      "bottomRightY": 443,
+      "content": "Link commands are defined for four usage cases. First, link commands are used to ensure the successful transfer of a packet. Second, link commands are used for link flow control. Third, link commands are used for link power management. And finally, special link commands are defined for a port to signal its presence in U0.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 454,
+      "bottomRightX": 667,
+      "bottomRightY": 546,
+      "content": "Successful header packet transactions between the two link partners require proper header packet acknowledgement. Rx Header Buffer Credit exchange facilitates link flow control. Header packet acknowledgement and Rx Header Buffer Credit exchange are realized using different link commands. LGOOD_n and LBAD are used to acknowledge whether a header packet has been received properly or not. LRTY is used to signal that a header packet is re-sent.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 558,
+      "bottomRightX": 666,
+      "bottomRightY": 590,
+      "content": "For SuperSpeed USB, LCRD_A, LCRD_B, LCRD_C, and LCRD_D are the link commands used to signal the availability of Rx Header Buffers in terms of Credit.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 601,
+      "bottomRightX": 673,
+      "bottomRightY": 755,
+      "content": "For SuperSpeedPlus USB, Type 1 and Type 2 traffic classes are defined. Type 1 traffic class, or namely Type 1 packet, includes the following packet types: periodic DPs, TPs, ITPs, and LMPs. Type 2 traffic class, or namely Type 2 packet, includes only the asynchronous DPs. In Gen 1x2 and Gen 2x1 operation, LCRD1_A, LCRD1_B, LCRD1_C, and LCRD1_D are link commands used for Type 1 traffic class to signal the availability of Rx Buffers for Type 1 header packets or data packets in terms of Credit. LCRD2_A, LCRD2_B, LCRD2_C, and LCRD2_D are link commands used for Type 2 traffic class to signal the availability of Rx Buffers for Type 2 packets in terms of Credit. In Gen 2x2 operation, three additional Rx Header Buffer Credits (LCRD1_E/LCRD1_F/LCRD1_G, LCRD2_E/LCRD2_F/LCRD2_G) for each traffic class are added to sustain the burst performance.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 766,
+      "bottomRightX": 675,
+      "bottomRightY": 890,
+      "content": "In the following sections, LCRD_x or LCRD1_x/LCRD2_x is used with x denoting either A, B, C, D, E, F, or G. See Table 7-5 for details. LGOOD_n uses an explicit numerical index called Header Sequence Number to represent the sequencing of a header packet. For SuperSpeed operation, the Header Sequence Number starts from 0 and is incremented by one based on modulo-8 addition with each header packet. For SuperSpeedPlus operation, the Header Sequence Number advancement is based on modulo-16 addition. The index corresponds to the received Header Sequence Number and is used for flow control and detection of lost or corrupted header packets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

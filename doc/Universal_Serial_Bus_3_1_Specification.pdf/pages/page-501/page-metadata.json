@@ -1,0 +1,48 @@
+{
+  "index": 500,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 314,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 92,
+      "bottomRightX": 688,
+      "bottomRightY": 838,
+      "content": "![img-268.jpeg](img-268.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-268.jpeg"
+    },
+    {
+      "topLeftX": 168,
+      "topLeftY": 849,
+      "bottomRightX": 656,
+      "bottomRightY": 866,
+      "content": "Figure 10-11. Downstream Facing Hub Port Power Management State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "10-23",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "index": 442,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 412 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 92,
+      "bottomRightX": 228,
+      "bottomRightY": 108,
+      "content": "4) While true",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 114,
+      "bottomRightX": 637,
+      "bottomRightY": 338,
+      "content": "a. i = (i + 1) mod num_ports\nb. if (i == 0) then\n    i. compute the Greatest Common Divisor (GCD) of all the buffered CPi.AW\n    ii. curr_weight = curr_weight - GCD\n    iii. if (curr_weight <= 0) then\n        1. curr_weight = max of CPi.AWs for all buffered CPi\n        2. if (curr_weight == 0) then there is no packet to select\nc. if (DFPi.AW >= curr_weight) then\n    i. select CPi\n    ii. exit",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 360,
+      "bottomRightX": 492,
+      "bottomRightY": 376,
+      "content": "### 10.8.7 SuperSpeedPlus Upstream Flowing Packet Modifications",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 382,
+      "bottomRightX": 667,
+      "bottomRightY": 430,
+      "content": "When the upstream port of a SuperSpeedPlus hub is operating in SuperSpeedPlus mode and the hub Downstream Controller receives a valid IN/ACK TP that is routed to a downstream port (DFPi) that is operating in SuperSpeed mode, the Downstream Controller shall:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 440,
+      "bottomRightX": 504,
+      "bottomRightY": 458,
+      "content": "1) Save the transfer type (SAVE_TT) of the TP for that DFPi.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 477,
+      "bottomRightX": 603,
+      "bottomRightY": 508,
+      "content": "When the hub Downstream Controller receives a valid DPH packet from DFPi, the Downstream Controller shall:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 521,
+      "bottomRightX": 661,
+      "bottomRightY": 626,
+      "content": "1) If the transfer type for this DFPi has been saved and the DPH is not a deferred DPH, set the transfer type of the DP to the saved value (DFPi.SAVE_TT).\n2) If the AW field value of the received DPH is zero and the transfer type is Control or Bulk, modify the AW field of the received DPH by setting the DPH.AW field to DFPi.AW\n3) If the DPH was modified, recompute the CRC-16 for the DPH.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 646,
+      "bottomRightX": 521,
+      "bottomRightY": 663,
+      "content": "This packet modification shall be done when the packet is received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 674,
+      "bottomRightX": 667,
+      "bottomRightY": 735,
+      "content": "When the hub Upstream Controller selects (as described in Section 10.8.6.4) a Control/Bulk packet (S_DP) to transmit on the upstream port and there are multiple downstream ports (DFPi) with buffered Control/Bulk DPs awaiting transmission, the Upstream Controller shall:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 748,
+      "bottomRightX": 672,
+      "bottomRightY": 876,
+      "content": "1) For each DFPi, determine a candidate buffered Control/Bulk DP (C_DPi) for that DFPi that would be selected for upstream transmission if there were no other DFPi's with buffered Control/Bulk DPs.\n2) Compute the sum (SUM_AW) of the AWs of the C_DPi's.\n3) If the SUM_AW is different than the current value of the S_DP DPH.AW, modify the AW field of the S_DP DPH by replacing the AW value with SUM_AW\n4) If the DPH was modified, recompute the CRC-16 for the S_DP DPH.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 895,
+      "bottomRightX": 618,
+      "bottomRightY": 926,
+      "content": "This modification shall be done before the packet is routed to the upstream port for transmission.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 199,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "index": 188,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 47,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 108,
+      "bottomRightX": 508,
+      "bottomRightY": 132,
+      "content": "### 6.7.5 Informative Transmitter De-emphasis",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 143,
+      "bottomRightX": 290,
+      "bottomRightY": 164,
+      "content": "#### 6.7.5.1 Gen 1 (5GT/s)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 167,
+      "bottomRightX": 684,
+      "bottomRightY": 220,
+      "content": "The channel budgets and eye diagrams were derived using a V_TX-DE-RATIO of transmit de-emphasis for both the Host and the Device reference channels. An example differential peak-to-peak de-emphasis waveform is shown in Figure 6-20.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 242,
+      "bottomRightX": 592,
+      "bottomRightY": 549,
+      "content": "![img-143.jpeg](img-143.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-143.jpeg"
+    },
+    {
+      "topLeftX": 295,
+      "topLeftY": 559,
+      "bottomRightX": 530,
+      "bottomRightY": 579,
+      "content": "Figure 6-20. De-Emphasis Waveform",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 605,
+      "bottomRightX": 298,
+      "bottomRightY": 626,
+      "content": "#### 6.7.5.2 Gen 2 (10GT/s)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 629,
+      "bottomRightX": 700,
+      "bottomRightY": 773,
+      "content": "Gen 2 transmitters employ a 3-tap FIR-based equalizer, the structure of which is shown in Figure 6-21. An example waveform from the 3-tap equalizer is shown in Figure 6-22. In the figure, the pre-cursor (Vc) is referred to as pre-shoot, while the post-cursor (Vb) is referred to as de-emphasis. This convention allows pre-shoot and de-emphasis to be defined independently of one another. The maximum swing, Vd, is also shown to illustrate that, when both C+1 and C-1 are nonzero, the swing of Va does not reach the maximum as defined by Vd. Figure 6-22 is shown as an example of TxEQ and is not intended to represent the signal as it would appear for measurement purposes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 775,
+      "bottomRightX": 684,
+      "bottomRightY": 867,
+      "content": "Table 6-20 provides recommended (informative) tap coefficient values (C-1 and C1) along with the corresponding pre-shoot, de-emphasis and output amplitudes. The host/device loss referred to in the table refers to the differential insertion loss in the conductor path from the silicon die pad to the connector, and includes parasitic I/O capacitance, the chip package (routing, vias and I/O pins), and printed circuit board (routing and vias).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "6-33",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

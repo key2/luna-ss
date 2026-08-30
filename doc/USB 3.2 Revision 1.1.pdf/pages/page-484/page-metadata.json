@@ -1,0 +1,121 @@
+{
+  "index": 483,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 415,
+      "bottomRightY": 60,
+      "content": "- 453 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 260,
+      "topLeftY": 91,
+      "bottomRightX": 529,
+      "bottomRightY": 178,
+      "content": "|  Value | Description  |\n| --- | --- |\n|  7FH | 127 μs  |\n|  80H-FEH | Reserved  |\n|  FFH | Infinite  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-259.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 198,
+      "bottomRightX": 673,
+      "bottomRightY": 275,
+      "content": "When the feature selector is PORT_U2_TIMEOUT, the most significant byte (bits 15..8) of the wIndex field specifies the Timeout value for the U2 inactivity timer. The port's link shall send an LMP to its link partner with the specified timeout value after receiving a Set Port Feature request with the PORT_U2_TIMEOUT feature selector. Refer to Section 10.4.2.1 for a detailed description of how the U2 inactivity timer value is used.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 287,
+      "bottomRightX": 340,
+      "bottomRightY": 303,
+      "content": "The following are permissible values:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 259,
+      "topLeftY": 315,
+      "bottomRightX": 529,
+      "bottomRightY": 332,
+      "content": "Table 10-17. U2 Timeout Value Encoding",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 255,
+      "topLeftY": 341,
+      "bottomRightX": 534,
+      "bottomRightY": 512,
+      "content": "|  Value | Description  |\n| --- | --- |\n|  00H | Zero (Default)  |\n|  01H | 256 μs  |\n|  02H | 512 μs  |\n|  03H | 768 μs  |\n|  ... | ...  |\n|  FEH | 65.024 ms  |\n|  FFH | Infinite  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-260.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 526,
+      "bottomRightX": 667,
+      "bottomRightY": 588,
+      "content": "Note: It is the responsibility of software to properly set the U2 timeout for a downstream port that is connected to a hub. Inconsistent link states could result if the timeout is not set properly. It is recommended that software should set the upstream U2 timeout to at least twice the value of the U2 timeout of the downstream ports on the hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 599,
+      "bottomRightX": 665,
+      "bottomRightY": 675,
+      "content": "When the feature selector is PORT_LINK_STATE, the most significant byte (bits 15..8) of the wIndex field specifies the U state the host software wants to put the link connected to the port into. This request is only valid when the PORT_ENABLE bit is set and the PORT_LINK_STATE is not set to eSS.Disabled, Rx.Detect or eSS.Inactive except as noted below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 689,
+      "bottomRightX": 665,
+      "bottomRightY": 908,
+      "content": "- If the value is 0, then the hub shall transition the link to U0 from any of the U states.\n- If the value is 1, then host software wants to transition the link to the U1 State. The hub shall attempt to transition the link to U1 from U0. If the link is in any state other than U0 when a request is received with a value of 1, the behavior is undefined.\n- If the value is 2, then the host software wants to transition the link to the U2 State. The hub shall attempt to transition the link to U2 from U0. If the link is in any state other than U0 when a request is received with a value of 2, the behavior is undefined.\n- If the value is 3, then host software wants to selectively suspend the device connected to this port. The hub shall transition the link to U3 from any of the other U states using allowed link state transitions. If the port is not already in the U0 state, then it shall transition the port to the U0 state and then initiate the transition",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 586,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

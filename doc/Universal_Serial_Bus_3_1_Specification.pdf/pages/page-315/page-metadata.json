@@ -1,0 +1,165 @@
+{
+  "index": 314,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Protocol Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 213,
+      "topLeftY": 98,
+      "bottomRightX": 613,
+      "bottomRightY": 395,
+      "content": "![img-201.jpeg](img-201.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-201.jpeg"
+    },
+    {
+      "topLeftX": 274,
+      "topLeftY": 411,
+      "bottomRightX": 550,
+      "bottomRightY": 427,
+      "content": "Figure 8-15. LDM Responder State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 446,
+      "bottomRightX": 649,
+      "bottomRightY": 481,
+      "content": "The LDM Responder State Machine shall maintain the following local variable: Responder Response Delay Overflow.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 497,
+      "bottomRightX": 313,
+      "bottomRightY": 512,
+      "content": "### 8.4.8.3.2.1 Responder Disabled",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 522,
+      "bottomRightX": 603,
+      "bottomRightY": 540,
+      "content": "This is the initial state of the Responder after power-up, Hot Reset, or Warm Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 547,
+      "bottomRightX": 591,
+      "bottomRightY": 563,
+      "content": "Upon entering this state the Responder shall terminate all LDM protocol activity.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 568,
+      "bottomRightX": 677,
+      "bottomRightY": 602,
+      "content": "LDM Enabled=0 – If LDM Enabled equals 0, then the Responder shall transition from any other LDM state to the Responder Disabled state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 611,
+      "bottomRightX": 692,
+      "bottomRightY": 645,
+      "content": "LDM Enabled=1 – If LDM Enabled equal 1, then the Responder shall transition to the Timestamp Request state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 660,
+      "bottomRightX": 311,
+      "bottomRightY": 678,
+      "content": "### 8.4.8.3.2.2 Timestamp Request",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 688,
+      "bottomRightX": 584,
+      "bottomRightY": 706,
+      "content": "Upon entering this state, the Responder shall wait for a LDM TS Request LMP.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 710,
+      "bottomRightX": 681,
+      "bottomRightY": 761,
+      "content": "LDM TS Request LMP – If a LDM TS Request LMP is received, the Responder shall capture timestamp t2 from the PTM Local Time Source to record the time that the LDM TS Request was received and transition to the Timestamp Response state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 769,
+      "bottomRightX": 639,
+      "bottomRightY": 803,
+      "content": "Note: Timestamp t2 shall be adjusted for the TS Delay. Refer to Section 8.4.8.6 for more information.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 819,
+      "bottomRightX": 321,
+      "bottomRightY": 836,
+      "content": "### 8.4.8.3.2.3 Timestamp Response",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 846,
+      "bottomRightX": 524,
+      "bottomRightY": 863,
+      "content": "Upon entering this state the Responder shall wait for a Trigger Event.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 867,
+      "bottomRightX": 686,
+      "bottomRightY": 902,
+      "content": "Trigger Event – When a Trigger Event occurs, the Responder shall capture timestamp t3 from the PTM Local Time Source to record the time that the LDM Response was transmitted. If the value",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 697,
+      "bottomRightY": 994,
+      "content": "8-21",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

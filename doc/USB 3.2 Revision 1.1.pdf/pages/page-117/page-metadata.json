@@ -1,0 +1,93 @@
+{
+  "index": 116,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 378,
+      "topLeftY": 47,
+      "bottomRightX": 412,
+      "bottomRightY": 60,
+      "content": "- 86 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 121,
+      "bottomRightX": 264,
+      "bottomRightY": 136,
+      "content": "### 6.7.5.2 Gen 2 (10GT/sec)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 142,
+      "bottomRightX": 671,
+      "bottomRightY": 266,
+      "content": "Gen 2 transmitters employ a 3-tap FIR-based equalizer, the structure of which is shown in Figure 6-22. An example waveform from the 3-tap equalizer is shown in Figure 6-23. In the figure, the pre-cursor (Vc) is referred to as pre-shoot, while the post-cursor (Vb) is referred to as de-emphasis. This convention allows pre-shoot and de-emphasis to be defined independently of one another. The maximum swing, Vd, is also shown to illustrate that, when both C+1 and C-1 are nonzero, the swing of Va does not reach the maximum as defined by Vd. Figure 6-23 is shown as an example of TxEQ and is not intended to represent the signal as it would appear for measurement purposes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 276,
+      "bottomRightX": 623,
+      "bottomRightY": 309,
+      "content": "Table 6-21 provides the normative pre-shoot and de-emphasis values along with the corresponding tap coefficient values (C-1 and C1) and output amplitudes.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 236,
+      "topLeftY": 344,
+      "bottomRightX": 550,
+      "bottomRightY": 361,
+      "content": "Figure 6-22. 3-tap Transmit Equalizer Structure",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 383,
+      "bottomRightX": 599,
+      "bottomRightY": 631,
+      "content": "![img-34.jpeg](img-34.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-34.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

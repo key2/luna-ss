@@ -1,0 +1,13 @@
+|  7.2.4.1.1#2 | A port shall maintain an Rx Header Sequence Number, which is the expected Header Sequence Number on the next header pack received. | BC  |
+| --- | --- | --- |
+|  7.2.4.1.1#3 | A port in SupserSpeed operation shall maintain two Rx Header Buffer Credit Counts, one for the local available Rx Header Buffer Credits, and one for its link partners available Rx Header Buffer Credits. | BC  |
+|  7.2.4.1.1#4 | A port in SupserSpeedPlus operation shall maintain two Type 1 Rx Header Buffer Credit Counts, one for the local available Type 1 Rx Header Buffer Credits, and one for its link partners available Type 1 Rx Header Buffer Credits. | BC  |
+|  7.2.4.1.1#5 | A port in SupserSpeedPlus operation shall maintain two Type 2 Rx Header Buffer Credit Counts, one for the local available Type 2 Rx Header Buffer Credits, and one for its link partners available Type 2 Rx Header Buffer Credits. | BC  |
+|  7.2.4.1.1#6 | A port in SuperSpeed operation shall have enough Tx Header Buffers in its transmitter to hold up to four unacknowledged header packets. | BC  |
+|  7.2.4.1.1#7 | A port in SuperSpeedPlus operation shall have enough Type 1/Type 2 Tx Header Buffers in its transmitter to hold up to four unacknowledged header packets of Type 1 traffic class, and another four unacknowledged data packet headers of Type 2 traffic class. | BC  |
+|  7.2.4.1.1#8 | A port in SuperSpeed operation shall not transmit any header packet if its Remote Rx Header Buffer Credit Count is zero. | NT  |
+|  7.2.4.1.1#9 | A port in SuperSpeedPlus operation shall not transmit any Type 1 packets if its Remote Type 1 Rx Buffer Credit Count is zero, or any Type 2 packets if its Remote Type 2 Rx Buffer Credit Count is zero. | NT  |
+|  7.2.4.1.1#10 | A port in SuperSpeed operation shall have enough Rx Header Buffers in its receiver to receive up to four header packets. | NT  |
+|  7.2.4.1.1#11 | A port in SuperSpeedPlus operation shall have enough Rx Header Buffers in its receiver to receive up to four Type 1 packets of maximum DPP size, and another four Type 2 packet of maximum DPP size. | NT  |
+|  7.2.4.1.1#12 | Upon entry to U0, a port in SuperSpeed operation shall start the PENDING_HP_TIMER and CREDIT_HP_TIMER in expectation of the Header Sequence Number Advertisement and the Type 1 and Type 2 Rx Header Buffer Credit Advertisements. | 7.26  |
+|  7.2.4.1.1#13 | Upon entry to U0, a port in SuperSpeedPlus operation shall start the PENDING_HP_TIMER and Type 1 and Type 2 CREDIT_HP_TIMER in expectation of the Header Sequence Number Advertisement and the Rx Header Buffer Credit Advertisement. | 7.26  |

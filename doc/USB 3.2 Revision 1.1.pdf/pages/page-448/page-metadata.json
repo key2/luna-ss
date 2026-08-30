@@ -1,0 +1,182 @@
+{
+  "index": 447,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 78,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 62,
+      "content": "- 417 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 48,
+      "bottomRightX": 676,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 95,
+      "bottomRightX": 257,
+      "bottomRightY": 109,
+      "content": "**10.9.4.2 Rx Data**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 116,
+      "bottomRightX": 645,
+      "bottomRightY": 147,
+      "content": "In the Rx Data state, the port receiver is actively processing symbols and looking for the speed specific indication of the end of a packet or the occurrence of an abort condition.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 160,
+      "bottomRightX": 660,
+      "bottomRightY": 190,
+      "content": "A port shall transition to the Rx Data state when it receives a speed specific start of packet indication.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 203,
+      "bottomRightX": 660,
+      "bottomRightY": 235,
+      "content": "When the port detects an error before the end of the DPP as defined in Section 7.2.4.1.6, it performs speed specific abort processing (see Section 7.2.1.2.2).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 246,
+      "bottomRightX": 674,
+      "bottomRightY": 292,
+      "content": "In the case where the hub is simultaneously receiving a DPP into the hub and transmitting the same DPP out of the hub, the corresponding port transmitter shall be given an indication of the abort condition so that it can perform speed specific abort processing.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 304,
+      "bottomRightX": 466,
+      "bottomRightY": 319,
+      "content": "If the DPP is not being actively transmitted out of the hub,",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 138,
+      "topLeftY": 332,
+      "bottomRightX": 667,
+      "bottomRightY": 401,
+      "content": "- For an upstream port receiver, the hub shall buffer a speed specific aborted DP for the appropriate downstream port.\n- For a downstream port receiver, the hub shall buffer a speed specific aborted DP on the upstream port.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 423,
+      "bottomRightX": 271,
+      "bottomRightY": 437,
+      "content": "**10.9.4.3 Rx Header**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 444,
+      "bottomRightX": 651,
+      "bottomRightY": 475,
+      "content": "In the Rx header state, the port receiver is actively processing received symbols until the last header packet symbol is received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 487,
+      "bottomRightX": 671,
+      "bottomRightY": 518,
+      "content": "A port shall transition to the Rx Header state when it detects the speed specific beginning of a header packet.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 530,
+      "bottomRightX": 668,
+      "bottomRightY": 577,
+      "content": "The port shall validate CRC-16, the Link Control Word CRC-5, check the route string (only if this is an upstream port) and header packet type within four symbol times after the last symbol of the header packet is received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 589,
+      "bottomRightX": 665,
+      "bottomRightY": 620,
+      "content": "Implementations may have to begin the CRC calculation as the header is being received and check the route string before the header packet is verified to meet this requirement.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 632,
+      "bottomRightX": 344,
+      "bottomRightY": 647,
+      "content": "**10.9.4.4 Process Header Packet**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 654,
+      "bottomRightX": 656,
+      "bottomRightY": 700,
+      "content": "When the last symbol of a header packet is received, the port shall perform all processing necessary for the header packet. Any such processing shall not block the port from immediately returning to the Rx Default state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 712,
+      "bottomRightX": 664,
+      "bottomRightY": 759,
+      "content": "As described in the link chapter, when the last symbol of a header packet is received in the Rx header packet state and either the header packet CRC-16 or Link Control Word CRC-5 is determined to be invalid, the link layer won't pass the header packet to the hub.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

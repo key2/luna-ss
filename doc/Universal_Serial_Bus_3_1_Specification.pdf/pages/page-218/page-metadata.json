@@ -1,0 +1,67 @@
+{
+  "index": 217,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 301,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 203,
+      "topLeftY": 95,
+      "bottomRightX": 620,
+      "bottomRightY": 493,
+      "content": "![img-168.jpeg](img-168.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-168.jpeg"
+    },
+    {
+      "topLeftX": 278,
+      "topLeftY": 503,
+      "bottomRightX": 543,
+      "bottomRightY": 519,
+      "content": "Figure 7-6. CRC-16 Remainder Generation",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 534,
+      "bottomRightX": 299,
+      "bottomRightY": 550,
+      "content": "Table 7-1. CRC-16 Mapping",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 552,
+      "bottomRightX": 385,
+      "bottomRightY": 882,
+      "content": "|  CRC-16 Result Bit | Position in CRC-16 Field  |\n| --- | --- |\n|  0 | 15  |\n|  1 | 14  |\n|  2 | 13  |\n|  3 | 12  |\n|  4 | 11  |\n|  5 | 10  |\n|  6 | 9  |\n|  7 | 8  |\n|  8 | 7  |\n|  9 | 6  |\n|  10 | 5  |\n|  11 | 4  |\n|  12 | 3  |\n|  13 | 2  |\n|  14 | 1  |\n|  15 | 0  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-87.md"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 982,
+      "bottomRightX": 111,
+      "bottomRightY": 994,
+      "content": "7-6",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

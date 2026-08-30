@@ -1,0 +1,112 @@
+{
+  "index": 275,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 245 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 78,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 179,
+      "topLeftY": 92,
+      "bottomRightX": 607,
+      "bottomRightY": 110,
+      "content": "Table 8-24. PING_RESPONSE TP Format (Differences with ACK TP)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 119,
+      "bottomRightX": 655,
+      "bottomRightY": 284,
+      "content": "|  Width (bits) | Offset (DW:bit) | Description  |\n| --- | --- | --- |\n|  4 | 1:0 | **SubType**. This field shall be set to *PING_RESPONSE*.  |\n|  3 | 1:4 | **Reserved**.  |\n|  1 | 1:7 | **Direction (D)**. This field shall be set to the value of the **Direction** field in the PING TP for which this PING_RESPONSE TP is being sent.  |\n|  4 | 1:8 | **Endpoint Number (Ept Num)**. This field shall be set to the value of the **Ept Num** field in the PING TP for which this PING_RESPONSE TP is being sent.  |\n|  52 | 1:12 | **Reserved**.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-127.md"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 304,
+      "bottomRightX": 261,
+      "bottomRightY": 319,
+      "content": "### 8.6 Data Packet (DP)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 325,
+      "bottomRightX": 671,
+      "bottomRightY": 386,
+      "content": "This packet can be sent by either the host or a device. The host uses this packet to send data to a device. Devices use this packet to return data to the host in response to an ACK TP. All data packets are comprised of a Data Packet Header and a Data Packet Payload. Only the fields that are different from an ACK TP are described in this section.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 399,
+      "bottomRightX": 645,
+      "bottomRightY": 445,
+      "content": "Data packets traverse the direct path between the host and a device. Note that it is permissible to send a data packet with a zero length data block; however, it shall have a CRC-32.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 282,
+      "topLeftY": 458,
+      "bottomRightX": 506,
+      "bottomRightY": 474,
+      "content": "Figure 8-30. Example Data Packet",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 145,
+      "topLeftY": 493,
+      "bottomRightX": 719,
+      "bottomRightY": 758,
+      "content": "![img-121.jpeg](img-121.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-121.jpeg"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

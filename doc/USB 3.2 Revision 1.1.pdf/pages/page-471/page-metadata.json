@@ -1,0 +1,94 @@
+{
+  "index": 470,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 440 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 290,
+      "topLeftY": 92,
+      "bottomRightX": 498,
+      "bottomRightY": 110,
+      "content": "Table 10-7. Hub Class Requests",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 119,
+      "bottomRightX": 690,
+      "bottomRightY": 594,
+      "content": "|  Request | bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  ClearHubFeature | 00100000B | CLEAR_FEATURE | Feature Selector | Zero | Zero | None  |\n|  ClearPortFeature | 00100011B | CLEAR_FEATURE | Feature Selector | Port | Zero | None  |\n|  GetHubDescriptor | 10100000B | GET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero or Language ID | Descriptor Length | Descriptor  |\n|  GetHubStatus | 10100000B | GET_STATUS | Zero | Zero | Four | Hub Status and Change Status  |\n|  GetPortStatus | 10100011B | GET_STATUS | Zero | Port | Four | Port Status and Change Status  |\n|  GetPortErrorCount | 10100011B | GET_PORT_ERR_COUNT | Zero | Port | Two | Number of Link Errors on this port  |\n|  SetHubDescriptor | 00100000B | SET_DESCRIPTOR | Descriptor Type and Descriptor Index | Zero or Language ID | Descriptor Length | Descriptor  |\n|  SetHubFeature | 00100000B | SET_FEATURE | Feature Selector | Zero | Zero | None  |\n|  SetHubDepth | 00100000B | SET_HUB_DEPTH | Hub Depth | Zero | Zero | None  |\n|  SetPortFeature | 00100011B | SET_FEATURE | Feature Selector | Selector, Timeout, Port | Zero | None  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-236.md"
+    },
+    {
+      "topLeftX": 272,
+      "topLeftY": 615,
+      "bottomRightX": 515,
+      "bottomRightY": 632,
+      "content": "Table 10-8. Hub Class Request Codes",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 174,
+      "topLeftY": 640,
+      "bottomRightX": 615,
+      "bottomRightY": 873,
+      "content": "|  bRequest | Value  |\n| --- | --- |\n|  GET_STATUS | 0  |\n|  CLEAR_FEATURE | 1  |\n|  RESERVED (used in previous specifications for GET_STATE) | 2  |\n|  SET_FEATURE | 3  |\n|  RESERVED | 4-5  |\n|  GET_DESCRIPTOR | 6  |\n|  SET_DESCRIPTOR | 7  |\n|  RESERVED (used in USB 2.0 specification) | 8-11  |\n|  SET_HUB_DEPTH | 12  |\n|  GET_PORT_ERR_COUNT | 13  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-237.md"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 894,
+      "bottomRightX": 668,
+      "bottomRightY": 927,
+      "content": "Table 10-9 gives the valid feature selectors for the hub class. Refer to Section 10.16.2.1 and Section 10.16.2.8 for a description of the features.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

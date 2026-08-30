@@ -1,0 +1,160 @@
+{
+  "index": 196,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 614,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Physical Layer",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 690,
+      "bottomRightY": 146,
+      "content": "BRST followed by BDAT starts the bit error rate test. The BDAT sequence is the output of the scrambler and is equivalent to the logical idle sequence. It consists of scrambled 0 as described in Appendix B. As listed in Appendix B, the first 16 characters of the sequence are reprinted here:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 154,
+      "bottomRightX": 681,
+      "bottomRightY": 174,
+      "content": "|  FF | 17 | C0 | 14 | B2 | E7 | 02 | 82 | 72 | 6E | 28 | A6 | BE | 6D | BF | 8D  |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-76.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 186,
+      "bottomRightX": 679,
+      "bottomRightY": 254,
+      "content": "The receiver shall compare the received data to the BDAT sequence. Errors increment the error count register (EC) by 1. EC may not roll over but shall be held at FFh. The LFSR is advanced once for every character except SKPs. The LFSR rolls over after 2¹⁶-1 symbols. SKPs shall be inserted or deleted as necessary for clock tolerance compensation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 263,
+      "bottomRightX": 692,
+      "bottomRightY": 331,
+      "content": "The BERC command does not increment the error count register. The LFSR is advanced. The BERC ordered set is replaced by the BCNT ordered set. The BCNT ordered set includes the non-scrambled 8b/10b encoded error count (EC) register based on the running disparity. Following the return of the BCNT ordered set, the loopback slave shall continue to repeat symbols as received.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 339,
+      "bottomRightX": 638,
+      "bottomRightY": 356,
+      "content": "BERC may be sent multiple times. The EC register is not cleared by BERC ordered sets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 365,
+      "bottomRightX": 594,
+      "bottomRightY": 382,
+      "content": "BERT continues until the loopback mode is terminated as described in Chapter 7.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 400,
+      "bottomRightX": 240,
+      "bottomRightY": 416,
+      "content": "Table 6-23. BRST",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 418,
+      "bottomRightX": 466,
+      "bottomRightY": 481,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0 | K28.5 | COM  |\n|  1 | K28.7 | BRST  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-77.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 493,
+      "bottomRightX": 240,
+      "bottomRightY": 508,
+      "content": "Table 6-24. BDAT",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 512,
+      "bottomRightX": 466,
+      "bottomRightY": 587,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  D0.0 <0:n> | Logical Idle (refer to Appendix B) | Scrambled 0 Rolls over after 2¹⁶ -1 symbols  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-78.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 600,
+      "bottomRightX": 240,
+      "bottomRightY": 614,
+      "content": "Table 6-25. BERC",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 619,
+      "bottomRightX": 466,
+      "bottomRightY": 719,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0 | K28.3 | BERC  |\n|  1 | K28.3 | BERC  |\n|  2 | K28.3 | BERC  |\n|  3 | K28.3 | BERC  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-79.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 732,
+      "bottomRightX": 240,
+      "bottomRightY": 747,
+      "content": "Table 6-26. BCNT",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 751,
+      "bottomRightX": 523,
+      "bottomRightY": 849,
+      "content": "|  Symbol Number | Encoded Values | Description  |\n| --- | --- | --- |\n|  0 | K28.3 | BERC  |\n|  0 | K28.3 | BERC  |\n|  EC<0:7> | DCODE | Error count (not scrambled)  |\n|  EC<0:7> | DCODE | Error count (not scrambled)  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-80.md"
+    },
+    {
+      "topLeftX": 672,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "6-41",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

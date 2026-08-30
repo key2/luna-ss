@@ -1,0 +1,142 @@
+{
+  "index": 117,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 91,
+      "topLeftY": 30,
+      "bottomRightX": 377,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 254,
+      "topLeftY": 98,
+      "bottomRightX": 509,
+      "bottomRightY": 246,
+      "content": "![img-78.jpeg](img-78.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-78.jpeg"
+    },
+    {
+      "topLeftX": 216,
+      "topLeftY": 285,
+      "bottomRightX": 344,
+      "bottomRightY": 299,
+      "content": "CONTACT No.2,3,4,6,7,9,10",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 319,
+      "bottomRightX": 377,
+      "bottomRightY": 456,
+      "content": "![img-79.jpeg](img-79.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-79.jpeg"
+    },
+    {
+      "topLeftX": 291,
+      "topLeftY": 486,
+      "bottomRightX": 303,
+      "bottomRightY": 498,
+      "content": "A",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 502,
+      "topLeftY": 287,
+      "bottomRightX": 593,
+      "bottomRightY": 299,
+      "content": "CONTACT No.1,5,8",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 488,
+      "topLeftY": 319,
+      "bottomRightX": 650,
+      "bottomRightY": 436,
+      "content": "![img-80.jpeg](img-80.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-80.jpeg"
+    },
+    {
+      "topLeftX": 447,
+      "topLeftY": 476,
+      "bottomRightX": 578,
+      "bottomRightY": 500,
+      "content": "Each contact location (off-set value)\nby zone 0.15 (+/-0.075)",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 259,
+      "topLeftY": 512,
+      "bottomRightX": 375,
+      "bottomRightY": 602,
+      "content": "![img-81.jpeg](img-81.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-81.jpeg"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 569,
+      "bottomRightX": 507,
+      "bottomRightY": 604,
+      "content": "The entry angle of the contact\nshall not start above the top surfaces\nof the adjacent insulator walls.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 229,
+      "topLeftY": 659,
+      "bottomRightX": 433,
+      "bottomRightY": 803,
+      "content": "![img-82.jpeg](img-82.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-82.jpeg"
+    },
+    {
+      "topLeftX": 435,
+      "topLeftY": 662,
+      "bottomRightX": 596,
+      "bottomRightY": 696,
+      "content": "Subject to change by individual connector\nmanufacturer to assure specified performance\nand intermateability.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 198,
+      "topLeftY": 817,
+      "bottomRightX": 626,
+      "bottomRightY": 834,
+      "content": "Figure 5-13. USB 3.1 Micro-B and Micro-A Plug Interface Dimensions",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 127,
+      "topLeftY": 980,
+      "bottomRightX": 155,
+      "bottomRightY": 993,
+      "content": "5-30",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

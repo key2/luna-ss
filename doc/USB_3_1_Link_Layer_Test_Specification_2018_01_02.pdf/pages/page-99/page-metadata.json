@@ -1,0 +1,173 @@
+{
+  "index": 98,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 47,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 47,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 146,
+      "topLeftY": 92,
+      "bottomRightX": 454,
+      "bottomRightY": 131,
+      "content": "11. The test fails if the PUT does not stay in U0 for 50ms.\n12. If the PUT includes a captive re-timer:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 138,
+      "bottomRightX": 278,
+      "bottomRightY": 152,
+      "content": "a. For a DFP:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 160,
+      "bottomRightX": 691,
+      "bottomRightY": 319,
+      "content": "i. Use USBCV31 Link Layer helper TD 7.18 to initiate an entry to LGO_U1\nii. The test fails if the LVS does not receive an LGO_U1\niii. The LVS sends an LAU and enters U1 after receiving LPMA or PM_ENTRY_TIMER timeout\niv. The test fails if the LVS receives TS1s\nv. Wait 1 second\nvi. The test fails if the LVS does not receive Ping.LFPSs after 300ms with tBurst and tRepeat as defined in Table 6-30.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 192,
+      "topLeftY": 325,
+      "bottomRightX": 278,
+      "bottomRightY": 339,
+      "content": "b. For a UFP:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 238,
+      "topLeftY": 348,
+      "bottomRightX": 523,
+      "bottomRightY": 477,
+      "content": "i. The LVS sends LGO_U1\nii. The test fails if the LVS does not receive an LAU\niii. The LVS sends an LPMA and enters U1\niv. The test fails if the LVS receives TS1s.\nv. Wait 1 second\nvi. The test fails if the LVS receives any LFPS",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 121,
+      "topLeftY": 537,
+      "bottomRightX": 390,
+      "bottomRightY": 553,
+      "content": "### TD.7.39 PortMatch Retry Test (Gen 2 Only)",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 555,
+      "bottomRightX": 669,
+      "bottomRightY": 571,
+      "content": "This test verifies that the PUT recovers to Polling.PortMatch when the tPollingActiveTimeout expires.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 579,
+      "bottomRightX": 234,
+      "bottomRightY": 593,
+      "content": "#### Covered Assertions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 600,
+      "bottomRightX": 199,
+      "bottomRightY": 614,
+      "content": "7.5.4.5.2#2",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 624,
+      "bottomRightX": 184,
+      "bottomRightY": 638,
+      "content": "7.3.10#1",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 647,
+      "bottomRightX": 254,
+      "bottomRightY": 663,
+      "content": "#### Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 669,
+      "bottomRightX": 636,
+      "bottomRightY": 728,
+      "content": "1. Both LVS and PUT detect each other and then transition through Polling to Polling.RxEQ.\n2. The LVS does not transmit the TS1 ordered sets during Polling.Active.\n3. The test fails if:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 736,
+      "bottomRightX": 696,
+      "bottomRightY": 790,
+      "content": "a) The PUT does not transition to Polling.PortMatch after tPollingActiveTimeout.\nb) The PUT does not transmit the next highest PHY Capability from its previous PHY Capability in its PHY Capability LBPMs.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 797,
+      "bottomRightX": 702,
+      "bottomRightY": 895,
+      "content": "4. Both LVS and PUT transition through Polling.RxEQ\n5. If the PHY Capability was not negotiated to 5Gbps, return to step 2.\n6. Both LVS and PUT transmit the TS1 ordered sets during Polling.Active and proceed to U0.\n7. The LVS will keep the link active by sending Link Pollings (LUP when it is configured as an Upstream Port or LDN when it is configured as a Downstream Port) for 50ms.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 934,
+      "bottomRightX": 418,
+      "bottomRightY": 946,
+      "content": "91",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

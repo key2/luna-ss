@@ -1,0 +1,138 @@
+{
+  "index": 198,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 189,
+      "bottomRightY": 76,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 168 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 93,
+      "bottomRightX": 360,
+      "bottomRightY": 108,
+      "content": "### 7.5.3.7.2 Exit from Rx.Detect.Quiet",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 115,
+      "bottomRightX": 636,
+      "bottomRightY": 207,
+      "content": "- A downstream port shall transition to Rx.Detect.Active upon the timeout of the tRxDetectQuietTimeoutDFP timer (12 ms to 120 ms).\n- An upstream port shall transition to Rx.Detect.Active upon the timeout of the tRxDetectQuietTimeoutUFP timer (12 ms).\n- A downstream port shall transition to eSS.Disabled when directed.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 260,
+      "topLeftY": 226,
+      "bottomRightX": 527,
+      "bottomRightY": 243,
+      "content": "Figure 7-17. Rx.Detect Substate Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 171,
+      "topLeftY": 256,
+      "bottomRightX": 617,
+      "bottomRightY": 544,
+      "content": "![img-79.jpeg](img-79.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-79.jpeg"
+    },
+    {
+      "topLeftX": 172,
+      "topLeftY": 546,
+      "bottomRightX": 491,
+      "bottomRightY": 557,
+      "content": "Note: Transition conditions are illustrative only. Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 602,
+      "bottomRightX": 203,
+      "bottomRightY": 616,
+      "content": "### 7.5.4 Polling",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 624,
+      "bottomRightX": 663,
+      "bottomRightY": 745,
+      "content": "Polling is a state for port capability negotiation and link training. During Polling, a Polling.LFPS handshake shall take place between the two ports in SuperSpeed operation before the link training is started. Similarly for SuperSpeedPlus operation, Polling.LFPS based SCD1/SCD2 handshakes, LBPM based port capability negotiation and match, and subsequent port configuration shall take place before SuperSpeedPlus link training is started. Bit lock, block alignment for SuperSpeedPlus operation, symbol lock, lane polarity inversion, and Rx equalization trainings are achieved using TSEQ, SYNC, TS1, and TS2 training ordered sets.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 758,
+      "bottomRightX": 318,
+      "bottomRightY": 773,
+      "content": "#### 7.5.4.1 Polling Substate Machines",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 779,
+      "bottomRightX": 639,
+      "bottomRightY": 796,
+      "content": "Polling contains a substate machine shown in Figure 7-21 with the following substates:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 808,
+      "bottomRightX": 272,
+      "bottomRightY": 913,
+      "content": "- Polling.LFPS\n- Polling.LFPSPlus\n- Polling.PortMatch\n- Polling.PortConfig\n- Polling.RxEQ",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 587,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

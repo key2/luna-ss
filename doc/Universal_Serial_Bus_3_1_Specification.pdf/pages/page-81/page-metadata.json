@@ -1,0 +1,129 @@
+{
+  "index": 80,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 425,
+      "topLeftY": 30,
+      "bottomRightX": 699,
+      "bottomRightY": 45,
+      "content": "USB 3.1 Enhanced SuperSpeed Data Flow Model",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 674,
+      "bottomRightY": 128,
+      "content": "Streams are managed between the host and a device using the Stream Protocol. Each Stream is assigned a Stream ID (SID).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 132,
+      "bottomRightX": 691,
+      "bottomRightY": 215,
+      "content": "The Stream Protocol defines a handshake, which allows the device or host to establish the Current Stream (CStream) ID associated with an endpoint. The host uses the CStream ID to select the command or operation-specific Endpoint Buffer(s) that will be used for subsequent data transfers on the pipe (see Figure 4-3). The device uses the CStream ID to select the Function Data buffer(s) that will be used.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 238,
+      "bottomRightX": 674,
+      "bottomRightY": 418,
+      "content": "![img-11.jpeg](img-11.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-11.jpeg"
+    },
+    {
+      "topLeftX": 242,
+      "topLeftY": 428,
+      "bottomRightX": 581,
+      "bottomRightY": 445,
+      "content": "Figure 4-3. Enhanced SuperSpeed IN Stream Example",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 461,
+      "bottomRightX": 694,
+      "bottomRightY": 527,
+      "content": "The example in Figure 4-3 represents an IN Bulk pipe, where a large number of Streams have been established. Associated with each Stream in host memory is one or more Endpoint Buffers to receive the Stream data. In the device, there is a corresponding command or operation-specific Function Data to be transmitted to the host.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 531,
+      "bottomRightX": 684,
+      "bottomRightY": 632,
+      "content": "When the device has data available for a specific Stream (G in this example), it issues an ERDY tagged with the CStream ID, and the host will begin issuing IN ACK TP's to the device that is tagged with the CStream ID. The device will respond by returning DPs that contain the Function Data associated with the CStream ID that is also tagged with the CStream ID. When the host receives the data, it uses the CStream ID to select the set of Endpoint Buffers that will receive the data.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 638,
+      "bottomRightX": 688,
+      "bottomRightY": 672,
+      "content": "When the Function Data is exhausted, the device terminates the Stream (refer to Section 8.12.1.4). The host is also allowed to terminate the Stream if it runs out of Endpoint Buffer space.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 677,
+      "bottomRightX": 690,
+      "bottomRightY": 711,
+      "content": "Streams may be used, for example, to support out-of-order data transfers required for mass storage device command queuing.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 716,
+      "bottomRightX": 682,
+      "bottomRightY": 766,
+      "content": "A standard bulk endpoint has a single set of Endpoint Buffers associated with it. Streams extend the number of host buffers accessible by an endpoint from 1 to up to 65533. There is a 1:1 mapping between a host buffer and a Stream ID.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 771,
+      "bottomRightX": 697,
+      "bottomRightY": 839,
+      "content": "Device Class defined methods are used for coordinating the Stream IDs that are used by the host to select Endpoint Buffers and the device to select Function Data associated with a particular Stream. Typically this is done via an out-of-band mechanism (e.g., another endpoint) that is used to pass the list of valid Stream IDs between the host and the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 844,
+      "bottomRightX": 698,
+      "bottomRightY": 895,
+      "content": "The selection of the Current Stream may be initiated by the host or the device and, in either case, the Stream Protocol provides a method for a selection to be rejected. For example, the host may reject a Stream selection initiated by the device if it has no Endpoint Buffers available for it. Or the",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "4-11",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

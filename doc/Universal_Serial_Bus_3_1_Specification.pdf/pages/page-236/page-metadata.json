@@ -1,0 +1,137 @@
+{
+  "index": 235,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 30,
+      "bottomRightX": 302,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 175,
+      "topLeftY": 92,
+      "bottomRightX": 651,
+      "bottomRightY": 127,
+      "content": "has been received, or the link has entered Recovery. Refer to Section 7.2.4.1.1 for additional rules applicable when a port enters U0 from Recovery.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 128,
+      "bottomRightX": 691,
+      "bottomRightY": 179,
+      "content": "2. If the Header Sequence Number in the received header packet does not match the Rx Header Sequence Number, or a port does not have an Rx Header Buffer available to store a header packet, a port shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 180,
+      "bottomRightX": 694,
+      "bottomRightY": 285,
+      "content": "- In SuperSpeed operation, after transmitting LBAD, a port shall continue to issue LCRD_x if an Rx Header Buffer Credit is made available.\n- In SuperSpeedPlus operation, after transmitting LBAD, a port shall continue to issue LCRD1_x/LCRD2_x if its respective Type 1/Type 2 Rx Buffer Credit is made available.\n- A port shall transition directly to Recovery if it fails to receive a header packet three consecutive times. A port shall not issue the third LBAD upon the third error.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 95,
+      "topLeftY": 291,
+      "bottomRightX": 620,
+      "bottomRightY": 309,
+      "content": "### 7.2.4.1.6 Receiving Data Packet Header in SuperSpeedPlus Operation",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 313,
+      "bottomRightX": 609,
+      "bottomRightY": 331,
+      "content": "- Upon receiving a DPH, the following verifications shall be performed by a port:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 333,
+      "bottomRightX": 694,
+      "bottomRightY": 420,
+      "content": "1. CRC-5\n2. CRC-16\n3. Matching between the Header Sequence Number in the received header packet and the Rx Header Sequence Number\n4. The availability of an Rx Buffer to store a header packet or a data packet.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 422,
+      "bottomRightX": 687,
+      "bottomRightY": 560,
+      "content": "- A DPH is defined as \"received properly\" when it has passed all four criteria described above. A port shall ignore the length field replica.\n- When a DPH has been received properly, a port shall issue a single LGOOD_n with \"n\" corresponding to the Rx Header Sequence Number and increment the Rx Header Sequence Number by one (or roll over to 0 if the maximum Header Sequence Number is reached).\n- A port shall consume one Type 1 or Type 2 Rx Buffer Credit until it has been processed and a Rx Buffer is available.\n- When a DPH is not \"received properly\", one of the following shall occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 562,
+      "bottomRightX": 687,
+      "bottomRightY": 646,
+      "content": "1. If the DPH has one or more CRC-5 or CRC-16 errors, but the two length field replica are valid and identical, a port shall issue a single LBAD and track the associated DPP that immediately follows the DPH. A port shall ignore all the packets received subsequently until an LRTY has been received, or the link has entered Recovery. Refer to Section 7.2.4.1.1 for additional rules applicable when a port enters U0 from Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 175,
+      "topLeftY": 648,
+      "bottomRightX": 593,
+      "bottomRightY": 664,
+      "content": "Note: a valid length field is 0~1024. Refer to Section 7.2.1.2 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 152,
+      "topLeftY": 666,
+      "bottomRightX": 639,
+      "bottomRightY": 683,
+      "content": "2. If any one of the following conditions occurs, a port shall transition to Recovery.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 175,
+      "topLeftY": 684,
+      "bottomRightX": 673,
+      "bottomRightY": 753,
+      "content": "a. The two length field replica is not identical.\nb. The Header Sequence Number in the received DPH does not match the Rx Header Sequence Number.\nc. The Rx Buffer does not have enough space to store the received DP",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 755,
+      "bottomRightX": 658,
+      "bottomRightY": 825,
+      "content": "- After transmitting LBAD, a port shall continue to issue LCRD1_x or LCRD2_x if its corresponding Type 1 or Type 2 Rx Buffer Credit is made available.\n- A port shall transition directly to Recovery if it fails to receive a data packet header three consecutive times. A port shall not issue the third LBAD upon the third error.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 981,
+      "bottomRightX": 117,
+      "bottomRightY": 994,
+      "content": "7-24",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

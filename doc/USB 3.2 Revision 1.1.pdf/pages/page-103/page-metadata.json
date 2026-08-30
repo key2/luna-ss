@@ -1,0 +1,138 @@
+{
+  "index": 102,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 191,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 46,
+      "bottomRightX": 413,
+      "bottomRightY": 61,
+      "content": "- 72 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 92,
+      "bottomRightX": 676,
+      "bottomRightY": 214,
+      "content": "assume that there are four re-timers between the loopback master and the loopback slave. There exists a possibility that all re-timers in the forward path from the loopback master to the loopback slave may all remove the maximum number of SKP symbols allowed on the first SKP block, leaving with no SKPs, but only SKPEND and the LFSR seeds. There also exists a theoretical possibility that all re-timers in the forward and return path, and loopback slave, may all insert the maximum number of SKP symbols allowed. A loopback master shall be prepared to deal with such extreme scenarios. A loopback slave and a re-timer may perform its clock offset compensation on either of the SKP blocks.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 226,
+      "bottomRightX": 676,
+      "bottomRightY": 273,
+      "content": "The SKPEND Symbol indicates the last four Symbols of SKP Ordered Set so that receivers can identify the location of the next Block Header in the bit stream. The three Symbols following the SKPEND Symbol contain the transmitter LFSR state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 285,
+      "bottomRightX": 675,
+      "bottomRightY": 361,
+      "content": "A receiver shall always perform single bit error correction on the SKP and SKPEND (and all other special) symbols. However, since the Hamming distance between the SKP and SKPEND symbols is 8, once a receiver has determined that it is dealing with a SKP OS (by proper detection of a first SKP symbol) it may be beneficial to use multiple bit (up to 3-bit) error correction in differentiating between a SKP and a SKPEND symbol.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 280,
+      "topLeftY": 373,
+      "bottomRightX": 510,
+      "bottomRightY": 389,
+      "content": "**Table 6-13. Gen 2 SKP Ordered Set**",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 399,
+      "bottomRightX": 660,
+      "bottomRightY": 553,
+      "content": "|  Symbol Number | Value | Description  |\n| --- | --- | --- |\n|  0 through 4*N-1 [N can be 0 through 9] | CCh | SKP Symbol Symbol 0 is the SKP Ordered Set Identifier  |\n|  4*N | 33h | SKPEND Symbol  |\n|  4*N+1 | 40-FFh | Bit[7] = ~LFSR[22] Bit[6:0] = LFSR[22:16]  |\n|  4*N+2 | 00-FFh | LFSR[15:8]  |\n|  4*N+3 | 00-FFh | LFSR[7:0]  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-48.md"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 576,
+      "bottomRightX": 663,
+      "bottomRightY": 622,
+      "content": "Note: The transmitted LFSR state is intended for use by test equipment vendors needing to re-synch their data scramblers. The transmitted LFSR state is not intended to be used by ports in normal operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 633,
+      "bottomRightX": 501,
+      "bottomRightY": 649,
+      "content": "The following rules apply for SKP insertion for Gen 2 operation:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 655,
+      "bottomRightX": 667,
+      "bottomRightY": 783,
+      "content": "1. A port shall keep a running count of the number of transmitted blocks since the last SKP Ordered Set. The value of this count will be referred to as Y. The value of Y is reset whenever the transmitter enters Polling.Active. Y is not incremented for transmitted SKP Ordered Sets.\n2. A port shall calculate the integer result of Y/40 when an opportunity to insert a SKP Ordered Set arises. The integer result of Y/40 is the number of accumulated SKP Ordered Sets that need to be transmitted – this value will be referred to as Z. The value of Z can be either 0, 1, or 2.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 159,
+      "topLeftY": 790,
+      "bottomRightX": 666,
+      "bottomRightY": 820,
+      "content": "Note: The non-integer remainder of the Y/40 SKP calculation shall not be discarded and shall be used in the calculation to schedule the next SKP Ordered Set.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 826,
+      "bottomRightX": 650,
+      "bottomRightY": 903,
+      "content": "3. Unless otherwise specified, when the LTSSM is not in the loopback state, a transmitter shall insert Z SKP Ordered Sets immediately after each transmitted SYNC, TS1, TS2, SDS, LMP, Header Packet, Data Packet, or Logical idle. When the LTSSM is in the Loopback state, the Loopback Master transmitter shall insert 2*Z SKP Ordered Sets immediately after each transmitted SYNC, TS1, TS2, SDS, LMP,",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

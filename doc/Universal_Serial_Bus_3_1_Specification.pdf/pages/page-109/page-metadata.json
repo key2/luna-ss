@@ -1,0 +1,134 @@
+{
+  "index": 108,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 633,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Mechanical",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 177,
+      "topLeftY": 114,
+      "bottomRightX": 403,
+      "bottomRightY": 276,
+      "content": "![img-48.jpeg](img-48.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-48.jpeg"
+    },
+    {
+      "topLeftX": 242,
+      "topLeftY": 293,
+      "bottomRightX": 333,
+      "bottomRightY": 307,
+      "content": "SECTION B-B",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 489,
+      "topLeftY": 134,
+      "bottomRightX": 607,
+      "bottomRightY": 256,
+      "content": "![img-49.jpeg](img-49.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-49.jpeg"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 326,
+      "bottomRightX": 451,
+      "bottomRightY": 598,
+      "content": "![img-50.jpeg](img-50.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-50.jpeg"
+    },
+    {
+      "topLeftX": 481,
+      "topLeftY": 333,
+      "bottomRightX": 639,
+      "bottomRightY": 560,
+      "content": "![img-51.jpeg](img-51.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-51.jpeg"
+    },
+    {
+      "topLeftX": 524,
+      "topLeftY": 570,
+      "bottomRightX": 614,
+      "bottomRightY": 584,
+      "content": "SECTION A-A",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 195,
+      "topLeftY": 645,
+      "bottomRightX": 344,
+      "bottomRightY": 780,
+      "content": "![img-52.jpeg](img-52.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-52.jpeg"
+    },
+    {
+      "topLeftX": 251,
+      "topLeftY": 801,
+      "bottomRightX": 343,
+      "bottomRightY": 815,
+      "content": "SECTION C-C",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 534,
+      "topLeftY": 631,
+      "bottomRightX": 627,
+      "bottomRightY": 708,
+      "content": "![img-53.jpeg](img-53.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-53.jpeg"
+    },
+    {
+      "topLeftX": 543,
+      "topLeftY": 726,
+      "bottomRightX": 610,
+      "bottomRightY": 739,
+      "content": "DETAIL A",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 572,
+      "topLeftY": 839,
+      "bottomRightX": 698,
+      "bottomRightY": 854,
+      "content": "Continued on next page",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 980,
+      "bottomRightX": 697,
+      "bottomRightY": 993,
+      "content": "5-21",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "index": 162,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 602,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 559,
+      "bottomRightY": 137,
+      "content": "Table 8-10. Lane Margining at the Receiver Sequences (Sheet 4 of 4)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 653,
+      "content": "|  Operation | Type of Sampler | Sequence  |   |   |\n| --- | --- | --- | --- | --- |\n|   |   |  Direction | Message Bus Command | Description^{1}  |\n|  Error Limit Exceeded | Independent | - | - | PHY detects a change in error or sample count.  |\n|   |   |  P-->M | UWr | RxMarginStatus1.SampleCount= current (if supported)  |\n|   |   |  P-->M | CWr | RxMarginStatus2.ErrorCount= new current (if supported)  |\n|   |   |  M-->P | Ack | -  |\n|   |   |  - | - | MAC compares error update to limit, detects limit exceeded.  |\n|   |   |  M-->P | UWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |  M-->P | CWr | RxMarginControl0=8'b00000000 (stop, clear t vs v)  |\n|   |   |  P-->M | Ack | -  |\n|   |   |  P-->M | UWr | RxMarginStatus1.SampleCount=Final (if supported)  |\n|   |   |  P-->M | UWr | RxMarginStatus2.ErrorCount=Final (if supported)  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginStatus=1  |\n|   |   |  M-->P | Ack | -  |\n|   |   |  - | - | MAC changes execution status to 00 (error limit exceeded).  |\n|   |  Dependent | - | - | MAC observes error count has exceeded limit.  |\n|   |   |  M-->P | UWr | RxMarginControl1={1'b?,7'b?} (direction, offset)  |\n|   |   |  M-->P | CWr | RxMarginControl0=8'b00000000 (stop, clear t vs v)  |\n|   |   |  P-->M | Ack | -  |\n|   |   |  P-->M | CWr | RxMarginStatus0.MarginStatus=1  |\n|   |   |  M-->P | Ack | -  |\n|   |   |  - | - | MAC changes execution status to 00 (error limit exceeded).  |\n|  Sample Count Saturated | Independent | - | - | PHY detects a change in error or sample count.  |\n|   |   |  P-->M | UWr | RxMarginStatus1.SampleCount= ==7'h7F (if supported)  |\n|   |   |  P-->M | CWr | RxMarginStatus2.ErrorCount= new current (if supported)  |\n|   |   |  M-->P | Ack | -  |\n|   |  Dependent | - | - | N/A  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-150.md"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 655,
+      "bottomRightX": 698,
+      "bottomRightY": 680,
+      "content": "1. Writes to RxMarginStatus.SampleCount are only applicable if Sample Count is supported. Writes to RxMarginStatus.ErrorCount are only applicable if Error Count is supported.",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 99,
+      "topLeftY": 698,
+      "bottomRightX": 526,
+      "bottomRightY": 722,
+      "content": "### 8.31 Short Channel Power Control",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 182,
+      "topLeftY": 728,
+      "bottomRightX": 694,
+      "bottomRightY": 828,
+      "content": "For short reach (for instance, MCP applications), there should be a provision to revert the ShortChannelPowerControl[1:0] signal to normal operation mode for situations where an optimized mode setting prevents link up. For example, if a particular setting is not compatible with a 2.5 GT/s link speed and works only at higher link speeds, the expectation is that the ShortChannelPowerControl[1:0] signal would be set to normal operation mode to bring the link up initially before changing the value to an optimized power control setting while transitioning to higher link speeds.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 953,
+      "bottomRightX": 297,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "163",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

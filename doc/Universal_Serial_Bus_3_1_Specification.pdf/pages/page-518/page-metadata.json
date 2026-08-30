@@ -1,0 +1,147 @@
+{
+  "index": 517,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 29,
+      "bottomRightX": 378,
+      "bottomRightY": 45,
+      "content": "Universal Serial Bus 3.1 Specification, Revision 1.0",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 93,
+      "bottomRightX": 689,
+      "bottomRightY": 162,
+      "content": "for each hub and not for each downstream port. However, the organization and function of this buffering shall allow packets to be received from the upstream port and then subsequently transmitted on multiple downstream ports simultaneously and in a different order than the order in which they were received. That is, this buffering cannot be organized as a single, simple FIFO.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 197,
+      "bottomRightX": 736,
+      "bottomRightY": 512,
+      "content": "![img-275.jpeg](img-275.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-275.jpeg"
+    },
+    {
+      "topLeftX": 194,
+      "topLeftY": 537,
+      "bottomRightX": 629,
+      "bottomRightY": 554,
+      "content": "Figure 10-18. Logical Representation of Downstream Flowing Buffers",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 567,
+      "bottomRightX": 565,
+      "bottomRightY": 589,
+      "content": "### 10.8.6 SuperSpeedPlus Hub Arbitration of Packets",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 603,
+      "bottomRightX": 323,
+      "bottomRightY": 623,
+      "content": "#### 10.8.6.1 Arbitration Weight",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 627,
+      "bottomRightX": 667,
+      "bottomRightY": 662,
+      "content": "The iᵗʰ downstream facing port (DFPi) has an arbitration weight (AW) associated with it. This weight shall be set to;",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 181,
+      "topLeftY": 667,
+      "bottomRightX": 499,
+      "bottomRightY": 684,
+      "content": "DFPi.AW = DFPi.link_speed / ArbitrationWeightBase",
+      "confidenceScores": null,
+      "type": "equation"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 688,
+      "bottomRightX": 692,
+      "bottomRightY": 722,
+      "content": "For example, a port link operating at 5Gb/s will have an AW of 4. A port link operating at 10Gb/s will have an AW of 8.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 737,
+      "bottomRightX": 480,
+      "bottomRightY": 756,
+      "content": "#### 10.8.6.2 Direction Independent Packet Selection",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 761,
+      "bottomRightX": 652,
+      "bottomRightY": 794,
+      "content": "When there are multiple packets buffered that are ready to be transmitted out of the hub, the SuperSpeedPlus hub has to select which packet to transmit next.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 799,
+      "bottomRightX": 591,
+      "bottomRightY": 816,
+      "content": "There are several selection rules that are independent of direction of packet flow.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 821,
+      "bottomRightX": 653,
+      "bottomRightY": 855,
+      "content": "The SuperSpeedPlus hub has additional rules that are specific for upstream and downstream flowing packet reception and selection (see the next two sections).",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 860,
+      "bottomRightX": 694,
+      "bottomRightY": 878,
+      "content": "A TP shall only be considered as a possible candidate after it has been fully received and validated.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 982,
+      "bottomRightX": 124,
+      "bottomRightY": 994,
+      "content": "10-40",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

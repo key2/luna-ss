@@ -1,0 +1,29 @@
+{
+  "index": 630,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 89,
+      "topLeftY": 92,
+      "bottomRightX": 292,
+      "bottomRightY": 126,
+      "content": "# E Repeaters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 157,
+      "bottomRightX": 693,
+      "bottomRightY": 195,
+      "content": "This appendix is a placeholder for repeater requirements that will be completed after the release of the USB 3.1 specification.",
+      "confidenceScores": null,
+      "type": "text"
+    }
+  ]
+}

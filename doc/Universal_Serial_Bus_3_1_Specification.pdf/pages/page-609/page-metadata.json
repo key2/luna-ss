@@ -1,0 +1,102 @@
+{
+  "index": 608,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 586,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Power Management",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 109,
+      "bottomRightX": 439,
+      "bottomRightY": 128,
+      "content": "### C.1.4.4 Host Initiated Wake from Suspend",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 132,
+      "bottomRightX": 681,
+      "bottomRightY": 167,
+      "content": "Host initiated wake from suspend (U3 → U0) of an individual device, group of devices, or of the entire link hierarchy is accomplished using the same repetitive process, one link at a time.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 174,
+      "bottomRightX": 450,
+      "bottomRightY": 191,
+      "content": "Figure C-1 illustrates the Host initiated Wake Sequence.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 144,
+      "topLeftY": 213,
+      "bottomRightX": 677,
+      "bottomRightY": 558,
+      "content": "![img-291.jpeg](img-291.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-291.jpeg"
+    },
+    {
+      "topLeftX": 249,
+      "topLeftY": 571,
+      "bottomRightX": 574,
+      "bottomRightY": 590,
+      "content": "Figure C-1. Flow Diagram for Host Initiated Wakeup",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 617,
+      "bottomRightX": 456,
+      "bottomRightY": 637,
+      "content": "### C.1.4.5 Device Initiated Wake from Suspend",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 642,
+      "bottomRightX": 652,
+      "bottomRightY": 658,
+      "content": "A device initiated transition from suspend (U3 → U0) follows the sequence outlined below:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 662,
+      "bottomRightX": 694,
+      "bottomRightY": 902,
+      "content": "1. The device transmits LFPS wakeup signaling to its link partner.\n2. The LFPS signaling is propagated upstream until it reaches the root hub or a hub that is not in U3. This hub is referred to as the Controlling Hub.\n3. The Controlling Hub then automatically reflects LFPS wakeup signaling on the downstream port which had received (from the opposite direction) the wakeup signaling.\n4. Each hub in the direct path to the remote wakeup device propagates the wakeup signaling downstream on the hub downstream port that had received wakeup signaling. As the wakeup signaling is propagated downstream, each link completes the LFPS handshake and transitions to U0 (refer to Chapters 6 and 7 for details).\n5. After all of the links between the Controlling Hub and the remote wakeup device transition to U0, the function within the remote wakeup device that had originated the remote wakeup sends a Function Wake device notification packet to the host. This in turn causes a software interrupt, and in the service of this interrupt the function suspend state is cleared for that function.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 670,
+      "topLeftY": 982,
+      "bottomRightX": 697,
+      "bottomRightY": 994,
+      "content": "C-11",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

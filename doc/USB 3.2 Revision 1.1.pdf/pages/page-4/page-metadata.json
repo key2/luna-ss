@@ -1,0 +1,57 @@
+{
+  "index": 3,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 379,
+      "topLeftY": 46,
+      "bottomRightX": 411,
+      "bottomRightY": 61,
+      "content": "- iv -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 99,
+      "bottomRightX": 649,
+      "bottomRightY": 904,
+      "content": "|  **Allion Labs, Inc.** | Howard Chang Brian Shih | John Lin | Stan Lin  |\n| --- | --- | --- | --- |\n|  **Analogix Semiconductor, Inc.** | Ke Ma | Greg Stewart | Haijian Sui  |\n|  **ASMedia Technology Inc.** | Chin Chang Han Sung Kuo Daniel Wei | Weber Chuang ShuYu Lin ShengChung Wu | Luke Peng  |\n|  **Bizlink Technology, Inc.** | Ted Hsiao | Morphy Hsieh | Sean O’Neal  |\n|  **Cadence Design Systems, Inc.** | Harisankar Aravindakshan Jacek Duda Tomasz Klimek Uyen Nguyen Claire Ying | Marcin Behrendt Pawel Eichler John Lupinski Raja Pounraj | Huzaifa Dalal Dariusz Kaczmarczyk Jie Min Fred Stivers  |\n|  **Corning Optical Communications LLC** | Wojciech Giziewicz | Ian McKay | Jamie Silva  |\n|  **Cosemi Technologies Inc.** | Samir Desai | Devang Parekh |   |\n|  **Cypress Semiconductor** | Mark Fu Anup Nayak | Rushil Kadakia Veerappan Rajaram | Michael Miskho Rangarajan Sundaravaradan  |\n|  **Dell Inc.** | Mohammed Hijazi Sean O’Neal | Terry Matula Merle Wood | Marcin Nowak  |\n|  **Diodes Incorporated** | Kay Annamalai Jin-sheng Wang | Joseph Juan Michael Zhang | Qun Song  |\n|  **DisplayLink (UK) Ltd.** | Pete Burgers | Dan Ellis |   |\n|  **Electronics Testing Center, Taiwan** | Sophia Liu |  |   |\n|  **Ellisys** | Abel Astley Chuck Trefts | Rick Bogart | Mario Pasquali  |\n|  **EverPro Technologies Company, Ltd.** | Jiang Hui | Tom Yang |   |\n|  **FLIR Integrated Imaging Solutions** | Andrew Fussell | Damian Nesbitt | Tim Vlaar  |\n|  **Foxconn / Hon Hai** | Fred Fons Decheng Zou | Bob Hall | Terry Little  |\n|  **Fresco Logic Inc.** | Tim Barilovits Jie Ni | Bob McVay Jeffrey Yang | Christopher Meyers  |\n|  **Granite River Labs** | Mike Engbretson |  |   |\n|  **Hirose Electric** | Junya Doi William Kysiak Tadashi Ohshida Shigeo Tezuka | Kazu Ichikawa Clement Luk Isamu Saito Sid Tono | Daisuke Kogure William MacKillop Toshiyuki Takada  |\n|  **Japan Aviation Electronics Industry Ltd. (JAE)** | Toshiyuki Moritake Toshio Shimoyama | Takeharu Naito Takamitsu Wada | Mark Saubert  |\n|  **JMicron Technology Corp.** | Charon Chen | Kevin Liu | Hung-Cheng Lo  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-9.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

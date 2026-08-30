@@ -1,0 +1,57 @@
+{
+  "index": 57,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 92,
+      "topLeftY": 53,
+      "bottomRightX": 184,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 122,
+      "bottomRightX": 510,
+      "bottomRightY": 138,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 10 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 91,
+      "topLeftY": 141,
+      "bottomRightX": 690,
+      "bottomRightY": 547,
+      "content": "|  Name | Active Level | Description |   | Relevant Protocols  |\n| --- | --- | --- | --- | --- |\n|   |  | Value | Description | PCIe, SATA, USB, DisplayPort, and USB4  |\n|   |   |  6 | Use 3.24 Gbps signaling rate.  |   |\n|   |   |  7 | Use 4.32 Gbps signaling rate.  |   |\n|   |   |  8 | Use 10 Gbps signaling rate.  |   |\n|   |   |  9 | Use 13.5 Gbps signaling rate.  |   |\n|   |   |  10 | Use 20 Gbps signaling rate.  |   |\n|   |   |  11 through 14 | Reserved  |   |\n|   |   |  15 | Rate Override mode: The rate is specified via a vendor-specific PHY Rate register, which is outside the scope of this specification.  |   |\n|   |   |  USB4 mode:  |   |   |\n|   |   |  Value | Description  |   |\n|   |   |  0 | Use 10.0 GT/s signaling rate.  |   |\n|   |   |  1 | Use 20.0 GT/s signaling rate.  |   |\n|   |   |  2 | Use 40.0 GT/s signaling rate.  |   |\n|   |   |  3 through 13 | Reserved  |   |\n|   |   |  14 | Use 10.3125 GT/s signaling.  |   |\n|   |   |  15 | Use 20.625 GT/s signaling.  |   |\n|   |   |  PIPE implementations that only support one signaling rate do not implement this signal.  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-30.md"
+    },
+    {
+      "topLeftX": 92,
+      "topLeftY": 954,
+      "bottomRightX": 105,
+      "bottomRightY": 965,
+      "content": "58",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 492,
+      "topLeftY": 954,
+      "bottomRightX": 687,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

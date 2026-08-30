@@ -1,0 +1,93 @@
+{
+  "index": 294,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 90,
+      "topLeftY": 94,
+      "bottomRightX": 109,
+      "bottomRightY": 119,
+      "content": "8",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 94,
+      "bottomRightX": 345,
+      "bottomRightY": 124,
+      "content": "# Protocol Layer",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 159,
+      "bottomRightX": 698,
+      "bottomRightY": 212,
+      "content": "The protocol layer manages the end-to-end flow of data between a device and its host. This layer is built on the assumption that the link layer guarantees delivery of header packets and this layer adds on end to end reliability for the rest of the packets depending on the transfer type.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 218,
+      "bottomRightX": 692,
+      "bottomRightY": 269,
+      "content": "Where not specifically noted, requirements apply to both the SuperSpeed and SuperSpeedPlus architectures. Gen 2 speed capable devices operating at Gen 1 speed, regardless of their additional capabilities (e.g. Gen 2 speed), shall only use features of the SuperSpeed architecture.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 279,
+      "bottomRightX": 387,
+      "bottomRightY": 296,
+      "content": "The chapter describes the following in detail:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 125,
+      "topLeftY": 300,
+      "bottomRightX": 679,
+      "bottomRightY": 425,
+      "content": "- Types of packets\n- Format of the packets\nExpected responses to packets sent by the host and a device\n- The four USB defined transfer types\n- Support for Streams for the bulk transfer type\n- Timing parameters for the various responses and packets the host or a device may receive or transmit",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 142,
+      "topLeftY": 449,
+      "bottomRightX": 688,
+      "bottomRightY": 785,
+      "content": "![img-188.jpeg](img-188.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-188.jpeg"
+    },
+    {
+      "topLeftX": 291,
+      "topLeftY": 807,
+      "bottomRightX": 533,
+      "bottomRightY": 825,
+      "content": "Figure 8-1. Protocol Layer Highlighted",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 679,
+      "topLeftY": 982,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "8-1",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

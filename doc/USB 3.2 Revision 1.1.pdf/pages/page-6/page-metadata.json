@@ -1,0 +1,155 @@
+{
+  "index": 5,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 81,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 48,
+      "bottomRightX": 411,
+      "bottomRightY": 63,
+      "content": "- vi -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 525,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 81,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 102,
+      "bottomRightX": 247,
+      "bottomRightY": 141,
+      "content": "# **Tyco Electronics Corp.,  \na TE Connectivity Ltd.  \ncompany**",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 145,
+      "bottomRightX": 243,
+      "bottomRightY": 185,
+      "content": "**VIA Technologies, Inc.**  \n**(including VIA Labs,  \nInc.)**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 258,
+      "topLeftY": 145,
+      "bottomRightX": 340,
+      "bottomRightY": 194,
+      "content": "Kent Chen  \nTerrance Shih  \nFong-Jim Wang",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 397,
+      "topLeftY": 145,
+      "bottomRightX": 469,
+      "bottomRightY": 177,
+      "content": "Rayman Chiu Jay Tseng",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 534,
+      "topLeftY": 145,
+      "bottomRightX": 610,
+      "bottomRightY": 177,
+      "content": "Ron Liu Wayne Tseng",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 197,
+      "bottomRightX": 212,
+      "bottomRightY": 225,
+      "content": "**Western Digital, Branded**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 258,
+      "topLeftY": 197,
+      "bottomRightX": 386,
+      "bottomRightY": 228,
+      "content": "Marvin DeForest Cristian Roman Del Nido",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 397,
+      "topLeftY": 197,
+      "bottomRightX": 479,
+      "bottomRightY": 228,
+      "content": "Larry McMillan Curtis Stevens",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 534,
+      "topLeftY": 197,
+      "bottomRightX": 630,
+      "bottomRightY": 212,
+      "content": "Charles Neumann",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 233,
+      "bottomRightX": 254,
+      "bottomRightY": 260,
+      "content": "**Xiaomi Communications Co., Ltd.**",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 258,
+      "topLeftY": 233,
+      "bottomRightX": 334,
+      "bottomRightY": 249,
+      "content": "Xiaoxing Yang",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 397,
+      "topLeftY": 233,
+      "bottomRightX": 460,
+      "bottomRightY": 249,
+      "content": "Juejia Zhou",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

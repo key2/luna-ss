@@ -1,0 +1,47 @@
+{
+  "index": 4,
+  "dimensions": {
+    "dpi": 87,
+    "height": 1018,
+    "width": 720
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 597,
+      "topLeftY": 38,
+      "bottomRightX": 646,
+      "bottomRightY": 50,
+      "content": "Contents",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 120,
+      "topLeftY": 89,
+      "bottomRightX": 623,
+      "bottomRightY": 644,
+      "content": "3.4.1 Introduction ... 9\n3.4.2 Pin Distribution... 10\n3.5 DDR3 ... 10\n3.5.1 Introduction ... 10\n3.5.2 Pin Distribution... 11\n3.6 HDMI-RX Interface ... 13\n3.6.1 Introduction ... 13\n3.6.2 Pin Distribution... 13\n3.7 MIPI Interface ... 14\n3.7.1 Introduction ... 14\n3.7.2 Pin Distribution... 15\n3.8 I2C Interface ... 18\n3.8.1 Introduction ... 18\n3.8.2 Pin Distribution... 18\n3.9 Key & LED ... 18\n3.9.1 Introduction ... 18\n3.9.2 Pin Distribution... 19\n3.10 Type-C Interface ... 20\n3.10.1 Introduction ... 20\n3.10.2 Pin Distribution... 21\n3.11 SDI Interface ... 22\n3.11.1 Introduction ... 22\n3.11.2 Pin Distribution... 22",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 73,
+      "topLeftY": 943,
+      "bottomRightX": 166,
+      "bottomRightY": 956,
+      "content": "DBUG1280-1.0.3E",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 638,
+      "topLeftY": 945,
+      "bottomRightX": 646,
+      "bottomRightY": 955,
+      "content": "ii",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

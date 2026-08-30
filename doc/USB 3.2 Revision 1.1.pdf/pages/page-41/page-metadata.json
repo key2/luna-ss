@@ -1,0 +1,57 @@
+{
+  "index": 40,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 377,
+      "topLeftY": 46,
+      "bottomRightX": 413,
+      "bottomRightY": 61,
+      "content": "- 10 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 89,
+      "bottomRightX": 683,
+      "bottomRightY": 919,
+      "content": "|  Term/Abbreviation | Definition  |\n| --- | --- |\n|  little endian | Method of storing data that places the least significant byte of multiple-byte values at lower storage addresses. For example, a 16-bit integer stored in little endian format places the least significant byte at the lower address and the most significant byte at the next address. See also big endian.  |\n|  LMP | Link Management Packet. A type of header packet used to communicate information between a pair of link partners.  |\n|  Local Rx Header Buffer Credit | The availability of a single free Rx Header Buffer of a port itself.  |\n|  Logical Idle | Period of one or more symbol times when no information (packets or link commands) is being transmitted when link is in U0.  |\n|  low-speed | USB operation at 1.5 Mbps. See also full-speed and high-speed.  |\n|  LSb | Least significant bit.  |\n|  LSB | Least significant byte.  |\n|  LTSSM | Link Training and Status State Machine.  |\n|  message pipe | A bi-directional pipe that transfers data using a request/data/status paradigm. The data has an imposed structure that allows requests to be reliably identified and communicated.  |\n|  MOD | The modulus function MOD(Number, Divisor) returns the remainder portion of dividing the Number by the Divisor.  |\n|  MSb | Most significant bit.  |\n|  MSB | Most significant byte.  |\n|  normative | Required by the specification. See also informative.  |\n|  NRDY | Handshake packet indicating a negative acknowledgment.  |\n|  packet | A bundle of data organized in a group for transmission. Packets typically contain three elements: control information (e.g., source, destination, and length), the data to be transferred, and error detection and correction bits.  |\n|  peripheral | A physical entity that is attached to a USB cable and is currently operating as a 'device' as defined in this specification.  |\n|  peripheral device | A non-hub USB device that provides one or more functions to the host, such as a mass storage device.  |\n|  persistent | State information (e.g., a descriptor field) that is retained and persistent through entry into and exit from D3.  |\n|  Phase Locked Loop | A circuit that acts as a phase detector to keep an oscillator in phase with an incoming frequency.  |\n|  physical device | A device that has a physical implementation; e.g., speakers, microphones, and CD players.  |\n|  pipe | A logical abstraction representing the association between an endpoint on a device and software on the host. A pipe has several attributes; for example, a pipe may transfer data as streams (stream pipe) or messages (message pipe). See also stream pipe and message pipe.  |\n|  PLL | See Phase Locked Loop.  |\n|  plug | Connector attached to the cable, to be mated with the receptacle  |\n|  port | Point of access to or from a system or circuit. Consists of a Tx port and an Rx port. For the USB, the point where a USB device is attached. See Figure 2-1.  |\n|  PowerOn Reset (POR) | An event to restore a device to its initial state.  |\n|  PPM | Parts Per Million.  |\n|  Precision Time Measurement | A protocol for determining propagation delays through the USB topology with a high degree of accuracy.  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-26.md"
+    },
+    {
+      "topLeftX": 201,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

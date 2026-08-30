@@ -1,0 +1,202 @@
+{
+  "index": 440,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 592,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Device Framework",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 686,
+      "bottomRightY": 128,
+      "content": "All devices shall provide a device descriptor and at least one configuration descriptor. If a device does not support a requested descriptor, it responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 135,
+      "bottomRightX": 605,
+      "bottomRightY": 152,
+      "content": "Default state: This is a valid request when the device is in the Default state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 159,
+      "bottomRightX": 609,
+      "bottomRightY": 175,
+      "content": "Address state: This is a valid request when the device is in the Address state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 181,
+      "bottomRightX": 626,
+      "bottomRightY": 200,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 215,
+      "bottomRightX": 299,
+      "bottomRightY": 236,
+      "content": "### 9.4.4 Get Interface",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 243,
+      "bottomRightX": 558,
+      "bottomRightY": 259,
+      "content": "This request returns the selected alternate setting for the specified interface.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 272,
+      "bottomRightX": 700,
+      "bottomRightY": 329,
+      "content": "|  bmRequestType | bRequest | wValue | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- |\n|  10000001B | GET_INTERFACE | Zero | Interface | One | Alternate Setting  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-157.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 344,
+      "bottomRightX": 662,
+      "bottomRightY": 379,
+      "content": "Some devices have configurations with interfaces that have mutually exclusive settings. This request allows the host to determine the currently selected alternate setting.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 390,
+      "bottomRightX": 643,
+      "bottomRightY": 408,
+      "content": "If wValue or wLength are not as specified above, then the device behavior is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 417,
+      "bottomRightX": 621,
+      "bottomRightY": 435,
+      "content": "If the interface specified does not exist, then the device responds with a Request Error.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 442,
+      "bottomRightX": 664,
+      "bottomRightY": 476,
+      "content": "Default state: Device behavior when this request is received while the device is in the Default state is not specified.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 482,
+      "bottomRightX": 534,
+      "bottomRightY": 500,
+      "content": "Address state: A Request Error response is given by the device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 507,
+      "bottomRightX": 626,
+      "bottomRightY": 523,
+      "content": "Configured state: This is a valid request when the device is in the Configured state.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 540,
+      "bottomRightX": 278,
+      "bottomRightY": 560,
+      "content": "### 9.4.5 Get Status",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 567,
+      "bottomRightX": 430,
+      "bottomRightY": 585,
+      "content": "This request returns status for the specified recipient.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 119,
+      "topLeftY": 596,
+      "bottomRightX": 700,
+      "bottomRightY": 683,
+      "content": "|  bmRequestType | bRequest | wValue |   | wIndex | wLength | Data  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  10000000B | GET_STATUS | Zero | Status Type | Zero | Status Type Length | Device, Interface, or Endpoint Status  |\n|  10000001B |   |   |   | Interface  |   |   |\n|  10000010B |   |   |   | Endpoint  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-158.md"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 696,
+      "bottomRightX": 684,
+      "bottomRightY": 766,
+      "content": "The Recipient bits of the bmRequestType field specify the desired recipient. The data returned is the current status of the specified recipient. If the recipient is an endpoint, then the lower byte of wIndex identifies the endpoint whose status is being queried. If the recipient is an interface, then the lower byte of wIndex identifies the interface whose status is being queried.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 783,
+      "bottomRightX": 517,
+      "bottomRightY": 802,
+      "content": "Only a Device is allowed as the Recipient for a PTM Status request.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 819,
+      "bottomRightX": 698,
+      "bottomRightY": 871,
+      "content": "The wValue field specifies the Status type in the low order byte (refer to Table 9-8) and the high order byte is reserved. The Status Type is used to select a specific status register when several types of status registers are implemented in a device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 671,
+      "topLeftY": 982,
+      "bottomRightX": 700,
+      "bottomRightY": 995,
+      "content": "9-23",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

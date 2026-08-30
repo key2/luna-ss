@@ -1,0 +1,461 @@
+{
+  "index": 20,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 645,
+      "topLeftY": 31,
+      "bottomRightX": 700,
+      "bottomRightY": 45,
+      "content": "Contents",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 92,
+      "bottomRightX": 699,
+      "bottomRightY": 108,
+      "content": "8.12.1.4.3.8 OUTMvData Device ...8-80",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 110,
+      "bottomRightX": 698,
+      "bottomRightY": 124,
+      "content": "8.12.1.4.3.9 OUTMvData Host ...8-81",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 126,
+      "bottomRightX": 698,
+      "bottomRightY": 140,
+      "content": "8.12.1.4.3.10 OUTMvData Host Terminate ...8-81",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 142,
+      "bottomRightX": 698,
+      "bottomRightY": 157,
+      "content": "8.12.1.4.4 Host IN Stream Protocol ...8-81",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 159,
+      "bottomRightX": 698,
+      "bottomRightY": 174,
+      "content": "8.12.1.4.4.1 Disabled ...8-82",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 175,
+      "bottomRightX": 698,
+      "bottomRightY": 190,
+      "content": "8.12.1.4.4.2 Prime Pipe ...8-82",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 191,
+      "bottomRightX": 436,
+      "bottomRightY": 206,
+      "content": "8.12.1.4.4.3 Idle 8-83",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 208,
+      "bottomRightX": 698,
+      "bottomRightY": 223,
+      "content": "8.12.1.4.4.4 Start Stream ...8-84",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 224,
+      "bottomRightX": 698,
+      "bottomRightY": 240,
+      "content": "8.12.1.4.4.5 Move Data ...8-85",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 241,
+      "bottomRightX": 698,
+      "bottomRightY": 255,
+      "content": "8.12.1.4.4.6 INMvData Device ...8-86",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 257,
+      "bottomRightX": 698,
+      "bottomRightY": 272,
+      "content": "8.12.1.4.4.7 INMvData Host ...8-86",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 273,
+      "bottomRightX": 698,
+      "bottomRightY": 288,
+      "content": "8.12.1.4.4.8 INMvData Burst End ...8-87",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 290,
+      "bottomRightX": 698,
+      "bottomRightY": 304,
+      "content": "8.12.1.4.4.9 INMvData Device Terminate ...8-87",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 305,
+      "bottomRightX": 698,
+      "bottomRightY": 321,
+      "content": "8.12.1.4.5 Host OUT Stream Protocol ...8-88",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 323,
+      "bottomRightX": 698,
+      "bottomRightY": 337,
+      "content": "8.12.1.4.5.1 Disabled ...8-88",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 339,
+      "bottomRightX": 698,
+      "bottomRightY": 354,
+      "content": "8.12.1.4.5.2 Prime Pipe ...8-89",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 355,
+      "bottomRightX": 436,
+      "bottomRightY": 370,
+      "content": "8.12.1.4.5.3 Idle 8-89",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 372,
+      "bottomRightX": 698,
+      "bottomRightY": 386,
+      "content": "8.12.1.4.5.4 Start Stream ...8-90",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 388,
+      "bottomRightX": 698,
+      "bottomRightY": 402,
+      "content": "8.12.1.4.5.5 Start Stream End ...8-90",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 404,
+      "bottomRightX": 698,
+      "bottomRightY": 419,
+      "content": "8.12.1.4.5.6 Move Data ...8-91",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 421,
+      "bottomRightX": 698,
+      "bottomRightY": 435,
+      "content": "8.12.1.4.5.7 OUTMvData Device ...8-92",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 437,
+      "bottomRightX": 698,
+      "bottomRightY": 452,
+      "content": "8.12.1.4.5.8 OUTMvData Host ...8-93",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 288,
+      "topLeftY": 454,
+      "bottomRightX": 698,
+      "bottomRightY": 468,
+      "content": "8.12.1.4.5.9 OUTMvData Host Terminate ...8-93",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 469,
+      "bottomRightX": 698,
+      "bottomRightY": 484,
+      "content": "8.12.2 Control Transfers ...8-94",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 485,
+      "bottomRightX": 698,
+      "bottomRightY": 501,
+      "content": "8.12.2.1 Reporting Status Results ...8-96",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 503,
+      "bottomRightX": 698,
+      "bottomRightY": 517,
+      "content": "8.12.2.2 Variable-length Data Stage ...8-97",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 518,
+      "bottomRightX": 698,
+      "bottomRightY": 534,
+      "content": "8.12.2.3 STALL TPs Returned by Control Pipes ...8-97",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 535,
+      "bottomRightX": 698,
+      "bottomRightY": 549,
+      "content": "8.12.3 Bus Interval and Service Interval ...8-98",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 550,
+      "bottomRightX": 698,
+      "bottomRightY": 565,
+      "content": "8.12.4 Interrupt Transactions ...8-98",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 566,
+      "bottomRightX": 698,
+      "bottomRightY": 582,
+      "content": "8.12.4.1 Interrupt IN Transactions ...8-98",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 583,
+      "bottomRightX": 698,
+      "bottomRightY": 598,
+      "content": "8.12.4.2 Interrupt OUT Transactions ...8-101",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 600,
+      "bottomRightX": 698,
+      "bottomRightY": 615,
+      "content": "8.12.5 Host Timing Information ...8-104",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 616,
+      "bottomRightX": 698,
+      "bottomRightY": 631,
+      "content": "8.12.6 Isochronous Transactions ...8-106",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 632,
+      "bottomRightX": 698,
+      "bottomRightY": 647,
+      "content": "8.12.6.1 Enhanced SuperSpeed Isochronous Transactions ...8-106",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 648,
+      "bottomRightX": 698,
+      "bottomRightY": 664,
+      "content": "8.12.6.1.1 Smart Isochronous Scheduling Protocol ...8-112",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 665,
+      "bottomRightX": 698,
+      "bottomRightY": 680,
+      "content": "8.12.6.2 Host Flexibility in Performing SuperSpeed Isochronous",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 323,
+      "topLeftY": 681,
+      "bottomRightX": 698,
+      "bottomRightY": 695,
+      "content": "Transactions ...8-116",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 697,
+      "bottomRightX": 698,
+      "bottomRightY": 713,
+      "content": "8.12.6.3 SuperSpeedPlus Isochronous Transactions ...8-116",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 253,
+      "topLeftY": 714,
+      "bottomRightX": 698,
+      "bottomRightY": 728,
+      "content": "8.12.6.3.1 Pipelined Isochronous IN Transactions ...8-116",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 729,
+      "bottomRightX": 698,
+      "bottomRightY": 744,
+      "content": "8.12.6.4 Host Flexibility in Performing SuperSpeedPlus Isochronous",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 323,
+      "topLeftY": 747,
+      "bottomRightX": 698,
+      "bottomRightY": 761,
+      "content": "Transactions ...8-119",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 763,
+      "bottomRightX": 698,
+      "bottomRightY": 777,
+      "content": "8.12.6.5 Device Response to Isochronous IN Transactions ...8-119",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 778,
+      "bottomRightX": 698,
+      "bottomRightY": 794,
+      "content": "8.12.6.6 Host Processing of Isochronous IN Transactions ...8-119",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 230,
+      "topLeftY": 796,
+      "bottomRightX": 705,
+      "bottomRightY": 811,
+      "content": "8.12.6.7 Device Response to an Isochronous OUT Data Packet 8-120",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 812,
+      "bottomRightX": 698,
+      "bottomRightY": 828,
+      "content": "8.13 Timing Parameters ...8-121",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 836,
+      "bottomRightX": 698,
+      "bottomRightY": 854,
+      "content": "# 9 Device Framework ...9-1",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 857,
+      "bottomRightX": 698,
+      "bottomRightY": 872,
+      "content": "9.1 USB Device States ...9-1",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 161,
+      "topLeftY": 875,
+      "bottomRightX": 698,
+      "bottomRightY": 889,
+      "content": "9.1.1 Visible Device States ...9-1",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 681,
+      "topLeftY": 983,
+      "bottomRightX": 698,
+      "bottomRightY": 994,
+      "content": "xxi",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

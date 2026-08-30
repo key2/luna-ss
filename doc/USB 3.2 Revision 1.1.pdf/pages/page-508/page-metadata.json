@@ -1,0 +1,57 @@
+{
+  "index": 507,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 192,
+      "bottomRightY": 77,
+      "content": "Revision 1.1  \nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 46,
+      "bottomRightX": 417,
+      "bottomRightY": 61,
+      "content": "- 477 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 527,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2  \nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 89,
+      "bottomRightX": 670,
+      "bottomRightY": 834,
+      "content": "|  Data Byte Name | Data Byte Value (hex) | Bits HGF EDCBA (binary) | Current RD- abcdei fghj (binary) | Current RD+ abcdei fghj (binary)  |\n| --- | --- | --- | --- | --- |\n|  D30.6 | DE | 110 11110 | 011110 0110 | 100001 0110  |\n|  D31.6 | DF | 110 11111 | 101011 0110 | 010100 0110  |\n|  D0.7 | E0 | 111 00000 | 100111 0001 | 011000 1110  |\n|  D1.7 | E1 | 111 00001 | 011101 0001 | 100010 1110  |\n|  D2.7 | E2 | 111 00010 | 101101 0001 | 010010 1110  |\n|  D3.7 | E3 | 111 00011 | 110001 1110 | 110001 0001  |\n|  D4.7 | E4 | 111 00100 | 110101 0001 | 001010 1110  |\n|  D5.7 | E5 | 111 00101 | 101001 1110 | 101001 0001  |\n|  D6.7 | E6 | 111 00110 | 011001 1110 | 011001 0001  |\n|  D7.7 | E7 | 111 00111 | 111000 1110 | 000111 0001  |\n|  D8.7 | E8 | 111 01000 | 111001 0001 | 000110 1110  |\n|  D9.7 | E9 | 111 01001 | 100101 1110 | 100101 0001  |\n|  D10.7 | EA | 111 01010 | 010101 1110 | 010101 0001  |\n|  D11.7 | EB | 111 01011 | 110100 1110 | 110100 1000  |\n|  D12.7 | EC | 111 01100 | 001101 1110 | 001101 0001  |\n|  D13.7 | ED | 111 01101 | 101100 1110 | 101100 1000  |\n|  D14.7 | EE | 111 01110 | 011100 1110 | 011100 1000  |\n|  D15.7 | EF | 111 01111 | 010111 0001 | 101000 1110  |\n|  D16.7 | F0 | 111 10000 | 011011 0001 | 100100 1110  |\n|  D17.7 | F1 | 111 10001 | 100011 0111 | 100011 0001  |\n|  D18.7 | F2 | 111 10010 | 010011 0111 | 010011 0001  |\n|  D19.7 | F3 | 111 10011 | 110010 1110 | 110010 0001  |\n|  D20.7 | F4 | 111 10100 | 001011 0111 | 001011 0001  |\n|  D21.7 | F5 | 111 10101 | 101010 1110 | 101010 0001  |\n|  D22.7 | F6 | 111 10110 | 011010 1110 | 011010 0001  |\n|  D23.7 | F7 | 111 10111 | 111010 0001 | 000101 1110  |\n|  D24.7 | F8 | 111 11000 | 110011 0001 | 001100 1110  |\n|  D25.7 | F9 | 111 11001 | 100110 1110 | 100110 0001  |\n|  D26.7 | FA | 111 11010 | 010110 1110 | 010110 0001  |\n|  D27.7 | FB | 111 11011 | 110110 0001 | 001001 1110  |\n|  D28.7 | FC | 111 11100 | 001110 1110 | 001110 0001  |\n|  D29.7 | FD | 111 11101 | 101110 0001 | 010001 1110  |\n|  D30.7 | FE | 111 11110 | 011110 0001 | 100001 1110  |\n|  D31.7 | FF | 111 11111 | 101011 0001 | 010100 1110  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-274.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 961,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

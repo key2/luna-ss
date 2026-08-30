@@ -1,0 +1,111 @@
+{
+  "index": 524,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 313,
+      "topLeftY": 30,
+      "bottomRightX": 700,
+      "bottomRightY": 46,
+      "content": "Hub, Host Downstream Port, and Device Upstream Port Specification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 106,
+      "bottomRightX": 424,
+      "bottomRightY": 128,
+      "content": "### 10.9.3 Port Receive State Machine",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 133,
+      "bottomRightX": 671,
+      "bottomRightY": 167,
+      "content": "This section describes the functional requirements of the upstream and downstream facing port receiver (Rx) state machine.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 165,
+      "topLeftY": 239,
+      "bottomRightX": 668,
+      "bottomRightY": 655,
+      "content": "![img-277.jpeg](img-277.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-277.jpeg"
+    },
+    {
+      "topLeftX": 242,
+      "topLeftY": 685,
+      "bottomRightX": 581,
+      "bottomRightY": 702,
+      "content": "Figure 10-20. Upstream Facing Port Rx State Machine",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 718,
+      "bottomRightX": 462,
+      "bottomRightY": 739,
+      "content": "### 10.9.4 Port Receive State Descriptions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 89,
+      "topLeftY": 753,
+      "bottomRightX": 266,
+      "bottomRightY": 771,
+      "content": "#### 10.9.4.1 Rx Default",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 123,
+      "topLeftY": 776,
+      "bottomRightX": 676,
+      "bottomRightY": 811,
+      "content": "In the Rx Default state, the port receiver is actively receiving symbols and looking for the speed specific beginning of a valid packet or a link command.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 816,
+      "bottomRightX": 630,
+      "bottomRightY": 834,
+      "content": "A port receiver shall transition to the Rx Default state in any of the following situations:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 837,
+      "bottomRightX": 667,
+      "bottomRightY": 892,
+      "content": "- From the Rx Data state when a speed specific end of packet or abort indication is detected.\n- From the Rx Header state when the last symbol of the header packet is received.\n- After receiving a link command.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 667,
+      "topLeftY": 981,
+      "bottomRightX": 700,
+      "bottomRightY": 994,
+      "content": "10-47",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

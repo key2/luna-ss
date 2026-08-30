@@ -1,0 +1,182 @@
+{
+  "index": 196,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 371,
+      "topLeftY": 48,
+      "bottomRightX": 417,
+      "bottomRightY": 63,
+      "content": "- 166 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 96,
+      "bottomRightX": 257,
+      "bottomRightY": 112,
+      "content": "- Rx.Detect.Quiet",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 133,
+      "bottomRightX": 306,
+      "bottomRightY": 148,
+      "content": "#### 7.5.3.2 Rx.Detect Requirements",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 155,
+      "bottomRightX": 670,
+      "bottomRightY": 223,
+      "content": "- The transmitter common mode is not required to be within specification during this state.\n- The low-impedance receiver termination (R$_{RX-DC}$) defined in Table 6-22 shall be maintained.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 245,
+      "bottomRightX": 259,
+      "bottomRightY": 260,
+      "content": "#### 7.5.3.3 Rx.Detect.Reset",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 266,
+      "bottomRightX": 672,
+      "bottomRightY": 328,
+      "content": "Rx.Detect.Reset is a substate designed for the two ports to synchronize their operations on Warm Reset. In this substate, a downstream port shall generate Warm Reset when directed. If an upstream port enters Rx.Detect upon detection of Warm Reset, it shall remain in this substate until the completion of Warm Reset.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 339,
+      "bottomRightX": 598,
+      "bottomRightY": 356,
+      "content": "For a port entering Rx.Detect not due to a Warm Reset, it shall exit immediately.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 368,
+      "bottomRightX": 390,
+      "bottomRightY": 384,
+      "content": "##### 7.5.3.3.1 Rx.Detect.Reset Requirements",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 389,
+      "bottomRightX": 662,
+      "bottomRightY": 421,
+      "content": "If a port enters Rx.Detect upon a Warm Reset, the following requirements shall be applied. Refer to Section 6.9.3 for details.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 433,
+      "bottomRightX": 664,
+      "bottomRightY": 538,
+      "content": "- A downstream port shall transmit Warm Reset for the duration of tReset as defined in Table 6-30.\n  Note: This includes the case when Hot Reset attempt fails in Recovery. Refer to Section 7.4.2 for details.\n- An upstream port shall remain in this state until it detects the completion of Warm Reset.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 560,
+      "bottomRightX": 362,
+      "bottomRightY": 576,
+      "content": "##### 7.5.3.3.2 Exit from Rx.Detect.Reset",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 582,
+      "bottomRightX": 676,
+      "bottomRightY": 732,
+      "content": "- The port shall transition directly to Rx.Detect.Active if the entry to Rx.Detect is not due to a Warm Reset.\n  Note: Warm Reset is not present during power-on.\n- A downstream port shall transition to Rx.Detect.Active after it transmits Warm Reset for the duration of tReset as defined in Table 6-30.\n- A downstream port shall transition to eSS.Disabled when directed.\n- An upstream port shall transition to Rx.Detect.Active when it receives no more LFPS Warm Reset signaling from the downstream port as defined in Section 6.9.3.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 753,
+      "bottomRightX": 262,
+      "bottomRightY": 769,
+      "content": "##### 7.5.3.4 Rx.Detect.Active",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 775,
+      "bottomRightX": 664,
+      "bottomRightY": 820,
+      "content": "Rx.Detect.Active is a substate to detect the presence of an Enhanced SuperSpeed link partner. A port will perform a far-end receiver termination detection as defined in Section 6.11.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 832,
+      "bottomRightX": 347,
+      "bottomRightY": 848,
+      "content": "##### 7.5.3.5 Rx.Detect.Active Requirements",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 855,
+      "bottomRightX": 662,
+      "bottomRightY": 886,
+      "content": "- The transmitter shall initiate a far-end receiver termination detection described in Section 6.11.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

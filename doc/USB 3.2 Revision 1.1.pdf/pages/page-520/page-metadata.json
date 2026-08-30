@@ -1,0 +1,164 @@
+{
+  "index": 519,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 114,
+      "topLeftY": 48,
+      "bottomRightX": 192,
+      "bottomRightY": 79,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 372,
+      "topLeftY": 48,
+      "bottomRightX": 416,
+      "bottomRightY": 63,
+      "content": "- 489 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 526,
+      "topLeftY": 48,
+      "bottomRightX": 679,
+      "bottomRightY": 79,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 97,
+      "bottomRightX": 230,
+      "bottomRightY": 113,
+      "content": "# E Repeaters",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 125,
+      "bottomRightX": 221,
+      "bottomRightY": 140,
+      "content": "# E.1 Overview",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 147,
+      "bottomRightX": 673,
+      "bottomRightY": 254,
+      "content": "The introduction of the Gen 2 data rate that doubles the Gen 1 data rate has led to increased channel loss which increases the need for repeaters. This includes the use of a repeater on some platforms in order to compensate for this channel loss and preserve the system routing requirement in terms of signal integrity. Likewise, there is a growing need for longer cables that require repeaters in the cable itself to support the extended lengths. As a result, new connectivity models emerge in USB 3.1 that include multiple repeaters between the host and device.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 266,
+      "bottomRightX": 675,
+      "bottomRightY": 342,
+      "content": "While the presence of repeaters effectively address the signal integrity needs of a system, they also introduce propagation delay that needs to be accounted for in both Gen 1 and Gen 2 data rates. In this Appendix, the link delay is defined for the pertinent system elements including the host, device, repeaters, and active cables. In addition, the details of a re-timer, a specific type of repeater architecture, are provided.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 354,
+      "bottomRightX": 262,
+      "bottomRightY": 369,
+      "content": "# E.1.1 Term Definitions",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 377,
+      "bottomRightX": 413,
+      "bottomRightY": 393,
+      "content": "In this document, the following definitions apply:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 404,
+      "bottomRightX": 656,
+      "bottomRightY": 465,
+      "content": "Repeater refers to any active component that acts on a signal in order to increase the physical lengths and/or interconnect loss over which the signal can be transmitted successfully. The category of repeaters includes both re-timers and re-drivers, which are defined below.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 477,
+      "bottomRightX": 664,
+      "bottomRightY": 569,
+      "content": "Re-timer refers to a component that contains a clock-data recovery (CDR) circuit that \"retimes\" the signal. The re-timer latches the signal into a synchronous memory element before re-transmitting it. It is used to extend the physical length of the system without accumulating high frequency jitter by creating separate clock domains on either side of the re-timer. Furthermore, a re-timer can be implemented based on one of the following architectures.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 137,
+      "topLeftY": 576,
+      "bottomRightX": 668,
+      "bottomRightY": 659,
+      "content": "- SRIS (Separate Reference clock Independent SSC) re-timer refers to a re-timer implementation that has it's transmit clock derived from a local reference clock and is independent of the recovered clock at its receiver.\n- Bit-level re-timer refers to a re-timer implementation that has it's transmit clock derived from the recovered clock at its receiver, except during part of link training.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 671,
+      "bottomRightX": 641,
+      "bottomRightY": 702,
+      "content": "A single-lane re-timer refers to a re-timer implementation capable of both Gen 1x1 and Gen 2x1 operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 714,
+      "bottomRightX": 632,
+      "bottomRightY": 745,
+      "content": "A dual-lane re-timer refers to a re-timer implementation capable of both Gen 1x2 and Gen 2x2 operation.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 757,
+      "bottomRightX": 676,
+      "bottomRightY": 804,
+      "content": "Both SRIS re-timer and bit-level re-timer are implemented with protocol awareness (refer to Section E.2.2.2 for details). In this Appendix, unless otherwise specified, a re-timer refers to either a SRIS re-timer or a bit-level re-timer.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 114,
+      "topLeftY": 815,
+      "bottomRightX": 679,
+      "bottomRightY": 923,
+      "content": "Re-driver refers to an analog component that operates on the signal without re-timing it. This may include equalization, amplification, and transmitter. The re-driver does not include a CDR, and as a result, it does not cancel completely the jitter from the input, but only to compensate partially for the channel loss through equalization and amplification. Note that a re-driver in Gen 1 operation may employ a limiting re-driver that does not maintain the linearity of its input signal. However, a re-driver in Gen 2 operation is required to be a linear re-driver to preserve the linearity of its input signal. In this Appendix, a",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 960,
+      "bottomRightX": 589,
+      "bottomRightY": 978,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

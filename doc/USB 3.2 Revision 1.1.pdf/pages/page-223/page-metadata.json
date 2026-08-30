@@ -1,0 +1,120 @@
+{
+  "index": 222,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 112,
+      "topLeftY": 47,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 47,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 192 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 529,
+      "topLeftY": 46,
+      "bottomRightX": 675,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 94,
+      "bottomRightX": 666,
+      "bottomRightY": 284,
+      "content": "- When a downstream port is in U2, its upstream port may be in U1 or U2. If the upstream port is in U1, it will send Ping.LFPS periodically. A downstream port shall differentiate between Ping.LFPS and U1 LFPS exit handshake signaling.\n- The port shall enable its U2 exit detect functionality as defined in Section 6.9.2. If the port is in x2 operation, it shall enable this functionality on the Configuration Lane.\n- The port shall enable its LFPS transmitter when it initiates the exit from U2. If the port is in x2 operation, it shall initiate the exit from U2 on the Configuration Lane.\n- A downstream port shall perform the far-end receiver termination detection every 100 ms (tU2RxdetDelay). Note that in x2 operation, a downstream port shall perform the far-end receiver termination detection on the Configuration Lane.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 304,
+      "bottomRightX": 238,
+      "bottomRightY": 318,
+      "content": "### 7.5.8.2 Exit from U2",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 326,
+      "bottomRightX": 667,
+      "bottomRightY": 552,
+      "content": "- A downstream port shall transition to eSS.Disabled when directed.\n- A downstream port shall transition to Rx.Detect upon detection of a far-end high-impedance receiver termination ($Z_{RX-HIGH-IMP-DC-POS}$) defined in Table 6-22.\n- A downstream port shall transition to Rx.Detect when directed to issue Warm Reset.\n- An upstream port shall transition to Rx.Detect when Warm Reset is detected.\n- A self-powered upstream port shall transition to eSS.Disabled upon not detecting valid VBUS as defined in Section 11.4.5.\n- The port shall transition to Recovery upon successful completion of a LFPS handshake meeting the U2 LFPS exit signaling defined in Section 6.9.2.\n- The port shall transition to eSS.Inactive upon the 2 ms LFPS handshake timer timeout (tNoLFPSResponseTimeout) and a successful LFPS handshake meeting the U2 LFPS exit handshake signaling in Section 6.9.2 is not achieved.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 340,
+      "topLeftY": 572,
+      "bottomRightX": 447,
+      "bottomRightY": 588,
+      "content": "Figure 7-23. U2",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 147,
+      "topLeftY": 600,
+      "bottomRightX": 646,
+      "bottomRightY": 822,
+      "content": "![img-89.jpeg](img-89.jpeg)",
+      "confidenceScores": null,
+      "type": "image",
+      "imageId": "img-89.jpeg"
+    },
+    {
+      "topLeftX": 164,
+      "topLeftY": 833,
+      "bottomRightX": 578,
+      "bottomRightY": 846,
+      "content": "Note: Transition conditions are illustrative only, Not all of the transition conditions are listed.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 112,
+      "topLeftY": 878,
+      "bottomRightX": 179,
+      "bottomRightY": 892,
+      "content": "### 7.5.9 U3",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 899,
+      "bottomRightX": 639,
+      "bottomRightY": 931,
+      "content": "U3 is a link state where a device is put into a suspend state. Significant link and device powers are saved.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

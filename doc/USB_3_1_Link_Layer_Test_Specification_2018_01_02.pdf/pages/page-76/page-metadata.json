@@ -1,0 +1,146 @@
+{
+  "index": 75,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 62,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 124,
+      "topLeftY": 93,
+      "bottomRightX": 254,
+      "bottomRightY": 109,
+      "content": "# Overview of Test Steps",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 116,
+      "bottomRightX": 682,
+      "bottomRightY": 167,
+      "content": "1. Do steps 1 to 3 of the Link Initialization Sequence.\n2. The LVS and the PUT will exchange Port Configuration transactions, but the first packet sent by the LVS will be invalid.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 176,
+      "bottomRightX": 433,
+      "bottomRightY": 191,
+      "content": "▪ If the LVS is configured as a Downstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 198,
+      "bottomRightX": 660,
+      "bottomRightY": 374,
+      "content": "a. The LVS waits for the PUT's Port Capability LMP.\nb. LVS verifies that the Port Capability LMP is valid.\nc. LVS transmits its Port Capability LMP with the first invalid condition listed above.\nd. LVS verifies that the PUT replies with an LBAD.\ne. LVS transmits a LRTY and then retransmits the packet.\nf. LVS transmits the Port Configuration LMP.\ng. LVS waits for the PUT's Port Configuration Response LMP.\nh. LVS verifies the PUT's Port Configuration Response LMP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 379,
+      "bottomRightX": 424,
+      "bottomRightY": 395,
+      "content": "▪ If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 400,
+      "bottomRightX": 660,
+      "bottomRightY": 576,
+      "content": "a. LVS waits for the PUT's Port Capability LMP.\nb. LVS verifies that the Port Capability LMP is valid.\nc. LVS transmits its Port Capability LMP with the first invalid condition listed above.\nd. LVS verifies the PUT replies with an LBAD.\ne. LVS transmits a LRTY and then retransmits the packet.\nf. LVS waits for the PUT's Port Configuration LMP.\ng. LVS verifies the PUT's Port Configuration LMP.\nh. LVS transmits its Port Configuration Response LMP.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 583,
+      "bottomRightX": 702,
+      "bottomRightY": 733,
+      "content": "3. The LVS will keep the link active by sending Link Pollings (LUP when the LVS is configured as Upstream Port, or LDN when the LVS is configured as a Downstream Port) for 50ms.\n4. The test passes if the exchanges are successful, no timeout is detected, no recovery is entered, the PUT responds to the invalid packets with an LBAD, all other packets are successfully received, all credits are restored and the link stays in U0 for at least 50ms.\n5. Repeat the above steps for each of the invalid conditions listed above.\n6. For a Gen 1 device, skip the remaining steps.\n7. The LVS and PUT complete the Link Initialization Sequence.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 739,
+      "bottomRightX": 433,
+      "bottomRightY": 755,
+      "content": "▪ If the LVS is configured as a Downstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 762,
+      "bottomRightX": 696,
+      "bottomRightY": 793,
+      "content": "a. LVS issues a GetDeviceDescriptor() request for the PUT, but transmits the SETUP packet with Condition A listed above.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 158,
+      "topLeftY": 800,
+      "bottomRightX": 424,
+      "bottomRightY": 815,
+      "content": "▪ If the LVS is configured as an Upstream Port:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 822,
+      "bottomRightX": 707,
+      "bottomRightY": 912,
+      "content": "a. The LVS prompts the test operator to have the PUT send a GetDeviceDescriptor request through USB30CV and then press \"OK\".\nb. The test fails if no GetDeviceDescriptor request is received and the test operator has pressed \"OK\".\nc. LVS will transmit the IN DP with Condition A listed above.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 935,
+      "bottomRightX": 420,
+      "bottomRightY": 946,
+      "content": "68",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

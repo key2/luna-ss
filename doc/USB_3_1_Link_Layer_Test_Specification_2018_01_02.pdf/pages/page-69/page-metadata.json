@@ -1,0 +1,155 @@
+{
+  "index": 68,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 262,
+      "bottomRightY": 61,
+      "content": "Chapter 5: Test Descriptions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 710,
+      "bottomRightY": 60,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 93,
+      "bottomRightX": 253,
+      "bottomRightY": 108,
+      "content": "# Subtest 1 (TD 7.1.1):",
+      "confidenceScores": null,
+      "type": "title"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 116,
+      "bottomRightX": 405,
+      "bottomRightY": 176,
+      "content": "1. The LVS waits to receive Polling.LFPS bursts.\n2. The LVS transmits four Polling.LFPS bursts.\n3. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 182,
+      "bottomRightX": 698,
+      "bottomRightY": 349,
+      "content": "a. If the PUT does not contain a captive re-timer, it does not transmit at least sixteen consecutive Polling.LFPS bursts.\nb. If the PUT contains a captive re-timer, it does not transmit at least four consecutive Polling.LFPS bursts.\nc. The PUT does not transmit at least four consecutive Polling.LFPS bursts after receiving one Polling.LFPS bursts.\nd. The PUT transitions away from Polling.LFPS before the LVS sends at least two consecutive Polling.LFPS bursts.\ne. The PUT does not transition from Polling.LFPS before tPollingLFPSTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 355,
+      "bottomRightX": 690,
+      "bottomRightY": 431,
+      "content": "4. The test fails if the PUT has transmitted more than 6 LFPS after receiving 1 LFPS and the Number of LFPS tx'd before receiving 1 > 18 – the Number of LFPS tx'd after receiving 1.\n5. The LVS transmits 65,536 TSEQ ordered sets.\n6. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 438,
+      "bottomRightX": 693,
+      "bottomRightY": 492,
+      "content": "a. The PUT does not transmit TSEQ ordered sets.\nb. The PUT transmits SKP Ordered Sets, Idle Symbols, or any other Packet, Symbol or Ordered Set during TSEQ transmission or between training ordered sets.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 498,
+      "bottomRightX": 684,
+      "bottomRightY": 551,
+      "content": "7. The LVS transmits TS1 ordered sets and waits to receive eight consecutive and identical TS1 or TS2 ordered sets from the PUT.\n8. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 558,
+      "bottomRightX": 692,
+      "bottomRightY": 679,
+      "content": "a. The PUT does not transmit TS1 ordered sets.\nb. The PUT transmits TS2s before the LVS sends eight consecutive and identical TS1s or TS2s.\nc. The PUT interrupts a TS1 ordered set to transmit a SKP ordered set (between TS1 ordered sets is OK).\nd. The PUT transmits Idle Symbols or any other Packet.\ne. The PUT continues to transmit TS1 ordered sets after tPollingActiveTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 686,
+      "bottomRightX": 672,
+      "bottomRightY": 702,
+      "content": "9. The LVS transmits TS2 ordered sets and readies to complete the Polling.Configuration handshake.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 709,
+      "bottomRightX": 384,
+      "bottomRightY": 724,
+      "content": "10. The test fails if any of the following occur:",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 162,
+      "topLeftY": 731,
+      "bottomRightX": 698,
+      "bottomRightY": 845,
+      "content": "a. The PUT does not transmit at least sixteen consecutiveTS2 ordered sets after receiving one TS2 ordered set.\nb. The PUT sends Idle symbols before the LVS sends at least eight consecutive TS2 ordered sets.\nc. The PUT interrupts transmission of a TS2 ordered set to transmit a SKP ordered set (between TS2 ordered sets is OK).\nd. The PUT continues to transmit TS2 ordered sets after tPollingConfigurationTimeout expires.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 852,
+      "bottomRightX": 333,
+      "bottomRightY": 867,
+      "content": "11. The LVS transmits Idle symbols.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 136,
+      "topLeftY": 875,
+      "bottomRightX": 660,
+      "bottomRightY": 920,
+      "content": "12. The test fails if upon entering U0, the PUT does not transmit the Header Sequence Number Advertisement and the Rx Header Buffer Credit Advertisement before their respective timeouts, PENDING_HP_TIMER and CREDIT_HP_TIMER, expire.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 404,
+      "topLeftY": 935,
+      "bottomRightX": 417,
+      "bottomRightY": 946,
+      "content": "61",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 306,
+      "bottomRightY": 969,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

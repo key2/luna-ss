@@ -1,0 +1,57 @@
+{
+  "index": 58,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 603,
+      "topLeftY": 53,
+      "bottomRightX": 696,
+      "bottomRightY": 93,
+      "content": "intel®",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 100,
+      "topLeftY": 122,
+      "bottomRightX": 520,
+      "bottomRightY": 138,
+      "content": "Table 6-5. Command Interface Input Signals (Sheet 11 of 14)",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 141,
+      "bottomRightX": 699,
+      "bottomRightY": 540,
+      "content": "|  Name | Active Level | Description |   | Relevant Protocols  |\n| --- | --- | --- | --- | --- |\n|  Width[2:0] | N/A | Controls the PIPE data path width. For SerDes architecture, this applies only to the transmit side and RxWidth[1:0] controls the receive side. If EncodeDecodeBypass is \"0\", use the following encodings. |   | PCIe, SATA, USB, USB4 DisplayPort TX  |\n|   |   |  Value | Datapath Width  |   |\n|   |   |  0 | 8 bits  |   |\n|   |   |  1 | 16 bits  |   |\n|   |   |  2 | 32 bits  |   |\n|   |   |  3-7 | Reserved  |   |\n|   |   |  If EncodeDecodeBypass is \"1\" or in SerDes architecture, use the following encodings.  |   |   |\n|   |   |  Value | Datapath Width  |   |\n|   |   |  0 | 10 bits  |   |\n|   |   |  1 | 20 bits  |   |\n|   |   |  2 | 40 bits  |   |\n|   |   |  3 | 80 bits (PCIe SerDes only)/56 bits (USB4 only)  |   |\n|   |   |  4 | 160bits (PCIe SerDes only)  |   |\n|   |   |  5-7 | Reserved  |   |\n|   |   |  **Note:** PHYs that support greater than x4 link width must provide option of 32-bit data width or smaller. PIPE implementations that only support one option at each signaling rate do not implement this signal.  |   |   |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-31.md"
+    },
+    {
+      "topLeftX": 101,
+      "topLeftY": 954,
+      "bottomRightX": 296,
+      "bottomRightY": 967,
+      "content": "Reference Number: 643108, Revision: 7.1",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 685,
+      "topLeftY": 954,
+      "bottomRightX": 698,
+      "bottomRightY": 965,
+      "content": "59",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

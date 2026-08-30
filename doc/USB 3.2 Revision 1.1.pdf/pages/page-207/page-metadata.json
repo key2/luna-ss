@@ -1,0 +1,121 @@
+{
+  "index": 206,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 46,
+      "bottomRightX": 190,
+      "bottomRightY": 77,
+      "content": "Revision 1.1\nJune 2022",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 373,
+      "topLeftY": 46,
+      "bottomRightX": 416,
+      "bottomRightY": 60,
+      "content": "- 176 -",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 528,
+      "topLeftY": 46,
+      "bottomRightX": 676,
+      "bottomRightY": 77,
+      "content": "Universal Serial Bus 3.2\nSpecification",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 92,
+      "bottomRightX": 667,
+      "bottomRightY": 124,
+      "content": "PHY capability may later be adjusted in order to match the link partner's capability or if the link fails to reach U0 during training and the two ports need to fall back to a lower rate.",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 111,
+      "topLeftY": 135,
+      "bottomRightX": 675,
+      "bottomRightY": 303,
+      "content": "PHY Ready LBPM is defined to serve two purposes. One is for a port to send a notification that it has completed its PHY re-configuration and ready for link training at the matched port capability defined by PHY Capability LBPM. The other is for a re-timer in x2 operation to announce its presence during PHY Ready LBPM handshake. Refer to Section 7.5.4.6 for use of PHY Ready LBPM. Note that there are two types of PHY Ready LBPM handshakes. The first type is with bit-7 of the DFP PHY Ready LBPM asserted. This is to indicate that after completing the re-timer presence announcement, there is an option in future revisions that a DFP may want to address the re-timers. This is referred to RT Config. The second type is with bit-7 of the DFP PHY Ready LBPM de-asserted. This is to indicate that DFP has either RT Config completed and is ready to exit, or bypasses RT Config and proceeds directly to exit. Refer to Section 7.5.4.6.1 for details",
+      "confidenceScores": null,
+      "type": "text"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 315,
+      "bottomRightX": 667,
+      "bottomRightY": 347,
+      "content": "- The port shall rank its PHY capability in the order of Gen 2x2, Gen 2x1, Gen 1x2, and Gen 1x1. The start-up PHY capability is defined in Table 7-14.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 254,
+      "topLeftY": 361,
+      "bottomRightX": 532,
+      "bottomRightY": 379,
+      "content": "Table 7-14. Start-up PHY Capability Match",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 150,
+      "topLeftY": 387,
+      "bottomRightX": 637,
+      "bottomRightY": 516,
+      "content": "|   | DFP  |   |   |   |   |\n| --- | --- | --- | --- | --- | --- |\n|   |   |  Gen 1x1 | Gen 1x2 | Gen 2x1 | Gen 2x2  |\n|  UFP | Gen 1x1 | Gen 1x1 | Gen 1x1 | Gen 1x1 | Gen 1x1  |\n|   |  Gen 1x2 | Gen 1x1 | Gen 1x2 | Gen 1x1 | Gen 1x2  |\n|   |  Gen 2x1 | Gen 1x1 | Gen 1x1 | Gen 2x1 | Gen 2x1  |\n|   |  Gen 2x2 | Gen 1x1 | Gen 1x2 | Gen 2x1 | Gen 2x2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-94.md"
+    },
+    {
+      "topLeftX": 135,
+      "topLeftY": 551,
+      "bottomRightX": 671,
+      "bottomRightY": 688,
+      "content": "- If a SuperSpeedPlus port's highest PHY capability is Gen 2x2, it shall follow the PHY capability fallback order shown in Table 7-15. Note that if the port falls back from Gen 2x2 to Gen 2x1, or Gen 1x2 to Gen 1x1, it shall operate in Gen 2x1 or Gen 1x1 on the Configuration Lane.\n- If a SuperSpeedPlus port's highest PHY capability is Gen 2x1, its next advertised PHY capability shall be Gen 1x1.\n- If a SuperSpeedPlus port's highest PHY capability is Gen 1x2, its next advertised PHY capability shall be Gen 1x1.",
+      "confidenceScores": null,
+      "type": "list"
+    },
+    {
+      "topLeftX": 226,
+      "topLeftY": 702,
+      "bottomRightX": 561,
+      "bottomRightY": 719,
+      "content": "Table 7-15. Gen 2x2 PHY Capability Fallback Order",
+      "confidenceScores": null,
+      "type": "caption"
+    },
+    {
+      "topLeftX": 134,
+      "topLeftY": 728,
+      "bottomRightX": 656,
+      "bottomRightY": 910,
+      "content": "|  Current PHY Capability | Next Advertised PHY Capability | Comments  |\n| --- | --- | --- |\n|  Gen 2x2 | Gen 2x1 | Failures may happen on either or both lanes. Fallback to Gen 2x1 is an attempt to remain in Gen 2 operation without lane-to-lane interference.  |\n|  Gen 2x1 | Gen 1x2 | Failures may be due to link not meeting Gen 2 loss budget.  |\n|  Gen 1x2 | Gen 1x1 | Failures may happen on either or both lanes. Fallback to Gen 1x1 is an attempt to remain in Gen 1 operation without lane-to-lane interference.  |\n|  Gen 1x1 | Gen 1x1, USB 2.0 or others | Refer to Section 7.5.4.8.2  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-95.md"
+    },
+    {
+      "topLeftX": 200,
+      "topLeftY": 962,
+      "bottomRightX": 588,
+      "bottomRightY": 979,
+      "content": "Copyright © 2022 USB 3.0 Promoter Group. All rights reserved.",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

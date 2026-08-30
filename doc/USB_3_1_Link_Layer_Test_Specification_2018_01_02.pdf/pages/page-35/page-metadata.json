@@ -1,0 +1,57 @@
+{
+  "index": 34,
+  "dimensions": {
+    "dpi": 93,
+    "height": 1023,
+    "width": 791
+  },
+  "confidenceScores": null,
+  "blocks": [
+    {
+      "topLeftX": 113,
+      "topLeftY": 48,
+      "bottomRightX": 253,
+      "bottomRightY": 61,
+      "content": "Chapter 3: Test Assertions",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 660,
+      "topLeftY": 48,
+      "bottomRightX": 711,
+      "bottomRightY": 61,
+      "content": "1/17/2018",
+      "confidenceScores": null,
+      "type": "header"
+    },
+    {
+      "topLeftX": 139,
+      "topLeftY": 90,
+      "bottomRightX": 652,
+      "bottomRightY": 902,
+      "content": "|   | LFPS signal after the completion of SuperSpeed Polling.LFPS handshake. |   |\n| --- | --- | --- |\n|  7.5.4.3.1#10 | A port in SuperSpeedPlus operation shall be ready for SuperSpeed operation if it has detected that its link partner operates at SuperSpeed. | 7.1  |\n|  7.5.4.3.1#11 | A port shall disabled its transition path to Compliance Mode when it has successfully completed Polling.LFPS handshake or has entered Compliance Mode. | NT  |\n|  Subsection reference: 7.5.4.3.2 Exit from Polling.LFPS  |   |   |\n|  7.5.4.3.2#1 | The port in SuperSpeed operation shall transition from Polling.LFPS to Polling.RxEQ when the following three conditions are met: - At least 16 consecutive Polling.LFPS bursts are sent. - Two consecutive Polling.LFPS bursts are received. - Four consecutive Polling.LFPS bursts are sent after receiving one Polling.LFPS burst. | BC  |\n|  7.5.4.3.2#2 | A port in SuperSpeedPlus operation shall transition to Polling.LFPSPlus if two SCD1 are transmitted after one SCD1 or SCD2 is received. | BC  |\n|  7.5.4.3.2#3 | A port in SuperSpeedPlus operation shall transition to Polling.RxEQ and switch to SuperSpeed operation if the following conditions are met: - At least two consecutive Polling.LFPS bursts are received. - Twenty Polling.LFPS bursts are transmitted and no SCD1 is detected. - No LFPS signal for more than tPollingSCDLFPSTimeout is observed. | 7.1  |\n|  7.5.4.3.2#4 | An upstream port shall transition to from Polling.LFPS to Compliance Mode upon 360-ms timer timeout if the following two conditions are met: - The port has never successfully completed Polling.LFPS after PowerOn Reset. - The condition to transition to Polling.RxEQ is not met. | 7.33 7.34  |\n|  7.5.4.3.2#5 | A downstream port shall transition from Polling.LFPS to Compliance Mode upon the 360ms timer timeout (tPollingLFPSTimeout) if the following three conditions are met: - The Compliance Mode is enabled. - The port has never successfully completed Polling.LFPS handshake after Compliance Mode is enabled. - The condition to transition to Polling.RxEQ or Polling.LFPSPlus is not met. | 7.34  |",
+      "confidenceScores": null,
+      "type": "table",
+      "tableId": "tbl-28.md"
+    },
+    {
+      "topLeftX": 405,
+      "topLeftY": 934,
+      "bottomRightX": 419,
+      "bottomRightY": 946,
+      "content": "27",
+      "confidenceScores": null,
+      "type": "footer"
+    },
+    {
+      "topLeftX": 113,
+      "topLeftY": 954,
+      "bottomRightX": 307,
+      "bottomRightY": 970,
+      "content": "USB 3.1 Link Layer Test Specification",
+      "confidenceScores": null,
+      "type": "footer"
+    }
+  ]
+}

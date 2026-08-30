@@ -635,11 +635,13 @@ class LunaMultiEpTop(Elaboratable):
             m.d.cfg += por_cnt.eq(0)
 
         m.d.cfg += [
-            # (threshold nudged 66_000 -> 66_002: semantically null, but a
-            # content change reshuffles the deterministic PnR placement --
-            # the previous roll came in at pclk Fmax 123.6 < the 125 MHz
-            # operating gate.)
-            por_n.eq(por_cnt > 66_009),
+            # (threshold nudges are semantically null, but a content change
+            # reshuffles the deterministic PnR placement -- the placement
+            # lottery, HANDOVER #22/10k.  66_000 -> 66_002 -> ... -> 66_009:
+            # historical rolls below the 125 MHz pclk operating gate.
+            # 66_010: the first fork-layout build (session 11) rolled
+            # pclk Fmax 107.4; 66_010 rolled 124.26 -- rerolled again.)
+            por_n.eq(por_cnt > 66_011),
             luna_go.eq(por_cnt.all()),
         ]
 

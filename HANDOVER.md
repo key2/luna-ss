@@ -2049,23 +2049,145 @@ would hit the known-open #37.
   those are recovery-path-only and battery-green, but the FIRST
   build of the next session should re-run the standard ladder.
 
-## 11. Reading list for the new session
+## 10o. Update 2026-08-31 (session 11) — THE FORK: luna-ss exists;
+## Phase 0 sim gates green; G0 hardware gate BLOCKED on a bench
+## physical fault (gold baseline dark)
 
-* `prompt.md` — the active mission (Gen1 TX bisect via the hybrid).
-* `README.md` — PHY port + verification story (root).
-* `gw_usb3/*.py` module docstrings — every vendor quirk is documented where
-  it is reproduced.
-* `gowin-serdes/ARCHITECTURE.md` §"USB3 Recipe" and `gowin_serdes/usb3.py`.
-* `gowin-serdes/example/gw5ast-138/usb31-enum/README.md` — stack, UART
-  decode table, timing table, known limitations.
-* `gowin-serdes/example/gw5at-60-dkusb/README.md` — board/platform details.
-* `gowin-serdes/example/gw5at-60-dkusb/usb31-enum/top.py` — the working
-  Gen2 stack (debug reporters, POR ordering, build flow); `luna-enum/`
-  next door — the LUNA stack (parked pending the Gen1 TX fix).
-* `Gowin_USB3.1_UVC_BULK_RefDesign/hybrid/run/build.tcl` — the hybrid
-  A/B rig.
-* `luna/` clone: `luna/gateware/interface/serdes_phy/gowin_gtr12.py`
-  (PIPE adapter, LFPS dialect translation, boot-rate-switch) and
-  `luna/examples/usb/superspeed/gowin_gtr12_{sim,training_sim}.py`
-  (both PASS; run with `pdm run python` from the workspace root).
-* `tests/equiv/harness.py` docstring — how golden-vs-port simulation works.
+The patch era ended.  This HANDOVER now lives in the **luna-ss**
+fork; the old GW_USB3 workspace is a frozen bench archive (its
+ARCHIVE.md has the full move map).
+
+### The new world (Phase 0 executed)
+
+| repo | where | content |
+|---|---|---|
+| **luna-ss** | `~/Downloads/luna-ss`, github.com/key2/luna-ss (private) | LUNA fork at upstream `82a8f733` + the 36-bug delta as a reviewable 8-commit series (interface/physical/link/protocol/endpoints/arbiter/device/examples, bug numbers in the messages); `SuperSpeedStreamOutEndpoint` promoted into `luna/gateware/usb/usb3/endpoints/ss_stream_out.py`; submodules `gw_usb3/` + `gowin-serdes/`; hardware examples in `examples/gowin/{luna-enum,luna-acm,luna-loopback,luna-multiep}`; link-partner sims + battery in `sim/`; `HANDOVER.md`/`prompt.md`/`doc/` moved in; `tools/gowin_timing_report.py`; `doc/gen2_design.md` (Phase 1 note) |
+| **gw_usb3** | `~/Downloads/gw_usb3`, github.com/key2/gw_usb3 (private) | split from the workspace WITH history (filter-repo); package under `src/gw_usb3` (src layout on purpose — see pitfalls); tests/ (ALL 104, incl. the three refdesign-pinned ones with golden copies under `golden/refdesign/`), scripts/, rtl/, USB31PHY/, CUSTOMIZED/, Upar_Arbiter/ |
+| **gowin-serdes** | submodule + github.com/key2/gowin-serdes (public) | + pyproject; platform moved to `gowin_serdes.dkusb_gw5at60` (shim kept); bench helpers promoted to `gowin_serdes.bench` (AsyncSerial*, ClockFreqProbe); luna-* examples removed (they moved to the fork).  PUBLIC repo: no vendor artifacts allowed here — that is why the golden files live in gw_usb3 instead |
+| archive | `~/Downloads/GW_USB3`, github.com/key2/gw_usb3-archive (private; renamed from the old full-workspace mirror) | frozen; vendor refdesign + hybrid rig + bug reports + upstream_drafts; gowin-serdes submodule pinned PRE-fork (86ee125) so the archive stays buildable |
+
+One-clone flow (verified from a scratch clone):
+`git clone --recurse-submodules github.com/key2/luna-ss && pdm install -G :all`
+→ `pdm run pytest` (104), `pdm run battery` (full), example builds.
+
+### Gates passed
+
+* **Byte-identical fork**: `diff -r` of the fork tree vs the final
+  patched `luna/` checkout — clean, before any restructure commits.
+* **pytest 104/104** from the fork layout (the 3 relocated tests
+  included; test_gowin_synthesis runs for real — the IDE is present).
+* **Battery: all 35 PASS lines** (29 link-loopback configs + endpoint
+  -sim + pytest + 2 training sims + stale-ack + tx-fuzz) from
+  `pdm run battery`.  Same stimulus, same pass criteria, new paths.
+* **One-clone gate**: fresh recursive clone + `pdm install -G :all` +
+  fast pytest green (96 fast + 8 slow deselected).
+* Phase 1 gate G1: `doc/gen2_design.md` written (width/clock DECISION:
+  staged 32-bit@156.25-behind-burst-buffers first, then width-generic
+  64-bit; framing delta table with owners; the two NON-framing link
+  deltas that narrow the "protocol untouched" hope: **modulo-16
+  header sequence numbers and the LCRD1/LCRD2 credit-class split**;
+  LTSSM/LBPM/SCD plan with spec timings; 156.25-operating timing
+  budget; SKP x=4 quirk plan).
+
+### Packaging pitfalls (so nobody rediscovers them)
+
+* An editable-requirements group must NOT be called `dev` (upstream
+  luna has an optional-dependencies extra `dev`; pdm silently
+  resolves the wrong one).  Ours is `bench`; `pdm install -G :all`.
+* gw_usb3 must be **src layout**: flat layout made the submodule
+  ROOT a namespace package that captured `import gw_usb3` from the
+  fork root (setuptools meta-path editable finder runs after
+  PathFinder).  src layout → static-path `.pth` → regular package
+  wins everywhere.
+* gw_usb3/tests needs `__init__.py`: `python -m pytest` from the
+  fork root puts the fork root on sys.path and upstream's regular
+  `tests` package captured the bare name, breaking `tests.equiv`.
+
+### Timing: the placement lottery is alive and well
+
+First fork build of luna-multiep (BURST=2 defaults, first hardware
+elaboration of the session-10-tail rule-2d/#36/hook changes):
+pclk Fmax **107.4** (POR 66_009) — worst cones are the OLD friends
+(endpoint_mux grants → tp_generator FSM), not the tail changes.
+Reroll 66_010 → **124.26** (0.7% under the gate).  Reroll 66_011 →
+**pclk 139.0 / rxclk 149.9** — in the session-9/10 band; this is the
+build to ladder.  POR threshold is now **66_011**.
+
+### G0 hardware gate: BLOCKED — the bench lost the USB3 path
+
+Evidence chain, in order:
+
+1. At session start the resident session-10 image was NOT enumerated
+   (nothing on any SS bus) — consistent with a board power cycle
+   having wiped the SRAM bitstream.
+2. Fork multiep build flashed fine (JTAG/uarts on bus 3 work).
+   uart0 link probe: `C 29aaa9x 0 0 0 0 c` — ss clock alive,
+   flags c = phy_ready=1, engage_terminations=1, link_trained=0,
+   and **zero LFPS-detected counts ever**.  (Healthy session-10
+   captures show the same counters with flags d.)  The device is
+   up and polling into a void.
+3. Warm-cycled every SS root port (`usb4-port1..9/disable`,
+   `usb2-port1..3`) around coordinated fresh flashes (= POR replays,
+   needed because LUNA parks in SS.Disabled after 360 ms) — hubs
+   re-enumerated (cables to hubs are fine), the board never appeared,
+   zero hotplug events on any port.
+4. **Vendor gold baseline `prj.fs` flashed: also dark.**  That is
+   the decisive A/B — stack-independent ⇒ physical.
+5. Lane-0 probe: the DK_USB wires BOTH Type-C orientations to Quad 0
+   (straight = LN1 = the design default; flipped = LN0 by pad
+   adjacency).  A `QUAD, LANE = 0, 0` luna-multiep build was flashed:
+   ALSO DARK — and inconclusive: its uart0 ss-cycle counter reads
+   exactly 156.25/125 × the lane-1 value, i.e. the lane-0 build's
+   pclk never left the 10 G boot trim (the LN0 CSR rate-change path
+   is unverified — §5 pinned Q0_LN1 and Q1_LN0 tables only; Q0_LN0
+   was never proven).  So lane-0 bring-up is its own open item, NOT
+   evidence about plug orientation.  Reverted to LANE=1; the lane-1
+   image is resident (saved copy:
+   /tmp/kilo/luna_multiep_lane1_por66011.fs).
+6. Not reachable from software: cable unplugged / reseated flipped /
+   moved to a non-SS port / physically failed.
+
+**Next session, at the bench, in order**: (a) physically reseat the
+USB-C into the 10 G root port (usb 4-9), straight orientation —
+if unsure, try both; (b) `sudo -n openFPGALoader -c ft232
+examples/gowin/luna-multiep/build/luna_multiep.fs` (or the saved
+`/tmp/kilo/luna_multiep_lane1_por66011.fs`) AFTER the cable is in
+(the device parks 360 ms after POR; board KEY replays POR without
+reflashing); (c) `lsusb -d 1209:0001`, dmesg; (d) the standard
+ladder: `multiep_test.py 1 --eps 1,2,3` ×10, 64 MiB ×3, uart1 ch0
+retry_flagged must read 0 (`uart_capture.py` interleaves both
+uarts).  NOTE this image is ALSO the first hardware exposure of the
+rule-2d/#36/force-recovery-hook changes (recovery-path-only,
+battery-green) — the full ladder is the acceptance, per §10n.
+
+### Session-11 regression state
+
+pytest 104/104; battery 35/35 PASS lines (= §10n's 38-entry
+accounting: 29 loopback configs, endpoint-sim, pytest(104), 2
+training sims, stale-ack, tx-fuzz); byte-identical-fork and
+one-clone gates green.  Bug numbering still at **#37 open** (no new
+stack bugs found — the timing/lottery and bench findings above are
+not stack bugs).  All parked items from §10n carry over verbatim
+(#37 + forced-recovery harness feed truncation, rule-2d/#36 positive
+stimuli, bench forced-recovery verdict for #29–#31, data_tx SEND_ZLP
+bare-ready, wire-checker TP blindness).
+
+## 11. Reading list for the new session (fork edition)
+
+* `prompt.md` — the active mission (dual-rate Gen1+Gen2).
+* `doc/gen2_design.md` — the Phase-1 design note (gates G2+ follow it).
+* `README.md` — the fork banner: layout, one-clone flow.
+* `HANDOVER.md` §10o (this file) — the fork map + the bench blocker.
+* `gw_usb3/` submodule: README + module docstrings (every vendor
+  quirk documented where reproduced); `gw_usb3/tests/equiv/harness.py`
+  docstring — how golden-vs-port simulation works.
+* `gowin-serdes/` submodule: `ARCHITECTURE.md` §"USB3 Recipe",
+  `gowin_serdes/usb3.py`, `gowin_serdes/dkusb_gw5at60.py` (board),
+  `gowin_serdes/bench.py` (debug helpers).
+* `luna/gateware/interface/serdes_phy/gowin_gtr12.py` — the PIPE
+  adapter (LFPS dialect, boot-rate-switch, boot domain discipline).
+* `examples/gowin/luna-multiep/top.py` — the shipping 3-pair top
+  (wire checkers, ACKPROBE, uart1 'R' hook, POR lottery comment).
+* `sim/sim_link_loopback.py` header — every host-model knob.
+* The frozen archive (`~/Downloads/GW_USB3/ARCHIVE.md`) — vendor
+  refdesign baselines, hybrid A/B rig, bug-report packages.

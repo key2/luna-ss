@@ -57,6 +57,14 @@ luna-test.cmd = "python -m unittest discover -t . -s tests -v"
 # tx-fuzz).  Gen1 entries are the regression fence for all Gen2 work.
 battery.cmd = "bash sim/sim_battery.sh"
 
+[tool.pdm.workspace]
+members = ["gw_usb3", "gowin-serdes"]
+
+[tool.pdm.dev-dependencies]
+bench = [
+    "-e file:///${PROJECT_ROOT}/gw_usb3#egg=gw-usb3",
+    "-e file:///${PROJECT_ROOT}/gowin-serdes#egg=gowin-serdes",
+]
 [tool.pytest.ini_options]
 # The gw_usb3 submodule hosts the PHY suite (static tables, Amaranth
 # sims, cocotb golden-vs-port equivalence, link-layer-spec tests,
@@ -65,10 +73,11 @@ testpaths = ["gw_usb3/tests"]
 addopts = "-q"
 markers = ["slow: long-running equivalence tests"]
 
+# Bench/regression tooling + the submodules as editable installs.
+# (Named "bench", not "dev": upstream already has an optional-
+# dependencies extra called dev.)
 [dependency-groups]
-dev = [
+bench = [
     "cocotb>=2.0.1",
     "pytest>=9.1.1",
-    "-e file:///${PROJECT_ROOT}/gw_usb3",
-    "-e file:///${PROJECT_ROOT}/gowin-serdes",
 ]

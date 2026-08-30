@@ -126,12 +126,15 @@ class PIPEInterface(Elaboratable):
     _DATA_BUS_WIDTHS = {
         4: 0b00,
         2: 0b01,
-        1: 0b10
+        1: 0b10,
+        # 64-bit (8-symbol) geometry: not part of the PIPE 3.0 2-bit
+        # DataBusWidth encoding; used by PIPE 4.x SerDes-architecture PHYs
+        # (e.g. the Gowin GTR12 USB 3.1 PHY, 32-bit@125MHz at Gen1 in the
+        # low half, 64-bit block payload @156.25MHz at Gen2).
+        8: 0b11,
     }
-
     def __init__(self, *, width):
-        # Ensure we have a valid interface width.
-        if width not in (1, 2, 4):
+        if width not in (1, 2, 4, 8):
             raise ValueError(f"PIPE does not support a data bus width of {width}")
         self.width          = width
 
@@ -177,6 +180,16 @@ class PIPEInterface(Elaboratable):
         self.rx_status      = Signal(3)
         self.rx_elec_idle   = Signal()
         self.power_present  = Signal()
+
+        # PIPE 4.x SerDes-architecture signals (128b/132b block coding,
+        # Gen2).  Present on every interface for uniformity; PIPE 3.0
+        # PHYs (e.g. TUSB1310A) neither drive nor consume them.
+        self.tx_datavalid   = Signal()
+        self.rx_datavalid   = Signal()
+        self.tx_sync_header = Signal(4)
+        self.rx_sync_header = Signal(4)
+        self.tx_start_block = Signal()
+        self.rx_start_block = Signal()
 
 
 

@@ -1,0 +1,6 @@
+[submodule "gw_usb3"]
+	path = gw_usb3
+	url = https://github.com/key2/gw_usb3.git
+[submodule "gowin-serdes"]
+	path = gowin-serdes
+	url = https://github.com/key2/gowin-serdes.git

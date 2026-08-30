@@ -215,6 +215,82 @@ class CTCSkipRemover(Elaboratable):
         return m
 
 
+class TxStreamSkidBuffer(Elaboratable):
+    """ Two-deep registered stream buffer for the transmit-conditioning path.
+
+    Decouples the link layer's transmit handshake from the (combinational)
+    backpressure of the skip inserter: ``sink.ready`` here is derived from a
+    single local register, so the link-layer FSM fan-in cone terminates at
+    this stage instead of stretching through the scrambler and skip inserter.
+    Passes ``first``/``last`` through, so packet-boundary markers stay
+    aligned with their words.
+
+    Attributes
+    ----------
+    sink: USBRawSuperSpeedStream(), input stream
+    source: USBRawSuperSpeedStream(), output stream
+    """
+
+    def __init__(self):
+        self.sink   = USBRawSuperSpeedStream()
+        self.source = USBRawSuperSpeedStream()
+
+    def elaborate(self, platform):
+        m = Module()
+        sink, source = self.sink, self.source
+
+        fields = ('data', 'ctrl', 'first', 'last')
+
+        # Output register (drives source) and skid register.
+        out_valid = Signal()
+        skid_valid = Signal()
+        out_regs  = {f: Signal.like(getattr(sink, f), name=f"out_{f}")
+                     for f in fields}
+        skid_regs = {f: Signal.like(getattr(sink, f), name=f"skid_{f}")
+                     for f in fields}
+
+        m.d.comb += [
+            source.valid.eq(out_valid),
+            *(getattr(source, f).eq(out_regs[f]) for f in fields),
+
+            # Register-sourced upstream ready: we can accept whenever our
+            # skid slot is free.
+            sink.ready.eq(~skid_valid),
+        ]
+
+        accept = sink.valid & sink.ready
+
+        with m.If(source.ready | ~out_valid):
+            # Output slot advances: refill from the skid first, else direct.
+            with m.If(skid_valid):
+                m.d.ss += [
+                    out_valid.eq(1),
+                    *(out_regs[f].eq(skid_regs[f]) for f in fields),
+                ]
+                with m.If(accept):
+                    m.d.ss += [*(skid_regs[f].eq(getattr(sink, f))
+                                 for f in fields)]
+                with m.Else():
+                    m.d.ss += skid_valid.eq(0)
+            with m.Else():
+                with m.If(accept):
+                    m.d.ss += [
+                        out_valid.eq(1),
+                        *(out_regs[f].eq(getattr(sink, f)) for f in fields),
+                    ]
+                with m.Else():
+                    m.d.ss += out_valid.eq(0)
+        with m.Else():
+            # Output stalled; park any accepted word in the skid.
+            with m.If(accept):
+                m.d.ss += [
+                    skid_valid.eq(1),
+                    *(skid_regs[f].eq(getattr(sink, f)) for f in fields),
+                ]
+
+        return m
+
+
 class CTCSkipInserter(Elaboratable):
     """ Clock Tolerance Compensation (CTC) Skip insertion gateware.
 
@@ -276,8 +352,13 @@ class CTCSkipInserter(Elaboratable):
         # Precisely count the amount of skip ordered sets that will be inserted at the next opportunity.
         # From [USB3.0r1: 6.4.3]: "The non-integer remainder of the Y/354 SKP calculation shall not be
         # discarded and shall be used in the calculation to schedule the next SKP Ordered Set."
+        #
+        # The counter saturates rather than wrapping: if insertion opportunities are
+        # ever delayed beyond four pending sets, wrapping would silently discard eight
+        # ordered sets' worth of compensation and permanently break the average rate.
         with m.If(skip_needed & ~self.sending_skip):
-            m.d.ss += skips_to_send.eq(skips_to_send + 1)
+            with m.If(skips_to_send != 4):
+                m.d.ss += skips_to_send.eq(skips_to_send + 1)
         with m.If(~skip_needed & self.sending_skip):
             m.d.ss += skips_to_send.eq(skips_to_send - 2)
         with m.If(skip_needed & self.sending_skip):
@@ -304,6 +385,15 @@ class CTCSkipInserter(Elaboratable):
         # SKP insertion.
         #
 
+        # While we're inserting SKPs, the word offered at our sink must be *held*,
+        # not consumed: our upstream may be presenting real packet data (the first
+        # word of a packet marks an insertion opportunity).  The historical
+        # behaviour -- ``sink.ready`` assigned only in the pass-through branch, and
+        # thus holding its stale registered '1' during insertion -- silently
+        # dropped the offered word.  That was only survivable while insertion was
+        # restricted to logical-idle words.
+        m.d.comb += sink.ready.eq(source.ready & ~self.sending_skip)
+
         # Finally, if we can send a skip this cycle and need to, replace our IDLE with two SKP ordered sets.
         #
         # Although [USB3.0r1: 6.4.3] allows "during training only [...] the option of waiting to insert 2 SKP
@@ -319,7 +409,7 @@ class CTCSkipInserter(Elaboratable):
 
         with m.Else():
             m.d.ss += [
-                self.source        .stream_eq(self.sink),
+                self.source        .stream_eq(self.sink, omit={'ready'}),
             ]
 
         return m

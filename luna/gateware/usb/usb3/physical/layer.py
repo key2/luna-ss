@@ -16,7 +16,7 @@ from ...stream  import USBRawSuperSpeedStream
 from .lfps       import LFPSTransceiver
 from .scrambling import Scrambler, Descrambler
 from .power      import PHYResetController, LinkPartnerDetector
-from .ctc        import CTCSkipInserter, CTCSkipRemover
+from .ctc        import CTCSkipInserter, CTCSkipRemover, TxStreamSkidBuffer
 from .alignment  import RxWordAligner, RxPacketAligner
 
 class USB3PhysicalLayer(Elaboratable):
@@ -84,6 +84,12 @@ class USB3PhysicalLayer(Elaboratable):
         self.ctc_bytes_in_buffer        = Signal(range(9))
         self.alignment_offset           = Signal(range(4))
 
+        # Debug tap: conditioned (descrambled-equivalent) transmit stream
+        # as consumed from the TX skid stage (see elaborate; prunable).
+        self.debug_tx_data              = Signal(32)
+        self.debug_tx_ctrl              = Signal(4)
+        self.debug_tx_strobe            = Signal()
+
 
     def elaborate(self, platform):
         m = Module()
@@ -150,26 +156,89 @@ class USB3PhysicalLayer(Elaboratable):
         # Transmit output conditioning.
         #
 
+        # Decouple the link layer's transmit handshake from the skip
+        # inserter's (combinational) backpressure: without this stage, the
+        # inserter's hold condition reaches all the way back into the link
+        # layer FSM enables in a single cycle, which does not close timing
+        # at 125 MHz.
+        m.submodules.tx_skid = tx_skid = TxStreamSkidBuffer()
+        m.d.comb += tx_skid.sink.stream_eq(self.sink)
+
+        # Register the scrambling enable: it is decoded combinationally from
+        # the LTSSM state and fans into both data-conditioning pipelines;
+        # scrambling only toggles at training-state boundaries, so a cycle
+        # of latency is free.
+        enable_scrambling = Signal()
+        m.d.ss += enable_scrambling.eq(self.enable_scrambling)
+
         # Scramble our data before transmitting it, if scrambling is enabled.
+        #
+        # The scrambler's sink is held always-valid: the wire always carries
+        # a word, and the LFSR must advance with it.  The skid stage above,
+        # however, CAN present an invalid cycle (it runs dry for one cycle
+        # at transmit-stream arbiter switches -- e.g. between a packet and
+        # the link commands that follow it).  Forwarding the stale
+        # data/ctrl through the always-valid sink put a fabricated word on
+        # the wire at packet boundaries -- stale data XORed with a fresh
+        # LFSR value, and stale K-bits passed through unscrambled.  The
+        # link partner sees a framing/CRC violation adjacent to the packet
+        # and requests a retransmission: ~40-110% of all data packets were
+        # silently retransmitted (rty=1) under sustained bulk traffic, and
+        # the resulting retry storms are what the three-pipe failures grew
+        # from (bug #28, HANDOVER 10l; reproduced in sim_link_loopback.py
+        # once its TX conditioning gained the real scrambler).
+        #
+        # Substitute logical idle (data 0, ctrl 0 -- exactly what the link
+        # emits when idle) for the bubble instead: it scrambles to the
+        # idle sequence the partner expects between packets.
         m.submodules.scrambler = scrambler = Scrambler(initial_value=0xffff)
         m.d.comb += [
-            scrambler.enable      .eq(self.enable_scrambling),
-            scrambler.sink        .stream_eq(self.sink, omit={'valid'}),
-            scrambler.sink.valid  .eq(1)
+            scrambler.enable      .eq(enable_scrambling),
+            scrambler.sink        .stream_eq(tx_skid.source,
+                                             omit={'valid', 'data', 'ctrl'}),
+            scrambler.sink.valid  .eq(1),
+            scrambler.sink.data   .eq(Mux(tx_skid.source.valid,
+                                          tx_skid.source.data, 0)),
+            scrambler.sink.ctrl   .eq(Mux(tx_skid.source.valid,
+                                          tx_skid.source.ctrl, 0)),
+        ]
+
+        # Debug tap (prunable): the conditioned transmit stream as consumed
+        # from the skid stage -- post link layer, pre scrambler/SKP, i.e.
+        # the descrambled wire-equivalent word stream.  Used by bring-up
+        # wire checkers (open item #23 probes).
+        m.d.comb += [
+            self.debug_tx_data   .eq(tx_skid.source.data),
+            self.debug_tx_ctrl   .eq(tx_skid.source.ctrl),
+            self.debug_tx_strobe .eq(tx_skid.source.valid &
+                                     tx_skid.source.ready),
         ]
 
         # Insert Clock Tolerance Compensation SKP ordered sets, where necessary.
+        # SKPs may be placed wherever the *next word to transmit* starts a
+        # packet (``first``, which the packet/link-command/training-set
+        # generators mark, and which the link layer marks on logical idle) --
+        # the inserter holds that word while the SKPs go out.  Computing this
+        # from the post-skid stream keeps the qualifier aligned with the word
+        # the inserter is actually looking at.
         m.submodules.tx_ctc = tx_ctc = CTCSkipInserter()
         m.d.comb += [
             tx_ctc.sink           .stream_eq(scrambler.source),
-            tx_ctc.can_send_skip  .eq(self.can_send_skp),
+            tx_ctc.can_send_skip  .eq(tx_skid.source.valid &
+                                      tx_skid.source.first),
 
             scrambler.hold        .eq(tx_ctc.sending_skip)
         ]
 
+        # Register the electrical-idle gate: it is decoded combinationally
+        # from the LTSSM state, and feeding it straight into the transmit
+        # ready chain creates an ltssm -> everything critical path.  Idle
+        # transitions are microsecond-scale; one cycle of latency is free.
+        tx_electrical_idle = Signal(init=1)
+        m.d.ss += tx_electrical_idle.eq(self.tx_electrical_idle)
 
         # Convert our Tx stream into PHY connections whenever we're not in electrical idle.
-        with m.If(~self.tx_electrical_idle):
+        with m.If(~tx_electrical_idle):
             m.d.comb += [
                 phy.tx_data          .eq(tx_ctc.source.data),
                 phy.tx_datak         .eq(tx_ctc.source.ctrl),
@@ -207,7 +276,7 @@ class USB3PhysicalLayer(Elaboratable):
         # De-scramble our data before output, if needed.
         m.submodules.descrambler = descrambler = Descrambler()
         m.d.comb += [
-            descrambler.enable  .eq(self.enable_scrambling),
+            descrambler.enable  .eq(enable_scrambling),
             descrambler.sink    .stream_eq(aligner.source),
         ]
 

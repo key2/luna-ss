@@ -46,6 +46,22 @@ class HandshakeGeneratorInterface(Record):
             ('retry_required',  1, DIR_FANIN),
             ('next_sequence',   5, DIR_FANIN),
 
+            # Direction override: when ``direction_valid`` is set, the
+            # transaction packet's direction field is taken from
+            # ``direction`` instead of the per-subtype default (OUT for
+            # ACK/STALL, IN for NRDY/ERDY).  Required by OUT endpoints,
+            # whose NRDY/ERDY name the OUT pipe.
+            ('direction',       1, DIR_FANIN),
+            ('direction_valid', 1, DIR_FANIN),
+
+            # NumP override: when ``number_of_packets_valid`` is set, the
+            # ACK/ERDY's Number of Packets field is taken from
+            # ``number_of_packets`` instead of the historical literal 1.
+            # Used by burst-capable endpoints to advertise their real
+            # receive window [USB3.2r1: 8.12.1.2].
+            ('number_of_packets',       5, DIR_FANIN),
+            ('number_of_packets_valid', 1, DIR_FANIN),
+
             # Commands.
             ('send_ack',        1, DIR_FANIN),
             ('send_stall',      1, DIR_FANIN),
@@ -219,6 +235,10 @@ class TransactionPacketGenerator(Elaboratable):
         data_error      = Signal.like(interface.retry_required)
         next_sequence   = Signal.like(interface.next_sequence)
         device_address  = Signal.like(self.address)
+        direction       = Signal.like(interface.direction)
+        direction_valid = Signal.like(interface.direction_valid)
+        nump            = Signal.like(interface.number_of_packets)
+        nump_valid      = Signal.like(interface.number_of_packets_valid)
 
 
         def send_packet(response_type, **fields):
@@ -257,7 +277,11 @@ class TransactionPacketGenerator(Elaboratable):
                     endpoint_number  .eq(interface.endpoint_number),
                     data_error       .eq(interface.retry_required),
                     next_sequence    .eq(interface.next_sequence),
-                    device_address   .eq(self.address)
+                    device_address   .eq(self.address),
+                    direction        .eq(interface.direction),
+                    direction_valid  .eq(interface.direction_valid),
+                    nump             .eq(interface.number_of_packets),
+                    nump_valid       .eq(interface.number_of_packets_valid),
                 ]
 
                 with m.If(interface.send_ack):
@@ -267,19 +291,22 @@ class TransactionPacketGenerator(Elaboratable):
                 with m.If(interface.send_nrdy):
                     m.next = "SEND_NRDY"
                 with m.If(interface.send_erdy):
-                    m.next = "SEND_NRDY"
+                    m.next = "SEND_ERDY"
 
 
             # SEND_ACK -- actively send an ACK packet to our link partner; and wait for that to complete.
             with m.State("SEND_ACK"):
                 send_packet(ACKHeaderPacket,
                     subtype           = TransactionPacketSubtype.ACK,
-                    direction         = USBDirection.OUT,
+                    direction         = Mux(direction_valid, direction,
+                                            USBDirection.OUT),
                     retry             = data_error,
                     data_sequence     = next_sequence,
 
-                    # TODO: eventually support bursting?
-                    number_of_packets = 1,
+                    # Burst-capable endpoints advertise their real
+                    # receive window; everyone else keeps the historical
+                    # single-packet grant.
+                    number_of_packets = Mux(nump_valid, nump, 1),
                 )
 
 
@@ -287,7 +314,8 @@ class TransactionPacketGenerator(Elaboratable):
             with m.State("SEND_NRDY"):
                 send_packet(NRDYHeaderPacket,
                     subtype           = TransactionPacketSubtype.NRDY,
-                    direction         = USBDirection.IN,
+                    direction         = Mux(direction_valid, direction,
+                                            USBDirection.IN),
                 )
 
 
@@ -295,10 +323,9 @@ class TransactionPacketGenerator(Elaboratable):
             with m.State("SEND_ERDY"):
                 send_packet(ERDYHeaderPacket,
                     subtype           = TransactionPacketSubtype.ERDY,
-                    direction         = USBDirection.IN,
-
-                    # TODO: eventually support bursting?
-                    number_of_packets = 1,
+                    direction         = Mux(direction_valid, direction,
+                                            USBDirection.IN),
+                    number_of_packets = Mux(nump_valid, nump, 1),
                 )
 
 

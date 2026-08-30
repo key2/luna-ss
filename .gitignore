@@ -152,3 +152,14 @@ dmypy.json
 # SimpleSoc generated files
 soc.ld
 resources.h
+
+# ── luna-ss fork additions ───────────────────────────────────────────
+__pycache__/
+.pytest_cache/
+.venv/
+.pdm-python
+pdm.lock.bak
+build/
+*.fs
+*.fst
+*.egg-info/

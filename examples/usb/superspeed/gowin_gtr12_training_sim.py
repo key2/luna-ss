@@ -29,19 +29,15 @@ Milestones asserted:
   4. LUNA transmits TS2s          (host TS1s were received and decoded)
   5. link.trained                 (Polling.Idle handshake complete -> U0)
 
-Run from the GW_USB3 workspace:
+Run from the fork root (gw_usb3 is an installed submodule package):
 
-    pdm run python luna/examples/usb/superspeed/gowin_gtr12_training_sim.py
+    pdm run python examples/usb/superspeed/gowin_gtr12_training_sim.py
 """
 
-import sys
-from pathlib import Path
+# luna and gw_usb3 are installed packages (pdm install at the fork
+# root).  No sys.path reaches.
 
-HERE = Path(__file__).resolve()
-LUNA_ROOT = HERE.parents[3]
-WORKSPACE = LUNA_ROOT.parent
-sys.path.insert(0, str(LUNA_ROOT))
-sys.path.insert(0, str(WORKSPACE))
+import sys
 
 from amaranth import *
 from amaranth.sim import Simulator

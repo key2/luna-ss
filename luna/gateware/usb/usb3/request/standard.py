@@ -44,7 +44,9 @@ class StandardRequestHandler(Elaboratable):
             """
 
         # Provide an response to the STATUS stage.
-        with m.If(self.interface.status_requested):
+        # (Latched: see the pending-request latches in ``elaborate``.)
+        with m.If(self._status_stage_requested):
+            m.d.comb += self._status_req_consumed.eq(1)
 
             # If our stall condition is met, stall; otherwise, send an ACK.
             with m.If(stall_condition):
@@ -93,7 +95,9 @@ class StandardRequestHandler(Elaboratable):
         ]
 
         # When data is requested, start sending.
-        with m.If(self.interface.data_requested):
+        # (Latched: see the pending-request latches in ``elaborate``.)
+        with m.If(self._data_stage_requested):
+            m.d.comb += self._data_req_consumed.eq(1)
             m.d.ss += tx_valid.eq(valid_bits_for_length[length])
 
         # Once our transmitter has accepted data, stop sending.
@@ -101,7 +105,8 @@ class StandardRequestHandler(Elaboratable):
             m.d.ss += tx_valid.eq(0)
 
         # ACK our status stage, when appropriate.
-        with m.If(self.interface.status_requested):
+        with m.If(self._status_stage_requested):
+            m.d.comb += self._status_req_consumed.eq(1)
             m.d.comb += self.interface.handshakes_out.send_ack.eq(1)
             m.next = 'IDLE'
 
@@ -118,6 +123,46 @@ class StandardRequestHandler(Elaboratable):
         # For all of our handshakes, set our next-sequence-number to one; as we never receive
         # packets, and ACKs should be seq=1.
         m.d.comb += handshake_generator.next_sequence.eq(1)
+
+        #
+        # Pending-request latches ("handshake events are never dropped",
+        # as in the bulk IN endpoint's pending-acknowledgement latch):
+        # ``data_requested`` and ``status_requested`` are single-cycle
+        # strobes, historically consumed combinationally only inside the
+        # specific FSM state handling the transfer.  A token arriving
+        # while the FSM is still transitioning (or otherwise busy) was
+        # silently dropped, leaving the host to retry or time out.  Each
+        # strobe is latched here until a consuming state services it; a
+        # new SETUP voids any stale latched stage event.
+        #
+        data_req_pending    = Signal()
+        status_req_pending  = Signal()
+        data_req_consumed   = Signal()   # comb; driven by consuming states
+        status_req_consumed = Signal()   # comb; driven by consuming states
+
+        with m.If(setup.received):
+            m.d.ss += data_req_pending.eq(0)
+        with m.Elif(interface.data_requested & ~data_req_consumed):
+            m.d.ss += data_req_pending.eq(1)
+        with m.Elif(data_req_consumed):
+            m.d.ss += data_req_pending.eq(0)
+
+        with m.If(setup.received):
+            m.d.ss += status_req_pending.eq(0)
+        with m.Elif(interface.status_requested & ~status_req_consumed):
+            m.d.ss += status_req_pending.eq(1)
+        with m.Elif(status_req_consumed):
+            m.d.ss += status_req_pending.eq(0)
+
+        # Effective stage-request signals, for the FSM below.
+        data_stage_requested   = interface.data_requested   | data_req_pending
+        status_stage_requested = interface.status_requested | status_req_pending
+
+        # Make these visible to the state-filling helper methods.
+        self._data_stage_requested   = data_stage_requested
+        self._status_stage_requested = status_stage_requested
+        self._data_req_consumed      = data_req_consumed
+        self._status_req_consumed    = status_req_consumed
 
 
         #
@@ -197,12 +242,19 @@ class StandardRequestHandler(Elaboratable):
                     ]
 
                     # Respond to our data stage with a descriptor...
-                    with m.If(interface.data_requested):
-                        m.d.comb += get_descriptor_handler.start  .eq(1),
+                    # (Latched: see the pending-request latches above.)
+                    with m.If(data_stage_requested):
+                        m.d.comb += [
+                            get_descriptor_handler.start  .eq(1),
+                            data_req_consumed             .eq(1),
+                        ]
 
                     # ... and ACK our status stage.
-                    with m.If(interface.status_requested):
-                        m.d.comb += handshake_generator.send_ack.eq(1)
+                    with m.If(status_stage_requested):
+                        m.d.comb += [
+                            handshake_generator.send_ack  .eq(1),
+                            status_req_consumed           .eq(1),
+                        ]
                         m.next = 'IDLE'
 
 
@@ -217,8 +269,11 @@ class StandardRequestHandler(Elaboratable):
                     #self.handle_register_write_request(m, interface.new_config, interface.config_changed)
 
                     # ACK our status stage, when appropriate.
-                    with m.If(self.interface.status_requested):
-                        m.d.comb += self.interface.handshakes_out.send_ack.eq(1)
+                    with m.If(status_stage_requested):
+                        m.d.comb += [
+                            self.interface.handshakes_out.send_ack.eq(1),
+                            status_req_consumed                   .eq(1),
+                        ]
                         m.next = 'IDLE'
 
 
@@ -233,8 +288,11 @@ class StandardRequestHandler(Elaboratable):
 
 
                     # ACK our status stage, when appropriate.
-                    with m.If(self.interface.status_requested):
-                        m.d.comb += self.interface.handshakes_out.send_ack.eq(1)
+                    with m.If(status_stage_requested):
+                        m.d.comb += [
+                            self.interface.handshakes_out.send_ack.eq(1),
+                            status_req_consumed                   .eq(1),
+                        ]
                         m.next = 'IDLE'
 
 
@@ -243,8 +301,13 @@ class StandardRequestHandler(Elaboratable):
 
                     # When we next have an opportunity to stall, do so, and then return to idle.
                     data_received = falling_edge_detected(m, interface.rx.valid, domain="ss")
-                    with m.If(interface.data_requested | interface.status_requested | data_received):
-                        m.d.comb += handshake_generator.send_stall.eq(1)
+                    with m.If(data_stage_requested | status_stage_requested
+                              | data_received):
+                        m.d.comb += [
+                            handshake_generator.send_stall  .eq(1),
+                            data_req_consumed               .eq(1),
+                            status_req_consumed             .eq(1),
+                        ]
                         m.next = 'IDLE'
 
         return m

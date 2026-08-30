@@ -117,42 +117,59 @@ class StreamArbiter(Elaboratable):
     def elaborate(self, platform):
         m = Module()
         active_stream = self.source
+        stream_count  = len(self._sinks)
 
-        # Keep track of which stream is currently active.
-        stream_count        = len(self._sinks)
-        active_stream_index = Signal(range(stream_count))
+        # SYNTHESIS NOTE (GowinSynthesis V1.9.12.03 hardening, bug #36):
+        # the historical shape -- a Switch on a binary index for the
+        # routing plus a priority scan that re-reads each sink's
+        # ``valid`` for the re-selection -- is exactly the "duplicated
+        # expression cone" pattern GowinSynthesis was observed to
+        # miscompile in the endpoint multiplexer (HANDOVER 10k, bug #21:
+        # the synthesized clones of one reduction DISAGREED on hardware
+        # while RTL simulation, fuzzing and timing all passed).  On the
+        # link-layer header-packet arbiter the same class of miscompile
+        # drops a data packet header offered by the DataPacketTransmitter
+        # while the queue believes nothing was offered: the DPH vanishes
+        # and every following DPH pairs with the PREVIOUS packet's
+        # payload (bug #34's bench signature: wire dseq one ahead,
+        # first-of-burst DPH missing, TP ACKs coalescing while the
+        # arbiter sits parked).  Mitigate with the validated idiom:
+        # every reduction is ONE named net used by every consumer, the
+        # selection is a registered ONE-HOT (no binary index decode to
+        # clone), and routing is driven directly from the register bits.
+        valids = Signal(stream_count)
+        m.d.comb += valids.eq(Cat(*(s.valid for s in self._sinks)))
+
+        # One-hot registered selection; out of reset, sink 0 is selected.
+        selected = Signal(stream_count, init=1)
+
+        # THE single "selected sink is offering" net, computed from the
+        # same nets that drive the routing below.
+        sel_valid = Signal()
+        m.d.comb += sel_valid.eq((valids & selected).any())
 
         #
-        # Stream output multiplexer.
+        # Stream output multiplexer (AND-OR from the one-hot register).
         #
-        with m.Switch(active_stream_index):
-
-            # Generate a switch case for each of our possible stream indexes..
-            for index, stream in enumerate(self._sinks):
-                with m.Case(index):
-
-                    # ... and connect up the stream while in that case.
-                    m.d.comb += active_stream.stream_eq(stream)
-
+        for i, stream in enumerate(self._sinks):
+            with m.If(selected[i]):
+                m.d.comb += active_stream.stream_eq(stream)
 
         #
-        # Active stream selection.
+        # Active stream selection: only change which stream we're working
+        # with when the active stream stops transmitting (bursts of
+        # ``valid`` are never interrupted).
         #
+        with m.If(~sel_valid):
 
-        # Only change which stream we're working with when the active stream stops transmitting.
-        with m.If(~active_stream.valid):
+            # Idle iff nobody is offering at all.
+            m.d.comb += self.idle.eq(~valids.any())
 
-            # Assume we're idle until proven otherwise.
-            m.d.comb += self.idle.eq(1)
-
-            # Check other streams to see if any are valid. We'll use a reversed list in order to maintain
-            # our priority order; as the last assignment here "wins".
-            for stream_index in reversed(range(stream_count)):
-
-                # If another stream -is- valid, set it to be the active stream.
-                with m.If(self._sinks[stream_index].valid):
-                    m.d.comb += self.idle.eq(0)
-                    m.d.sync += active_stream_index.eq(stream_index)
+            # Priority order: sinks added first win (the last assignment
+            # in the reversed scan "wins").
+            for i in reversed(range(stream_count)):
+                with m.If(valids[i]):
+                    m.d.sync += selected.eq(1 << i)
 
 
         # If we're operating in a domain other than sync, replace 'sync' with it.

@@ -2050,8 +2050,9 @@ would hit the known-open #37.
   build of the next session should re-run the standard ladder.
 
 ## 10o. Update 2026-08-31 (session 11) — THE FORK: luna-ss exists;
-## Phase 0 sim gates green; G0 hardware gate BLOCKED on a bench
-## physical fault (gold baseline dark)
+## Phase 0 sim gates green; G0 hw first blocked by a bench physical
+## fault (see 11b/11c addenda: root-caused to recabling; #38 found
+## en route; GATE G0 CLOSED same day)
 
 The patch era ended.  This HANDOVER now lives in the **luna-ss**
 fork; the old GW_USB3 workspace is a frozen bench archive (its
@@ -2136,14 +2137,11 @@ Evidence chain, in order:
 5. Lane-0 probe: the DK_USB wires BOTH Type-C orientations to Quad 0
    (straight = LN1 = the design default; flipped = LN0 by pad
    adjacency).  A `QUAD, LANE = 0, 0` luna-multiep build was flashed:
-   ALSO DARK — and inconclusive: its uart0 ss-cycle counter reads
-   exactly 156.25/125 × the lane-1 value, i.e. the lane-0 build's
-   pclk never left the 10 G boot trim (the LN0 CSR rate-change path
-   is unverified — §5 pinned Q0_LN1 and Q1_LN0 tables only; Q0_LN0
-   was never proven).  So lane-0 bring-up is its own open item, NOT
-   evidence about plug orientation.  Reverted to LANE=1; the lane-1
-   image is resident (saved copy:
-   /tmp/kilo/luna_multiep_lane1_por66011.fs).
+   ALSO DARK — and initially inconclusive: its uart0 ss-cycle counter
+   read exactly 156.25/125 × the lane-1 value, i.e. pclk never left
+   the 10 G boot trim.  **Root-caused next morning as bug #38** (see
+   below); with the fix the LN0 probe was re-run properly — see the
+   2026-08-31 addendum.
 6. Not reachable from software: cable unplugged / reseated flipped /
    moved to a non-SS port / physically failed.
 
@@ -2160,14 +2158,82 @@ uarts).  NOTE this image is ALSO the first hardware exposure of the
 rule-2d/#36/force-recovery-hook changes (recovery-path-only,
 battery-green) — the full ladder is the acceptance, per §10n.
 
+### Addendum 2026-08-31 (session 11b) — LN0 re-probe: bug #38 found
+### & fixed; orientation hypothesis EXCLUDED; bench still physical
+
+* **Bug #38 (FOUND & FIXED, LN0 side silicon-verified)**:
+  `GowinGTR12PIPE` builds its default `Usb31Phy` with the DEFAULT
+  `UparCsrConfig` — **Q0_LN1 — regardless of which lane the serdes
+  blob configures**.  The runtime CSR sequencer (eidle/FFE
+  handshakes, the 10G→5G boot rate change) then silently addresses
+  lane 1's registers.  Hardware signature (the §10o v1 probe):
+  UPAR acks make the boot sequencer "complete" and `phy_ready`
+  asserts, but pclk stays at the 156.25 MHz boot trim (uart0
+  ss-counter 0x341554d instead of the 125-MHz 0x29aaa9x signature).
+  Fix: all four `examples/gowin/*` tops pass
+  `phy_kwargs=dict(csr_config=UparCsrConfig(quad=QUAD, lane=LANE))`
+  (elaboration-identical for the shipping Q0_LN1 — dataclass-equal
+  config, plus a full rebuild bitstream-payload identity check) and
+  the adapter docstring warns loudly.  Positive verification ON
+  SILICON: the corrected LN0 build's netlist carries the LN0 CSR
+  addresses (0x8003A4, zero 0x8005A4) and its uart0 counter reads
+  0x29aaa9x — **the Q0_LN0 CSR rate-change path works** (first
+  silicon proof of a non-default lane).
+* **Orientation hypothesis EXCLUDED**: with LN0 bring-up proven, a
+  full boot-window uart0 capture around a coordinated POR replay +
+  SS-root-port warm cycle shows **zero LFPS bursts ever on lane 0**,
+  matching lane 1 and the dark vendor gold baseline.  Both Type-C
+  orientation pairs are silent ⇒ the bench USB3 path is physically
+  disconnected (or dead), full stop.  The replug instruction below
+  stands; orientation no longer needs guessing (though after replug,
+  straight = LN1 = the resident image remains the expectation).
+* Resident image: the lane-1 #38-fix build (payload-identical to the
+  POR-66_011 build that was already resident).  Saved copies in
+  /tmp/kilo: `luna_multiep_lane1_por66011.fs`,
+  `luna_multiep_lane0v2.fs` (LN0, pclk roll 121.6 — probe only, do
+  NOT ladder it).
+
+### Addendum 2026-08-31 (session 11c) — BENCH RESTORED; GATE G0
+### CLOSED on hardware
+
+The USB-C was replugged (new location: **10 G root port `usb 4-3`** —
+supersedes the old 4-9 bench fact; verify with dmesg after any future
+recabling).  Orientation was confirmed by probing BOTH pairs with
+fresh POR windows: straight (LN1) trains, flipped (LN0) sees nothing
+— the plug is in the correct (straight) orientation for the shipping
+LN1 configuration.
+
+Port capability pinned for Phase 5: the vendor gold `prj.fs`
+enumerates **SuperSpeed Plus Gen 2x1 (10000M) on 4-3** — the port is
+Gen2-capable; baseline reconfirmed post-fork.
+
+**G0 hardware ladder (resident image: the fork build, POR 66_011,
+pclk 139.0 — payload-identical to the #38-fix tree; this run is also
+the FIRST hardware exposure of the session-10-tail rule-2d / #36 /
+force-recovery-hook changes):**
+
+| rung | result |
+|------|--------|
+| enumeration | `1209:0001` SuperSpeed on 4-3; textbook training burst (26 LFPS, 986 TS1, rx_com lock; flags d) |
+| multiep 1 MiB ×10 --eps 1,2,3 | PASS ×10, sha exact, 255–268 MB/s aggregate |
+| multiep 16 MiB ×3 | PASS, 94.5 MB/s per direction each, **283.6 aggregate**, sha exact |
+| multiep 64 MiB ×3 | PASS, 93.8 MB/s each, 281.5 aggregate, sha exact |
+| soak 64 MiB ×3 pipes ×3 consecutive | ALL PASS, 284.4–285.6 MB/s aggregate |
+| uart1 through the 64 MiB run | **ch0 retry_flagged=0**, ch1/ch2=0, flags=8 only |
+| restore + re-verify (current tree's build flashed) | enumerates, 1 MiB PASS 265 MB/s |
+
+**Gate G0 is CLOSED**: fork layout parity on sim (pytest 104/104,
+battery 35/35) AND hardware (ladder at session-10 shipping numbers).
+Phase 2 (the Gen2 link-partner sim) is unblocked, per the G1 design
+note.
+
 ### Session-11 regression state
 
 pytest 104/104; battery 35/35 PASS lines (= §10n's 38-entry
 accounting: 29 loopback configs, endpoint-sim, pytest(104), 2
 training sims, stale-ack, tx-fuzz); byte-identical-fork and
-one-clone gates green.  Bug numbering still at **#37 open** (no new
-stack bugs found — the timing/lottery and bench findings above are
-not stack bugs).  All parked items from §10n carry over verbatim
+one-clone gates green.  Bug numbering now at **#38 (closed,
+session 11b — adapter lane/CSR mismatch)**; **#37 still open**.  All parked items from §10n carry over verbatim
 (#37 + forced-recovery harness feed truncation, rule-2d/#36 positive
 stimuli, bench forced-recovery verdict for #29–#31, data_tx SEND_ZLP
 bare-ready, wire-checker TP blindness).

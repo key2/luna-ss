@@ -654,8 +654,17 @@ class LunaMultiEpTop(Elaboratable):
         drp = getattr(serdes, group.drp_name)
         m.d.comb += serdes.por_n.eq(por_n)
 
+        # Bug #38: the adapter's default PHY carries the DEFAULT
+        # UparCsrConfig (Q0_LN1) -- the runtime CSR sequencer (eidle/FFE
+        # writes, 10G->5G rate change) would silently address lane 1 no
+        # matter which lane the serdes blob configures.  Plumb QUAD/LANE
+        # explicitly (elaboration-identical for the shipping Q0_LN1).
+        from gw_usb3.upar_csr import UparCsrConfig
         adapter = GowinGTR12PIPE(boot_rate_switch=(BOOT_RATE == "10G"),
-                                 boot_domain="ss_raw")
+                                 boot_domain="ss_raw",
+                                 phy_kwargs=dict(
+                                     csr_config=UparCsrConfig(quad=QUAD,
+                                                              lane=LANE)))
         m.submodules.adapter = adapter
         attach_usb3_phy(m, adapter.phy, lane, drp)
 

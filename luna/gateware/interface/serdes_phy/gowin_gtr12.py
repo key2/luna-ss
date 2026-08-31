@@ -130,6 +130,14 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
 
         if phy is None:
             from gw_usb3 import Usb31Phy
+            # Bug #38: Usb31Phy's DEFAULT csr_config is Q0_LN1.  If the
+            # serdes is generated for any other quad/lane, the runtime
+            # CSR sequencer (eidle/FFE handshakes, 10G->5G rate change)
+            # silently addresses the WRONG lane's registers: on hardware
+            # the boot rate switch then "completes" (UPAR acks) while
+            # pclk stays at the 156.25 MHz boot trim.  Pass
+            # phy_kwargs=dict(csr_config=UparCsrConfig(quad=..., lane=...))
+            # matching the serdes blob (as the examples/gowin tops do).
             kwargs = dict(gen2=False,
                           rate_init=1 if boot_rate_switch else 0)
             kwargs.update(phy_kwargs or {})

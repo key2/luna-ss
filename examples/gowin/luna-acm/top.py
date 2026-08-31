@@ -338,8 +338,15 @@ class LunaAcmTop(Elaboratable):
         drp = getattr(serdes, group.drp_name)
         m.d.comb += serdes.por_n.eq(por_n)
 
+        # Bug #38 (see luna-multiep/top.py): plumb the lane into the PHY's
+        # CSR sequencer; the adapter default is Q0_LN1 regardless of QUAD/
+        # LANE.  Elaboration-identical for the shipping Q0_LN1 config.
+        from gw_usb3.upar_csr import UparCsrConfig
         adapter = GowinGTR12PIPE(boot_rate_switch=(BOOT_RATE == "10G"),
-                                 boot_domain="ss_raw")
+                                 boot_domain="ss_raw",
+                                 phy_kwargs=dict(
+                                     csr_config=UparCsrConfig(quad=QUAD,
+                                                              lane=LANE)))
         m.submodules.adapter = adapter
         attach_usb3_phy(m, adapter.phy, lane, drp)
 

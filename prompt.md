@@ -1,254 +1,267 @@
-# Mission: fork LUNA into a first-class dual-rate (Gen1 5G + Gen2 10G)
-# SuperSpeed stack — our PHY and serdes as native submodules, and
-# Gen2 through the WHOLE stack, not just the PHY
+# Mission: finish the dual-rate stack — Gen2 negotiation (G3),
+# Gen2 framing through link+protocol (G4), and the Gen2 hardware
+# ladder (G5). One bitstream, both rates.
 
 Context, so there is no confusion about the nature of this work: this
-is **building our own device stack**. Everything here is our code or
-BSD-3-Clause open source we are entitled to fork and modify — the
-LUNA USB3 gateware (BSD-3-Clause; keep upstream copyright headers and
-LICENSE intact in the fork), our gw_usb3 PHY, our gowin-serdes GTR12
-port, running on our own dev board on our own bench, validated
-against the public USB 3.2 specification (markdown copy in
+is **building our own device stack** in our own fork. Everything here
+is our code or BSD-3-Clause open source we forked with headers and
+LICENSE intact (luna-ss), plus our gw_usb3 PHY and gowin-serdes GTR12
+port as submodules, running on our own dev board on our own bench,
+validated against the public USB 3.2 specification (markdown copy in
 `doc/USB 3.2 Revision 1.1.pdf/markdown.md` — the conformance
 reference; also `doc/643108_PIPE_Arch_Spec_Rev_7_1.pdf` and the USB
 3.1 Link Layer Test Spec). The link partner is the standard Linux
-xHCI host on the bench PC, observed through standard kernel
-interfaces (usbmon, dmesg) and our own on-chip probes. Nothing here
-analyzes, unpacks, or circumvents anyone else's product; the vendor
-reference bitstream (`prj.fs`) is used only as an untouched black-box
-link partner baseline on our own board.
+xHCI host on the bench PC (usbmon, dmesg, our on-chip probes). The
+vendor reference bitstream (`prj.fs`, in the frozen GW_USB3 archive)
+is used only as an untouched black-box link-partner baseline on our
+own board.
 
-Read `HANDOVER.md` first — **§10g–§10n** (sessions 4–10). §10n is the
-freshest: ten sessions found and fixed thirty-six numbered stack bugs
-(#37 open, see "parked items"); session 10 closed the burst hardware
-bring-up (#34/#35) and **BURST=2 is the shipping Gen1 default at
-283 MB/s aggregate across 3 full-duplex bulk pairs**, sha-exact under
-soak, retry_flagged=0. The upstream-patch era ends with this mission:
-we now fork.
+Read `HANDOVER.md` first — **§10o–§10q** (session 11, all in this
+fork). §10q is freshest. Then `doc/gen2_design.md` — the reviewed
+Phase-1 design note this mission executes; its framing delta table
+and §9.1 pinned-contract facts are the Phase-4 blueprint.
 
-## Where things stand (session-10 end — the starting position)
+## Where things stand (session-11 end — the starting position)
 
 | asset | status |
 |-------|--------|
-| LUNA Gen1 stack (our 30+ fixes) on gw_usb3 + gowin-serdes | **hardware-proven**: enumerates, 3 bulk pairs, BURST=2, 94 MB/s/direction/pipe, ×10 64 MiB soak, wire clean |
-| gw_usb3 PHY **Gen2 (10G) datapath** (128b/132b: `datapath.py` RxGearbox132/TxGearbox132, Gen2 scrambler, `dc_balance.py`, `tables.py`; `gen2=True` knob, ~3.2k LUTs) | **silicon-proven**: `usb31-enum` (our PHY + our serdes + vendor link/LTSSM netlist) **enumerates at Gen2 on the bench 10G root port** (§10c/§10d table) |
-| vendor original example (`prj.fs`) | enumerates Gen2 AND Gen1 — untouched gold-reference link partner baseline on this exact board |
-| hybrid A/B rig (`Gowin_USB3.1_UVC_BULK_RefDesign/hybrid/`) | proven bisect methodology: vendor project with single blocks swapped for ours (§10c) |
-| gowin-serdes | 10G boot trim + CSR rate reconfiguration 10G→5G on every Gen1 link-up (both examples); GTR12 raw 64-bit fabric interface at 10G, 40-bit/8b10b at 5G |
-| PIPE surface | gw_usb3 `phy.py` already exposes a **64-bit PIPE** (`PipeTxData/PipeRxData In/Out(64)`); LUNA rides it today through the Gen1 32-bit adapter (`luna/gateware/interface/serdes_phy/gowin_gtr12.py`) |
-| regression | pytest 104/104; sim battery 35/35 (recovery, burst, blast, tx-fuzz); all in-repo |
-| LUNA link/protocol/LTSSM | **Gen1-only**: 32-bit @ 125 MHz, 8b/10b K-symbol framing, no LBPM, no 128b/132b, no rate switch |
-
-**What this means**: the physical layer for Gen2 exists and works on
-this silicon. The mission is (a) the repo restructure the team wants,
-and (b) teaching the LUNA-side stack — LTSSM, physical-layer framing,
-link layer, datapath width — to negotiate and run Gen2, falling back
-to Gen1 per spec. One bitstream, both rates.
+| Phase 0 (the fork) | **G0 CLOSED**: one-clone flow verified; pytest 104/104; battery green; hardware ladder green from the fork build (284 MB/s aggregate, sha-exact, uart1 ch0=0) |
+| Phase 1 (design note) | **G1 CLOSED**: `doc/gen2_design.md`, incl. staged width plan ((c)-then-(a)) and the two non-framing link deltas (modulo-16 sequence numbers, LCRD1/LCRD2 split) |
+| Phase 2 (Gen2 sim) | **G2 red half CLOSED**: `sim/gen2_coding.py` oracle byte-exact vs the RTL (`gen2-oracle` GREEN); `sim/sim_link_gen2.py` end-to-end harness with the real RTL scrambler chain both directions; red baselines recorded |
+| Phase 3 M1+M2 | **SIM-GREEN**: SCD1 declaration + Polling.LFPSPlus/SCD2 exchange (`gen2-scd` GREEN in the battery); `gen2=False` is the forced-Gen1 knob, and the shipping Gen1 bitstream is **bit-exact unchanged** (payload-identical rebuild proof) |
+| Phase 3 M3–M5 | **NOT STARTED** — this mission's first work item |
+| Phase 4, Phase 5 | NOT STARTED |
+| battery | 38 entries: 35 Gen1 (regression fence) + `gen2-oracle` (green) + `gen2-scd` (green) + `gen2-train` (ENFORCED-RED, flips with Phase 4) |
+| bench | board on **10G root port `usb 4-3`** (moved from 4-9; port re-verified Gen2-capable with the gold baseline); straight orientation = LN1 = correct; resident image = the shipping BURST=2 multiep build (POR 66_011, pclk 139.0), enumerated and ladder-green |
+| gw_usb3 Gen2 datapath | silicon-proven at 10G (usb31-enum); PIPE contract beat-level facts pinned by the oracle (HANDOVER 10p, design note §9.1) |
+| #38 | CLOSED (adapter lane/CSR mismatch; Q0_LN0 CSR path silicon-proven en route) |
 
 ## Deliverable
 
-A LUNA fork (suggested name: `luna-ss`, our repo, real commits — the
-`patches/luna_gowin_adapter.patch` era ends) that:
+Complete the original dual-rate mission from where session 11 left
+off:
 
-1. contains `gw_usb3/` and `gowin-serdes/` as **git submodules**,
-   with the GTR12/PIPE adapter code native to the fork;
-2. builds the existing Gen1 examples unchanged in behavior
-   (**Gen1 parity gate**: battery green + the standard multiep
-   hardware ladder green from the NEW layout before any Gen2 work);
-3. negotiates Gen2 per spec (SCD1/SCD2 in Polling.LFPS, LBPM in
-   Polling.LFPSPlus → PortMatch → PortConfig — grep the spec markdown
-   for `SCD1`, `LBPM`, `Polling.LFPSPlus`; 141 hits to work from),
-   trains at 10G with 128b/132b, enumerates as a SuperSpeedPlus
-   device, and runs the multiep bulk ladder at Gen2;
-4. falls back to Gen1 cleanly (5G hub port test — the §10d matrix —
-   and a forced-Gen1 build knob) — same bitstream.
+1. **G3 — sim-green Gen2 negotiation**: LBPM PortMatch/PortConfig,
+   LTSSM-driven rate switching, per-spec Gen1 fallback — all proven
+   in `sim_link_gen2.py` phases (red-first per mechanism).
+2. **G4 — full sim battery**: Gen2 block-level framing through
+   `physical/` + `link/` per the design-note delta table;
+   `gen2-train` flipped green; the enum + small bulk echo phases
+   implemented and green; every Gen1 entry untouched.
+3. **G5 — the numbers**: Gen2 clock MET (operating), enumeration as
+   SuperSpeedPlus on the bench 10G root port (lsusb 10000M), the
+   multiep ladder at Gen2 with recorded verdicts, and the fallback
+   matrix (5G hub port + forced-Gen1 build + replug cycles) — same
+   bitstream.
 
-`prompt.md` and `HANDOVER.md` move into the fork; HANDOVER continues
-at **§10o**; bug numbering continues at **#38**.
+HANDOVER continues at **§10r**; bug numbering continues at **#39**.
 
 ## Phase plan (each phase gated; one mechanism per change, as always)
 
-### Phase 0 — the fork and restructure (gate G0: Gen1 parity)
+### Phase 3 remainder — negotiation (gate G3)
 
-- Split `gw_usb3/` out of the GW_USB3 workspace into its own repo
-  with history (`git filter-repo`/subtree split). gowin-serdes is
-  already standalone.
-- Create the fork from upstream `82a8f733`; land our delta as a
-  reviewable commit series (the class structure in
-  `patches/README.md` / `upstream_drafts/` is the natural grouping:
-  adapter, one-liners, handshake robustness, TX-path integrity,
-  recovery conformance, burst engines, session-10 recovery
-  groundwork). Byte-identical tree at the end — verify with
-  `diff -r` against the current `luna/` checkout.
-- Add submodules; move the bench/test collateral so that ONE clone +
-  `git submodule update --init` + `pdm install` gives: pytest, the
-  full `sim_battery.sh`, and every example build. Examples may stay
-  in gowin-serdes or move into the fork's `examples/` — your call;
-  the hard requirement is no `sys.path` archaeology and no dead
-  paths.
-- Keep the old GW_USB3 workspace as a frozen bench archive (vendor
-  refdesign, gowin_bug_report*, doc/ can move or stay — document
-  where).
-- **Gate G0**: battery 35/35 + pytest from the fork layout; rebuild
-  luna-multiep from the fork; flash; standard ladder (1 MiB ×10,
-  64 MiB ×3, uart1 ch0=0). Also re-run the §10n-tail ladder note:
-  the resident image predates the rule-2d/#36/hook changes, so this
-  rebuild is ALSO their first hardware exposure.
+Mechanism by mechanism, sim red-first each time:
 
-### Phase 1 — design note before code (gate G1: written + reviewed)
+- **M3a — LBPM modem** (`physical/lfps.py` beside the SCD machinery):
+  PWM TX shaping (tPWM 2–2.4 µs; '0' = 1/3 LFPS + 2/3 EI, '1' = 2/3 +
+  1/3; delimiter = 1 tPWM LFPS + 1 tPWM EI; byte messages LSb first,
+  delimiters at start/end/between) and an RX pulse-width classifier
+  [6.9.5, Table 6-33]. Elaboration-gated like the SCD blocks.
+- **M3b — Polling.PortMatch / Polling.PortConfig** (LTSSM, gen2-
+  gated): PHY Capability LBPM ([1:0]=00, [3:2] rate: 00=5G/01=10G) —
+  send ours (10G), match rule "4 matched sent after 2 matched
+  received"; the lower-capability port's value wins; on re-entry
+  advertise next-highest (the speed-fallback loop — Polling.Active/
+  Configuration/Idle timeouts at Gen2 return to PortMatch, not
+  Rx.Detect [7.5.4.5.2]). PortConfig: PHY reconfig window + PHY
+  Ready LBPM handshake ([1:0]=01). Shared 12 ms
+  tPollingLBPMLFPSTimeout across both substates; peripheral timeout
+  → eSS.Disabled [7.5.4.5/.6]. Extend `PHASE=scd` into a full
+  `PHASE=lbpm` (host answers SCD2 with capability LBPMs; require the
+  device's matched capability + PHY Ready). Record the red first.
+- **M3c — rate plumbing**: LTSSM `rate_select`/`rate_request` output
+  driven by the PortMatch outcome; PIPE `rate` driven from it (the
+  MAC owns `pipe.rate`); adapter side: `GowinGTR12PIPE` grows a
+  rate-switch request/done handshake around its existing proven CSR
+  sequencing (10G↔5G both directions — the boot path already does
+  10G→5G; make it LTSSM-driven and repeatable mid-LTSSM, reusing the
+  #22 boot-window discipline so no MAC state clocks through the
+  retune). Sim: assert `pipe.rate` transitions per negotiated
+  outcome (the serdes CSR side itself is hardware-proven; in sim,
+  verify the handshake contract with a stub that acks like the
+  adapter).
+- **M3d — fallback matrix in sim**: (i) host never declares SCD →
+  device completes legacy Gen1 handshake to Polling.RxEQ (assert the
+  LFPS trace shows ≥4 SCD1 then non-varying tRepeat per 7.5.4.3
+  rules — the current implementation keeps modulating; make the
+  16-legacy-burst / 60 µs SCD-timeout rules real); (ii) SCD2 absent
+  in LFPSPlus (20 non-varying / 64-burst rules [7.5.4.4]); (iii)
+  Polling.Active timeout at Gen2 → PortMatch re-entry with
+  next-highest capability → 5G outcome → Gen1 training completes
+  (this closes the negotiation loop in sim); (iv) `gen2=False` knob:
+  elaboration + the existing Gen1 battery is the proof.
+- **Gate G3**: `gen2-lbpm` (or extended scd) green; fallback sims
+  green; battery 100% with all Gen1 entries untouched; shipping
+  bitstream parity re-proven (rebuild, payload compare — the
+  established trick).
 
-Read, then write `doc/gen2_design.md` in the fork covering, minimum:
+### Phase 4 — Gen2 framing through the stack (gate G4)
 
-- **Datapath width/clock plan.** Gen2 payload is ~9.7 Gbps; 32-bit
-  needs ~312 MHz — not happening in this fabric. The serdes gives
-  64-bit @ 156.25 MHz at 10G, and gw_usb3's PIPE is already 64-bit.
-  Decide: (a) width-generic link+protocol layers elaborated 32-bit@125
-  for Gen1 and 64-bit@156.25 for Gen2 (the honest target: header = 2
-  beats, full line rate); or first stage (c): keep the 32-bit link
-  layer at 156.25 behind per-packet 64↔32 burst buffers (DPPs must be
-  wire-contiguous, so buffer whole packets and burst them; sustained
-  throughput ~halves but protocol correctness and enumeration are
-  fully exercisable). (c)-then-(a) is a legitimate de-risking ladder;
-  choose deliberately and write down why.
-- **Framing delta table, from the spec markdown**: Gen2 has no
-  K-symbol framing — packet/link-command delimiters, TS1/TS2/TSEQ as
-  16-symbol blocks, SDS, SYNC, Gen2 SKP OS format+cadence, Gen2
-  scrambler, block header bits. Map each Gen1 construct in
-  `physical/` + `link/` (HPSTART/SDP/END/EPF detection, CTC skip
-  inserter, scrambler, alignment) to its Gen2 replacement, and mark
-  which gw_usb3 blocks already implement the Gen2 side (most of the
-  bit-level work: gearboxes, scrambler, DC balance are DONE and
-  proven — reuse, don't rewrite).
-- **LTSSM delta**: Polling substates for LBPM, rate selection,
-  Recovery at Gen2, and where the serdes CSR rate switch (existing
-  10G→5G machinery in the examples — make it LTSSM-driven, both
-  directions) hooks in. Note gw_usb3 already does SCD/rate-change
-  even with `gen2=False` (§10a) — mine that logic.
-- **Timing budget**: at Gen2 the 156.25 MHz constraint becomes an
-  OPERATING requirement, not the benign-miss boot window of #22.
-  Current full multiep builds land 139–149; luna-enum-sized builds
-  have hit 156.3. Expect #22-class pipelining work on the hot cones;
-  escalation paths: placement lottery (POR nudge), targeted register
-  stages, the Yosys pre-lowering flow (§10k addendum). Budget for it.
-- **Vendor aligner SKP bug** (§10c): the vendor Gen2 block aligner
-  mis-tracks SKP OS with x=4 symbols — our RX path must handle what
-  the HOST sends legally, and our TX must not tickle host-side
-  quirks; note the workaround plan.
+Execute the design-note delta table (§2) with the §9.1 pinned facts.
+Suggested mechanism ladder, red-first each (extend `PHASE=train` /
+`enum` / add `echo` as you go):
 
-### Phase 2 — sim first: a Gen2 link partner (gate G2: red/green pair)
-
-Extend the link-partner simulation before touching device RTL:
-
-- Either extend `sim_link_loopback.py` with a `GEN=2` mode or write
-  `sim_link_gen2.py` reusing its host-model logic (frames, credits,
-  handshake/burst/9249 models are rate-agnostic at the header level —
-  the encoding layer below them changes). It must speak: LBPM
-  negotiation, 128b/132b blocks with the REAL Gen2 scrambler (the
-  Gen1 sim's whole value came from the real scrambler chain — same
-  rule here), SDS, Gen2 SKP, Gen2 packet framing.
-- Reuse gw_usb3's own Python models (`sim_model=True` paths,
-  equivalence-suite vectors) as the encoding oracle where possible.
-- The battery grows a `gen2` section; every existing Gen1 entry must
-  stay green untouched throughout the mission.
-- **Gate G2**: a Gen2 training + enumeration + small bulk echo sim
-  that FAILS against the unmodified stack and PASSES once each
-  device phase lands (keep the red run recorded in HANDOVER).
-
-### Phase 3 — LTSSM + rate switch (gate G3: sim-green negotiation)
-
-LBPM/SCD in the fork's LTSSM; serdes rate reconfiguration driven by
-the LTSSM (10G↔5G, both directions, mid-LTSSM); PIPE rate/width mux;
-Gen1 fallback when the host never answers SCD2/LFPSPlus. The §10d
-test matrix (10G root port / 5G hub port) is the eventual hardware
-acceptance shape.
-
-### Phase 4 — Gen2 physical + link framing (gate G4: full sim battery)
-
-Wrap gw_usb3's proven Gen2 datapath as the fork's Gen2 PIPE backend;
-implement block-level ordered-set detect/generate, SDS, SKP, and the
-Gen2 packet/link-command framers in `physical/` + `link/` per the
-Phase-1 delta table; datapath width per the Phase-1 decision. Header
-packet content, CRCs, LGOOD/LCRD machinery, protocol layer, and the
-burst engines should be untouched or width-adapted only — all thirty
--six bugs' worth of fixes carry over by construction.
+1. **Gen2 TX at the PIPE**: block-level ordered-set generator
+   (TSEQ/TS1/TS2 16-symbol blocks, SYNC every 32 TS / every 16384
+   TSEQ, DC-balance symbols 14/15 via gw_usb3 tables — or neutral
+   first, receivers must ignore 14/15), driving
+   `tx_data/tx_datavalid/tx_sync_header/tx_start_block` at Gen2;
+   LTSSM RxEQ/Active/Configuration counts per spec (524,288 TSEQ —
+   plumb a sim-shortening parameter like `tseq_burst_length`).
+   This alone flips `gen2-train`'s first assertion.
+2. **Gen2 RX OS detection**: block-level TS1/TS2 detectors
+   (identifier symbols only, EXCLUDE symbols 14/15), SYNC/SDS
+   detect; feed the existing LTSSM handshake counters.
+3. **SDS + Idle + TX SKP scheduling**: SDS on Polling.Idle/
+   Recovery.Idle entry; Idle Symbols in data blocks; SKP OS insert
+   at block boundaries, average 1-per-40-blocks, Z=int(Y/40)
+   [6.4.3.3] (the PHY freezes the LFSR across the SKP — send whole
+   24-symbol OS blocks).
+4. **Stage-A width bridge**: per-packet 64↔32 burst buffers between
+   the 32-bit link core (running at pclk=156.25) and the Gen2
+   framers (design note §1; DPPs wire-contiguous; single clock
+   domain, width converters only).
+5. **Gen2 packet/link-command framing**: Table 6-2 symbol framers/
+   detectors (HPSTART/DPHSTART/DPPSTART/DPPEND/DPPABORT/LCSTART,
+   ≤1-corrupt-symbol tolerance [7.3.3]); DPH length-field replica on
+   non-deferred DPHs.
+6. **Link-layer Gen2 mode**: modulo-16 header sequence numbers +
+   4-bit LGOOD, LCRD1/LCRD2 credit classes (Type-2 = async DPs =
+   all our bulk DPs; both pools advertised, both correct after
+   recovery — the rule-2d/#29–#31 machinery gets a rate-selected
+   modulus). This is the conformance-sensitive part: extend the
+   Gen2 host model's credit/seq checking FIRST (red), then port.
+   The 36 bugs' fixes carry over — width-adapt, don't rewrite.
+7. **Enum surface**: bcdUSB 0310, BOS SuperSpeedPlus Device
+   Capability (LSE=3/LSM=10, LP=1), Sublink Speed Device
+   Notification TP on Address-state entry [8.5.6.7, 9.6.2.5].
+   Complete the sim's `enum` + `echo` phases (GetDescriptor + small
+   bulk echo through Gen2 framing, reusing the Gen1 host model's
+   transaction logic above the encoding layer).
+- **Gate G4**: full battery green with `gen2-train`, `gen2-enum`,
+  `gen2-echo` flipped; Gen1 entries untouched; shipping parity
+  re-proven. Port BurstEventCapture to Gen2 framing NOW (it is how
+  #34 fell; calibrate on a quiet pipe before believing it).
 
 ### Phase 5 — hardware ladder (gate G5: the numbers)
 
-Climb exactly like Gen1 did, with recorded verdicts:
-
-1. Timing gate first: Gen2 clock MET (operating, not boot-window).
-2. `usb31-enum`-style enumeration top from the fork at Gen2 —
-   A/B against `usb31-enum` (our PHY + vendor link) and `prj.fs`
-   when stuck: the hybrid-rig methodology (§10c) is the proven
-   debug path, and BOTH already enumerate Gen2 on this board.
-3. lsusb shows 10000M; dmesg clean; then luna-multiep at Gen2:
-   1 MiB ×10 → 16 → 64 MiB → ×10 soak, sha-exact, per-pipe MB/s
-   recorded. Wire checker ported to Gen2 framing (ch0 retry_flagged
-   discipline carries over — it must read 0).
-4. Fallback matrix: same bitstream on the 5G hub port → Gen1
-   enumeration + ladder; forced-Gen1 knob build; replug cycles.
-5. Stretch: beat Gen1's 283 MB/s aggregate meaningfully (the Gen2
-   ceiling is ~2× even with the staged 32-bit core; ~1.1 GB/s runway
-   with the full 64-bit datapath).
+1. Timing first: the **156.25 MHz domain must MEET operating
+   timing** in the Gen2 build. Expect #22-class work on the known
+   cones (endpoint-mux grants, tp_generator, get_descriptor ROMs);
+   escalation: POR-nudge lottery (66_012+, document rolls), targeted
+   register stages, the Yosys pre-lowering flow (archive §10k).
+2. luna-enum-sized Gen2 enumeration top first; A/B against
+   usb31-enum (our PHY + vendor link) and the archive `prj.fs` when
+   stuck — both enumerate Gen2 on this board on port 4-3 (verified
+   session 11). The hybrid rig lives in the archive.
+3. lsusb 10000M; dmesg clean; then luna-multiep at Gen2: 1 MiB ×10 →
+   16 → 64 MiB → ×10 soak, sha-exact, per-pipe MB/s recorded; wire
+   checker ported to Gen2 framing (ch0 retry_flagged must read 0).
+4. Fallback matrix: same bitstream on the 5G hub port (4-8.x) →
+   Gen1 enumeration + ladder; forced-Gen1 (`gen2=False`) build;
+   replug cycles. Do not regress the 5G trim (the gw_usb3
+   equivalence suite + the hub-port run are the guards).
+5. Stretch: beat Gen1's 284 MB/s aggregate meaningfully (~2×
+   ceiling with the stage-A core; the stage-B 64-bit core is
+   post-G5 work, ~1.1 GB/s runway).
 
 ## Parked items that stay on the books (do not lose them)
 
-From §10n: **#37** (truncated inbound DPP never retried —
-`FORCE_REC_AT=710` repro) and the forced-recovery sim-harness feed
-truncation WIP; rule-2d/#36 positive-validation stimuli; the bench
-forced-recovery verdict for #29–#31 (uart1 `'R'` hook is already in
-the tree); data_tx SEND_ZLP bare-ready; wire-checker TP blindness.
-Fix them opportunistically when the affected files are open anyway —
-recovery behavior matters MORE at Gen2 bring-up, where marginal links
-are likelier. `upstream_drafts/` classes 1–2 remain valid against the
-pre-fork base if the team ever wants to send them.
+From §10n (all still open): **#37** (truncated inbound DPP never
+retried — `FORCE_REC_AT=710` repro) + the forced-recovery sim-harness
+feed-truncation WIP; rule-2d/#36 positive-validation stimuli; the
+bench forced-recovery verdict for #29–#31 (uart1 `'R'` hook is in the
+tree); data_tx SEND_ZLP bare-ready; wire-checker TP blindness. New
+since: the SKP x=4 aligner fix behind an elaboration knob (design
+note §6 — do it when `word_alignment` is open in Phase 4); the SCD
+fallback rules of M3d partially cover the §10q note that the current
+device keeps modulating SCD1 against legacy partners. Fix
+opportunistically when the affected files are open — recovery
+behavior matters MORE at Gen2 bring-up.
 
-## Keep the discipline that closed thirty-six bugs
+## Keep the discipline that closed thirty-eight bugs
 
 - Simulate first; the sim keeps the REAL scrambler/coding chain at
-  both rates. One mechanism per change; full battery after each
-  (Gen1 entries are a regression fence, never a casualty).
+  both rates (the RTL Scrambler/Descrambler instances stay in the
+  gen2 bench loop; `gen2-oracle` pins the host model — keep it
+  green when touching `gen2_coding.py`).
+- One mechanism per change; full battery after each from a SETTLED
+  tree (§10q lesson: never run the battery concurrently with source
+  edits — entries elaborate the live tree). Gen1 entries are a
+  regression fence, never a casualty; enforced-red entries flip to
+  expect-green only as a conscious commit.
+- Shipping parity after Gen1-shared-file changes: rebuild
+  luna-multiep with defaults and payload-compare against the
+  resident image (6 timestamp bytes are the only allowed delta).
 - Hardware ladder with recorded verdicts before the next change;
   watch uart1 ch0 on every run.
-- New bugs: **#38+**, findings into HANDOVER §10o as you go; commit
+- New bugs: **#39+**, findings into HANDOVER §10r as you go; commit
   submodules first, then the fork; push everything.
-- The shipping Gen1 configuration must remain buildable and
-  ladder-green from every commit on the fork's main branch.
 
 ## Tooling and bench facts (verify before trusting)
 
-- Board on the 10G root port (`usb 4-9`); 5G test path = the 5000M
-  hub port (§10d). Flash: `sudo -n openFPGALoader -c ft232 <fs>`.
-  Rebuild: `pdm run python top.py` (8–20 min). Timing report:
-  `python3 gowin_timing_report.py <example>/build --section fmax`.
-  Gen1 gate: pclk ≥ 125 operating (156.25 misses benign, #22).
-  **Gen2 gate: the 156.25 domain must MEET timing.**
-- Verdicts: `multiep_test.py <MiB> --eps 1,2,3` (warmup default on,
-  `--no-warmup` for probes); loopback window/bandwidth tests; ACM
-  echo (`luna-acm/acm_echo_test.py`). usbmon at
-  `/sys/kernel/debug/usb/usbmon/4u`; `sudo -n dmesg` works.
-- Debug UARTs @115200: uart0 link probe (or ACKPROBE field capture),
-  uart1 wire checker + `'R'` force-recovery command;
-  `luna-multiep/uart_capture.py <s> <prefix>` interleaves both.
-- **Run sims as `.venv/bin/python -u`** — `timeout`+`pdm run`
-  orphans children, and piped python without `-u` buffers away your
-  evidence (two sessions' phantoms, §10m/§10n).
+- One clone: `git clone --recurse-submodules
+  github.com/key2/luna-ss && pdm install -G :all`. Repos: luna-ss +
+  gw_usb3 (private), gowin-serdes (public — no vendor artifacts
+  there, ever); frozen archive = `~/Downloads/GW_USB3`
+  (gw_usb3-archive on GitHub; ARCHIVE.md has the map).
+- Board on the 10G root port **`usb 4-3`** (straight orientation =
+  LN1; both orientations probed session 11 — flipped = Q0_LN0, CSR
+  path works but stays a probe config). 5G test path = the hub at
+  `4-8.x`. Flash: `sudo -n openFPGALoader -c ft232 <fs>`. After any
+  replug the device needs a fresh POR (reflash or board KEY) — it
+  parks in SS.Disabled 360 ms after boot. If a known-good image is
+  dark: coordinate `usbX-portN/disable` warm-cycles with the flash,
+  and A/B the archive `prj.fs` before blaming our stack (§10o).
+- Rebuild: `pdm run python top.py` in `examples/gowin/<name>/`
+  (8–20 min). Timing: `.venv/bin/python tools/gowin_timing_report.py
+  <example>/build --section fmax`. Gen1 gate: pclk ≥ 125 operating
+  (156.25 misses benign, #22; POR-nudge reroll knob at
+  `luna-multiep/top.py` — 66_011 current, history in the comment).
+  **Gen2 gate: 156.25 MET.**
+- Verdicts: `multiep_test.py <MiB> --eps 1,2,3` (sudo; warmup
+  default on); uart0 link probe / uart1 wire checker @115200 on
+  `/dev/ttyUSB4`/`/dev/ttyUSB5`; `uart_capture.py <s> <prefix>`
+  interleaves both. usbmon at `/sys/kernel/debug/usb/usbmon/4u`;
+  `sudo -n dmesg` works.
+- **Run sims as `.venv/bin/python -u`** (`timeout`+`pdm run`
+  orphans children; unbuffered or you lose the evidence). Battery:
+  `pdm run battery` (= `sim/sim_battery.sh`), logs in
+  `/tmp/kilo/batt_*.log`. Gen2 sims take minutes (PHASE=scd ≈ 85k
+  ss cycles) — budget for it.
+- The gen2 bench PIPE bring-up dance is subtle and already solved —
+  reuse `sim_link_gen2.bringup()` (TUSB phy_status dialect +
+  power_down ack pulses; the LTSSM parks silently without them).
 - Netlist-vs-RTL box for suspected GowinSynthesis miscompiles
-  (recipe §10k; two confirmed classes have guards in the battery);
+  (archive §10k recipe; two confirmed classes have battery guards);
   fresh Yosys at `~/Downloads/yosys/build/yosys` is the validated
-  escalation. StreamArbiter-style hardening idiom for any new
-  arbitration cones (§10n).
-- BurstEventCapture (`MULTIEP_ACKPROBE=1`) is the field-level probe
-  pattern — port it to Gen2 framing early; it is how #34 fell.
-  Calibrate any new probe on a quiet virgin pipe before believing it
-  (§10n's blind-window lesson).
+  escalation. StreamArbiter hardening idiom for any NEW arbitration
+  cones — mandatory (miscompile history).
 
 ## Constraints
 
-- gw_usb3's Gen1 5G TX path history (§10d) and its equivalence suite
-  are settled — do not regress the 5G trim while adding LTSSM-driven
-  rate switching; the 5G hub port run in the fallback matrix is the
-  guard.
-- The vendor `prj.fs` and refdesign stay untouched restore baselines.
-- BSD-3-Clause: keep LUNA's license and copyright headers in the
-  fork; our commits carry our own attribution alongside.
+- gw_usb3's Gen1 5G TX path and its equivalence suite are settled —
+  do not regress the 5G trim while adding LTSSM-driven rate
+  switching; the 5G hub-port run in the fallback matrix is the
+  guard. PHY-side changes (SKP x=4 fix, LTSSM_is_Training wiring)
+  go behind elaboration knobs with the vendor-exact config still
+  pinned by the equivalence tests.
+- The vendor `prj.fs` and refdesign stay untouched restore baselines
+  (in the archive).
+- BSD-3-Clause: upstream LUNA license and copyright headers stay
+  intact; our commits carry our own attribution alongside.
+- The shipping Gen1 configuration must remain buildable and
+  ladder-green from every commit on main; `gen2=False` elaborations
+  of shared files must stay bitstream-payload-identical unless a
+  Gen1-affecting change is explicitly intended, battery-proven, and
+  hardware-laddered.

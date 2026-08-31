@@ -287,7 +287,14 @@ class USB3PhysicalLayer(Elaboratable):
                 tseq_count=self._gen2_tseq_count)
             m.submodules.gen2_rx = gen2_rx = Gen2BlockReceiver()
 
-            m.d.comb += [
+            # The block transmitter's LTSSM control surface is registered
+            # at the seam in BOTH directions (156.25 routing: the
+            # link-side burst request registers otherwise reach the
+            # block scheduler's FIFO controls in one hop, and the
+            # scheduler's ``burst_complete`` reaches the LTSSM's
+            # transition cone the same way).  All of these are levels or
+            # counting strobes with microsecond-scale tolerances.
+            m.d.ss += [
                 gen2_tx.send_tseq_burst .eq(self.gen2_send_tseq_burst),
                 gen2_tx.send_ts1_burst  .eq(self.gen2_send_ts1_burst),
                 gen2_tx.send_ts2_burst  .eq(self.gen2_send_ts2_burst),
@@ -297,11 +304,19 @@ class USB3PhysicalLayer(Elaboratable):
                 gen2_tx.request_no_scrambling
                     .eq(self.gen2_request_no_scrambling),
                 self.gen2_burst_complete.eq(gen2_tx.burst_complete),
-
+            ]
+            m.d.comb += [
                 gen2_rx.rx_data  .eq(phy.rx_data),
                 gen2_rx.rx_head  .eq(phy.rx_sync_header),
                 gen2_rx.rx_start .eq(phy.rx_start_block),
                 gen2_rx.rx_valid .eq(phy.rx_datavalid),
+            ]
+            # The ordered-set detect surfaces are registered once more
+            # at the seam (156.25 routing: they otherwise reach the
+            # LTSSM's timer resets and the link TS mux in one hop).
+            # Strobes stay distinct (a TS block spans two beats) and the
+            # LTSSM's timing tolerances are microseconds.
+            m.d.ss += [
                 self.gen2_tseq_detected .eq(gen2_rx.tseq_detected),
                 self.gen2_ts1_detected  .eq(gen2_rx.ts1_detected),
                 self.gen2_ts2_detected  .eq(gen2_rx.ts2_detected),
@@ -313,9 +328,18 @@ class USB3PhysicalLayer(Elaboratable):
                     .eq(gen2_rx.no_scrambling_requested),
             ]
 
+            # A second registered skid stage on the Gen2 TX leg: the
+            # bridge's byte-granular capture cone (symbol translation +
+            # accumulator + FIFO write) otherwise starts at tx_skid's
+            # output registers across the seam (a reported 156.25
+            # routing cone).  Fully elastic; ``first``/``last`` markers
+            # ride along.
+            m.submodules.gen2_tx_skid = gen2_tx_skid = TxStreamSkidBuffer()
+            m.d.comb += gen2_tx.sink.stream_eq(gen2_tx_skid.source)
+
             with m.If(rate_r):
                 m.d.comb += [
-                    gen2_tx.sink          .stream_eq(tx_skid.source),
+                    gen2_tx_skid.sink     .stream_eq(tx_skid.source),
                     # Keep the (unused) Gen1 scrambler fed with idle.
                     scrambler.enable      .eq(0),
                     scrambler.sink.valid  .eq(1),
@@ -445,10 +469,33 @@ class USB3PhysicalLayer(Elaboratable):
         m.submodules.realigner = realigner = RxPacketAligner()
         if self._gen2:
             m.d.comb += realigner.sink.stream_eq(descrambler.source)
+            # The muxed RX stream is REGISTERED at the physical->link
+            # seam (156.25 routing: the gen2_rx output register
+            # otherwise reaches every link-layer receiver cone --
+            # crc16/crc32/lc_detector -- in a single hop).  The link
+            # side holds ``source.ready`` tied high (monitor taps), so a
+            # plain register is exact; both dialect legs are elastic and
+            # the Gen1 leg at the 5G trim tolerates the extra cycle
+            # identically.  Gen1-only builds keep the historical
+            # combinational connection verbatim.
+            src_valid = Signal()
+            src_data  = Signal(32)
+            src_ctrl  = Signal(4)
             with m.If(rate_r):
-                m.d.comb += self.source.stream_eq(gen2_rx.source)
+                m.d.ss += [src_valid.eq(gen2_rx.source.valid),
+                           src_data .eq(gen2_rx.source.data),
+                           src_ctrl .eq(gen2_rx.source.ctrl)]
+                m.d.comb += gen2_rx.source.ready.eq(1)
             with m.Else():
-                m.d.comb += self.source.stream_eq(realigner.source)
+                m.d.ss += [src_valid.eq(realigner.source.valid),
+                           src_data .eq(realigner.source.data),
+                           src_ctrl .eq(realigner.source.ctrl)]
+                m.d.comb += realigner.source.ready.eq(1)
+            m.d.comb += [
+                self.source.valid.eq(src_valid),
+                self.source.data .eq(src_data),
+                self.source.ctrl .eq(src_ctrl),
+            ]
         else:
             m.d.comb += [
                 realigner.sink      .stream_eq(descrambler.source),
@@ -489,6 +536,35 @@ class USB3PhysicalLayer(Elaboratable):
             # LFPS signaling. [TUSB1310A: Table 3-3]
             lfps.signaling_received     .eq(~phy.rx_elec_idle),
         ]
+
+        if self._gen2:
+            # Gen2 trims REGISTER the PIPE LFPS/idle control outputs: the
+            # LTSSM's state decode otherwise reaches the adapter's LFPS
+            # engine in one combinational sweep (LTSSM -> send_polling ->
+            # generator merge -> this power_down mux -> adapter FSM), a
+            # reported 156.25 seam cone.  Burst-edge granularity is
+            # microseconds and both edges shift together, so one pclk of
+            # latency is immaterial.  Gen1 elaborations keep the
+            # historical combinational mux verbatim below.
+            eidle_r = Signal(init=1)
+            detrx_r = Signal()
+            with m.Switch(phy.power_down):
+                with m.Case(0):
+                    m.d.ss += [
+                        eidle_r.eq(lfps.drive_electrical_idle
+                                   | self.tx_electrical_idle),
+                        detrx_r.eq(lfps.send_signaling),
+                    ]
+                with m.Default():
+                    m.d.ss += [
+                        eidle_r.eq(1),
+                        detrx_r.eq(rx_detect.detection_control),
+                    ]
+            m.d.comb += [
+                phy.tx_elec_idle              .eq(eidle_r),
+                phy.tx_detrx_lpbk             .eq(detrx_r),
+            ]
+            return m
 
         with m.Switch(phy.power_down):
 

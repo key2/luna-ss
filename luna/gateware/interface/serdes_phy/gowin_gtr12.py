@@ -263,6 +263,19 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
                     m.d.ss += ack_run.eq(0)
                     m.d.comb += rate_ack.eq(1)
             m.d.comb += self.phy_ready.eq(1)
+
+            # At the 10G trim the Gen2 block transmitter drives
+            # tx_datavalid with real meaning: rate-matching gaps for the
+            # 128b/132b gearbox (one dead beat per 16 blocks; see
+            # Gen2BlockTransmitter).  Forward it truly -- the Gen1
+            # "valid when not in electrical idle" OR rule above would
+            # nullify the gaps and overflow the PHY's 32-deep TX FIFO.
+            # At the 5G trim the Gen1 rule still applies (last
+            # assignment wins; Gen1-only builds keep the original
+            # statement untouched).
+            m.d.comb += phy.PipeTxDataValid.eq(
+                Mux(rate_d, self.tx_datavalid,
+                    self.tx_datavalid | ~self.tx_elec_idle))
         else:
             m.d.comb += [
                 phy.Rate         .eq(0),

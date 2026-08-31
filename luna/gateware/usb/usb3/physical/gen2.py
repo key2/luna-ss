@@ -340,22 +340,39 @@ class Gen2TxBridge(Elaboratable):
             ]
 
         # ── drain: gapless per-packet bursting ───────────────────────
-        draining = Signal()
+        #
+        # ``beat_data`` is presented from a 1-deep PREFETCH register
+        # (156.25 timing: the FIFO's read data otherwise reaches the
+        # scheduler's tx_data mux and the PIPE adapter's capture
+        # registers in one hop).  Gaplessness holds: a packet's first
+        # beat is prefetched only once the WHOLE packet is queued
+        # (packets_buffered accounting), so mid-packet refills always
+        # find the FIFO ready and the head register refills on the same
+        # cycle it is consumed.
+        head_v    = Signal()
+        head_data = Signal(64)
+        head_eop  = Signal()
+        mid_pkt   = Signal()      # head held a non-final beat: continue
 
-        m.d.comb += self.beat_data.eq(Const(IDLE_BEAT, 64))
-        with m.If(self.beat_request):
-            with m.If(draining | (self.packets_buffered != 0)):
-                with m.If(fifo.r_rdy):
-                    m.d.comb += [
-                        self.beat_data.eq(fifo.r_data[0:64]),
-                        fifo.r_en.eq(1),
-                    ]
-                    eop = fifo.r_data[64]
-                    with m.If(eop):
-                        m.d.comb += pkts_out.eq(1)
-                        m.d.ss += draining.eq(0)
-                    with m.Else():
-                        m.d.ss += draining.eq(1)
+        m.d.comb += self.beat_data.eq(
+            Mux(head_v, head_data, Const(IDLE_BEAT, 64)))
+
+        consume = self.beat_request & head_v
+        with m.If(~head_v | consume):
+            with m.If(fifo.r_rdy
+                      & (mid_pkt | (self.packets_buffered != 0))):
+                m.d.ss += [
+                    head_v   .eq(1),
+                    head_data.eq(fifo.r_data[0:64]),
+                    head_eop .eq(fifo.r_data[64]),
+                    mid_pkt  .eq(~fifo.r_data[64]),
+                ]
+                m.d.comb += [
+                    fifo.r_en.eq(1),
+                    pkts_out .eq(fifo.r_data[64]),
+                ]
+            with m.Else():
+                m.d.ss += head_v.eq(0)
 
         return m
 
@@ -469,7 +486,24 @@ class Gen2BlockTransmitter(Elaboratable):
         SKP_BEAT2  = Const(syms_to_beat(
             [SKP_SYM] * 4 + [SKPEND, 0, 0, 0]), 64)
 
-        with m.If(active):
+        # ── TX beat pacing (the PHY gearbox rate match) ──────────────
+        #
+        # 64-bit beats at 156.25 MHz supply payload at exactly 10.0
+        # Gb/s, but the 128b/132b wire carries only 128 payload bits per
+        # 132 wire bits: the PHY's 32-deep TX gearbox FIFO gains one
+        # queued beat every 33 cycles and overflows after ~7 us of
+        # sustained streaming -- far shorter than any training sequence.
+        # One dead beat (tx_valid low) at a block boundary every 16
+        # blocks (32 beats + 1 gap = 33 cycles = 16 x 132 wire bits at
+        # 10 GT/s) matches the rates EXACTLY; a 24-symbol/3-beat SKP OS
+        # block carries the same 0.4 ns per-block deficit, so counting
+        # it as one block keeps the ratio exact.  Guarded by
+        # tests/test_gen2_pacing.py against the FIFO model; TxFifoWrNum
+        # probes confirm on silicon.
+        pace_cnt = Signal(range(16))
+        pace_due = Signal()
+
+        with m.If(active & ~(pace_due & (beat_idx == 0))):
             m.d.comb += self.tx_valid.eq(1)
 
             with m.If(beat_idx == 0):
@@ -568,6 +602,11 @@ class Gen2BlockTransmitter(Elaboratable):
                 with m.If(last_beat):
                     m.d.ss += beat_idx.eq(0)
 
+                    # Pacing accounting: one gap after every 16th block.
+                    m.d.ss += pace_cnt.eq(pace_cnt + 1)
+                    with m.If(pace_cnt == 15):
+                        m.d.ss += pace_due.eq(1)
+
                     # Ordered-set accounting at block end.
                     with m.If(kind == K_TSEQ):
                         with m.If(os_count + 1 == self._tseq_count):
@@ -584,9 +623,15 @@ class Gen2BlockTransmitter(Elaboratable):
                 with m.Else():
                     m.d.ss += beat_idx.eq(beat_idx + 1)
 
+        with m.Elif(active):
+            # Rate-matching gap: hold the block boundary for one cycle
+            # (tx_valid stays low; the PHY FIFO drains one beat).
+            m.d.ss += pace_due.eq(0)
+
         with m.Else():
             m.d.ss += [beat_idx.eq(0), mode.eq(0), os_count.eq(0),
-                       sync_gap.eq(0), skp_gap.eq(0), sds_pending.eq(0)]
+                       sync_gap.eq(0), skp_gap.eq(0), sds_pending.eq(0),
+                       pace_cnt.eq(0), pace_due.eq(0)]
 
         return m
 
@@ -633,6 +678,23 @@ class Gen2BlockReceiver(Elaboratable):
     def elaborate(self, platform):
         m = Module()
 
+        # ── PIPE input registers ─────────────────────────────────────
+        # The whole receiver works from a locally registered copy of the
+        # PIPE RX beat (156.25 timing: the adapter's output registers
+        # otherwise reach the enqueue idle-compare and the block
+        # classifier in one routed hop).  One beat of RX latency is
+        # immaterial everywhere downstream.
+        rx_data  = Signal(64)
+        rx_head  = Signal(4)
+        rx_start = Signal()
+        rx_valid = Signal()
+        m.d.ss += [
+            rx_data .eq(self.rx_data),
+            rx_head .eq(self.rx_head),
+            rx_start.eq(self.rx_start),
+            rx_valid.eq(self.rx_valid),
+        ]
+
         # ── block assembly ────────────────────────────────────────────
         beat0_data = Signal(64)
         have_beat0 = Signal()
@@ -641,16 +703,16 @@ class Gen2BlockReceiver(Elaboratable):
         b0 = Signal(64)
         b1 = Signal(64)
 
-        with m.If(self.rx_valid):
-            with m.If(self.rx_start):
-                m.d.ss += [beat0_data.eq(self.rx_data), have_beat0.eq(1)]
+        with m.If(rx_valid):
+            with m.If(rx_start):
+                m.d.ss += [beat0_data.eq(rx_data), have_beat0.eq(1)]
             with m.Elif(have_beat0):
                 m.d.ss += have_beat0.eq(0)
                 m.d.comb += [
                     block_done.eq(1),
                     b0.eq(beat0_data),
-                    b1.eq(self.rx_data),
-                    block_ctl.eq(self.rx_head == BLOCK_CONTROL),
+                    b1.eq(rx_data),
+                    block_ctl.eq(rx_head == BLOCK_CONTROL),
                 ]
 
         syms = [Signal(8, name=f"blk_sym{i}") for i in range(16)]
@@ -720,18 +782,27 @@ class Gen2BlockReceiver(Elaboratable):
         #
         # Enqueue every data-block beat unless it is pure idle AND the
         # engine is fully drained (then it is provably inter-packet).
+        # Entries are 65 bits: {is_idle, beat} -- the whole-idle flag is
+        # computed ONCE at enqueue (the compare already exists in the
+        # discard condition here) so the read side never re-derives it
+        # from the 64-bit read data (a reported 156.25 reduce cone).
         m.submodules.queue = queue = DomainRenamer({"sync": "ss"})(
-            SyncFIFO(width=64, depth=self._queue_depth))
+            SyncFIFO(width=65, depth=self._queue_depth))
 
         engine_busy = Signal()   # grammar engine mid-construct
-        beat_is_idle = self.rx_data == Const(IDLE_BEAT, 64)
-        beat_is_data = self.rx_valid & (self.rx_head == BLOCK_DATA) \
+        beat_is_idle = rx_data == Const(IDLE_BEAT, 64)
+        beat_is_data = rx_valid & (rx_head == BLOCK_DATA) \
             & self.data_mode
 
+        # (``queue_drained`` also covers the read-side prefetch skid --
+        # a pending construct beat there means an incoming all-idle beat
+        # may be construct PAYLOAD and must never be discarded.)
+        queue_drained = Signal()
+
         with m.If(beat_is_data &
-                  ~(beat_is_idle & ~engine_busy & ~queue.r_rdy)):
+                  ~(beat_is_idle & ~engine_busy & queue_drained)):
             m.d.comb += [
-                queue.w_data.eq(self.rx_data),
+                queue.w_data.eq(Cat(rx_data, beat_is_idle)),
                 queue.w_en.eq(1),
             ]
 
@@ -740,8 +811,27 @@ class Gen2BlockReceiver(Elaboratable):
             self.debug_wen.eq(queue.w_en),
         ]
 
-        # ── grammar engine: 4 symbols per cycle ──────────────────────
-        # Engine state (registered across cycles; chained across slots).
+        # ── grammar engine v2: bulk/boundary stepping ────────────────
+        #
+        # v1 walked 4 symbols per cycle through four CHAINED next-state
+        # slots; the serial state/count recurrence across the slots was
+        # the 156.25-blocking timing cone even with registered emissions
+        # (16 LUT levels into the state/count regs).  v2 removes the
+        # chaining entirely by splitting the grammar into:
+        #
+        #   * BULK steps -- states that pass symbols without per-symbol
+        #     decisions (DPP payload, header body, LC body, aligned idle
+        #     runs in SEARCH) consume a whole aligned 4-symbol half in
+        #     one cycle with a single parallel count/position update;
+        #   * BOUNDARY steps -- construct boundaries (start symbols,
+        #     framing, header tail, terminators, the replica skip)
+        #     consume ONE symbol per cycle with the v1 per-symbol
+        #     logic, unchained.
+        #
+        # Boundaries cost O(1) cycles per construct against O(len/4)
+        # bulk cycles, so the sustained rate stays ~4 symbols/cycle for
+        # payload traffic; nothing downstream is cycle-exact and byte
+        # order is identical to v1.
         ST_SEARCH, ST_FRAME, ST_HDR, ST_SKIP, ST_DPP, ST_TERM, ST_LC = \
             range(7)
         FR_HP, FR_DPH, FR_DPP, FR_LC = range(4)
@@ -756,6 +846,7 @@ class Gen2BlockReceiver(Elaboratable):
         term_edb = Signal()
 
         half     = Signal()    # which half of the current beat
+        sub      = Signal(2)   # symbol position within the half
         cur_beat = Signal(64)
         have_cur = Signal()
 
@@ -768,31 +859,102 @@ class Gen2BlockReceiver(Elaboratable):
                 m.d.comb += eng_syms[i].eq(
                     cur_beat[8 * (3 - i):8 * (4 - i)])
 
-        advance = Signal()
+        cur_sym = Signal(8)
+        with m.Switch(sub):
+            for j in range(4):
+                with m.Case(j):
+                    m.d.comb += cur_sym.eq(eng_syms[j])
+
+        advance     = Signal()   # the walk executes this cycle
+        can_bulk    = Signal()   # aligned 4-symbol step available
+        half_done   = Signal()   # this cycle finishes the current half
+        search_exit = Signal()   # this cycle's walk left ST_SEARCH
+
+        m.d.comb += half_done.eq(advance & (can_bulk | (sub == 3)))
+        with m.If(advance & ~half_done):
+            m.d.ss += sub.eq(sub + 1)
 
         # Whole-idle beats are DISCARDED at the load point when the
         # engine is between constructs: they carry no information, and
         # consuming them at the full beat rate keeps the queue bounded
-        # while the link idles (the engine's grammar walk is half the
-        # wire rate).  Mid-construct all-idle beats (e.g. a payload of
-        # 5A bytes) are never discarded -- the state check guards them.
-        load_is_idle = queue.r_data == Const(IDLE_BEAT, 64)
+        # while the link idles.  Mid-construct all-idle beats (e.g. a
+        # payload of 5A bytes) are never discarded: the state gate plus
+        # the ``search_exit`` qualifier guard them -- the qualifier
+        # covers the same-cycle race where the walk just left SEARCH
+        # into a construct but the registered state still reads SEARCH
+        # (a v1 latent hazard, fixed here).
+        # Read-side prefetch (2 deep): the queue's r_en/level otherwise
+        # sit in the walk's advance cone (a reported 156.25 path).  The
+        # refill decision uses only the REGISTERED occupancy, so the
+        # FIFO handshake is decoupled from the walk entirely; the head
+        # can never starve (a beat is consumed at most every other
+        # cycle -- two halves per beat -- while the refill runs every
+        # cycle with one cycle of lag).
+        qs_data = [Signal(65, name=f"qs_data{i}") for i in range(2)]
+        qs_head = Signal()      # read slot pointer
+        qs_tail = Signal()      # write slot pointer
+        qs_cnt  = Signal(2)
+        qs_pop  = Signal()
+        qs_push = Signal()
+        qh_valid = qs_cnt != 0
+        qh_data  = Signal(65)
+
+        m.d.comb += [
+            qs_push.eq(queue.r_rdy & (qs_cnt < 2)),
+            queue.r_en.eq(qs_push),
+            queue_drained.eq(~queue.r_rdy & (qs_cnt == 0)),
+            qh_data.eq(Mux(qs_head, qs_data[1], qs_data[0])),
+        ]
+        with m.If(qs_push & ~qs_pop):
+            m.d.ss += qs_cnt.eq(qs_cnt + 1)
+        with m.Elif(qs_pop & ~qs_push):
+            m.d.ss += qs_cnt.eq(qs_cnt - 1)
+
+        # Ring-pointer data movement: the pop (which sits in the walk's
+        # advance cone) touches only the 1-bit head pointer; the data
+        # registers are written by the push side alone.
+        with m.If(qs_push):
+            with m.If(qs_tail):
+                m.d.ss += qs_data[1].eq(queue.r_data)
+            with m.Else():
+                m.d.ss += qs_data[0].eq(queue.r_data)
+            m.d.ss += qs_tail.eq(~qs_tail)
+        with m.If(qs_pop):
+            m.d.ss += qs_head.eq(~qs_head)
+
+        load_is_idle = qh_data[64]           # computed at enqueue
+
+        # Per-half idle flags, precomputed at beat load (the bulk
+        # eligibility's all-idle test otherwise closes a combinational
+        # loop cur_beat -> compare -> half_done -> cur_beat load enable).
+        h_idle = Signal(2)
+        load_h_idle = [
+            qh_data[32:64] == Const(IDLE_BEAT & 0xFFFFFFFF, 32),
+            qh_data[0:32]  == Const(IDLE_BEAT & 0xFFFFFFFF, 32),
+        ]
 
         with m.If(~have_cur):
-            with m.If(queue.r_rdy):
+            with m.If(qh_valid):
                 with m.If(load_is_idle & (state == ST_SEARCH)):
-                    m.d.comb += queue.r_en.eq(1)          # discard
+                    m.d.comb += qs_pop.eq(1)              # discard
                 with m.Else():
-                    m.d.ss += [cur_beat.eq(queue.r_data), have_cur.eq(1),
-                               half.eq(0)]
-                    m.d.comb += queue.r_en.eq(1)
-        with m.Elif(advance):
+                    m.d.ss += [cur_beat.eq(qh_data[0:64]),
+                               h_idle.eq(Cat(load_h_idle[0],
+                                             load_h_idle[1])),
+                               have_cur.eq(1), half.eq(0), sub.eq(0)]
+                    m.d.comb += qs_pop.eq(1)
+        with m.Elif(half_done):
+            m.d.ss += sub.eq(0)
             with m.If(~half):
                 m.d.ss += half.eq(1)
-            with m.Elif(queue.r_rdy
-                        & ~(load_is_idle & (state == ST_SEARCH))):
-                m.d.ss += [cur_beat.eq(queue.r_data), half.eq(0)]
-                m.d.comb += queue.r_en.eq(1)
+            with m.Elif(qh_valid
+                        & ~(load_is_idle & (state == ST_SEARCH)
+                            & ~search_exit)):
+                m.d.ss += [cur_beat.eq(qh_data[0:64]),
+                           h_idle.eq(Cat(load_h_idle[0],
+                                         load_h_idle[1])),
+                           half.eq(0)]
+                m.d.comb += qs_pop.eq(1)
             with m.Else():
                 m.d.ss += have_cur.eq(0)
 
@@ -804,192 +966,246 @@ class Gen2BlockReceiver(Elaboratable):
         col_ctrl = Signal(4)
         col_cnt  = Signal(range(5))
 
-        st, frk, frp, cnt = state, fr_kind, fr_pos, count
-        hp, hdt, dln, ted = hdr_pos, hdr_data, dpp_len, term_edb
+        # Per-lane emissions toward the pipeline stage: bulk steps fill
+        # all four lanes; boundary steps use lane 0 only.
+        emit_en   = Signal(4)
+        emit_byte = [Signal(8, name=f"emit_byte{i}") for i in range(4)]
+        emit_k    = Signal(4)
 
-        emit_bytes = []     # (enable, byte, is_k) per slot
+        # Bulk eligibility, all from registered state (no chaining).
+        # The all-idle test uses the flags precomputed at beat load.
+        idle_half = Signal()
+        m.d.comb += idle_half.eq(Mux(half, h_idle[1], h_idle[0]))
+        m.d.comb += can_bulk.eq((sub == 0) & (
+            ((state == ST_DPP) & (count > 4)) |
+            ((state == ST_LC) & (count == 4)) |
+            ((state == ST_HDR) & (hdr_pos <= 11)) |
+            ((state == ST_SEARCH) & idle_half)))
 
-        for slot in range(4):
-            s = eng_syms[slot]
-            n_st  = Signal(range(7), name=f"s{slot}_st")
-            n_frk = Signal(2, name=f"s{slot}_frk")
-            n_frp = Signal(2, name=f"s{slot}_frp")
-            n_cnt = Signal(range(1024 + 8 + 1), name=f"s{slot}_cnt")
-            n_hp  = Signal(range(17), name=f"s{slot}_hp")
-            n_hdt = Signal(name=f"s{slot}_hdt")
-            n_dln = Signal(16, name=f"s{slot}_dln")
-            n_ted = Signal(name=f"s{slot}_ted")
-            emit_en   = Signal(name=f"s{slot}_emit")
-            emit_byte = Signal(8, name=f"s{slot}_byte")
-            emit_k    = Signal(name=f"s{slot}_k")
+        with m.If(advance & can_bulk):
+            with m.Switch(state):
 
-            m.d.comb += [
-                n_st.eq(st), n_frk.eq(frk), n_frp.eq(frp), n_cnt.eq(cnt),
-                n_hp.eq(hp), n_hdt.eq(hdt), n_dln.eq(dln), n_ted.eq(ted),
-            ]
+                with m.Case(ST_SEARCH):
+                    # Aligned all-idle half: consumed silently.
+                    pass
 
-            with m.If(advance):
-                with m.Switch(st):
+                with m.Case(ST_HDR):
+                    # Four header bytes at once, positional captures in
+                    # parallel: lane j carries header byte hdr_pos+j, so
+                    # the dw0 type test lands at hdr_pos==0 (lane 0) and
+                    # the dw1 length bytes at absolute positions 6/7.
+                    m.d.comb += emit_en.eq(0b1111)
+                    for j in range(4):
+                        m.d.comb += emit_byte[j].eq(eng_syms[j])
+                    m.d.ss += hdr_pos.eq(hdr_pos + 4)
+                    with m.If(hdr_pos == 0):
+                        with m.If(eng_syms[0][0:5] == 8):    # DATA type
+                            m.d.ss += hdr_data.eq(1)
+                    for j in range(4):
+                        if 6 - j >= 0:
+                            with m.If(hdr_pos == 6 - j):
+                                m.d.ss += dpp_len[0:8].eq(eng_syms[j])
+                        with m.If(hdr_pos == 7 - j):
+                            m.d.ss += dpp_len[8:16].eq(eng_syms[j])
 
-                    with m.Case(ST_SEARCH):
-                        with m.If(s == G2_IDL):
-                            pass
-                        with m.Elif((s == G2_SHP) | (s == G2_DPHP)):
-                            m.d.comb += [
-                                emit_en.eq(1), emit_byte.eq(K_SHP),
-                                emit_k.eq(1),
-                                n_st.eq(ST_FRAME), n_frp.eq(1),
-                                n_frk.eq(Mux(s == G2_DPHP, FR_DPH, FR_HP)),
-                            ]
-                        with m.Elif(s == G2_SDP):
-                            m.d.comb += [
-                                emit_en.eq(1), emit_byte.eq(K_SDP),
-                                emit_k.eq(1),
-                                n_st.eq(ST_FRAME), n_frp.eq(1),
-                                n_frk.eq(FR_DPP),
-                            ]
-                        with m.Elif(s == G2_SLC):
-                            m.d.comb += [
-                                emit_en.eq(1), emit_byte.eq(K_SLC),
-                                emit_k.eq(1),
-                                n_st.eq(ST_FRAME), n_frp.eq(1),
-                                n_frk.eq(FR_LC),
-                            ]
-                        # anything else: dropped (corruption between
-                        # packets; the constructs themselves are CRC- or
-                        # count-guarded).
+                with m.Case(ST_DPP):
+                    m.d.comb += emit_en.eq(0b1111)
+                    for j in range(4):
+                        m.d.comb += emit_byte[j].eq(eng_syms[j])
+                    m.d.ss += count.eq(count - 4)
 
-                    with m.Case(ST_FRAME):
-                        # Framing continuation (symbols 1,2 repeat the
-                        # start symbol, symbol 3 is EPF).  The expected
-                        # byte is emitted regardless of the received
-                        # value: single-corrupt-symbol tolerance [7.3.3]
-                        # -- gross corruption yields a construct the
-                        # link core rejects by CRC.
-                        with m.If(frp == 3):
-                            m.d.comb += [
-                                emit_en.eq(1), emit_byte.eq(K_EPF),
-                                emit_k.eq(1),
-                            ]
-                            with m.Switch(frk):
-                                with m.Case(FR_HP):
-                                    m.d.comb += [n_st.eq(ST_HDR),
-                                                 n_hp.eq(0), n_hdt.eq(0)]
-                                with m.Case(FR_DPH):
-                                    m.d.comb += [n_st.eq(ST_HDR),
-                                                 n_hp.eq(0), n_hdt.eq(0)]
-                                with m.Case(FR_DPP):
-                                    m.d.comb += [
-                                        n_st.eq(ST_DPP),
-                                        n_cnt.eq(dln + 4),  # payload+CRC32
-                                    ]
-                                with m.Case(FR_LC):
-                                    m.d.comb += [n_st.eq(ST_LC),
-                                                 n_cnt.eq(4)]
+                with m.Case(ST_LC):
+                    m.d.comb += emit_en.eq(0b1111)
+                    for j in range(4):
+                        m.d.comb += emit_byte[j].eq(eng_syms[j])
+                    m.d.ss += [count.eq(0), state.eq(ST_SEARCH)]
+
+        with m.Elif(advance):
+            # Boundary step: exactly one symbol, v1 logic unchained.
+            s = cur_sym
+            with m.Switch(state):
+
+                with m.Case(ST_SEARCH):
+                    with m.If(s == G2_IDL):
+                        pass
+                    with m.Elif((s == G2_SHP) | (s == G2_DPHP)):
+                        m.d.comb += [emit_en.eq(1),
+                                     emit_byte[0].eq(K_SHP),
+                                     emit_k[0].eq(1), search_exit.eq(1)]
+                        m.d.ss += [state.eq(ST_FRAME), fr_pos.eq(1),
+                                   fr_kind.eq(Mux(s == G2_DPHP,
+                                                  FR_DPH, FR_HP))]
+                    with m.Elif(s == G2_SDP):
+                        m.d.comb += [emit_en.eq(1),
+                                     emit_byte[0].eq(K_SDP),
+                                     emit_k[0].eq(1), search_exit.eq(1)]
+                        m.d.ss += [state.eq(ST_FRAME), fr_pos.eq(1),
+                                   fr_kind.eq(FR_DPP)]
+                    with m.Elif(s == G2_SLC):
+                        m.d.comb += [emit_en.eq(1),
+                                     emit_byte[0].eq(K_SLC),
+                                     emit_k[0].eq(1), search_exit.eq(1)]
+                        m.d.ss += [state.eq(ST_FRAME), fr_pos.eq(1),
+                                   fr_kind.eq(FR_LC)]
+                    # anything else: dropped (corruption between
+                    # packets; the constructs themselves are CRC- or
+                    # count-guarded).
+
+                with m.Case(ST_FRAME):
+                    # Framing continuation (symbols 1,2 repeat the
+                    # start symbol, symbol 3 is EPF).  The expected
+                    # byte is emitted regardless of the received
+                    # value: single-corrupt-symbol tolerance [7.3.3]
+                    # -- gross corruption yields a construct the
+                    # link core rejects by CRC.
+                    with m.If(fr_pos == 3):
+                        m.d.comb += [emit_en.eq(1),
+                                     emit_byte[0].eq(K_EPF),
+                                     emit_k[0].eq(1)]
+                        with m.Switch(fr_kind):
+                            with m.Case(FR_HP, FR_DPH):
+                                m.d.ss += [state.eq(ST_HDR),
+                                           hdr_pos.eq(0), hdr_data.eq(0)]
+                            with m.Case(FR_DPP):
+                                m.d.ss += [
+                                    state.eq(ST_DPP),
+                                    count.eq(dpp_len + 4),  # payload+CRC32
+                                ]
+                            with m.Case(FR_LC):
+                                m.d.ss += [state.eq(ST_LC), count.eq(4)]
+                    with m.Else():
+                        start_map = Signal(8)
+                        with m.Switch(fr_kind):
+                            with m.Case(FR_HP, FR_DPH):
+                                m.d.comb += start_map.eq(K_SHP)
+                            with m.Case(FR_DPP):
+                                m.d.comb += start_map.eq(K_SDP)
+                            with m.Case(FR_LC):
+                                m.d.comb += start_map.eq(K_SLC)
+                        m.d.comb += [emit_en.eq(1),
+                                     emit_byte[0].eq(start_map),
+                                     emit_k[0].eq(1)]
+                        m.d.ss += fr_pos.eq(fr_pos + 1)
+
+                with m.Case(ST_HDR):
+                    # Header tail bytes (positions 12..15 -- the body is
+                    # bulk-stepped) and any unaligned leading bytes.
+                    m.d.comb += [emit_en.eq(1), emit_byte[0].eq(s)]
+                    m.d.ss += hdr_pos.eq(hdr_pos + 1)
+                    with m.If(hdr_pos == 0):
+                        with m.If(s[0:5] == 8):    # DATA type
+                            m.d.ss += hdr_data.eq(1)
+                    with m.If(hdr_pos == 6):
+                        m.d.ss += dpp_len[0:8].eq(s)
+                    with m.If(hdr_pos == 7):
+                        m.d.ss += dpp_len[8:16].eq(s)
+                    with m.If(hdr_pos == 15):
+                        # A non-deferred Gen2 DPH (DPHSTART framing)
+                        # carries a 2-byte length replica: swallow.
+                        with m.If(hdr_data & (fr_kind == FR_DPH)):
+                            m.d.ss += [state.eq(ST_SKIP), count.eq(2)]
                         with m.Else():
-                            start_map = Signal(8, name=f"s{slot}_smap")
-                            with m.Switch(frk):
-                                with m.Case(FR_HP, FR_DPH):
-                                    m.d.comb += start_map.eq(K_SHP)
-                                with m.Case(FR_DPP):
-                                    m.d.comb += start_map.eq(K_SDP)
-                                with m.Case(FR_LC):
-                                    m.d.comb += start_map.eq(K_SLC)
-                            m.d.comb += [
-                                emit_en.eq(1), emit_byte.eq(start_map),
-                                emit_k.eq(1), n_frp.eq(frp + 1),
-                            ]
+                            m.d.ss += state.eq(ST_SEARCH)
 
-                    with m.Case(ST_HDR):
-                        # 16 header bytes pass through; capture dw0's
-                        # type field and dw1's length field.
-                        m.d.comb += [emit_en.eq(1), emit_byte.eq(s),
-                                     emit_k.eq(0), n_hp.eq(hp + 1)]
-                        with m.If(hp == 0):
-                            with m.If(s[0:5] == 8):    # DATA type
-                                m.d.comb += n_hdt.eq(1)
-                        with m.If(hp == 6):
-                            m.d.comb += n_dln.eq(Cat(s, dln[8:16]))
-                        with m.If(hp == 7):
-                            m.d.comb += n_dln.eq(Cat(dln[0:8], s))
-                        with m.If(hp == 15):
-                            # A non-deferred Gen2 DPH (DPHSTART framing)
-                            # carries a 2-byte length replica: swallow.
-                            with m.If(hdt & (frk == FR_DPH)):
-                                m.d.comb += [n_st.eq(ST_SKIP), n_cnt.eq(2)]
-                            with m.Else():
-                                m.d.comb += n_st.eq(ST_SEARCH)
+                with m.Case(ST_SKIP):
+                    m.d.ss += count.eq(count - 1)
+                    with m.If(count == 1):
+                        m.d.ss += state.eq(ST_SEARCH)
 
-                    with m.Case(ST_SKIP):
-                        m.d.comb += n_cnt.eq(cnt - 1)
-                        with m.If(cnt == 1):
-                            m.d.comb += n_st.eq(ST_SEARCH)
+                with m.Case(ST_DPP):
+                    m.d.comb += [emit_en.eq(1), emit_byte[0].eq(s)]
+                    m.d.ss += count.eq(count - 1)
+                    with m.If(count == 1):
+                        m.d.ss += [state.eq(ST_TERM), fr_pos.eq(0)]
 
-                    with m.Case(ST_DPP):
-                        m.d.comb += [emit_en.eq(1), emit_byte.eq(s),
-                                     emit_k.eq(0), n_cnt.eq(cnt - 1)]
-                        with m.If(cnt == 1):
-                            m.d.comb += [n_st.eq(ST_TERM), n_frp.eq(0)]
+                with m.Case(ST_TERM):
+                    # DPPEND / DPPABORT framing (4 symbols).
+                    with m.If(fr_pos == 3):
+                        m.d.comb += [emit_en.eq(1),
+                                     emit_byte[0].eq(K_EPF),
+                                     emit_k[0].eq(1)]
+                        m.d.ss += state.eq(ST_SEARCH)
+                    with m.Else():
+                        first_edb = (fr_pos == 0) & (s == G2_EDB)
+                        m.d.comb += [
+                            emit_en.eq(1),
+                            emit_byte[0].eq(Mux(
+                                Mux(fr_pos == 0, first_edb, term_edb),
+                                K_EDB, K_END)),
+                            emit_k[0].eq(1),
+                        ]
+                        m.d.ss += fr_pos.eq(fr_pos + 1)
+                        with m.If(fr_pos == 0):
+                            m.d.ss += term_edb.eq(first_edb)
 
-                    with m.Case(ST_TERM):
-                        # DPPEND / DPPABORT framing (4 symbols).
-                        with m.If(frp == 3):
-                            m.d.comb += [
-                                emit_en.eq(1), emit_byte.eq(K_EPF),
-                                emit_k.eq(1), n_st.eq(ST_SEARCH),
-                            ]
-                        with m.Else():
-                            first_edb = (frp == 0) & (s == G2_EDB)
-                            m.d.comb += [
-                                emit_en.eq(1),
-                                emit_byte.eq(Mux(
-                                    Mux(frp == 0, first_edb, ted),
-                                    K_EDB, K_END)),
-                                emit_k.eq(1), n_frp.eq(frp + 1),
-                            ]
-                            with m.If(frp == 0):
-                                m.d.comb += n_ted.eq(first_edb)
+                with m.Case(ST_LC):
+                    m.d.comb += [emit_en.eq(1), emit_byte[0].eq(s)]
+                    m.d.ss += count.eq(count - 1)
+                    with m.If(count == 1):
+                        m.d.ss += state.eq(ST_SEARCH)
 
-                    with m.Case(ST_LC):
-                        m.d.comb += [emit_en.eq(1), emit_byte.eq(s),
-                                     emit_k.eq(0), n_cnt.eq(cnt - 1)]
-                        with m.If(cnt == 1):
-                            m.d.comb += n_st.eq(ST_SEARCH)
+        # ── emission pipeline stage (156.25 MHz timing cut) ──────────
+        #
+        # The walk's emissions are registered before the collector's
+        # gather/merge/FIFO-write cone: the path is elastic end-to-end
+        # (out_fifo absorbs the extra cycle of emission latency by
+        # design; nothing downstream is cycle-exact), and byte ORDER is
+        # fully preserved -- entries are consumed strictly in advance
+        # order, and the partial-word idle flush below waits for this
+        # stage to drain first.
+        r_valid     = Signal()
+        r_emit_en   = Signal(4)
+        r_emit_byte = Signal(32)
+        r_emit_k    = Signal(4)
 
-            emit_bytes.append((emit_en, emit_byte, emit_k))
-            st, frk, frp, cnt, hp, hdt, dln, ted = (
-                n_st, n_frk, n_frp, n_cnt, n_hp, n_hdt, n_dln, n_ted)
+        # Registered FIFO headroom: keeps the out_fifo level comparator
+        # out of the advance/walk cone.  Margin: at most one write per
+        # cycle and one cycle of staleness mean the level can exceed the
+        # snapshot by two at the write -- far inside the 8-entry band.
+        out_ok = Signal()
+        m.d.ss += out_ok.eq(out_fifo.level < (self._out_depth - 8))
+
+        any_emit  = emit_en.any()
+        r_consume = Signal()
+        m.d.comb += r_consume.eq(r_valid & out_ok)
 
         with m.If(advance):
-            m.d.ss += [state.eq(st), fr_kind.eq(frk), fr_pos.eq(frp),
-                       count.eq(cnt), hdr_pos.eq(hp), hdr_data.eq(hdt),
-                       dpp_len.eq(dln), term_edb.eq(ted)]
+            m.d.ss += [
+                r_valid.eq(any_emit),
+                r_emit_en.eq(emit_en),
+                r_emit_byte.eq(Cat(*emit_byte)),
+                r_emit_k.eq(emit_k),
+            ]
+        with m.Elif(r_consume):
+            m.d.ss += r_valid.eq(0)
 
         m.d.comb += engine_busy.eq((state != ST_SEARCH) | have_cur
-                                   | (col_cnt != 0))
+                                   | r_valid | (col_cnt != 0))
         m.d.comb += [
             self.debug_state.eq(state),
             self.debug_have.eq(have_cur),
             self.debug_out_lvl.eq(out_fifo.level),
         ]
 
-        # Advance whenever we hold symbols and the collector can flush.
-        m.d.comb += advance.eq(have_cur & out_fifo.w_rdy)
+        # Advance whenever we hold symbols and the emission stage can
+        # accept the walk's output (stage empty, or draining this cycle).
+        m.d.comb += advance.eq(have_cur & (~r_valid | out_ok))
 
         # ── output collector: pack emitted bytes into words ──────────
         new_bytes = Signal(3)
-        m.d.comb += new_bytes.eq(sum(en for (en, _, _) in emit_bytes))
+        m.d.comb += new_bytes.eq(sum(r_emit_en[i] for i in range(4)))
 
-        # Gather the (up to 4) emitted bytes, in slot order.
+        # Gather the (up to 4) registered bytes, in slot order.
         gathered = [Signal(9, name=f"gath{i}") for i in range(4)]
         for i in range(4):
             sel = Signal(9, name=f"gsel{i}")
             m.d.comb += sel.eq(0)
             prior = Const(0, 3)
-            for (en, byte, k) in emit_bytes:
-                with m.If(en & (prior == i)):
-                    m.d.comb += sel.eq(Cat(byte, k))
-                prior = prior + en
+            for j in range(4):
+                with m.If(r_emit_en[j] & (prior == i)):
+                    m.d.comb += sel.eq(Cat(r_emit_byte.word_select(j, 8),
+                                           r_emit_k[j]))
+                prior = prior + r_emit_en[j]
             m.d.comb += gathered[i].eq(sel)
 
         total = Signal(4)
@@ -1016,7 +1232,7 @@ class Gen2BlockReceiver(Elaboratable):
                                 merged_k[i].eq(gathered[j][8]),
                             ]
 
-        with m.If(advance & (new_bytes != 0)):
+        with m.If(r_consume & (new_bytes != 0)):
             with m.If(total >= 4):
                 m.d.comb += [
                     out_fifo.w_data.eq(Cat(
@@ -1046,10 +1262,12 @@ class Gen2BlockReceiver(Elaboratable):
                                             .eq(gathered[j][0:8]),
                                         col_ctrl[i].eq(gathered[j][8]),
                                     ]
-        with m.Elif((col_cnt != 0) & (state == ST_SEARCH)
-                    & out_fifo.w_rdy):
+        with m.Elif((col_cnt != 0) & (state == ST_SEARCH) & ~r_valid
+                    & out_ok):
             # A completed construct left a partial word behind (odd
-            # DPP lengths): flush it padded with Gen1 logical idle.
+            # DPP lengths): flush it padded with Gen1 logical idle --
+            # only once the emission stage has drained, so the pad can
+            # never overtake in-flight construct bytes.
             flush_d = Signal(32)
             flush_k = Signal(4)
             for i in range(4):
@@ -1066,26 +1284,49 @@ class Gen2BlockReceiver(Elaboratable):
             m.d.ss += col_cnt.eq(0)
 
         # ── source stream: translated words, idle fill otherwise ─────
-        with m.If(out_fifo.r_rdy):
-            m.d.comb += [
-                self.source.valid.eq(1),
-                self.source.data.eq(out_fifo.r_data[0:32]),
-                self.source.ctrl.eq(out_fifo.r_data[32:36]),
-                out_fifo.r_en.eq(self.source.ready),
-            ]
-        with m.Elif(self.data_mode & ~engine_busy):
-            # Synthesized Gen1 logical idle: the partner is in its
-            # data-block stream (post-SDS); the wire between packets
-            # carries Gen2 Idle Symbols.  NB: while the engine is
-            # mid-construct (a DPH length-replica skip momentarily dips
-            # the output rate below one word per cycle) the stream goes
-            # INVALID instead -- an idle word spliced mid-packet would
-            # make the Gen1 core's framers bail (the DPP must
-            # immediately follow its DPH).
-            m.d.comb += [
-                self.source.valid.eq(1),
-                self.source.data.eq(0),
-                self.source.ctrl.eq(0),
-            ]
+        #
+        # The stream toward the link core is presented from a REGISTER
+        # stage (156.25 timing: out_fifo's read data and level compare
+        # otherwise fan combinationally into every link-layer receiver
+        # cone -- crc16/crc32/lc_detector).  The load decision uses the
+        # cycle-T view; safety of the one-cycle-stale idle decision: an
+        # idle word is only synthesized when the engine was FULLY drained
+        # at T (no queued beats, no in-flight emissions, no collector
+        # residue), so the earliest possible next construct word reaches
+        # the FIFO at T+1 and is presented at T+2 -- the idle can never
+        # split a construct (the DPP-follows-DPH rule the Gen1 framers
+        # depend on).
+        o_valid = Signal()
+        o_data  = Signal(32)
+        o_ctrl  = Signal(4)
+        o_take  = Signal()
+        m.d.comb += o_take.eq(~o_valid | self.source.ready)
+
+        with m.If(o_take):
+            with m.If(out_fifo.r_rdy):
+                m.d.ss += [
+                    o_valid.eq(1),
+                    o_data.eq(out_fifo.r_data[0:32]),
+                    o_ctrl.eq(out_fifo.r_data[32:36]),
+                ]
+                m.d.comb += out_fifo.r_en.eq(1)
+            with m.Elif(self.data_mode & ~engine_busy):
+                # Synthesized Gen1 logical idle: the partner is in its
+                # data-block stream (post-SDS); the wire between packets
+                # carries Gen2 Idle Symbols.  NB: while the engine is
+                # mid-construct (a construct tail momentarily dips the
+                # output rate below one word per cycle) the stream goes
+                # INVALID instead -- an idle word spliced mid-packet
+                # would make the Gen1 core's framers bail (the DPP must
+                # immediately follow its DPH).
+                m.d.ss += [o_valid.eq(1), o_data.eq(0), o_ctrl.eq(0)]
+            with m.Else():
+                m.d.ss += o_valid.eq(0)
+
+        m.d.comb += [
+            self.source.valid.eq(o_valid),
+            self.source.data.eq(o_data),
+            self.source.ctrl.eq(o_ctrl),
+        ]
 
         return m

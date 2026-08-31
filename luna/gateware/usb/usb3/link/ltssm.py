@@ -197,6 +197,36 @@ class LTSSMController(Elaboratable):
         #
         # Asynchronous Training Sequence & LFPS Detectors
         #
+
+        # Detect-strobe input registers (Gen2 trims only): at 156.25 MHz
+        # the physical layer's registered detect surfaces otherwise reach
+        # the state-transition cone -- and through it every
+        # ``cycles_in_state`` timer bit's reset -- in one routed hop
+        # across the physical->link seam, a reported timing cone.  One
+        # further cycle of detect latency is immaterial (all consumers
+        # count strobes or gate microsecond-scale state timers; a TS
+        # block spans two beats so strobes stay distinct).  Gen1
+        # elaborations keep the historical direct connections verbatim.
+        if self._gen2:
+            ts1_det     = Signal()
+            ts2_det     = Signal()
+            inv_ts1_det = Signal()
+            burst_done  = Signal()
+            recovery_rq = Signal()
+            m.d.ss += [
+                ts1_det     .eq(self.ts1_detected),
+                ts2_det     .eq(self.ts2_detected),
+                inv_ts1_det .eq(self.inverted_ts1_detected),
+                burst_done  .eq(self.ts_burst_complete),
+                recovery_rq .eq(self.trigger_link_recovery),
+            ]
+        else:
+            ts1_det     = self.ts1_detected
+            ts2_det     = self.ts2_detected
+            inv_ts1_det = self.inverted_ts1_detected
+            burst_done  = self.ts_burst_complete
+            recovery_rq = self.trigger_link_recovery
+
         polling_seen            = Signal()
         ts2_seen                = Signal()
         hot_reset_seen          = Signal()
@@ -207,7 +237,7 @@ class LTSSMController(Elaboratable):
         with m.If(self.lfps_polling_detected):
             m.d.ss += polling_seen.eq(1)
 
-        with m.If(self.ts2_detected):
+        with m.If(ts2_det):
             m.d.ss += ts2_seen.eq(1)
 
         with m.If(self.hot_reset_requested):
@@ -219,7 +249,7 @@ class LTSSMController(Elaboratable):
         with m.If(self.no_scrambling_requested):
             m.d.ss += disable_scrambling_seen.eq(1)
 
-        with m.If(self.ts_burst_complete):
+        with m.If(burst_done):
             m.d.ss += burst_minimum_met.eq(1)
 
 
@@ -231,6 +261,23 @@ class LTSSMController(Elaboratable):
         # These will be automatically handled by transition_to_state()
         tasks_on_entry = {}
 
+        # Gen2 trims: the per-transition ``cycles_in_state`` clear puts
+        # the whole state-transition cone onto all 26 timer bits' reset
+        # enables (a reported 156.25 cone).  Instead, transitions set a
+        # single ``transitioning`` bit; the clear is applied one cycle
+        # later from that REGISTER.  The timeout comparators below are
+        # suppressed while the delayed clear is pending, preserving the
+        # "a pending hit can never apply to the wrong state" invariant
+        # (net effect: state timeouts fire two cycles later -- noise
+        # against microsecond-to-millisecond budgets).  Gen1
+        # elaborations keep the historical direct clear verbatim.
+        transitioning = Signal()
+        clear_timer_r = Signal()
+        if self._gen2:
+            m.d.ss += clear_timer_r.eq(transitioning)
+            with m.If(clear_timer_r):
+                m.d.ss += cycles_in_state.eq(0)
+
 
         def transition_to_state(state):
             """ FSM helper that handles transitions to the given state.
@@ -239,10 +286,14 @@ class LTSSMController(Elaboratable):
             """
 
             # Clear our "time-in-state" counter, and some of our mode flags.
-            m.d.ss += [
-                cycles_in_state         .eq(0),
-                self.request_hot_reset  .eq(0)
-            ]
+            if self._gen2:
+                m.d.comb += transitioning.eq(1)
+                m.d.ss += self.request_hot_reset.eq(0)
+            else:
+                m.d.ss += [
+                    cycles_in_state         .eq(0),
+                    self.request_hot_reset  .eq(0)
+                ]
 
             # If we have any additional entry conditions for the given state, apply them.
             if state in tasks_on_entry:
@@ -506,7 +557,7 @@ class LTSSMController(Elaboratable):
 
                         # If we see a TS1, and we're not in strict mode, move forward without
                         # necessarily seeing a LFPS burst ourselves.
-                        with m.If(self._loosen_requirements & self.ts1_detected):
+                        with m.If(self._loosen_requirements & ts1_det):
                                 transition_to_state("Polling.RxEQ")
 
                         # If this is the first burst we've seen, move our target forward;
@@ -583,7 +634,7 @@ class LTSSMController(Elaboratable):
 
                         # TS1s while we're still polling: the partner is
                         # a SuperSpeed device already in training.
-                        with m.If(self._loosen_requirements & self.ts1_detected):
+                        with m.If(self._loosen_requirements & ts1_det):
                             m.d.ss += ssp_operation.eq(0)
                             transition_to_state("Polling.SpeedSwitch")
 
@@ -796,7 +847,7 @@ class LTSSMController(Elaboratable):
                 m.d.comb += self.train_equalizer.eq(1)
 
                 # Once we've sent a full burst of 65536 TSEQs, we can begin our link training handshake.
-                with m.If(self.ts_burst_complete):
+                with m.If(burst_done):
                     transition_to_state("Polling.Active")
 
 
@@ -840,7 +891,7 @@ class LTSSMController(Elaboratable):
                     # we're satisfied with our link training. However, we don't want to stop sending
                     # training data until we're sure our link partner has completed training; so we'll
                     # move to Polling.Configuration to await completion of the other side.
-                    with m.If(self.ts1_detected | self.ts2_detected):
+                    with m.If(ts1_det | ts2_det):
                         m.d.ss += self.invert_rx_polarity.eq(0),
                         transition_to_state("Polling.Configuration")
 
@@ -848,7 +899,7 @@ class LTSSMController(Elaboratable):
                     # If we see a long enough burst of -inverted- training sets, we're also satisfied
                     # with our link training; but we know that the receive differential pair is inverted.
                     # We'll continue, but ask our physical layer to invert our received data.
-                    with m.If(self.inverted_ts1_detected):
+                    with m.If(inv_ts1_det):
                         m.d.ss += self.invert_rx_polarity.eq(1),
                         transition_to_state("Polling.Configuration")
 
@@ -878,7 +929,7 @@ class LTSSMController(Elaboratable):
                 # If we've finished sending the requisite amount of TS2s and we've seen TS2s from the
                 # other side, we know that both sides are finished with the core link training.
                 # Move on to our final
-                with m.If(self.ts_burst_complete & ts2_seen):
+                with m.If(burst_done & ts2_seen):
                     transition_to_state("Polling.Configuration.Exit")
 
 
@@ -893,7 +944,7 @@ class LTSSMController(Elaboratable):
                 m.d.comb += self.send_ts2_burst.eq(1)
 
                 # ... until we've sent a full burst of 16; at which point we can advance.
-                with m.If(self.ts_burst_complete):
+                with m.If(burst_done):
                     transition_to_state("Polling.Idle")
 
 
@@ -954,12 +1005,12 @@ class LTSSMController(Elaboratable):
                 ]
 
                 # If we've seen an event that requires link recovery, move into link recovery.
-                with m.If(self.trigger_link_recovery):
+                with m.If(recovery_rq):
                     transition_to_state("Recovery.Active")
 
                 # If we've seen a TS1 ordered set, we know the other side has gone into recovery.
                 # We should, as well.
-                with m.If(self.ts1_detected):
+                with m.If(ts1_det):
                     transition_to_state("Recovery.Active")
 
 
@@ -982,12 +1033,12 @@ class LTSSMController(Elaboratable):
                 transition_on_timeout(12e-3, to="SS.Inactive.Quiet")
 
                 # We need to at least one burst with the Reset bit set; and then drop out of hot reset.
-                with m.If(self.ts_burst_complete):
+                with m.If(burst_done):
                     m.d.ss += self.request_hot_reset.eq(0)
 
                 # Once we've seen TS2s in response that don't have Hot Reset asserted, we can drop out
                 # of hot reset; and pursue normal operation again.
-                with m.If(self.ts_burst_complete & ts2_seen & ~self.hot_reset_requested):
+                with m.If(burst_done & ts2_seen & ~self.hot_reset_requested):
                     transition_to_state("Hot Reset.Exit")
 
 
@@ -1040,7 +1091,7 @@ class LTSSMController(Elaboratable):
                 with m.If(burst_minimum_met):
 
                     # Once we see enough TS1s from the other side; or see TS2s, we'll move into our next step.
-                    with m.If(self.ts1_detected | self.ts2_detected):
+                    with m.If(ts1_det | ts2_det):
                         transition_to_state("Recovery.Configuration")
 
 
@@ -1059,7 +1110,7 @@ class LTSSMController(Elaboratable):
                 # If we've finished sending the requisite amount of TS2s and we've seen TS2s from the
                 # other side, we know that both sides are finished with the core link training.
                 # Move on to our final
-                with m.If(self.ts_burst_complete & ts2_seen):
+                with m.If(burst_done & ts2_seen):
                     transition_to_state("Recovery.Configuration.Exit")
 
 
@@ -1074,7 +1125,7 @@ class LTSSMController(Elaboratable):
                 m.d.comb += self.send_ts2_burst.eq(1)
 
                 # ... until we've sent a full burst of 16; at which point we can advance.
-                with m.If(self.ts_burst_complete):
+                with m.If(burst_done):
                     transition_to_state("Recovery.Idle")
 
 
@@ -1198,7 +1249,13 @@ class LTSSMController(Elaboratable):
         # Registered timeout comparators (see transition_on_timeout above).
         # Ungated: they track the state timer continuously, and clear
         # automatically one cycle after any state transition resets it.
+        # (Gen2 trims additionally suppress hits while the delayed timer
+        # clear is pending -- see transition_to_state.)
         for timeout_in_cycles, hit in timeout_hits.items():
-            m.d.ss += hit.eq(cycles_in_state + 1 == timeout_in_cycles)
+            if self._gen2:
+                m.d.ss += hit.eq((cycles_in_state + 1 == timeout_in_cycles)
+                                 & ~transitioning & ~clear_timer_r)
+            else:
+                m.d.ss += hit.eq(cycles_in_state + 1 == timeout_in_cycles)
 
         return m

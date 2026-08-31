@@ -699,8 +699,29 @@ class HostRx:
         self.model = ScramblerModel(descramble=True)
         self.blocks = []            # (head, syms) per completed block
         self._cur = None
+        # PHY TX gearbox FIFO model (gw_usb3 phy.py ``tx_fifo``, 32
+        # deep): fills on every MAC tx_datavalid beat at the 10G trim,
+        # drains 32 beats per 33 pclk cycles (the 128b/132b wire payload
+        # rate: 132 wire bits per 128 payload bits).  On silicon an
+        # overflow silently corrupts the wire stream, so the sim fails
+        # hard if the MAC ever exceeds the depth (TX beat pacing,
+        # HANDOVER 10r suspect #1).
+        self.fifo_level    = 0
+        self.fifo_max      = 0
+        self.fifo_cyc      = 0
+        self.fifo_overflow = False
 
     def sample(self, ctx):
+        pipe = self.bench.pipe
+        self.fifo_cyc += 1
+        if ctx.get(pipe.tx_datavalid) and ctx.get(pipe.rate) == 1:
+            self.fifo_level += 1
+        if self.fifo_cyc % 33 != 0 and self.fifo_level > 0:
+            self.fifo_level -= 1
+        if self.fifo_level > self.fifo_max:
+            self.fifo_max = self.fifo_level
+        if self.fifo_level > 32:
+            self.fifo_overflow = True
         scr = self.bench.dev_scr
         if not ctx.get(scr.data_out_valid):
             return
@@ -814,6 +835,11 @@ async def phase_train(ctx, bench, continue_to_enum=False):
                    for h, s in rx.blocks)
     if not (got_sds and got_idle):
         print(f"TRAIN FAIL: SDS={got_sds} idle={got_idle} from device")
+        return False
+    print(f"TRAIN: PHY TX FIFO model max occupancy {rx.fifo_max}/32")
+    if rx.fifo_overflow:
+        print("TRAIN FAIL: MAC tx_datavalid overran the PHY's 32-deep "
+              "TX gearbox FIFO (no Gen2 beat pacing)")
         return False
     print("TRAIN: U0 data stream established at Gen2 framing")
 
@@ -1164,6 +1190,11 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
           "DPH length replica, bcdUSB 0310 -- all verified at Gen2")
 
     if not echo:
+        print(f"ENUM: PHY TX FIFO model max occupancy {rx.fifo_max}/32")
+        if rx.fifo_overflow:
+            print("ENUM FAIL: MAC tx_datavalid overran the PHY's 32-deep "
+                  "TX gearbox FIFO (no Gen2 beat pacing)")
+            return False
         return True
 
     # ── small bulk echo through EP1 (Gen2 framing end to end) ──
@@ -1209,6 +1240,11 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
         return False
     if host.errors:
         print(f"ECHO FAIL: parser errors: {host.errors[:6]}")
+        return False
+    print(f"ECHO: PHY TX FIFO model max occupancy {rx.fifo_max}/32")
+    if rx.fifo_overflow:
+        print("ECHO FAIL: MAC tx_datavalid overran the PHY's 32-deep "
+              "TX gearbox FIFO (no Gen2 beat pacing)")
         return False
     print(f"ECHO: {len(payload)} bytes OUT and IN through Gen2 framing, "
           f"sha-exact, CRC-32 valid")

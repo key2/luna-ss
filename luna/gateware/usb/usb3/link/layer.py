@@ -410,7 +410,7 @@ class USB3LinkLayer(Elaboratable):
         #
 
         # Receiver.
-        m.submodules.data_rx = data_rx = DataPacketReceiver()
+        m.submodules.data_rx = data_rx = DataPacketReceiver(gen2=self._gen2)
 
         # The received payload stream is registered before it fans out to
         # the endpoints: its per-lane valids are decoded combinationally

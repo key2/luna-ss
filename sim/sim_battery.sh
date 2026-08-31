@@ -140,6 +140,15 @@ for ph in train enum echo; do
         echo "FAIL gen2-$ph <<<<<<<<"
     fi
 done
+# Gen2 TX beat pacing (session 13; HANDOVER 10r suspect #1): the block
+# transmitter must never overrun the PHY's 32-deep 128b/132b gearbox
+# FIFO (one dead beat per 16 blocks; the fork-root pytest testpaths
+# only cover gw_usb3/tests, so this rides as its own entry).
+if pdm run pytest tests/test_gen2_pacing.py -q > /tmp/kilo/batt_gen2_pacing.log 2>&1; then
+    echo "PASS gen2-pacing"
+else
+    echo "FAIL gen2-pacing <<<<<<<<"
+fi
 # Negative control: withholding the host's Type-2 credits must starve
 # the device's descriptor DP (proves the LCRD2 pool gating is real).
 if PHASE=enum TSEQ_LEN=64 NEG=nolcrd2 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_neg.log 2>&1; then

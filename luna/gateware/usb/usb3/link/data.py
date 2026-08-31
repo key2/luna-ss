@@ -80,7 +80,16 @@ class DataPacketReceiver(Elaboratable):
 
     MAX_PACKET_SIZE = 1024
 
-    def __init__(self):
+    def __init__(self, *, gen2=False):
+        # ``gen2``: elaborate the SuperSpeedPlus trim.  At Gen2 the block
+        # translation engine (physical/gen2.py) may present valid-gaps
+        # ANYWHERE in the translated stream -- including between the last
+        # payload word and the CRC-32 word, a boundary the Gen1 wire can
+        # never gap on (SKPs are forbidden inside packets [6.4.3]), so the
+        # historical CHECK_CRC32 state consumes its word un-gated.  The
+        # Gen2 trim qualifies that state with ``sink.valid``; the Gen1
+        # elaboration keeps the historical statements verbatim.
+        self._gen2 = gen2
 
         #
         # I/O port
@@ -298,22 +307,36 @@ class DataPacketReceiver(Elaboratable):
                     with m.Case(0b0001):
                         m.d.comb += data_to_check.eq(Cat(previous_word[8:32], sink.data[0:8]))
 
-                # Check our CRC based on the word we've extracted, and strobe either ``packet_good``
-                # or ``packet_bad``, depending on its validity.
-                with m.If(data_to_check == crc32.crc):
-                    m.d.comb += self.packet_good.eq(1)
-                with m.Else():
-                    m.d.comb += self.packet_bad.eq(1)
+                if self._gen2:
+                    # Gen2 trim: the block-translation engine may present
+                    # a valid-gap between the final payload word and the
+                    # word completing the CRC-32 (sym-wise construct
+                    # tails); wait for the word before judging.  The Gen1
+                    # wire can never gap here, so the historical
+                    # elaboration below stays verbatim.
+                    with m.If(sink.valid):
+                        with m.If(data_to_check == crc32.crc):
+                            m.d.comb += self.packet_good.eq(1)
+                        with m.Else():
+                            m.d.comb += self.packet_bad.eq(1)
+                        m.next = "WAIT_FOR_HPSTART"
+                else:
+                    # Check our CRC based on the word we've extracted, and strobe either ``packet_good``
+                    # or ``packet_bad``, depending on its validity.
+                    with m.If(data_to_check == crc32.crc):
+                        m.d.comb += self.packet_good.eq(1)
+                    with m.Else():
+                        m.d.comb += self.packet_bad.eq(1)
 
-                # Finally, wait for our next packet.  (This transition used
-                # to sit inside the Else arm above -- a good packet then
-                # lingered here a second cycle, re-compared against
-                # whatever word followed, and strobed a spurious
-                # ``packet_bad`` after every good packet; endpoints whose
-                # accept paths stay in their idle state on completion then
-                # served the phantom failure as a retransmission request
-                # (bug #27, HANDOVER 10l).
-                m.next = "WAIT_FOR_HPSTART"
+                    # Finally, wait for our next packet.  (This transition used
+                    # to sit inside the Else arm above -- a good packet then
+                    # lingered here a second cycle, re-compared against
+                    # whatever word followed, and strobed a spurious
+                    # ``packet_bad`` after every good packet; endpoints whose
+                    # accept paths stay in their idle state on completion then
+                    # served the phantom failure as a retransmission request
+                    # (bug #27, HANDOVER 10l).
+                    m.next = "WAIT_FOR_HPSTART"
 
 
         return m

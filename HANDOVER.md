@@ -2616,6 +2616,133 @@ whole exchange); full battery ≈ 35-45 min.  Always
 7. All §10n/§10q parked items carry (incl. #37, SKP x=4 knob when
    word_alignment opens, forced-recovery bench verdict).
 
+## 10s. Update 2026-08-31/09-01 (session 13) — G5 phase H0 CLOSED
+## (Gen1 fence re-laddered) and phase H1 CLOSED (Gen2 156.25 MET:
+## pclk 156.263 / rxclk 169.777); TX pacing + RX engine v2 landed
+
+Executing prompt.md (session 13, gate G5).  No new numbered stack
+bugs (#39 still next); one latent gen2-only hazard found by
+inspection and fixed pre-silicon (see below).
+
+### Phase H0 — the Gen1 fence (CLOSED)
+
+luna-multiep rebuilt from the tree: payload-identical to the
+resident POR-66_011 reference (5 timestamp bytes).  Timing pclk
+139.0 / rxclk 149.9 (the shipping roll).  Flashed; full ladder:
+
+| rung | result |
+|------|--------|
+| enumeration | 1209:0001 5000M on 4-3, dmesg clean, flags d |
+| 1 MiB ×10 --eps 1,2,3 | PASS ×10, sha exact, 243.8–268.0 MB/s aggregate |
+| 16 MiB ×3 | PASS, 276.0–284.4 MB/s, sha exact |
+| 64 MiB ×3 | PASS, 280.4–282.2 MB/s, sha exact |
+| uart1 ch0 | retry_flagged=0, all counters 0, flags=8 |
+
+Fence image saved: `/tmp/kilo/h0_gen1_fence.fs` (and resident on the
+board through H1).
+
+### Phase H1 — 156.25 MET (the Gen2 flash gate; CLOSED)
+
+The §10r roll-1 "probe cone" was a MISSING CONSTRAINT, not the probe:
+`luna_enum_gen2` was absent from the platform's SDC branch, so PnR
+targeted the 100 MHz default and the skew-tolerant ss->dbg snapshot
+CDC was analyzed as a real inter-clock path.  Fixes, in order (each
+sim-green before the next roll; all Gen1-shared changes are
+elaboration-gated `gen2=` and the Gen1 netlist stays byte-identical):
+
+* **SDC (gowin-serdes)**: `luna_enum_gen2`/`luna_multiep_gen2` added
+  to the 6.4 ns pclk/rxclk branch + mutual false paths; gen2 tops
+  additionally get `set_multicycle_path 2` on
+  `usb/physical/operating_gen2*` (toggles only on an LTSSM rate
+  change, always followed by ms of retraining — same argument as the
+  vendor `speed` register).  NOTE: Gowin TA hard-errors on get_regs
+  patterns that match nothing (a `rate_r*` pattern had to be
+  dropped).
+* **Probes re-enabled** in the gen2 top (uart0 link probe + uart1
+  pipe probe with TxFifoWrNum high-water channels).  PITFALL
+  re-learned: `DomainRenamer({"cfg": "dbg"})`, NOT
+  `DomainRenamer("dbg")` — the string form renames `sync` only and
+  the probe silently lands on the top's 200 MHz `cfg` domain (wrong
+  timing AND ~8× baud error).
+* **gen2_rx grammar engine v2** (physical/gen2.py): the v1 4-slot
+  CHAINED walk was the real cone (22 levels; 16 after registering
+  emissions).  v2 removes chaining entirely: BULK steps (DPP
+  payload, header body, LC body, aligned idle runs) consume a whole
+  aligned 4-symbol half per cycle with one parallel count update;
+  BOUNDARY steps (framing/header tail/terminators/replica skip)
+  consume ONE symbol per cycle, unchained.  Sustained rate stays
+  ~4 sym/cycle for payload (boundaries are O(1)/construct).  Plus:
+  emission pipeline stage before the collector; registered out_fifo
+  headroom (`out_ok`) instead of comb w_rdy; 2-deep ring-pointer
+  read prefetch on the input queue (r_en/level decoupled from the
+  walk); per-half idle flags precomputed at beat load; whole-idle
+  flag stored AT ENQUEUE (65-bit queue) so the read side never
+  re-derives it; PIPE inputs registered at the receiver front.
+  Latent v1 hazard FOUND BY INSPECTION and fixed: the reload-path
+  idle discard gated on the REGISTERED state while the same-cycle
+  walk had already left SEARCH — an all-5A payload beat straight
+  after framing could be wrongly discarded (v2 adds the
+  ``search_exit`` qualifier; enqueue-side drain check also covers
+  the prefetch skid).
+* **TX beat pacing** (§10r suspect #1, closed pre-silicon): 64-bit
+  beats at 156.25 supply exactly 10.0 Gb/s payload but the 128b/132b
+  wire carries 128/132 of that — the PHY's 32-deep TX gearbox FIFO
+  gains one beat per 33 cycles and overflows after ~7 us (shorter
+  than any training sequence).  RED first: tests/test_gen2_pacing.py
+  streams the transmitter against the FIFO model (unpaced max
+  occupancy 182/32 at 6k cycles); mechanism: ONE dead beat at a
+  block boundary every 16 blocks (32+1 = 33 cycles = 16×132 wire
+  bits at 10G — EXACT, and a 24-symbol/3-beat SKP OS carries the
+  same per-block deficit so the ratio stays exact); the adapter
+  forwards true tx_datavalid at the 10G trim (the Gen1
+  "valid-when-not-idle" OR rule would nullify the gaps).  The full
+  sims report the model's occupancy (steady 1-2/32); battery entry
+  `gen2-pacing` (the fork-root pytest testpaths only cover
+  gw_usb3/tests — the new test rides as its own battery entry).
+* **DataPacketReceiver CHECK_CRC32 valid gate** (gen2= elaboration
+  arg): the historical state consumes the CRC-32 word UN-gated by
+  sink.valid — legal at Gen1 (SKPs are forbidden inside packets, the
+  wire never gaps mid-packet) but the v2 engine's sym-wise construct
+  tails present valid-gaps there (found by the enum phase:
+  dpp_invalid on the SETUP DP).  Gen1 elaboration verbatim.
+* **Seam registers** (all gen2-gated or gen2-only; each proved by
+  the phase sims): LBPM TX merge registered in lfps.py; muxed RX
+  source registered at the physical->link seam (link holds
+  source.ready high — plain register is exact); gen2 TS-detect
+  surfaces registered at the seam AND input-registered in the LTSSM
+  (aliases; Gen1 keeps direct wiring); ts_burst_complete +
+  trigger_link_recovery aliased the same way; gen2_tx LTSSM control
+  surface registered both directions; second TxStreamSkidBuffer on
+  the gen2 TX leg; TX bridge serves beats from a 1-deep prefetch
+  register; LTSSM ``cycles_in_state`` clear via a registered
+  ``transitioning`` bit with timeout-hit suppression while the clear
+  is pending (state timeouts fire two cycles later — noise);
+  PIPE LFPS/idle control outputs registered (gen2 arm).
+* **The lottery** (POR nudges 66_012..66_030, several in parallel
+  scratch dirs /tmp/kilo/gen2roll*): pre-cut center pclk ~147; after
+  the full batch, winner **66_021 = pclk 156.263 / rxclk 169.777 —
+  BOTH MET**.  In-tree rebuild reproduces the identical result
+  (deterministic PnR; .fs differs from the scratch build by
+  timestamp only).  Image: `/tmp/kilo/h1_gen2_enum_met.fs`.
+
+Gen1 parity: luna-multiep rebuilt after ALL shared-file changes —
+payload-identical to the H0 fence image (13 header bytes = the
+"Mon Aug 31" -> "Tue Sep  1" date-string rollover; nothing beyond
+offset 621).  NOTE for future compares: the "6 timestamp bytes"
+rule of thumb widens across midnight/month boundaries — the honest
+check is "all diffs inside the ~600-622 header date region".
+
+### Session-13 regression state (as of H1 close)
+
+Battery 46/46 PASS mid-session (run 1, pre-cut tree) and re-run
+post-cuts (run 2, this tree) — see /tmp/kilo/battery_s13_run*.txt;
+pytest = gw_usb3's 104 (testpaths pitfall above) + the 3 pacing
+tests via the new battery entry (47 PASS lines expected from now
+on).  Bench: H0 fence ladder green; the Gen2 image NOT yet flashed
+at this point in the log (phase H2 next).  sim/rx_unit_debug.py
+added (standalone Gen2BlockReceiver translation bench — the fast
+debug loop that pinned the CHECK_CRC32 interaction).
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 13: gate G5, hardware

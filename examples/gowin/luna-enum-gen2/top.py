@@ -151,8 +151,15 @@ class LunaEnumTop(Elaboratable):
         with m.If(key_s[1]):
             m.d.cfg += por_cnt.eq(0)
 
+        # POR-nudge placement lottery (semantically null threshold
+        # changes; HANDOVER #22/10k).  Session-13 roll history at the
+        # 156.25 gate (full ladder in HANDOVER 10s): pre-cut rolls
+        # 66_000..66_020 landed pclk 133-155 / rxclk 142-165; after the
+        # seam/engine cut batch the winning roll is 66_021 =
+        # pclk 156.263 / rxclk 169.777 -- BOTH MET (the Gen2 flash
+        # gate).
         m.d.cfg += [
-            por_n.eq(por_cnt > 66_000),
+            por_n.eq(por_cnt > 66_021),
             luna_go.eq(por_cnt.all()),
         ]
 
@@ -211,14 +218,72 @@ class LunaEnumTop(Elaboratable):
         # ==============================================================
         # Debug UARTs
         # ==============================================================
-        # NOTE (timing): the ClockFreqProbe snap/delta arithmetic misses
-        # 156.25 MHz as-is (first Gen2 roll: every worst path was probe-
-        # internal, hiding the stack's own cones).  The probes are
-        # DISABLED in this top until they grow a pipelined delta
-        # (HANDOVER 10r); the uarts idle high.
+        # The §10r roll-1 "probe cone" was a MISSING CONSTRAINT, not the
+        # probe: without the platform SDC (this top's name was absent
+        # from the 6.4 ns branch) the skew-tolerant ss->dbg snapshot
+        # handshake was analyzed as a real inter-clock path against the
+        # auto-created 100 MHz base clocks.  With the pclk/rxclk clocks
+        # declared and mutual false paths in place the probes ride at
+        # 156.25 unchanged -- they are the primary Phase-H2 debug tool.
+        #
+        # uart0 (link probe, Gen1-compatible format):
+        #   C <ss-cnt> <lfps-det> <ts1-det> <ts2-det> <txfifo-hi> <flags>
+        #   ss-cnt telltale: 0x341554x = 156.25 MHz (still 10G);
+        #   0x29aaa9x = 125 MHz (fell back / never matched).
+        # uart1 (pipe probe):
+        #   C <rxclk> <upar> <txfifo-hi28> <txfifo-sat31> <sds-like 0> <flags>
+        #   flags: power_down[0] tx_elec_idle[1] rx_elec_idle[2].
         uart0 = platform.request("uart", 0)
         uart1 = platform.request("uart", 1)
-        m.d.comb += [uart0.tx.o.eq(1), uart1.tx.o.eq(1)]
+
+        # TX beat-pacing visibility (§10r suspect #1): TxFifoWrNum is the
+        # PHY's 32-deep Gen2 TX FIFO occupancy, pclk domain.
+        txfifo_hi28 = Signal()
+        txfifo_sat  = Signal()
+        m.d.ss += [
+            txfifo_hi28.eq(adapter.phy.TxFifoWrNum >= 28),
+            txfifo_sat .eq(adapter.phy.TxFifoWrNum >= 31),
+        ]
+
+        m.submodules.linkprobe = linkprobe = DomainRenamer({"cfg": "dbg"})(
+            ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
+                ("ss", None),
+                ("ss", usb.debug_lfps_polling_detected),
+                ("ss", usb.debug_ts1_detected),
+                ("ss", usb.debug_ts2_detected),
+                ("ss", txfifo_hi28),
+            )))
+        link_flags = Signal(4)
+        m.submodules += FFSynchronizer(
+            Cat(usb.link_trained, usb.link_in_reset,
+                usb.debug_phy_ready, usb.debug_engage_terminations),
+            link_flags, o_domain="dbg")
+        m.d.comb += [
+            linkprobe.flags.eq(link_flags),
+            uart0.tx.o.eq(linkprobe.tx_o),
+        ]
+
+        m.domains += ClockDomain("rxprobe", reset_less=True)
+        m.d.comb += ClockSignal("rxprobe").eq(lane.rx.pcs_clkout)
+        m.domains += ClockDomain("uparprobe", reset_less=True)
+        m.d.comb += ClockSignal("uparprobe").eq(drp.clk)
+        m.submodules.pipeprobe = pipeprobe = DomainRenamer({"cfg": "dbg"})(
+            ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
+                ("rxprobe", None),
+                ("uparprobe", None),
+                ("ss", txfifo_hi28),
+                ("ss", txfifo_sat),
+                ("ss", usb.debug_recovery),
+            )))
+        pipe_flags = Signal(4)
+        m.submodules += FFSynchronizer(
+            Cat(adapter.power_down.any(), adapter.tx_elec_idle,
+                adapter.rx_elec_idle),
+            pipe_flags, o_domain="dbg")
+        m.d.comb += [
+            pipeprobe.flags.eq(pipe_flags),
+            uart1.tx.o.eq(pipeprobe.tx_o),
+        ]
 
         return m
 

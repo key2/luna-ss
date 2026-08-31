@@ -758,10 +758,23 @@ class LFPSTransceiver(Elaboratable):
             ]
 
         if self._scd_pattern is not None:
+            # The LBPM contributions are REGISTERED before the merge:
+            # the PWM shaper's outputs otherwise reach the PIPE
+            # adapter's LFPS engine in one combinational hop across the
+            # physical->adapter seam (a reported 156.25 routing cone).
+            # Both signals are delayed identically, so the PWM shape is
+            # preserved; one pclk (6.4 ns) against the 2.2 us tPWM cell
+            # is immaterial.
+            lbpm_eidle_r = Signal()
+            lbpm_send_r  = Signal()
+            m.d.ss += [
+                lbpm_eidle_r.eq(lbpm_tx.drive_electrical_idle),
+                lbpm_send_r .eq(lbpm_tx.send_signaling),
+            ]
             m.d.comb += [
                 polling_generator.generate  .eq(self.send_polling),
-                self.drive_electrical_idle  .eq(polling_generator.drive_electrical_idle | lbpm_tx.drive_electrical_idle),
-                self.send_signaling         .eq(polling_generator.send_signaling | lbpm_tx.send_signaling),
+                self.drive_electrical_idle  .eq(polling_generator.drive_electrical_idle | lbpm_eidle_r),
+                self.send_signaling         .eq(polling_generator.send_signaling | lbpm_send_r),
             ]
         else:
             m.d.comb += [

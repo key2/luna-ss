@@ -2527,6 +2527,39 @@ New file `physical/gen2.py` (stage A per doc/gen2_design.md §1/§2):
   new expect-green entries `gen2-enum`, `gen2-echo`,
   `gen2-neg-nolcrd2`.  47 PASS lines total expected.
 
+### G5 groundwork done here: the first Gen2 hardware elaboration +
+### the rung-1 timing verdict (NOT met yet; diagnosis in hand)
+
+* `examples/gowin/luna-enum-gen2/`: the first `gen2=True` hardware
+  top (10G boot trim, byte-pinned blob, no boot_rate_switch -- the
+  LTSSM owns the rate; bcdUSB 0310; **built, never flashed**).
+  `GowinGTR12PIPE(gen2=True)`: PHY built with its Gen2 datapath +
+  rate_init=1; forwards the MAC-owned `rate` to the PHY's CSR
+  sequencer and synthesizes the PIPE rate-change ack after the boot
+  path's proven ~7 ms envelope (no CSR completion feedback yet);
+  `ltssm_training` input for the Gen2 descrambler acquisition
+  (approximated in the top as terminations-engaged-and-not-trained).
+  Adapter changes are python-gated; both gowin_gtr12 sims re-spot-
+  checked PASS after the edit.
+* **Timing roll 1** (probes in): pclk Fmax 70.6 @ 22 levels -- every
+  top path INSIDE the debug ClockFreqProbe (snap/delta arithmetic;
+  fine at 125, not at 156.25).  The probes need a pipelined delta
+  (gowin-serdes change) before any Gen2 bench build carries them;
+  this top disables them for now.
+* **Timing roll 2** (probes out): pclk Fmax 71.7 @ 22 levels -- the
+  REAL cone: `gen2_rx` grammar engine, `fr_kind` through the 4-slot
+  chained emit logic into the collector/out_fifo write
+  (`col_data*/out_fifo`).  Fix path: register the per-slot emissions
+  ahead of the collector (the path is elastic end-to-end -- out_fifo
+  absorbs a cycle of emission latency by design), or split the slot
+  chain 2+2 with a pipe stage; re-run gen2-enum/echo after (cycle
+  exactness is not load-bearing anywhere in the engine).  ALSO note
+  `serdes_pcs_rx_clk_i` Fmax 114.9 @ 16 levels -- the PHY's own Gen2
+  RX domain also runs 156.25 at 10G and needs attention (vendor-
+  proven on silicon, so likely placement/constraint-reachable).
+  Constraints are still the 100 MHz serdes-attach bases; the gate is
+  Fmax >= 156.25 either way.
+
 ### Parked / next-session (G5) — NOT DONE here, in priority order
 
 1. **Adapter rate handshake on silicon** (M3c hardware half): wire

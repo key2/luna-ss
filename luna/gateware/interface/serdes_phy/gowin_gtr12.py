@@ -87,7 +87,7 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
     """
 
     def __init__(self, *, phy=None, phy_kwargs=None, boot_rate_switch=False,
-                 boot_domain="ss"):
+                 boot_domain="ss", gen2=False):
         """``boot_rate_switch``: boot the SerDes in the (byte-pinned,
         hardware-proven) 10G trim and have the adapter itself perform the
         vendor 10G->5G rate-change sequence before reporting the PHY
@@ -124,9 +124,25 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
         super().__init__(width=8)
         self._boot_rate_switch = boot_rate_switch
         self._boot_domain = boot_domain
+        # Dual-rate (SuperSpeedPlus) mode: the PHY is built with its Gen2
+        # datapath, boots in the 10G trim, and the MAC owns ``rate``
+        # (Gowin encoding, 0 = 5 GT/s / 1 = 10 GT/s): the LTSSM's
+        # PortConfig/SpeedSwitch handshake drives it and expects a
+        # phy_status ack pulse once the change applied.  Incompatible
+        # with ``boot_rate_switch`` (the LTSSM owns the rate instead).
+        # NOTE: the ack currently uses the boot path's proven fixed
+        # envelope rather than CSR completion feedback -- hardware
+        # verdict pending (G5; HANDOVER 10r).
+        self._gen2 = gen2
+        if gen2:
+            assert not boot_rate_switch
 
         self.boot_start = Signal()
         self.phy_ready  = Signal()
+
+        # Gen2 builds: LTSSM training indicator (consumed by the PHY's
+        # Gen2 descrambler acquisition).
+        self.ltssm_training = Signal()
 
         if phy is None:
             from gw_usb3 import Usb31Phy
@@ -138,8 +154,8 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
             # pclk stays at the 156.25 MHz boot trim.  Pass
             # phy_kwargs=dict(csr_config=UparCsrConfig(quad=..., lane=...))
             # matching the serdes blob (as the examples/gowin tops do).
-            kwargs = dict(gen2=False,
-                          rate_init=1 if boot_rate_switch else 0)
+            kwargs = dict(gen2=gen2,
+                          rate_init=1 if (boot_rate_switch or gen2) else 0)
             kwargs.update(phy_kwargs or {})
             phy = Usb31Phy(**kwargs)
         self.phy = phy
@@ -173,7 +189,8 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
             phy.ElasticityBufferMode.eq(self.elas_buf_mode),
 
             # Only consumed by the Gen2 (128b/132b) datapath.
-            phy.LTSSM_is_Training   .eq(0),
+            phy.LTSSM_is_Training   .eq(self.ltssm_training
+                                        if self._gen2 else 0),
         ]
 
         # Gen1-only backend: Gowin rate encoding 0 = 5 GT/s.  (The
@@ -225,6 +242,27 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
                 phy.phy_resetn   .eq(boot_rstn),
                 self.phy_ready   .eq(boot_done),
             ]
+        elif self._gen2:
+            # Dual-rate: forward the MAC-owned rate (the PHY's own CSR
+            # sequencer runs the retune on changes) and synthesize the
+            # PIPE completion ack after the boot path's proven envelope
+            # (2^20 pclk, ~7 ms -- generously past the CSR sequencer's
+            # delayed second write burst).
+            rate_s  = Signal(init=1)
+            rate_d  = Signal(init=1)
+            ack_cnt = Signal(20)
+            ack_run = Signal()
+            rate_ack = Signal()
+            m.d.ss += [rate_s.eq(self.rate), rate_d.eq(rate_s)]
+            m.d.comb += phy.Rate.eq(rate_d)
+            with m.If(rate_s != rate_d):
+                m.d.ss += [ack_run.eq(1), ack_cnt.eq(0)]
+            with m.Elif(ack_run):
+                m.d.ss += ack_cnt.eq(ack_cnt + 1)
+                with m.If(ack_cnt.all()):
+                    m.d.ss += ack_run.eq(0)
+                    m.d.comb += rate_ack.eq(1)
+            m.d.comb += self.phy_ready.eq(1)
         else:
             m.d.comb += [
                 phy.Rate         .eq(0),
@@ -298,11 +336,16 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
                 Mux(boot_settled & phy.serdes_pll_lock, phy.PhyStatus, 1))
         else:
             # Hold phy_status high until the first pulse arrives with
-            # the SerDes PLL locked, then forward pulses.
+            # the SerDes PLL locked, then forward pulses.  Gen2 builds
+            # additionally pulse it when a MAC rate change completes
+            # (the PIPE rate-change ack the LTSSM's handshake expects).
             startup_done = Signal()
             with m.If(~startup_done & phy.PhyStatus & phy.serdes_pll_lock):
                 m.d.ss += startup_done.eq(1)
+            status_pulses = phy.PhyStatus
+            if self._gen2:
+                status_pulses = phy.PhyStatus | rate_ack
             m.d.comb += self.phy_status.eq(
-                Mux(startup_done, phy.PhyStatus, 1))
+                Mux(startup_done, status_pulses, 1))
 
         return m

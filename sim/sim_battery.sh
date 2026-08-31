@@ -94,3 +94,26 @@ else
     echo "FAIL tx-fuzz <<<<<<<<"
 fi
 echo BATTERY3-DONE
+# ── gen2 section (session 11c; prompt.md Phase 2, gate G2) ──────────
+# gen2-oracle must be GREEN: the host-side Gen2 coding model pinned
+# byte-exact against the silicon-proven gw_usb3 scrambler RTL.
+# The end-to-end phases are EXPECTED-RED until the Phase-3/4 device
+# work lands: the battery PASSES when they fail with their verdict
+# (red baseline enforced) and trips if one unexpectedly goes green,
+# so flipping an entry to expect-green is always a conscious act.
+if pdm run python "$LL/sim_gen2_oracle.py" > /tmp/kilo/batt_gen2_oracle.log 2>&1; then
+    echo "PASS gen2-oracle"
+else
+    echo "FAIL gen2-oracle <<<<<<<<"
+fi
+for ph in scd train; do
+    PH_UP=$(echo "$ph" | tr a-z A-Z)
+    if PHASE=$ph pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_$ph.log 2>&1; then
+        echo "FAIL gen2-$ph (UNEXPECTED GREEN -- flip this entry to expect-green consciously) <<<<<<<<"
+    elif grep -q "GEN2 $PH_UP FAIL" /tmp/kilo/batt_gen2_$ph.log; then
+        echo "PASS gen2-$ph (RED as expected: $(grep -oE "^(SCD|TRAIN|ENUM) FAIL: .*" /tmp/kilo/batt_gen2_$ph.log | head -1))"
+    else
+        echo "FAIL gen2-$ph (died without verdict) <<<<<<<<"
+    fi
+done
+echo BATTERY4-DONE

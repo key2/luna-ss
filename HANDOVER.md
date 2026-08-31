@@ -2238,6 +2238,86 @@ session 11b — adapter lane/CSR mismatch)**; **#37 still open**.  All parked it
 stimuli, bench forced-recovery verdict for #29–#31, data_tx SEND_ZLP
 bare-ready, wire-checker TP blindness).
 
+## 10p. Update 2026-08-31 (session 11d) — Phase 2: the Gen2 link
+## partner exists; oracle GREEN, red baselines RECORDED (gate G2 red
+## half done)
+
+Phase 2 per prompt.md, sim first, real coding chain at both rates.
+
+### New files (sim/)
+
+* **`gen2_coding.py`** — the host-side Gen2 coding oracle: 23-bit
+  scrambler LFSR (matrices imported from `gw_usb3.lfsr` — the same
+  source the RTL XOR networks are generated from), 132-bit block
+  assembly (64-bit beats, symbol 0 in bits [56:64]), the per-block
+  scramble/bypass/freeze/reset rule machine, ordered-set builders
+  (SYNC/TSEQ/TS1/TS2/SDS/SKP), Table 6-2 framing symbols, Gen2 link
+  command (4-bit subtype) and header-packet builders (CRC-5/16
+  reused from the Gen1 host model).
+* **`sim_gen2_oracle.py`** — battery entry `gen2-oracle`, GREEN
+  REQUIRED: pins the python model byte-exact against the
+  silicon-proven RTL `gw_usb3.scramble.Scrambler`/`Descrambler` over
+  a 44-block battery (91 beats TX-exact, RX recovered; SKP splice,
+  reseed, SYNC reset, TS lanes all covered).
+* **`sim_link_gen2.py`** — the end-to-end Gen2 link partner: DUT =
+  the full unmodified `USBSuperSpeedDevice` on a bare 64-bit PIPE;
+  host->device beats go python-scramble -> REAL RTL Descrambler ->
+  PIPE RX (the PHY topology), device->host beats go PIPE TX -> REAL
+  RTL Scrambler -> python descramble (the real chain in the loop
+  both directions).  Phases: `PHASE=scd` (Polling.LFPS SCD1
+  tRepeat modulation + device burst classification), `PHASE=train`
+  (SYNC/TSEQ/TS1/TS2 blocks -> SDS -> Idle), `PHASE=enum`
+  (advertisement modulo-16 + LCRD1/LCRD2 + GetDescriptor —
+  scaffolding past training, completed with Phase 4).
+
+### The recorded RED baselines (G2 red half; keep these quotes)
+
+* `PHASE=scd`: device transmits textbook Gen1 Polling.LFPS —
+  measured burst gaps `[8.0 us x16]`, classified bits all 0 →
+  **"SCD FAIL: non-varying tRepeat, no SCD1 signature (Gen1-only
+  Polling.LFPS)"**.  (The device DOES poll in the bench: bring-up =
+  TUSB phy_status dialect + PIPE power-state ack emulation.)
+* `PHASE=train`: **"TRAIN: device emitted 0 block-format TS1
+  ordered sets (0 blocks total from device TX)"** — the Gen1-only
+  MAC never drives tx_datavalid/block signals.
+
+### Battery: new `gen2` section (BATTERY4)
+
+`gen2-oracle` expect-green; `gen2-scd`/`gen2-train` run in
+EXPECTED-RED mode: the battery PASSES while they fail with their
+verdict and TRIPS if one unexpectedly goes green — flipping an entry
+to expect-green is a conscious act when the Phase-3/4 device work
+lands.  All Gen1 entries untouched.
+
+### PIPE-contract discoveries (now in doc/gen2_design.md §9.1)
+
+The oracle iterations pinned real Phase-4 contract details: the PHY
+descrambler DROPS SKP beats from its PIPE output (SKP never reaches
+the MAC); the RxGearbox132 extracts the SKP-carried LFSR seed onto
+`descrambler_init` (acquisition-only, alignment-neutral in-sync);
+the SKP splice carries the FROZEN TX LFSR state (bit23 = ~bit22) —
+a spliced ADVANCED state would desync the pair by one 64-step
+advance (my first splice attempt did exactly that; the oracle
+caught it).
+
+### Bench facts for the Gen2 sims
+
+* Full-device Gen2 sims are heavyweight: PHASE=scd ≈ 85k ss cycles.
+  Run as `.venv/bin/python -u` (same rule as ever); battery entries
+  log to /tmp/kilo/batt_gen2_*.log.
+* The bench PIPE bring-up dance matters: phy_status must stay HIGH
+  until the MAC releases pipe.reset (TUSB dialect), and every
+  power_down change needs a phy_status ack pulse — without these the
+  LTSSM parks silently (found the hard way, 10o-style).
+
+### Next (Phase 3, per the G1 design note)
+
+LTSSM SCD1 tRepeat modulation + LFPSPlus/PortMatch/PortConfig
+substates + LBPM modem + LTSSM-driven serdes rate switch; flip
+`gen2-scd` to expect-green when the SCD exchange lands.  Then
+Phase 4: block-level OS gen/detect + Gen2 framers (flip
+`gen2-train`).  #37 and the 10n parked items still carry.
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (dual-rate Gen1+Gen2).

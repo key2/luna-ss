@@ -286,9 +286,23 @@ both rates:
 
 ## 9. Open questions carried into Phase 2/3
 
-1. PIPE contract details at Gen2 (descrambling/SYNC ownership) — to
-   be pinned by an equivalence-style sim against the vendor link
-   netlist before the fork framers are written (§4).
+1. ~~PIPE contract details at Gen2~~ — PINNED by the Phase-2 oracle
+   sim (`sim/sim_gen2_oracle.py`, session 11c) against the RTL:
+   * the 64-bit beat carries symbol 0 in bits [56:64] (big-endian
+     symbol packing); a 132-bit block = 2 beats (SKP OS = 3);
+   * the PHY descrambler DROPS SKP beats from its PIPE-facing output
+     (SKP never reaches the MAC; the RxGearbox132 additionally
+     normalizes variable-length SKP and extracts the carried LFSR
+     seed onto ``descrambler_init`` — used for initial acquisition,
+     alignment-NEUTRAL for an in-sync receiver);
+   * the SKP OS splice carries the FROZEN transmitter LFSR state
+     (bit 23 = ~bit 22) — exactly the state the next scrambled
+     beat's keystream derives from;
+   * per-block scramble lanes: TS first word scrambles symbols 1-7
+     only (sym 0 raw), TS continuation all 8; SDS bypasses but
+     advances; SYNC resets on both words; data blocks scramble all;
+     the fork's TX SKP scheduler must emit whole 24-symbol SKP OS
+     blocks (the PHY freezes the LFSR across them).
 2. LCRD1/LCRD2 buffer partitioning: 4+4 vs shared-with-typing; pick
    after reading §7.2.4.1.x credit rules against the current
    receiver buffer implementation.

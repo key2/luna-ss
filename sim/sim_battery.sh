@@ -113,6 +113,21 @@ if PHASE=scd pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_scd.log
 else
     echo "FAIL gen2-scd <<<<<<<<"
 fi
+# Phase-3 M3-M5 entries (session 12, expect-green): LBPM PortMatch/
+# PortConfig at 10G and 5G outcomes, the SS-operation fallbacks, and
+# the Gen2 training-timeout speed-fallback loop (gate G3).
+for ph in lbpm lbpm5g fb-legacy fb-noscd2; do
+    if PHASE=$ph pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_$ph.log 2>&1; then
+        echo "PASS gen2-$ph"
+    else
+        echo "FAIL gen2-$ph <<<<<<<<"
+    fi
+done
+if PHASE=fb-timeout TSCALE=0.0625 TSEQ_LEN=256 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_fb-timeout.log 2>&1; then
+    echo "PASS gen2-fb-timeout"
+else
+    echo "FAIL gen2-fb-timeout <<<<<<<<"
+fi
 for ph in train; do
     PH_UP=$(echo "$ph" | tr a-z A-Z)
     if PHASE=$ph pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_$ph.log 2>&1; then

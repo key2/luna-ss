@@ -28,15 +28,24 @@ from ..stream              import USBRawSuperSpeedStream, SuperSpeedStreamInterf
 class USBSuperSpeedDevice(Elaboratable):
     """ Core gateware common to all LUNA USB3 devices. """
 
-    def __init__(self, *, phy, sync_frequency=None, gen2=False):
+    def __init__(self, *, phy, sync_frequency=None, gen2=False,
+                 tseq_burst_length=65536, polling_timeout_scale=1.0):
         self._phy = phy
         self._sync_frequency = sync_frequency
         # Gen2 (SuperSpeedPlus) capability.  Session 11d onward, built
         # up mechanism by mechanism per doc/gen2_design.md; with the
         # default False the device elaborates exactly the proven Gen1
         # stack (the forced-Gen1 build knob of the fallback matrix).
-        # Currently enabled: SCD1 declaration in Polling.LFPS [6.9.4].
+        # Currently enabled: SCD1 declaration + SCD2 confirmation
+        # [6.9.4], LBPM PortMatch/PortConfig rate negotiation with the
+        # per-spec SS-operation fallbacks [6.9.5, 7.5.4.3-.6], and the
+        # LTSSM-driven PHY rate handshake.
         self._gen2 = gen2
+        # Simulation-only shortening knobs (threaded to the link layer /
+        # LTSSM; the defaults are the spec values and are elaboration-
+        # identical to the historical stack).
+        self._tseq_burst_length = tseq_burst_length
+        self._timeout_scale = polling_timeout_scale
 
         # Create a collection of endpoints for this device.
         self._endpoints = []
@@ -170,13 +179,22 @@ class USBSuperSpeedDevice(Elaboratable):
             phy            = self._phy,
             sync_frequency = sync_frequency,
             scd_pattern    = SCD1_PATTERN if self._gen2 else None,
+            gen2           = self._gen2,
         )
 
         #
         # Link layer.
         #
-        m.submodules.link = link = USB3LinkLayer(physical_layer=physical,
-                                                 gen2=self._gen2)
+        # NB: ss_clock_frequency historically defaulted to 125e6
+        # regardless of sync_frequency -- harmless while ss ran at
+        # 125 MHz (all shipping Gen1 tops pass 125e6), wrong for the
+        # LTSSM/link timers at the 156.25 MHz Gen2 operating point.
+        # Passing it through is elaboration-identical at 125 MHz.
+        m.submodules.link = link = USB3LinkLayer(
+            physical_layer=physical, gen2=self._gen2,
+            ss_clock_frequency=sync_frequency,
+            tseq_burst_length=self._tseq_burst_length,
+            polling_timeout_scale=self._timeout_scale)
         m.d.comb += [
             self.link_trained     .eq(link.trained),
             self.link_in_reset    .eq(link.in_reset),

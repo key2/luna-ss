@@ -35,8 +35,9 @@ class USB3PhysicalLayer(Elaboratable):
         When asserted, scrambling/descrambling will be enabled.
     """
 
-    def __init__(self, *, phy, sync_frequency, scd_pattern=None):
+    def __init__(self, *, phy, sync_frequency, scd_pattern=None, gen2=False):
         self._scd_pattern = scd_pattern
+        self._gen2 = gen2
         self._phy = phy
         self._sync_frequency = sync_frequency
 
@@ -79,9 +80,27 @@ class USB3PhysicalLayer(Elaboratable):
         # SuperSpeedPlus Capability Declaration (SCD builds only)
         self.scd2_select                = Signal()
         self.scd_clear                  = Signal()
+        self.scd_enable                 = Signal()
         self.scd1_detected              = Signal()
         self.scd2_detected              = Signal()
+        self.lfps_burst_received        = Signal()
         self.lfps_reset_detected        = Signal()
+
+        # SuperSpeedPlus LBPM modem (SCD builds only)
+        self.lbpm_enable                = Signal()
+        self.lbpm_message               = Signal(8)
+        self.lbpm_sent                  = Signal()
+        self.lbpm_rx_message            = Signal(8)
+        self.lbpm_rx_valid              = Signal()
+
+        # LTSSM-driven PHY rate handshake (gen2 builds only): while
+        # ``rate_request`` is held, apply ``rate_select`` (Gowin PIPE
+        # encoding: 0 = 5 GT/s, 1 = 10 GT/s) to the PHY's ``rate`` and
+        # report ``rate_done`` once the PHY acks (immediately if the
+        # rate is already applied).
+        self.rate_select                = Signal()
+        self.rate_request               = Signal()
+        self.rate_done                  = Signal()
 
         # SKP insertion control.
         self.can_send_skp               = Signal()
@@ -116,10 +135,47 @@ class USB3PhysicalLayer(Elaboratable):
         #
         # PHY control signal handling.
         #
+        if self._gen2:
+            # Gen2 build: the MAC owns the PIPE rate (Gowin encoding,
+            # 0 = 5 GT/s / 1 = 10 GT/s; the PHY boots in its 10G trim).
+            # The LTSSM requests changes through the rate handshake; a
+            # PIPE rate change is acknowledged by a phy_status pulse
+            # (PIPE 3.0/4.x contract -- the Gowin adapter's CSR
+            # sequencer acks the same way).  Power-state acks cannot
+            # alias into WAIT_ACK: the LTSSM only runs the handshake
+            # from Polling states, where power_down is stable at P0.
+            rate_r = Signal(init=1)
+            phy_rate_drive = rate_r
+
+            with m.FSM(domain="ss", name="rate_fsm"):
+
+                with m.State("IDLE"):
+                    with m.If(self.rate_request):
+                        with m.If(self.rate_select == rate_r):
+                            m.next = "DONE"
+                        with m.Else():
+                            m.d.ss += rate_r.eq(self.rate_select)
+                            m.next = "WAIT_ACK"
+
+                with m.State("WAIT_ACK"):
+                    with m.If(phy.phy_status):
+                        m.next = "DONE"
+
+                with m.State("DONE"):
+                    m.d.comb += self.rate_done.eq(1)
+                    with m.If(~self.rate_request):
+                        m.next = "IDLE"
+        else:
+            # Gen1: use USB3.0 5Gbps signaling (TUSB1310A dialect:
+            # rate 1 = 5 GT/s; the Gowin adapter ignores it and pins
+            # its 5G trim itself).  Kept in its historical statement
+            # position for netlist parity.
+            phy_rate_drive = 1
+
         m.d.comb += [
-            # Use USB3.0 5Gbps signaling.
+            # SuperSpeed USB signaling.
             phy.phy_mode                .eq(0b01),
-            phy.rate                    .eq(1),
+            phy.rate                    .eq(phy_rate_drive),
 
             # Use nominal half full elastic buffer mode.
             phy.elas_buf_mode           .eq(0),
@@ -314,8 +370,15 @@ class USB3PhysicalLayer(Elaboratable):
             self.lfps_polling_detected  .eq(lfps.polling_detected),
             lfps.scd2_select            .eq(self.scd2_select),
             lfps.scd_clear              .eq(self.scd_clear),
+            lfps.scd_enable             .eq(self.scd_enable),
             self.scd1_detected          .eq(lfps.scd1_detected),
             self.scd2_detected          .eq(lfps.scd2_detected),
+            self.lfps_burst_received    .eq(lfps.lfps_burst_received),
+            lfps.lbpm_enable            .eq(self.lbpm_enable),
+            lfps.lbpm_message           .eq(self.lbpm_message),
+            self.lbpm_sent              .eq(lfps.lbpm_sent),
+            self.lbpm_rx_message        .eq(lfps.lbpm_rx_message),
+            self.lbpm_rx_valid          .eq(lfps.lbpm_rx_valid),
             self.lfps_reset_detected    .eq(lfps.reset_detected),
 
             # The RX_ELECIDLE signal being de-asserted indicates we're receiving valid

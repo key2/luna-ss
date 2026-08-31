@@ -80,6 +80,20 @@ SCD_REPEAT_0 = 7.0e-6
 SCD_REPEAT_1 = 13.5e-6
 SCD1_PATTERN = (0, 1, 0, 0)     # '0010', wire (LSb-first) order
 SCD2_PATTERN = (1, 0, 1, 1)     # '1101', wire (LSb-first) order
+
+# SuperSpeedPlus LFPS-Based PWM Messaging [USB 3.2r1 6.9.5, Table 6-33]:
+# byte messages, LSb first.  One bit cell = tPWM (2-2.4 us): logic '0' =
+# 1/3 LFPS + 2/3 EI, logic '1' = 2/3 LFPS + 1/3 EI; the delimiter is a
+# full tPWM of LFPS followed by a full tPWM of EI, and every message is
+# framed by delimiters (shared between consecutive messages).
+LBPM_TPWM = 2.2e-6              # transmit typical (spec: 2.0-2.4 us)
+
+# PHY LBPM message bytes [Table 7-13], single-lane trims:
+# PHY Capability: [1:0]=00, [3:2]=rate (00 = 5 Gbps, 01 = 10 Gbps),
+# b6 = dual-lane (0 for us).  PHY Ready: [1:0]=01, rest reserved-0.
+LBPM_CAP_GEN2X1 = 0x04
+LBPM_CAP_GEN1X1 = 0x00
+LBPM_PHY_READY  = 0x01
 _PollingLFPS       = LFPS(burst=_PollingLFPSBurst, repeat=_PollingLFPSRepeat)
 
 _PingLFPSBurst     = LFPSTiming(t_min=40.0e-9, t_max=160.0e-9)
@@ -238,6 +252,7 @@ class SCDDetector(Elaboratable):
         self.clear              = Signal()  # i
         self.scd1_detected      = Signal()  # o, sticky
         self.scd2_detected      = Signal()  # o, sticky
+        self.burst_received     = Signal()  # o, strobe per burst start
 
     def elaborate(self, platform):
         m = Module()
@@ -270,6 +285,10 @@ class SCDDetector(Elaboratable):
                 valid.eq(Cat(bit_valid, valid[:-1])),
             ]
 
+        # Per-burst strobe for the LTSSM's received-burst bookkeeping
+        # (the 16-legacy-burst and 64-burst-no-SCD2 fallback rules).
+        m.d.comb += self.burst_received.eq(burst_start & (gap > refractory))
+
         with m.If(burst_start & (gap > refractory)):
             m.d.ss += gap.eq(0)
             with m.If((gap >= bit0_min) & (gap <= bit0_max)):
@@ -298,6 +317,201 @@ class SCDDetector(Elaboratable):
         with m.If(self.clear):
             m.d.ss += [self.scd1_detected.eq(0), self.scd2_detected.eq(0),
                        valid.eq(0)]
+
+        return m
+
+
+class LBPMTransmitter(Elaboratable):
+    """LFPS-Based PWM Message transmitter [USB 3.2r1 6.9.5].
+
+    While ``enable`` is held, transmits back-to-back LBPM byte messages
+    (LSb first) framed by delimiters; consecutive messages share the
+    delimiter in between, per 6.9.5.2.  ``message`` is sampled at each
+    message start; a started message (and its closing delimiter) always
+    completes even if ``enable`` drops, so the wire never carries a
+    partial byte.
+
+    Attributes
+    ----------
+    enable: Signal(), input
+        Transmit LBPMs continuously while high.
+    message: Signal(8), input
+        Message byte; latched at each message start.
+    drive_electrical_idle: Signal(), output
+        High while transmitting (both LFPS and EI thirds).
+    send_signaling: Signal(), output
+        High during the LFPS portion of each PWM cell.
+    message_sent: Signal(), output
+        Strobe: a complete message (including its closing delimiter)
+        finished transmitting.
+    """
+
+    def __init__(self, ss_clk_freq=125e6):
+        self._clock_frequency = ss_clk_freq
+
+        self.enable                = Signal()   # i
+        self.message               = Signal(8)  # i
+        self.drive_electrical_idle = Signal()   # o
+        self.send_signaling        = Signal()   # o
+        self.message_sent          = Signal()   # o
+
+    def elaborate(self, platform):
+        m = Module()
+
+        clk    = self._clock_frequency
+        t_pwm  = ceil(clk * LBPM_TPWM)
+        on_0   = ceil(clk * LBPM_TPWM / 3)
+        on_1   = ceil(clk * 2 * LBPM_TPWM / 3)
+
+        count   = Signal(range(2 * t_pwm + 1))
+        bit_idx = Signal(range(8))
+        byte_r  = Signal(8)
+        closing = Signal()   # the delimiter in progress closes a byte
+
+        bit    = Signal()
+        on_len = Signal(range(t_pwm + 1))
+        m.d.comb += [
+            bit    .eq(byte_r.bit_select(bit_idx, 1)),
+            on_len .eq(Mux(bit, on_1, on_0)),
+        ]
+
+        with m.FSM(domain="ss"):
+
+            with m.State("IDLE"):
+                m.d.ss += [count.eq(0), closing.eq(0)]
+                with m.If(self.enable):
+                    m.next = "DELIMITER"
+
+            # DELIMITER -- one tPWM of LFPS followed by one tPWM of EI;
+            # doubles as the shared delimiter between messages.
+            with m.State("DELIMITER"):
+                m.d.comb += [
+                    self.drive_electrical_idle .eq(1),
+                    self.send_signaling        .eq(count < t_pwm),
+                ]
+                m.d.ss += count.eq(count + 1)
+                with m.If(count + 1 == 2 * t_pwm):
+                    m.d.ss += count.eq(0)
+                    with m.If(closing):
+                        m.d.comb += self.message_sent.eq(1)
+                    m.d.ss += closing.eq(0)
+                    with m.If(self.enable):
+                        m.d.ss += [byte_r.eq(self.message), bit_idx.eq(0)]
+                        m.next = "BIT"
+                    with m.Else():
+                        m.next = "IDLE"
+
+            # BIT -- one tPWM cell: 1/3 ('0') or 2/3 ('1') LFPS, EI rest.
+            with m.State("BIT"):
+                m.d.comb += [
+                    self.drive_electrical_idle .eq(1),
+                    self.send_signaling        .eq(count < on_len),
+                ]
+                m.d.ss += count.eq(count + 1)
+                with m.If(count + 1 == t_pwm):
+                    m.d.ss += count.eq(0)
+                    with m.If(bit_idx == 7):
+                        m.d.ss += closing.eq(1)
+                        m.next = "DELIMITER"
+                    with m.Else():
+                        m.d.ss += bit_idx.eq(bit_idx + 1)
+
+        return m
+
+
+class LBPMReceiver(Elaboratable):
+    """LFPS-Based PWM Message receiver [USB 3.2r1 6.9.5, Table 6-33].
+
+    Classifies each received LFPS pulse by its ON width (logic 0:
+    0.45-0.9 us, logic 1: 1.15-1.9 us, delimiter: ~2-3.2 us -- windows
+    per the Table 6-33 receive columns, delimiter widened for clock
+    tolerance) and assembles delimiter-framed bytes, LSb first.  Plain
+    Polling.LFPS bursts (~1 us) fall between the bit windows and reset
+    the framing, as does any out-of-range pulse or >6 us of silence.
+
+    Attributes
+    ----------
+    signaling_received: Signal(), input
+        High while the PHY reports received LFPS signaling.
+    message: Signal(8), output
+        Last completely received message byte.
+    message_valid: Signal(), output
+        Strobe: ``message`` was updated (the closing delimiter of a
+        well-formed 8-bit message arrived).
+    """
+
+    def __init__(self, ss_clk_freq=125e6):
+        self._clock_frequency = ss_clk_freq
+
+        self.signaling_received = Signal()   # i
+        self.message            = Signal(8)  # o
+        self.message_valid      = Signal()   # o
+
+    def elaborate(self, platform):
+        m = Module()
+
+        clk = self._clock_frequency
+        b0_min = ceil(clk * 0.45e-6)
+        b0_max = ceil(clk * 0.90e-6)
+        b1_min = ceil(clk * 1.15e-6)
+        b1_max = ceil(clk * 1.90e-6)
+        d_min  = ceil(clk * 1.95e-6)
+        d_max  = ceil(clk * 3.20e-6)
+        idle_limit = ceil(clk * 6.0e-6)
+
+        # Synchronize and edge-detect the LFPS envelope.
+        sig_sync = Signal(2)
+        m.submodules += FFSynchronizer(self.signaling_received, sig_sync[0],
+                                       o_domain="ss")
+        m.d.ss += sig_sync[1].eq(sig_sync[0])
+        sig, sig_prev = sig_sync[0], sig_sync[1]
+
+        on_count  = Signal(range(d_max + 2))
+        off_count = Signal(range(idle_limit + 1))
+        bit_count = Signal(range(9))
+        sreg      = Signal(8)
+        framed    = Signal()
+
+        # ``message`` is registered; the valid strobe is registered in
+        # the same cycle so consumers always sample the aligned pair.
+        m.d.ss += self.message_valid.eq(0)
+
+        with m.If(sig):
+            m.d.ss += off_count.eq(0)
+            with m.If(on_count <= d_max):
+                m.d.ss += on_count.eq(on_count + 1)
+        with m.Else():
+            m.d.ss += on_count.eq(0)
+            # Long silence: any partial framing is stale.
+            with m.If(off_count != idle_limit):
+                m.d.ss += off_count.eq(off_count + 1)
+            with m.Elif(framed | (bit_count != 0)):
+                m.d.ss += [framed.eq(0), bit_count.eq(0)]
+
+        # Classify each pulse at its falling edge.
+        with m.If(sig_prev & ~sig):
+            is_b0    = (on_count >= b0_min) & (on_count <= b0_max)
+            is_b1    = (on_count >= b1_min) & (on_count <= b1_max)
+            is_delim = (on_count >= d_min)  & (on_count <= d_max)
+
+            with m.If(is_delim):
+                with m.If(framed & (bit_count == 8)):
+                    m.d.ss += [
+                        self.message      .eq(sreg),
+                        self.message_valid.eq(1),
+                    ]
+                m.d.ss += [framed.eq(1), bit_count.eq(0)]
+            with m.Elif(is_b0 | is_b1):
+                with m.If(framed & (bit_count != 8)):
+                    m.d.ss += [
+                        sreg.bit_select(bit_count, 1).eq(is_b1),
+                        bit_count.eq(bit_count + 1),
+                    ]
+                with m.Elif(framed):        # 9th bit: not an LBPM
+                    m.d.ss += [framed.eq(0), bit_count.eq(0)]
+            with m.Else():
+                # Plain polling burst or out-of-spec pulse.
+                m.d.ss += [framed.eq(0), bit_count.eq(0)]
 
         return m
 
@@ -340,6 +554,10 @@ class LFPSGenerator(Elaboratable):
         self.drive_electrical_idle  = Signal() # o
         self.send_signaling         = Signal() # o
         self.scd2_select            = Signal() # i (SCD builds only)
+        # SCD builds only: 1 = modulate tRepeat per the SCD pattern,
+        # 0 = fixed (non-varying) t_typ repeat -- the SS-operation
+        # fallback trims of [7.5.4.3.1/7.5.4.4.1].
+        self.scd_enable             = Signal() # i (SCD builds only)
 
 
     def elaborate(self, platform):
@@ -355,6 +573,7 @@ class LFPSGenerator(Elaboratable):
             # selected by the pattern bit; the bit index advances at
             # the end of every repeat interval, cycling the pattern
             # (consecutive SCDs are sent back to back per 6.9.4.2).
+            repeat_fixed = repeat_cycles
             repeat_scd = [ceil(self._clock_frequency * SCD_REPEAT_0),
                           ceil(self._clock_frequency * SCD_REPEAT_1)]
             repeat_cycles = max(repeat_cycles, *repeat_scd)
@@ -368,8 +587,13 @@ class LFPSGenerator(Elaboratable):
                         m.d.comb += scd_bit.eq(
                             Mux(self.scd2_select, b2, b1))
             repeat_target = Signal(range(repeat_cycles + 1))
+            # With scd_enable low, fall back to the non-varying t_typ
+            # repeat (SS-operation trim); the modulator keeps cycling
+            # its pattern index harmlessly.
             m.d.comb += repeat_target.eq(
-                Mux(scd_bit, repeat_scd[1], repeat_scd[0]))
+                Mux(self.scd_enable,
+                    Mux(scd_bit, repeat_scd[1], repeat_scd[0]),
+                    repeat_fixed))
 
         # ... and create our cycle counter.
         count = Signal(range(0, repeat_cycles))
@@ -463,8 +687,17 @@ class LFPSTransceiver(Elaboratable):
         # SuperSpeedPlus Capability Declaration (SCD builds only)
         self.scd2_select           = Signal() # i
         self.scd_clear             = Signal() # i
+        self.scd_enable            = Signal() # i (1 = modulate tRepeat)
         self.scd1_detected         = Signal() # o, sticky
         self.scd2_detected         = Signal() # o, sticky
+        self.lfps_burst_received   = Signal() # o, strobe
+
+        # SuperSpeedPlus LBPM modem (SCD builds only)
+        self.lbpm_enable           = Signal() # i
+        self.lbpm_message          = Signal(8) # i
+        self.lbpm_sent             = Signal() # o, strobe
+        self.lbpm_rx_message       = Signal(8) # o
+        self.lbpm_rx_valid         = Signal() # o, strobe
 
 
     def elaborate(self, platform):
@@ -496,7 +729,10 @@ class LFPSTransceiver(Elaboratable):
         #
         m.submodules.polling_generator = polling_generator = LFPSGenerator(_PollingLFPS, self._clock_frequency, scd_pattern=self._scd_pattern)
         if self._scd_pattern is not None:
-            m.d.comb += polling_generator.scd2_select.eq(self.scd2_select)
+            m.d.comb += [
+                polling_generator.scd2_select.eq(self.scd2_select),
+                polling_generator.scd_enable .eq(self.scd_enable),
+            ]
             m.submodules.scd_detector = scd_detector = \
                 SCDDetector(self._clock_frequency)
             m.d.comb += [
@@ -504,12 +740,35 @@ class LFPSTransceiver(Elaboratable):
                 scd_detector.clear             .eq(self.scd_clear),
                 self.scd1_detected             .eq(scd_detector.scd1_detected),
                 self.scd2_detected             .eq(scd_detector.scd2_detected),
+                self.lfps_burst_received       .eq(scd_detector.burst_received),
             ]
-        m.d.comb += [
-            polling_generator.generate  .eq(self.send_polling),
-            self.drive_electrical_idle  .eq(polling_generator.drive_electrical_idle),
-            self.send_signaling         .eq(polling_generator.send_signaling),
-        ]
+
+            # LBPM modem (Polling.PortMatch / Polling.PortConfig).
+            m.submodules.lbpm_tx = lbpm_tx = \
+                LBPMTransmitter(self._clock_frequency)
+            m.submodules.lbpm_rx = lbpm_rx = \
+                LBPMReceiver(self._clock_frequency)
+            m.d.comb += [
+                lbpm_tx.enable              .eq(self.lbpm_enable),
+                lbpm_tx.message             .eq(self.lbpm_message),
+                self.lbpm_sent              .eq(lbpm_tx.message_sent),
+                lbpm_rx.signaling_received  .eq(self.signaling_received),
+                self.lbpm_rx_message        .eq(lbpm_rx.message),
+                self.lbpm_rx_valid          .eq(lbpm_rx.message_valid),
+            ]
+
+        if self._scd_pattern is not None:
+            m.d.comb += [
+                polling_generator.generate  .eq(self.send_polling),
+                self.drive_electrical_idle  .eq(polling_generator.drive_electrical_idle | lbpm_tx.drive_electrical_idle),
+                self.send_signaling         .eq(polling_generator.send_signaling | lbpm_tx.send_signaling),
+            ]
+        else:
+            m.d.comb += [
+                polling_generator.generate  .eq(self.send_polling),
+                self.drive_electrical_idle  .eq(polling_generator.drive_electrical_idle),
+                self.send_signaling         .eq(polling_generator.send_signaling),
+            ]
 
         with m.If(polling_generator.generate):
             with m.If(polling_generator.completed):

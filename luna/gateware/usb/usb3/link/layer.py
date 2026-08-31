@@ -32,11 +32,13 @@ class USB3LinkLayer(Elaboratable):
     """
 
     def __init__(self, *, physical_layer, ss_clock_frequency=125e6,
-                 tseq_burst_length=65536, gen2=False):
+                 tseq_burst_length=65536, gen2=False,
+                 polling_timeout_scale=1.0):
         self._physical_layer    = physical_layer
         self._clock_frequency   = ss_clock_frequency
         self._tseq_burst_length = tseq_burst_length
         self._gen2              = gen2
+        self._timeout_scale     = polling_timeout_scale
 
         #
         # I/O port
@@ -156,7 +158,9 @@ class USB3LinkLayer(Elaboratable):
         #
         # Link Training and Status State Machine (LTSSM)
         #
-        m.submodules.ltssm = ltssm = LTSSMController(ss_clock_frequency=self._clock_frequency, gen2=self._gen2)
+        m.submodules.ltssm = ltssm = LTSSMController(
+            ss_clock_frequency=self._clock_frequency, gen2=self._gen2,
+            polling_timeout_scale=self._timeout_scale)
 
         # Distribute ``link_ready`` through a register: it is decoded
         # combinationally from the LTSSM state, and its fanout otherwise
@@ -456,14 +460,28 @@ class USB3LinkLayer(Elaboratable):
 
 
         if self._gen2:
-            # SuperSpeedPlus Capability Declaration surface: exists
-            # only on gen2 physical layers (the Gen1 sims drive this
-            # layer with reduced stubs, so keep this gated).
+            # SuperSpeedPlus negotiation surface: exists only on gen2
+            # physical layers (the Gen1 sims drive this layer with
+            # reduced stubs, so keep this gated).
             m.d.comb += [
                 ltssm.scd1_detected        .eq(physical_layer.scd1_detected),
                 ltssm.scd2_detected        .eq(physical_layer.scd2_detected),
                 physical_layer.scd2_select .eq(ltssm.scd2_select),
                 physical_layer.scd_clear   .eq(ltssm.scd_clear),
+                physical_layer.scd_enable  .eq(ltssm.scd_enable),
+                ltssm.lfps_burst_received  .eq(physical_layer.lfps_burst_received),
+
+                # LBPM modem (Polling.PortMatch / PortConfig).
+                physical_layer.lbpm_enable .eq(ltssm.lbpm_enable),
+                physical_layer.lbpm_message.eq(ltssm.lbpm_message),
+                ltssm.lbpm_sent            .eq(physical_layer.lbpm_sent),
+                ltssm.lbpm_rx_message      .eq(physical_layer.lbpm_rx_message),
+                ltssm.lbpm_rx_valid        .eq(physical_layer.lbpm_rx_valid),
+
+                # LTSSM-driven PHY rate handshake.
+                physical_layer.rate_select .eq(ltssm.rate_select),
+                physical_layer.rate_request.eq(ltssm.rate_request),
+                ltssm.rate_done            .eq(physical_layer.rate_done),
             ]
 
         return m

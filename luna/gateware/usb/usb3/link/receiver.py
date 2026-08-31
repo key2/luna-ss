@@ -42,7 +42,10 @@ class RawHeaderPacketReceiver(Elaboratable):
 
     """
 
-    def __init__(self):
+    def __init__(self, gen2=False):
+        # SuperSpeedPlus trim: 4-bit header sequence numbers, with the
+        # top bit riding in the LCW's SS-reserved bit (dw3_reserved[0]).
+        self._gen2 = gen2
 
         #
         # I/O port
@@ -57,7 +60,7 @@ class RawHeaderPacketReceiver(Elaboratable):
         self.bad_packet        = Signal()
 
         # Sequence tracking.
-        self.expected_sequence = Signal(3)
+        self.expected_sequence = Signal(4 if gen2 else 3)
         self.bad_sequence      = Signal()
 
 
@@ -144,7 +147,12 @@ class RawHeaderPacketReceiver(Elaboratable):
                 # Our worst-case scenario is we're receiving a packet with an unexpected sequence
                 # number; this indicates that we've lost sequence, and our device should move back to
                 # into Recovery [USB3.2r1: 7.2.4.1.5].
-                with m.Elif(packet.sequence_number != self.expected_sequence):
+                if not self._gen2:
+                    rx_sequence = packet.sequence_number
+                else:
+                    rx_sequence = Cat(packet.sequence_number,
+                                      packet.dw3_reserved[0])
+                with m.Elif(rx_sequence != self.expected_sequence):
                     m.d.comb += self.bad_sequence.eq(1)
 
                 # If neither of the above checks failed, we now know we have a valid header packet!
@@ -223,9 +231,15 @@ class HeaderPacketReceiver(Elaboratable):
 
     SEQUENCE_NUMBER_WIDTH = 3
 
-    def __init__(self, *, buffer_count=4, downstream_facing=False):
+    def __init__(self, *, buffer_count=4, downstream_facing=False,
+                 gen2=False):
         self._buffer_count = buffer_count
         self._is_downstream_facing = downstream_facing
+        # SuperSpeedPlus trims [USB3.2r1: 7.2.4.1.x]: modulo-16 header
+        # sequence numbers (LGOOD_0..15) and the LCRD1/LCRD2 credit
+        # class split.  gen2_active selects them at runtime; at the SS
+        # rate the device follows the SuperSpeed rules.
+        self._gen2 = gen2
 
         #
         # I/O port
@@ -255,6 +269,9 @@ class HeaderPacketReceiver(Elaboratable):
         self.reject_power_state      = Signal()
         self.acknowledge_power_state = Signal()
 
+        # High when operating at the SuperSpeedPlus rate (gen2 builds).
+        self.gen2_active             = Signal()
+
         # Debug taps (prunable).
         self.debug_expected_seq      = Signal(3)
         self.debug_rx_seq            = Signal(3)
@@ -268,11 +285,19 @@ class HeaderPacketReceiver(Elaboratable):
         # Sequence tracking.
         #
 
+        seq_width = 4 if self._gen2 else self.SEQUENCE_NUMBER_WIDTH
+        if self._gen2:
+            seq_mask = Mux(self.gen2_active, 0xF, 0x7)
+
         # Keep track of which sequence number we expect to see.
-        expected_sequence_number = Signal(self.SEQUENCE_NUMBER_WIDTH)
+        expected_sequence_number = Signal(seq_width)
 
         # Keep track of which credit we'll need to issue next...
         next_credit_to_issue     = Signal(range(self._buffer_count))
+        if self._gen2:
+            # The LCRD2 (Type 2 -- asynchronous DP) series' independent
+            # A-D index [Table 7-4].
+            next_credit2_to_issue = Signal(range(self._buffer_count))
 
         # ... and which header we'll need to ACK next.
         # We'll start with the maximum number, so our first advertisement wraps us back around to zero.
@@ -321,6 +346,29 @@ class HeaderPacketReceiver(Elaboratable):
             m.d.ss += credits_to_issue.eq(credits_to_issue + 1)
         with m.If(dequeue_credit_issue & ~enqueue_credit_issue):
             m.d.ss += credits_to_issue.eq(credits_to_issue - 1)
+
+        if self._gen2:
+            # Type 2 (asynchronous DP) credit-issue queue; at the SSP
+            # rate the shared 4-buffer pool is split 2+2 between the
+            # classes (both advertised; the A-D indices run
+            # independently) [7.2.4.1.x].  At the SS rate everything is
+            # Type 1 and this queue idles.
+            credits2_to_issue     = Signal.like(acks_to_send)
+            enqueue_credit2_issue = Signal()
+            dequeue_credit2_issue = Signal()
+
+            with m.If(enqueue_credit2_issue & ~dequeue_credit2_issue):
+                m.d.ss += credits2_to_issue.eq(credits2_to_issue + 1)
+            with m.If(dequeue_credit2_issue & ~enqueue_credit2_issue):
+                m.d.ss += credits2_to_issue.eq(credits2_to_issue - 1)
+
+            # Per-class pool sizes (runtime-selected by operating rate).
+            pool1_size = Signal(3)
+            pool2_size = Signal(3)
+            m.d.comb += [
+                pool1_size.eq(Mux(self.gen2_active, 2, self._buffer_count)),
+                pool2_size.eq(Mux(self.gen2_active, 2, 0)),
+            ]
 
         # Keep track of whether we should be sending an LBAD.
         lbad_pending = Signal()
@@ -372,6 +420,20 @@ class HeaderPacketReceiver(Elaboratable):
         # Create buffers to receive any incoming header packets.
         buffers = Array(HeaderPacket() for _ in range(self._buffer_count))
 
+        if self._gen2:
+            # Per-slot traffic class of the buffered header, and
+            # per-class fill counts (for the per-class credit
+            # re-advertisement after a link-down).
+            type2_flags = Array(Signal(name=f"hdr_type2_{i}")
+                                for i in range(self._buffer_count))
+            filled2 = Signal.like(buffers_filled)
+            reserve2 = Signal()
+            release2 = Signal()
+            with m.If(reserve2 & ~release2):
+                m.d.ss += filled2.eq(filled2 + 1)
+            with m.If(release2 & ~reserve2):
+                m.d.ss += filled2.eq(filled2 - 1)
+
 
         #
         # Packet reception (physical layer -> link layer).
@@ -390,7 +452,8 @@ class HeaderPacketReceiver(Elaboratable):
         # would misinterpret training/idle words (or the first fresh
         # header) as the remainder of the old one.
         m.submodules.receiver = rx = \
-            ResetInserter({"ss": ~self.enable})(RawHeaderPacketReceiver())
+            ResetInserter({"ss": ~self.enable})(
+                RawHeaderPacketReceiver(gen2=self._gen2))
         m.d.comb += [
             # Our receiver passively monitors the data received for header packets.
             rx.sink                   .tap(self.sink),
@@ -423,8 +486,18 @@ class HeaderPacketReceiver(Elaboratable):
 
                 # ... advance to the next buffer and sequence number...
                 write_pointer             .eq(write_pointer + 1),
-                expected_sequence_number  .eq(expected_sequence_number + 1),
             ]
+            if not self._gen2:
+                m.d.ss += expected_sequence_number.eq(expected_sequence_number + 1)
+            else:
+                m.d.ss += [
+                    expected_sequence_number
+                        .eq((expected_sequence_number + 1) & seq_mask),
+                    type2_flags[write_pointer]
+                        .eq(self.gen2_active & (rx.packet.dw0[0:5] == 8)),
+                ]
+                m.d.comb += reserve2.eq(self.gen2_active
+                                        & (rx.packet.dw0[0:5] == 8))
             m.d.comb += [
                 # ... mark the buffer space as occupied by valid data ...
                 reserve_buffer            .eq(1),
@@ -478,13 +551,23 @@ class HeaderPacketReceiver(Elaboratable):
             # Move on to reading from the next buffer in sequence.
             m.d.ss += read_pointer.eq(read_pointer + 1)
 
-            m.d.comb += [
-                # First, we'll free the buffer associated with the relevant packet...
-                release_buffer        .eq(1),
+            if not self._gen2:
+                m.d.comb += [
+                    # First, we'll free the buffer associated with the relevant packet...
+                    release_buffer        .eq(1),
 
-                # ... and request that our link partner be notified of the new space.
-                enqueue_credit_issue  .eq(1)
-            ]
+                    # ... and request that our link partner be notified of the new space.
+                    enqueue_credit_issue  .eq(1)
+                ]
+            else:
+                # The freed credit returns to the class the drained
+                # header belonged to.
+                m.d.comb += [
+                    release_buffer        .eq(1),
+                    release2              .eq(type2_flags[read_pointer]),
+                    enqueue_credit_issue  .eq(~type2_flags[read_pointer]),
+                    enqueue_credit2_issue .eq(type2_flags[read_pointer]),
+                ]
 
 
         #
@@ -525,7 +608,8 @@ class HeaderPacketReceiver(Elaboratable):
                         m.next = "SEND_ACKS"
 
                     # If we have link credits to issue, move to issuing them to the other side.
-                    with m.Elif(credits_to_issue):
+                    with m.Elif(credits_to_issue if not self._gen2
+                                else (credits_to_issue | credits2_to_issue)):
                         m.next = "ISSUE_CREDITS"
 
                     # If we need to send an LBAD, do so.
@@ -549,7 +633,9 @@ class HeaderPacketReceiver(Elaboratable):
                 m.d.comb += [
                     lc_generator.generate      .eq(1),
                     lc_generator.command       .eq(LinkCommand.LGOOD),
-                    lc_generator.subtype       .eq(next_header_to_ack)
+                    lc_generator.subtype       .eq(
+                        next_header_to_ack if not self._gen2
+                        else next_header_to_ack & seq_mask)
                 ]
 
                 # Wait until our link command is done, and then re-arbitrate.
@@ -557,7 +643,11 @@ class HeaderPacketReceiver(Elaboratable):
                     # Move to the next header packet in the sequence, and decrease
                     # the number of outstanding ACKs.
                     m.d.comb += dequeue_ack         .eq(1)
-                    m.d.ss   += next_header_to_ack  .eq(next_header_to_ack + 1)
+                    if not self._gen2:
+                        m.d.ss += next_header_to_ack.eq(next_header_to_ack + 1)
+                    else:
+                        m.d.ss += next_header_to_ack.eq(
+                            (next_header_to_ack + 1) & seq_mask)
 
                     # Return to dispatch after *every* command, so the queues
                     # are re-arbitrated by priority: staying while our own
@@ -576,26 +666,56 @@ class HeaderPacketReceiver(Elaboratable):
             # other side, so it knows we have buffers available.
             with m.State("ISSUE_CREDITS"):
 
-                # Send an LCRD command, indicating that we have a free buffer.
-                m.d.comb += [
-                    lc_generator.generate      .eq(1),
-                    lc_generator.command       .eq(LinkCommand.LCRD),
-                    lc_generator.subtype       .eq(next_credit_to_issue)
-                ]
+                if not self._gen2:
+                    # Send an LCRD command, indicating that we have a free buffer.
+                    m.d.comb += [
+                        lc_generator.generate      .eq(1),
+                        lc_generator.command       .eq(LinkCommand.LCRD),
+                        lc_generator.subtype       .eq(next_credit_to_issue)
+                    ]
 
-                # Wait until our link command is done, and then re-arbitrate.
-                with m.If(lc_generator.done):
-                    # Move to the next credit...
-                    m.d.comb += dequeue_credit_issue  .eq(1)
-                    m.d.ss   += next_credit_to_issue  .eq(next_credit_to_issue + 1)
+                    # Wait until our link command is done, and then re-arbitrate.
+                    with m.If(lc_generator.done):
+                        # Move to the next credit...
+                        m.d.comb += dequeue_credit_issue  .eq(1)
+                        m.d.ss   += next_credit_to_issue  .eq(next_credit_to_issue + 1)
 
-                    # Re-arbitrate by priority after every command (see
-                    # SEND_ACKS): under sustained traffic the credit queue
-                    # refills continuously, and looping here starves the
-                    # pending-LGOOD queue -- the link partner then never
-                    # sees its headers acknowledged and (on real hosts) its
-                    # PENDING_HP_TIMER forces link recovery.
-                    m.next = "DISPATCH_COMMAND"
+                        # Re-arbitrate by priority after every command (see
+                        # SEND_ACKS): under sustained traffic the credit queue
+                        # refills continuously, and looping here starves the
+                        # pending-LGOOD queue -- the link partner then never
+                        # sees its headers acknowledged and (on real hosts) its
+                        # PENDING_HP_TIMER forces link recovery.
+                        m.next = "DISPATCH_COMMAND"
+                else:
+                    # Two independent credit series [Table 7-4]: LCRD_x/
+                    # LCRD1_x (subtype b2 clear) and LCRD2_x (b2 set).
+                    # Their A-D indices advance independently, modulo 4.
+                    issue2 = Signal()
+                    m.d.comb += [
+                        issue2.eq(~credits_to_issue.any()
+                                  & credits2_to_issue.any()),
+                        lc_generator.generate      .eq(1),
+                        lc_generator.command       .eq(LinkCommand.LCRD),
+                        lc_generator.subtype       .eq(Mux(
+                            issue2,
+                            Cat(next_credit2_to_issue[0:2], C(1, 1)),
+                            Cat(next_credit_to_issue[0:2], C(0, 1)))),
+                    ]
+
+                    with m.If(lc_generator.done):
+                        with m.If(issue2):
+                            m.d.comb += dequeue_credit2_issue .eq(1)
+                            m.d.ss   += next_credit2_to_issue \
+                                .eq(next_credit2_to_issue + 1)
+                        with m.Else():
+                            m.d.comb += dequeue_credit_issue  .eq(1)
+                            m.d.ss   += next_credit_to_issue  \
+                                .eq(next_credit_to_issue + 1)
+
+                        # Re-arbitrate by priority after every command
+                        # (see SEND_ACKS).
+                        m.next = "DISPATCH_COMMAND"
 
                 # Aborted by a link drop (see SEND_ACKS).
                 with m.If(~self.enable):
@@ -691,6 +811,21 @@ class HeaderPacketReceiver(Elaboratable):
         #
         # Once we've become disabled, we'll want to prepare for our next
         # enable.  This means preparing for our advertisement, by:
+        if self._gen2:
+            # Rate-aware credit fixup on every link-up edge: the
+            # elaboration-time init (4+0, the SS trim) cannot know the
+            # operating rate; recompute the per-class advertisement
+            # against the pools selected by ``gen2_active`` (idempotent
+            # with the link-down recomputation below -- both derive the
+            # same counts from the per-class fill levels).
+            with m.If(self.enable & ~last_enable):
+                filled1_now = buffers_filled - filled2
+                m.d.ss += [
+                    credits_to_issue  .eq(pool1_size - filled1_now
+                                          + (release_buffer & ~release2)),
+                    credits2_to_issue .eq(pool2_size - filled2 + release2),
+                ]
+
         with m.If((last_enable & ~self.enable) | self.usb_reset):
             m.d.ss += [
                 # -Resetting our pending ACKs to 1, so we perform a sequence number advertisement
@@ -704,7 +839,9 @@ class HeaderPacketReceiver(Elaboratable):
                 #  processed (observed as an immediate bad-sequence recovery loop after re-entry:
                 #  we under-advertise, the partner resends one header too many, and its next fresh
                 #  header then looks like a sequence skip).
-                next_header_to_ack    .eq(expected_sequence_number - 1),
+                next_header_to_ack    .eq(
+                    (expected_sequence_number - 1) if not self._gen2
+                    else ((expected_sequence_number - 1) & seq_mask)),
 
                 # - RULE 2d [USB3.2r1: 7.2.4.1.x]: header packets already
                 #   counted as received (the advertisement above claims
@@ -725,8 +862,6 @@ class HeaderPacketReceiver(Elaboratable):
                 #   this very cycle is accounted through
                 #   ``release_buffer``.
                 next_credit_to_issue  .eq(0),
-                credits_to_issue      .eq(self._buffer_count
-                                          - buffers_filled + release_buffer),
 
                 # - Clear our pending events.
                 lrty_pending          .eq(0),
@@ -734,6 +869,20 @@ class HeaderPacketReceiver(Elaboratable):
                 keepalive_pending     .eq(0),
                 ignore_packets        .eq(0)
             ]
+            if not self._gen2:
+                m.d.ss += credits_to_issue.eq(self._buffer_count
+                                              - buffers_filled + release_buffer)
+            else:
+                # Per-class rule-2d credit recomputation (2+2 pools at
+                # the SSP rate, 4+0 at the SS rate).
+                filled1 = buffers_filled - filled2
+                m.d.ss += [
+                    next_credit2_to_issue .eq(0),
+                    credits_to_issue      .eq(pool1_size - filled1
+                                              + (release_buffer & ~release2)),
+                    credits2_to_issue     .eq(pool2_size - filled2
+                                              + release2),
+                ]
 
             # If this is a USB Reset, also reset our sequences -- and,
             # unlike a link-down, fully clear the buffers (the protocol
@@ -745,7 +894,14 @@ class HeaderPacketReceiver(Elaboratable):
                     read_pointer              .eq(0),
                     write_pointer             .eq(0),
                     buffers_filled            .eq(0),
-                    credits_to_issue          .eq(self._buffer_count),
                 ]
+                if not self._gen2:
+                    m.d.ss += credits_to_issue.eq(self._buffer_count)
+                else:
+                    m.d.ss += [
+                        credits_to_issue   .eq(pool1_size),
+                        credits2_to_issue  .eq(pool2_size),
+                        filled2            .eq(0),
+                    ]
 
         return m

@@ -2398,6 +2398,165 @@ directions) + PIPE rate plumbing.  M5: fallback matrix sims
 (no-SCD1 → legacy Gen1; Polling.Active/Config timeout →
 PortMatch re-entry next-highest).  Then Phase 4 (block framing).
 
+## 10r. Update 2026-08-31 (session 12) — GATE G3 CLOSED (negotiation)
+## and GATE G4 CLOSED on sim (Gen2 framing through the stack):
+## gen2-train/enum/echo GREEN end-to-end through the RTL coding chain
+
+Executed prompt.md Phases 3 (remainder) and 4, sim-first.  Bug
+numbering: no new numbered stack bugs (#39 next); the session's
+findings were all caught pre-commit by the red-first sims and unit
+benches (see "bugs caught in development" below).
+
+### Phase 3 M3–M5 (gate G3) — commit bb4bf07
+
+* **M3a — LBPM modem** (`physical/lfps.py`): `LBPMTransmitter` (tPWM
+  2.2 µs PWM shaping, delimiter-framed LSb-first bytes [6.9.5.2]) and
+  `LBPMReceiver` (Table 6-33 ON-width classifier: bit0 0.45-0.9 µs,
+  bit1 1.15-1.9 µs, delimiter ~2-3.2 µs; >6 µs silence resets
+  framing).  Dev-time catch: `message` is registered, so the valid
+  strobe must be registered WITH it — the first cut strobed
+  combinationally and consumers sampled the previous byte (found by
+  the lbpm_unit bench; the PortMatch machine then "negotiated down"
+  on a phantom 0x00 capability).
+* **M3b — Polling.PortMatch/PortConfig** (`ltssm.py`, gen2-gated):
+  match rule 4-matched-sent-after-2-matched-received, higher port
+  adjusts down, PHY Ready handshake, shared 12 ms
+  tPollingLBPMLFPSTimeout → SS.Disabled (peripheral rule), entry
+  advertisement highest (from LFPSPlus) vs next-highest (from
+  training timeouts).
+* **M3c — rate plumbing**: LTSSM `rate_select/rate_request/rate_done`
+  ↔ physical-layer rate sequencer (gen2 builds own `pipe.rate`,
+  Gowin encoding 0=5G/1=10G, boots 1; a change is acked by a PIPE
+  phy_status pulse — the sim stub acks like the adapter; the ADAPTER
+  CSR hookup itself is G5 work, see below).  `Polling.SpeedSwitch`
+  (synthetic) funnels every SS fallback through the 5G switch before
+  RxEQ.
+* **M3d — fallback matrix**: 16-legacy-burst + 60 µs
+  tPollingSCDLFPSTimeout rules in Polling.LFPS [7.5.4.3],
+  64-burst-no-SCD2 + 20-non-varying rules in LFPSPlus [7.5.4.4]
+  (closes the §10q "keeps modulating" note), Gen2 training-timeout
+  loop: Active/Configuration/Idle timeouts at SSP → PortMatch with
+  next-highest [7.5.4.8.2] (`ssp_operation` selects it — a device
+  that negotiated DOWN to 5G but did the SCD handshake still returns
+  to PortMatch, per spec).
+* Sim: `HostModem` (PWM modem + PIPE pd/rate-ack stubs) + phases
+  `lbpm`, `lbpm5g`, `fb-legacy`, `fb-noscd2`, `fb-timeout`; red
+  baselines recorded against the G3-less stack first (logs
+  `/tmp/kilo/red_gen2_*.log`): lbpm* red = "no LBPM from device";
+  fb-legacy red = "keeps modulating [7.0, 13.5, ...]"; fb-noscd2 red
+  = SCD2 forever; fb-timeout red = no PortMatch.  Sim-only knobs
+  `polling_timeout_scale` + `tseq_burst_length` threaded through
+  `USBSuperSpeedDevice`; the link layer now receives
+  ``ss_clock_frequency=sync_frequency`` (identical at 125 MHz,
+  correct timers at 156.25).
+* Gate G3 evidence: battery 43/43 from a settled tree; pytest
+  104/104; luna-multiep rebuild payload-identical to the resident
+  POR-66_011 image (4 timestamp bytes only).
+
+### Phase 4 (gate G4, sim side) — the framing delta table executed
+
+New file `physical/gen2.py` (stage A per doc/gen2_design.md §1/§2):
+
+* **Gen2BlockTransmitter**: block scheduler — TSEQ (SYNC every
+  16384), TS1/TS2 (SYNC every 32; burst_complete every 16, the
+  cadence the LTSSM already expects; Gen2 TSEQ count = 8× Gen1 =
+  524,288, scaled by the sim knob), single SDS on idle-mode entry
+  [7.5.4.10], SKP OS every 40 blocks [6.4.3.3] as whole 24-symbol
+  blocks (the PHY splices the LFSR), data blocks from the TX bridge.
+* **Gen2TxBridge** (32→64): captures whole packets from the arbiter
+  stream (first-marker delimited; whole-packet buffering keeps DPPs
+  wire-contiguous at the 2× beat rate), maps Gen1 K-framing to the
+  Table 6-2 symbols at enqueue, patches DATA-type headers to
+  DPHSTART framing and inserts the 2-byte length replica (device
+  never emits deferred DPHs), pads packet tails with Gen2 Idle
+  Symbols.  Dev-time catch: Gen1's unaligned-DPP tail words carry
+  post-EPF 00h IDL filler — those must map to 5Ah on the Gen2 wire
+  (the host parser flagged raw 00h symbols).
+* **Gen2BlockReceiver**: control-block classification (TS1/TS2/TSEQ
+  8/8/32-consecutive with symbol-14/15 exclusion and SYNC
+  transparency [7.5.4.8.2], TS2 config bits, SDS→data_mode) + the
+  byte-granular grammar engine (4 symbols/cycle) translating data
+  blocks back to the Gen1 K-dialect: HPSTART/DPHSTART/DPPSTART/
+  LCSTART recognition at ANY symbol offset, DPH length-replica
+  swallow, DPP extent by DPH length field, DPPEND/DPPABORT, out-FIFO
+  word packing with idle-pad flush on construct end.  THREE dev-time
+  catches, all by unit bench + the enum phase:
+  1. SyncFIFOs elaborated in the ``sync`` domain (invisible in the
+     full-device bench where sync==ss, dead in isolation, WRONG on
+     hardware) — DomainRenamer'd to ``ss``.
+  2. mid-construct output-rate dips (the replica skip) must present
+     ``valid=0`` toward the core, NOT synthesized idle — an idle word
+     between DPH and DPP makes the Gen1 data receiver bail (this was
+     the missing-ACK-TP symptom).
+  3. whole-idle beats must be DISCARDED at the engine's load point at
+     full beat rate — enqueueing them floods the queue (8 in vs 4
+     out sym/cycle) until it silently drops a mid-packet beat (the
+     LBAD-on-second-SETUP symptom).  Payload beats that HAPPEN to be
+     all-5A are protected by the state gate.
+* **Dual-rate muxing** (`physical/layer.py`): at rate_r==1 the Gen2
+  block path owns the PIPE TX/RX and the Gen1 scrambler/CTC/aligner
+  chain is starved; at rate_r==0 the original Gen1 chain elaborates
+  its historical statements verbatim.  Link layer muxes the TS
+  detect/emit/burst_complete surfaces by `operating_gen2`.
+* **Link-layer SSP trims** (`transmitter.py`/`receiver.py`,
+  elaboration-gated `gen2=`, runtime-selected `gen2_active`): the
+  4-bit sequence number's top bit rides in the LCW's SS-reserved bit
+  = `dw3_reserved[0]` — so the DW3 packing and CRC-5 paths carry it
+  with ZERO shared-code changes; modulo-16/modulo-8 by mask mux;
+  LCRD1/LCRD2 split per Table 7-4 **Gen 2x1 trim: the series select
+  is subtype b2** (b3 is reserved — the session-11d host scaffolding
+  had guessed b3; fixed); TX: dual pools, DATA-type headers draw
+  Type 2; RX: shared 4-buffer pool split 2+2 with per-class credit
+  queues, independent A-D indices, rate-aware link-up recompute and
+  per-class rule-2d re-advertisement.  Stage-B note: 4+4 pools want
+  8 physical buffers.
+* **Enum surface**: bcdUSB 0310 in the sim descriptors; sim phases:
+  `enum` = advertisement (device: LGOOD_15 + LCRD1_A,B + LCRD2_A,B —
+  asserted exactly), link-up LMP ack, SET_ADDRESS, GetDescriptor
+  (device descriptor read over Gen2 framing: DPHSTART + replica
+  validated, CRC-32 checked, bcdUSB 0310 asserted); `echo` = 64-byte
+  bulk OUT+IN loopback through EP1, payload exact.  Negative control
+  `NEG=nolcrd2` (battery entry `gen2-neg-nolcrd2`): withholding host
+  Type-2 credits must starve the descriptor DP while ACK TPs still
+  flow — proves the pool gating (the "red-equivalent" for the P4.6
+  checks; NOTE: the strict extend-host-checks-first-then-port order
+  was compressed here — device and checks landed in one edit batch;
+  the negative control + the 11d scaffolding red stand as evidence).
+* Battery: `gen2-train` CONSCIOUSLY FLIPPED to expect-green (its
+  negotiate-first red re-recorded: "0 TSEQ + 0 block-format TS1");
+  new expect-green entries `gen2-enum`, `gen2-echo`,
+  `gen2-neg-nolcrd2`.  47 PASS lines total expected.
+
+### Parked / next-session (G5) — NOT DONE here, in priority order
+
+1. **Adapter rate handshake on silicon** (M3c hardware half): wire
+   `GowinGTR12PIPE` for gen2 builds — consume `self.rate` into the
+   CSR sequencer (rate_change_table both directions), ack with a
+   phy_status pulse, reuse the #22 boot-window discipline.  The
+   boot_rate_switch (Gen1 ships 10G→5G pre-MAC) must become the
+   LTSSM-driven path when `gen2=True`.
+2. **Gen2 hardware top**: no example builds `gen2=True` yet.  Start
+   luna-enum-sized (add the SSP BOS device capability LSE=3/LSM=10
+   LP=1 and bcdUSB 0310 to its descriptors).  **Gen2 gate: 156.25
+   operating MET** before any flash.
+3. **Sublink Speed Device Notification TP** on Address-state entry
+   [8.5.6.7] — not implemented; real xHCI behavior without it is
+   unverified.  Small protocol-layer TP source, gen2_active-gated.
+4. TX beat pacing for the real PHY: the gw_usb3 TX path has a
+   32-deep FIFO + `TxFifoWrNum` (vendor MACs throttle on it); the
+   sim bench is always-ready.  Expose it through the adapter or pace
+   1-gap-in-33 beats.  Also: `LTSSM_is_Training` is tied 0 in the
+   adapter — the PHY's Gen2 descrambler consumes it; wire it to the
+   LTSSM training states for hardware.
+5. BurstEventCapture port to Gen2 framing (the G4 gate text asks for
+   it NOW; not done — do it before believing any Gen2 bench numbers,
+   it is how #34 fell).
+6. RX queue sizing verdict: `Gen2BlockReceiver.queue_level` +
+   `packets_buffered` debug taps exist; calibrate on the Phase-5
+   throughput traces (design note §9.4).
+7. All §10n/§10q parked items carry (incl. #37, SKP x=4 knob when
+   word_alignment opens, forced-recovery bench verdict).
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (dual-rate Gen1+Gen2).

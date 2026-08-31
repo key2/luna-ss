@@ -206,28 +206,87 @@ class USB3LinkLayer(Elaboratable):
             ltssm.lfps_polling_detected          .eq(physical_layer.lfps_polling_detected),
             physical_layer.send_lfps_polling     .eq(ltssm.send_lfps_polling | compliance_emitter.send_lfps_polling),
             ltssm.lfps_cycles_sent               .eq(physical_layer.lfps_cycles_sent),
+        ]
 
-            # Training set detectors
-            ltssm.tseq_detected                  .eq(ts.tseq_detected),
-            ltssm.ts1_detected                   .eq(ts.ts1_detected),
-            ltssm.inverted_ts1_detected          .eq(ts.inverted_ts1_detected),
-            self.debug_ts1_detected              .eq(ts.ts1_detected),
-            self.debug_ts2_detected              .eq(ts.ts2_detected),
-            ltssm.ts2_detected                   .eq(ts.ts2_detected),
-            ltssm.hot_reset_requested            .eq(ts.hot_reset_requested),
-            ltssm.loopback_requested             .eq(ts.loopback_requested),
-            ltssm.no_scrambling_requested        .eq(ts.no_scrambling_requested),
+        if not self._gen2:
+            m.d.comb += [
+                # Training set detectors
+                ltssm.tseq_detected                  .eq(ts.tseq_detected),
+                ltssm.ts1_detected                   .eq(ts.ts1_detected),
+                ltssm.inverted_ts1_detected          .eq(ts.inverted_ts1_detected),
+                self.debug_ts1_detected              .eq(ts.ts1_detected),
+                self.debug_ts2_detected              .eq(ts.ts2_detected),
+                ltssm.ts2_detected                   .eq(ts.ts2_detected),
+                ltssm.hot_reset_requested            .eq(ts.hot_reset_requested),
+                ltssm.loopback_requested             .eq(ts.loopback_requested),
+                ltssm.no_scrambling_requested        .eq(ts.no_scrambling_requested),
 
-            # Training set emitters (registered: these are decoded from the
-            # LTSSM state, and the TS stream's valid otherwise carries the
-            # LTSSM into the transmit arbiter's idle/ready cone; bursts are
-            # millisecond-scale, so a cycle of latency is free).
-            ts.send_tseq_burst                   .eq(send_tseq_burst_r),
-            ts.send_ts1_burst                    .eq(send_ts1_burst_r),
-            ts.send_ts2_burst                    .eq(send_ts2_burst_r),
-            ts.request_hot_reset                 .eq(ltssm.request_hot_reset),
-            ts.request_no_scrambling             .eq(ltssm.request_no_scrambling),
-            ltssm.ts_burst_complete              .eq(ts.burst_complete),
+                # Training set emitters (registered: these are decoded from the
+                # LTSSM state, and the TS stream's valid otherwise carries the
+                # LTSSM into the transmit arbiter's idle/ready cone; bursts are
+                # millisecond-scale, so a cycle of latency is free).
+                ts.send_tseq_burst                   .eq(send_tseq_burst_r),
+                ts.send_ts1_burst                    .eq(send_ts1_burst_r),
+                ts.send_ts2_burst                    .eq(send_ts2_burst_r),
+                ts.request_hot_reset                 .eq(ltssm.request_hot_reset),
+                ts.request_no_scrambling             .eq(ltssm.request_no_scrambling),
+                ltssm.ts_burst_complete              .eq(ts.burst_complete),
+            ]
+        else:
+            # Dual-rate ordered-set routing: at the 10G trim the Gen2
+            # block-level generators/detectors own training; the Gen1
+            # TSTransceiver is gated off (and vice versa).  Lane
+            # polarity inversion is the PHY's at Gen2.
+            op_gen2 = physical_layer.operating_gen2
+            m.d.comb += [
+                ltssm.tseq_detected.eq(Mux(
+                    op_gen2, physical_layer.gen2_tseq_detected,
+                    ts.tseq_detected)),
+                ltssm.ts1_detected.eq(Mux(
+                    op_gen2, physical_layer.gen2_ts1_detected,
+                    ts.ts1_detected)),
+                ltssm.inverted_ts1_detected
+                    .eq(ts.inverted_ts1_detected & ~op_gen2),
+                self.debug_ts1_detected.eq(ltssm.ts1_detected),
+                self.debug_ts2_detected.eq(ltssm.ts2_detected),
+                ltssm.ts2_detected.eq(Mux(
+                    op_gen2, physical_layer.gen2_ts2_detected,
+                    ts.ts2_detected)),
+                ltssm.hot_reset_requested.eq(Mux(
+                    op_gen2, physical_layer.gen2_hot_reset_requested,
+                    ts.hot_reset_requested)),
+                ltssm.loopback_requested.eq(Mux(
+                    op_gen2, physical_layer.gen2_loopback_requested,
+                    ts.loopback_requested)),
+                ltssm.no_scrambling_requested.eq(Mux(
+                    op_gen2, physical_layer.gen2_no_scrambling_requested,
+                    ts.no_scrambling_requested)),
+
+                ts.send_tseq_burst      .eq(send_tseq_burst_r & ~op_gen2),
+                ts.send_ts1_burst       .eq(send_ts1_burst_r & ~op_gen2),
+                ts.send_ts2_burst       .eq(send_ts2_burst_r & ~op_gen2),
+                ts.request_hot_reset    .eq(ltssm.request_hot_reset),
+                ts.request_no_scrambling.eq(ltssm.request_no_scrambling),
+                ltssm.ts_burst_complete.eq(Mux(
+                    op_gen2, physical_layer.gen2_burst_complete,
+                    ts.burst_complete)),
+
+                physical_layer.gen2_send_tseq_burst
+                    .eq(send_tseq_burst_r & op_gen2),
+                physical_layer.gen2_send_ts1_burst
+                    .eq(send_ts1_burst_r & op_gen2),
+                physical_layer.gen2_send_ts2_burst
+                    .eq(send_ts2_burst_r & op_gen2),
+                physical_layer.gen2_idle_mode
+                    .eq((ltssm.perform_idle_handshake | link_ready)
+                        & op_gen2),
+                physical_layer.gen2_request_hot_reset
+                    .eq(ltssm.request_hot_reset),
+                physical_layer.gen2_request_no_scrambling
+                    .eq(ltssm.request_no_scrambling),
+            ]
+
+        m.d.comb += [
 
             # Scrambling control.
             physical_layer.enable_scrambling     .eq(ltssm.enable_scrambling),
@@ -270,7 +329,11 @@ class USB3LinkLayer(Elaboratable):
             m.d.ss += u0_from_recovery.eq(ltssm.entering_u0_from_recovery)
 
         # Core transmitter.
-        m.submodules.transmitter = transmitter = PacketTransmitter()
+        m.submodules.transmitter = transmitter = PacketTransmitter(
+            ss_clock_frequency=self._clock_frequency, gen2=self._gen2)
+        if self._gen2:
+            m.d.comb += transmitter.gen2_active \
+                .eq(physical_layer.operating_gen2)
         m.d.comb += [
             transmitter.sink                .tap(physical_layer.source),
             transmitter.enable              .eq(link_ready),
@@ -290,7 +353,11 @@ class USB3LinkLayer(Elaboratable):
         # Header Packet Rx Path.
         # Receives header packets and forwards them up to the protocol layer.
         #
-        m.submodules.header_rx = header_rx = HeaderPacketReceiver()
+        m.submodules.header_rx = header_rx = HeaderPacketReceiver(
+            gen2=self._gen2)
+        if self._gen2:
+            m.d.comb += header_rx.gen2_active \
+                .eq(physical_layer.operating_gen2)
         m.d.comb += [
             header_rx.sink                   .tap(physical_layer.source),
             header_rx.enable                 .eq(link_ready),

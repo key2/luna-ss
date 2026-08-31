@@ -83,7 +83,11 @@ from gw_usb3.tables import BLOCK_CONTROL, BLOCK_DATA, BlockType
 from gen2_coding import (ScramblerModel, sync_block, tseq_block, ts1_block,
                          ts2_block, sds_block, idle_block, skp_block,
                          pack_symbol_stream, link_command_syms,
-                         header_packet_syms, beats_to_syms)
+                         header_packet_syms, dpp_syms, beats_to_syms,
+                         HPSTART, DPHSTART, DPPSTART, DPPEND, DPPABORT,
+                         LCSTART, IDL as G2_IDL, SHP as G2_SHP,
+                         DPHP as G2_DPHP, SDP as G2_SDP, END as G2_END,
+                         EDB as G2_EDB, SLC as G2_SLC, EPF as G2_EPF)
 
 PHASE = os.environ.get("PHASE", "train")
 VERBOSE = int(os.environ.get("VERBOSE", "0"))
@@ -92,6 +96,10 @@ VERBOSE = int(os.environ.get("VERBOSE", "0"))
 # and the TSEQ burst length (same idiom as the Gen1 training sims).
 TSEQ_LEN = int(os.environ.get("TSEQ_LEN", "65536"))
 TSCALE = float(os.environ.get("TSCALE", "1"))
+# Negative-control knob (evidence that the conformance checks bite):
+# NEG=nolcrd2 withholds the host's Type-2 credits -- a device with a
+# REAL LCRD1/LCRD2 split must then never transmit its descriptor DP.
+NEG = os.environ.get("NEG", "")
 
 # ss clock: 156.25 MHz (the Gen2 operating point)
 CLK = 156.25e6
@@ -110,6 +118,8 @@ SCD2 = (1, 0, 1, 1)              # '1101' wire (LSb-first) order
 def create_descriptors():
     d = SuperSpeedDeviceDescriptorCollection()
     with d.DeviceDescriptor() as dd:
+        # SuperSpeedPlus: bcdUSB 0310h [9.6.1].
+        dd.bcdUSB = 3.10
         dd.idVendor = 0x1209
         dd.idProduct = 0x0001
         dd.iManufacturer = "luna-ss"
@@ -164,6 +174,22 @@ class Bench(Elaboratable):
         usb = USBSuperSpeedDevice(phy=self.pipe, sync_frequency=CLK,
                                   gen2=True, **kwargs)
         usb.add_standard_control_endpoint(create_descriptors())
+
+        if PHASE == "echo":
+            # Loopback endpoint pair on EP1 (the small bulk echo of the
+            # ``gen2-echo`` battery entry).
+            from luna.gateware.usb.usb3.endpoints.stream import \
+                SuperSpeedStreamInEndpoint
+            from luna.gateware.usb.usb3.endpoints.ss_stream_out import \
+                SuperSpeedStreamOutEndpoint
+            out_ep = SuperSpeedStreamOutEndpoint(
+                endpoint_number=1, max_packet_size=1024)
+            in_ep = SuperSpeedStreamInEndpoint(
+                endpoint_number=1, max_packet_size=1024)
+            usb.add_endpoint(out_ep)
+            usb.add_endpoint(in_ep)
+            m.d.comb += in_ep.stream.stream_eq(out_ep.stream)
+
         m.submodules.usb = self.usb = usb
 
         # host->device: RTL descrambler output feeds the PIPE RX
@@ -326,10 +352,12 @@ class HostModem:
 
     def __init__(self, ctx, bench):
         self.ctx = ctx
+        self.bench = bench
         self.pipe = bench.pipe
         self.cyc = 0
         self.pulses = []          # (start_cyc, length_cycles)
         self.rate_changes = []    # (cyc, new_value)
+        self.notes = []           # protocol-level debug strobes
         self._act_prev = False
         self._act_start = 0
         self._pd_prev = 0
@@ -338,6 +366,18 @@ class HostModem:
 
     def _observe(self):
         ctx, pipe = self.ctx, self.pipe
+        usb = getattr(self.bench, "usb", None)
+        if usb is not None:
+            if ctx.get(usb.debug_rx_dpp_invalid):
+                self.notes.append(("dpp_invalid", self.cyc))
+            if ctx.get(usb.debug_rx_hdr_stb):
+                self.notes.append(("hdr_to_protocol",
+                                   ctx.get(usb.debug_rx_hdr_type), self.cyc))
+            if VERBOSE and ctx.get(usb.rx_data_tap.valid):
+                d = ctx.get(usb.rx_data_tap.data)
+                c = ctx.get(usb.rx_data_tap.ctrl)
+                if d or c:
+                    self.notes.append(("rxw", f"{d:08x}/{c:x}", self.cyc))
         pd = ctx.get(pipe.power_down)
         if pd != self._pd_prev:
             self._ack_at = self.cyc + 4
@@ -684,7 +724,7 @@ class HostRx:
         return n
 
 
-async def feed_blocks(ctx, bench, model_tx, blocks, rx=None):
+async def feed_blocks(ctx, bench, model_tx, blocks, rx=None, hm=None):
     """Scramble blocks with the python model and push them through the
     RTL descrambler into the DUT, one beat per cycle."""
     descr = bench.host_descr
@@ -698,19 +738,38 @@ async def feed_blocks(ctx, bench, model_tx, blocks, rx=None):
             await ctx.tick("ss")
             if rx:
                 rx.sample(ctx)
+            if hm:
+                hm.cyc += 1
+                hm._observe()
     ctx.set(descr.data_in_valid, 0)
+
+
+IDLE_SYM = int(BlockType.LIS)          # Gen2 Idle Symbol, 5Ah [7.1.2]
 
 
 async def phase_train(ctx, bench, continue_to_enum=False):
     pipe = bench.pipe
     await bringup(ctx, pipe)
+    hm = HostModem(ctx, bench)
 
-    # skip LFPS negotiation: pretend PortConfig completed at Gen2 —
-    # signal presence, then stream training blocks.
+    # Negotiate SuperSpeedPlus first (the proven G3 machinery): SCD1 +
+    # SCD2, then PortMatch/PortConfig at the 10G outcome.
+    ok, diag = await hm.scd_exchange(scd2_reps=16)
+    if not ok:
+        print(f"TRAIN FAIL: SCD stage: {diag}")
+        return False
+    ok, _ = await lbpm_negotiate(ctx, bench, hm, "TRAIN",
+                                 LBPM_CAP_GEN2X1, count=8)
+    if not ok:
+        print("TRAIN FAIL: LBPM negotiation did not reach Polling.RxEQ")
+        return False
+    if hm.rate_changes or ctx.get(pipe.rate) != 1:
+        print(f"TRAIN FAIL: pipe.rate left the 10G trim: {hm.rate_changes}")
+        return False
+    print("TRAIN: 10G negotiated; streaming training blocks")
+
     ctx.set(pipe.rx_elec_idle, 0)
     ctx.set(pipe.rx_valid, 1)
-    # (pipe.rate is MAC-driven; at Gen2 the LTSSM will own the rate
-    # select -- nothing to force from the host side here.)
 
     model_tx = ScramblerModel()
     rx = HostRx(bench)
@@ -718,36 +777,40 @@ async def phase_train(ctx, bench, continue_to_enum=False):
     # Polling.RxEQ/Active shape (shortened): SYNC + TSEQ burst, then
     # TS1 bursts with SYNC every 32 [6.4.1.2.1].
     await feed_blocks(ctx, bench, model_tx, [sync_block()] +
-                      [tseq_block()] * 64, rx)
-    for _ in range(8):
+                      [tseq_block()] * 64, rx, hm)
+    for _ in range(12):
         await feed_blocks(ctx, bench, model_tx,
-                          [sync_block()] + [ts1_block()] * 32, rx)
+                          [sync_block()] + [ts1_block()] * 32, rx, hm)
         if rx.block_count(BLOCK_CONTROL, int(BlockType.TS1)) >= 8:
             break
 
     n_ts1 = rx.block_count(BLOCK_CONTROL, int(BlockType.TS1))
-    print(f"TRAIN: device emitted {n_ts1} block-format TS1 ordered sets "
-          f"({len(rx.blocks)} blocks total from device TX)")
+    n_tseq = rx.block_count(BLOCK_CONTROL, int(BlockType.TSEQ))
+    print(f"TRAIN: device emitted {n_tseq} TSEQ + {n_ts1} block-format "
+          f"TS1 ordered sets ({len(rx.blocks)} blocks total)")
     if n_ts1 < 8:
         print("TRAIN FAIL: no Gen2 TS1 blocks from device "
               "(Gen1-only physical/link framing)")
         return False
 
     # TS2 handshake
-    for _ in range(4):
+    for _ in range(6):
         await feed_blocks(ctx, bench, model_tx,
-                          [sync_block()] + [ts2_block()] * 16, rx)
+                          [sync_block()] + [ts2_block()] * 16, rx, hm)
+        if rx.block_count(BLOCK_CONTROL, int(BlockType.TS2)) >= 8:
+            break
     n_ts2 = rx.block_count(BLOCK_CONTROL, int(BlockType.TS2))
     if n_ts2 < 8:
         print(f"TRAIN FAIL: only {n_ts2} TS2 blocks from device")
         return False
 
-    # SDS -> Idle
+    # SDS -> Idle [7.5.4.10]: a single SDS, then data blocks carrying
+    # Idle Symbols (5Ah at Gen2!).
     await feed_blocks(ctx, bench, model_tx,
-                      [sds_block()] + [idle_block()] * 24, rx)
+                      [sds_block()] + [idle_block()] * 48, rx, hm)
     got_sds = any(h == BLOCK_CONTROL and s[0] == 0xE1
                   for h, s in rx.blocks)
-    got_idle = any(h == BLOCK_DATA and all(x == 0 for x in s)
+    got_idle = any(h == BLOCK_DATA and all(x == IDLE_SYM for x in s)
                    for h, s in rx.blocks)
     if not (got_sds and got_idle):
         print(f"TRAIN FAIL: SDS={got_sds} idle={got_idle} from device")
@@ -756,26 +819,400 @@ async def phase_train(ctx, bench, continue_to_enum=False):
 
     if not continue_to_enum:
         return True
+    return await run_enum(ctx, bench, hm, rx, model_tx,
+                          echo=(PHASE == "echo"))
 
-    # ---- enum: advertisement + GetDescriptor(Device) ----
-    # header seq advertisement LGOOD_15 (=our seq-1 with expected 0),
-    # then LCRD1_A..D and LCRD2_A..D [7.2.4.1.x].
-    syms = link_command_syms(0b0000, 15)                  # LGOOD_15
+
+class Gen2LinkHost:
+    """Symbol-level Gen2 link partner: parses the device's data-block
+    symbol stream (through HostRx) into link commands, header packets
+    (validating the DPHSTART length replica) and DPPs, and builds the
+    host's transmissions."""
+
+    def __init__(self, ctx, bench, hm, rx, model_tx, tag="ENUM"):
+        self.ctx, self.bench, self.hm = ctx, bench, hm
+        self.rx, self.model_tx = rx, model_tx
+        self.tag = tag
+        self.events = []          # ('lc',cmd,sub) ('hdr',dws,seq,kind)
+                                  # ('dpp',bytes,crc_ok)
+        self._cursor = 0          # rx.blocks consumed
+        self._syms = []           # pending symbol stream
+        self._state = 'search'
+        self._need = 0
+        self._buf = []
+        self._kind = None
+        self._dpp_len = 0
+        self.tx_seq = 0           # host header sequence (mod 16)
+        self.errors = []
+
+    # ── device -> host parsing ───────────────────────────────────────
+    def pump(self):
+        blocks = self.rx.blocks
+        while self._cursor < len(blocks):
+            h, syms = blocks[self._cursor]
+            self._cursor += 1
+            if h == BLOCK_DATA:
+                self._syms += syms
+        self._walk()
+
+    def _walk(self):
+        s = self._syms
+        i = 0
+        n = len(s)
+        while True:
+            if self._state == 'search':
+                while i < n and s[i] == G2_IDL:
+                    i += 1
+                if i >= n:
+                    break
+                if n - i < 4:
+                    break
+                frame = tuple(s[i:i + 4])
+                if frame == HPSTART:
+                    self._state, self._need = 'hdr', 20 - 4
+                    self._kind = 'hp'
+                elif frame == DPHSTART:
+                    self._state, self._need = 'hdr', 22 - 4
+                    self._kind = 'dph'
+                elif frame == DPPSTART:
+                    self._state = 'dpp'
+                    self._need = self._dpp_len + 4 + 4  # payload+crc+end
+                elif frame == LCSTART:
+                    self._state, self._need = 'lc', 4
+                else:
+                    self.errors.append(
+                        f"unparseable symbols at cursor: "
+                        f"{[hex(x) for x in s[i:i+8]]}")
+                    i += 1
+                    continue
+                i += 4
+            else:
+                if n - i < self._need:
+                    break
+                body = s[i:i + self._need]
+                i += self._need
+                self._finish(body)
+                self._state = 'search'
+        self._syms = s[i:]
+
+    def _finish(self, body):
+        from sim_link_loopback import crc16_header, crc32_payload
+        if self._state == 'lc':
+            w = body[0] | (body[1] << 8)
+            w2 = body[2] | (body[3] << 8)
+            if w != w2:
+                self.errors.append(f"LC replica mismatch {w:04x}/{w2:04x}")
+            self.events.append(('lc', (w >> 7) & 0xF, w & 0xF))
+        elif self._state == 'hdr':
+            dws = [int.from_bytes(bytes(body[4 * k:4 * k + 4]), "little")
+                   for k in range(3)]
+            crc16 = body[12] | (body[13] << 8)
+            lcw = body[14] | (body[15] << 8)
+            seq = lcw & 0xF
+            if crc16 != crc16_header(dws):
+                self.errors.append(f"header CRC-16 bad (dw0={dws[0]:08x})")
+            if self._kind == 'dph':
+                replica = body[16] | (body[17] << 8)
+                length = (dws[1] >> 16) & 0xFFFF
+                if replica != length:
+                    self.errors.append(
+                        f"DPH length replica {replica} != length {length}")
+                self._dpp_len = length
+            elif (dws[0] & 0x1F) == 8:
+                # SHP-framed (deferred-style) DPH: still sets the length.
+                self._dpp_len = (dws[1] >> 16) & 0xFFFF
+            self.events.append(('hdr', dws, seq, self._kind))
+        elif self._state == 'dpp':
+            payload = bytes(body[:self._dpp_len])
+            crc = int.from_bytes(bytes(body[self._dpp_len:
+                                            self._dpp_len + 4]), "little")
+            end = tuple(body[self._dpp_len + 4:])
+            crc_ok = crc == crc32_payload(payload)
+            if end != DPPEND and end != DPPABORT:
+                self.errors.append(f"bad DPP end framing {end}")
+            self.events.append(('dpp', payload, crc_ok))
+
+    # ── host -> device transmission ──────────────────────────────────
+    async def send_syms(self, syms):
+        await feed_blocks(self.ctx, self.bench, self.model_tx,
+                          pack_symbol_stream(syms), self.rx, self.hm)
+
+    async def send_lc(self, cmd, sub):
+        await self.send_syms(link_command_syms(cmd, sub))
+
+    async def send_frame(self, frame):
+        """Send a Gen1-host-model frame dict as Gen2 constructs."""
+        is_dp = frame["payload"] is not None
+        syms = header_packet_syms(frame["dw0"], frame["dw1"], frame["dw2"],
+                                  self.tx_seq,
+                                  start=DPHSTART if is_dp else HPSTART)
+        if is_dp:
+            syms += dpp_syms(frame["payload"])
+        self.tx_seq = (self.tx_seq + 1) & 0xF
+        await self.send_syms(syms)
+
+    async def expect(self, what, pred, timeout_blocks=4000, quiet=False):
+        """Feed idle until an un-consumed event satisfies ``pred``."""
+        waited = 0
+        while True:
+            self.pump()
+            for i, ev in enumerate(self.events):
+                if pred(ev):
+                    del self.events[i]
+                    return ev
+            if waited >= timeout_blocks:
+                if not quiet:
+                    print(f"{self.tag} FAIL: timed out waiting for {what}; "
+                          f"events={self.events[-8:]} "
+                          f"errors={self.errors[:4]} "
+                          f"notes={self.hm.notes[-10:]}")
+                return None
+            await feed_blocks(self.ctx, self.bench, self.model_tx,
+                              [idle_block()] * 8, self.rx, self.hm)
+            waited += 8
+
+
+async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
+    """Advertisement + SET_ADDRESS + GetDescriptor(Device) over Gen2
+    framing: the modulo-16 / LCRD1+LCRD2 conformance surface; with
+    ``echo``, a small bulk loopback through EP1 follows."""
+    from sim_link_loopback import (frame_ack_tp, frame_out_dp,
+                                   frame_status_tp)
+    host = Gen2LinkHost(ctx, bench, hm, rx, model_tx)
+
+    # ── the device's Header Sequence Number Advertisement: LGOOD_15
+    # (modulo-16!), then the split 2+2 credit advertisement ──
+    ev = await host.expect("LGOOD advertisement",
+                           lambda e: e[0] == 'lc' and e[1] == 0b0000)
+    if ev is None:
+        return False
+    if ev[2] != 15:
+        print(f"ENUM FAIL: advertisement LGOOD_{ev[2]}; a SuperSpeedPlus "
+              f"port must advertise modulo-16 (LGOOD_15) [7.2.4.1.x]")
+        return False
+    print("ENUM: device advertised LGOOD_15 (modulo-16)")
+
+    credits = []
+    for _ in range(4):
+        ev = await host.expect("credit advertisement",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+        if ev is None:
+            return False
+        credits.append(ev[2])
+    lcrd1 = sorted(c & 0x3 for c in credits if not (c & 0x4))
+    lcrd2 = sorted(c & 0x3 for c in credits if c & 0x4)
+    print(f"ENUM: device credit advertisement LCRD1={lcrd1} LCRD2={lcrd2}")
+    if lcrd1 != [0, 1] or lcrd2 != [0, 1]:
+        print("ENUM FAIL: expected the split 2+2 advertisement "
+              "(LCRD1_A,B + LCRD2_A,B) [Table 7-4 / 7.2.4.1.x]")
+        return False
+
+    # ── host advertisement: LGOOD_15 + 4 Type-1 + 4 Type-2 credits ──
+    syms = link_command_syms(0b0000, 15)
     for i in range(4):
         syms += link_command_syms(0b0001, i)              # LCRD1_x
-    for i in range(4):
-        syms += link_command_syms(0b0001, 0b1000 | i)     # LCRD2_x (b3 set)
-    await feed_blocks(ctx, bench, model_tx, pack_symbol_stream(syms), rx)
+    if NEG != "nolcrd2":
+        for i in range(4):
+            syms += link_command_syms(0b0001, 0b0100 | i) # LCRD2_x
+    await host.send_syms(syms)
 
-    # SETUP DPH+DPP: GetDescriptor(DEVICE, 8 bytes) to addr 0 ep 0
-    setup = bytes([0x80, 0x06, 0x00, 0x01, 0x00, 0x00, 0x08, 0x00])
-    from sim_link_loopback import crc32_payload
-    dw0 = 0x08 | (0 << 25)          # type=DPH... (see Gen1 host model)
-    # NOTE: exact DW packing is filled in when the Phase-4 device work
-    # lands; the enum phase cannot get past training against the
-    # unmodified stack, so this is scaffolding kept minimal on purpose.
-    print("ENUM FAIL: not implemented past training (Phase-4 scaffolding)")
-    return False
+    dev_seq = 0
+    ret_idx = {1: 0, 2: 0}    # host's per-class credit-return indices
+
+    async def return_credit(series):
+        sub = (0b0100 if series == 2 else 0) | ret_idx[series]
+        ret_idx[series] = (ret_idx[series] + 1) & 3
+        await host.send_lc(0b0001, sub)
+
+    # The device leads with its link-up LMPs (Port Capability); ack
+    # them (Type 1) so the sequence bookkeeping stays aligned.
+    while True:
+        ev = await host.expect("link-up LMP",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 0,
+                               timeout_blocks=400, quiet=True)
+        if ev is None:
+            break
+        if ev[2] != dev_seq:
+            print(f"ENUM FAIL: LMP seq {ev[2]}, expected {dev_seq}")
+            return False
+        dev_seq = (dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        sub = ret_idx[1]
+        ret_idx[1] = (ret_idx[1] + 1) & 3
+        await host.send_lc(0b0001, sub)
+        print(f"ENUM: acked link-up LMP (dw0={ev[1][0]:08x})")
+
+    async def expect_lgood(n):
+        ev = await host.expect(f"LGOOD_{n}",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None:
+            return False
+        if ev[2] != n:
+            print(f"ENUM FAIL: expected LGOOD_{n}, got LGOOD_{ev[2]}")
+            return False
+        return True
+
+    async def expect_lcrd(series):
+        ev = await host.expect(f"LCRD{series}",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+        if ev is None:
+            return None
+        got = 2 if ev[2] & 0x4 else 1
+        if got != series:
+            print(f"ENUM FAIL: expected an LCRD{series} return, got "
+                  f"LCRD{got}_{'ABCD'[ev[2] & 3]}")
+            return None
+        return ev[2] & 3
+
+    async def expect_ack_tp(step):
+        nonlocal dev_seq
+        ev = await host.expect(f"ACK TP ({step})",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 4)
+        if ev is None:
+            return False
+        if ev[2] != dev_seq:
+            print(f"ENUM FAIL: device header seq {ev[2]}, expected "
+                  f"{dev_seq} ({step})")
+            return False
+        dev_seq = (dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])         # LGOOD_n
+        await return_credit(1)                    # ACK TPs are Type 1
+        return True
+
+    # ── SET_ADDRESS(1): SETUP DP -> ACK TP; STATUS TP -> ACK TP ──
+    setup = bytes([0x00, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00])
+    await host.send_frame(frame_out_dp(0, 0, setup, setup=1, address=0))
+    if not await expect_lgood(0):
+        return False
+    if await expect_lcrd(2) is None:              # SETUP DP is Type 2
+        return False
+    if not await expect_ack_tp("SETUP ack"):
+        return False
+    await host.send_frame(frame_status_tp(0, address=0))
+    if not await expect_lgood(1):
+        return False
+    if await expect_lcrd(1) is None:              # STATUS TP is Type 1
+        return False
+    if not await expect_ack_tp("STATUS ack"):
+        return False
+    print("ENUM: SET_ADDRESS complete over Gen2 framing")
+
+    # ── GetDescriptor(DEVICE, 18) at address 1 ──
+    setup = bytes([0x80, 0x06, 0x00, 0x01, 0x00, 0x00, 0x12, 0x00])
+    await host.send_frame(frame_out_dp(0, 0, setup, setup=1, address=1))
+    if not await expect_lgood(2):
+        return False
+    if await expect_lcrd(2) is None:
+        return False
+    if not await expect_ack_tp("GetDescriptor SETUP ack"):
+        return False
+
+    # IN token for the data stage.
+    await host.send_frame(frame_ack_tp(ep=0, nseq=0, nump=1, direction=1))
+    if not await expect_lgood(3):
+        return False
+    if await expect_lcrd(1) is None:
+        return False
+
+    ev = await host.expect("descriptor DPH",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 8)
+    if ev is None:
+        return False
+    if ev[3] != 'dph':
+        print("ENUM FAIL: device DPH did not use DPHSTART framing with "
+              "the length replica [7.2.1.1]")
+        return False
+    if ev[2] != dev_seq:
+        print(f"ENUM FAIL: descriptor DPH seq {ev[2]}, expected {dev_seq}")
+        return False
+    dev_seq = (dev_seq + 1) & 0xF
+    ev_dpp = await host.expect("descriptor DPP",
+                               lambda e: e[0] == 'dpp')
+    if ev_dpp is None:
+        return False
+    payload, crc_ok = ev_dpp[1], ev_dpp[2]
+    print(f"ENUM: descriptor payload {payload[:8].hex()} crc_ok={crc_ok}")
+    if not crc_ok:
+        print("ENUM FAIL: descriptor DPP CRC-32 invalid")
+        return False
+    if len(payload) != 18 or payload[0] != 18 or payload[1] != 1:
+        print("ENUM FAIL: not a device descriptor")
+        return False
+    if payload[2] != 0x10 or payload[3] != 0x03:
+        print(f"ENUM FAIL: bcdUSB {payload[3]:02x}{payload[2]:02x}, "
+              f"expected 0310 (SuperSpeedPlus)")
+        return False
+    await host.send_lc(0b0000, (dev_seq - 1) & 0xF)   # LGOOD for the DPH
+    await return_credit(2)                            # DPs are Type 2
+
+    # STATUS stage.
+    await host.send_frame(frame_status_tp(0, address=1))
+    if not await expect_lgood(4):
+        return False
+    if await expect_lcrd(1) is None:
+        return False
+    if not await expect_ack_tp("GetDescriptor STATUS ack"):
+        return False
+
+    if host.errors:
+        print(f"ENUM FAIL: parser errors: {host.errors[:6]}")
+        return False
+    print("ENUM: modulo-16 sequence numbers, LCRD1/LCRD2 credit classes, "
+          "DPH length replica, bcdUSB 0310 -- all verified at Gen2")
+
+    if not echo:
+        return True
+
+    # ── small bulk echo through EP1 (Gen2 framing end to end) ──
+    host.tag = "ECHO"
+    payload = bytes((17 * i + 3) & 0xFF for i in range(64))
+    await host.send_frame(frame_out_dp(1, 0, payload, address=1))
+    if not await expect_lgood(5):
+        return False
+    if await expect_lcrd(2) is None:
+        return False
+    ev = await host.expect("OUT ACK TP",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 4)
+    if ev is None:
+        return False
+    dev_seq = (dev_seq + 1) & 0xF
+    await host.send_lc(0b0000, ev[2])
+    await return_credit(1)
+
+    # IN token: the device echoes the payload back.
+    await host.send_frame(frame_ack_tp(ep=1, nseq=0, nump=1, direction=1))
+    if not await expect_lgood(6):
+        return False
+    if await expect_lcrd(1) is None:
+        return False
+    ev = await host.expect("echo DPH",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 8)
+    if ev is None:
+        return False
+    if ev[3] != 'dph':
+        print("ECHO FAIL: echoed DPH lacks DPHSTART framing")
+        return False
+    ev_dpp = await host.expect("echo DPP", lambda e: e[0] == 'dpp')
+    if ev_dpp is None:
+        return False
+    if not ev_dpp[2]:
+        print("ECHO FAIL: echoed DPP CRC-32 invalid")
+        return False
+    if ev_dpp[1] != payload:
+        print(f"ECHO FAIL: payload mismatch "
+              f"({ev_dpp[1][:8].hex()} != {payload[:8].hex()})")
+        return False
+    if host.errors:
+        print(f"ECHO FAIL: parser errors: {host.errors[:6]}")
+        return False
+    print(f"ECHO: {len(payload)} bytes OUT and IN through Gen2 framing, "
+          f"sha-exact, CRC-32 valid")
+    return True
 
 
 async def watchdogged(ctx, coro, cycles):
@@ -805,7 +1242,7 @@ def main():
             result["ok"] = await phase_fb_timeout(ctx, bench)
         elif PHASE == "train":
             result["ok"] = await phase_train(ctx, bench)
-        elif PHASE == "enum":
+        elif PHASE in ("enum", "echo"):
             result["ok"] = await phase_train(ctx, bench,
                                              continue_to_enum=True)
         else:

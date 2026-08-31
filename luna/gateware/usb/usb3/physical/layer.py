@@ -35,9 +35,11 @@ class USB3PhysicalLayer(Elaboratable):
         When asserted, scrambling/descrambling will be enabled.
     """
 
-    def __init__(self, *, phy, sync_frequency, scd_pattern=None, gen2=False):
+    def __init__(self, *, phy, sync_frequency, scd_pattern=None, gen2=False,
+                 gen2_tseq_count=524288):
         self._scd_pattern = scd_pattern
         self._gen2 = gen2
+        self._gen2_tseq_count = gen2_tseq_count
         self._phy = phy
         self._sync_frequency = sync_frequency
 
@@ -101,6 +103,25 @@ class USB3PhysicalLayer(Elaboratable):
         self.rate_select                = Signal()
         self.rate_request               = Signal()
         self.rate_done                  = Signal()
+        # Currently applied PHY rate (gen2 builds; selects the Gen1 vs
+        # Gen2 datapath muxing here and the OS routing in the link
+        # layer).
+        self.operating_gen2             = Signal()
+
+        # Gen2 block-level ordered-set surface (gen2 builds only).
+        self.gen2_send_tseq_burst       = Signal()
+        self.gen2_send_ts1_burst        = Signal()
+        self.gen2_send_ts2_burst        = Signal()
+        self.gen2_idle_mode             = Signal()
+        self.gen2_request_hot_reset     = Signal()
+        self.gen2_request_no_scrambling = Signal()
+        self.gen2_burst_complete        = Signal()
+        self.gen2_tseq_detected         = Signal()
+        self.gen2_ts1_detected          = Signal()
+        self.gen2_ts2_detected          = Signal()
+        self.gen2_hot_reset_requested   = Signal()
+        self.gen2_loopback_requested    = Signal()
+        self.gen2_no_scrambling_requested = Signal()
 
         # SKP insertion control.
         self.can_send_skp               = Signal()
@@ -146,6 +167,7 @@ class USB3PhysicalLayer(Elaboratable):
             # from Polling states, where power_down is stable at P0.
             rate_r = Signal(init=1)
             phy_rate_drive = rate_r
+            m.d.comb += self.operating_gen2.eq(rate_r)
 
             with m.FSM(domain="ss", name="rate_fsm"):
 
@@ -255,16 +277,71 @@ class USB3PhysicalLayer(Elaboratable):
         # emits when idle) for the bubble instead: it scrambles to the
         # idle sequence the partner expects between packets.
         m.submodules.scrambler = scrambler = Scrambler(initial_value=0xffff)
-        m.d.comb += [
-            scrambler.enable      .eq(enable_scrambling),
-            scrambler.sink        .stream_eq(tx_skid.source,
-                                             omit={'valid', 'data', 'ctrl'}),
-            scrambler.sink.valid  .eq(1),
-            scrambler.sink.data   .eq(Mux(tx_skid.source.valid,
-                                          tx_skid.source.data, 0)),
-            scrambler.sink.ctrl   .eq(Mux(tx_skid.source.valid,
-                                          tx_skid.source.ctrl, 0)),
-        ]
+
+        if self._gen2:
+            # Dual-rate TX front: at the 10G trim the link layer's
+            # stream feeds the Gen2 block transmitter instead of the
+            # Gen1 scrambler/CTC chain (the PHY owns Gen2 scrambling).
+            from .gen2 import Gen2BlockTransmitter, Gen2BlockReceiver
+            m.submodules.gen2_tx = gen2_tx = Gen2BlockTransmitter(
+                tseq_count=self._gen2_tseq_count)
+            m.submodules.gen2_rx = gen2_rx = Gen2BlockReceiver()
+
+            m.d.comb += [
+                gen2_tx.send_tseq_burst .eq(self.gen2_send_tseq_burst),
+                gen2_tx.send_ts1_burst  .eq(self.gen2_send_ts1_burst),
+                gen2_tx.send_ts2_burst  .eq(self.gen2_send_ts2_burst),
+                gen2_tx.idle_mode       .eq(self.gen2_idle_mode),
+                gen2_tx.request_hot_reset
+                    .eq(self.gen2_request_hot_reset),
+                gen2_tx.request_no_scrambling
+                    .eq(self.gen2_request_no_scrambling),
+                self.gen2_burst_complete.eq(gen2_tx.burst_complete),
+
+                gen2_rx.rx_data  .eq(phy.rx_data),
+                gen2_rx.rx_head  .eq(phy.rx_sync_header),
+                gen2_rx.rx_start .eq(phy.rx_start_block),
+                gen2_rx.rx_valid .eq(phy.rx_datavalid),
+                self.gen2_tseq_detected .eq(gen2_rx.tseq_detected),
+                self.gen2_ts1_detected  .eq(gen2_rx.ts1_detected),
+                self.gen2_ts2_detected  .eq(gen2_rx.ts2_detected),
+                self.gen2_hot_reset_requested
+                    .eq(gen2_rx.hot_reset_requested),
+                self.gen2_loopback_requested
+                    .eq(gen2_rx.loopback_requested),
+                self.gen2_no_scrambling_requested
+                    .eq(gen2_rx.no_scrambling_requested),
+            ]
+
+            with m.If(rate_r):
+                m.d.comb += [
+                    gen2_tx.sink          .stream_eq(tx_skid.source),
+                    # Keep the (unused) Gen1 scrambler fed with idle.
+                    scrambler.enable      .eq(0),
+                    scrambler.sink.valid  .eq(1),
+                ]
+            with m.Else():
+                m.d.comb += [
+                    scrambler.enable      .eq(enable_scrambling),
+                    scrambler.sink        .stream_eq(
+                        tx_skid.source, omit={'valid', 'data', 'ctrl'}),
+                    scrambler.sink.valid  .eq(1),
+                    scrambler.sink.data   .eq(Mux(tx_skid.source.valid,
+                                                  tx_skid.source.data, 0)),
+                    scrambler.sink.ctrl   .eq(Mux(tx_skid.source.valid,
+                                                  tx_skid.source.ctrl, 0)),
+                ]
+        else:
+            m.d.comb += [
+                scrambler.enable      .eq(enable_scrambling),
+                scrambler.sink        .stream_eq(tx_skid.source,
+                                                 omit={'valid', 'data', 'ctrl'}),
+                scrambler.sink.valid  .eq(1),
+                scrambler.sink.data   .eq(Mux(tx_skid.source.valid,
+                                              tx_skid.source.data, 0)),
+                scrambler.sink.ctrl   .eq(Mux(tx_skid.source.valid,
+                                              tx_skid.source.ctrl, 0)),
+            ]
 
         # Debug tap (prunable): the conditioned transmit stream as consumed
         # from the skid stage -- post link layer, pre scrambler/SKP, i.e.
@@ -301,12 +378,28 @@ class USB3PhysicalLayer(Elaboratable):
         m.d.ss += tx_electrical_idle.eq(self.tx_electrical_idle)
 
         # Convert our Tx stream into PHY connections whenever we're not in electrical idle.
-        with m.If(~tx_electrical_idle):
-            m.d.comb += [
-                phy.tx_data          .eq(tx_ctc.source.data),
-                phy.tx_datak         .eq(tx_ctc.source.ctrl),
-                tx_ctc.source.ready  .eq(1),
-            ]
+        if self._gen2:
+            with m.If(~tx_electrical_idle):
+                with m.If(rate_r):
+                    m.d.comb += [
+                        phy.tx_data          .eq(gen2_tx.tx_data),
+                        phy.tx_datavalid     .eq(gen2_tx.tx_valid),
+                        phy.tx_sync_header   .eq(gen2_tx.tx_head),
+                        phy.tx_start_block   .eq(gen2_tx.tx_start),
+                    ]
+                with m.Else():
+                    m.d.comb += [
+                        phy.tx_data          .eq(tx_ctc.source.data),
+                        phy.tx_datak         .eq(tx_ctc.source.ctrl),
+                        tx_ctc.source.ready  .eq(1),
+                    ]
+        else:
+            with m.If(~tx_electrical_idle):
+                m.d.comb += [
+                    phy.tx_data          .eq(tx_ctc.source.data),
+                    phy.tx_datak         .eq(tx_ctc.source.ctrl),
+                    tx_ctc.source.ready  .eq(1),
+                ]
 
 
         #
@@ -325,6 +418,10 @@ class USB3PhysicalLayer(Elaboratable):
             self.skip_removed         .eq(rx_ctc.skip_removed),
             self.ctc_bytes_in_buffer  .eq(rx_ctc.bytes_in_buffer),
         ]
+        if self._gen2:
+            # At the 10G trim the Gen1 RX chain is starved (the Gen2
+            # block receiver owns the PIPE RX).
+            m.d.comb += rx_ctc.sink.valid.eq(~rate_r)
 
         # Word align the data, so it's easily handleable internally.
         m.submodules.aligner = aligner = RxWordAligner()
@@ -346,10 +443,17 @@ class USB3PhysicalLayer(Elaboratable):
         # Finally, as a requirement of strict compliance, we'll ensure we can handle packets
         # that arrive even without correct alignment.
         m.submodules.realigner = realigner = RxPacketAligner()
-        m.d.comb += [
-            realigner.sink      .stream_eq(descrambler.source),
-            self.source         .stream_eq(realigner.source),
-        ]
+        if self._gen2:
+            m.d.comb += realigner.sink.stream_eq(descrambler.source)
+            with m.If(rate_r):
+                m.d.comb += self.source.stream_eq(gen2_rx.source)
+            with m.Else():
+                m.d.comb += self.source.stream_eq(realigner.source)
+        else:
+            m.d.comb += [
+                realigner.sink      .stream_eq(descrambler.source),
+                self.source         .stream_eq(realigner.source),
+            ]
 
 
         #

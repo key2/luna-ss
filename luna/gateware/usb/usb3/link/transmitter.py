@@ -503,9 +503,17 @@ class PacketTransmitter(Elaboratable):
 
     CREDIT_TIMEOUT = 5e-3
 
-    def __init__(self, *, buffer_count=4, ss_clock_frequency=125e6):
+    def __init__(self, *, buffer_count=4, ss_clock_frequency=125e6,
+                 gen2=False):
         self._buffer_count    = buffer_count
         self._clock_frequency = ss_clock_frequency
+        # SuperSpeedPlus trims [USB3.2r1: 7.2.4.1.x]: modulo-16 header
+        # sequence numbers and the LCRD1/LCRD2 credit-class split
+        # (Type 1: TPs/LMPs/ITPs/periodic DPs; Type 2: async DPs).
+        # Elaborated only for gen2 builds; ``gen2_active`` then selects
+        # the SSP trims at runtime (a dual-rate device that negotiated
+        # 5G runs the SuperSpeed rules: modulo-8, single credit class).
+        self._gen2 = gen2
 
         #
         # I/O port
@@ -517,6 +525,9 @@ class PacketTransmitter(Elaboratable):
         self.enable                = Signal()
         self.usb_reset             = Signal()
         self.bringup_complete      = Signal()
+
+        # High when operating at the SuperSpeedPlus rate (gen2 builds).
+        self.gen2_active           = Signal()
 
         # High when the current (or most recent) entry to U0 came from
         # Recovery rather than Polling / Hot Reset.  Latched by the link
@@ -549,6 +560,13 @@ class PacketTransmitter(Elaboratable):
     def elaborate(self, platform):
         m = Module()
 
+        # SuperSpeedPlus trims (gen2 builds; runtime-selected).
+        seq_width = 4 if self._gen2 else self.SEQUENCE_NUMBER_WIDTH
+        if self._gen2:
+            # Sequence arithmetic is modulo-16 at the SSP rate and
+            # modulo-8 at the SS rate [7.2.1.1.3].
+            seq_mask = Mux(self.gen2_active, 0xF, 0x7)
+
         #
         # Credit tracking.
         #
@@ -562,6 +580,20 @@ class PacketTransmitter(Elaboratable):
             m.d.ss += credits_available.eq(credits_available + 1)
         with m.Elif(credit_consumed & ~credit_received):
             m.d.ss += credits_available.eq(credits_available - 1)
+
+        if self._gen2:
+            # Second credit pool: at the SSP rate ``credits_available``
+            # serves Type 1 (TPs/LMPs/ITPs) and this pool serves Type 2
+            # (asynchronous DPs) [7.2.4.1.x]; at the SS rate the single
+            # pool serves everything and this one idles.
+            credits2_available   = Signal(range(self._buffer_count + 1))
+            credit2_received     = Signal()
+            credit2_consumed     = Signal()
+
+            with m.If(credit2_received & ~credit2_consumed):
+                m.d.ss += credits2_available.eq(credits2_available + 1)
+            with m.Elif(credit2_consumed & ~credit2_received):
+                m.d.ss += credits2_available.eq(credits2_available - 1)
 
 
         #
@@ -641,19 +673,40 @@ class PacketTransmitter(Elaboratable):
         #
 
         # Keep track of the next sequence number we'll need to assign.
-        transmit_sequence_number = Signal(self.SEQUENCE_NUMBER_WIDTH)
+        transmit_sequence_number = Signal(seq_width)
 
-        # If we have link credits available, we're able to accept data from the protocol layer.
-        m.d.comb += self.queue.ready.eq(self.bringup_complete & (credits_available != 0))
+        if not self._gen2:
+            # If we have link credits available, we're able to accept data from the protocol layer.
+            m.d.comb += self.queue.ready.eq(self.bringup_complete & (credits_available != 0))
+        else:
+            # SSP: asynchronous DPs draw from the Type 2 pool; all other
+            # headers from Type 1.  At the SS rate everything draws from
+            # the single (Type 1) pool.
+            queue_is_type2 = Signal()
+            m.d.comb += [
+                queue_is_type2.eq(self.gen2_active
+                                  & (self.queue.header.dw0[0:5] == 8)),
+                self.queue.ready.eq(self.bringup_complete
+                                    & Mux(queue_is_type2,
+                                          credits2_available != 0,
+                                          credits_available != 0)),
+            ]
 
         # If the protocol layer is handing us a packet...
         with m.If(self.queue.valid & self.queue.ready):
             # ... consume a credit, as we're going to be using up a receiver buffer, and
             # schedule sending of that packet.
-            m.d.comb += [
-                credit_consumed  .eq(1),
-                enqueue_send     .eq(1)
-            ]
+            if not self._gen2:
+                m.d.comb += [
+                    credit_consumed  .eq(1),
+                    enqueue_send     .eq(1)
+                ]
+            else:
+                m.d.comb += [
+                    credit_consumed  .eq(~queue_is_type2),
+                    credit2_consumed .eq(queue_is_type2),
+                    enqueue_send     .eq(1)
+                ]
 
             # Assign the packet a sequence number, and capture it into the buffer for transmission.
             # [USB3.0r1: 7.2.4.1.1]: "A header packet that is re-transmitted shall maintain its
@@ -663,8 +716,20 @@ class PacketTransmitter(Elaboratable):
                 buffers[write_pointer].sequence_number  .eq(transmit_sequence_number),
                 sent_flags[write_pointer]               .eq(0),
                 write_pointer                           .eq(write_pointer + 1),
-                transmit_sequence_number                .eq(transmit_sequence_number + 1)
             ]
+            if not self._gen2:
+                m.d.ss += transmit_sequence_number.eq(transmit_sequence_number + 1)
+            else:
+                # The 4-bit sequence number's top bit rides in the Link
+                # Control Word's (SS-reserved) bit 19, i.e. in
+                # ``dw3_reserved[0]`` -- the CRC-5 and the DW3 packing
+                # paths then carry it with no further changes.
+                m.d.ss += [
+                    buffers[write_pointer].dw3_reserved[0]
+                        .eq(transmit_sequence_number[3]),
+                    transmit_sequence_number
+                        .eq((transmit_sequence_number + 1) & seq_mask),
+                ]
 
 
         #
@@ -840,9 +905,11 @@ class PacketTransmitter(Elaboratable):
 
         # Keep track of which credit we expect to get back next.
         next_expected_credit = Signal(range(self._buffer_count))
+        if self._gen2:
+            next_expected_credit2 = Signal(range(self._buffer_count))
 
         # Keep track of what sequence number we expect to have ACK'd next.
-        next_expected_ack_number = Signal(self.SEQUENCE_NUMBER_WIDTH, init=-1)
+        next_expected_ack_number = Signal(seq_width, init=-1)
 
         # Handle link commands as we receive them.
         with m.If(lc_detector.new_command):
@@ -853,16 +920,40 @@ class PacketTransmitter(Elaboratable):
                 #
                 with m.Case(LinkCommand.LCRD):
 
-                    # If the credit matches the sequence we're expecting, we can accept it!
-                    with m.If(next_expected_credit == lc_detector.subtype):
-                        m.d.comb += credit_received.eq(1)
+                    if not self._gen2:
+                        # If the credit matches the sequence we're expecting, we can accept it!
+                        with m.If(next_expected_credit == lc_detector.subtype):
+                            m.d.comb += credit_received.eq(1)
 
-                        # Next time, we'll expect the next credit in the sequence.
-                        m.d.ss += next_expected_credit.eq(next_expected_credit + 1)
+                            # Next time, we'll expect the next credit in the sequence.
+                            m.d.ss += next_expected_credit.eq(next_expected_credit + 1)
 
-                    # Otherwise, we've lost synchronization. We'll need to trigger link recovery.
-                    with m.Else():
-                        m.d.comb += self.recovery_required.eq(1)
+                        # Otherwise, we've lost synchronization. We'll need to trigger link recovery.
+                        with m.Else():
+                            m.d.comb += self.recovery_required.eq(1)
+                    else:
+                        # [Table 7-4, Gen 2x1 trim]: subtype b2 selects
+                        # the credit series (0: LCRD_x/LCRD1_x, 1:
+                        # LCRD2_x); b1~0 carry the A-D index, which
+                        # cycles modulo 4 independently per series.
+                        lcrd_is2  = lc_detector.subtype[2] \
+                            & self.gen2_active
+                        lcrd_idx  = lc_detector.subtype[0:2]
+
+                        with m.If(lcrd_is2):
+                            with m.If(next_expected_credit2 == lcrd_idx):
+                                m.d.comb += credit2_received.eq(1)
+                                m.d.ss += next_expected_credit2 \
+                                    .eq(next_expected_credit2 + 1)
+                            with m.Else():
+                                m.d.comb += self.recovery_required.eq(1)
+                        with m.Else():
+                            with m.If(next_expected_credit == lcrd_idx):
+                                m.d.comb += credit_received.eq(1)
+                                m.d.ss += next_expected_credit \
+                                    .eq(next_expected_credit + 1)
+                            with m.Else():
+                                m.d.comb += self.recovery_required.eq(1)
 
                 #
                 # Packet Acknowledgement
@@ -872,19 +963,28 @@ class PacketTransmitter(Elaboratable):
                     # If we've received a Header Sequence Number Advertisement, update our sequence
                     # numbers, and indicate we're done with bringup.
                     with m.If(~self.bringup_complete):
+                        if not self._gen2:
+                            adv_next = lc_detector.subtype + 1
+                        else:
+                            adv_next = (lc_detector.subtype + 1) & seq_mask
                         m.d.ss += [
                             self.bringup_complete     .eq(1),
-                            next_expected_ack_number  .eq(lc_detector.subtype + 1),
+                            next_expected_ack_number  .eq(adv_next),
                         ]
 
                         # The advertisement acknowledges every header up to
                         # and including its sequence number.  How many of
                         # our outstanding headers that retires:
-                        adv_delta = Signal(self.SEQUENCE_NUMBER_WIDTH)
+                        adv_delta = Signal(seq_width)
                         adv_retired = Signal.like(packets_awaiting_ack)
+                        if not self._gen2:
+                            m.d.comb += adv_delta.eq(lc_detector.subtype + 1
+                                                     - next_expected_ack_number)
+                        else:
+                            m.d.comb += adv_delta.eq(
+                                (lc_detector.subtype + 1
+                                 - next_expected_ack_number) & seq_mask)
                         m.d.comb += [
-                            adv_delta   .eq(lc_detector.subtype + 1
-                                            - next_expected_ack_number),
                             adv_retired .eq(Mux(adv_delta <= packets_awaiting_ack,
                                                 adv_delta, packets_awaiting_ack)),
                         ]
@@ -895,7 +995,7 @@ class PacketTransmitter(Elaboratable):
                             # restarts from the advertisement
                             # [USB3.2r1: 7.2.4.1.x rule 7a].
                             m.d.ss += [
-                                transmit_sequence_number  .eq(lc_detector.subtype + 1),
+                                transmit_sequence_number  .eq(adv_next),
                                 packets_awaiting_ack      .eq(0),
                                 packets_to_send           .eq(0),
                                 read_pointer              .eq(0),
@@ -931,7 +1031,11 @@ class PacketTransmitter(Elaboratable):
                         m.d.comb += retire_packet.eq(1)
 
                         # Next time, we'll expect the next credit in the sequence.
-                        m.d.ss += next_expected_ack_number.eq(next_expected_ack_number + 1)
+                        if not self._gen2:
+                            m.d.ss += next_expected_ack_number.eq(next_expected_ack_number + 1)
+                        else:
+                            m.d.ss += next_expected_ack_number.eq(
+                                (next_expected_ack_number + 1) & seq_mask)
 
                     # Otherwise, if we're expecting a packet, we've lost synchronization.
                     # We'll need to trigger link recovery.
@@ -1016,17 +1120,22 @@ class PacketTransmitter(Elaboratable):
                 # coming advertisement recomputes what must be sent).
                 packets_to_send           .eq(0),
                 retry_pending             .eq(0),
-
-                # NOTE: the header buffers -- write/ack/read pointers,
-                # ``packets_awaiting_ack``, ``sent_flags``, and both
-                # sequence numbers -- are deliberately PRESERVED here.
-                # Whether they are flushed or retransmitted is decided by
-                # the Header Sequence Number Advertisement on the next
-                # link-up, based on how U0 is entered (``from_recovery``)
-                # [USB3.2r1: 7.2.4.1.x rule 7].  The historical
-                # flush-everything here silently lost every
-                # unacknowledged header on entry to Recovery.
             ]
+            if self._gen2:
+                m.d.ss += [
+                    next_expected_credit2 .eq(0),
+                    credits2_available    .eq(0),
+                ]
+
+            # NOTE: the header buffers -- write/ack/read pointers,
+            # ``packets_awaiting_ack``, ``sent_flags``, and both
+            # sequence numbers -- are deliberately PRESERVED here.
+            # Whether they are flushed or retransmitted is decided by
+            # the Header Sequence Number Advertisement on the next
+            # link-up, based on how U0 is entered (``from_recovery``)
+            # [USB3.2r1: 7.2.4.1.x rule 7].  The historical
+            # flush-everything here silently lost every
+            # unacknowledged header on entry to Recovery.
 
 
         #

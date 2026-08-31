@@ -128,14 +128,25 @@ if PHASE=fb-timeout TSCALE=0.0625 TSEQ_LEN=256 pdm run python "$LL/sim_link_gen2
 else
     echo "FAIL gen2-fb-timeout <<<<<<<<"
 fi
-for ph in train; do
-    PH_UP=$(echo "$ph" | tr a-z A-Z)
-    if PHASE=$ph pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_$ph.log 2>&1; then
-        echo "FAIL gen2-$ph (UNEXPECTED GREEN -- flip this entry to expect-green consciously) <<<<<<<<"
-    elif grep -q "GEN2 $PH_UP FAIL" /tmp/kilo/batt_gen2_$ph.log; then
-        echo "PASS gen2-$ph (RED as expected: $(grep -oE "^(SCD|TRAIN|ENUM) FAIL: .*" /tmp/kilo/batt_gen2_$ph.log | head -1))"
+# Phase-4 entries (session 12, expect-green; gate G4): Gen2 block
+# training to U0 (gen2-train, CONSCIOUSLY FLIPPED from the enforced-red
+# G2 baseline), enumeration (modulo-16 + LCRD1/LCRD2 + DPH length
+# replica + bcdUSB 0310) and the small bulk echo -- all end-to-end
+# through the RTL scrambler chain.
+for ph in train enum echo; do
+    if PHASE=$ph TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_$ph.log 2>&1; then
+        echo "PASS gen2-$ph"
     else
-        echo "FAIL gen2-$ph (died without verdict) <<<<<<<<"
+        echo "FAIL gen2-$ph <<<<<<<<"
     fi
 done
+# Negative control: withholding the host's Type-2 credits must starve
+# the device's descriptor DP (proves the LCRD2 pool gating is real).
+if PHASE=enum TSEQ_LEN=64 NEG=nolcrd2 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_neg.log 2>&1; then
+    echo "FAIL gen2-neg-nolcrd2 (UNEXPECTED GREEN: type-2 pool not gating) <<<<<<<<"
+elif grep -q "timed out waiting for descriptor DPH" /tmp/kilo/batt_gen2_neg.log; then
+    echo "PASS gen2-neg-nolcrd2 (descriptor DP correctly withheld)"
+else
+    echo "FAIL gen2-neg-nolcrd2 (died with the wrong verdict) <<<<<<<<"
+fi
 echo BATTERY4-DONE

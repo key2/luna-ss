@@ -180,6 +180,9 @@ class USBSuperSpeedDevice(Elaboratable):
             sync_frequency = sync_frequency,
             scd_pattern    = SCD1_PATTERN if self._gen2 else None,
             gen2           = self._gen2,
+            # Gen2 Polling.RxEQ transmits 524,288 TSEQ ordered sets --
+            # 8x the Gen1 count [7.5.4.7.2]; sim shortening scales both.
+            gen2_tseq_count = 8 * self._tseq_burst_length,
         )
 
         #

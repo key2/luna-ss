@@ -33,7 +33,8 @@ END  = int(BlockType.ENDS)    # 0x65  DPP end
 EDB  = int(BlockType.EDBS)    # 0x69  DPP abort
 SLC  = int(BlockType.SLCS)    # 0x4B  link command start
 EPF  = int(BlockType.EPFS)    # 0x36  end packet framing
-IDL  = 0x00                   # logical idle symbol (scrambled zero)
+IDL  = int(BlockType.LIS)     # 0x5A  Gen2 logical Idle Symbol [7.1.2]
+                              # (Gen1's 00h does NOT carry over!)
 
 HPSTART  = (SHP, SHP, SHP, EPF)
 DPHSTART = (DPHP, DPHP, DPHP, EPF)
@@ -292,8 +293,10 @@ def link_command_syms(command, subtype):
 def header_packet_syms(dw0, dw1, dw2, seq, dl=0, hub_depth=0, deferred=False,
                        start=None):
     """Header packet symbols: HPSTART/DPHSTART + 3 DWs (LSB first) +
-    Link Control Word + CRC-16.  ``seq`` is the 4-bit Gen2 header
-    sequence number."""
+    CRC-16 + Link Control Word.  ``seq`` is the 4-bit Gen2 header
+    sequence number.  A DPHSTART-framed (non-deferred Gen2 DPH) header
+    additionally carries the 2-byte length-field replica (mirroring
+    dw1[16:32], LSB first) right after the LCW [7.2.1.1]."""
     from sim_link_loopback import crc16_header, crc5
     lcw = (seq & 0xF) | ((hub_depth & 0x7) << 6) | ((dl & 1) << 9) \
         | ((1 if deferred else 0) << 10)
@@ -306,6 +309,20 @@ def header_packet_syms(dw0, dw1, dw2, seq, dl=0, hub_depth=0, deferred=False,
         syms += list(dw.to_bytes(4, "little"))
     syms += list(crc16.to_bytes(2, "little"))
     syms += list(lcw.to_bytes(2, "little"))
+    if tuple(start) == DPHSTART:
+        length = (dw1 >> 16) & 0xFFFF
+        syms += list(length.to_bytes(2, "little"))
+    return syms
+
+
+def dpp_syms(payload: bytes, abort=False):
+    """Data Packet Payload symbols: DPPSTART + payload + CRC-32 +
+    DPPEND (or DPPABORT)."""
+    from sim_link_loopback import crc32_payload
+    syms = list(DPPSTART)
+    syms += list(payload)
+    syms += list(crc32_payload(payload).to_bytes(4, "little"))
+    syms += list(DPPABORT if abort else DPPEND)
     return syms
 
 

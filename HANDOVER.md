@@ -2560,6 +2560,32 @@ New file `physical/gen2.py` (stage A per doc/gen2_design.md §1/§2):
   Constraints are still the 100 MHz serdes-attach bases; the gate is
   Fmax >= 156.25 either way.
 
+### Session-12 regression state
+
+Battery **46/46** PASS lines from a settled tree (35 Gen1-era entries
+untouched + gen2: oracle, scd, lbpm, lbpm5g, fb-legacy, fb-noscd2,
+fb-timeout, train, enum, echo, neg-nolcrd2); pytest **104/104**;
+shipping parity proven TWICE this session (after G3 and after G4:
+luna-multiep rebuild payload-identical to the resident POR-66_011
+image, 4 timestamp bytes only).  Both gowin_gtr12 sims spot-checked
+PASS again after the adapter dual-rate edit (which battery entries
+also cover on the next full run).  Commits: `bb4bf07` (G3),
+`5514c5c` (G4 sim), `cfeb27c` (G5 groundwork); all pushed; no
+submodule changes.  Bug numbering still at #38 closed / **#39 next**;
+#37 and all §10n/§10q parked items carry.
+
+**The resident bench image is still the Gen1 shipping build**
+(POR 66_011, pclk 139.0, enumerated SuperSpeed on 4-3 at session-11c
+close).  The bench has NOT been touched this session; no Gen2 image
+was ever flashed.
+
+### Battery-entry runtimes (so nobody kills a slow entry)
+
+gen2-scd/lbpm* ≈ 1-3 min each; gen2-fb-* ≈ 2-5 min; gen2-train ≈
+3-5 min; gen2-enum/echo ≈ 4-6 min (negotiation + training + the
+whole exchange); full battery ≈ 35-45 min.  Always
+`.venv/bin/python -u`, never concurrent with source edits.
+
 ### Parked / next-session (G5) — NOT DONE here, in priority order
 
 1. **Adapter rate handshake on silicon** (M3c hardware half): wire
@@ -2592,10 +2618,22 @@ New file `physical/gen2.py` (stage A per doc/gen2_design.md §1/§2):
 
 ## 11. Reading list for the new session (fork edition)
 
-* `prompt.md` — the active mission (dual-rate Gen1+Gen2).
+* `prompt.md` — the active mission (session 13: gate G5, hardware
+  validation of BOTH rates).
+* `HANDOVER.md` §10r (this file) — session 12: G3+G4 closed on sim,
+  the G5 checklist, the timing diagnosis, the regression state.
+  §10o has the fork map and bench history; §10p/§10q the Gen2 sim
+  architecture and SCD work.
 * `doc/gen2_design.md` — the Phase-1 design note (gates G2+ follow it).
+* `luna/gateware/usb/usb3/physical/gen2.py` — the stage-A Gen2 block
+  machinery (module docstring = the architecture; the RX grammar
+  engine is the 156.25 timing cone to cut).
+* `sim/sim_link_gen2.py` header — every Gen2 phase and knob
+  (PHASE=scd|lbpm|lbpm5g|fb-*|train|enum|echo, TSEQ_LEN, TSCALE, NEG).
+* `examples/gowin/luna-enum-gen2/top.py` — the dual-rate bring-up top
+  (built once, never flashed; probes disabled pending the pipelined
+  delta).
 * `README.md` — the fork banner: layout, one-clone flow.
-* `HANDOVER.md` §10o (this file) — the fork map + the bench blocker.
 * `gw_usb3/` submodule: README + module docstrings (every vendor
   quirk documented where reproduced); `gw_usb3/tests/equiv/harness.py`
   docstring — how golden-vs-port simulation works.

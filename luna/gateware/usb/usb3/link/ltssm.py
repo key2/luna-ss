@@ -56,9 +56,14 @@ class LTSSMController(Elaboratable):
         to make things work a little more easily on a variety of PHYs and setups.
     """
 
-    def __init__(self, ss_clock_frequency=125e6, *, loosen_requirements=True):
+    def __init__(self, ss_clock_frequency=125e6, *, loosen_requirements=True,
+                 gen2=False):
         self._clock_frequency = ss_clock_frequency
         self._loosen_requirements = loosen_requirements
+        # SuperSpeedPlus capability: adds the SCD exchange and the
+        # Polling.LFPSPlus substate [USB 3.2r1 6.9.4, 7.5.4.3/.4].
+        # False elaborates the proven Gen1 LTSSM unchanged.
+        self._gen2 = gen2
 
         #
         # I/O port.
@@ -99,6 +104,12 @@ class LTSSMController(Elaboratable):
         self.lfps_polling_detected     = Signal()
         self.send_lfps_polling         = Signal()
         self.lfps_cycles_sent          = Signal(16)
+
+        # SuperSpeedPlus Capability Declaration surface (gen2 only)
+        self.scd1_detected             = Signal()
+        self.scd2_detected             = Signal()
+        self.scd2_select               = Signal()
+        self.scd_clear                 = Signal()
 
         # Training set detection signals.
         self.tseq_detected             = Signal()
@@ -253,6 +264,13 @@ class LTSSMController(Elaboratable):
         lfps_burst_seen   = Signal()
         target_lfps_count = Signal(16)
 
+        if self._gen2:
+            # SCD exchange tracking [7.5.4.3/.4]: burst count target
+            # for "two SCDs transmitted after one received" (one SCD =
+            # four bursts).
+            scd_seen        = Signal()
+            scd_sent_target = Signal(16)
+
 
         #
         # FSM entry tasks.
@@ -262,6 +280,15 @@ class LTSSMController(Elaboratable):
             lfps_burst_seen    .eq(0),
             target_lfps_count  .eq(16)
         ]
+        if self._gen2:
+            tasks_on_entry['Polling.LFPS'] += [
+                scd_seen        .eq(0),
+                scd_sent_target .eq(0),
+            ]
+            tasks_on_entry['Polling.LFPSPlus'] = [
+                scd_seen        .eq(0),
+                scd_sent_target .eq(0),
+            ]
 
         # Ensure we enter Polling.Active with fresh device state.
         tasks_on_entry['Polling.Active'] = [
@@ -366,6 +393,24 @@ class LTSSMController(Elaboratable):
                 # Continuously send our LFPS polling.
                 m.d.comb += self.send_lfps_polling.eq(1)
 
+                if self._gen2:
+                    # SuperSpeedPlus: our polling bursts carry SCD1.
+                    # Once the partner declares (SCD1 or SCD2 seen) we
+                    # complete two more SCD1s (8 bursts) and proceed to
+                    # Polling.LFPSPlus [7.5.4.3].  A partner that never
+                    # declares leaves us on the legacy Gen1 handshake
+                    # below (the Gen1 fallback path).
+                    with m.If((self.scd1_detected | self.scd2_detected)
+                              & ~scd_seen):
+                        m.d.ss += [
+                            scd_seen        .eq(1),
+                            scd_sent_target .eq(self.lfps_cycles_sent + 8),
+                        ]
+                    with m.If(scd_seen
+                              & (self.lfps_cycles_sent >= scd_sent_target)):
+                        m.d.comb += self.scd_clear.eq(1)
+                        transition_to_state("Polling.LFPSPlus")
+
                 # To move forward with the LTSSM, we'll need to:
                 # - Have sent at least 16 bursts.
                 # - Have transmitted at least four bursts since we first saw a burst.
@@ -404,6 +449,32 @@ class LTSSMController(Elaboratable):
                 with m.Else():
                     transition_on_timeout(360e-3, to="SS.Disabled.Default")
 
+
+
+            if self._gen2:
+                # Polling.LFPSPlus -- SuperSpeedPlus confirmation: both ports
+                # exchange SCD2 [USB 3.2r1: 7.5.4.4].  Exit when two SCD2 are
+                # transmitted after one SCD2 is received.  (PortMatch /
+                # PortConfig -- LBPM rate selection -- land with the next
+                # mechanism; until then we proceed directly to training, which
+                # matches a Gen 1x1-only match outcome.)
+                with m.State("Polling.LFPSPlus"):
+                    m.d.comb += self.tx_electrical_idle.eq(1)
+                    m.d.comb += self.send_lfps_polling.eq(1)
+                    m.d.comb += self.scd2_select.eq(1)
+
+                    with m.If(self.scd2_detected & ~scd_seen):
+                        m.d.ss += [
+                            scd_seen        .eq(1),
+                            scd_sent_target .eq(self.lfps_cycles_sent + 8),
+                        ]
+                    with m.If(scd_seen
+                              & (self.lfps_cycles_sent >= scd_sent_target)):
+                        m.d.comb += self.scd_clear.eq(1)
+                        transition_to_state("Polling.RxEQ")
+
+                    # The 360 ms Polling umbrella timer continues [7.5.4.4].
+                    transition_on_timeout(360e-3, to="SS.Disabled.Default")
 
 
             # Polling.RxEQ -- we've now seen the other side of our link, and are ready to initialize

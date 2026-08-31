@@ -28,9 +28,15 @@ from ..stream              import USBRawSuperSpeedStream, SuperSpeedStreamInterf
 class USBSuperSpeedDevice(Elaboratable):
     """ Core gateware common to all LUNA USB3 devices. """
 
-    def __init__(self, *, phy, sync_frequency=None):
+    def __init__(self, *, phy, sync_frequency=None, gen2=False):
         self._phy = phy
         self._sync_frequency = sync_frequency
+        # Gen2 (SuperSpeedPlus) capability.  Session 11d onward, built
+        # up mechanism by mechanism per doc/gen2_design.md; with the
+        # default False the device elaborates exactly the proven Gen1
+        # stack (the forced-Gen1 build knob of the fallback matrix).
+        # Currently enabled: SCD1 declaration in Polling.LFPS [6.9.4].
+        self._gen2 = gen2
 
         # Create a collection of endpoints for this device.
         self._endpoints = []
@@ -159,15 +165,18 @@ class USBSuperSpeedDevice(Elaboratable):
         #
         # Physical layer.
         #
+        from .physical.lfps import SCD1_PATTERN
         m.submodules.physical = physical = USB3PhysicalLayer(
             phy            = self._phy,
-            sync_frequency = sync_frequency
+            sync_frequency = sync_frequency,
+            scd_pattern    = SCD1_PATTERN if self._gen2 else None,
         )
 
         #
         # Link layer.
         #
-        m.submodules.link = link = USB3LinkLayer(physical_layer=physical)
+        m.submodules.link = link = USB3LinkLayer(physical_layer=physical,
+                                                 gen2=self._gen2)
         m.d.comb += [
             self.link_trained     .eq(link.trained),
             self.link_in_reset    .eq(link.in_reset),

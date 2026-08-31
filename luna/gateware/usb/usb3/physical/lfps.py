@@ -68,6 +68,18 @@ class LFPS:
 
 _PollingLFPSBurst  = LFPSTiming(t_typ=1.0e-6,  t_min=0.6e-6, t_max=1.4e-6)
 _PollingLFPSRepeat = LFPSTiming(t_typ=10.0e-6, t_min=6.0e-6, t_max=14.0e-6)
+
+# SuperSpeedPlus Capability Declaration [USB 3.2r1 6.9.4]: information
+# is carried in the Polling.LFPS burst repeat period -- logic 0 =
+# tRepeat 6-9 us, logic 1 = 11-14 us (9-11 us is a guard band).
+# SCD1 = '0010', SCD2 = '1101', transmitted LSb first.  Typicals are
+# chosen mid-bin (and so that a receiver classifying with generous
+# bins decodes them under either the 125 or 156.25 MHz clock
+# assumption -- the Gen2 sim bench runs the ss domain at 156.25).
+SCD_REPEAT_0 = 7.0e-6
+SCD_REPEAT_1 = 13.5e-6
+SCD1_PATTERN = (0, 1, 0, 0)     # '0010', wire (LSb-first) order
+SCD2_PATTERN = (1, 0, 1, 1)     # '1101', wire (LSb-first) order
 _PollingLFPS       = LFPS(burst=_PollingLFPSBurst, repeat=_PollingLFPSRepeat)
 
 _PingLFPSBurst     = LFPSTiming(t_min=40.0e-9, t_max=160.0e-9)
@@ -208,6 +220,88 @@ class LFPSDetector(Elaboratable):
 
 
 
+class SCDDetector(Elaboratable):
+    """SuperSpeedPlus Capability Declaration receiver [USB 3.2r1 6.9.4].
+
+    Classifies the repeat period between received Polling.LFPS burst
+    starts (logic 0 = 6-9 us, logic 1 = 11-14 us; generous windows so
+    both the 125 and 156.25 MHz clock assumptions classify) and
+    pattern-matches the sliding 4-bit window against SCD1 ('0010') and
+    SCD2 ('1101'), any cyclic rotation.  Outputs are sticky until
+    ``clear``.
+    """
+
+    def __init__(self, ss_clk_freq=125e6):
+        self._clock_frequency = ss_clk_freq
+
+        self.signaling_received = Signal()  # i
+        self.clear              = Signal()  # i
+        self.scd1_detected      = Signal()  # o, sticky
+        self.scd2_detected      = Signal()  # o, sticky
+
+    def elaborate(self, platform):
+        m = Module()
+
+        clk = self._clock_frequency
+        bit0_min = ceil(clk * 4.5e-6)
+        bit0_max = ceil(clk * 9.9e-6)
+        bit1_min = ceil(clk * 10.5e-6)
+        bit1_max = ceil(clk * 18.0e-6)
+        refractory = ceil(clk * 2.0e-6)
+
+        # synchronize + edge-detect the LFPS envelope
+        sig_sync = Signal(2)
+        m.submodules += FFSynchronizer(self.signaling_received, sig_sync[0],
+                                       o_domain="ss")
+        m.d.ss += sig_sync[1].eq(sig_sync[0])
+        burst_start = sig_sync[0] & ~sig_sync[1]
+
+        gap = Signal(range(bit1_max + 2))
+        window = Signal(8)          # (bit, valid) pairs, 4 deep
+        bits   = Signal(4)
+        valid  = Signal(4)
+
+        with m.If(gap <= bit1_max):
+            m.d.ss += gap.eq(gap + 1)
+
+        def push(bit_value, bit_valid):
+            return [
+                bits .eq(Cat(bit_value, bits[:-1])),
+                valid.eq(Cat(bit_valid, valid[:-1])),
+            ]
+
+        with m.If(burst_start & (gap > refractory)):
+            m.d.ss += gap.eq(0)
+            with m.If((gap >= bit0_min) & (gap <= bit0_max)):
+                m.d.ss += push(0, 1)
+            with m.Elif((gap >= bit1_min) & (gap <= bit1_max)):
+                m.d.ss += push(1, 1)
+            with m.Else():
+                m.d.ss += push(0, 0)
+        with m.Elif(gap > bit1_max):
+            # silence longer than any legal repeat: window invalid
+            m.d.ss += valid.eq(0)
+
+        # cyclic-rotation matcher; wire (LSb-first shift) order.  The
+        # newest bit lands in bits[0].
+        def rotations(pat):
+            p = list(pat)
+            return {tuple(p[i:] + p[:i]) for i in range(len(p))}
+
+        with m.If(valid.all()):
+            for pat, out in ((SCD1_PATTERN, self.scd1_detected),
+                             (SCD2_PATTERN, self.scd2_detected)):
+                for rot in sorted(rotations(pat)):
+                    value = sum(b << i for i, b in enumerate(rot))
+                    with m.If(bits == value):
+                        m.d.ss += out.eq(1)
+        with m.If(self.clear):
+            m.d.ss += [self.scd1_detected.eq(0), self.scd2_detected.eq(0),
+                       valid.eq(0)]
+
+        return m
+
+
 class LFPSGenerator(Elaboratable):
     """ LFPS Signaling Generator
 
@@ -226,9 +320,17 @@ class LFPSGenerator(Elaboratable):
     send_signaling: Signal(), output
         Held high during a burst.
     """
-    def __init__(self, lfps_pattern, sys_clk_freq):
+    def __init__(self, lfps_pattern, sys_clk_freq, scd_pattern=None):
         self._pattern         = lfps_pattern
         self._clock_frequency = sys_clk_freq
+        # Optional SuperSpeedPlus Capability Declaration: when given
+        # (a tuple of bits, wire order), the repeat interval of each
+        # successive burst is modulated per [6.9.4] instead of the
+        # pattern's fixed t_typ.  ``None`` elaborates the historical
+        # fixed-repeat generator unchanged.  With SCD enabled,
+        # ``scd2_select`` switches the transmitted declaration from
+        # SCD1 to SCD2 at runtime (Polling.LFPSPlus).
+        self._scd_pattern     = scd_pattern
 
         #
         # I/O ports
@@ -237,6 +339,7 @@ class LFPSGenerator(Elaboratable):
         self.completed              = Signal() # o
         self.drive_electrical_idle  = Signal() # o
         self.send_signaling         = Signal() # o
+        self.scd2_select            = Signal() # i (SCD builds only)
 
 
     def elaborate(self, platform):
@@ -246,6 +349,27 @@ class LFPSGenerator(Elaboratable):
         # the end of the pattern...
         burst_cycles  = ceil(self._clock_frequency * self._pattern.burst.t_typ)
         repeat_cycles = ceil(self._clock_frequency * self._pattern.repeat.t_typ)
+
+        if self._scd_pattern is not None:
+            # SCD repeat modulation [6.9.4]: per-burst repeat target
+            # selected by the pattern bit; the bit index advances at
+            # the end of every repeat interval, cycling the pattern
+            # (consecutive SCDs are sent back to back per 6.9.4.2).
+            repeat_scd = [ceil(self._clock_frequency * SCD_REPEAT_0),
+                          ceil(self._clock_frequency * SCD_REPEAT_1)]
+            repeat_cycles = max(repeat_cycles, *repeat_scd)
+            scd_index  = Signal(range(len(self._scd_pattern)))
+            scd_bit    = Signal()
+            assert len(self._scd_pattern) == len(SCD2_PATTERN)
+            with m.Switch(scd_index):
+                for i, (b1, b2) in enumerate(zip(self._scd_pattern,
+                                                 SCD2_PATTERN)):
+                    with m.Case(i):
+                        m.d.comb += scd_bit.eq(
+                            Mux(self.scd2_select, b2, b1))
+            repeat_target = Signal(range(repeat_cycles + 1))
+            m.d.comb += repeat_target.eq(
+                Mux(scd_bit, repeat_scd[1], repeat_scd[0]))
 
         # ... and create our cycle counter.
         count = Signal(range(0, repeat_cycles))
@@ -274,9 +398,18 @@ class LFPSGenerator(Elaboratable):
             with m.State("WAIT"):
                 m.d.comb += self.drive_electrical_idle.eq(1)
 
-                with m.If(count + 1 == repeat_cycles):
-                    m.d.comb += self.completed.eq(1)
-                    m.next = "IDLE"
+                if self._scd_pattern is not None:
+                    with m.If(count + 1 == repeat_target):
+                        m.d.comb += self.completed.eq(1)
+                        with m.If(scd_index == len(self._scd_pattern) - 1):
+                            m.d.ss += scd_index.eq(0)
+                        with m.Else():
+                            m.d.ss += scd_index.eq(scd_index + 1)
+                        m.next = "IDLE"
+                else:
+                    with m.If(count + 1 == repeat_cycles):
+                        m.d.comb += self.completed.eq(1)
+                        m.next = "IDLE"
 
         return m
 
@@ -307,7 +440,8 @@ class LFPSTransceiver(Elaboratable):
         Strobes high when Reset LFPS is detected.
     """
 
-    def __init__(self, ss_clk_freq=125e6):
+    def __init__(self, ss_clk_freq=125e6, scd_pattern=None):
+        self._scd_pattern = scd_pattern
         self._clock_frequency      = ss_clk_freq
 
         #
@@ -325,6 +459,12 @@ class LFPSTransceiver(Elaboratable):
         self.polling_detected      = Signal() # o
         self.ping_detected         = Signal() # o
         self.reset_detected        = Signal() # o
+
+        # SuperSpeedPlus Capability Declaration (SCD builds only)
+        self.scd2_select           = Signal() # i
+        self.scd_clear             = Signal() # i
+        self.scd1_detected         = Signal() # o, sticky
+        self.scd2_detected         = Signal() # o, sticky
 
 
     def elaborate(self, platform):
@@ -354,7 +494,17 @@ class LFPSTransceiver(Elaboratable):
         #
         # LFPS Transmitter(s).
         #
-        m.submodules.polling_generator = polling_generator = LFPSGenerator(_PollingLFPS, self._clock_frequency)
+        m.submodules.polling_generator = polling_generator = LFPSGenerator(_PollingLFPS, self._clock_frequency, scd_pattern=self._scd_pattern)
+        if self._scd_pattern is not None:
+            m.d.comb += polling_generator.scd2_select.eq(self.scd2_select)
+            m.submodules.scd_detector = scd_detector = \
+                SCDDetector(self._clock_frequency)
+            m.d.comb += [
+                scd_detector.signaling_received.eq(self.signaling_received),
+                scd_detector.clear             .eq(self.scd_clear),
+                self.scd1_detected             .eq(scd_detector.scd1_detected),
+                self.scd2_detected             .eq(scd_detector.scd2_detected),
+            ]
         m.d.comb += [
             polling_generator.generate  .eq(self.send_polling),
             self.drive_electrical_idle  .eq(polling_generator.drive_electrical_idle),

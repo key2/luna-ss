@@ -115,7 +115,8 @@ class Bench(Elaboratable):
         m.submodules.host_descr = self.host_descr
         m.submodules.dev_scr = self.dev_scr
 
-        usb = USBSuperSpeedDevice(phy=self.pipe, sync_frequency=CLK)
+        usb = USBSuperSpeedDevice(phy=self.pipe, sync_frequency=CLK,
+                                  gen2=True)
         usb.add_standard_control_endpoint(create_descriptors())
         m.submodules.usb = self.usb = usb
 
@@ -175,31 +176,24 @@ async def lfps_burst(ctx, pipe, burst_us=1.0):
 
 
 async def phase_scd(ctx, bench):
+    """SCD1 exchange in Polling.LFPS, then the SCD2 confirmation in
+    Polling.LFPSPlus [6.9.4, 7.5.4.3/.4]: stage 1 sends host SCD1 and
+    requires the device's SCD1 signature; stage 2 switches the host to
+    SCD2 and requires the device's SCD2 signature (the device is then
+    in Polling.LFPSPlus)."""
     pipe = bench.pipe
     await bringup(ctx, pipe)
 
-    # Host: Polling.LFPS with SCD1 ('0010', LSb first) tRepeat
-    # modulation, repeated.  Simultaneously measure device bursts:
-    # burst request = LUNA's TUSB dialect (P0 + tx_elec_idle religion
-    # differs across stacks) -- observe tx_detrx_lpbk & tx_elec_idle,
-    # LUNA's LFPS transmit convention.
-    scd1 = [0, 0, 1, 0][::-1]        # LSb first on the wire
-
-    # PIPE power-state ack emulation: every power_down change is
-    # acknowledged with a one-cycle phy_status pulse (PIPE 3.0) --
-    # without it the LTSSM parks waiting for the ack.
     cyc = 0
     tx_starts = []
     tx_active_prev = False
     pd_prev = 0
     pd_ack_at = None
-    transitions = []
 
     def step_observers():
         nonlocal tx_active_prev, pd_prev, pd_ack_at
         pd = ctx.get(pipe.power_down)
         if pd != pd_prev:
-            transitions.append((cyc, "P", pd))
             pd_ack_at = cyc + 4
             pd_prev = pd
         if pd_ack_at is not None:
@@ -210,39 +204,57 @@ async def phase_scd(ctx, bench):
             bool(ctx.get(pipe.tx_elec_idle))
         if active and not tx_active_prev:
             tx_starts.append(cyc)
-            if len(transitions) < 40:
-                transitions.append((cyc, "B", 1))
         tx_active_prev = active
 
-    for rep in range(40):            # ~40 host bursts
-        bit = scd1[rep % 4]
-        gap_us = 7.5 if bit == 0 else 12.5
-        # burst + gap, watching the device the whole time
-        for phase_len, ei in ((int(1.0 * US), 0), (int(gap_us * US), 1)):
-            ctx.set(pipe.rx_elec_idle, ei)
-            for _ in range(phase_len):
-                await ctx.tick("ss")
-                cyc += 1
-                step_observers()
-    if VERBOSE:
-        print("SCD trace:", transitions[:32])
+    async def host_bursts(pattern_bits, reps):
+        nonlocal cyc
+        for rep in range(reps):
+            bit = pattern_bits[rep % 4]
+            gap_us = 7.5 if bit == 0 else 12.5
+            for phase_len, ei in ((int(1.0 * US), 0), (int(gap_us * US), 1)):
+                ctx.set(pipe.rx_elec_idle, ei)
+                for _ in range(phase_len):
+                    await ctx.tick("ss")
+                    cyc += 1
+                    step_observers()
 
-    if len(tx_starts) < 6:
-        print(f"SCD: device transmitted only {len(tx_starts)} LFPS bursts")
+    def device_bits(since_cycle=0):
+        starts = [s for s in tx_starts if s >= since_cycle]
+        gaps = [b - a for a, b in zip(starts, starts[1:])]
+        return [classify_trepeat(g) for g in gaps], gaps
+
+    def has_rotation(bits, pattern):
+        seq = "".join("x" if b is None else str(b) for b in bits)
+        rots = {"".join(str(x) for x in pattern[i:] + pattern[:i])
+                for i in range(4)}
+        return any(r in seq for r in rots)
+
+    # stage 1: host declares SCD1
+    scd1_wire = [0, 1, 0, 0]         # '0010' LSb first
+    scd2_wire = [1, 0, 1, 1]         # '1101' LSb first
+    await host_bursts(scd1_wire, 24)
+    bits1, gaps1 = device_bits()
+    print(f"SCD: stage-1 device gaps (us): "
+          f"{[round(g / US, 1) for g in gaps1[:12]]}")
+    print(f"SCD: stage-1 bits: {bits1[:12]}")
+    if not has_rotation(bits1, scd1_wire):
+        print("SCD FAIL: non-varying tRepeat, no SCD1 signature "
+              "(Gen1-only Polling.LFPS)")
         return False
-    gaps = [b - a for a, b in zip(tx_starts, tx_starts[1:])]
-    bits = [classify_trepeat(g) for g in gaps]
-    print(f"SCD: device burst tRepeat gaps (us): "
-          f"{[round(g / US, 1) for g in gaps[:16]]}")
-    print(f"SCD: classified bits: {bits[:16]}")
-    # look for SCD1 '0010' (LSb first) anywhere in the bit stream
-    seq = "".join("x" if b is None else str(b) for b in bits)
-    if "0100" in seq:                # '0010' LSb-first = 0,1,0,0 on wire
-        print("SCD: SCD1 signature found")
-        return True
-    print("SCD FAIL: non-varying tRepeat, no SCD1 signature "
-          "(Gen1-only Polling.LFPS)")
-    return False
+    print("SCD: SCD1 signature found")
+
+    # stage 2: host confirms with SCD2; device must follow into
+    # Polling.LFPSPlus and declare SCD2.
+    stage2_start = cyc
+    await host_bursts(scd2_wire, 32)
+    bits2, gaps2 = device_bits(stage2_start)
+    print(f"SCD: stage-2 device bits: {bits2[:16]}")
+    if not has_rotation(bits2, scd2_wire):
+        print("SCD FAIL: no SCD2 from device after host SCD2 "
+              "(Polling.LFPSPlus missing)")
+        return False
+    print("SCD: SCD2 signature found (device in Polling.LFPSPlus)")
+    return True
 
 
 class HostRx:

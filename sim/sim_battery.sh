@@ -106,7 +106,14 @@ if pdm run python "$LL/sim_gen2_oracle.py" > /tmp/kilo/batt_gen2_oracle.log 2>&1
 else
     echo "FAIL gen2-oracle <<<<<<<<"
 fi
-for ph in scd train; do
+# gen2-scd flipped to expect-green (session 11e: SCD1 tRepeat
+# modulation landed -- lfps.py scd_pattern, elaboration-gated).
+if PHASE=scd pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_scd.log 2>&1; then
+    echo "PASS gen2-scd"
+else
+    echo "FAIL gen2-scd <<<<<<<<"
+fi
+for ph in train; do
     PH_UP=$(echo "$ph" | tr a-z A-Z)
     if PHASE=$ph pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_$ph.log 2>&1; then
         echo "FAIL gen2-$ph (UNEXPECTED GREEN -- flip this entry to expect-green consciously) <<<<<<<<"

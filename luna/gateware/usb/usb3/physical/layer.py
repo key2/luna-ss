@@ -35,7 +35,8 @@ class USB3PhysicalLayer(Elaboratable):
         When asserted, scrambling/descrambling will be enabled.
     """
 
-    def __init__(self, *, phy, sync_frequency):
+    def __init__(self, *, phy, sync_frequency, scd_pattern=None):
+        self._scd_pattern = scd_pattern
         self._phy = phy
         self._sync_frequency = sync_frequency
 
@@ -74,6 +75,12 @@ class USB3PhysicalLayer(Elaboratable):
 
         self.lfps_ping_detected         = Signal()
         self.lfps_polling_detected      = Signal()
+
+        # SuperSpeedPlus Capability Declaration (SCD builds only)
+        self.scd2_select                = Signal()
+        self.scd_clear                  = Signal()
+        self.scd1_detected              = Signal()
+        self.scd2_detected              = Signal()
         self.lfps_reset_detected        = Signal()
 
         # SKP insertion control.
@@ -293,13 +300,22 @@ class USB3PhysicalLayer(Elaboratable):
         # LFPS signaling.
         #
 
-        m.submodules.lfps_transciever = lfps = LFPSTransceiver()
+        # NB: ss_clk_freq historically defaulted to 125e6 regardless of
+        # sync_frequency -- harmless while the ss domain always ran at
+        # 125 MHz, wrong at the Gen2 operating point (156.25).  Passing
+        # it through is elaboration-identical for the 125 MHz builds.
+        m.submodules.lfps_transciever = lfps = LFPSTransceiver(
+            ss_clk_freq=self._sync_frequency, scd_pattern=self._scd_pattern)
         m.d.comb += [
             lfps.send_polling           .eq(self.send_lfps_polling),
             self.lfps_cycles_sent       .eq(lfps.cycles_sent),
 
             self.lfps_ping_detected     .eq(lfps.ping_detected),
             self.lfps_polling_detected  .eq(lfps.polling_detected),
+            lfps.scd2_select            .eq(self.scd2_select),
+            lfps.scd_clear              .eq(self.scd_clear),
+            self.scd1_detected          .eq(lfps.scd1_detected),
+            self.scd2_detected          .eq(lfps.scd2_detected),
             self.lfps_reset_detected    .eq(lfps.reset_detected),
 
             # The RX_ELECIDLE signal being de-asserted indicates we're receiving valid

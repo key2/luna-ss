@@ -2318,6 +2318,86 @@ substates + LBPM modem + LTSSM-driven serdes rate switch; flip
 Phase 4: block-level OS gen/detect + Gen2 framers (flip
 `gen2-train`).  #37 and the 10n parked items still carry.
 
+## 10q. Update 2026-08-31 (session 11e) — Phase 3 mechanisms 1+2:
+## SCD1 declaration + Polling.LFPSPlus/SCD2 exchange SIM-GREEN;
+## gen2-scd flipped to expect-green
+
+Phase 3 (LTSSM + rate switch), first two mechanisms, sim-first, one
+mechanism per change:
+
+### Mechanism 1 — SCD1 tRepeat modulation (TX)
+
+* `physical/lfps.py`: `LFPSGenerator(..., scd_pattern=None)` — with a
+  pattern, each burst's repeat interval is modulated per [6.9.4]
+  (SCD_REPEAT_0=7.0 us / SCD_REPEAT_1=13.5 us — mid-bin typicals);
+  `None` elaborates the historical fixed-repeat generator unchanged.
+  `SCD1_PATTERN=(0,1,0,0)`, `SCD2_PATTERN=(1,0,1,1)` (wire/LSb-first
+  of '0010'/'1101').
+* Threaded as `USBSuperSpeedDevice(gen2=False)` →
+  `USB3LinkLayer(gen2)` → `LTSSMController(gen2)` and
+  `USB3PhysicalLayer(scd_pattern)`.  **gen2=False (default
+  everywhere, incl. all hardware tops) is the forced-Gen1 knob and
+  elaborates the proven Gen1 stack unchanged.**
+
+### Mechanism 2 — SCD RX + Polling.LFPSPlus
+
+* `physical/lfps.py` `SCDDetector`: classifies received burst
+  start-to-start periods (generous bins: bit0 4.5-9.9 us, bit1
+  10.5-18 us — tRepeat is burst-inclusive!) into a sliding 4-bit
+  window, matches SCD1/SCD2 in any cyclic rotation (both patterns
+  are single-outlier codes, so rotation matching is reversal-safe);
+  sticky outputs + clear.
+* `LFPSGenerator.scd2_select` input: runtime switch SCD1→SCD2.
+* `ltssm.py` (gen2-gated): Polling.LFPS gains the SCD exchange —
+  partner SCD seen → two more SCD1s (8 bursts) → new
+  **Polling.LFPSPlus** state (SCD2 both ways, exit after 2 SCD2 sent
+  post-receipt) → Polling.RxEQ.  A partner that never declares
+  leaves the LEGACY Gen1 handshake in charge (the Gen1 fallback
+  path, unchanged code).  PortMatch/PortConfig (LBPM rate select)
+  are the NEXT mechanisms — LFPSPlus currently proceeds straight to
+  training, matching a Gen 1x1-only match outcome.
+* **Latent bug fixed en route**: `USB3PhysicalLayer` never passed
+  `sync_frequency` into `LFPSTransceiver` (always 125e6 constants) —
+  harmless while ss==125 MHz, wrong at the Gen2 operating point.
+  Pass-through is elaboration-identical for the 125 MHz builds.
+  (Found because the SCD classifier mis-binned at 156.25: the race
+  then let the legacy handshake exit to RxEQ before scd1_detected —
+  device went silent in stage 2 of the sim.)
+
+### Sim + battery
+
+`sim_link_gen2.py` PHASE=scd is now the full two-stage exchange:
+stage 1 host SCD1 → require device SCD1; stage 2 host SCD2 →
+require device SCD2 (LFPSPlus).  GREEN: stage-1 device gaps
+7.0/13.5 us exact, bits (0,1,0,0)*; stage-2 bits (1,0,1,1)*.
+Battery `gen2-scd` flipped to expect-green (the conscious flip);
+`gen2-train` stays expected-red (flips with Phase 4).
+
+NOTE (lesson): do NOT run the battery concurrently with source
+edits — entries elaborate the live tree; a mid-edit battery run
+produced 13 phantom FAILs (UnboundLocalError from a half-applied
+LTSSM edit).  Battery verdicts only count from a settled tree.
+
+Second real catch: the link-layer SCD wiring must be gated under
+``if self._gen2:`` — the Gen1 link-loopback sims drive USB3LinkLayer
+with a ``FakePhysicalLayer`` stub that has no SCD attributes; the
+unconditional wiring broke ALL 29 loopback entries at elaboration.
+Settled-tree battery after the fix: **38/38** (all Gen1 entries
+green, gen2-oracle green, gen2-scd GREEN first-class, gen2-train
+enforced-red).  Shipping-parity: luna-multiep rebuilt from this tree
+(gen2=False default) — bitstream payload-identical to the resident
+POR-66_011 image (header timestamp bytes only).
+
+### Phase-3 remaining (next mechanisms)
+
+M3: LBPM PWM modem (TX shaping + RX classifier) + Polling.PortMatch
+/ PortConfig with PHY Capability/Ready LBPMs [6.9.5, 7.5.4.5/.6],
+rate-select output; extend PHASE=scd (or new PHASE=lbpm) red-first.
+M4: LTSSM-driven serdes rate switch through the adapter (both
+directions) + PIPE rate plumbing.  M5: fallback matrix sims
+(no-SCD1 → legacy Gen1; Polling.Active/Config timeout →
+PortMatch re-entry next-highest).  Then Phase 4 (block framing).
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (dual-rate Gen1+Gen2).

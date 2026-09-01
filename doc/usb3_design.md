@@ -110,6 +110,23 @@ at runtime (`recfg_width_mode_1..4` switch 16×1:4 ↔ 20×1:2 during every
 | 5G  | 20×1:2 → 4 sym @ 125 | 20×1:4 → 8 sym @ **62.5** |
 | 10G | 16×1:4 → 64-bit @ 156.25 | 32×1:4 → 128-bit @ **78.125** |
 
+**P0 verdicts (session 14, 2026-09-01; HANDOVER §10t):**
+
+* **5G 20×1:4 EXISTS and RUNS ON SILICON**: the vendor CSR tool
+  accepts it; the boot blob differs from the proven 20×1:2 trim in
+  exactly two lane clock-tree divider registers (LN1: `0x808608`
+  111A→121A, `0x808628` 116→126 — the gearbox register keeps its
+  `0x511`); the `probe-trims` rig measured **pclk = 62.500 MHz**
+  (counter 0x14d555e) with the CSR boot completing.  RX-side symbol
+  delivery at the wide trim rides the W1 integration milestone.
+* **10G 32×1:4 IS IMPOSSIBLE on the GW5AT-60**: the vendor tool's
+  width table has no entry >20 (`KeyError: 32`; 40 and 64 likewise) —
+  consistent with the fixed 80-bit TX / 88-bit RX fabric bus (128
+  bits cannot be presented).  The `width_mode ∈ {8,10,16,20,32,40,64}`
+  set in csr_map.py is the TOML schema, not this device.  **Gen 2x1 →
+  128-bit PIPE is therefore the 2:1 bridge (the "safe hybrid" below),
+  full stop**; Gen 2x2 → 128 = stripe-merge of 2×64 is unaffected.
+
 Where a native wide trim does not exist or does not prove out, the
 width-normalization layer covers the gap (§3.3).  Trim changes at
 runtime inherit the **#22 boot-window discipline** (quiesce/park the MAC
@@ -159,7 +176,7 @@ width:
 | Gen 1x2 → 64  | stripe-merge 2×(4 sym @ 125) — native, full-rate |
 | Gen 1x2 → 128 | stripe-merge 2×(8 sym @ 62.5) — native if the 1:4 trim proves |
 | Gen 2x1 → 64  | today's proven path @ 156.25 |
-| Gen 2x1 → 128 | 32×1:4 fabric trim @ 78.125 (re-ports the 64-bit gearbox/descrambler — loses vendor pinning) **or the safe hybrid: keep the pinned 64-bit datapath @ 156.25 + a 2:1 PIPE bridge to 128 @ 78.125** (only the shallow bridge lives at 156.25) |
+| Gen 2x1 → 128 | ~~32×1:4 fabric trim @ 78.125~~ (P0 verdict: does not exist on this device) → **the safe hybrid: keep the pinned 64-bit datapath @ 156.25 + a 2:1 PIPE bridge to 128 @ 78.125** (only the shallow bridge lives at 156.25) |
 | Gen 2x2 → 128 | stripe-merge 2×(64 @ 156.25) — the hard timing cell |
 
 Duty-cycled presentations are full-width beats with `valid` gaps (RX)
@@ -286,10 +303,13 @@ LTSSM-driven bidirectional rate switch (CSR sequencer + `rate_select`/
 — plus the session-13 silicon fixes (#39 `in_training`, #40 SKP-in-
 packet).  What the unified program ADDS:
 
-* **Capability set plumbing**: `LBPM_CAP_GEN1X2 = 0x20` (b6 dual-lane,
-  rate 00) next to `GEN2X1 = 0x04`; the advertised-highest knob; the
-  rank/fallback arms per §1 (Gen 1x2 → Gen 1x1; Gen 2x2 → the full
-  ladder when we get there).
+* **Capability set plumbing**: `LBPM_CAP_GEN1X2 = 0x40` (b6 dual-lane,
+  rate 00 — **corrected**: earlier drafts and the session-14 mission
+  text said 0x20, but 0x20 is b5, a RESERVED bit; Table 7-13's b0..b7
+  columns put dual-lane at b6) next to `GEN2X1 = 0x04`; the
+  advertised-highest knob (`ssp_capability`, landed session 14 with
+  the `phy_boots_gen2` boot-trim init); the rank/fallback arms per §1
+  (Gen 1x2 → Gen 1x1; Gen 2x2 → the full ladder when we get there).
 * **x2 LTSSM arms** (gen-x2-gated, x1 elaborations verbatim): 24 ms
   Polling.Active timer; per-lane TS-detect inputs with both-lanes exit
   conditions (early lane keeps transmitting TS); PortConfig applies to
@@ -438,8 +458,10 @@ dual-rate matrix) move onto the wide core.
 
 ## 12. Open questions
 
-1. P0 trim experiments: does the PCS support 8b10b at 20×1:4 (5G) and
-   raw 32×1:4 (10G)?  Native-vs-bridge decisions hang on this.
+1. ~~P0 trim experiments: does the PCS support 8b10b at 20×1:4 (5G) and
+   raw 32×1:4 (10G)?~~  **ANSWERED (session 14, §3.1): 20×1:4 yes
+   (silicon-proven at 62.5 MHz, TX side); 32×1:4 impossible (no
+   width_mode >20 on the GW5AT-60) — Gen 2x1 → 128 is the bridge.**
 2. Quad TX clocking in x2: both lanes phase-share the CMU within the
    1.3 ns TP1 launch-skew budget? (expected yes — same PLL; measure.)
 3. LCRD1/LCRD2 buffer partitioning at Gen 1x2 (4+4 vs shared) — read

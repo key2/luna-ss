@@ -2843,6 +2843,176 @@ host behaviors — extend the strict host first, per discipline):
   translated streams (tx_skid.source / debug_rx_hdr_*), so they
   carry to Gen2 unchanged — calibration on a quiet pipe remains.
 
+## 10t. Update 2026-09-01 (session 14) — the WIDTH PROGRAM opens:
+## gate W0 CLOSED (all four probes verdicted), BUG #41 (SSP LMP field
+## rules) found by the new strict-U0 host, fixed, and WIRE-VERIFIED;
+## the post-#41 Gen2 build now falls back and ENUMERATES at 5000M;
+## Gen 1x2 negotiation surface landed (ssp_capability) and the
+## PortMatch trace says port 4-3 is Gen 2x1-highest
+
+Executing prompt.md (session 14, gates W0–W3).  W0 executed in full;
+W1/W2 datapath work NOT started (this session's W2-relevant products:
+the negotiation surface, the 125-MHz Gen1x2 build shape + SDC branch,
+and the port-capability verdict below).  Bug numbering: **#41 closed;
+#42 next** (suspect identified, see H2 state).
+
+### W0.4 — H2 disposition: bug #41 (the U0 killer candidate), the
+### strict-U0 host, and the new silicon state
+
+* **PHASE=u0 strict host** (sim_link_gen2.py; battery `gen2-u0`): the
+  three §10s U0 suspects became checks — LUP keepalives within
+  tU0LTimeout [7.5.6.1], inbound host Port Capability/Configuration
+  LMPs with the SSP field rules + REQUIRED Port Configuration
+  Response, inbound ITPs (link-ack only), then a closing SET_ADDRESS.
+  RED recorded (pre-fix): *"Port Capability LMP carries Gen 1x1-only
+  field values at SSP operation: link_speed=1 num_hp_buffers=4"* and
+  *"Port Configuration Response code 0x2 ... reads as 'Link Speed
+  rejected' -> DFP port error [10.16.2.6]"*.  LUP + ITP checks were
+  already GREEN (suspects 1 and 3 cleared in sim).
+* **Bug #41 (FIXED, sim red/green, wire-verified)**: [Tables
+  8-7/8-9/8-10] make Port Capability link_speed/num_hp_buffers, Port
+  Configuration link_speed, and the Response Code all RESERVED-0
+  when **not operating at Gen 1x1**.  The historical handler
+  advertised 5GBPS/4-buffers and accepted only link_speed==1 — a
+  conformant SSP host's link_speed=0 Port Configuration got
+  CONFIGURATION_REJECTED, which a DFP reads as a port error →
+  the U0 walk-down.  Fix in protocol/link_management.py,
+  elaboration-gated `gen2=` (Gen1 statements verbatim), runtime
+  `ssp_operating` = physical.operating_gen2 (Gen1x1-fallback keeps
+  the historical field usage; Gen 1x2 will OR in its arm at W2).
+* **Lottery**: pre-fix evcap netlist missed 17 rolls total
+  (66_033..66_045, best 150.8 — abandoned); the post-#41 netlist won
+  on roll 2: **POR 66_047 = pclk 156.307 / rxclk 162.692 MET**;
+  in-tree rebuild reproduces (deterministic).  Image:
+  `/tmp/kilo/h2_gen2_lmpfix_met.fs`.
+* **Silicon verdict (flash + POR replay, reproducible)**: Gen2
+  trains → U0 → our Port Capability LMP goes out with the conformant
+  SSP fields (evcap `D00000080`) → **zero host header events reach
+  the protocol layer at Gen2** → host declares `usb4-port3: config
+  error` (~0.8 s) → device falls back per the ladder and
+  **ENUMERATES at 5000M** with a clean Gen1 U0: host Port Capability
+  (`R00010004`), host Port Configuration, our ACCEPTED response
+  (`D000002c0`), then ITPs every 125 µs filling the ring.  Pre-#41
+  this build class never enumerated at all — the fallback ladder is
+  now silicon-proven end-to-end on the gen2 build.
+* **H2 remains OPEN — #42 next**: the discriminator is now sharp:
+  at Gen2 U0 the link-command plane works (advertisement completes
+  → link_ready) but **no host header packet is ever delivered**
+  (or none survives our RX chain: a CRC-failing header would LBAD
+  silently — the ring taps only accepted headers).  Suspects, in
+  order: (1) the Gen2 RX header path on silicon — RxGearbox132/
+  elastic/aligner realtime behaviors the sim bypasses (the bench
+  feeds the RTL Descrambler directly; the seed-extraction sim
+  artifact of §10s is the precedent); (2) our Gen2 TX headers
+  corrupt on the wire → host stalls its own LMP schedule (less
+  likely: it should send Port Capability within tPortConfiguration
+  regardless — and it didn't).  Next discriminators: an LBAD/LRTY
+  counter probe channel (uart0 ch4 is retaskable — netlist change =
+  new lottery), and a sim bench that runs the FULL RX chain
+  (gearbox+descrambler; the equiv harness has the machinery).
+
+### W0.1 — wide fabric trim verdicts (tool + silicon; the §3.3
+### native-vs-bridge decisions are now CLOSED)
+
+* Tool phase (/tmp/kilo/trim_experiment, vendor serdes_toml_to_csr as
+  the encoding oracle): **width_mode > 20 does not exist on the
+  GW5AT-60** (KeyError: 32/40/64) — consistent with the fixed 80-bit
+  TX / 88-bit RX fabric bus.  `csr_map.py`'s {8..64} set is TOML
+  schema, not this device.  **10G 32×1:4 (native 128-bit) is
+  IMPOSSIBLE → Gen 2x1 @ 128-bit PIPE = the 2:1 bridge** (the safe
+  hybrid); Gen 2x2 → 128 (stripe-merge 2×64) unaffected.
+* **5G 20×1:4 (8 symbols @ 62.5) ACCEPTED by the tool**: boot blob
+  differs from the proven 20×1:2 trim in exactly TWO lane clock-tree
+  divider registers (LN1: `0x808608` 0x111A→0x121A, `0x808628`
+  0x116→0x126; stride 8 per lane; gearbox reg stays 0x511) — a
+  runtime 125↔62.5 flip is two writes + the #22 quiesce.
+* **Silicon (examples/gowin/probe-trims, flashed)**: the wide trim
+  BOOTS and the TX PCS runs at **62.500 MHz exactly** (uart0 pclk
+  counter 0x14d555e; telltale table in the top).  RX-side symbol
+  delivery unverified in the bare rig (no partner stimulus — CDR
+  free-ran ~17 MHz, rx activity 0); it rides the W1 integration
+  milestone.  **usb3_design.md §3.1/§3.3/§12.1 updated with all
+  verdicts.**
+
+### W0.2 — LN0 TX: software-reachable proof EXHAUSTED; folds into W2
+
+examples/gowin/probe-ln0tx (LANE= and LOOPBACK= knobs, A/B-able):
+the PIPE `TxDetectRx_loopback` path is the PIPE loopback-SLAVE
+semantic (the PHY's wrapper also short-circuits PipeRx* from PipeTx*
+digitally); the GTR12 CSR loopback write produced **no observable
+TX→RX return at the raw fabric tap on either lane**.  The LN1
+"commas" that first looked like loopback return were the HOST's
+polling TS1s (control build with LOOPBACK=0 showed identical comma
+rates); LN0 (pads unstimulated in the straight orientation) shows a
+static RX word and a ~124.7 MHz free-running CDR with or without
+loopback.  Re-proven en route: LN0 CSR rate path (boot switch to
+pclk 125 at LN0 — #38 re-verified), eidle/FFE handshakes complete.
+**The definitive LN0 TX proof is W2's x2 PortConfig (the host
+validates lane-1 TX during x2 training) or a physical cable flip.**
+
+### W0.3 — Gen 1x2 negotiation surface + the PortMatch trace:
+### PORT 4-3 IS GEN 2X1-HIGHEST (x2 NOT negotiable as benched)
+
+* **Constant corrected**: Table 7-13 (b0..b7 columns) puts dual-lane
+  at **b6 → LBPM_CAP_GEN1X2 = 0x40**; the mission text / design doc
+  0x20 was b5 = RESERVED (transcription error; doc §5 fixed).
+* **ssp_capability plumbing** (lfps.py constants; ltssm.py
+  `ssp_capability=` + `phy_boots_gen2=`; physical/link/device
+  pass-throughs; device debug_lbpm_* taps): the advertised-highest
+  byte is a parameter (GEN2X1 default = elaboration-identical;
+  GEN1X2 selects the 5G rate for the matched-highest and the
+  0x00-only adjust-down decode).  `phy_boots_gen2=False` resets
+  `applied_gen2`/`rate_r` to the 5G state for tops that ride the
+  adapter's pre-MAC boot rate switch.  Sim: PHASE=lbpm-x2 +
+  DEVCAP=gen1x2 (battery `gen2-lbpm-x2`; red recorded: "device
+  announced 0x04, expected ... 0x40").
+* **examples/gowin/luna-enum-gen1x2**: the Gen 1x2-highest probe on
+  the PROVEN Gen1 build shape — adapter boot_rate_switch (MAC never
+  sees 156.25), gen2=True MAC at 125 MHz, uart1 LBPM ring ('D' = rx
+  byte | tx<<8, 'A' = tx completions).  SDC: new 8.0 ns branch in
+  gowin-serdes dkusb_gw5at60 (`luna_enum_gen1x2`/
+  `luna_multiep_gen1x2`) — **MET FIRST ROLL (pclk 126.2/rxclk
+  157.9)**, exactly the no-lottery prediction of usb3_design.md §7.
+* **Bench capture (the W0.3 answer)**: the host's FIRST capability
+  announcement on 4-3 is **0x04 = Gen 2x1-highest, not 0x44**; on
+  our 0x40 it adjusted down to 0x00 (per Table 7-14 for a Gen 2x1
+  port) → matched Gen 1x1 → PHY Ready both ways → trained →
+  enumerated 5000M, rx_lanes=1.  Ring saved:
+  /tmp/kilo/gen1x2_lbpm_ring.txt.  Consequences: (a) our x2
+  negotiation machinery is silicon-correct against a real host,
+  including the adjust-down and the full Gen1x2→Gen1x1 fallback;
+  (b) **W2's bench gate (10000M with rx_lanes=2) is NOT achievable
+  on 4-3 as benched** — the "usb4 root hub speed 20000 / 2 lanes"
+  fact describes the controller, not this port's LBPM announcement.
+  Next session: qualify other physical ports with this probe (flash
+  + read the ring — it is the x2-port qualifier tool); W2's sim
+  program is unaffected.
+
+### Session-14 regression state
+
+* Battery **48/48** mid-session (post-#41; new entry gen2-u0) and
+  **49/49** at close-out (with gen2-lbpm-x2), both from settled
+  trees; pytest **104/104**.
+* Gen1 shipping parity re-proven TWICE (after #41: 10 bytes; after
+  the W0.3 params: 12 bytes — all below offset 622).  The gen2 top's
+  default-parameter elaboration re-proven payload-identical to the
+  flashed image after the W0.3 params (3 header bytes).
+* Bench: RESTORED to the Gen1 fence and re-verified (5000M on 4-3;
+  1 MiB ×3 PASS 258.8 MB/s agg; 16 MiB PASS 278.2, sha exact).
+* Saved images (/tmp/kilo): h2_gen2_lmpfix_met.fs (POR 66_047,
+  MET, the post-#41 flash), h0_gen1_fence.fs (RESIDENT).  Probe
+  builds live in their example dirs (probe-trims, probe-ln0tx
+  build_ln0/build_ln1, luna-enum-gen1x2).
+* New battery entries: gen2-u0, gen2-lbpm-x2 (both expect-green,
+  red baselines recorded in sim_battery.sh comments).
+* Bug numbering: **#41 closed this session; #42 next** (Gen2
+  inbound-header path, see W0.4).  #37 + §10n/§10q parked items
+  carry.
+* Width-program gate status: **W0 CLOSED** (all four probes
+  verdicted, design doc updated); W1 next (the w64 core: the 62.5
+  native trim is real, the PIPE stays {64,128} with Gen2×128 as a
+  bridge); W2's hardware leg needs a port re-qualification first.
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 13: gate G5, hardware

@@ -70,7 +70,8 @@ class LinkManagementPacketHandler(Elaboratable):
     CONFIGURATION_ACCEPTED = 1
     CONFIGURATION_REJECTED = 2
 
-    def __init__(self):
+    def __init__(self, *, gen2=False):
+        self._gen2 = gen2
 
         #
         # I/O port
@@ -81,6 +82,22 @@ class LinkManagementPacketHandler(Elaboratable):
         # Status / control.
         self.usb_reset     = Signal()
         self.link_ready    = Signal()
+
+        # SSP-operation qualifier (gen2 builds; bug #41): asserted when
+        # the negotiated configuration is anything OTHER than Gen 1x1
+        # (Gen 2x1 today; Gen 1x2 / Gen 2x2 OR in here when they land).
+        # The Gen 1x1-only LMP fields -- Port Capability link_speed /
+        # num_hp_buffers, Port Configuration link_speed, and the Port
+        # Configuration Response code -- are all RESERVED and "shall be
+        # set to zero" when not operating at Gen 1x1 [USB3.2r1 8.4.5-
+        # 8.4.7, Tables 8-7/8-9/8-10].  The historical behavior
+        # (advertise 5GBPS/4-buffers, accept only link_speed == 5GBPS,
+        # answer ACCEPTED/REJECTED) misreads a conformant SSP host's
+        # link_speed=0 Port Configuration as a foreign speed and answers
+        # response_code=2 -- which the DFP reads as "Link Speed
+        # rejected" and signals a port error [10.16.2.6]: the U0 link
+        # walk-down observed on Gen2 silicon (HANDOVER 10s phase H2).
+        self.ssp_operating = Signal()
 
 
     def elaborate(self, platform):
@@ -94,6 +111,12 @@ class LinkManagementPacketHandler(Elaboratable):
         # Pending "tasks" for our transmitter.
         #
         pending_configuration_result = Signal(2)
+
+        # gen2 builds track "a response is owed" separately from the
+        # result code: at SSP operation the code sent on the wire is
+        # reserved-0, which can no longer double as the pending flag.
+        if self._gen2:
+            pending_response = Signal()
 
 
         #
@@ -134,6 +157,8 @@ class LinkManagementPacketHandler(Elaboratable):
                     m.next = "SEND_CAPABILITIES"
                 with m.Else():
                     m.d.ss += pending_configuration_result.eq(0)
+                    if self._gen2:
+                        m.d.ss += pending_response.eq(0)
 
 
             # SEND_CAPABILITIES -- our link has come up; and we're now ready to advertise our link
@@ -141,16 +166,28 @@ class LinkManagementPacketHandler(Elaboratable):
             with m.State("SEND_CAPABILITIES"):
                 handle_resets()
 
-                send_packet_response(PortCapabilityHeaderPacket,
-                    subtype           = LinkManagementPacketSubtype.PORT_CAPABILITY,
-                    link_speed        = self.LINK_SPEED_5GBPS,
+                if self._gen2:
+                    # SSP field rules [Table 8-7]: link_speed and
+                    # num_hp_buffers are reserved-0 when not operating
+                    # at Gen 1x1 (bug #41).
+                    send_packet_response(PortCapabilityHeaderPacket,
+                        subtype           = LinkManagementPacketSubtype.PORT_CAPABILITY,
+                        link_speed        = Mux(self.ssp_operating,
+                                                0, self.LINK_SPEED_5GBPS),
+                        num_hp_buffers    = Mux(self.ssp_operating, 0, 4),
+                        supports_upstream = 1
+                    )
+                else:
+                    send_packet_response(PortCapabilityHeaderPacket,
+                        subtype           = LinkManagementPacketSubtype.PORT_CAPABILITY,
+                        link_speed        = self.LINK_SPEED_5GBPS,
 
-                    # We're required by specification to support exactly four buffers.
-                    num_hp_buffers    = 4,
+                        # We're required by specification to support exactly four buffers.
+                        num_hp_buffers    = 4,
 
-                    # For now, we only can operate as an upstream device.
-                    supports_upstream = 1
-                )
+                        # For now, we only can operate as an upstream device.
+                        supports_upstream = 1
+                    )
 
                 # Continue to drive our packet until it's accepted by the link layer.
                 with m.If(header_source.ready):
@@ -162,8 +199,12 @@ class LinkManagementPacketHandler(Elaboratable):
                 handle_resets()
 
                 # If we have a pending configuration result, send it!
-                with m.If(pending_configuration_result):
-                    m.next = "SEND_PORT_CONFIGURATION_RESPONSE"
+                if self._gen2:
+                    with m.If(pending_response):
+                        m.next = "SEND_PORT_CONFIGURATION_RESPONSE"
+                else:
+                    with m.If(pending_configuration_result):
+                        m.next = "SEND_PORT_CONFIGURATION_RESPONSE"
 
 
             # SEND_CONFIGURATION_RESPONSE -- we're sending a Port Configuration Response,
@@ -171,14 +212,27 @@ class LinkManagementPacketHandler(Elaboratable):
             with m.State("SEND_PORT_CONFIGURATION_RESPONSE"):
                 handle_resets()
 
-                send_packet_response(PortConfigurationResponseHeaderPacket,
-                    subtype       = LinkManagementPacketSubtype.PORT_CONFIGURATION_RESPONSE,
-                    response_code = pending_configuration_result
-                )
+                if self._gen2:
+                    # SSP field rules [Table 8-10]: the Response Code is
+                    # reserved-0 when not operating at Gen 1x1; a nonzero
+                    # code reads as "Link Speed rejected" at the DFP,
+                    # which then signals a port error [10.16.2.6].
+                    send_packet_response(PortConfigurationResponseHeaderPacket,
+                        subtype       = LinkManagementPacketSubtype.PORT_CONFIGURATION_RESPONSE,
+                        response_code = Mux(self.ssp_operating,
+                                            0, pending_configuration_result)
+                    )
+                else:
+                    send_packet_response(PortConfigurationResponseHeaderPacket,
+                        subtype       = LinkManagementPacketSubtype.PORT_CONFIGURATION_RESPONSE,
+                        response_code = pending_configuration_result
+                    )
 
                 # Continue to drive our packet until it's accepted by the link layer.
                 with m.If(header_source.ready):
                     m.d.ss += pending_configuration_result.eq(0)
+                    if self._gen2:
+                        m.d.ss += pending_response.eq(0)
                     m.next = "DISPATCH_COMMANDS"
 
 
@@ -210,6 +264,13 @@ class LinkManagementPacketHandler(Elaboratable):
                 with m.Case(LinkManagementPacketSubtype.PORT_CONFIGURATION):
                     configuration = PortConfigurationHeaderPacket()
                     m.d.comb += configuration.eq(header_sink.header)
+
+                    if self._gen2:
+                        # A response is owed either way [8.4.7].  At SSP
+                        # operation the link_speed field is reserved-0
+                        # [Table 8-9] and carries no decision; at Gen 1x1
+                        # operation the historical accept/reject applies.
+                        m.d.ss += pending_response.eq(1)
 
                     # For now, we only support Gen1 / 5Gbps, so we'll accept only links
                     # with that speed selected.

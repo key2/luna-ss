@@ -29,7 +29,8 @@ class USBSuperSpeedDevice(Elaboratable):
     """ Core gateware common to all LUNA USB3 devices. """
 
     def __init__(self, *, phy, sync_frequency=None, gen2=False,
-                 tseq_burst_length=65536, polling_timeout_scale=1.0):
+                 tseq_burst_length=65536, polling_timeout_scale=1.0,
+                 ssp_capability=None, phy_boots_gen2=True):
         self._phy = phy
         self._sync_frequency = sync_frequency
         # Gen2 (SuperSpeedPlus) capability.  Session 11d onward, built
@@ -41,6 +42,15 @@ class USBSuperSpeedDevice(Elaboratable):
         # per-spec SS-operation fallbacks [6.9.5, 7.5.4.3-.6], and the
         # LTSSM-driven PHY rate handshake.
         self._gen2 = gen2
+        # SuperSpeedPlus advertised-highest capability [Table 7-13]:
+        # None/LBPM_CAP_GEN2X1 (default, elaboration-identical) or
+        # LBPM_CAP_GEN1X2 (dual-lane 5G; the width program).  And the
+        # PHY boot trim at MAC reset release: True = the 10G boot blob
+        # under MAC-owned rate; False = the top rides the adapter's
+        # pre-MAC boot rate switch, so the MAC wakes to a 5G PHY (the
+        # Gen 1x2-highest tops -- they never need the 10G trim).
+        self._ssp_capability = ssp_capability
+        self._phy_boots_gen2 = phy_boots_gen2
         # Simulation-only shortening knobs (threaded to the link layer /
         # LTSSM; the defaults are the spec values and are elaboration-
         # identical to the historical stack).
@@ -74,6 +84,12 @@ class USBSuperSpeedDevice(Elaboratable):
         # ltssm.in_training -- do NOT approximate this from
         # terminations/trained, bug #39 aggravator).
         self.ltssm_in_training            = Signal()
+        # gen2 builds: LBPM negotiation visibility (the PortMatch trace
+        # capture of the width program's W0.3 probe; pruned when unused).
+        self.debug_lbpm_rx_message        = Signal(8)
+        self.debug_lbpm_rx_valid          = Signal()
+        self.debug_lbpm_tx_message        = Signal(8)
+        self.debug_lbpm_sent              = Signal()
 
         # Debug taps (control-transfer/handshake path visibility for the
         # SET_ADDRESS bring-up contract; prunable).
@@ -192,6 +208,7 @@ class USBSuperSpeedDevice(Elaboratable):
             # Gen2 Polling.RxEQ transmits 524,288 TSEQ ordered sets --
             # 8x the Gen1 count [7.5.4.7.2]; sim shortening scales both.
             gen2_tseq_count = 8 * self._tseq_burst_length,
+            phy_boots_gen2 = self._phy_boots_gen2,
         )
 
         #
@@ -206,7 +223,9 @@ class USBSuperSpeedDevice(Elaboratable):
             physical_layer=physical, gen2=self._gen2,
             ss_clock_frequency=sync_frequency,
             tseq_burst_length=self._tseq_burst_length,
-            polling_timeout_scale=self._timeout_scale)
+            polling_timeout_scale=self._timeout_scale,
+            ssp_capability=self._ssp_capability,
+            phy_boots_gen2=self._phy_boots_gen2)
         m.d.comb += [
             self.link_trained     .eq(link.trained),
             self.link_in_reset    .eq(link.in_reset),
@@ -246,11 +265,26 @@ class USBSuperSpeedDevice(Elaboratable):
         #
         # Protocol layer.
         #
-        m.submodules.protocol = protocol = USB3ProtocolLayer(link_layer=link)
+        m.submodules.protocol = protocol = USB3ProtocolLayer(
+            link_layer=link, gen2=self._gen2)
         m.d.comb += [
             protocol.current_address        .eq(address),
             protocol.current_configuration  .eq(configuration)
         ]
+        if self._gen2:
+            # SSP LMP field rules qualifier (bug #41): "not operating at
+            # Gen 1x1" -- at stage A that is exactly the Gen2 rate
+            # (Gen 1x2 / Gen 2x2 OR in here when the width program lands
+            # them).  A device that fell back to Gen 1x1 keeps the
+            # historical Gen1 field usage, per Tables 8-7/8-9/8-10.
+            m.d.comb += protocol.ssp_operating.eq(physical.operating_gen2)
+            # LBPM negotiation debug taps (W0.3 PortMatch trace).
+            m.d.comb += [
+                self.debug_lbpm_rx_message .eq(physical.lbpm_rx_message),
+                self.debug_lbpm_rx_valid   .eq(physical.lbpm_rx_valid),
+                self.debug_lbpm_tx_message .eq(physical.lbpm_message),
+                self.debug_lbpm_sent       .eq(physical.lbpm_sent),
+            ]
 
 
         #

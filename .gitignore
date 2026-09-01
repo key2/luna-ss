@@ -163,3 +163,6 @@ build/
 *.fs
 *.fst
 *.egg-info/
+
+# W0.2 LN0-TX probe per-lane build dirs
+examples/gowin/probe-ln0tx/build_ln*/

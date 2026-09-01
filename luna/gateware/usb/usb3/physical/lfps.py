@@ -88,11 +88,17 @@ SCD2_PATTERN = (1, 0, 1, 1)     # '1101', wire (LSb-first) order
 # framed by delimiters (shared between consecutive messages).
 LBPM_TPWM = 2.2e-6              # transmit typical (spec: 2.0-2.4 us)
 
-# PHY LBPM message bytes [Table 7-13], single-lane trims:
+# PHY LBPM message bytes [Table 7-13]:
 # PHY Capability: [1:0]=00, [3:2]=rate (00 = 5 Gbps, 01 = 10 Gbps),
-# b6 = dual-lane (0 for us).  PHY Ready: [1:0]=01, rest reserved-0.
+# b6 = dual-lane.  PHY Ready: [1:0]=01, rest reserved-0 (x2 operation
+# adds b6 = DFP/UFP and b7 = the DFP RT-Config flag [7.5.4.6.1]).
+# NOTE the width-program mission text / usb3_design.md 5 carried
+# "GEN1X2 = 0x20" -- a transcription error: 0x20 is b5, a RESERVED
+# bit.  Table 7-13 (columns b0..b7) puts dual-lane at b6 = 0x40.
 LBPM_CAP_GEN2X1 = 0x04
 LBPM_CAP_GEN1X1 = 0x00
+LBPM_CAP_GEN1X2 = 0x40           # b6 dual-lane, rate 00: 2 x 5 Gbps
+LBPM_CAP_GEN2X2 = 0x44           # b6 dual-lane, rate 01: 2 x 10 Gbps
 LBPM_PHY_READY  = 0x01
 _PollingLFPS       = LFPS(burst=_PollingLFPSBurst, repeat=_PollingLFPSRepeat)
 

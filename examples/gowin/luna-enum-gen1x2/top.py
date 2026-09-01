@@ -1,35 +1,43 @@
-"""LUNA dual-rate (Gen1+Gen2) SuperSpeed device — Gowin DK_USB (GW5AT-60).
+"""Gen 1x2 PortMatch trace probe -- Gowin DK_USB (GW5AT-60).
 
-The G5 bring-up top (HANDOVER 10r): the full dual-rate stack --
-gen2=True LUNA MAC (SCD/LBPM negotiation, LTSSM-driven rate, Gen2
-128b/132b block framing, stage-A bridges) on the gw_usb3 PHY with its
-silicon-proven Gen2 datapath, booting in the byte-pinned 10G trim.
+W0.3 of the width program (usb3_design.md P0/5): advertise
+**Gen 1x2** (LBPM capability 0x40 -- Table 7-13 b6 = dual-lane; the
+mission text's 0x20 was a transcription error, b5 is reserved) as the
+device's highest PHY capability and CAPTURE the 20G root port's
+answer.  Expected per Table 7-14 (UFP Gen 1x2 x DFP Gen 2x2): the
+host adjusts its announcement down to 0x40 -- the dual-lane match.
 
-    [gowin-serdes]   GTR12 Quad 0 lane 1, CPLL, 200 MHz refclk forward,
-                     **10G boot trim** (the byte-pinned reference blob).
-    [gw_usb3]        Usb31Phy(gen2=True, rate_init=1) behind
-                     GowinGTR12PIPE(gen2=True): the MAC owns pipe.rate,
-                     the adapter forwards it to the CSR sequencer and
-                     synthesizes the PIPE rate-change ack.
-    [LUNA]           USBSuperSpeedDevice(gen2=True) at ss = pclk =
-                     156.25 MHz (the Gen2 OPERATING point: timing gate
-                     is 156.25 MET, not the #22 boot-window rule).
+This build has NO x2 datapath: after PortConfig at Gen 1x2 the
+x1-only training cannot complete (the host trains BOTH lanes), the
+24 ms Polling.Active window expires, and the LTSSM re-enters
+PortMatch advertising its next-highest = Gen 1x1 [7.5.4.5.1], where
+training succeeds -- the device should ultimately enumerate at
+5000M.  The uart1 LBPM ring shows the whole story:
 
-STATUS: sim-proven stack (gate G3+G4, 46/46 battery); THIS TOP IS THE
-FIRST HARDWARE ELABORATION -- unverified on the bench.  Known-open
-hardware items (HANDOVER 10r): fixed-envelope rate ack (no CSR
-completion feedback yet), LTSSM_is_Training approximation, TX beat
-pacing vs TxFifoWrNum, no SSP BOS capability / Sublink Speed
-Notification TP yet (host may enumerate it as bcdUSB 0310 regardless).
+    'D' entries: received PHY LBPM bytes, word = rx byte | (our
+        concurrent tx byte << 8) -- look for rx 0x44 (host announces
+        Gen 2x2), then rx 0x40 (HOST MATCHED DUAL-LANE = the W0.3
+        verdict), PHY Ready 0x41/0xC1 (b6=DFP, b7=RT-Config), then
+        the second PortMatch round at 0x00.
+    'A' entries: our transmitted LBPM completions (word = tx byte).
+
+Clocking: the MAC rides the PROVEN pre-MAC boot rate switch (adapter
+boots the byte-pinned 10G blob, retunes to 5G, THEN wakes the MAC):
+a Gen 1x2-highest device never needs the 10G trim, so the whole MAC
+runs at 125 MHz -- Gen1-class timing closure, no 156.25 lottery
+(usb3_design.md 7: the Gen 1x2 cells close at Gen1 effort).  The
+device is built with ``phy_boots_gen2=False`` so the LTSSM's
+applied-rate tracking and the physical layer's rate handshake both
+reset to the 5G state the adapter hands over.
 
 Build & program:
 
     python top.py                # build only (build/)
-    python top.py serdes         # regenerate serdes.toml/csr only
     python top.py flash          # flash the existing bitstream
     python top.py program        # build + flash
 
-Watch:  stty -F /dev/ttyUSB4 115200 raw -echo; cat /dev/ttyUSB4
+Watch: uart0 link probe /dev/ttyUSB4, uart1 LBPM ring /dev/ttyUSB5
+(both 115200).
 """
 
 import subprocess
@@ -38,24 +46,21 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 
-# luna (this fork), gw_usb3 and gowin_serdes are installed packages
-# (fork venv: `pdm install` at the repo root).  No sys.path reaches.
-
 from amaranth.hdl import *
 from amaranth.lib.cdc import FFSynchronizer
 
-from gowin_serdes.dkusb_gw5at60 import DKUSBGW5AT60Platform, add_serdes_refclk_forward
-
+from gowin_serdes.dkusb_gw5at60 import (DKUSBGW5AT60Platform,
+                                        add_serdes_refclk_forward)
 from gowin_serdes import GowinDevice, make_usb3_serdes, usb3_boot_writes
 from gowin_serdes.config import RefClkSource
 from gowin_serdes.usb3 import attach_usb3_phy
+from gowin_serdes.bench import ClockFreqProbe
 
 from luna.gateware.interface.serdes_phy.gowin_gtr12 import GowinGTR12PIPE
 from luna.gateware.usb.usb3.device import USBSuperSpeedDevice
+from luna.gateware.usb.usb3.physical.lfps import LBPM_CAP_GEN1X2
 
 from usb_protocol.emitters import SuperSpeedDeviceDescriptorCollection
-
-from gowin_serdes.bench import ClockFreqProbe
 
 # ── Configuration ─────────────────────────────────────────────────────
 QUAD, LANE = 0, 1
@@ -63,15 +68,7 @@ REF_CLK_SOURCE = RefClkSource.Q0_REFCLK1
 REF_CLK_FREQ = "200M"
 DBG_FREQ = 24_000_000
 BAUD_RATE = 115_200
-
-
-# SerDes boot trim.  "10G" = the byte-pinned reference blob; the PIPE
-# adapter then performs the hardware-proven 10G->5G rate-change sequence
-# itself before reporting the PHY ready (boot_rate_switch).  The direct
-# "5G" boot blob is generated by an untested path and produced a
-# host-invisible TX on first hardware trial (LFPS fine, TS bursts
-# unanswered) -- kept selectable for future trim debugging.
-BOOT_RATE = "10G"   # Gen2 operating trim; the LTSSM owns any downgrade
+BOOT_RATE = "10G"       # byte-pinned blob; the ADAPTER retunes to 5G
 
 
 def make_serdes():
@@ -89,7 +86,7 @@ def create_descriptors():
         d.bcdUSB             = 3.1
         d.bMaxPacketSize0    = 9            # 2**9 = 512
         d.iManufacturer      = "LUNA + gw_usb3"
-        d.iProduct           = "GTR12 SuperSpeed bring-up"
+        d.iProduct           = "GTR12 Gen1x2 PortMatch probe"
         d.iSerialNumber      = "DK60"
         d.bNumConfigurations = 1
 
@@ -101,7 +98,7 @@ def create_descriptors():
     return descriptors
 
 
-class LunaEnumTop(Elaboratable):
+class LunaEnumGen1x2Top(Elaboratable):
     def elaborate(self, platform):
         m = Module()
 
@@ -109,8 +106,7 @@ class LunaEnumTop(Elaboratable):
         usb_pwr_en = platform.request("usb_pwr_en", 0)
         m.d.comb += usb_pwr_en.o.eq(0)     # device mode: never source VBUS
 
-        # Quiet the USB2 pins (see usb31-enum: floating pins make the
-        # host see a phantom low-speed device and power-cycle the port).
+        # Quiet the USB2 pins (floating pins = phantom low-speed device).
         usb2 = platform.request("usb2_softphy", 0)
         m.d.comb += [
             usb2.pullup_en.o.eq(0),
@@ -135,9 +131,6 @@ class LunaEnumTop(Elaboratable):
         m.domains += ClockDomain("dbg", reset_less=True)
         m.d.comb += ClockSignal("dbg").eq(clk24.i)
 
-        # POR: quad POR at ~330 us, LUNA+PHY released LAST at ~1.3 ms.
-        # Releasing logic before the quad leaves POR loses the CSR
-        # sequencer's init writes (hard-won usb31-enum lesson).
         por_cnt = Signal(18)
         por_n = Signal()
         luna_go = Signal()
@@ -151,25 +144,14 @@ class LunaEnumTop(Elaboratable):
         with m.If(key_s[1]):
             m.d.cfg += por_cnt.eq(0)
 
-        # POR-nudge placement lottery (semantically null threshold
-        # changes; HANDOVER #22/10k).  Session-13 roll history at the
-        # 156.25 gate (full ladder in HANDOVER 10s): pre-cut rolls
-        # 66_000..66_020 landed pclk 133-155 / rxclk 142-165; after the
-        # seam/engine cut batch 66_021 won at pclk 156.263 / rxclk
-        # 169.777; debug-tap netlist (+ltssm.in_training, bug #39)
-        # re-rolled to 66_026 = 156.340/159.837; SKP-fix netlist
-        # (bug #40) re-rolled to 66_033 = 156.263/157.158.  The evcap
-        # (uart1 header-ring) netlist missed 17 rolls (66_033..66_045,
-        # best 150.8); the bug-#41 (SSP LMP field rules) netlist won at
-        # the current 66_047 = pclk 156.307 / rxclk 162.692 -- BOTH MET
-        # (the Gen2 flash gate).
         m.d.cfg += [
-            por_n.eq(por_cnt > 66_047),
+            por_n.eq(por_cnt > 66_011),
             luna_go.eq(por_cnt.all()),
         ]
 
         # ==============================================================
-        # SerDes + PHY + PIPE adapter
+        # SerDes + PHY + PIPE adapter (the PROVEN Gen1 shipping shape:
+        # pre-MAC boot rate switch; bug #38 CSR lane plumb)
         # ==============================================================
         serdes, group = make_serdes()
         m.submodules.serdes = serdes
@@ -177,26 +159,21 @@ class LunaEnumTop(Elaboratable):
         drp = getattr(serdes, group.drp_name)
         m.d.comb += serdes.por_n.eq(por_n)
 
-        # Bug #38 (see luna-multiep/top.py): plumb the lane into the PHY's
-        # CSR sequencer; the adapter default is Q0_LN1 regardless of QUAD/
-        # LANE.  Elaboration-identical for the shipping Q0_LN1 config.
         from gw_usb3.upar_csr import UparCsrConfig
-        adapter = GowinGTR12PIPE(gen2=True,
+        adapter = GowinGTR12PIPE(boot_rate_switch=True,
+                                 boot_domain="ss_raw",
                                  phy_kwargs=dict(
                                      csr_config=UparCsrConfig(quad=QUAD,
                                                               lane=LANE)))
         m.submodules.adapter = adapter
         attach_usb3_phy(m, adapter.phy, lane, drp)
 
-        # ss/sync domains: pclk (156.25 MHz at the 10G trim; retunes on an
-        # LTSSM-driven rate change -- the boot-window discipline does not
-        # apply at boot, but mid-run retunes clock the MAC through the
-        # glitch window: a known G5 risk to verify on the bench).
         m.domains += ClockDomain("ss_raw", reset_less=True)
         m.d.comb += ClockSignal("ss_raw").eq(lane.tx.pcs_clkout)
+        m.d.comb += adapter.boot_start.eq(luna_go)
         rstn_r0 = Signal()
         rstn_r1 = Signal()
-        m.d.ss_raw += [rstn_r0.eq(luna_go),
+        m.d.ss_raw += [rstn_r0.eq(luna_go & adapter.phy_ready),
                        rstn_r1.eq(rstn_r0)]
         for dom in ("ss", "sync"):
             m.domains += ClockDomain(dom)
@@ -206,19 +183,15 @@ class LunaEnumTop(Elaboratable):
             ]
 
         # ==============================================================
-        # LUNA SuperSpeed device
+        # LUNA SuperSpeed device: Gen 1x2-highest, 125 MHz throughout
         # ==============================================================
         m.submodules.usb = usb = USBSuperSpeedDevice(
-            phy=adapter, sync_frequency=156.25e6, gen2=True)
+            phy=adapter, sync_frequency=125e6, gen2=True,
+            ssp_capability=LBPM_CAP_GEN1X2, phy_boots_gen2=False)
         usb.add_standard_control_endpoint(create_descriptors())
 
-        # LTSSM training indicator for the PHY's Gen2 descrambler /
-        # polarity acquisition: the REAL LTSSM training-state output.
-        # (The session-12 approximation -- terminations-engaged-and-not-
-        # trained -- stays high through the whole U0-entry window; the
-        # PHY's polarity counter then random-walks on scrambled logical
-        # idle to a sticky lane inversion within tens of microseconds:
-        # bug #39 aggravator, HANDOVER 10s.)
+        # bug #39 discipline: the real LTSSM training output (consumed
+        # only by Gen2-datapath builds; harmless and correct here).
         m.d.comb += adapter.ltssm_training.eq(usb.ltssm_in_training)
 
         m.d.comb += led.o.eq(usb.link_trained)
@@ -226,41 +199,22 @@ class LunaEnumTop(Elaboratable):
         # ==============================================================
         # Debug UARTs
         # ==============================================================
-        # The §10r roll-1 "probe cone" was a MISSING CONSTRAINT, not the
-        # probe: without the platform SDC (this top's name was absent
-        # from the 6.4 ns branch) the skew-tolerant ss->dbg snapshot
-        # handshake was analyzed as a real inter-clock path against the
-        # auto-created 100 MHz base clocks.  With the pclk/rxclk clocks
-        # declared and mutual false paths in place the probes ride at
-        # 156.25 unchanged -- they are the primary Phase-H2 debug tool.
-        #
         # uart0 (link probe, Gen1-compatible format):
-        #   C <ss-cnt> <lfps-det> <ts1-det> <ts2-det> <idle-hs-cycles> <flags>
-        #   ss-cnt telltale: 0x341554x = 156.25 MHz (still 10G);
-        #   0x29aaa9x = 125 MHz (fell back / never matched).
-        #   flags: trained[0] in_reset[1] phy_ready[2] terminations[3].
-        # uart1 (pipe probe):
-        #   C <rxclk> <sds-det> <idle-complete> <txfifo-hi28> <recovery> <flags>
-        #   flags: power_down[0] tx_elec_idle[1] rx_elec_idle[2] data_mode[3].
+        #   C <ss-cnt> <lfps-det> <ts1-det> <ts2-det> <idle-hs> <flags>
+        #   ss-cnt stays 0x29aaa9x (125 MHz) for the WHOLE session --
+        #   this build never runs the 10G trim.
         uart0 = platform.request("uart", 0)
         uart1 = platform.request("uart", 1)
 
-        # TX beat-pacing visibility (§10r suspect #1): TxFifoWrNum is the
-        # PHY's 32-deep Gen2 TX FIFO occupancy, pclk domain.
-        txfifo_hi28 = Signal()
-        m.d.ss += txfifo_hi28.eq(adapter.phy.TxFifoWrNum >= 28)
-
-        m.submodules.linkprobe = linkprobe = DomainRenamer({"cfg": "dbg"})(
+        linkprobe = DomainRenamer({"cfg": "dbg"})(
             ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
                 ("ss", None),
                 ("ss", usb.debug_lfps_polling_detected),
                 ("ss", usb.debug_ts1_detected),
                 ("ss", usb.debug_ts2_detected),
-                # Cycles spent in the LTSSM's idle handshake: nonzero
-                # means Polling.Idle was reached; a saturating count
-                # means the handshake never completes (H2 telltale).
                 ("ss", usb.debug_idle_handshake),
             )))
+        m.submodules.linkprobe = linkprobe
         link_flags = Signal(4)
         m.submodules += FFSynchronizer(
             Cat(usb.link_trained, usb.link_in_reset,
@@ -271,15 +225,9 @@ class LunaEnumTop(Elaboratable):
             uart0.tx.o.eq(linkprobe.tx_o),
         ]
 
-        m.domains += ClockDomain("rxprobe", reset_less=True)
-        m.d.comb += ClockSignal("rxprobe").eq(lane.rx.pcs_clkout)
-        # uart1: header event capture (H2 U0-death discriminator).  The
-        # multiep BurstEventCapture ring dumps the FIRST 64 header
-        # events after boot -- exactly the first U0 cycle's exchange:
-        #   'T' = TX TP (word = dw0), 'D' = TX other header (LMP/DPH
-        #   dw0 -- the type field is dw0[0:5]);
-        #   'A' = RX TP, 'R' = RX non-TP; RX words = dw1[0:27] with
-        #   dw0's type field packed into bits [27:32].
+        # uart1: LBPM negotiation ring (the W0.3 capture).  Port A ('D')
+        # = every RECEIVED LBPM byte, word = rx | (our tx << 8); port B
+        # ('A') = every completed LBPM transmission, word = tx byte.
         import importlib.util as _ilu
         _spec = _ilu.spec_from_file_location(
             "multiep_top", HERE.parent / "luna-multiep" / "top.py")
@@ -288,26 +236,15 @@ class LunaEnumTop(Elaboratable):
 
         m.submodules.evcap = evcap = _multiep.BurstEventCapture(
             clk_freq=DBG_FREQ, baud=BAUD_RATE)
-
-        # Minimal TX header parser on the pre-scrambler wire tap: an
-        # HPSTART word is followed by dw0.
-        W_HPSTART = 0xF7FBFBFB
-        txp_next = Signal()
-        with m.If(usb.debug_wire_tx_strobe):
-            with m.If((usb.debug_wire_tx_data == W_HPSTART)
-                      & (usb.debug_wire_tx_ctrl == 0b1111)):
-                m.d.ss += txp_next.eq(1)
-            with m.Elif(txp_next):
-                m.d.ss += txp_next.eq(0)
         m.d.comb += [
-            evcap.a_stb.eq(usb.debug_wire_tx_strobe & txp_next),
-            evcap.a_tp .eq(usb.debug_wire_tx_data[0:5] == 4),
-            evcap.a_dw1.eq(usb.debug_wire_tx_data),
+            evcap.a_stb.eq(usb.debug_lbpm_rx_valid),
+            evcap.a_tp .eq(0),
+            evcap.a_dw1.eq(Cat(usb.debug_lbpm_rx_message,
+                               usb.debug_lbpm_tx_message)),
 
-            evcap.b_stb.eq(usb.debug_rx_hdr_stb),
-            evcap.b_tag.eq(Mux(usb.debug_rx_hdr_type == 4, 3, 4)),
-            evcap.b_dw1.eq(Cat(usb.debug_rx_hdr_dw1[0:27],
-                               usb.debug_rx_hdr_type)),
+            evcap.b_stb.eq(usb.debug_lbpm_sent),
+            evcap.b_tag.eq(3),
+            evcap.b_dw1.eq(usb.debug_lbpm_tx_message),
 
             uart1.tx.o.eq(evcap.tx_o),
         ]
@@ -320,12 +257,6 @@ class LunaEnumTop(Elaboratable):
 # ======================================================================
 
 def generate_serdes_files():
-    """Generate serdes.toml / serdes.csr for the selected BOOT_RATE.
-
-    With BOOT_RATE="10G" the blob is byte-identical to the pinned,
-    hardware-proven reference (verified at build time by comparison with
-    the usb31-enum copy); the adapter then rate-switches to 5G itself.
-    """
     serdes, _ = make_serdes()
     toml_path = HERE / "serdes.toml"
     csr_path = HERE / "serdes.csr"
@@ -350,12 +281,12 @@ def build(do_program=False):
     platform = DKUSBGW5AT60Platform()
     _setup_gowin_env(platform)
     platform.add_file("serdes.csr", (HERE / "serdes.csr").read_text())
-    platform.build(LunaEnumTop(), name="luna_enum_gen2", build_dir="build",
-                   do_program=do_program)
+    platform.build(LunaEnumGen1x2Top(), name="luna_enum_gen1x2",
+                   build_dir="build", do_program=do_program)
 
 
 def flash():
-    bitstream = HERE / "build" / "luna_enum_gen2.fs"
+    bitstream = HERE / "build" / "luna_enum_gen1x2.fs"
     if not bitstream.exists():
         sys.exit(f"no bitstream at {bitstream}; run `python top.py` first")
     cmd = ["openFPGALoader", "-c", "ft232", str(bitstream)]

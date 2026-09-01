@@ -18,7 +18,7 @@ from amaranth.lib.coding import Encoder
 from amaranth.lib.cdc  import PulseSynchronizer
 
 from ..physical.lfps import (LBPM_CAP_GEN2X1, LBPM_CAP_GEN1X1,
-                             LBPM_PHY_READY)
+                             LBPM_CAP_GEN1X2, LBPM_PHY_READY)
 
 
 
@@ -60,7 +60,8 @@ class LTSSMController(Elaboratable):
     """
 
     def __init__(self, ss_clock_frequency=125e6, *, loosen_requirements=True,
-                 gen2=False, polling_timeout_scale=1.0):
+                 gen2=False, polling_timeout_scale=1.0,
+                 ssp_capability=None, phy_boots_gen2=True):
         self._clock_frequency = ss_clock_frequency
         self._loosen_requirements = loosen_requirements
         # SuperSpeedPlus capability: adds the SCD exchange, the
@@ -69,6 +70,21 @@ class LTSSMController(Elaboratable):
         # per-spec SS-operation fallbacks [USB 3.2r1 6.9.4/.5, 7.5.4].
         # False elaborates the proven Gen1 LTSSM unchanged.
         self._gen2 = gen2
+        # The advertised-highest PHY Capability LBPM byte [Table 7-13]:
+        # LBPM_CAP_GEN2X1 (default, elaboration-identical to the
+        # historical gen2 builds) or LBPM_CAP_GEN1X2.  Either way the
+        # next-advertised (fallback) capability is Gen 1x1 [7.5.4.5.1].
+        # (Gen 2x2 -- the full four-step ladder -- is future work.)
+        if ssp_capability is None:
+            ssp_capability = LBPM_CAP_GEN2X1
+        assert ssp_capability in (LBPM_CAP_GEN2X1, LBPM_CAP_GEN1X2)
+        self._ssp_capability = ssp_capability
+        # Does the PHY boot (at MAC reset release) in its Gen2 trim?
+        # True for the MAC-owned-rate gen2 builds (10G boot blob);
+        # False for tops that ride the adapter's pre-MAC boot rate
+        # switch (the MAC wakes to a 5G PHY, e.g. Gen 1x2-highest
+        # builds).  Sets the reset value of the applied-rate tracking.
+        self._phy_boots_gen2 = phy_boots_gen2
         # Simulation-only knob: scales the millisecond-scale LTSSM
         # timeouts (360/12/2 ms Polling timers and the 12 ms LBPM
         # timer) so full-device sims can exercise the timeout paths.
@@ -386,12 +402,18 @@ class LTSSMController(Elaboratable):
             # Polling.PortMatch, not Rx.Detect) [7.5.4.8.2/.9.2/.10].
             ssp_operation   = Signal()
 
-            # PortMatch capability bookkeeping [7.5.4.5]: we are Gen 2x1;
-            # the fallback ladder below that is Gen 1x1.
+            # PortMatch capability bookkeeping [7.5.4.5]: the advertised
+            # highest is ``ssp_capability`` (Gen 2x1 or Gen 1x2); the
+            # fallback ladder below either is Gen 1x1 [7.5.4.5.1].
+            cap_high = self._ssp_capability
+            # Is the matched-highest outcome a Gen2-rate configuration?
+            # (Gen 1x2 negotiates dual LANES but the 5G rate: the PHY
+            # rate handshake selects 5G for it.)
+            cap_rate_gen2 = bool(cap_high & 0x04)
             advertise_low   = Signal()   # entry advertisement rank
-            partner_low     = Signal()   # partner announced 5G: match down
-            negotiated_gen2 = Signal()   # PortMatch outcome
-            applied_gen2    = Signal(init=1)   # PHY rate (boots at 10G)
+            partner_low     = Signal()   # partner announced lower: match down
+            negotiated_gen2 = Signal()   # PortMatch outcome (PHY rate)
+            applied_gen2    = Signal(init=1 if self._phy_boots_gen2 else 0)
             lbpm_rx_count   = Signal(range(3))
             lbpm_sent_count = Signal(range(5))
             reconfig_done   = Signal()
@@ -743,7 +765,7 @@ class LTSSMController(Elaboratable):
 
                     cap_low = advertise_low | partner_low
                     m.d.comb += self.lbpm_message.eq(
-                        Mux(cap_low, LBPM_CAP_GEN1X1, LBPM_CAP_GEN2X1))
+                        Mux(cap_low, LBPM_CAP_GEN1X1, cap_high))
 
                     m.d.ss += lbpm_timer.eq(lbpm_timer + 1)
 
@@ -763,13 +785,34 @@ class LTSSMController(Elaboratable):
                             ]
                             # We are the higher-capability port: adjust
                             # our announcement down to the partner's.
-                            with m.If(is_cap & (rx[2:4] == 0b00)):
+                            # Rank: Gen 2x2 > Gen 2x1 > Gen 1x2 > Gen 1x1
+                            # [7.5.4.5.1].  Partner announcements RANKED
+                            # BELOW our highest force the adjust-down;
+                            # since our only lower rung is Gen 1x1, any
+                            # such partner match lands there:
+                            #  - Gen 2x1 highest: below = rate-00 caps
+                            #    (Gen 1x1 0x00 AND Gen 1x2 0x40 -- we
+                            #    have no x2, so both match at Gen 1x1);
+                            #  - Gen 1x2 highest: below = Gen 1x1 only
+                            #    (Gen 2x1 0x04 outranks us; that partner
+                            #    adjusts ITSELF down to Gen 1x1 0x00,
+                            #    which this decode then also catches).
+                            if cap_high == LBPM_CAP_GEN1X2:
+                                partner_lower = is_cap & \
+                                    (rx == LBPM_CAP_GEN1X1)
+                            else:
+                                partner_lower = is_cap & (rx[2:4] == 0b00)
+                            with m.If(partner_lower):
                                 m.d.ss += partner_low.eq(1)
 
                     with m.If(self.lbpm_sent & (lbpm_rx_count == 2)):
                         m.d.ss += lbpm_sent_count.eq(lbpm_sent_count + 1)
                         with m.If(lbpm_sent_count == 3):    # the 4th
-                            m.d.ss += negotiated_gen2.eq(~cap_low)
+                            # PHY rate of the outcome: Gen 1x2 is a 5G
+                            # configuration -- the rate handshake selects
+                            # Gen2 only for a Gen2-rate matched-highest.
+                            m.d.ss += negotiated_gen2.eq(
+                                ~cap_low if cap_rate_gen2 else 0)
                             transition_to_state("Polling.PortConfig")
 
                     # Peripheral rule: 12 ms tPollingLBPMLFPSTimeout ->

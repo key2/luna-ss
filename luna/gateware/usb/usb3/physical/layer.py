@@ -36,10 +36,16 @@ class USB3PhysicalLayer(Elaboratable):
     """
 
     def __init__(self, *, phy, sync_frequency, scd_pattern=None, gen2=False,
-                 gen2_tseq_count=524288):
+                 gen2_tseq_count=524288, phy_boots_gen2=True):
         self._scd_pattern = scd_pattern
         self._gen2 = gen2
         self._gen2_tseq_count = gen2_tseq_count
+        # PHY trim at MAC reset release: True = the Gen2 (10G) boot trim
+        # (MAC-owned-rate builds); False = the MAC wakes to a 5G PHY
+        # (adapter pre-MAC boot rate switch, e.g. Gen 1x2-highest tops).
+        # Sets the reset value of the applied-rate register so the rate
+        # handshake's "already applied" short-circuit stays truthful.
+        self._phy_boots_gen2 = phy_boots_gen2
         self._phy = phy
         self._sync_frequency = sync_frequency
 
@@ -167,7 +173,7 @@ class USB3PhysicalLayer(Elaboratable):
             # sequencer acks the same way).  Power-state acks cannot
             # alias into WAIT_ACK: the LTSSM only runs the handshake
             # from Polling states, where power_down is stable at P0.
-            rate_r = Signal(init=1)
+            rate_r = Signal(init=1 if self._phy_boots_gen2 else 0)
             phy_rate_drive = rate_r
             m.d.comb += self.operating_gen2.eq(rate_r)
 

@@ -149,6 +149,31 @@ if pdm run pytest tests/test_gen2_pacing.py -q > /tmp/kilo/batt_gen2_pacing.log 
 else
     echo "FAIL gen2-pacing <<<<<<<<"
 fi
+# Gen 1x2 PortMatch (session 14, width program W0.3): a Gen 1x2-highest
+# device against a Gen 2x2-announcing host must hold its 0x40 dual-lane
+# announcement (the higher host adjusts down, Table 7-14), match at
+# Gen 1x2, PHY-Ready handshake, and configure the 5G rate.  RED baseline
+# recorded 2026-09-01 against the fixed Gen2x1-highest stack: "device
+# announced 0x04, expected the Gen 1x2 dual-lane capability (0x40)".
+# (Constant corrected vs the mission text: Table 7-13 dual-lane = b6 =
+# 0x40, not 0x20.)
+if PHASE=lbpm-x2 DEVCAP=gen1x2 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_lbpm-x2.log 2>&1; then
+    echo "PASS gen2-lbpm-x2"
+else
+    echo "FAIL gen2-lbpm-x2 <<<<<<<<"
+fi
+# U0 real-host surface (session 14; HANDOVER 10s suspects 1-3): LUP
+# keepalives at tU0LTimeout, inbound host Port Capability/Configuration
+# LMPs + ITPs, and the SSP LMP field rules [Tables 8-7/8-9/8-10].  RED
+# baseline recorded 2026-09-01 against the pre-#41 stack: "Port
+# Capability LMP carries Gen 1x1-only field values ... link_speed=1
+# num_hp_buffers=4" + "Port Configuration Response code 0x2 ... reads
+# as 'Link Speed rejected' -> DFP port error [10.16.2.6]" -- bug #41.
+if PHASE=u0 TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_u0.log 2>&1; then
+    echo "PASS gen2-u0"
+else
+    echo "FAIL gen2-u0 <<<<<<<<"
+fi
 # Negative control: withholding the host's Type-2 credits must starve
 # the device's descriptor DP (proves the LCRD2 pool gating is real).
 if PHASE=enum TSEQ_LEN=64 NEG=nolcrd2 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_neg.log 2>&1; then

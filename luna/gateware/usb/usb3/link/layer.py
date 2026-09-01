@@ -33,12 +33,17 @@ class USB3LinkLayer(Elaboratable):
 
     def __init__(self, *, physical_layer, ss_clock_frequency=125e6,
                  tseq_burst_length=65536, gen2=False,
-                 polling_timeout_scale=1.0):
+                 polling_timeout_scale=1.0,
+                 ssp_capability=None, phy_boots_gen2=True):
         self._physical_layer    = physical_layer
         self._clock_frequency   = ss_clock_frequency
         self._tseq_burst_length = tseq_burst_length
         self._gen2              = gen2
         self._timeout_scale     = polling_timeout_scale
+        # Advertised-highest capability + PHY boot rate: see
+        # LTSSMController (defaults are elaboration-identical).
+        self._ssp_capability    = ssp_capability
+        self._phy_boots_gen2    = phy_boots_gen2
 
         #
         # I/O port
@@ -163,7 +168,9 @@ class USB3LinkLayer(Elaboratable):
         #
         m.submodules.ltssm = ltssm = LTSSMController(
             ss_clock_frequency=self._clock_frequency, gen2=self._gen2,
-            polling_timeout_scale=self._timeout_scale)
+            polling_timeout_scale=self._timeout_scale,
+            ssp_capability=self._ssp_capability,
+            phy_boots_gen2=self._phy_boots_gen2)
 
         # Distribute ``link_ready`` through a register: it is decoded
         # combinationally from the LTSSM state, and its fanout otherwise

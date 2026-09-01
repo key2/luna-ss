@@ -29,6 +29,11 @@ Phases (env ``PHASE=``, default ``train``):
            advertisement down, and the PortConfig window must run
            the 10G->5G rate handshake (pipe.rate -> 0, acked by the
            host's PIPE phy_status stub).
+``lbpm-x2`` (run with DEVCAP=gen1x2) the width-program W0.3 arm: the
+           host announces Gen 2x2 (0x44); a Gen 1x2-highest device
+           must hold its 0x40 dual-lane announcement (the higher
+           host adjusts down, Table 7-14), match at Gen 1x2, run
+           the PHY Ready handshake and configure the 5G rate.
 ``fb-legacy``   Gen1-only host (plain 8.5 us Polling.LFPS, never any
            SCD): the device must lead with >=4 SCD1, then switch to
            NON-VARYING tRepeat (the 16-legacy-burst rule
@@ -53,6 +58,23 @@ Phases (env ``PHASE=``, default ``train``):
            (modulo-16 LGOOD, LCRD1/LCRD2 [7.2.4.1.x]) + a
            GetDescriptor(Device) SETUP over Gen2 framing; requires a
            DPH+DPP response.
+``u0``     ``train`` + the sim-uncovered REAL-host U0 behaviors
+           (HANDOVER 10s suspects 1-3), STRICT:
+           - the device's link-up Port Capability LMP must carry the
+             SSP reserved-zero field rules (link_speed=0,
+             num_hp_buffers=0 when not operating at Gen 1x1)
+             [8.4.5, Table 8-7];
+           - inbound host Port Capability + Port Configuration LMPs
+             (link_speed=0 at SSP [Table 8-9]); the device must
+             answer Port Configuration with a Port Configuration
+             Response whose Response Code is reserved-0 at SSP (a
+             nonzero code reads as REJECTED at the DFP -> port error
+             [Table 8-10, 10.16.2.6]);
+           - inbound ITPs (broadcast; link-level ack only, no
+             protocol response [8.7]);
+           - LUP keepalives while idle in U0 (tU0LTimeout = 10 us
+             [7.5.6.1]);
+           then a SET_ADDRESS to prove the link survived it all.
 
 RED BASELINE (recorded in HANDOVER 10p): against the unmodified
 Gen1-only stack every phase must FAIL with its diagnostic — scd:
@@ -100,6 +122,9 @@ TSCALE = float(os.environ.get("TSCALE", "1"))
 # NEG=nolcrd2 withholds the host's Type-2 credits -- a device with a
 # REAL LCRD1/LCRD2 split must then never transmit its descriptor DP.
 NEG = os.environ.get("NEG", "")
+# Device advertised-highest capability (width program W0.3):
+# DEVCAP=gen1x2 builds the DUT with ssp_capability=LBPM_CAP_GEN1X2.
+DEVCAP = os.environ.get("DEVCAP", "")
 
 # ss clock: 156.25 MHz (the Gen2 operating point)
 CLK = 156.25e6
@@ -109,6 +134,12 @@ US = int(CLK / 1e6)              # cycles per microsecond (156)
 TPWM_US = 2.2
 LBPM_CAP_GEN2X1 = 0x04           # PHY Capability, [3:2]=01: 10 Gbps
 LBPM_CAP_GEN1X1 = 0x00           # PHY Capability, [3:2]=00: 5 Gbps
+# Dual-lane capabilities: b6 = dual-lane [Table 7-13].  NOTE the
+# session-14 mission text / usb3_design.md 5 said 0x20 -- that is b5,
+# a RESERVED bit; the spec table (b0..b7 columns) puts dual-lane at b6
+# = 0x40.  Corrected here and in physical/lfps.py.
+LBPM_CAP_GEN1X2 = 0x40           # b6=1, rate 00: two 5 Gbps lanes
+LBPM_CAP_GEN2X2 = 0x44           # b6=1, rate 01: two 10 Gbps lanes
 LBPM_PHY_READY = 0x01            # PHY Ready, [1:0]=01
 
 SCD1 = (0, 1, 0, 0)              # '0010' wire (LSb-first) order
@@ -171,6 +202,8 @@ class Bench(Elaboratable):
             kwargs["tseq_burst_length"] = TSEQ_LEN
         if TSCALE != 1:
             kwargs["polling_timeout_scale"] = TSCALE
+        if DEVCAP == "gen1x2":
+            kwargs["ssp_capability"] = LBPM_CAP_GEN1X2
         usb = USBSuperSpeedDevice(phy=self.pipe, sync_frequency=CLK,
                                   gen2=True, **kwargs)
         usb.add_standard_control_endpoint(create_descriptors())
@@ -570,6 +603,81 @@ async def phase_lbpm(ctx, bench, host_cap=LBPM_CAP_GEN2X1):
     return True
 
 
+async def phase_lbpm_x2(ctx, bench):
+    """Gen 1x2 PortMatch trace (W0.3, usb3_design.md P0/5): the host
+    announces Gen 2x2 (0x44 -- the bench 20G root port's true highest);
+    a device built with ``ssp_capability=LBPM_CAP_GEN1X2`` must hold
+    its Gen 1x2 announcement (the host, higher, adjusts down per Table
+    7-14: UFP Gen 1x2 x DFP Gen 2x2 -> Gen 1x2), match at 0x40, run
+    the PHY Ready handshake, and configure the 5G rate (both lanes are
+    Gen 1).  RED against a Gen 2x1-highest device: it announces 0x04
+    and never 0x40."""
+    tag = "LBPM-X2"
+    pipe = bench.pipe
+    await bringup(ctx, pipe)
+    hm = HostModem(ctx, bench)
+
+    ok, diag = await hm.scd_exchange()
+    if not ok:
+        print(f"{tag} FAIL: SCD stage: {diag}")
+        return False
+    print(f"{tag}: SCD1+SCD2 exchange complete")
+
+    # ── PortMatch: host announces Gen 2x2; wait for the device's
+    # announcement, then adjust down to it like a real higher port ──
+    mark = hm.cyc
+    await hm.send_lbpm(LBPM_CAP_GEN2X2, count=6)
+    msgs = [v for (_, v) in hm.lbpm_messages(mark)]
+    print(f"{tag}: device LBPMs vs our Gen 2x2: {[hex(v) for v in msgs]}")
+    caps = [v for v in msgs if (v & 0x3) == 0]
+    if not caps:
+        print(f"{tag} FAIL: no PHY Capability LBPM from device")
+        return False
+    dev_cap = caps[-1]
+    if dev_cap != LBPM_CAP_GEN1X2:
+        print(f"{tag} FAIL: device announced {dev_cap:#04x}, expected the "
+              f"Gen 1x2 dual-lane capability ({LBPM_CAP_GEN1X2:#04x}) "
+              f"[Table 7-13 b6]")
+        return False
+
+    # Adjust down to the device's Gen 1x2 (Table 7-14 start-up match).
+    mark = hm.cyc
+    await hm.send_lbpm(LBPM_CAP_GEN1X2, count=10)
+    msgs = [v for (_, v) in hm.lbpm_messages(mark)]
+    print(f"{tag}: device LBPMs after our adjust-down: "
+          f"{[hex(v) for v in msgs]}")
+    matched = [v for v in msgs if v == LBPM_CAP_GEN1X2]
+    if len(matched) < 4:
+        print(f"{tag} FAIL: expected >=4 matched Gen 1x2 capability LBPMs, "
+              f"got {len(matched)}")
+        return False
+
+    # ── PortConfig: PHY Ready handshake ──
+    mark = hm.cyc
+    await hm.send_lbpm(LBPM_PHY_READY, count=12)
+    msgs = [v for (_, v) in hm.lbpm_messages(mark)]
+    print(f"{tag}: device LBPMs during PortConfig: {[hex(v) for v in msgs]}")
+    ready = [v for v in msgs if v == LBPM_PHY_READY]
+    if len(ready) < 2:
+        print(f"{tag} FAIL: expected >=2 PHY Ready LBPMs, got {len(ready)}")
+        return False
+
+    # ── rate outcome: Gen 1x2 is a 5G configuration ──
+    final_rate = ctx.get(pipe.rate)
+    print(f"{tag}: rate changes {hm.rate_changes}; "
+          f"final pipe.rate={final_rate}")
+    if final_rate != 0:
+        print(f"{tag} FAIL: Gen 1x2 outcome but pipe.rate never switched "
+              f"to the 5G trim")
+        return False
+
+    if not await check_training_entry(ctx, bench, hm, tag):
+        return False
+    print(f"{tag}: Gen 1x2 matched (0x40), PHY Ready handshake complete, "
+          f"5G configured -- the x2 negotiation surface works")
+    return True
+
+
 async def phase_fb_legacy(ctx, bench):
     """Fallback (i): Gen1-only host never declares SCD [7.5.4.3]."""
     pipe = bench.pipe
@@ -784,7 +892,7 @@ async def feed_blocks(ctx, bench, model_tx, blocks, rx=None, hm=None):
 IDLE_SYM = int(BlockType.LIS)          # Gen2 Idle Symbol, 5Ah [7.1.2]
 
 
-async def phase_train(ctx, bench, continue_to_enum=False):
+async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False):
     pipe = bench.pipe
     await bringup(ctx, pipe)
     hm = HostModem(ctx, bench)
@@ -866,6 +974,8 @@ async def phase_train(ctx, bench, continue_to_enum=False):
         return False
     print("TRAIN: U0 data stream established at Gen2 framing")
 
+    if u0_checks:
+        return await run_u0_checks(ctx, bench, hm, rx, model_tx)
     if not continue_to_enum:
         return True
     return await run_enum(ctx, bench, hm, rx, model_tx,
@@ -1289,6 +1399,210 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
     return True
 
 
+async def run_u0_checks(ctx, bench, hm, rx, model_tx):
+    """STRICT U0 host behaviors the enum/echo phases never exercised
+    (HANDOVER 10s suspects 1-3: the sim-uncovered surface where the H2
+    silicon U0-death must live if it is above the PHY):
+
+    1. the device's link-up Port Capability LMP field conformance at
+       SSP operation [8.4.5, Table 8-7: link_speed and num_hp_buffers
+       are RESERVED-0 when not operating at Gen 1x1];
+    2. inbound host Port Capability + Port Configuration LMPs with the
+       SSP field rules (link_speed=0 [Table 8-9]); REQUIRED Port
+       Configuration Response with Response Code reserved-0 [Table
+       8-10] -- a nonzero code reads as "Link Speed rejected" at the
+       DFP, which then signals a port error [8.4.7, 10.16.2.6]: the
+       exact walk-the-link-down symptom;
+    3. inbound ITPs: broadcast, link-level ack only, no protocol
+       response [8.7];
+    4. LUP keepalives while the link idles in U0: one within every
+       tU0LTimeout = 10 us, else the DFP goes to Recovery [7.5.6.1];
+    5. a closing SET_ADDRESS: the link must still work after all of
+       the above.
+
+    Conformance violations are COLLECTED (not aborted on) so a single
+    red run reports the full surface; link-liveness failures abort."""
+    from sim_link_loopback import frame_lmp, frame_itp, frame_out_dp
+    host = Gen2LinkHost(ctx, bench, hm, rx, model_tx, tag="U0")
+    failures = []
+
+    # ── advertisement exchange (same shape as run_enum's front) ──
+    ev = await host.expect("LGOOD advertisement",
+                           lambda e: e[0] == 'lc' and e[1] == 0b0000)
+    if ev is None:
+        return False
+    for _ in range(4):
+        ev = await host.expect("credit advertisement",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+        if ev is None:
+            return False
+    syms = link_command_syms(0b0000, 15)
+    for i in range(4):
+        syms += link_command_syms(0b0001, i)              # LCRD1_x
+    for i in range(4):
+        syms += link_command_syms(0b0001, 0b0100 | i)     # LCRD2_x
+    await host.send_syms(syms)
+
+    dev_seq = 0
+    host_seq = 0
+    ret_idx = {1: 0, 2: 0}
+
+    async def return_credit(series):
+        sub = (0b0100 if series == 2 else 0) | ret_idx[series]
+        ret_idx[series] = (ret_idx[series] + 1) & 3
+        await host.send_lc(0b0001, sub)
+
+    async def ack_device_header(ev):
+        nonlocal dev_seq
+        if ev[2] != dev_seq:
+            print(f"U0 FAIL: device header seq {ev[2]}, expected {dev_seq}")
+            return False
+        dev_seq = (dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        await return_credit(2 if (ev[1][0] & 0x1F) == 8 else 1)
+        return True
+
+    async def expect_lgood_and_credit(what, series):
+        nonlocal host_seq
+        ev = await host.expect(f"LGOOD_{host_seq} ({what})",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None:
+            return False
+        if ev[2] != host_seq:
+            print(f"U0 FAIL: LGOOD_{ev[2]} for {what}, expected "
+                  f"LGOOD_{host_seq}")
+            return False
+        host_seq = (host_seq + 1) & 0xF
+        ev = await host.expect(f"LCRD{series} return ({what})",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+        if ev is None:
+            return False
+        got = 2 if ev[2] & 0x4 else 1
+        if got != series:
+            print(f"U0 FAIL: LCRD{got} return for {what}, expected "
+                  f"LCRD{series}")
+            return False
+        return True
+
+    # ── 1. the device's link-up Port Capability LMP [8.4.5] ──
+    ev = await host.expect("link-up Port Capability LMP",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 0)
+    if ev is None:
+        return False
+    dw0, dw1 = ev[1][0], ev[1][1]
+    subtype = (dw0 >> 5) & 0xF
+    if subtype != 4:
+        failures.append(f"link-up LMP subtype {subtype}, expected "
+                        f"Port Capability (4) [8.4.5]")
+    link_speed = (dw0 >> 9) & 0x7F
+    num_hp = dw1 & 0xFF
+    if link_speed != 0 or num_hp != 0:
+        failures.append(
+            f"Port Capability LMP carries Gen 1x1-only field values at "
+            f"SSP operation: link_speed={link_speed} "
+            f"num_hp_buffers={num_hp} (both RESERVED, shall be 0, when "
+            f"not operating at Gen 1x1) [Table 8-7]")
+    if not await ack_device_header(ev):
+        return False
+    print(f"U0: device Port Capability LMP (dw0={dw0:08x} dw1={dw1:08x})")
+
+    # ── 2. host LMPs: Port Capability, then Port Configuration ──
+    # (SSP field rules: link_speed=0, num_hp_buffers=0 [Tables 8-7/8-9];
+    # direction: downstream-capable.)
+    await host.send_frame(frame_lmp(4, dw1=(1 << 16)))
+    if not await expect_lgood_and_credit("host Port Capability LMP", 1):
+        return False
+
+    await host.send_frame(frame_lmp(5))          # link_speed = 0 at SSP
+    if not await expect_lgood_and_credit("host Port Configuration LMP", 1):
+        return False
+
+    ev = await host.expect("Port Configuration Response LMP [8.4.7]",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 0
+                           and ((e[1][0] >> 5) & 0xF) == 6)
+    if ev is None:
+        print("U0 FAIL: no Port Configuration Response LMP within "
+              "timeout; the DFP signals a port error without it "
+              "[8.4.7, 10.16.2.6]")
+        return False
+    code = (ev[1][0] >> 9) & 0x7F
+    if code != 0:
+        failures.append(
+            f"Port Configuration Response code {code:#x} at SSP "
+            f"operation: the field is RESERVED-0 when not operating at "
+            f"Gen 1x1 [Table 8-10]; bit1 set / bit0 clear reads as "
+            f"'Link Speed rejected' -> DFP port error [10.16.2.6]")
+    if not await ack_device_header(ev):
+        return False
+    print(f"U0: device Port Configuration Response (code={code:#x})")
+
+    # ── 3. inbound ITPs: link-level ack only, no protocol response ──
+    for k in range(3):
+        await host.send_frame(frame_itp(12500 * (k + 1)))
+        if not await expect_lgood_and_credit(f"ITP #{k + 1}", 1):
+            return False
+    ev = await host.expect("no response to ITPs",
+                           lambda e: e[0] == 'hdr',
+                           timeout_blocks=200, quiet=True)
+    if ev is not None:
+        failures.append(
+            f"device responded to an ITP with a header packet "
+            f"(dw0={ev[1][0]:08x}); a device shall not respond to an "
+            f"ITP [8.7]")
+    print("U0: 3 ITPs delivered (link-level acks only)")
+
+    # ── 4. LUP keepalives on an idle U0 link [7.5.6.1] ──
+    # tU0LTimeout = 10 us = 1562 ss cycles at 156.25 MHz; feed_blocks
+    # advances one device cycle per fed beat (2 beats per block).  32 us
+    # of link idle must carry >= 2 LUPs (one per timeout, restarted by
+    # its own transmission).
+    host.events = [e for e in host.events if not
+                   (e[0] == 'lc' and e[1] == 0b1000)]
+    idle_blocks = int(32 * US / 2)
+    for _ in range(idle_blocks // 8):
+        await feed_blocks(ctx, bench, model_tx, [idle_block()] * 8,
+                          rx, hm)
+    host.pump()
+    lups = [e for e in host.events if e[0] == 'lc' and e[1] == 0b1000]
+    host.events = [e for e in host.events if not
+                   (e[0] == 'lc' and e[1] == 0b1000)]
+    print(f"U0: {len(lups)} LUP keepalives in 32 us of link idle")
+    if len(lups) < 2:
+        failures.append(
+            f"only {len(lups)} LUP keepalives in 32 us of idle U0; an "
+            f"upstream port shall transmit LUP on every tU0LTimeout "
+            f"(10 us) expiry [7.5.6.1] -- the DFP transitions to "
+            f"Recovery after 1 ms without any link command")
+
+    # ── 5. the link must still work: SET_ADDRESS(1) ──
+    setup = bytes([0x00, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00])
+    await host.send_frame(frame_out_dp(0, 0, setup, setup=1, address=0))
+    if not await expect_lgood_and_credit("SETUP DP", 2):
+        return False
+    ev = await host.expect("SETUP ACK TP",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 4)
+    if ev is None:
+        return False
+    if not await ack_device_header(ev):
+        return False
+    print("U0: SET_ADDRESS SETUP acked -- link alive after the U0 "
+          "traffic surface")
+
+    if host.errors:
+        print(f"U0 FAIL: parser errors: {host.errors[:6]}")
+        return False
+    if failures:
+        for f in failures:
+            print(f"U0 FAIL: {f}")
+        return False
+    print("U0: LUP keepalives, host LMP/ITP tolerance, SSP LMP field "
+          "rules -- all verified at Gen2")
+    return True
+
+
 async def watchdogged(ctx, coro, cycles):
     return await coro
 
@@ -1308,6 +1622,8 @@ def main():
         elif PHASE == "lbpm5g":
             result["ok"] = await phase_lbpm(ctx, bench,
                                             host_cap=LBPM_CAP_GEN1X1)
+        elif PHASE == "lbpm-x2":
+            result["ok"] = await phase_lbpm_x2(ctx, bench)
         elif PHASE == "fb-legacy":
             result["ok"] = await phase_fb_legacy(ctx, bench)
         elif PHASE == "fb-noscd2":
@@ -1319,6 +1635,8 @@ def main():
         elif PHASE in ("enum", "echo"):
             result["ok"] = await phase_train(ctx, bench,
                                              continue_to_enum=True)
+        elif PHASE == "u0":
+            result["ok"] = await phase_train(ctx, bench, u0_checks=True)
         else:
             raise SystemExit(f"unknown PHASE={PHASE}")
 

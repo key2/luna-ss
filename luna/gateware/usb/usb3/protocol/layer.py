@@ -81,8 +81,9 @@ class TxDataSkidBuffer(Elaboratable):
 class USB3ProtocolLayer(Elaboratable):
     """ Abstraction encapsulating the USB3 protocol layer hardware. """
 
-    def __init__(self, *, link_layer):
+    def __init__(self, *, link_layer, gen2=False):
         self._link = link_layer
+        self._gen2 = gen2
 
         #
         # I/O port
@@ -94,6 +95,10 @@ class USB3ProtocolLayer(Elaboratable):
         # Device state inputs.
         self.current_address       = Signal(7)
         self.current_configuration = Signal(7)
+
+        # gen2 builds: SSP-operation qualifier for the LMP field rules
+        # (bug #41; see LinkManagementPacketHandler.ssp_operating).
+        self.ssp_operating         = Signal()
 
         # Current timestamp.
         self.bus_interval          = Signal(14)
@@ -124,7 +129,8 @@ class USB3ProtocolLayer(Elaboratable):
         #
         # Link Management Packet Handler
         #
-        m.submodules.lmp_handler = lmp_handler = LinkManagementPacketHandler()
+        m.submodules.lmp_handler = lmp_handler = \
+            LinkManagementPacketHandler(gen2=self._gen2)
 
         hp_demux.add_consumer(lmp_handler.header_sink)
         hp_mux.add_producer(lmp_handler.header_source)
@@ -133,6 +139,8 @@ class USB3ProtocolLayer(Elaboratable):
             lmp_handler.usb_reset     .eq(link.in_reset),
             lmp_handler.link_ready    .eq(link.ready),
         ]
+        if self._gen2:
+            m.d.comb += lmp_handler.ssp_operating.eq(self.ssp_operating)
 
         #
         # Isochronous Timestamp Packet Handler

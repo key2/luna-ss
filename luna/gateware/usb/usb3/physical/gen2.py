@@ -451,8 +451,13 @@ class Gen2BlockTransmitter(Elaboratable):
         sds_pending = Signal()
         idle_prev = Signal()
 
-        active = (self.send_tseq_burst | self.send_ts1_burst |
-                  self.send_ts2_burst | self.idle_mode)
+        # Registered activity gate (156.25: the LTSSM burst-request seam
+        # registers otherwise reach the scheduler/bridge FIFO controls
+        # through this OR in one hop).  One cycle of TX start/stop
+        # latency against microsecond burst tolerances.
+        active = Signal()
+        m.d.ss += active.eq(self.send_tseq_burst | self.send_ts1_burst |
+                            self.send_ts2_burst | self.idle_mode)
 
         # Arm the single SDS whenever idle-mode is (re-)entered
         # [7.5.4.10: a single SDS before the first data block].

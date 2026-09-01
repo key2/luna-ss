@@ -2743,6 +2743,106 @@ at this point in the log (phase H2 next).  sim/rx_unit_debug.py
 added (standalone Gen2BlockReceiver translation bench — the fast
 debug loop that pinned the CHECK_CRC32 interaction).
 
+### Phase H2 — first Gen2 silicon exposure: bugs #39 + #40 found &
+### fixed; the link TRAINS at Gen 2x1 and enters U0; enumeration
+### still dies on the first control exchange (OPEN)
+
+Flash 1 (the H1 image, POR 66_021): the host attempted SET_ADDRESS
+("Device not responding to setup address", -71).  Probe decode: 38
+LFPS bursts, 4078 TS1 + 112 TS2 detects, pclk at the 156.25
+signature (0x341556x) during training — negotiation and Gen2 block
+training on REAL LFPS hardware work — but link_trained never rose;
+the device dropped terminations and fell back to 125 MHz ~0.7 s in.
+
+**Bug #39 (FIXED, silicon-verified): the ``LTSSM_is_Training``
+approximation arms a lethal polarity walk.**  The PHY's Gen2
+rx-polarity acquisition (scramble.py) counts inversion signatures on
+the RAW first symbol of every data block while LTSSM_is_Training is
+high (counter init 7, threshold 15, sticky once tripped; TS blocks
+decrement).  The top's approximation (terminations & ~link_trained)
+stays high through the whole U0-entry window, where SCRAMBLED
+logical idle matches at P≈3/256 per block with no TS decrements —
+sticky lane inversion within tens of microseconds.  Fix:
+``ltssm.in_training`` (real training-state output: Polling.RxEQ/
+Active/Configuration(.Exit), Hot Reset.Active, Recovery arms),
+surfaced link→device→top.  SILICON VERDICT with the fix: **flags
+reach 'd' (trained); dmesg prints "new SuperSpeed Plus Gen 2x1 USB
+device"** — the LUNA stack's first Gen2 identification on hardware.
+Probes: sds_detected/idle_complete counted ~65 train→U0→drop cycles
+per boot; each U0 died on the host's first control exchange
+("device descriptor read/8, error -71").
+
+**Bug #40 (FIXED, sim red/green): scheduled SKP OS inside packets.**
+[6.4.3.3]: "SKP Ordered Sets shall not be inserted within any
+packet" — the block scheduler fired its 40-block interval at EVERY
+block boundary, splitting DPs; the real xHC rejects them, the
+FORGIVING bench host (parser drops control blocks) hid it.  Fixes:
+bridge ``pkt_in_flight`` (first served beat → eop) + scheduler
+deferral (gap saturates at 2× interval); the bench host is now
+STRICT — red recorded ("control block (first sym 0xcc) inside a
+packet"), green with the fix.  Bench-model fidelity gaps the debug
+forced: feed_blocks now emulates the RxGearbox132 SKP-LFSR-seed
+extraction into descrambler_init (else the RTL descrambler reseeds
+from ZERO on SKP and everything after descrambles to garbage — sim
+artifact, not a stack bug), and the train/enum feeds interleave SKP
+OS like a real partner.
+
+**H2 state at session end (OPEN — the remaining U0-death):** with
+both fixes (POR 66_033, pclk 156.263/rxclk 157.158 MET, battery
+47/47 run 4): the device negotiates, trains, reaches U0 ~5×/boot
+(sds/idle_complete counters), recovery strobes seen, host walks the
+link down; vendor-gold A/B mid-debug re-proved the port at 10000M.
+TX pacing confirmed on silicon (zero TxFifoWrNum≥28 events through
+full training).  The next discriminator is IN THE TREE: the gen2
+top's uart1 now carries the multiep BurstEventCapture ring (first
+64 header events after boot: 'T'/'D' TX dw0, 'A'/'R' RX dw1 with
+dw0-type packed in bits[27:32]) — **that netlist has NOT won the
+placement lottery yet** (14 rolls, best pclk 150.8; the 64×35 ring
+hurts placement).  Do NOT flash any roll that misses 156.25.
+
+Suspects for the U0-death, in expected order (all sim-uncovered
+host behaviors — extend the strict host first, per discipline):
+1. Host-side LUP watchdog: we may not emit LUP keepalives on the
+   wire at Gen2 within tU0LTimeout (10 µs) — the sim host never
+   checks.  Extend Gen2LinkHost.expect to REQUIRE LUPs at U0
+   (red-first), and/or count LUPs on the wire tap in the capture.
+2. Inbound host LMPs (Port Capability/Config SET from a real xHC —
+   the sim host only ACKs, never sends its own LMPs).
+3. Inbound ITPs every 125 µs (never sent by the gen2 sim host).
+4. The enum-surface gaps (§10r suspect 4: no SSP BOS caps, no
+   Sublink Speed Device Notification TP) — likely NOT the killer
+   (the link dies at the LINK level before descriptors complete),
+   but required for a clean 10000M lsusb eventually.
+
+### Session-13 close-out state
+
+* Bench RESTORED to the Gen1 fence image and re-verified: 5000M on
+  4-3, 1 MiB ×3 pipes PASS (249.5 MB/s), 16 MiB PASS (281.7 MB/s).
+* Battery runs: 46/46 (runs 1-2), 47/47 (runs 3-5, incl.
+  gen2-pacing).  Gen1 shipping parity re-proven after EVERY
+  shared-file batch (latest: 13 header-date bytes only — NOTE: the
+  "6 timestamp bytes" rule widens across midnight/month rollovers;
+  the honest check is "all diffs below offset ~622").
+* Commits: gowin-serdes 313033d (SDC, pushed); fork 6abcd0d (H1) +
+  41b98c4 (H2 bugs #39/#40) + this close-out; all pushed.
+* Saved images (/tmp/kilo): h0_gen1_fence.fs (resident),
+  h1_gen2_enum_met.fs (H1 gate build, pre-#39/#40),
+  h2_gen2_debug_met.fs (#39 fix + debug taps),
+  h2_gen2_skpfix_met.fs (#39+#40, POR 66_033) — all three Gen2
+  images are timing-MET builds of their respective trees.
+* Captures (/tmp/kilo): h2_first_flash/h2_por2 (pre-#39),
+  h2_debug1 (post-#39: the trained-flag capture),
+  h2_skpfix/h2_skpfix2 (post-#40); usbmon h2_usbmon_por1.txt
+  (host port-status view: Inactive→warm-reset→Polling loops).
+* Bug numbering: **#39 + #40 closed this session; #41 next.**
+  #37 and all §10n/§10q parked items carry unchanged.
+* G5 phase status: **H0 CLOSED (hardware), H1 CLOSED (hardware
+  gate), H2 OPEN (deep in bring-up: train+U0 proven, first
+  exchange dies), H3/H4 NOT STARTED.**  The wire-checker port
+  finding for H3: the multiep taps sit on the dialect-neutral
+  translated streams (tx_skid.source / debug_rx_hdr_*), so they
+  carry to Gen2 unchanged — calibration on a quiet pipe remains.
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 13: gate G5, hardware

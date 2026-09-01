@@ -747,11 +747,27 @@ class HostRx:
 
 async def feed_blocks(ctx, bench, model_tx, blocks, rx=None, hm=None):
     """Scramble blocks with the python model and push them through the
-    RTL descrambler into the DUT, one beat per cycle."""
+    RTL descrambler into the DUT, one beat per cycle.
+
+    SKP OS handling mirrors the real RX datapath: the RTL descrambler
+    reseeds its LFSR from ``descrambler_init`` on SKP blocks, which the
+    silicon feeds from RxGearbox132's ``next_lfsr`` extraction of the
+    SKP-carried seed [Table 6-13].  The bench emulates that extraction
+    here from the spliced wire beat (session 13: without it the
+    descrambler reseeds from zero and everything after the first SKP
+    descrambles to garbage -- a bench-model gap, not a stack bug)."""
     descr = bench.host_descr
+    skp_left = 0
     for blk in blocks:
         for (s, h, d) in blk.beats():
             wire = model_tx.feed(s, h, d)
+            if s and h == BLOCK_CONTROL and ((d >> 56) & 0xFF) in \
+                    (int(BlockType.SKP), int(BlockType.SKPEND)):
+                skp_left = 2          # two continuation beats follow
+            elif skp_left:
+                skp_left -= 1
+                if skp_left == 0:
+                    ctx.set(descr.descrambler_init, wire & 0xFFFFFF)
             ctx.set(descr.data_in_valid, 1)
             ctx.set(descr.data_in_start_block, s)
             ctx.set(descr.data_in_block_head, h)
@@ -814,10 +830,11 @@ async def phase_train(ctx, bench, continue_to_enum=False):
               "(Gen1-only physical/link framing)")
         return False
 
-    # TS2 handshake
+    # TS2 handshake (SKP OS interleaved, as a real partner would)
     for _ in range(6):
         await feed_blocks(ctx, bench, model_tx,
-                          [sync_block()] + [ts2_block()] * 16, rx, hm)
+                          [sync_block()] + [ts2_block()] * 8
+                          + [skp_block()] + [ts2_block()] * 8, rx, hm)
         if rx.block_count(BLOCK_CONTROL, int(BlockType.TS2)) >= 8:
             break
     n_ts2 = rx.block_count(BLOCK_CONTROL, int(BlockType.TS2))
@@ -826,9 +843,15 @@ async def phase_train(ctx, bench, continue_to_enum=False):
         return False
 
     # SDS -> Idle [7.5.4.10]: a single SDS, then data blocks carrying
-    # Idle Symbols (5Ah at Gen2!).
+    # Idle Symbols (5Ah at Gen2!).  SKP OS are interleaved like a real
+    # link partner's (one per ~40 blocks; session-13 bench delta: the
+    # sim host historically never sent SKPs, hiding any SKP-adjacency
+    # sensitivity in the SDS/idle handshake window).
     await feed_blocks(ctx, bench, model_tx,
-                      [sds_block()] + [idle_block()] * 48, rx, hm)
+                      [skp_block(), sds_block()]
+                      + [idle_block()] * 20 + [skp_block()]
+                      + [idle_block()] * 20 + [skp_block()]
+                      + [idle_block()] * 8, rx, hm)
     got_sds = any(h == BLOCK_CONTROL and s[0] == 0xE1
                   for h, s in rx.blocks)
     got_idle = any(h == BLOCK_DATA and all(x == IDLE_SYM for x in s)
@@ -879,6 +902,21 @@ class Gen2LinkHost:
             self._cursor += 1
             if h == BLOCK_DATA:
                 self._syms += syms
+            else:
+                # STRICT host rule [6.4.3.3]: "SKP Ordered Sets shall
+                # not be inserted within any packet."  A control block
+                # arriving while a construct is partially parsed means
+                # the device split a packet (session-13 bench finding:
+                # the real xHC rejects the DP -> descriptor read
+                # error -71 -> retrain loop; the forgiving bench host
+                # hid it).
+                self._walk()
+                mid = self._state != 'search' or any(
+                    x != G2_IDL for x in self._syms)
+                if mid and syms and syms[0] != 0xFF and syms[0] != 0x00:
+                    self.errors.append(
+                        f"control block (first sym {syms[0]:#04x}) "
+                        f"inside a packet [6.4.3.3]")
         self._walk()
 
     def _walk(self):

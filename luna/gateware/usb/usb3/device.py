@@ -65,6 +65,15 @@ class USBSuperSpeedDevice(Elaboratable):
         self.debug_engage_terminations    = Signal()
         self.debug_ts1_detected           = Signal()
         self.debug_ts2_detected           = Signal()
+        self.debug_gen2_sds_detected      = Signal()  # gen2 builds only
+        self.debug_gen2_data_mode         = Signal()  # gen2 builds only
+        self.debug_idle_handshake         = Signal()  # LTSSM idle handshake
+        self.debug_idle_complete          = Signal()
+        # The LTSSM's real training-state indicator, for the PIPE
+        # adapter's LTSSM_is_Training (Gen2 polarity acquisition; see
+        # ltssm.in_training -- do NOT approximate this from
+        # terminations/trained, bug #39 aggravator).
+        self.ltssm_in_training            = Signal()
 
         # Debug taps (control-transfer/handshake path visibility for the
         # SET_ADDRESS bring-up contract; prunable).
@@ -211,6 +220,11 @@ class USBSuperSpeedDevice(Elaboratable):
             self.debug_engage_terminations   .eq(physical.engage_terminations),
             self.debug_ts1_detected          .eq(link.debug_ts1_detected),
             self.debug_ts2_detected          .eq(link.debug_ts2_detected),
+            self.debug_gen2_sds_detected     .eq(physical.gen2_sds_detected),
+            self.debug_gen2_data_mode        .eq(physical.gen2_data_mode),
+            self.debug_idle_handshake        .eq(link.debug_idle_handshake),
+            self.debug_idle_complete         .eq(link.debug_idle_complete),
+            self.ltssm_in_training           .eq(link.ltssm_in_training),
             self.debug_wire_tx_data          .eq(physical.debug_tx_data),
             self.debug_wire_tx_ctrl          .eq(physical.debug_tx_ctrl),
             self.debug_wire_tx_strobe        .eq(physical.debug_tx_strobe),

@@ -155,11 +155,13 @@ class LunaEnumTop(Elaboratable):
         # changes; HANDOVER #22/10k).  Session-13 roll history at the
         # 156.25 gate (full ladder in HANDOVER 10s): pre-cut rolls
         # 66_000..66_020 landed pclk 133-155 / rxclk 142-165; after the
-        # seam/engine cut batch the winning roll is 66_021 =
-        # pclk 156.263 / rxclk 169.777 -- BOTH MET (the Gen2 flash
-        # gate).
+        # seam/engine cut batch 66_021 won at pclk 156.263 / rxclk
+        # 169.777; debug-tap netlist (+ltssm.in_training, bug #39)
+        # re-rolled to 66_026 = 156.340/159.837; SKP-fix netlist
+        # (bug #40) re-rolled to the current 66_033 = 156.263/157.158
+        # -- BOTH MET (the Gen2 flash gate).
         m.d.cfg += [
-            por_n.eq(por_cnt > 66_021),
+            por_n.eq(por_cnt > 66_033),
             luna_go.eq(por_cnt.all()),
         ]
 
@@ -207,11 +209,14 @@ class LunaEnumTop(Elaboratable):
             phy=adapter, sync_frequency=156.25e6, gen2=True)
         usb.add_standard_control_endpoint(create_descriptors())
 
-        # LTSSM training indicator for the PHY's Gen2 descrambler
-        # acquisition: approximated as "terminations engaged but not yet
-        # trained" (bench item; HANDOVER 10r).
-        m.d.comb += adapter.ltssm_training.eq(
-            usb.debug_engage_terminations & ~usb.link_trained)
+        # LTSSM training indicator for the PHY's Gen2 descrambler /
+        # polarity acquisition: the REAL LTSSM training-state output.
+        # (The session-12 approximation -- terminations-engaged-and-not-
+        # trained -- stays high through the whole U0-entry window; the
+        # PHY's polarity counter then random-walks on scrambled logical
+        # idle to a sticky lane inversion within tens of microseconds:
+        # bug #39 aggravator, HANDOVER 10s.)
+        m.d.comb += adapter.ltssm_training.eq(usb.ltssm_in_training)
 
         m.d.comb += led.o.eq(usb.link_trained)
 
@@ -227,23 +232,20 @@ class LunaEnumTop(Elaboratable):
         # 156.25 unchanged -- they are the primary Phase-H2 debug tool.
         #
         # uart0 (link probe, Gen1-compatible format):
-        #   C <ss-cnt> <lfps-det> <ts1-det> <ts2-det> <txfifo-hi> <flags>
+        #   C <ss-cnt> <lfps-det> <ts1-det> <ts2-det> <idle-hs-cycles> <flags>
         #   ss-cnt telltale: 0x341554x = 156.25 MHz (still 10G);
         #   0x29aaa9x = 125 MHz (fell back / never matched).
+        #   flags: trained[0] in_reset[1] phy_ready[2] terminations[3].
         # uart1 (pipe probe):
-        #   C <rxclk> <upar> <txfifo-hi28> <txfifo-sat31> <sds-like 0> <flags>
-        #   flags: power_down[0] tx_elec_idle[1] rx_elec_idle[2].
+        #   C <rxclk> <sds-det> <idle-complete> <txfifo-hi28> <recovery> <flags>
+        #   flags: power_down[0] tx_elec_idle[1] rx_elec_idle[2] data_mode[3].
         uart0 = platform.request("uart", 0)
         uart1 = platform.request("uart", 1)
 
         # TX beat-pacing visibility (§10r suspect #1): TxFifoWrNum is the
         # PHY's 32-deep Gen2 TX FIFO occupancy, pclk domain.
         txfifo_hi28 = Signal()
-        txfifo_sat  = Signal()
-        m.d.ss += [
-            txfifo_hi28.eq(adapter.phy.TxFifoWrNum >= 28),
-            txfifo_sat .eq(adapter.phy.TxFifoWrNum >= 31),
-        ]
+        m.d.ss += txfifo_hi28.eq(adapter.phy.TxFifoWrNum >= 28)
 
         m.submodules.linkprobe = linkprobe = DomainRenamer({"cfg": "dbg"})(
             ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
@@ -251,7 +253,10 @@ class LunaEnumTop(Elaboratable):
                 ("ss", usb.debug_lfps_polling_detected),
                 ("ss", usb.debug_ts1_detected),
                 ("ss", usb.debug_ts2_detected),
-                ("ss", txfifo_hi28),
+                # Cycles spent in the LTSSM's idle handshake: nonzero
+                # means Polling.Idle was reached; a saturating count
+                # means the handshake never completes (H2 telltale).
+                ("ss", usb.debug_idle_handshake),
             )))
         link_flags = Signal(4)
         m.submodules += FFSynchronizer(
@@ -265,24 +270,43 @@ class LunaEnumTop(Elaboratable):
 
         m.domains += ClockDomain("rxprobe", reset_less=True)
         m.d.comb += ClockSignal("rxprobe").eq(lane.rx.pcs_clkout)
-        m.domains += ClockDomain("uparprobe", reset_less=True)
-        m.d.comb += ClockSignal("uparprobe").eq(drp.clk)
-        m.submodules.pipeprobe = pipeprobe = DomainRenamer({"cfg": "dbg"})(
-            ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
-                ("rxprobe", None),
-                ("uparprobe", None),
-                ("ss", txfifo_hi28),
-                ("ss", txfifo_sat),
-                ("ss", usb.debug_recovery),
-            )))
-        pipe_flags = Signal(4)
-        m.submodules += FFSynchronizer(
-            Cat(adapter.power_down.any(), adapter.tx_elec_idle,
-                adapter.rx_elec_idle),
-            pipe_flags, o_domain="dbg")
+        # uart1: header event capture (H2 U0-death discriminator).  The
+        # multiep BurstEventCapture ring dumps the FIRST 64 header
+        # events after boot -- exactly the first U0 cycle's exchange:
+        #   'T' = TX TP (word = dw0), 'D' = TX other header (LMP/DPH
+        #   dw0 -- the type field is dw0[0:5]);
+        #   'A' = RX TP, 'R' = RX non-TP; RX words = dw1[0:27] with
+        #   dw0's type field packed into bits [27:32].
+        import importlib.util as _ilu
+        _spec = _ilu.spec_from_file_location(
+            "multiep_top", HERE.parent / "luna-multiep" / "top.py")
+        _multiep = _ilu.module_from_spec(_spec)
+        _spec.loader.exec_module(_multiep)
+
+        m.submodules.evcap = evcap = _multiep.BurstEventCapture(
+            clk_freq=DBG_FREQ, baud=BAUD_RATE)
+
+        # Minimal TX header parser on the pre-scrambler wire tap: an
+        # HPSTART word is followed by dw0.
+        W_HPSTART = 0xF7FBFBFB
+        txp_next = Signal()
+        with m.If(usb.debug_wire_tx_strobe):
+            with m.If((usb.debug_wire_tx_data == W_HPSTART)
+                      & (usb.debug_wire_tx_ctrl == 0b1111)):
+                m.d.ss += txp_next.eq(1)
+            with m.Elif(txp_next):
+                m.d.ss += txp_next.eq(0)
         m.d.comb += [
-            pipeprobe.flags.eq(pipe_flags),
-            uart1.tx.o.eq(pipeprobe.tx_o),
+            evcap.a_stb.eq(usb.debug_wire_tx_strobe & txp_next),
+            evcap.a_tp .eq(usb.debug_wire_tx_data[0:5] == 4),
+            evcap.a_dw1.eq(usb.debug_wire_tx_data),
+
+            evcap.b_stb.eq(usb.debug_rx_hdr_stb),
+            evcap.b_tag.eq(Mux(usb.debug_rx_hdr_type == 4, 3, 4)),
+            evcap.b_dw1.eq(Cat(usb.debug_rx_hdr_dw1[0:27],
+                               usb.debug_rx_hdr_type)),
+
+            uart1.tx.o.eq(evcap.tx_o),
         ]
 
         return m

@@ -87,6 +87,9 @@ class USB3LinkLayer(Elaboratable):
         # Debug taps.
         self.debug_ts1_detected        = Signal()
         self.debug_ts2_detected        = Signal()
+        self.debug_idle_handshake      = Signal()  # LTSSM in idle handshake
+        self.debug_idle_complete       = Signal()  # handshake satisfied
+        self.ltssm_in_training         = Signal()  # TS-exchange states
 
         # Recovery-cause debug taps (single-cycle strobes; prunable).
         self.debug_rec_timers          = Signal()
@@ -294,6 +297,9 @@ class USB3LinkLayer(Elaboratable):
             # Idle detection.
             idle.enable                          .eq(ltssm.perform_idle_handshake),
             ltssm.idle_handshake_complete        .eq(idle.idle_handshake_complete),
+            self.debug_idle_handshake            .eq(ltssm.perform_idle_handshake),
+            self.debug_idle_complete             .eq(idle.idle_handshake_complete),
+            self.ltssm_in_training               .eq(ltssm.in_training),
 
             # Link maintainance.
             timers.enable                        .eq(link_ready),

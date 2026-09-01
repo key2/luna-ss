@@ -122,6 +122,8 @@ class USB3PhysicalLayer(Elaboratable):
         self.gen2_hot_reset_requested   = Signal()
         self.gen2_loopback_requested    = Signal()
         self.gen2_no_scrambling_requested = Signal()
+        self.gen2_sds_detected          = Signal()  # debug (bring-up)
+        self.gen2_data_mode             = Signal()  # debug (bring-up)
 
         # SKP insertion control.
         self.can_send_skp               = Signal()
@@ -320,6 +322,8 @@ class USB3PhysicalLayer(Elaboratable):
                 self.gen2_tseq_detected .eq(gen2_rx.tseq_detected),
                 self.gen2_ts1_detected  .eq(gen2_rx.ts1_detected),
                 self.gen2_ts2_detected  .eq(gen2_rx.ts2_detected),
+                self.gen2_sds_detected  .eq(gen2_rx.sds_detected),
+                self.gen2_data_mode     .eq(gen2_rx.data_mode),
                 self.gen2_hot_reset_requested
                     .eq(gen2_rx.hot_reset_requested),
                 self.gen2_loopback_requested

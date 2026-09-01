@@ -140,6 +140,20 @@ class LTSSMController(Elaboratable):
         # Status: the rate currently applied at the PHY (debug/sim).
         self.operating_gen2            = Signal()
 
+        # True while the LTSSM is in a training-set exchange state
+        # (Polling.RxEQ/Active/Configuration and the Recovery
+        # equivalents).  The PHY's Gen2 datapath consumes this as
+        # LTSSM_is_Training: its rx-polarity acquisition counts
+        # candidate inversion signatures on the RAW (still-scrambled)
+        # first symbol of every data block while the flag is high --
+        # armed at U0, scrambled logical idle randomly walks that
+        # counter (P ~ 3/256 per block, no TS decrements) to a STICKY
+        # lane inversion within tens of microseconds.  The previous
+        # bench top approximated this flag as terminations-engaged-and-
+        # not-trained, which stays high through the whole U0-entry
+        # window (session 13, bug #39 aggravator).
+        self.in_training               = Signal()
+
         # Training set detection signals.
         self.tseq_detected             = Signal()
         self.ts1_detected              = Signal()
@@ -838,6 +852,7 @@ class LTSSMController(Elaboratable):
             # and give the PHY time to achieve DC equalization.
             # [USB 3.2.r1: 7.5.4.7]
             with m.State("Polling.RxEQ"):
+                m.d.comb += self.in_training.eq(1)
                 handle_warm_resets()
 
                 # Continuously send TSEQs; these are used to perform receiver equalization training.
@@ -855,6 +870,7 @@ class LTSSMController(Elaboratable):
             # begin exchaning our core training sequences. We'll start sending TS1, and let the PHY handle
             # link training until it reliably the same thing from the host. [USB 3.2r1: 7.5.4.8]
             with m.State("Polling.Active"):
+                m.d.comb += self.in_training.eq(1)
                 handle_warm_resets()
 
                 # Constantly send TS1s; which indicate that we're in link training, but haven't yet
@@ -907,6 +923,7 @@ class LTSSMController(Elaboratable):
             # Polling.Configuration -- we're now satisfied with our link training; we'll need to communicate
             # this to the other side, and wait for the other side to advertise the same. [USB3.2r1; 7.5.4.9]
             with m.State("Polling.Configuration"):
+                m.d.comb += self.in_training.eq(1)
                 handle_warm_resets()
 
                 # Constantly send TS2s, which both allow the other side to continue link training and
@@ -938,6 +955,7 @@ class LTSSMController(Elaboratable):
             # that the other side sees enough TS2s to know that we're both done. In this state, we'll send
             # a burst of TS2s.
             with m.State("Polling.Configuration.Exit"):
+                m.d.comb += self.in_training.eq(1)
                 handle_warm_resets()
 
                 # Continue to send TS2s...
@@ -1020,6 +1038,7 @@ class LTSSMController(Elaboratable):
             # we should perform a hot reset. We're now performing a TS2 handshake, modified so
             # we are also sending Hot Reset.
             with m.State("Hot Reset.Active"):
+                m.d.comb += self.in_training.eq(1)
                 handle_warm_resets()
 
                 # As in Polling.Configuration, we'll send TS2s; but we'll send them with our
@@ -1070,6 +1089,7 @@ class LTSSMController(Elaboratable):
             # performed our initial receiver equalization, we can maintain its settings and perform
             # only the last steps of training.
             with m.State("Recovery.Active"):
+                m.d.comb += self.in_training.eq(1)
                 handle_warm_resets()
 
                 # As in Polling.Active, we'll send TS1s to establish training.
@@ -1098,6 +1118,7 @@ class LTSSMController(Elaboratable):
             # Recovery.Configuration -- we're now satisfied with our link training; we'll need to communicate
             # this to the other side, and wait for the other side to advertise the same. [USB3.2r1; 7.5.4.9]
             with m.State("Recovery.Configuration"):
+                m.d.comb += self.in_training.eq(1)
                 handle_warm_resets()
 
                 # Constantly send TS2s.
@@ -1119,6 +1140,7 @@ class LTSSMController(Elaboratable):
             # that the other side sees enough TS2s to know that we're both done. In this state, we'll send
             # a burst of TS2s.
             with m.State("Recovery.Configuration.Exit"):
+                m.d.comb += self.in_training.eq(1)
                 handle_warm_resets()
 
                 # Continue to send TS2s...

@@ -118,6 +118,11 @@ class Gen2TxBridge(Elaboratable):
         # Beat interface toward the block transmitter.
         self.beat_request = Signal()    # i: emit one data beat now
         self.beat_data    = Signal(64)  # o: packet content or idle fill
+        # A packet is straddling the current block boundary: its first
+        # beat has been served but its final (eop) beat has not.  The
+        # scheduler defers SKP OS insertion while set -- "SKP Ordered
+        # Sets shall not be inserted within any packet" [6.4.3.3].
+        self.pkt_in_flight = Signal()
 
         # Debug.
         self.packets_buffered = Signal(8)
@@ -358,6 +363,11 @@ class Gen2TxBridge(Elaboratable):
             Mux(head_v, head_data, Const(IDLE_BEAT, 64)))
 
         consume = self.beat_request & head_v
+
+        # Packet-straddle tracking for the SKP scheduler: in flight from
+        # the first served beat of a packet until its eop beat is served.
+        with m.If(consume):
+            m.d.ss += self.pkt_in_flight.eq(~head_eop)
         with m.If(~head_v | consume):
             with m.If(fifo.r_rdy
                       & (mid_pkt | (self.packets_buffered != 0))):
@@ -437,7 +447,7 @@ class Gen2BlockTransmitter(Elaboratable):
         beat_idx  = Signal(2)              # 0/1 (0/1/2 for SKP)
         os_count  = Signal(range(max(self._tseq_count, 65536) + 1))
         sync_gap  = Signal(range(self._sync_every_tseq + 1))
-        skp_gap   = Signal(range(self._skp_interval + 1))
+        skp_gap   = Signal(range(2 * self._skp_interval + 1))
         sds_pending = Signal()
         idle_prev = Signal()
 
@@ -515,13 +525,23 @@ class Gen2BlockTransmitter(Elaboratable):
                     m.d.ss += [mode.eq(new_mode), os_count.eq(0),
                                sync_gap.eq(0)]
 
-                # SKP OS first when scheduled [6.4.3.3].
-                with m.If(skp_gap >= self._skp_interval):
+                # SKP OS first when scheduled -- but NEVER inside a
+                # packet ("SKP Ordered Sets shall not be inserted within
+                # any packet" [6.4.3.3]; the real xHC rejects the split
+                # DP -- session-13 bench finding, descriptor read
+                # error -71).  While a packet straddles the boundary the
+                # gap keeps accumulating and the SKP goes out at the
+                # first legal boundary (the spec allows buffering up to
+                # three SKP OS, and our interval counter serves the same
+                # averaging purpose).
+                with m.If((skp_gap >= self._skp_interval)
+                          & ~bridge.pkt_in_flight):
                     m.d.ss += [kind.eq(K_SKP), skp_gap.eq(0)]
                     m.d.comb += [self.tx_head.eq(BLOCK_CONTROL),
                                  self.tx_data.eq(SKP_BEAT01)]
                 with m.Else():
-                    m.d.ss += skp_gap.eq(skp_gap + 1)
+                    with m.If(skp_gap < (self._skp_interval * 2)):
+                        m.d.ss += skp_gap.eq(skp_gap + 1)
 
                     with m.If(new_mode == 1):        # TSEQ
                         with m.If(sync_gap >= self._sync_every_tseq):

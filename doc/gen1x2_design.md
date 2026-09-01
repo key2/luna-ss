@@ -258,7 +258,9 @@ The honest inventory of why this is a rewrite, not a parameter:
 the shipping Gen 1x1 fence, protected by payload-identity discipline — any
 touch costs battery + parity + hardware re-laddering for zero Gen 1x1 gain.
 Instead build the parked **stage-B core as width-generic (64 first)** with
-the strict sims as its fence, and keep both cores in the tree:
+the strict sims as its fence, and keep both cores in the tree
+(the full `core_width ∈ {32,64,128}` design — legality matrix, clocking
+choice, module inventory, per-cell timing — is worked out in §6.5):
 
 1. **Step 1 — 64-bit stage-B core.**  Serves Gen 1x2 @ 125 (this note's
    subject) *and* full-wire-rate Gen 2x1 @ 156.25 (retiring stage-A's
@@ -292,6 +294,173 @@ the strict sims as its fence, and keep both cores in the tree:
   the negotiated trim* exactly like today's rate tables (one width per
   rate×lane configuration, flipped inside Polling.SpeedSwitch/PortConfig) —
   no independent width state machine.
+
+### 6.5 A width-generic LUNA core: `core_width ∈ {32, 64, 128}` at init
+
+The target: one core, one elaboration parameter, with this legality matrix
+(a build asserts it at elaboration time — a config outside its column is a
+construction error, not a runtime surprise):
+
+| Capability (advertised highest) | 32-bit core | 64-bit core | 128-bit core |
+|--------------------------------|:-----------:|:-----------:|:------------:|
+| Gen 1x1 (4.0 G payload)        | ✔ (ships)   | ✔           | ✔            |
+| Gen 1x2 (8.0 G)                | ✗ (caps at x1 rate) | ✔   | ✔            |
+| Gen 2x1 (9.7 G)                | ✗ (stage-A ½-rate only) | ✔ | ✔          |
+| Gen 2x2 (19.4 G)               | ✗           | ✗ (needs 312.5 MHz) | ✔    |
+
+Rule of thumb: a width is legal for a capability iff
+`width_bits × pclk ≥ payload_rate` at a closable pclk.  32 covers only
+Gen 1x1; 64 covers everything through Gen 2x1; 128 covers everything.
+
+#### 6.5.1 The clocking decision: full beats at a scaled clock, or duty-cycled beats at the PHY clock
+
+Running a WIDE core under a NARROW config (e.g. Gen 1x1 on a 64/128-bit
+core) forces the one real architectural choice of the whole exercise.  The
+wire delivers 4 symbols per 125 MHz word at Gen 1x1; a 64-bit core must
+either:
+
+* **(a) Duty-cycling — pclk stays the PHY trim clock.**  RX accumulates
+  full beats and presents them with `valid` gaps (Gen 1x1 on 64-bit: one
+  full beat every 2nd cycle @ 125); TX is `ready`-throttled the same way.
+  No new clock trims, no CDC, no PHY changes.  The cost: the core must be
+  **gap-tolerant on every RX path and throttle-tolerant on every TX path**
+  — which is exactly the discipline the Gen 2 bring-up already forced
+  (`CHECK_CRC32` valid-gating, bug #40's contiguity lessons).  Timing: no
+  relief (the core still closes at the PHY clock).
+* **(b) Full-rate beats at a scaled pclk** (Gen 1x1 on 64-bit @ 62.5, on
+  128-bit @ 31.25).  Timing relief is maximal, beats are always full in
+  steady state.  The cost: pclk now depends on rate × lanes × width — more
+  PHY fabric trims (§6.2, some unproven) or width bridges, more SDC
+  clocks, and every trim flip inherits the #22 retune window.
+
+**Recommendation: (b) for the operating point a build is DESIGNED for,
+(a) as the mandatory fallback mode.**  The reasoning is the fallback
+matrix itself: a 64-bit Gen 2x1 build that falls back to Gen 1x1 has its
+PHY at the 32-bit/125 trim — the wide core then *necessarily* runs
+duty-cycled (accumulate 2 cycles per beat) unless we also retune pclk
+mid-LTSSM (a second #22-class hazard per fallback for no benefit — the
+fallback rate needs no timing relief by definition).  So gap/throttle
+tolerance must be built into the width-generic core **regardless**; once
+it exists, option (a) is free everywhere, and (b) becomes a per-build
+optimization knob for the designed-for config.  Concrete consequence for
+the user-visible matrix: **Gen 1x1 on a 64/128-bit core costs nothing at
+runtime — it is the same duty-cycled mode the fallback path requires
+anyway.**
+
+This also collapses today's dual-chain architecture: the current dual-rate
+build elaborates the full historical 32-bit Gen 1 chain NEXT TO the Gen 2
+machinery and muxes at the seams (stage A).  A gap-tolerant width-generic
+core serves **all negotiated configs of one build from one datapath** —
+the Gen 1x1 fallback leg stops being a second core.  That is a large area
+and congestion win for exactly the builds that struggle with placement
+today (session 13's lottery was fought at 28 % utilization dominated by
+the doubled chains and their seams).
+
+#### 6.5.2 Stream contract for the generic core
+
+The 32-bit `USBRawSuperSpeedStream` (data + 4-bit K-ctrl) generalizes to:
+
+```
+data  : width bits
+ctrl  : width/8 bits          # per-byte K flag (Gen 1 dialect)
+valid : 1                      # beat-granular; gaps legal ANYWHERE on RX
+len   : log2(width/8)+1 bits   # valid bytes in the FINAL beat of a
+                               # construct (tail handling; full otherwise)
+first : 1                      # construct starts in this beat (+ offset)
+offs  : log2(width/8) bits     # byte offset of the construct start
+```
+
+`len/first/offs` are the price of beats that no longer align to construct
+boundaries: at 64-bit a header straddles beats or shares one with a link
+command; at 128-bit one beat can carry `[LGOOD][LCRD][HPSTART dw0 dw1…]`.
+Two simplifications keep this tractable:
+
+* **RX normalizes early.**  One barrel-rotate front-end per receiver class
+  (header / data / LC) aligns constructs to offset 0 before the FSMs —
+  the same shape as the session-13 gen2 bulk/boundary engine (aligned bulk
+  beats + a narrow boundary walker), which is now a proven pattern at the
+  HARDEST clock in the matrix.  The FSMs behind it see aligned,
+  full-or-tail beats only.
+* **TX may pad instead of pack.**  Aligning every construct start to a
+  beat boundary with logical-idle fill between constructs is legal at
+  Gen 1 (idle between packets) and at Gen 2 (idle data blocks between
+  constructs).  Padding costs only inter-packet bandwidth — bounded by the
+  same credit/turnaround overheads that already dominate — and removes the
+  multi-construct-per-beat packer entirely.  Ship padded-TX first; a dense
+  packer is a later, isolated optimization.  One exception must stay
+  dense: DPP payload bodies must stream full beats (mid-packet idle is
+  illegal in both dialects) — that is the endpoint buffer's job, and it
+  already sustains it at 32-bit.
+
+#### 6.5.3 Module-by-module inventory (what actually changes)
+
+| Module class | 32-bit today | Width-generic form | Effort |
+|--------------|--------------|--------------------|--------|
+| LTSSM, timers, LFPS/LBPM, power mgmt | width-free (control + time) | untouched; timers already take `ss_clock_frequency` (G3 work) — they parameterize by clock, which is the same axis | none |
+| Ordered-set detect/emit (TS/TSEQ) | 32-bit word compare chains | per-beat position-muxed compares; at 128-bit a whole TS fits one beat (detect gets EASIER — single-shot compare) | S |
+| Header RX (`header.py`/`receiver.py`) | `RECEIVE_DW0..3` word-serial FSM + serial CRC-16 | barrel front-end + N-DW-per-beat capture; CRC-16 over up-to-12-bytes/beat combinational slices | M |
+| Header TX (`transmitter.py`) | word-serial emit | beat-composed emit from a header register (whole header in ≤ beats; trivial at 128) | M |
+| Data RX/TX (`data.py`) | word FSM, single-word `CHECK_CRC32` | parallel CRC-32 with byte-enable tails (1..width/8 bytes/cycle); the gen2-gated valid-tolerance generalizes to width-tolerance | M |
+| Link command detect/generate | 8-symbol constructs, word-paired | at ≥64-bit an LC fits one beat: single-shot compare/emit (EASIER); multiple-LCs-per-beat only if dense TX — padded TX avoids it on TX, RX must accept back-to-back LCs in one beat from the partner (real hosts pack) | M |
+| Idle handshake | 2-word window | N-byte window with valid gating (already gap-aware post session 13) | S |
+| Protocol layer (`tp_generator`, endpoint mux) | 32-bit streams | width-parametric plumbing; TP composition = header-class work | M |
+| Endpoint datapaths + FIFOs (multiep) | 32-bit BSRAM streams | widen (BSRAM aspect ratios support ×4); DMA/loopback plumbing mechanical | M |
+| Gen 2 block engines (`gen2.py`) | 64-bit beats, half/sub walker | at 128-bit: **one beat = one whole block payload** (128 = 132−4) — the beat/half assembly collapses, the RX queue halves in depth, pacing = same 32-data+1-gap per 33 beats ratio | S (shrinks!) |
+| x2 striper/deskew (§4.2) | — | naturally width-generic (it is a byte-lane construct) | included above |
+| PIPE adapter + pacing + probes | 64-bit | width-parametric per §6.4 | S |
+
+Nothing in the list is exotic; the header/data framers are the bulk of it,
+and their hard version (position-muxed decode at 6.4 ns) is what session 13
+already built for the gen2 RX path.
+
+#### 6.5.4 Timing impact per (config, width) — the full matrix
+
+Anchored to measured silicon data (Gen 1 builds close 125 MHz first-roll at
+11–19 % margin; 64-bit @ 156.25 closes only via the session-13 cut
+campaign + lottery; logic depth grows ~log with width while the budget
+grows linearly):
+
+| Config | 32-bit | 64-bit | 128-bit |
+|--------|--------|--------|---------|
+| Gen 1x1 | 125 MHz — **ships** | (b) 62.5: trivial / (a) 125: known-easy | (b) 31.25: trivial / (a) 62.5–125: easy |
+| Gen 1x2 | — | **125 MHz: Gen 1-class closure expected (§5)** | 62.5: trivial |
+| Gen 2x1 | — | 156.25: **proven, but lottery-class** | **78.125: the v1-engine-would-have-closed point; ends the lottery era** |
+| Gen 2x2 | — | — | 156.25: **the new hard point** — wider AND the hard clock; expect a session-13-scale campaign.  Prefer 256 @ 78.125 if the fabric trims allow (§6.2), else budget for it |
+
+Width-specific timing caveats (the honest fine print):
+
+* Wider is not free *depth*: a 128-bit barrel front-end is a 16-position
+  byte rotate (~2 more mux levels than 64) and 16-byte/cycle CRC-32 adds
+  ~2 XOR levels — both are noise at 12.8 ns budgets and meaningful at
+  6.4 ns.  This is why **Gen 2x2 @ 128/156.25 is the one genuinely hard
+  cell** in the table: it pays the width depth AND the 6.4 ns budget
+  simultaneously.
+* Wider is real *area/fanout*: streams, FIFO ports, and the seam registers
+  all scale.  From 28 % LUT today, a 128-bit single-core build should land
+  ~40–50 % — fine in absolute terms, but placement spread was our real
+  enemy at 6.4 ns, so the low-clock cells of the matrix are the ones that
+  benefit; do not expect width to help any 156.25 cell.
+* Duty-cycled (option-a) cells inherit the PHY clock, not the scaled one —
+  their timing is the PHY-clock column regardless of width.
+
+#### 6.5.5 Verification surface (keeping the explosion bounded)
+
+The matrix multiplies fences; bound it the way the trees already bound
+rate × dialect:
+
+* The historical 32-bit core stays frozen as the Gen 1x1 shipping fence
+  (payload-identity discipline untouched — the generic core is NEW RTL).
+* The generic core pins **three first-class elaboration points** in the
+  battery: `w64/gen1x2`, `w64/gen2x1`, `w128/gen2x2-prep` — each with the
+  strict host models (striping rules, SKP placement, valid-gap injection,
+  duty-cycled-fallback runs).  Other legal cells get elaboration + smoke
+  entries only.
+* Unit fences that must exist per width: parallel CRC equivalence vs the
+  32-bit reference (exhaustive over lengths/offsets), barrel front-end
+  oracle (random construct streams at all offsets), pacing model per
+  §6.4, and a duty-cycle stress bench (randomized valid/ready patterns —
+  the generalization of the #40 strict-host lesson: the FORGIVING bench is
+  how width bugs will hide).
 
 ## 7. Suggested phasing (each gated, sim-first, one mechanism per change)
 

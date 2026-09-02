@@ -3015,32 +3015,52 @@ validates lane-1 TX during x2 training) or a physical cable flip.**
 
 ## 11. Reading list for the new session (fork edition)
 
-* `prompt.md` — the active mission (session 13: gate G5, hardware
-  validation of BOTH rates).
-* `HANDOVER.md` §10r (this file) — session 12: G3+G4 closed on sim,
-  the G5 checklist, the timing diagnosis, the regression state.
-  §10o has the fork map and bench history; §10p/§10q the Gen2 sim
-  architecture and SCD work.
-* `doc/gen2_design.md` — the Phase-1 design note (gates G2+ follow it).
+* `prompt.md` — the active mission (session 15: the width-generic
+  core — Gen 1x1 / Gen 1x2 / Gen 2x1 at core_width 64 and 128,
+  gates W1–W3).
+* `doc/usb3_design.md` — THE design authority (merged gen2 + gen1x2
+  notes + the program decision; §3.1/§3.3/§12 now carry the
+  session-14 P0 verdicts).  `doc/gen2_design.md` and
+  `doc/gen1x2_design.md` are superseded — historical only.
+* `HANDOVER.md` §10t (this file) — session 14: gate W0 closed, bug
+  #41 (SSP LMP field rules) fixed + wire-verified, the post-#41 Gen2
+  silicon state (#42 = inbound Gen2 header path), the trim verdicts,
+  the LN0 disposition, and the port-4-3 = Gen 2x1-highest finding.
+  §10s has the session-13 silicon lessons (#39/#40, evcap, POR
+  lottery history); §10r the G3/G4 sim architecture; §10o the fork
+  map and bench history.
 * `luna/gateware/usb/usb3/physical/gen2.py` — the stage-A Gen2 block
-  machinery (module docstring = the architecture; the RX grammar
-  engine is the 156.25 timing cone to cut).
+  machinery (module docstring = the architecture; the v2 RX grammar
+  engine shape is the model for the wide-core barrel front-ends).
+* `luna/gateware/usb/usb3/link/ltssm.py` — `ssp_capability=` /
+  `phy_boots_gen2=` (session 14) and the gen2 PortMatch/PortConfig
+  arms the W2 x2 work extends.
+* `luna/gateware/usb/usb3/protocol/link_management.py` — bug #41's
+  SSP field rules (`ssp_operating`; Gen 1x2 ORs in at W2).
 * `sim/sim_link_gen2.py` header — every Gen2 phase and knob
-  (PHASE=scd|lbpm|lbpm5g|fb-*|train|enum|echo, TSEQ_LEN, TSCALE, NEG).
-* `examples/gowin/luna-enum-gen2/top.py` — the dual-rate bring-up top
-  (built once, never flashed; probes disabled pending the pipelined
-  delta).
+  (PHASE=scd|lbpm|lbpm5g|lbpm-x2|fb-*|train|enum|echo|u0; TSEQ_LEN,
+  TSCALE, NEG, DEVCAP).
+* `examples/gowin/luna-enum-gen2/top.py` — the dual-rate top (POR
+  66_047, MET, FLASHED session 14: trains Gen2, falls back, 5000M;
+  uart1 = evcap header ring).
+* `examples/gowin/luna-enum-gen1x2/top.py` — the Gen 1x2-highest
+  PortMatch probe = the x2-PORT QUALIFIER tool (boot-rate-switch
+  shape, MAC at 125, uart1 LBPM ring).
+* `examples/gowin/probe-trims/top.py`, `probe-ln0tx/top.py` — the W0
+  probe rigs and their verdict tables (module docstrings).
 * `README.md` — the fork banner: layout, one-clone flow.
 * `gw_usb3/` submodule: README + module docstrings (every vendor
   quirk documented where reproduced); `gw_usb3/tests/equiv/harness.py`
-  docstring — how golden-vs-port simulation works.
+  docstring — how golden-vs-port simulation works (also the machinery
+  for a full-RX-chain sim bench, the #42 discriminator).
 * `gowin-serdes/` submodule: `ARCHITECTURE.md` §"USB3 Recipe",
-  `gowin_serdes/usb3.py`, `gowin_serdes/dkusb_gw5at60.py` (board),
+  `gowin_serdes/usb3.py`, `gowin_serdes/dkusb_gw5at60.py` (board;
+  SDC branches: 6.4 ns gen2 tops, 8.0 ns gen1x2 tops),
   `gowin_serdes/bench.py` (debug helpers).
 * `luna/gateware/interface/serdes_phy/gowin_gtr12.py` — the PIPE
   adapter (LFPS dialect, boot-rate-switch, boot domain discipline).
 * `examples/gowin/luna-multiep/top.py` — the shipping 3-pair top
-  (wire checkers, ACKPROBE, uart1 'R' hook, POR lottery comment).
+  (wire checkers, ACKPROBE, BurstEventCapture, POR lottery comment).
 * `sim/sim_link_loopback.py` header — every host-model knob.
 * The frozen archive (`~/Downloads/GW_USB3/ARCHIVE.md`) — vendor
   refdesign baselines, hybrid A/B rig, bug-report packages.

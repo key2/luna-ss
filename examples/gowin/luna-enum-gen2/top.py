@@ -162,9 +162,20 @@ class LunaEnumTop(Elaboratable):
         # (uart1 header-ring) netlist missed 17 rolls (66_033..66_045,
         # best 150.8); the bug-#41 (SSP LMP field rules) netlist won at
         # the current 66_047 = pclk 156.307 / rxclk 162.692 -- BOTH MET
-        # (the Gen2 flash gate).
+        # (the Gen2 flash gate).  Session-15 (bugs #42+#43: the 8-buffer
+        # 4+4 credit pool + the rx-queue idle run compression): the
+        # evcap-ring netlist rolled 105-147.6 pclk over 13 rolls
+        # (66_047..66_061, uniform congestion, no dominant cone); the
+        # LEAN uart1 loadout (pipe probe instead of the 64x35 ring, see
+        # the uart1 comment) won on roll 3: 66_101 = pclk 156.384 /
+        # rxclk 159.619 -- BOTH MET.  DECISION on the books (session 15,
+        # from the bench owner): if the 64-bit stage-A core stops
+        # closing 156.25 (each netlist change = a new lottery), the 10G
+        # configurations move to the width-program 128-bit core (pclk
+        # 78.125; Gen 2x1 via the 2:1 bridge per the W0 trim verdict)
+        # and 64-bit stays for Gen 1x1 at 125 only.
         m.d.cfg += [
-            por_n.eq(por_cnt > 66_047),
+            por_n.eq(por_cnt > 66_101),
             luna_go.eq(por_cnt.all()),
         ]
 
@@ -234,10 +245,14 @@ class LunaEnumTop(Elaboratable):
         # declared and mutual false paths in place the probes ride at
         # 156.25 unchanged -- they are the primary Phase-H2 debug tool.
         #
-        # uart0 (link probe, Gen1-compatible format):
-        #   C <ss-cnt> <lfps-det> <ts1-det> <ts2-det> <idle-hs-cycles> <flags>
+        # uart0 (link probe, session-15 H2 loadout):
+        #   C <ss-cnt> <ts1-det> <rx-hdr-bad> <recovery> <idle-hs-cycles> <flags>
         #   ss-cnt telltale: 0x341554x = 156.25 MHz (still 10G);
         #   0x29aaa9x = 125 MHz (fell back / never matched).
+        #   ch2 = debug_rx_hdr_bad: received header failed CRC (the
+        #   LBAD path) -- nonzero at Gen2 U0 = host->device corruption;
+        #   ch3 = debug_recovery: OUR recovery requests; host-initiated
+        #   recoveries with ch2=0 point at device->host corruption.
         #   flags: trained[0] in_reset[1] phy_ready[2] terminations[3].
         # uart1 (pipe probe):
         #   C <rxclk> <sds-det> <idle-complete> <txfifo-hi28> <recovery> <flags>
@@ -253,9 +268,9 @@ class LunaEnumTop(Elaboratable):
         m.submodules.linkprobe = linkprobe = DomainRenamer({"cfg": "dbg"})(
             ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
                 ("ss", None),
-                ("ss", usb.debug_lfps_polling_detected),
                 ("ss", usb.debug_ts1_detected),
-                ("ss", usb.debug_ts2_detected),
+                ("ss", usb.debug_rx_hdr_bad),
+                ("ss", usb.debug_recovery),
                 # Cycles spent in the LTSSM's idle handshake: nonzero
                 # means Polling.Idle was reached; a saturating count
                 # means the handshake never completes (H2 telltale).
@@ -273,43 +288,35 @@ class LunaEnumTop(Elaboratable):
 
         m.domains += ClockDomain("rxprobe", reset_less=True)
         m.d.comb += ClockSignal("rxprobe").eq(lane.rx.pcs_clkout)
-        # uart1: header event capture (H2 U0-death discriminator).  The
-        # multiep BurstEventCapture ring dumps the FIRST 64 header
-        # events after boot -- exactly the first U0 cycle's exchange:
-        #   'T' = TX TP (word = dw0), 'D' = TX other header (LMP/DPH
-        #   dw0 -- the type field is dw0[0:5]);
-        #   'A' = RX TP, 'R' = RX non-TP; RX words = dw1[0:27] with
-        #   dw0's type field packed into bits [27:32].
-        import importlib.util as _ilu
-        _spec = _ilu.spec_from_file_location(
-            "multiep_top", HERE.parent / "luna-multiep" / "top.py")
-        _multiep = _ilu.module_from_spec(_spec)
-        _spec.loader.exec_module(_multiep)
-
-        m.submodules.evcap = evcap = _multiep.BurstEventCapture(
-            clk_freq=DBG_FREQ, baud=BAUD_RATE)
-
-        # Minimal TX header parser on the pre-scrambler wire tap: an
-        # HPSTART word is followed by dw0.
-        W_HPSTART = 0xF7FBFBFB
-        txp_next = Signal()
-        with m.If(usb.debug_wire_tx_strobe):
-            with m.If((usb.debug_wire_tx_data == W_HPSTART)
-                      & (usb.debug_wire_tx_ctrl == 0b1111)):
-                m.d.ss += txp_next.eq(1)
-            with m.Elif(txp_next):
-                m.d.ss += txp_next.eq(0)
+        # uart1: pipe probe (the lean H1 loadout; the session-14 evcap
+        # header ring did its job -- it identified the missing inbound
+        # LMP exchange that became bugs #41/#42 -- and its 64x35 ring
+        # was a placement hog: the s14 netlist missed 17 rolls with it,
+        # and the post-#42 8-buffer netlist rolled 105-147 pclk with it
+        # in-tree).  Channel map:
+        #   C <rxclk> <rx-hdrs-accepted> <sds-det> <ts2-det> <txfifo-hi28> <flags>
+        #   ch1 = debug_rx_hdr_stb count: ACCEPTED inbound header
+        #   packets reaching the protocol layer -- the direct #42
+        #   verification signal (zero at Gen2 U0 = the old failure;
+        #   counting = host LMP/ITP traffic flowing).
+        #   flags: power_down[0] tx_elec_idle[1] rx_elec_idle[2]
+        #   data_mode[3].
+        m.submodules.pipeprobe = pipeprobe = DomainRenamer({"cfg": "dbg"})(
+            ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
+                ("rxprobe", None),
+                ("ss", usb.debug_rx_hdr_stb),
+                ("ss", usb.debug_gen2_sds_detected),
+                ("ss", usb.debug_ts2_detected),
+                ("ss", txfifo_hi28),
+            )))
+        pipe_flags = Signal(4)
+        m.submodules += FFSynchronizer(
+            Cat(adapter.power_down[0], adapter.tx_elec_idle,
+                adapter.rx_elec_idle, usb.debug_gen2_data_mode),
+            pipe_flags, o_domain="dbg")
         m.d.comb += [
-            evcap.a_stb.eq(usb.debug_wire_tx_strobe & txp_next),
-            evcap.a_tp .eq(usb.debug_wire_tx_data[0:5] == 4),
-            evcap.a_dw1.eq(usb.debug_wire_tx_data),
-
-            evcap.b_stb.eq(usb.debug_rx_hdr_stb),
-            evcap.b_tag.eq(Mux(usb.debug_rx_hdr_type == 4, 3, 4)),
-            evcap.b_dw1.eq(Cat(usb.debug_rx_hdr_dw1[0:27],
-                               usb.debug_rx_hdr_type)),
-
-            uart1.tx.o.eq(evcap.tx_o),
+            pipeprobe.flags.eq(pipe_flags),
+            uart1.tx.o.eq(pipeprobe.tx_o),
         ]
 
         return m

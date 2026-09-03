@@ -20,6 +20,15 @@ markdown.md`) and the R1.1-vs-R1.0 redline (`GW_USB3/docs/USB 3.2
 Revision 1.1 Redline against 3.2 R1.0.pdf/markdown.md`).  Measured
 timing/bench facts are session-13 state (HANDOVER §10s).
 
+**SCOPE UPDATE (session 15/16, BINDING — HANDOVER §10u): Gen 1x2 and
+all x2 work are DROPPED from scope permanently** (port 4-3 is
+Gen 2x1-highest; neither the bench xHCI nor TB4 hosts negotiate x2).
+The x2 sections below (§3.2, the x2 rows of §1/§3.3/§7, §5's x2 arms,
+Gen 2x2 prep) are retained as reference/negotiation-matrix history
+only; the gen1x2 example top and `ssp_capability` surface stay in the
+tree untouched.  The executable program is now **§13 — the single-lane
+width program** (session-16 mission), which supersedes the §11 phasing.
+
 ---
 
 ## 1. The target matrix (the master table)
@@ -475,3 +484,161 @@ dual-rate matrix) move onto the wide core.
 6. Does the historical 32-bit fence build ever retire?  Proposal: only
    after the wide core's Gen 1x1 ladder has shipped-parity soak history
    comparable to POR-66_011's.
+
+## 13. The single-lane WIDTH PROGRAM (session 16 — the executable plan)
+
+This section is the design authority for the session-16 mission
+(`prompt.md`): make the stack width-generic at **`core_width ∈
+{64, 128}`**, single lane only, so every shipping configuration closes
+timing without the placement lottery.  It supersedes the §11 phasing
+(P0 executed as W0; P2/P4 struck with x2; P1/P3 re-scoped as V1–V4).
+
+### 13.1 Naming: what `core_width` means in THIS tree
+
+The historical LUNA link/protocol streams are 32-bit
+(`USBRawSuperSpeedStream(payload_words=4)`); the PIPE register is
+64-bit with Gen 1 riding its low half (4 symbols @ 125), and the
+stage-A Gen 2 block machinery is 64-bit-shaped @ 156.25 behind 32↔64
+per-packet bridges (`physical/gen2.py`).  **`core_width` names the
+PIPE-register / Gen2-block width of an elaboration; the LUNA
+link/protocol streams run at `core_width/2`:**
+
+| | `core_width=64` (default) | `core_width=128` |
+|---|---|---|
+| LUNA streams (`payload_words`) | 32-bit (4) — historical, verbatim | 64-bit (8) |
+| Gen 1 PIPE presentation | 4 sym @ 125 in [31:0] (20×1:2 trim) | 8 sym @ 62.5 in [63:0] (native 20×1:4 trim) **or** 2:1-bridged 4-sym halves @ 125→62.5 (the Gen2 build's 5G fallback) |
+| Gen 2 block presentation | 2×64-bit beats @ 156.25 (vendor PIPE, pinned) | 1×128-bit beat @ 78.125 (OUR bridge contract, §13.3) |
+| Gen 2 stage bridges | 32↔64 per-packet (today, verbatim) | 64↔128 per-packet (same shape, widened) |
+| Core-domain clock | = pclk (125 / 156.25) | Gen1x1 build: = pclk (62.5); Gen2 build: = **pclk/2** (78.125 @10G, 62.5 @5G fallback) |
+
+`core_width=64` is **today's netlist, bit-for-bit** — the elaboration
+parameter is threaded with the established `gen2=`-style discipline
+(64-bit statements verbatim, 128-only code behind `if` at elaboration);
+the proof is the Gen1-64 shipping payload parity after every
+shared-file change, plus the untouched 64-bit battery entries.
+
+### 13.2 The target matrix (single lane; timing gates)
+
+| config | core_width | core clock | PHY clocks | gate |
+|--------|-----------|------------|-----------|------|
+| Gen 1x1 | 64 | 125 (= pclk) | pclk 125 / rxclk 125 | THE FENCE: payload-identical + ladder-green throughout |
+| Gen 1x1 | 128 | 62.5 (= pclk, native 20×1:4 trim) | pclk 62.5 / rxclk 62.5 | core ≥ 62.5 (trivial); full multiep ladder |
+| Gen 2x1 | 128 | 78.125 (= pclk/2) | pclk 156.25 / rxclk 161.29 (6.2 ns SDC) | core ≥ 78.125 AND pclk ≥ 156.25 AND rxclk ≥ 161.29; #45 resolved; 10000M + Gen2 ladder |
+| Gen 2x1 | 64 | 156.25 (= pclk) | same | sim-green + buildable; timing OPTIONAL (bench-debug vehicle; never flashed for Gen2 runs unless MET) |
+
+### 13.3 The 2:1 PIPE bridge (Gen 2 @ 128 ↔ the pinned 64-bit PHY)
+
+W0 verdict (§3.1): the 10G fabric attach is fixed at 64-bit/156.25
+(no width_mode >20 on the GW5AT-60) — Gen2×128 is the bridge, full
+stop.  Design:
+
+* **Placement**: the bridge is the ONLY new pclk-domain logic.  It
+  sits at the PIPE boundary, between `GowinGTR12PIPE` (pclk) and the
+  physical layer's Gen2 block engines (core domain).  Register-thin:
+  a phase bit + one beat register per direction; no FSMs, no content
+  parsing beyond the `tx_halfbeat` qualifier below.
+* **Clocking**: the core domain is **pclk/2 by a fabric FF divider**,
+  edge-locked to pclk, constrained as a generated clock
+  (`create_generated_clock -divide_by 2`; new SDC branch in
+  gowin-serdes).  It is pclk/2 at BOTH rates: 156.25→78.125 at 10G,
+  125→62.5 at the 5G fallback — the fallback keeps the PROVEN 20×1:2
+  trim and the proven #22 retune sequence; no clock muxing, no new
+  quiesce hazard.  Consequence: the core:wire timer stretch at
+  fallback is 78.125/62.5 = 1.25, IDENTICAL to the silicon-proven
+  156.25/125 stretch of the 64-bit dual-rate build
+  (`sync_frequency=78.125e6`; every timer recomputes from it).
+* **MAC-side 128-bit beat contract (ours to define; re-pin the oracle
+  sim at this width)**: one TX/RX beat = one whole 132-bit block
+  payload (block_head as today, start on every beat).  The 24-symbol
+  SKP OS does not fit the invariant (192 = 1.5×128): TX crosses it as
+  one full beat + one half beat carrying symbols 16–23 in the LOW half
+  flagged by a new **`tx_halfbeat`** qualifier — the bridge emits 2+1
+  pclk beats and stays content-blind.  RX never sees a SKP (the PHY
+  strips them, §gen2.py): the RX side is a clean 2-beat pairer
+  anchored on `rx_start_block`, tolerant of rx_valid gaps between (but
+  never inside) a pair.
+* **Gen 1 fallback leg through the same bridge**: at 5G (pclk 125)
+  the PHY presents 4 symbols in [31:0] per pclk beat; the bridge packs
+  two such beats into the low 64 of a core beat @ 62.5 (and splits on
+  TX).  Same phase machinery, width-parametric packing.
+* **The #44 closed-loop pacing reference crosses here — DECISION: the
+  pacing decision stays CORE-side**, in the block transmitter, exactly
+  as sim-fenced today.  `tx_fifo_occupancy` (TxFifoWrNum, 64-bit-word
+  units, pclk) is registered once at the bridge and sampled by the
+  core every pclk/2 edge; thresholds keep their PHY-word units (a full
+  core beat = 2 words, a halfbeat = 1).  The added sampling lag (2–3
+  pclk total) folds into the #44 lag budget: the pacing sims and
+  `tests/test_gen2_pacing.py` must model the bridged lag RED-FIRST
+  before the hardware build (a stale-level overshoot is exactly the
+  #44 class).  The bridge itself NEVER inserts or deletes gaps.
+
+### 13.4 Domain-crossing inventory at the bridge (pclk ↔ pclk/2)
+
+The divided clock is edge-locked — these are synchronous 2:1 paths,
+not metastability CDCs (the only true async crossing stays inside the
+PHY: rxclk→pclk AsyncFifo, untouched).  Every seam signal is
+registered at the boundary to keep the 156.25 cones shallow:
+
+| signal | dir | class | mechanism |
+|---|---|---|---|
+| tx_data/tx_sync_header/tx_start_block/tx_datavalid (+tx_halfbeat) | core→pclk | data | phase-muxed half-select, one pclk register |
+| rx_data/rx_sync_header/rx_start_block/rx_datavalid | pclk→core | data | start-anchored pair accumulator, one core register |
+| tx_fifo_occupancy (TxFifoWrNum) | pclk→core | multi-bit level | registered sample @ core edge (§13.3 lag budget) |
+| phy_status (rate/power acks) | pclk→core | 1-pclk pulse | latch-and-hold ≥2 pclk (pulse would vanish between core edges) |
+| rx_elec_idle, power_present, rx_status | pclk→core | level | register |
+| rate, power_down, tx_elec_idle, tx_detrx_lpbk, rx_termination, rx_polarity, tx_deemph, rx_eq_training, reset | core→pclk | level (µs tolerances) | register |
+| ltssm_training (→ PHY polarity acquisition, #39) | core→pclk | level | register |
+| Gen1-leg rx_data[31:0]/rx_datak (fallback) | pclk→core | data | low-half pair accumulator (same phase bit) |
+| Gen1-leg tx_data[31:0]/tx_datak (fallback) | core→pclk | data | low-half phase split |
+
+Everything else — LTSSM, timers, LFPSTransceiver (constants from
+`sync_frequency`), PHYResetController, rate FSM, link layer, protocol
+layer, endpoints, the Gen2 block engines, the Gen1
+scrambler/CTC/aligner/descrambler chain (widened to 64-bit at w128) —
+lives in the core domain and never sees pclk.
+
+### 13.5 What widens at `core_width=128` (the V1 work list)
+
+* `USBRawSuperSpeedStream(payload_words=8)` + every hard-coded
+  `32`/`4`-byte assumption in link + protocol (header framers: an HP
+  = 16 B = 2 beats; LC = 8 B = 1 beat single-shot; CRC-16 over 12 B
+  spans beats 0–1; parallel CRC-32 with 8-byte tails; data FIFOs;
+  endpoint plumbing).
+* `physical/gen2.py`: the 32→64 per-packet TX bridge becomes 64→128;
+  the beat/half/sub grammar walk of the v2 RX engine generalizes or
+  gets a 128-bit twin (at 1 beat = 1 block the machinery SHRINKS —
+  the engine's 4-sym/cycle drain vs 8-sym/cycle wire gap widens to
+  8 vs 16: the #43 run-compression queue bound must be re-proven at
+  width, red-first).
+* Gen1 physical conditioning (Scrambler/Descrambler/CTC/aligners):
+  width-parametric 32→64 (LFSR advances 8 symbols/cycle).
+* gw_usb3 (behind elaboration knobs, 5G suite pinned): the Gen1 PCS
+  chain at 8 sym/beat for the native 62.5 trim (8b10b ×8, comma
+  align, elastic width) — the "narrow shims"; the Gen2 datapath is
+  UNTOUCHED (the bridge lives MAC-side).
+* gowin-serdes: the 20×1:4 trim table entry (two divider registers,
+  W0-verdicted), the w128 SDC branches (62.5 build; 6.4/6.2+generated
+  -clock for the Gen2-128 build).
+
+### 13.6 Verification plan deltas (V1 gates)
+
+* Battery axis: the 53 Gen1-64/Gen2-64 entries stay untouched-green
+  at every step (the fence).  Width-parallel entries for the core
+  Gen2 phases at 128: `train/enum/echo/u0/hotreset/recovery/rxchain`
+  + pacing.  New-mechanism sims RED-FIRST: the bridge (beat contract,
+  SKP halfbeat, pacing lag), the wide RX engine queue bound, wide
+  CRC equivalence (exhaustive lengths × offsets vs the 32-bit
+  reference), the 128-bit oracle re-pin.
+* Gen1-64 shipping payload parity (vs `/tmp/kilo/h0_gen1_fence.fs`)
+  after EVERY shared-file change — non-negotiable.
+* Hardware gates per §13.2; a Gen2 build that misses ITS width's gate
+  is never flashed for Gen2 runs.
+
+### 13.7 Phases (V0–V4, from the session-16 mission)
+
+V0 orientation + fence re-proof (DONE on the bench, see HANDOVER
+§10v) → V1 width-generic core sim-proven both widths → V2 Gen1
+hardware both widths (64 = fence re-proof; 128 @ 62.5 native, full
+ladder) → V3 Gen2x1 @ 128 hardware (#45 FIRST among bugs; per-cause
+probe at the no-lottery clock; then 10000M + Gen2 ladder) → V4 the
+dual-rate matrix, re-scoped without x2 (closes G5/H4).

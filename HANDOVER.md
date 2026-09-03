@@ -3239,6 +3239,50 @@ Push everything after the #45 verdict or at session end regardless.
    aligner, stage-B width program (now WITHOUT x2), 4+4 pools' 8 RX
    header buffers -- DONE this session as #42.
 
+## 10v. Session 16 — the WIDTH PROGRAM, single lane (V0–V4 per
+## prompt.md): V0 executed (bench un-wedged, oracle 10000M, Gen1 fence
+## re-verified GREEN; design note usb3_design.md §13 landed)
+
+### V0 — orientation + the fence (2026-09-04)
+
+* **Bench arrived WEDGED** (the §10u signature: endless
+  "not warm reset yet"/warm-reset loop on usb4-port3, live in dmesg).
+  One PCI unbind/rebind of `0000:80:14.0` did NOT clear it alone —
+  the resident image was the #45 closed-loop evidence build, whose
+  metronomic retrain looks to the host like a port that never
+  enables.  Vendor `prj.fs` flashed as the port-health oracle:
+  **10000M first-try on 4-3** — port + cable healthy.
+* **Gen1 fence re-verified** (`/tmp/kilo/h0_gen1_fence.fs` flashed):
+  enumeration **5000M** on 4-3; 1 MiB ×10 = 254.7–264.9 MB/s agg,
+  16 MiB ×3 = 277.4–282.8, 64 MiB ×3 = 281.7–282.2, ALL sha-exact,
+  10+3+3 PASS; uart1 ch0 all-zero flags=8, zero 'R' strobes
+  (capture `/tmp/kilo/v0_fence_both.txt`).  NOTE: the stale
+  `/tmp/kilo/uart_capture.py` still opens ttyUSB4/5 and caught only
+  one UART — use the repo's by-id
+  `examples/gowin/luna-multiep/uart_capture.py` from now on.
+* **Design note landed FIRST (code second): `doc/usb3_design.md` §13**
+  — the single-lane width matrix with per-config timing gates;
+  `core_width` naming pinned (§13.1: PIPE/block width; LUNA streams =
+  core_width/2; 64 = today verbatim); the 2:1 bridge design (§13.3:
+  core = pclk/2 by fabric divider at BOTH rates — fallback keeps the
+  proven 20×1:2 trim and the proven 1.25 timer stretch;
+  `tx_halfbeat` SKP contract; **#44 pacing decision stays CORE-side**,
+  bridged-lag sims red-first); the full domain-crossing inventory
+  (§13.4 — synchronous 2:1 seams, the only true async crossing stays
+  the PHY-internal rxclk AsyncFifo); the V1 work list (§13.5) and
+  verification deltas (§13.6).  §1 header carries the BINDING
+  x2-dropped scope update.
+
+### Carry-over state
+
+* Bug numbering: **#45 OPEN and first among bugs (V3); #46 next.**
+* Parked items unchanged from §10u (#37, rule-2d/#36 stimuli,
+  #29–#31 bench forced-recovery verdict via the uart1 'R' hook during
+  V3's ladder, SEND_ZLP bare-ready, wire-checker TP blindness, SKP
+  x=4 aligner knob, SSP BOS device capability + Sublink Speed Device
+  Notification TP during V3 if dmesg complains, stage-B credit
+  scaling beyond 4+4).
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 15: the width-generic

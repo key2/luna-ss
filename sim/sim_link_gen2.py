@@ -892,7 +892,8 @@ async def feed_blocks(ctx, bench, model_tx, blocks, rx=None, hm=None):
 IDLE_SYM = int(BlockType.LIS)          # Gen2 Idle Symbol, 5Ah [7.1.2]
 
 
-async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False):
+async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False,
+                      hot_reset=False):
     pipe = bench.pipe
     await bringup(ctx, pipe)
     hm = HostModem(ctx, bench)
@@ -976,6 +977,8 @@ async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False):
 
     if u0_checks:
         return await run_u0_checks(ctx, bench, hm, rx, model_tx)
+    if hot_reset:
+        return await run_hotreset(ctx, bench, hm, rx, model_tx)
     if not continue_to_enum:
         return True
     return await run_enum(ctx, bench, hm, rx, model_tx,
@@ -1166,19 +1169,34 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
         return False
     print("ENUM: device advertised LGOOD_15 (modulo-16)")
 
+    # STRICT credit advertisement [7.2.4.1.1]: "If a port enters U0 from
+    # Polling or Hot Reset, its Local Type 1/Type 2 Rx Buffer Credit
+    # Count is 4" (rule 2.e.1) -- so the advertisement SHALL be
+    # LCRD1_A..D and LCRD2_A..D (rule 3.d).  A real host arms its Type
+    # 1/Type 2 CREDIT_HP_TIMERs at U0 entry; they only clear at count 4
+    # (Gen 2x1) and their timeout forces Recovery [7.3.9] -- a shorter
+    # advertisement walks the link down (bug #42's silicon signature:
+    # the host never transmits a single header packet).  Like a
+    # conformant host, we send NO header packets until it completes.
     credits = []
-    for _ in range(4):
-        ev = await host.expect("credit advertisement",
-                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+    for _ in range(8):
+        ev = await host.expect(
+            "credit advertisement (Type 1/2 CREDIT_HP_TIMER pending)",
+            lambda e: e[0] == 'lc' and e[1] == 0b0001)
         if ev is None:
+            print("ENUM FAIL: Type 1/Type 2 CREDIT_HP_TIMER would expire "
+                  "-> Recovery [7.2.4.1.1 rule 2.e.1, 7.3.9]: a port "
+                  "entering U0 from Polling shall advertise 4 credits "
+                  "per class at Gen 2x1")
             return False
         credits.append(ev[2])
-    lcrd1 = sorted(c & 0x3 for c in credits if not (c & 0x4))
-    lcrd2 = sorted(c & 0x3 for c in credits if c & 0x4)
+    lcrd1 = [c & 0x3 for c in credits if not (c & 0x4)]
+    lcrd2 = [c & 0x3 for c in credits if c & 0x4]
     print(f"ENUM: device credit advertisement LCRD1={lcrd1} LCRD2={lcrd2}")
-    if lcrd1 != [0, 1] or lcrd2 != [0, 1]:
-        print("ENUM FAIL: expected the split 2+2 advertisement "
-              "(LCRD1_A,B + LCRD2_A,B) [Table 7-4 / 7.2.4.1.x]")
+    if lcrd1 != [0, 1, 2, 3] or lcrd2 != [0, 1, 2, 3]:
+        print("ENUM FAIL: expected the full 4+4 advertisement in "
+              "alphabetical order (LCRD1_A..D + LCRD2_A..D) "
+              "[7.2.4.1.1 rules 2.e.1 + 3.d, 7.2.4.1.2]")
         return False
 
     # ── host advertisement: LGOOD_15 + 4 Type-1 + 4 Type-2 credits ──
@@ -1399,6 +1417,268 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
     return True
 
 
+async def run_hotreset(ctx, bench, hm, rx, model_tx):
+    """Gen2 Hot Reset (bug #44): the xHCI hub driver's very first action
+    on a freshly connected SS port is a port reset = LINK Hot Reset
+    [7.5.12].  On silicon the Gen2 attempt died exactly here: PORTSC
+    showed U0 at PortSpeed:5 (Gen 2x1) held for ~108 ms, then
+    Link:Hot-Reset for ~13 ms, then RxDetect/Not-connected -- the
+    device vanished instead of completing the TS2-with-Reset handshake
+    (the Gen1 path of the same flow is silicon-proven by every 5G
+    enumeration).  No sim had ever exercised Hot Reset at EITHER rate.
+
+    Sequence (strict, mirrors the DFP flow):
+      1. link init + SET_ADDRESS(1) -- give the device a non-default
+         address so the reset semantics are observable;
+      2. Recovery entry: TS1 blocks from the host; require device TS1s;
+      3. host Hot Reset.Active: TS2 blocks with the Reset bit
+         (link_func[0]) set; require >= 2 device TS2s WITH Reset;
+      4. host Hot Reset.Exit: TS2 blocks with Reset clear, then
+         SKP + SDS + Idle; require device SDS + idle (data stream);
+      5. link RE-initialization: LGOOD_15 + the full 4+4 credit
+         advertisement again [7.2.4.1.1: U0 from Hot Reset resets all
+         sequence numbers and credit counts];
+      6. SET_ADDRESS(2) delivered to the DEFAULT address: a device
+         whose address survived the reset ignores it (red signature);
+      7. GetDescriptor(DEVICE) at address 2, full DPH+DPP.
+    """
+    from sim_link_loopback import frame_out_dp, frame_status_tp
+    host = Gen2LinkHost(ctx, bench, hm, rx, model_tx, tag="HOTRESET")
+    ret_idx = {1: 0, 2: 0}
+
+    async def return_credit(series):
+        sub = (0b0100 if series == 2 else 0) | ret_idx[series]
+        ret_idx[series] = (ret_idx[series] + 1) & 3
+        await host.send_lc(0b0001, sub)
+
+    async def link_init(tag):
+        ev = await host.expect(f"LGOOD advertisement ({tag})",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None:
+            return False
+        if ev[2] != 15:
+            print(f"HOTRESET FAIL: advertisement LGOOD_{ev[2]} ({tag}); "
+                  f"sequence numbers must reset to 0 -> LGOOD_15 "
+                  f"[7.2.4.1.1]")
+            return False
+        adv = []
+        for _ in range(8):
+            ev = await host.expect(f"credit advertisement ({tag})",
+                                   lambda e: e[0] == 'lc'
+                                   and e[1] == 0b0001)
+            if ev is None:
+                print(f"HOTRESET FAIL: short credit advertisement ({tag}); "
+                      f"U0 from Hot Reset advertises 4+4 like from "
+                      f"Polling [7.2.4.1.1 rule 2.e.1]")
+                return False
+            adv.append(ev[2])
+        if [c & 3 for c in adv if not (c & 4)] != [0, 1, 2, 3] or \
+                [c & 3 for c in adv if c & 4] != [0, 1, 2, 3]:
+            print(f"HOTRESET FAIL: advertisement "
+                  f"{['%#x' % c for c in adv]} not LCRD1_A..D + "
+                  f"LCRD2_A..D ({tag})")
+            return False
+        # host advertisement
+        syms = link_command_syms(0b0000, 15)
+        for i in range(4):
+            syms += link_command_syms(0b0001, i)
+        for i in range(4):
+            syms += link_command_syms(0b0001, 0b0100 | i)
+        await host.send_syms(syms)
+        # drain the device's link-up Port Capability LMP(s)
+        dev_seq = 0
+        while True:
+            ev = await host.expect("link-up LMP",
+                                   lambda e: e[0] == 'hdr'
+                                   and (e[1][0] & 0x1F) == 0,
+                                   timeout_blocks=400, quiet=True)
+            if ev is None:
+                break
+            if ev[2] != dev_seq:
+                print(f"HOTRESET FAIL: LMP seq {ev[2]} != {dev_seq} ({tag})")
+                return False
+            dev_seq = (dev_seq + 1) & 0xF
+            await host.send_lc(0b0000, ev[2])
+            await return_credit(1)
+        host.dev_seq = dev_seq
+        return True
+
+    async def set_address(addr, lgood_n):
+        setup = bytes([0x00, 0x05, addr, 0x00, 0x00, 0x00, 0x00, 0x00])
+        await host.send_frame(frame_out_dp(0, 0, setup, setup=1, address=0))
+        ev = await host.expect(f"LGOOD for SET_ADDRESS({addr}) SETUP",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None or ev[2] != lgood_n:
+            print(f"HOTRESET FAIL: SETUP not acked (got {ev}); expected "
+                  f"LGOOD_{lgood_n} -- an addressed device ignores "
+                  f"default-address traffic (address not reset?)")
+            return False
+        ev = await host.expect("LCRD2 return",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+        if ev is None or not (ev[2] & 4):
+            print(f"HOTRESET FAIL: SETUP credit return wrong: {ev}")
+            return False
+        ev = await host.expect("SETUP ACK TP",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 4)
+        if ev is None:
+            return False
+        if ev[2] != host.dev_seq:
+            print(f"HOTRESET FAIL: ACK seq {ev[2]} != {host.dev_seq}")
+            return False
+        host.dev_seq = (host.dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        await return_credit(1)
+        await host.send_frame(frame_status_tp(0, address=0))
+        ev = await host.expect("LGOOD for STATUS",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None:
+            return False
+        ev = await host.expect("LCRD1 return",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+        if ev is None:
+            return False
+        ev = await host.expect("STATUS ACK TP",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 4)
+        if ev is None:
+            return False
+        host.dev_seq = (host.dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        await return_credit(1)
+        return True
+
+    # ── 1. initial link init + SET_ADDRESS(1) ──
+    host.dev_seq = 0
+    if not await link_init("initial"):
+        return False
+    if not await set_address(1, 0):
+        return False
+    print("HOTRESET: link initialized, device at address 1")
+
+    # ── 2. Recovery entry: TS1s ──
+    def count_ts(kind, reset_bit=None, since=0):
+        n = 0
+        for h, syms in rx.blocks[since:]:
+            if h == BLOCK_CONTROL and syms and syms[0] == int(kind):
+                if reset_bit is None or bool(syms[5] & 1) == reset_bit:
+                    n += 1
+        return n
+
+    mark = len(rx.blocks)
+    for _ in range(12):
+        await feed_blocks(ctx, bench, model_tx,
+                          [sync_block()] + [ts1_block()] * 32, rx, hm)
+        if count_ts(BlockType.TS1, since=mark) >= 8:
+            break
+    n_ts1 = count_ts(BlockType.TS1, since=mark)
+    if n_ts1 < 8:
+        print(f"HOTRESET FAIL: only {n_ts1} device TS1 blocks after "
+              f"Recovery entry from U0")
+        return False
+    print(f"HOTRESET: Recovery entered ({n_ts1} device TS1s)")
+
+    # ── 3. host Hot Reset: TS2s with the Reset bit ──
+    mark = len(rx.blocks)
+    for _ in range(12):
+        await feed_blocks(ctx, bench, model_tx,
+                          [sync_block()] + [ts2_block(link_func=1)] * 16,
+                          rx, hm)
+        if count_ts(BlockType.TS2, reset_bit=True, since=mark) >= 2:
+            break
+    n_rst = count_ts(BlockType.TS2, reset_bit=True, since=mark)
+    if n_rst < 2:
+        n_ts2 = count_ts(BlockType.TS2, since=mark)
+        print(f"HOTRESET FAIL: no TS2-with-Reset from device "
+              f"(Hot Reset.Active never entered; {n_ts2} plain TS2s) "
+              f"[7.5.12]")
+        return False
+    print(f"HOTRESET: device in Hot Reset.Active ({n_rst} TS2+Reset)")
+
+    # ── 4. host Hot Reset.Exit: TS2s with Reset clear, then SDS ──
+    mark = len(rx.blocks)
+    for _ in range(8):
+        await feed_blocks(ctx, bench, model_tx,
+                          [sync_block()] + [ts2_block()] * 16, rx, hm)
+        if count_ts(BlockType.TS2, reset_bit=False, since=mark) >= 2:
+            break
+    await feed_blocks(ctx, bench, model_tx,
+                      [skp_block(), sds_block()]
+                      + [idle_block()] * 20 + [skp_block()]
+                      + [idle_block()] * 20, rx, hm)
+    got_sds = any(h == BLOCK_CONTROL and s[0] == 0xE1
+                  for h, s in rx.blocks[mark:])
+    if not got_sds:
+        print("HOTRESET FAIL: no SDS from device in Hot Reset.Exit "
+              "[6.4.1.5: SDS shall be transmitted during Hot Reset.Exit]")
+        return False
+    print("HOTRESET: Hot Reset.Exit complete (device SDS seen)")
+
+    # ── 5+6+7. re-init, SET_ADDRESS(2) at default, GetDescriptor ──
+    # Hot Reset resets ALL link-init state on both sides [7.2.4.1.1]:
+    # sequence numbers and per-class credit indices restart at 0/A.
+    host.events.clear()
+    host.errors.clear()
+    host.tx_seq = 0
+    host.dev_seq = 0
+    ret_idx[1] = ret_idx[2] = 0
+    if not await link_init("post-reset"):
+        return False
+    print("HOTRESET: link re-initialized after Hot Reset")
+    if not await set_address(2, 0):
+        return False
+    print("HOTRESET: SET_ADDRESS(2) at the DEFAULT address accepted "
+          "(device address was reset)")
+
+    setup = bytes([0x80, 0x06, 0x00, 0x01, 0x00, 0x00, 0x12, 0x00])
+    await host.send_frame(frame_out_dp(0, 0, setup, setup=1, address=2))
+    ev = await host.expect("descriptor SETUP LGOOD",
+                           lambda e: e[0] == 'lc' and e[1] == 0b0000)
+    if ev is None:
+        return False
+    ev = await host.expect("descriptor SETUP credit",
+                           lambda e: e[0] == 'lc' and e[1] == 0b0001)
+    if ev is None:
+        return False
+    ev = await host.expect("descriptor SETUP ACK",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 4)
+    if ev is None:
+        return False
+    host.dev_seq = (host.dev_seq + 1) & 0xF
+    await host.send_lc(0b0000, ev[2])
+    await return_credit(1)
+    from sim_link_loopback import frame_ack_tp
+    await host.send_frame(frame_ack_tp(ep=0, nseq=0, nump=1, direction=1))
+    ev = await host.expect("IN token LGOOD",
+                           lambda e: e[0] == 'lc' and e[1] == 0b0000)
+    if ev is None:
+        return False
+    ev = await host.expect("IN token credit",
+                           lambda e: e[0] == 'lc' and e[1] == 0b0001)
+    if ev is None:
+        return False
+    ev = await host.expect("descriptor DPH",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 8)
+    if ev is None:
+        return False
+    ev_dpp = await host.expect("descriptor DPP", lambda e: e[0] == 'dpp')
+    if ev_dpp is None:
+        return False
+    if not ev_dpp[2] or len(ev_dpp[1]) != 18 or ev_dpp[1][1] != 1:
+        print(f"HOTRESET FAIL: bad descriptor after reset "
+              f"(crc_ok={ev_dpp[2]} len={len(ev_dpp[1])})")
+        return False
+    if host.errors:
+        print(f"HOTRESET FAIL: parser errors: {host.errors[:6]}")
+        return False
+    print("HOTRESET: Hot Reset handshake, SDS, link re-init, address "
+          "reset, descriptor read -- the xHCI port-reset flow works "
+          "at Gen2")
+    return True
+
+
 async def run_u0_checks(ctx, bench, hm, rx, model_tx):
     """STRICT U0 host behaviors the enum/echo phases never exercised
     (HANDOVER 10s suspects 1-3: the sim-uncovered surface where the H2
@@ -1431,11 +1711,24 @@ async def run_u0_checks(ctx, bench, hm, rx, model_tx):
                            lambda e: e[0] == 'lc' and e[1] == 0b0000)
     if ev is None:
         return False
-    for _ in range(4):
-        ev = await host.expect("credit advertisement",
-                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+    # STRICT: the full 4+4 credit advertisement (see run_enum; the
+    # host's Type 1/Type 2 CREDIT_HP_TIMERs only clear at count 4).
+    adv = []
+    for _ in range(8):
+        ev = await host.expect(
+            "credit advertisement (Type 1/2 CREDIT_HP_TIMER pending)",
+            lambda e: e[0] == 'lc' and e[1] == 0b0001)
         if ev is None:
+            print("U0 FAIL: Type 1/Type 2 CREDIT_HP_TIMER would expire "
+                  "-> Recovery [7.2.4.1.1 rule 2.e.1, 7.3.9]: 4 credits "
+                  "per class required at Gen 2x1")
             return False
+        adv.append(ev[2])
+    if [c & 3 for c in adv if not (c & 4)] != [0, 1, 2, 3] or \
+            [c & 3 for c in adv if c & 4] != [0, 1, 2, 3]:
+        print(f"U0 FAIL: advertisement {['%#x' % c for c in adv]} is not "
+              f"LCRD1_A..D + LCRD2_A..D [7.2.4.1.1 rules 2.e.1 + 3.d]")
+        return False
     syms = link_command_syms(0b0000, 15)
     for i in range(4):
         syms += link_command_syms(0b0001, i)              # LCRD1_x
@@ -1637,6 +1930,8 @@ def main():
                                              continue_to_enum=True)
         elif PHASE == "u0":
             result["ok"] = await phase_train(ctx, bench, u0_checks=True)
+        elif PHASE == "hotreset":
+            result["ok"] = await phase_train(ctx, bench, hot_reset=True)
         else:
             raise SystemExit(f"unknown PHASE={PHASE}")
 

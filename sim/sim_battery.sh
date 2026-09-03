@@ -174,6 +174,17 @@ if PHASE=u0 TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_g
 else
     echo "FAIL gen2-u0 <<<<<<<<"
 fi
+# Gen2 Hot Reset (session 15, bug #44 hunt): the xHCI port-reset flow
+# at Gen2 -- Recovery entry from U0, TS2-with-Reset handshake, SDS in
+# Hot Reset.Exit, full link re-init (LGOOD_15 + 4+4), device address
+# reset, descriptor read.  Green from first run (the stack's handshake
+# is sound with an idealized feed; the silicon death at this step is
+# still open) -- kept as the regression fence for the reset surface.
+if PHASE=hotreset TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_hotreset.log 2>&1; then
+    echo "PASS gen2-hotreset"
+else
+    echo "FAIL gen2-hotreset <<<<<<<<"
+fi
 # Negative control: withholding the host's Type-2 credits must starve
 # the device's descriptor DP (proves the LCRD2 pool gating is real).
 if PHASE=enum TSEQ_LEN=64 NEG=nolcrd2 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_neg.log 2>&1; then
@@ -182,5 +193,32 @@ elif grep -q "timed out waiting for descriptor DPH" /tmp/kilo/batt_gen2_neg.log;
     echo "PASS gen2-neg-nolcrd2 (descriptor DP correctly withheld)"
 else
     echo "FAIL gen2-neg-nolcrd2 (died with the wrong verdict) <<<<<<<<"
+fi
+# Full PHY RX chain (session 15; bugs #42/#43): wire-serialized blocks
+# at the true async recovered-clock rate through the REAL RxGearbox132
+# -> CDC AsyncFifo -> Descrambler -> Gen2BlockReceiver.  Checks the
+# byte-exact translation of offset-swept header packets [7.2.1.3],
+# all-5Ah DPP payloads (idle run replay), 100 SKP LFSR reseeds, and the
+# #43 queue bound (level must RETURN TO ZERO -- the historical per-beat
+# idle enqueue ratcheted to ~650 over this traffic and never drained).
+if pdm run python "$LL/rx_chain_full.py" > /tmp/kilo/batt_gen2_rxchain.log 2>&1; then
+    echo "PASS gen2-rxchain"
+else
+    echo "FAIL gen2-rxchain <<<<<<<<"
+fi
+# Gen2BlockReceiver placement sweep (session 15, the #42 hunt tooling):
+# header packets / DPHs / LCs at every symbol offset, back-to-back
+# constructs, and PIPE rx_valid gaps at several cadences (the gearbox
+# wrap-gap pattern) -- direct engine feed, byte-exact expectations.
+RXOFF_OK=1
+for g in 0 33 3; do
+    if ! GAP=$g pdm run python "$LL/rx_hp_offsets.py" > /tmp/kilo/batt_gen2_rxoff_$g.log 2>&1; then
+        RXOFF_OK=0
+    fi
+done
+if [ "$RXOFF_OK" = "1" ]; then
+    echo "PASS gen2-rx-offsets"
+else
+    echo "FAIL gen2-rx-offsets <<<<<<<<"
 fi
 echo BATTERY4-DONE

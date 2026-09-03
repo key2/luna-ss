@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-"""Capture both debug UARTs (ttyUSB4 = uart0 link probe, ttyUSB5 = uart1
-wire checker) with wall-clock timestamps.  One reader per tty.
+"""Capture both debug UARTs (uart0 link probe, uart1 wire checker /
+pipe probe) with wall-clock timestamps.  One reader per tty.
+
+The UARTs ride the quad FTDI's channels C and D; the tty NUMBERS are
+volatile (any controller reset or device add/remove renumbers them --
+session 15 lost two capture windows to stale ttyUSB4/5 nodes), so the
+readers open the stable /dev/serial/by-id/ paths.
 
 uart0 (tag L): <pclk> <lfps> <ts1> <ts2> <rx_com> <flags>
 uart1 (tag C): wire checker -- ch0 retry-flagged ACKs, ch1/ch2 device-RX
 DPP/header CRC failures, ch3 wire DPs (ep1), ch4 ACK TPs received;
 flags = sticky framing-violation / payload-underrun / DPP-CRC / trained.
+(Per-top loadouts vary; see the top.py uart comments.)
 
 Usage: sudo python3 uart_capture.py <seconds> [outfile-prefix]
 Writes <prefix>_both.txt, both UARTs interleaved.
@@ -17,6 +23,9 @@ import termios
 
 DURATION = float(sys.argv[1]) if len(sys.argv) > 1 else 30
 PREFIX = sys.argv[2] if len(sys.argv) > 2 else "/tmp/kilo/uartcap"
+
+UART0 = "/dev/serial/by-id/usb-FTDI_Quad_RS232-HS-if02-port0"
+UART1 = "/dev/serial/by-id/usb-FTDI_Quad_RS232-HS-if03-port0"
 
 
 def reader(dev, tag, out, stop):
@@ -47,8 +56,8 @@ def reader(dev, tag, out, stop):
 stop = threading.Event()
 with open(f"{PREFIX}_both.txt", "w") as out:
     threads = [
-        threading.Thread(target=reader, args=("/dev/ttyUSB4", "L", out, stop)),
-        threading.Thread(target=reader, args=("/dev/ttyUSB5", "C", out, stop)),
+        threading.Thread(target=reader, args=(UART0, "L", out, stop)),
+        threading.Thread(target=reader, args=(UART1, "C", out, stop)),
     ]
     for t in threads:
         t.daemon = True

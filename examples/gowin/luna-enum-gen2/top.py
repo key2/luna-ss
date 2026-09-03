@@ -174,8 +174,12 @@ class LunaEnumTop(Elaboratable):
         # configurations move to the width-program 128-bit core (pclk
         # 78.125; Gen 2x1 via the 2:1 bridge per the W0 trim verdict)
         # and 64-bit stays for Gen 1x1 at 125 only.
+        # Session-15 closed-loop-pacing (bug #44) netlist: 66_101/115-124
+        # rolled 135.9-155.5 pclk; 66_125 won at pclk 156.263 /
+        # rxclk 161.580 -- both MET against the honest gates (156.25 /
+        # 161.29).
         m.d.cfg += [
-            por_n.eq(por_cnt > 66_101),
+            por_n.eq(por_cnt > 66_125),
             luna_go.eq(por_cnt.all()),
         ]
 
@@ -245,14 +249,16 @@ class LunaEnumTop(Elaboratable):
         # declared and mutual false paths in place the probes ride at
         # 156.25 unchanged -- they are the primary Phase-H2 debug tool.
         #
-        # uart0 (link probe, session-15 H2 loadout):
-        #   C <ss-cnt> <ts1-det> <rx-hdr-bad> <recovery> <idle-hs-cycles> <flags>
+        # uart0 (link probe, session-15 #44-loop per-cause loadout):
+        #   C <ss-cnt> <rec-timers> <rec-rx> <rec-tx> <ts1-det> <flags>
         #   ss-cnt telltale: 0x341554x = 156.25 MHz (still 10G);
         #   0x29aaa9x = 125 MHz (fell back / never matched).
-        #   ch2 = debug_rx_hdr_bad: received header failed CRC (the
-        #   LBAD path) -- nonzero at Gen2 U0 = host->device corruption;
-        #   ch3 = debug_recovery: OUR recovery requests; host-initiated
-        #   recoveries with ch2=0 point at device->host corruption.
+        #   ch1..3 split debug_recovery by cause: link maintenance
+        #   timers / receiver bad_sequence (a CRC-VALID header with the
+        #   wrong sequence number -- invisible to both the accepted-
+        #   header and bad-CRC counters) / transmitter (LGOOD-LCRD
+        #   mismatch, credit timeout).  The 142 kHz metronomic loop's
+        #   cause lands in exactly one of these.
         #   flags: trained[0] in_reset[1] phy_ready[2] terminations[3].
         # uart1 (pipe probe):
         #   C <rxclk> <sds-det> <idle-complete> <txfifo-hi28> <recovery> <flags>
@@ -268,13 +274,10 @@ class LunaEnumTop(Elaboratable):
         m.submodules.linkprobe = linkprobe = DomainRenamer({"cfg": "dbg"})(
             ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
                 ("ss", None),
+                ("ss", usb.debug_recovery_timers),
+                ("ss", usb.debug_recovery_rx),
+                ("ss", usb.debug_recovery_tx),
                 ("ss", usb.debug_ts1_detected),
-                ("ss", usb.debug_rx_hdr_bad),
-                ("ss", usb.debug_recovery),
-                # Cycles spent in the LTSSM's idle handshake: nonzero
-                # means Polling.Idle was reached; a saturating count
-                # means the handshake never completes (H2 telltale).
-                ("ss", usb.debug_idle_handshake),
             )))
         link_flags = Signal(4)
         m.submodules += FFSynchronizer(

@@ -105,6 +105,12 @@ class USBSuperSpeedDevice(Elaboratable):
         self.debug_link_hdr_accepted      = Signal()  # link header queue consumed a header (any)
         self.debug_tx_credits_zero        = Signal()  # transmitter holds no link credits
         self.debug_recovery               = Signal()  # any recovery-required strobe
+        # Per-cause recovery split (session-15 #44-loop hunt): link
+        # maintenance timers / receiver bad_sequence / transmitter
+        # (LGOOD-LCRD mismatch or credit timeout).
+        self.debug_recovery_timers        = Signal()
+        self.debug_recovery_rx            = Signal()
+        self.debug_recovery_tx            = Signal()
         self.debug_hsk_ready              = Signal()  # generator ready as seen by the mux
         self.debug_hsk_granted            = Signal()  # arbiter grant path active
         self.debug_hsk_grant_is0          = Signal()  # grant parked on the control iface
@@ -350,6 +356,9 @@ class USBSuperSpeedDevice(Elaboratable):
             self.debug_recovery         .eq(link.debug_rec_timers |
                                             link.debug_rec_rx |
                                             link.debug_rec_tx),
+            self.debug_recovery_timers  .eq(link.debug_rec_timers),
+            self.debug_recovery_rx      .eq(link.debug_rec_rx),
+            self.debug_recovery_tx      .eq(link.debug_rec_tx),
             self.debug_hsk_ready        .eq(endpoint_collection.handshakes_out.ready),
             self.debug_hsk_granted      .eq(endpoint_mux.debug_granted),
             self.debug_hsk_grant_is0    .eq(endpoint_mux.debug_grant_is0),

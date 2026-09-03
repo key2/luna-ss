@@ -366,8 +366,17 @@ class USB3LinkLayer(Elaboratable):
         # Header Packet Rx Path.
         # Receives header packets and forwards them up to the protocol layer.
         #
+        # Gen2 builds carry 8 Rx header buffers: a port entering U0 from
+        # Polling at Gen 2x1 SHALL advertise 4 Type-1 + 4 Type-2 Rx
+        # Buffer Credits [USB3.2r1 7.2.4.1.1 rules 2.e.1 + 3.d], and
+        # every advertised credit needs a physical buffer behind it.  A
+        # shorter advertisement leaves the link partner's Type 1/Type 2
+        # CREDIT_HP_TIMERs armed (they only clear at count 4), whose
+        # timeout forces Recovery [7.3.9] -- bug #42: a real xHC then
+        # never transmits a single header packet and walks the link
+        # down.  Gen1 builds keep the historical 4-buffer pool verbatim.
         m.submodules.header_rx = header_rx = HeaderPacketReceiver(
-            gen2=self._gen2)
+            gen2=self._gen2, buffer_count=8 if self._gen2 else 4)
         if self._gen2:
             m.d.comb += header_rx.gen2_active \
                 .eq(physical_layer.operating_gen2)

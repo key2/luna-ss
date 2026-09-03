@@ -349,10 +349,18 @@ class HeaderPacketReceiver(Elaboratable):
 
         if self._gen2:
             # Type 2 (asynchronous DP) credit-issue queue; at the SSP
-            # rate the shared 4-buffer pool is split 2+2 between the
-            # classes (both advertised; the A-D indices run
-            # independently) [7.2.4.1.x].  At the SS rate everything is
-            # Type 1 and this queue idles.
+            # rate the 8-buffer pool is split 4+4 between the classes
+            # (both advertised in full; the A-D indices run
+            # independently).  The 4-per-class count is NOT a sizing
+            # choice: a port entering U0 from Polling or Hot Reset has
+            # its Local Type 1/Type 2 Rx Buffer Credit Counts AT 4
+            # [7.2.4.1.1 rule 2.e.1] and shall advertise LCRD1_A..D +
+            # LCRD2_A..D [rule 3.d]; the partner's Type 1/Type 2
+            # CREDIT_HP_TIMERs clear only at count 4 and their expiry
+            # forces Recovery [7.3.9] (bug #42: with the earlier 2+2
+            # split a real xHC never sent a single header packet and
+            # walked the link down).  At the SS rate everything is
+            # Type 1 (4 credits, LCRD_A..D) and this queue idles.
             credits2_to_issue     = Signal.like(acks_to_send)
             enqueue_credit2_issue = Signal()
             dequeue_credit2_issue = Signal()
@@ -366,8 +374,8 @@ class HeaderPacketReceiver(Elaboratable):
             pool1_size = Signal(3)
             pool2_size = Signal(3)
             m.d.comb += [
-                pool1_size.eq(Mux(self.gen2_active, 2, self._buffer_count)),
-                pool2_size.eq(Mux(self.gen2_active, 2, 0)),
+                pool1_size.eq(4),
+                pool2_size.eq(Mux(self.gen2_active, 4, 0)),
             ]
 
         # Keep track of whether we should be sending an LBAD.
@@ -873,7 +881,7 @@ class HeaderPacketReceiver(Elaboratable):
                 m.d.ss += credits_to_issue.eq(self._buffer_count
                                               - buffers_filled + release_buffer)
             else:
-                # Per-class rule-2d credit recomputation (2+2 pools at
+                # Per-class rule-2d credit recomputation (4+4 pools at
                 # the SSP rate, 4+0 at the SS rate).
                 filled1 = buffers_filled - filled2
                 m.d.ss += [

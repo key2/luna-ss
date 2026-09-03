@@ -313,6 +313,20 @@ class USB3PhysicalLayer(Elaboratable):
                     .eq(self.gen2_request_no_scrambling),
                 self.gen2_burst_complete.eq(gen2_tx.burst_complete),
             ]
+            # Closed-loop TX pacing reference (bug #44): the PHY's Gen2
+            # TX gearbox FIFO occupancy (TxFifoWrNum), exposed by the
+            # PIPE backend as ``tx_fifo_occupancy``.  The block
+            # transmitter keeps the FIFO near-full against it -- the
+            # only regime the PHY's TX path is silicon-proven in.  A
+            # Gen2 build against a backend without this signal is a
+            # wiring error, not a fallback case.
+            if not hasattr(phy, "tx_fifo_occupancy"):
+                raise AttributeError(
+                    "gen2=True requires the PIPE backend to expose "
+                    "tx_fifo_occupancy (the PHY TX gearbox FIFO level; "
+                    "TxFifoWrNum on the gw_usb3 backend)")
+            m.d.ss += gen2_tx.tx_fifo_level.eq(phy.tx_fifo_occupancy)
+
             m.d.comb += [
                 gen2_rx.rx_data  .eq(phy.rx_data),
                 gen2_rx.rx_head  .eq(phy.rx_sync_header),

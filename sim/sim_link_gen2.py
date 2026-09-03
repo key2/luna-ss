@@ -92,7 +92,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from amaranth import ClockDomain, ClockSignal, Elaboratable, Module, ResetSignal
+from amaranth import (ClockDomain, ClockSignal, Elaboratable, Module,
+                      ResetSignal, Signal)
 from amaranth.sim import Simulator
 
 from luna.gateware.interface.pipe import PIPEInterface
@@ -174,6 +175,10 @@ class BenchPIPE(PIPEInterface, Elaboratable):
 
     def __init__(self):
         super().__init__(width=8)
+        # Gen2 closed-loop TX pacing reference (bug #44): the PHY TX
+        # gearbox FIFO occupancy.  Driven by HostRx's python FIFO model
+        # so the sims exercise the same loop the silicon runs.
+        self.tx_fifo_occupancy = Signal(5)
 
     def elaborate(self, platform):
         return Module()
@@ -811,25 +816,36 @@ class HostRx:
         # deep): fills on every MAC tx_datavalid beat at the 10G trim,
         # drains 32 beats per 33 pclk cycles (the 128b/132b wire payload
         # rate: 132 wire bits per 128 payload bits).  On silicon an
-        # overflow silently corrupts the wire stream, so the sim fails
-        # hard if the MAC ever exceeds the depth (TX beat pacing,
-        # HANDOVER 10r suspect #1).
+        # overflow silently corrupts the wire stream -- and so does an
+        # UNDERFLOW while the wire is mid-stream (bug #44: the gearbox
+        # serializes stale bits when starved), so the sim fails hard on
+        # either.  The model's level feeds the DUT's closed pacing loop
+        # (pipe.tx_fifo_occupancy), exactly like TxFifoWrNum on silicon.
         self.fifo_level    = 0
         self.fifo_max      = 0
         self.fifo_cyc      = 0
         self.fifo_overflow = False
+        self.fifo_armed    = False   # prefill reached once
+        self.fifo_starved  = 0       # drain-eligible cycles at level 0
+                                     # after prefill (wire starvation)
 
     def sample(self, ctx):
         pipe = self.bench.pipe
         self.fifo_cyc += 1
         if ctx.get(pipe.tx_datavalid) and ctx.get(pipe.rate) == 1:
             self.fifo_level += 1
-        if self.fifo_cyc % 33 != 0 and self.fifo_level > 0:
-            self.fifo_level -= 1
+        if self.fifo_cyc % 33 != 0:
+            if self.fifo_level > 0:
+                self.fifo_level -= 1
+            elif self.fifo_armed:
+                self.fifo_starved += 1
+        if self.fifo_level >= 8:
+            self.fifo_armed = True
         if self.fifo_level > self.fifo_max:
             self.fifo_max = self.fifo_level
         if self.fifo_level > 32:
             self.fifo_overflow = True
+        ctx.set(pipe.tx_fifo_occupancy, min(self.fifo_level, 31))
         scr = self.bench.dev_scr
         if not ctx.get(scr.data_out_valid):
             return
@@ -968,10 +984,18 @@ async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False,
     if not (got_sds and got_idle):
         print(f"TRAIN FAIL: SDS={got_sds} idle={got_idle} from device")
         return False
-    print(f"TRAIN: PHY TX FIFO model max occupancy {rx.fifo_max}/32")
+    print(f"TRAIN: PHY TX FIFO model max occupancy {rx.fifo_max}/32, "
+          f"starved {rx.fifo_starved}")
     if rx.fifo_overflow:
         print("TRAIN FAIL: MAC tx_datavalid overran the PHY's 32-deep "
               "TX gearbox FIFO (no Gen2 beat pacing)")
+        return False
+    if not rx.fifo_armed or rx.fifo_starved:
+        print("TRAIN FAIL: PHY TX FIFO ran at the underflow boundary "
+              f"(prefill={rx.fifo_armed} starved={rx.fifo_starved}); "
+              "the gearbox serializes stale bits when starved mid-"
+              "stream -- closed-loop pacing must hold a cushion "
+              "(bug #44)")
         return False
     print("TRAIN: U0 data stream established at Gen2 framing")
 
@@ -1356,10 +1380,12 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
           "DPH length replica, bcdUSB 0310 -- all verified at Gen2")
 
     if not echo:
-        print(f"ENUM: PHY TX FIFO model max occupancy {rx.fifo_max}/32")
-        if rx.fifo_overflow:
-            print("ENUM FAIL: MAC tx_datavalid overran the PHY's 32-deep "
-                  "TX gearbox FIFO (no Gen2 beat pacing)")
+        print(f"ENUM: PHY TX FIFO model max occupancy {rx.fifo_max}/32, "
+              f"starved {rx.fifo_starved}")
+        if rx.fifo_overflow or not rx.fifo_armed or rx.fifo_starved:
+            print("ENUM FAIL: PHY TX FIFO left the near-full pacing band "
+                  f"(overflow={rx.fifo_overflow} prefill={rx.fifo_armed} "
+                  f"starved={rx.fifo_starved}) (bug #44)")
             return False
         return True
 
@@ -1407,10 +1433,12 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
     if host.errors:
         print(f"ECHO FAIL: parser errors: {host.errors[:6]}")
         return False
-    print(f"ECHO: PHY TX FIFO model max occupancy {rx.fifo_max}/32")
-    if rx.fifo_overflow:
-        print("ECHO FAIL: MAC tx_datavalid overran the PHY's 32-deep "
-              "TX gearbox FIFO (no Gen2 beat pacing)")
+    print(f"ECHO: PHY TX FIFO model max occupancy {rx.fifo_max}/32, "
+          f"starved {rx.fifo_starved}")
+    if rx.fifo_overflow or not rx.fifo_armed or rx.fifo_starved:
+        print("ECHO FAIL: PHY TX FIFO left the near-full pacing band "
+              f"(overflow={rx.fifo_overflow} prefill={rx.fifo_armed} "
+              f"starved={rx.fifo_starved}) (bug #44)")
         return False
     print(f"ECHO: {len(payload)} bytes OUT and IN through Gen2 framing, "
           f"sha-exact, CRC-32 valid")

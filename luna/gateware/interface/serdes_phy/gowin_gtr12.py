@@ -144,6 +144,13 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
         # Gen2 descrambler acquisition).
         self.ltssm_training = Signal()
 
+        # Gen2 builds: the PHY's 32-deep TX gearbox FIFO occupancy
+        # (TxFifoWrNum) -- the MAC's closed-loop TX pacing reference
+        # (bug #44: the FIFO must run near-full; the open-loop cadence
+        # left it riding the underflow boundary and the gearbox
+        # serialized stale bits whenever the phases misaligned).
+        self.tx_fifo_occupancy = Signal(5)
+
         if phy is None:
             from gw_usb3 import Usb31Phy
             # Bug #38: Usb31Phy's DEFAULT csr_config is Q0_LN1.  If the
@@ -265,17 +272,21 @@ class GowinGTR12PIPE(PIPEInterface, Elaboratable):
             m.d.comb += self.phy_ready.eq(1)
 
             # At the 10G trim the Gen2 block transmitter drives
-            # tx_datavalid with real meaning: rate-matching gaps for the
-            # 128b/132b gearbox (one dead beat per 16 blocks; see
-            # Gen2BlockTransmitter).  Forward it truly -- the Gen1
-            # "valid when not in electrical idle" OR rule above would
-            # nullify the gaps and overflow the PHY's 32-deep TX FIFO.
-            # At the 5G trim the Gen1 rule still applies (last
-            # assignment wins; Gen1-only builds keep the original
-            # statement untouched).
+            # tx_datavalid with real meaning: closed-loop rate-matching
+            # gaps for the 128b/132b gearbox (see Gen2BlockTransmitter's
+            # pacing section).  Forward it truly -- the Gen1 "valid when
+            # not in electrical idle" OR rule above would nullify the
+            # gaps and overflow the PHY's 32-deep TX FIFO.  At the 5G
+            # trim the Gen1 rule still applies (last assignment wins;
+            # Gen1-only builds keep the original statement untouched).
             m.d.comb += phy.PipeTxDataValid.eq(
                 Mux(rate_d, self.tx_datavalid,
                     self.tx_datavalid | ~self.tx_elec_idle))
+
+            # The pacing loop's feedback: the PHY's TX gearbox FIFO
+            # occupancy (pclk domain, ~2 cycles of register lag --
+            # inside the pacing threshold's headroom).
+            m.d.comb += self.tx_fifo_occupancy.eq(phy.TxFifoWrNum)
         else:
             m.d.comb += [
                 phy.Rate         .eq(0),

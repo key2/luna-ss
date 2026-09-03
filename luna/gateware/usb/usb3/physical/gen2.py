@@ -433,6 +433,10 @@ class Gen2BlockTransmitter(Elaboratable):
         self.tx_start         = Signal()
         self.tx_valid         = Signal()
 
+        # PHY TX gearbox FIFO occupancy (TxFifoWrNum): the closed-loop
+        # pacing reference (bug #44; see the pacing section below).
+        self.tx_fifo_level    = Signal(5)
+
         # Debug.
         self.packets_buffered = Signal(8)
 
@@ -510,18 +514,35 @@ class Gen2BlockTransmitter(Elaboratable):
         #
         # 64-bit beats at 156.25 MHz supply payload at exactly 10.0
         # Gb/s, but the 128b/132b wire carries only 128 payload bits per
-        # 132 wire bits: the PHY's 32-deep TX gearbox FIFO gains one
-        # queued beat every 33 cycles and overflows after ~7 us of
-        # sustained streaming -- far shorter than any training sequence.
-        # One dead beat (tx_valid low) at a block boundary every 16
-        # blocks (32 beats + 1 gap = 33 cycles = 16 x 132 wire bits at
-        # 10 GT/s) matches the rates EXACTLY; a 24-symbol/3-beat SKP OS
-        # block carries the same 0.4 ns per-block deficit, so counting
-        # it as one block keeps the ratio exact.  Guarded by
-        # tests/test_gen2_pacing.py against the FIFO model; TxFifoWrNum
-        # probes confirm on silicon.
-        pace_cnt = Signal(range(16))
+        # 132 wire bits: an unpaced stream overflows the PHY's 32-deep
+        # TX gearbox FIFO after ~7 us.  The session-13 OPEN-LOOP pacing
+        # (one dead beat per 16 blocks) matched the long-term rates
+        # EXACTLY -- and that exactness was bug #44: with supply == 
+        # drain, the FIFO level stays wherever the stream-start race
+        # left it (0..2 beats), so the PHY's TxGearbox132 rides its
+        # UNDERFLOW boundary permanently.  Whenever the supply-gap and
+        # drain-gap phases misaligned, the FIFO ran empty mid-block and
+        # the gearbox serialized stale bits: intermittent device->host
+        # corruption, dependent on per-boot phase luck (silicon: ~5
+        # host-initiated recoveries/s at Gen2 U0 with ZERO inbound
+        # header CRC errors; some boots reached descriptor reads with
+        # EPROTO -71, others died in the port-config/hot-reset windows).
+        # The vendor MAC runs this FIFO NEAR-FULL, closed-loop on
+        # TxFifoWrNum -- the PHY's TX path is only silicon-proven in
+        # that regime.
+        #
+        # Closed loop: stream gaplessly (supply rate 1.0 > wire drain
+        # 0.9697, the FIFO fills monotonically) until ``tx_fifo_level``
+        # reaches PACE_THRESHOLD, then insert dead beats at block
+        # boundaries while it stays there.  Steady state hovers at the
+        # threshold (16 +2/-2 with the ~2-cycle TxFifoWrNum register
+        # lag): never empty (16-beat cushion), never full (32-cap
+        # headroom).  Guarded by tests/test_gen2_pacing.py and the
+        # link sims' FIFO model (prefill + zero-starvation asserts);
+        # TxFifoWrNum probes confirm on silicon.
+        PACE_THRESHOLD = 16
         pace_due = Signal()
+        m.d.comb += pace_due.eq(self.tx_fifo_level >= PACE_THRESHOLD)
 
         with m.If(active & ~(pace_due & (beat_idx == 0))):
             m.d.comb += self.tx_valid.eq(1)
@@ -632,11 +653,6 @@ class Gen2BlockTransmitter(Elaboratable):
                 with m.If(last_beat):
                     m.d.ss += beat_idx.eq(0)
 
-                    # Pacing accounting: one gap after every 16th block.
-                    m.d.ss += pace_cnt.eq(pace_cnt + 1)
-                    with m.If(pace_cnt == 15):
-                        m.d.ss += pace_due.eq(1)
-
                     # Ordered-set accounting at block end.
                     with m.If(kind == K_TSEQ):
                         with m.If(os_count + 1 == self._tseq_count):
@@ -654,14 +670,14 @@ class Gen2BlockTransmitter(Elaboratable):
                     m.d.ss += beat_idx.eq(beat_idx + 1)
 
         with m.Elif(active):
-            # Rate-matching gap: hold the block boundary for one cycle
-            # (tx_valid stays low; the PHY FIFO drains one beat).
-            m.d.ss += pace_due.eq(0)
+            # Rate-matching gap: hold the block boundary while the PHY
+            # FIFO sits at the pacing threshold (tx_valid stays low;
+            # the FIFO drains toward the cushion).
+            pass
 
         with m.Else():
             m.d.ss += [beat_idx.eq(0), mode.eq(0), os_count.eq(0),
-                       sync_gap.eq(0), skp_gap.eq(0), sds_pending.eq(0),
-                       pace_cnt.eq(0), pace_due.eq(0)]
+                       sync_gap.eq(0), skp_gap.eq(0), sds_pending.eq(0)]
 
         return m
 

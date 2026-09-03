@@ -185,6 +185,18 @@ if PHASE=hotreset TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/
 else
     echo "FAIL gen2-hotreset <<<<<<<<"
 fi
+# Plain mid-traffic Recovery x3 at Gen2 (session 15, #45 hunt): unlike
+# Hot Reset, Recovery PRESERVES sequence numbers -- the
+# re-initialization advertisement carries NONZERO LGOODs (1/3/5) and
+# the full 4+4 rule-2d credit re-advertisement; traffic must resume
+# with preserved numbering.  Green against the idealized feed (the
+# silicon metronomic loop does not reproduce here); kept as the
+# regression fence for the U0 re-initialization surface.
+if PHASE=recovery TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_recovery.log 2>&1; then
+    echo "PASS gen2-recovery"
+else
+    echo "FAIL gen2-recovery <<<<<<<<"
+fi
 # Negative control: withholding the host's Type-2 credits must starve
 # the device's descriptor DP (proves the LCRD2 pool gating is real).
 if PHASE=enum TSEQ_LEN=64 NEG=nolcrd2 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_neg.log 2>&1; then

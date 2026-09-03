@@ -3013,6 +3013,232 @@ validates lane-1 TX during x2 training) or a physical cable flip.**
   native trim is real, the PIPE stays {64,128} with Gen2×128 as a
   bridge); W2's hardware leg needs a port re-qualification first.
 
+## 10u. Session 15 addendum — G5/H2 resumed: bugs #42/#43/#44 found
+## and fixed (4+4 credits, RX queue ratchet, TX pacing underflow);
+## the host now SENDS at Gen2 (announced Gen 2x1 twice, thousands of
+## inbound headers accepted); bug #45 OPEN: a metronomic ~7 us
+## U0->Recovery loop introduced alongside the #44 closed loop; the
+## bench controller wedged and was un-wedged; Gen 1x2 DROPPED from
+## scope (bench owner's call)
+
+The bench owner redirected this session from the width program back
+to the G5 dual-rate mission (the session-13 prompt).  Bugs #42, #43,
+#44 fell; the Gen2 enumeration gate is CLOSE but not closed: the host
+now negotiates Gen 2x1, trains, port-configures, and on good boots
+ANNOUNCES the device and issues descriptor reads -- the remaining
+blocker is #45 (below).  Everything is committed and the tree is
+settled (battery 52/52; shipping parity payload-identical, twice).
+
+### The session in one table
+
+| # | finding | state |
+|---|---------|-------|
+| #42 | Gen2 credit advertisement was 2+2; **[7.2.4.1.1 rule 2.e.1] mandates 4 Type-1 + 4 Type-2 from Polling/Hot Reset** -- the host's Type 1/2 CREDIT_HP_TIMERs (clear only at count 4) expired -> Recovery loop -> port config error; the host never sent one header packet (the G4 sim host had CODIFIED the 2+2, the #41 shared-wrong-assumption class again) | **FIXED + silicon-verified** (host header packets now flow; 8 Rx header buffers behind 4+4 pools at gen2_active, 4+0 at SS; Gen1 verbatim) |
+| #43 | RX beat-queue RATCHET: idle beats enqueued unless the engine was FULLY drained, load-point discard capped at 1 beat/cycle == the arrival rate -> every construct added ~5-8 beats of PERMANENT backlog (sim: 649 beats / 4.2 us lag, monotone, toward silent overflow) | **FIXED sim-proven** (idle RUN COMPRESSION at enqueue -- one counted entry per run via a provably-1-deep skid; SEARCH discards whole runs in one cycle; mid-construct replay covers all-5Ah DPP payloads; RUN_MAX cap bounds corrupt-wire stalls) |
+| #44 | TX pacing UNDERFLOW: the session-13 open-loop 1-gap-per-16-blocks matched the wire rate EXACTLY, so the PHY TX FIFO idled at the stream-start race level (0..2) and TxGearbox132 rode its underflow boundary -- stale bits on the wire whenever supply/drain phases misaligned (silicon: ZERO inbound CRC errors while the host yanked recovery ~5x/s; descriptor reads died EPROTO -71).  The vendor MAC runs this FIFO NEAR-FULL against TxFifoWrNum (netlist: it gates TX on wrnum[4], threshold 16 -- occupancy semantics confirmed in the vendor .vg) | **FIX LANDED** (closed loop on TxFifoWrNum, threshold 16, prefill-then-hover; PIPE backends expose `tx_fifo_occupancy`; sims model the loop and FAIL on prefill-miss or post-prefill starvation) -- but see #45 |
+| #45 | **OPEN, the H2 blocker**: with the closed loop in, EVERY boot's Gen2 window runs a METRONOMIC ~7.05 us U0->Recovery loop: 49.6k OUR-recovery strobes per 0.35 s probe window (sds == recovery exactly, ts1 storms), rx_hdr_bad=0, accepted headers=0, at the solid 10G trim, for 25+ s.  A/B on the CLEAN port (4 boots each): pre-#44 build = old signature (announced-then--71 / fallback / walk-down, headers flowing); closed-loop build = the loop on every Gen2 window | root-cause candidates + per-cause probe below |
+
+### #45: what is known and the candidate mechanisms
+
+Known hard facts: deterministic ~1100-cycle period; all recoveries are
+OURS (debug_recovery = timers|rx|tx strobes -- NOT the ts1-triggered
+LTSSM exit); zero accepted headers, zero CRC-bad headers; training,
+SDS, and the TS handshakes complete ~142,000 times per second; the 5G
+fallback of the SAME image enumerates and holds U0 indefinitely
+(ITPs flowing, checkers clean).  Sim coverage added this session
+(hotreset, plain-recovery-with-preserved-sequences, strict 4+4, the
+closed-loop FIFO model) is ALL GREEN -- the loop does not reproduce
+against the idealized feed.
+
+Candidates, in current order:
+
+1. **bad_sequence (receiver seq mismatch on a CRC-VALID header)** --
+   the only recovery cause invisible to BOTH probe counters
+   (accepted-headers counts post-accept, rx_hdr_bad counts CRC fails).
+   A systematic mismatch is self-sustaining: sequence numbers are
+   PRESERVED across plain Recovery, so the host retransmits the same
+   seq and the loop is a metronome.  What #44 changed to CAUSE it is
+   the open question (the wire CONTENT is FIFO-order-preserved and
+   should be bit-identical to open-loop minus the underflow bursts).
+2. **The `active`-blip state wipe against the standing 16-beat
+   queue**: `active` (registered OR of the LTSSM burst requests)
+   may blip low for one cycle at request seams; the transmitter's
+   inactive arm WIPES beat_idx/mode/skp_gap/sds_pending.  Pre-#44 the
+   FIFO was empty so a wipe cost a truncated block at worst; NOW ~16
+   beats are queued and a mid-block wipe desynchronizes tx_start
+   against the queued stream -> the PHY gearbox emits a malformed
+   block -> the HOST's RX desyncs -- but the recoveries are OURS, so
+   this only fits as a second-order effect (host responses then
+   mismatch our expectations).  Check the wipe-arm gating first; it
+   is cheap to make the inactive arm drain-safe (finish the block).
+3. Something in the tx_fifo_level plumbing (layer m.d.ss + adapter
+   comb + RdDataNum register = ~2-3 cycles of lag) oscillating in a
+   way the python model (1-cycle lag) does not -- would show as
+   overflow/underflow though, and txfifo_hi28 stayed 0.
+
+The decisive instrument is built and committed: the per-cause
+recovery split (device.debug_recovery_timers/_rx/_tx; uart0 ch1..3 in
+the current luna-enum-gen2 top).  **Its lottery is unfinished**: 4
+rolls (66_125-66_128 seeds) all missed pclk (138-144).  Next session:
+keep rolling (the winners this session took 3-12 rolls), flash, read
+which cause counts 142k/s, then chase that specific mechanism.  A sim
+lead worth trying before the bench: model the LTSSM request-seam blips
+(drive send_ts2/idle_mode with 1-cycle gaps) against the closed-loop
+transmitter and watch for tx_start desync; and drive the host's
+re-advertisement CONCURRENT with (not after) the device's own U0
+entry -- on silicon the host reaches U0 first and its advertisement
+may land while our link enable is still low (the LC detector sits in
+ResetInserter(~enable) and eats it).
+
+### Architectural decisions from the bench owner (BINDING)
+
+1. **If the 64-bit stage-A core stops closing 156.25, the 10G
+   configurations move to the width-program 128-bit core** (pclk
+   78.125; Gen 2x1 via the W0 2:1-bridge trim).  This session burned
+   ~30 lottery rolls across four netlist revisions (winners at
+   66_101, 66_125; the evcap and per-cause netlists needed 13+ and
+   4+ rolls without a winner) -- the pressure is real.
+2. **Gen 1x2 is DROPPED from scope entirely** (neither the bench
+   xHCI (80:14.0) nor TB4 hosts support x2 lanes; Gen 1x2 is mostly
+   unsupported in the wild).  The width program is therefore:
+   **Gen 1x1 = 64-bit and 128-bit cores; Gen 2x1 = 128-bit core
+   only; no x2 anywhere in LUNA or the PHY.**  The session-15 width
+   prompt's W1-W3 gates and the G5/H4 matrix should be re-read with
+   x2 struck out; the gen1x2 example top and the ssp_capability x2
+   surface stay in the tree as negotiation-matrix artifacts only.
+
+### Bench events and new tooling (trust but verify)
+
+* **The xHCI controller WEDGED** after the session's hundreds of
+  failed-attempt penalty cycles (+ sysfs `disable` pokes): endless
+  "not warm reset yet / Cannot enable" against a port reporting
+  Not-connected, WITH THE CABLE UNPLUGGED (the bench owner spotted
+  it).  Fix: PCI unbind/rebind of `0000:80:14.0` (`echo ... >
+  /sys/bus/pci/drivers/xhci_hcd/unbind` then `bind`) -- buses
+  re-enumerate, port returns to clean RxDetect.  COROLLARY: any
+  verdict taken while wedged is suspect; the vendor prj.fs
+  (10000M first-try) is the port-health oracle -- run it after any
+  wedge before trusting new data.
+* **tty numbers are volatile**: the controller reset renumbered the
+  FTDI quad twice; two capture windows silently read stale
+  /dev/ttyUSB4/5 nodes.  `uart_capture.py` now opens
+  `/dev/serial/by-id/usb-FTDI_Quad_RS232-HS-if02/if03-port0`
+  (uart0/uart1).  The bench owner removed the unrelated USB serial
+  dongles.
+* **PORTSC tracer**: `/tmp/kilo/portsc_trace.py` polls the xHCI
+  debugfs port at ~1 ms and logs transitions -- bus 4 port 3 is
+  **hw port19** on `0000:80:14.0` (the debugfs portNN namespace
+  spans both buses: usb3 = 14 USB2 ports first).  This is how the
+  Hot Reset death and the U0<->Recovery flapping were seen from the
+  host side.  Hub-level dynamic debug: `echo 'file hub.c +p' >
+  /sys/kernel/debug/dynamic_debug/control` (module-wide usbcore +p
+  floods dmesg with runtime-PM noise).
+* Boot-outcome A/B harness: `/tmp/kilo/boot_ab.sh <fs> <tag>` --
+  flash, 16 s watch, classify (GEN2-ANNOUNCED-THEN-EPROTO71 /
+  FELLBACK-5000M / CONFIG-ERROR / OTHER) + a by-id uart capture.
+
+### Timing/SDC finding (gowin-serdes commit `7accabd`)
+
+rxclk at the 10G trim is the RECOVERED clock: **10.3125 GHz / 64 =
+161.133 MHz**, not 156.25.  The shared 6.4 ns SDC under-constrained
+every rx-domain path by 3%; one formally-MET build (rxclk Fmax
+159.6 < the real clock) showed on-wire corruption.  The Gen2 tops now
+constrain rxclk at 6.2 ns; **the honest Gen2 gate is pclk >= 156.25
+AND rxclk >= 161.29 operating**.  Gen1 tops keep 6.4 ns (their
+recovered clock is 125).
+
+### Sim/battery growth (49 -> 52 entries, all green from the settled tree)
+
+* `sim/rx_hp_offsets.py` (battery `gen2-rx-offsets`): Gen2BlockReceiver
+  placement sweep -- HPs/DPHs/LCs at every symbol offset [7.2.1.3],
+  back-to-back constructs, rx_valid gaps at several cadences.  All
+  green (the engine was NOT #42).
+* `sim/rx_chain_full.py` (battery `gen2-rxchain`): the FULL PHY RX
+  chain -- wire-serialized scrambled blocks at true async clocks
+  (161.133 vs 156.25) through the real RxGearbox132 -> CDC AsyncFifo
+  -> Descrambler -> Gen2BlockReceiver; byte-exact translation incl.
+  all-5Ah DPPs and 100 SKP LFSR reseeds; asserts the #43 queue bound
+  (level returns to zero; the pre-fix stack pinned at ~650).  Also
+  documents the vendor gearbox free-running garbage when
+  i_data_valid drops (bench-feed artifact; keep the wire streaming).
+* `PHASE=hotreset` (battery `gen2-hotreset`): the xHCI port-reset flow
+  at Gen2 (Recovery entry from U0, TS2-with-Reset handshake [7.5.12],
+  SDS in Hot Reset.Exit, LGOOD_15 + 4+4 re-init, address reset,
+  descriptor read).  GREEN from first run -- the handshake logic is
+  sound against an idealized feed; PORTSC showed one silicon boot
+  dying exactly there (pre-#44 build, U0@PortSpeed:5 held 108 ms ->
+  Hot Reset 13 ms -> RxDetect/Not-connected).
+* `PHASE=recovery` (not yet a battery entry -- ADD IT): plain
+  mid-traffic Recovery x3 with PRESERVED sequence numbers (the
+  re-advertisement carries LGOOD_1/3/5) and full 4+4 rule-2d
+  re-advertisement.  GREEN.
+* enum/u0 host is now STRICT about the full 4+4 alphabetical
+  advertisement and sends NO header packet until it completes (the
+  red reproduced the #42 silicon signature exactly).
+* The HostRx PHY TX FIFO model closes the #44 pacing loop
+  (drives `pipe.tx_fifo_occupancy`) and FAILS on prefill-miss or
+  post-prefill starvation; `tests/test_gen2_pacing.py` reworked the
+  same way (3/3).
+
+### Hardware verdicts recorded this session
+
+* **H0 Gen1 fence re-verified on the resident image** before any
+  flash: 5000M enumeration on 4-3, 1 MiB x10 (248.9-263.0 MB/s agg),
+  16 MiB x3 (275.8-277.6), 64 MiB x3 (274.3-278.1), all sha-exact;
+  uart1 ch0 all-zero flags=8 (retry_flagged=0); link probe 125 MHz
+  flags d.  The fence image is `/tmp/kilo/h0_gen1_fence.fs`.
+* **#42 kill confirmed on silicon**: post-fix, the host negotiates
+  Gen 2x1, trains, and SENDS -- thousands of inbound host headers
+  accepted per probe window (ITPs + LMPs), against ZERO before.
+* Best Gen2 boots (pre-#44 build, clean port): "new SuperSpeed Plus
+  Gen 2x1 USB device" announced, descriptor read/8 EPROTO -71 (the
+  #44 underflow class killing our DP reply).
+* The closed-loop (#44) build's Gen1 FALLBACK enumerates and holds
+  5000M U0 indefinitely (ITPs flowing, probes clean) -- the dual-rate
+  image's per-spec fallback mechanism (H4 run-2 shape) works with all
+  four fixes in.
+* Vendor prj.fs: 10000M first-try after the controller un-wedge
+  (port-health oracle).
+
+### Builds and the lottery lay of the land
+
+| netlist | winner | notes |
+|---------|--------|-------|
+| #42+#43 + evcap ring (uart1) | NONE in 13 rolls (105-147.6 pclk) | the 64x35 ring + 8 buffers = uniform congestion |
+| lean pipeprobe loadout | **66_101** = 156.274/164.001 (SDC-fixed) | flashed; the #42-kill + EPROTO71 evidence build; saved `/tmp/kilo/s15_gen2_probe_66101_met.fs` (per-cause A/B baseline) |
+| + #44 closed loop | **66_125** = 156.263/161.580 | flashed; the #45 loop evidence build; saved `/tmp/kilo/s15_gen2_cl_66125_met.fs` |
+| + per-cause recovery split | NONE yet (4 rolls, 138-144.6) | **next session: keep rolling** |
+
+Shipping parity re-proven twice (payload-identical vs
+`/tmp/kilo/h0_gen1_fence.fs`, diffs only in the 603-621 header date
+region).
+
+### Commits (fork `948a33b..678fa97`, gowin-serdes `7accabd`)
+
+`092daaa` #42 (4+4 credits) / `cc57db7` #43 (idle run compression +
+the two RX benches) / `54d68d3` strict-4+4 sims + hotreset phase +
+battery / `dff039b` lean probe top + honest rxclk gate + POR 66_101 +
+gowin-serdes bump / `6baa795` #44 (closed-loop pacing) /
+`678fa97` by-id uarts + per-cause probe loadout.  NOT yet committed:
+the `PHASE=recovery` sim (add a battery entry with it), this
+HANDOVER section, POR 66_125-era top comment already in `6baa795`.
+Push everything after the #45 verdict or at session end regardless.
+
+### Next session start (H2 remains the gate)
+
+1. Roll the per-cause netlist to MET (gate: pclk >= 156.25, rxclk >=
+   161.29), flash, read uart0 ch1..3 at the loop: timers/rx/tx.
+2. Chase the named cause (candidates above; check the `active`-blip
+   wipe arm and the concurrent-advertisement window in sim first --
+   both are cheap).
+3. Gate: `lsusb` 10000M on 4-3, dmesg clean.  Then H3 (Gen2 ladder,
+   wire checker port) and the RE-SCOPED H4 (no x2): Gen2 image on the
+   5G hub port, replug/POR x5, forced-Gen1 re-ladder.
+4. Carry-over: #37, rule-2d/#36 stimuli, bench forced-recovery verdict
+   (#29-#31), SEND_ZLP bare-ready, wire-checker TP blindness, SKP x=4
+   aligner, stage-B width program (now WITHOUT x2), 4+4 pools' 8 RX
+   header buffers -- DONE this session as #42.
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 15: the width-generic
@@ -3041,8 +3267,9 @@ validates lane-1 TX during x2 training) or a physical cable flip.**
   (PHASE=scd|lbpm|lbpm5g|lbpm-x2|fb-*|train|enum|echo|u0; TSEQ_LEN,
   TSCALE, NEG, DEVCAP).
 * `examples/gowin/luna-enum-gen2/top.py` — the dual-rate top (POR
-  66_047, MET, FLASHED session 14: trains Gen2, falls back, 5000M;
-  uart1 = evcap header ring).
+  66_125 era; session-15 loadout: uart0 = per-cause recovery split,
+  uart1 = pipe probe with accepted-header counter; the POR comment
+  carries the full lottery history and the 128-bit-pivot decision).
 * `examples/gowin/luna-enum-gen1x2/top.py` — the Gen 1x2-highest
   PortMatch probe = the x2-PORT QUALIFIER tool (boot-rate-switch
   shape, MAC at 125, uart1 LBPM ring).
@@ -3055,8 +3282,9 @@ validates lane-1 TX during x2 training) or a physical cable flip.**
   for a full-RX-chain sim bench, the #42 discriminator).
 * `gowin-serdes/` submodule: `ARCHITECTURE.md` §"USB3 Recipe",
   `gowin_serdes/usb3.py`, `gowin_serdes/dkusb_gw5at60.py` (board;
-  SDC branches: 6.4 ns gen2 tops, 8.0 ns gen1x2 tops),
-  `gowin_serdes/bench.py` (debug helpers).
+  SDC branches: pclk 6.4 ns + rxclk 6.2 ns for the gen2 tops — the
+  recovered clock runs 161.133 MHz at 10G; 8.0 ns gen1x2 tops
+  (x2 now out of scope)), `gowin_serdes/bench.py` (debug helpers).
 * `luna/gateware/interface/serdes_phy/gowin_gtr12.py` — the PIPE
   adapter (LFPS dialect, boot-rate-switch, boot domain discipline).
 * `examples/gowin/luna-multiep/top.py` — the shipping 3-pair top

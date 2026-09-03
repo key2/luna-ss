@@ -909,7 +909,7 @@ IDLE_SYM = int(BlockType.LIS)          # Gen2 Idle Symbol, 5Ah [7.1.2]
 
 
 async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False,
-                      hot_reset=False):
+                      hot_reset=False, recovery=False):
     pipe = bench.pipe
     await bringup(ctx, pipe)
     hm = HostModem(ctx, bench)
@@ -1003,6 +1003,8 @@ async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False,
         return await run_u0_checks(ctx, bench, hm, rx, model_tx)
     if hot_reset:
         return await run_hotreset(ctx, bench, hm, rx, model_tx)
+    if recovery:
+        return await run_recovery(ctx, bench, hm, rx, model_tx)
     if not continue_to_enum:
         return True
     return await run_enum(ctx, bench, hm, rx, model_tx,
@@ -1707,6 +1709,181 @@ async def run_hotreset(ctx, bench, hm, rx, model_tx):
     return True
 
 
+async def run_recovery(ctx, bench, hm, rx, model_tx):
+    """Plain Recovery mid-traffic at Gen2 (the silicon 142 kHz
+    recovery-loop hunt): unlike Hot Reset, a Recovery pass PRESERVES
+    sequence numbers, so the re-initialization advertisement carries
+    NONZERO values -- the device advertises LGOOD_(last properly
+    received) and re-advertises per-class credits for its FREE buffers
+    [7.2.4.1.1 rules 2.e.2 / 7.b]; the host does the same.  The
+    continuation surface (nonzero LGOOD advertisement value, mod-16;
+    credit indices restarting at A while counts reflect occupancy;
+    traffic resuming with preserved sequence numbers) was never
+    sim-covered at Gen2.
+    """
+    from sim_link_loopback import frame_out_dp, frame_status_tp
+    host = Gen2LinkHost(ctx, bench, hm, rx, model_tx, tag="RECOVERY")
+    ret_idx = {1: 0, 2: 0}
+
+    async def return_credit(series):
+        sub = (0b0100 if series == 2 else 0) | ret_idx[series]
+        ret_idx[series] = (ret_idx[series] + 1) & 3
+        await host.send_lc(0b0001, sub)
+
+    async def link_init(tag, expect_lgood):
+        ev = await host.expect(f"LGOOD advertisement ({tag})",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None:
+            return False
+        if ev[2] != expect_lgood:
+            print(f"RECOVERY FAIL: advertisement LGOOD_{ev[2]} ({tag}), "
+                  f"expected LGOOD_{expect_lgood} (the last properly "
+                  f"received header, PRESERVED across Recovery "
+                  f"[7.2.4.1.1])")
+            return False
+        adv = []
+        for _ in range(8):
+            ev = await host.expect(f"credit advertisement ({tag})",
+                                   lambda e: e[0] == 'lc'
+                                   and e[1] == 0b0001)
+            if ev is None:
+                print(f"RECOVERY FAIL: short credit advertisement ({tag})")
+                return False
+            adv.append(ev[2])
+        if [c & 3 for c in adv if not (c & 4)] != [0, 1, 2, 3] or \
+                [c & 3 for c in adv if c & 4] != [0, 1, 2, 3]:
+            print(f"RECOVERY FAIL: advertisement "
+                  f"{['%#x' % c for c in adv]} not LCRD1_A..D + "
+                  f"LCRD2_A..D ({tag})")
+            return False
+        # host advertisement: LGOOD_(last received from device) + 4+4
+        syms = link_command_syms(0b0000, (host.dev_seq - 1) & 0xF)
+        for i in range(4):
+            syms += link_command_syms(0b0001, i)
+        for i in range(4):
+            syms += link_command_syms(0b0001, 0b0100 | i)
+        await host.send_syms(syms)
+        return True
+
+    async def drain_lmps():
+        while True:
+            ev = await host.expect("link-up LMP",
+                                   lambda e: e[0] == 'hdr'
+                                   and (e[1][0] & 0x1F) == 0,
+                                   timeout_blocks=400, quiet=True)
+            if ev is None:
+                return True
+            if ev[2] != host.dev_seq:
+                print(f"RECOVERY FAIL: LMP seq {ev[2]} != {host.dev_seq}")
+                return False
+            host.dev_seq = (host.dev_seq + 1) & 0xF
+            await host.send_lc(0b0000, ev[2])
+            await return_credit(1)
+
+    async def control_xfer(addr, first_lgood):
+        setup = bytes([0x00, 0x05, addr, 0x00, 0x00, 0x00, 0x00, 0x00])
+        await host.send_frame(frame_out_dp(0, 0, setup, setup=1,
+                                           address=0 if addr else 0))
+        ev = await host.expect("SETUP LGOOD",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None or ev[2] != first_lgood:
+            print(f"RECOVERY FAIL: SETUP ack {ev} != LGOOD_{first_lgood}")
+            return False
+        ev = await host.expect("SETUP credit",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+        if ev is None:
+            return False
+        ev = await host.expect("SETUP ACK TP",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 4)
+        if ev is None:
+            return False
+        if ev[2] != host.dev_seq:
+            print(f"RECOVERY FAIL: ACK seq {ev[2]} != {host.dev_seq}")
+            return False
+        host.dev_seq = (host.dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        await return_credit(1)
+        await host.send_frame(frame_status_tp(0, address=0))
+        ev = await host.expect("STATUS LGOOD",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None:
+            return False
+        ev = await host.expect("STATUS credit",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+        if ev is None:
+            return False
+        ev = await host.expect("STATUS ACK TP",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 4)
+        if ev is None:
+            return False
+        host.dev_seq = (host.dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        await return_credit(1)
+        return True
+
+    # ── initial link-up + SET_ADDRESS(1): two host headers exchanged ──
+    host.dev_seq = 0
+    if not await link_init("initial", 15):
+        return False
+    if not await drain_lmps():
+        return False
+    if not await control_xfer(1, 0):
+        return False
+    print("RECOVERY: initial traffic complete (host seq at 2, device "
+          f"seq at {host.dev_seq})")
+
+    # ── THREE plain recovery passes with traffic in between ──
+    for n in range(3):
+        mark = len(rx.blocks)
+
+        def count_ts(kind, since):
+            return sum(1 for h, s in rx.blocks[since:]
+                       if h == BLOCK_CONTROL and s and s[0] == int(kind))
+
+        for _ in range(12):
+            await feed_blocks(ctx, bench, model_tx,
+                              [sync_block()] + [ts1_block()] * 32, rx, hm)
+            if count_ts(BlockType.TS1, mark) >= 8:
+                break
+        if count_ts(BlockType.TS1, mark) < 8:
+            print(f"RECOVERY FAIL: pass {n}: no TS1s from device")
+            return False
+        mark2 = len(rx.blocks)
+        for _ in range(8):
+            await feed_blocks(ctx, bench, model_tx,
+                              [sync_block()] + [ts2_block()] * 16, rx, hm)
+            if count_ts(BlockType.TS2, mark2) >= 8:
+                break
+        await feed_blocks(ctx, bench, model_tx,
+                          [skp_block(), sds_block()]
+                          + [idle_block()] * 20, rx, hm)
+
+        # re-initialization: the device advertises its PRESERVED
+        # sequence state: LGOOD_(host_seq - 1) = LGOOD_(2 + 2n - 1)
+        host.events.clear()
+        host.errors.clear()
+        ret_idx[1] = ret_idx[2] = 0
+        if not await link_init(f"pass {n}", (2 + 2 * n - 1) & 0xF):
+            return False
+        if not await drain_lmps():
+            return False
+        # traffic must continue with preserved numbering
+        if not await control_xfer(1, (2 + 2 * n) & 0xF):
+            return False
+        print(f"RECOVERY: pass {n} complete -- re-advertised "
+              f"LGOOD_{(2 + 2 * n - 1) & 0xF}, traffic resumed")
+
+    if host.errors:
+        print(f"RECOVERY FAIL: parser errors: {host.errors[:6]}")
+        return False
+    print("RECOVERY: three mid-traffic Recovery passes with preserved "
+          "sequence numbers and full 4+4 re-advertisement -- the U0 "
+          "re-initialization surface works at Gen2")
+    return True
+
+
 async def run_u0_checks(ctx, bench, hm, rx, model_tx):
     """STRICT U0 host behaviors the enum/echo phases never exercised
     (HANDOVER 10s suspects 1-3: the sim-uncovered surface where the H2
@@ -1960,6 +2137,8 @@ def main():
             result["ok"] = await phase_train(ctx, bench, u0_checks=True)
         elif PHASE == "hotreset":
             result["ok"] = await phase_train(ctx, bench, hot_reset=True)
+        elif PHASE == "recovery":
+            result["ok"] = await phase_train(ctx, bench, recovery=True)
         else:
             raise SystemExit(f"unknown PHASE={PHASE}")
 

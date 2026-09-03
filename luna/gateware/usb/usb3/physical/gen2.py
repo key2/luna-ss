@@ -40,9 +40,14 @@ module deals in clear symbols.
 
 Throughput note (stage A): the RX grammar engine processes 4 symbols per
 cycle against a wire that can deliver 8; an input queue absorbs bursts
-(bounded by NumP flow control) and whole-idle beats are dropped at the
-input whenever the engine is drained, which is the steady-state U0
-condition.  A level debug tap is provided for the Phase-5 sizing
+(bounded by NumP flow control).  Whole-idle beats never occupy queue
+slots individually: they are RUN-COMPRESSED at the enqueue side (one
+counted entry per idle run, order-preserving via a 1-deep skid) and
+replayed or bulk-discarded at the load side -- queue-entry arrival is
+then O(constructs), so the engine's drain always outruns the wire and
+the level stays bounded by the constructs in flight (bug #43: the
+previous per-beat idle enqueue ratcheted the level up by every
+construct, unboundedly).  A level debug tap is provided for the sizing
 verdict.
 """
 
@@ -803,14 +808,38 @@ class Gen2BlockReceiver(Elaboratable):
             # Data blocks break TS runs (SYNC/SKP do not).
             m.d.ss += [ts1_run.eq(0), ts2_run.eq(0), tseq_run.eq(0)]
 
-        # ── data path: beat queue ────────────────────────────────────
+        # ── data path: beat queue with idle RUN COMPRESSION ─────────
         #
-        # Enqueue every data-block beat unless it is pure idle AND the
-        # engine is fully drained (then it is provably inter-packet).
-        # Entries are 65 bits: {is_idle, beat} -- the whole-idle flag is
-        # computed ONCE at enqueue (the compare already exists in the
-        # discard condition here) so the read side never re-derives it
-        # from the 64-bit read data (a reported 156.25 reduce cone).
+        # Entries are 65 bits: {is_run, payload}.  A beat entry
+        # (is_run=0) carries one non-idle 64-bit beat; a RUN entry
+        # (is_run=1) carries a count of 1..RUN_MAX consecutive
+        # whole-idle beats in payload[0:8].
+        #
+        # Bug #43 (the queue RATCHET): the historical scheme enqueued
+        # every idle beat unless the engine was FULLY drained, and the
+        # load-point discard drains at most ONE beat per cycle -- the
+        # same rate idle beats arrive at mid-U0 (the Gen2 wire delivers
+        # a data beat nearly every pclk).  The backlog therefore never
+        # drained: every construct (boundary-stepped at ~1.3 sym/cycle
+        # against an 8 sym/cycle wire) ratcheted the level up by ~5-8
+        # beats FOREVER, unboundedly delaying delivery and finally
+        # overflowing the queue (silent beat loss) under construct-dense
+        # traffic.  Compressing idle runs makes queue-entry arrival
+        # O(constructs) instead of O(beats): the drain always wins and
+        # the level stays bounded by the handful of constructs in
+        # flight.
+        #
+        # Order is exactly preserved: pending idles are flushed as one
+        # run entry AHEAD of the non-idle beat that ends the run (that
+        # beat parks one cycle in a 1-deep skid: the run flush owns the
+        # write port; the skid can never deepen, because a new run can
+        # only begin after an idle beat -- which needs no write slot --
+        # retires the skid first).  Whole-idle beats can be construct
+        # PAYLOAD (an all-5Ah DPP span), so runs are REPLAYED beat by
+        # beat to the engine whenever it is mid-construct; only runs
+        # met in SEARCH are discarded (whole run, one cycle).  A
+        # mid-construct run that never sees a terminating non-idle beat
+        # (corrupt wire) still flushes via the RUN_MAX cap.
         m.submodules.queue = queue = DomainRenamer({"sync": "ss"})(
             SyncFIFO(width=65, depth=self._queue_depth))
 
@@ -824,12 +853,67 @@ class Gen2BlockReceiver(Elaboratable):
         # may be construct PAYLOAD and must never be discarded.)
         queue_drained = Signal()
 
-        with m.If(beat_is_data &
-                  ~(beat_is_idle & ~engine_busy & queue_drained)):
+        RUN_MAX = 255
+        pend_idles = Signal(range(RUN_MAX + 1))   # idles awaiting a run
+        run_left   = Signal(8)    # load-side run replay (declared here
+                                  # for the all_empty term; logic below)
+        sk_valid   = Signal()     # 1-deep enqueue skid
+        sk_data    = Signal(64)
+
+        # Nothing anywhere in the RX path: the incoming idle beat is
+        # provably inter-packet and carries no information.
+        all_empty = Signal()
+        m.d.comb += all_empty.eq(queue_drained & ~sk_valid
+                                 & (pend_idles == 0) & (run_left == 0))
+
+        incoming_idle = beat_is_data & beat_is_idle
+        incoming_beat = beat_is_data & ~beat_is_idle
+
+        with m.If(incoming_beat & (pend_idles != 0)):
+            # Flush the pending idle run ahead of this beat; the beat
+            # parks in the (provably empty) skid.
             m.d.comb += [
-                queue.w_data.eq(Cat(rx_data, beat_is_idle)),
+                queue.w_data.eq(Cat(pend_idles, Const(0, 56), C(1, 1))),
                 queue.w_en.eq(1),
             ]
+            m.d.ss += [pend_idles.eq(0), sk_valid.eq(1),
+                       sk_data.eq(rx_data)]
+        with m.Elif(sk_valid):
+            m.d.comb += [
+                queue.w_data.eq(Cat(sk_data, C(0, 1))),
+                queue.w_en.eq(1),
+            ]
+            with m.If(incoming_beat):
+                m.d.ss += sk_data.eq(rx_data)      # skid stays occupied
+            with m.Elif(incoming_idle):
+                m.d.ss += [sk_valid.eq(0),
+                           pend_idles.eq(pend_idles + 1)]
+            with m.Else():
+                m.d.ss += sk_valid.eq(0)
+        with m.Elif(incoming_beat):
+            m.d.comb += [
+                queue.w_data.eq(Cat(rx_data, C(0, 1))),
+                queue.w_en.eq(1),
+            ]
+        with m.Elif(incoming_idle):
+            with m.If(~engine_busy & all_empty):
+                pass                    # provably inter-packet: dropped
+            with m.Elif(pend_idles == RUN_MAX):
+                # Cap flush (also the liveness bound for a construct
+                # stalled on an idle span with no terminator).
+                m.d.comb += [
+                    queue.w_data.eq(Cat(Const(RUN_MAX, 8), Const(0, 56),
+                                        C(1, 1))),
+                    queue.w_en.eq(1),
+                ]
+                m.d.ss += pend_idles.eq(1)
+            with m.Else():
+                m.d.ss += pend_idles.eq(pend_idles + 1)
+
+        # Outside the data-block stream (training, link down) the
+        # compressor state is stale: clear it.  (Last assignment wins.)
+        with m.If(~self.data_mode):
+            m.d.ss += [pend_idles.eq(0), sk_valid.eq(0)]
 
         m.d.comb += [
             self.queue_level.eq(queue.level),
@@ -947,7 +1031,8 @@ class Gen2BlockReceiver(Elaboratable):
         with m.If(qs_pop):
             m.d.ss += qs_head.eq(~qs_head)
 
-        load_is_idle = qh_data[64]           # computed at enqueue
+        load_is_run = qh_data[64]            # idle-run entry (count)
+        run_count   = qh_data[0:8]
 
         # Per-half idle flags, precomputed at beat load (the bulk
         # eligibility's all-idle test otherwise closes a combinational
@@ -958,10 +1043,31 @@ class Gen2BlockReceiver(Elaboratable):
             qh_data[0:32]  == Const(IDLE_BEAT & 0xFFFFFFFF, 32),
         ]
 
+        # Idle-run replay: while ``run_left`` is nonzero the load stage
+        # synthesizes whole-idle beats instead of reading the queue.  A
+        # run (or its remainder) met while the engine is in SEARCH is
+        # discarded in ONE cycle -- the fast drain that keeps the queue
+        # bounded (bug #43).  The ``search_exit`` qualifier guards the
+        # same-cycle race exactly as for beat entries: a walk that just
+        # left SEARCH into a construct must not discard idle beats that
+        # may be its payload.
         with m.If(~have_cur):
-            with m.If(qh_valid):
-                with m.If(load_is_idle & (state == ST_SEARCH)):
-                    m.d.comb += qs_pop.eq(1)              # discard
+            with m.If(run_left != 0):
+                with m.If(state == ST_SEARCH):
+                    m.d.ss += run_left.eq(0)              # discard rest
+                with m.Else():
+                    m.d.ss += [cur_beat.eq(Const(IDLE_BEAT, 64)),
+                               h_idle.eq(0b11), run_left.eq(run_left - 1),
+                               have_cur.eq(1), half.eq(0), sub.eq(0)]
+            with m.Elif(qh_valid):
+                with m.If(load_is_run & (state == ST_SEARCH)):
+                    m.d.comb += qs_pop.eq(1)              # whole run
+                with m.Elif(load_is_run):
+                    m.d.ss += [cur_beat.eq(Const(IDLE_BEAT, 64)),
+                               h_idle.eq(0b11),
+                               run_left.eq(run_count - 1),
+                               have_cur.eq(1), half.eq(0), sub.eq(0)]
+                    m.d.comb += qs_pop.eq(1)
                 with m.Else():
                     m.d.ss += [cur_beat.eq(qh_data[0:64]),
                                h_idle.eq(Cat(load_h_idle[0],
@@ -972,9 +1078,24 @@ class Gen2BlockReceiver(Elaboratable):
             m.d.ss += sub.eq(0)
             with m.If(~half):
                 m.d.ss += half.eq(1)
-            with m.Elif(qh_valid
-                        & ~(load_is_idle & (state == ST_SEARCH)
-                            & ~search_exit)):
+            with m.Elif(run_left != 0):
+                with m.If((state == ST_SEARCH) & ~search_exit):
+                    m.d.ss += [run_left.eq(0), have_cur.eq(0)]
+                with m.Else():
+                    m.d.ss += [cur_beat.eq(Const(IDLE_BEAT, 64)),
+                               h_idle.eq(0b11), run_left.eq(run_left - 1),
+                               half.eq(0)]
+            with m.Elif(qh_valid & load_is_run):
+                with m.If((state == ST_SEARCH) & ~search_exit):
+                    m.d.comb += qs_pop.eq(1)              # whole run
+                    m.d.ss += have_cur.eq(0)
+                with m.Else():
+                    m.d.ss += [cur_beat.eq(Const(IDLE_BEAT, 64)),
+                               h_idle.eq(0b11),
+                               run_left.eq(run_count - 1),
+                               half.eq(0)]
+                    m.d.comb += qs_pop.eq(1)
+            with m.Elif(qh_valid):
                 m.d.ss += [cur_beat.eq(qh_data[0:64]),
                            h_idle.eq(Cat(load_h_idle[0],
                                          load_h_idle[1])),

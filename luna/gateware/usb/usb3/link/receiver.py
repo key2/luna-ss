@@ -847,9 +847,28 @@ class HeaderPacketReceiver(Elaboratable):
                 #  processed (observed as an immediate bad-sequence recovery loop after re-entry:
                 #  we under-advertise, the partner resends one header too many, and its next fresh
                 #  header then looks like a sequence skip).
+                #
+                #  Bug #50 (session 17, the #49 reccut red): the acceptance
+                #  block above is NOT gated by ``enable`` -- a header whose
+                #  parse completes in the FIRST link-down cycle (its
+                #  ``new_packet`` strobe registered at the last enabled
+                #  edge) is properly accepted, buffered and delivered
+                #  (rule 2d), and ``expected_sequence_number`` advances --
+                #  but this one-shot prep runs in the SAME cycle and read
+                #  the PRE-acceptance value: the advertisement then
+                #  under-reports by one, the partner (per rule 7)
+                #  retransmits a header we already counted, and our
+                #  receiver calls it a bad sequence -> device-initiated
+                #  recovery loop, wedged EP0 (PHASE=reccut offset-2 red;
+                #  the bench BOS/22 EPROTO shape).  Account for the
+                #  same-cycle acceptance (``reserve_buffer`` is exactly
+                #  the acceptance strobe).  Gen2 elaborations only; the
+                #  Gen1 rail keeps the historical statement verbatim (the
+                #  shipping fence) -- the twin fix is a parked item.
                 next_header_to_ack    .eq(
                     (expected_sequence_number - 1) if not self._gen2
-                    else ((expected_sequence_number - 1) & seq_mask)),
+                    else ((expected_sequence_number + reserve_buffer - 1)
+                          & seq_mask)),
 
                 # - RULE 2d [USB3.2r1: 7.2.4.1.x]: header packets already
                 #   counted as received (the advertisement above claims
@@ -882,13 +901,21 @@ class HeaderPacketReceiver(Elaboratable):
                                               - buffers_filled + release_buffer)
             else:
                 # Per-class rule-2d credit recomputation (4+4 pools at
-                # the SSP rate, 4+0 at the SS rate).
-                filled1 = buffers_filled - filled2
+                # the SSP rate, 4+0 at the SS rate).  Bug #50: like the
+                # advertisement above, the fill levels must account for
+                # a SAME-CYCLE acceptance (``reserve_buffer``/
+                # ``reserve2``) -- a header accepted in the first
+                # link-down cycle occupies a buffer the historical
+                # recomputation still advertised as free, letting the
+                # partner oversubscribe the pool after re-entry.
+                filled1 = ((buffers_filled + reserve_buffer)
+                           - (filled2 + reserve2))
                 m.d.ss += [
                     next_credit2_to_issue .eq(0),
                     credits_to_issue      .eq(pool1_size - filled1
                                               + (release_buffer & ~release2)),
-                    credits2_to_issue     .eq(pool2_size - filled2
+                    credits2_to_issue     .eq(pool2_size
+                                              - (filled2 + reserve2)
                                               + release2),
                 ]
 

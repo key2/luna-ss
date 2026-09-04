@@ -45,7 +45,12 @@ class RawPacketTransmitter(Elaboratable):
         be ready to send another packet next cycle.
     """
 
-    def __init__(self):
+    def __init__(self, gen2=False):
+        # Bug #51 (session 17, the #49 reccut offset-24 red): gen2
+        # elaborations additionally track ``payload_consumed`` -- see
+        # below.  Gen1 elaborations are the historical unit verbatim
+        # (the shipping fence).
+        self._gen2 = gen2
 
         #
         # I/O port.
@@ -59,8 +64,9 @@ class RawPacketTransmitter(Elaboratable):
         # When set alongside a delayed (DL=1) data header, indicates that the
         # header's payload was already consumed by an earlier transmission:
         # the retransmission must then abort its DPP (EDB), as we keep no
-        # copy.  A delayed header whose original send never happened still
-        # has its payload staged, and transmits it normally.
+        # copy.  A delayed header that was never actually transmitted (it was
+        # still queued when the LBAD arrived) still has its payload staged,
+        # and transmits it normally.
         self.header_sent_before = Signal()
 
         self.generate  = Signal()
@@ -74,6 +80,21 @@ class RawPacketTransmitter(Elaboratable):
         # while this is high, the tail of the packet is still staged
         # upstream and must be drained before the next packet.
         self.payload_pending = Signal()
+
+        # gen2 builds: high (combinationally exact) from the FIRST payload
+        # word consumed until the next transmission starts.  Differs from
+        # ``payload_pending`` in the two windows that bug #51 exposed: the
+        # first-capture cycle itself, and the stretch after the LAST word
+        # was accepted but before ``done`` (payload fully consumed, DPP
+        # framing/CRC still going onto the wire).  A link drop in either
+        # window historically left the header marked never-sent, and its
+        # DL=1 retransmission then attached a PHANTOM payload from the
+        # (empty or next-transfer) data stream instead of aborting its
+        # DPP -- the wire carried a garbage DPP with a valid-looking DPH
+        # (PHASE=reccut offset-24: retransmitted descriptor DPP arrived
+        # as stale bytes + idle fill, CRC-32 invalid; the bench BOS/22
+        # EPROTO + post-failure wedge shape).
+        self.payload_consumed = Signal()
 
         # Debug: strobed when a payload word is consumed while the payload
         # stream is invalid -- a violation of the gapless-feed contract
@@ -461,6 +482,23 @@ class RawPacketTransmitter(Elaboratable):
                     m.d.comb += self.done.eq(1)
                     m.next = "IDLE"
 
+        if self._gen2:
+            # Bug #51: combinationally-exact "any payload word consumed"
+            # tracking for the link-drop bookkeeping (see the port
+            # comment).  Registered from any consume, cleared when a new
+            # transmission latches in, and OR'd with the same-cycle
+            # consume so the parent's drop handler never misses the
+            # first-capture cycle.
+            consumed_r = Signal()
+            consuming  = Signal()
+            m.d.comb += consuming.eq(self.data_sink.ready
+                                     & self.data_sink.valid.any())
+            with m.If(self.starting):
+                m.d.ss += consumed_r.eq(consuming)
+            with m.Elif(consuming):
+                m.d.ss += consumed_r.eq(1)
+            m.d.comb += self.payload_consumed.eq(consumed_r | consuming)
+
         return m
 
 
@@ -754,7 +792,8 @@ class PacketTransmitter(Elaboratable):
         # link as framing garbage.  Its header stays buffered (unacked)
         # and is handled by the post-recovery advertisement.
         m.submodules.packet_tx = packet_tx = \
-            ResetInserter({"ss": ~self.enable})(RawPacketTransmitter())
+            ResetInserter({"ss": ~self.enable})(
+                RawPacketTransmitter(gen2=self._gen2))
         m.d.comb += [
             packet_tx.header             .eq(buffers[read_pointer]),
             packet_tx.header_sent_before .eq(sent_flags[read_pointer]),
@@ -878,13 +917,31 @@ class PacketTransmitter(Elaboratable):
         # tail of the packet still staged on ``data_sink`` must be
         # drained, or it would be spliced onto the front of the next
         # packet's payload.
-        with m.If(~self.enable & tx_in_flight):
-            m.d.ss += tx_in_flight.eq(0)
-            with m.If(packet_tx.payload_pending):
-                m.d.ss += [
-                    sent_flags[sending_slot]  .eq(1),
-                    drain_required            .eq(1),
-                ]
+        if self._gen2:
+            # Bug #51: the consumed-payload mark must come from
+            # ``payload_consumed`` (any word consumed), NOT
+            # ``payload_pending`` (first-to-last window): a drop after
+            # the last payload word but before ``done`` -- payload fully
+            # consumed, DPP framing still on the wire -- left the header
+            # marked never-sent, and its DL=1 retransmission attached a
+            # phantom payload instead of aborting (PHASE=reccut
+            # offset-24 red; the garbage-DPP wire shape of the bench
+            # BOS/22 EPROTO).  The drain qualifier keeps its historical
+            # meaning: a tail is only staged while ``payload_pending``.
+            with m.If(~self.enable & tx_in_flight):
+                m.d.ss += tx_in_flight.eq(0)
+                with m.If(packet_tx.payload_consumed):
+                    m.d.ss += sent_flags[sending_slot].eq(1)
+                with m.If(packet_tx.payload_pending):
+                    m.d.ss += drain_required.eq(1)
+        else:
+            with m.If(~self.enable & tx_in_flight):
+                m.d.ss += tx_in_flight.eq(0)
+                with m.If(packet_tx.payload_pending):
+                    m.d.ss += [
+                        sent_flags[sending_slot]  .eq(1),
+                        drain_required            .eq(1),
+                    ]
 
         # Drain and discard the stale packet tail (up to and including
         # its ``last``-marked word).  The override below takes priority

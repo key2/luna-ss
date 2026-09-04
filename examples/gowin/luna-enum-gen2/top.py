@@ -19,8 +19,9 @@ STATUS: sim-proven stack (gate G3+G4, 46/46 battery); THIS TOP IS THE
 FIRST HARDWARE ELABORATION -- unverified on the bench.  Known-open
 hardware items (HANDOVER 10r): fixed-envelope rate ack (no CSR
 completion feedback yet), LTSSM_is_Training approximation, TX beat
-pacing vs TxFifoWrNum, no SSP BOS capability / Sublink Speed
-Notification TP yet (host may enumerate it as bcdUSB 0310 regardless).
+pacing vs TxFifoWrNum.  SSP BOS device capability added session 17
+(the bcdUSB-0310 [9.6.2.5] surface; sim-fenced in PHASE=enum); the
+Sublink Speed Device Notification TP remains open if the host asks.
 
 Build & program:
 
@@ -52,6 +53,7 @@ from gowin_serdes.usb3 import attach_usb3_phy
 
 from luna.gateware.interface.serdes_phy.gowin_gtr12 import GowinGTR12PIPE
 from luna.gateware.usb.usb3.device import USBSuperSpeedDevice
+from luna.gateware.usb.usb3.descriptors import add_superspeedplus_bos
 
 from usb_protocol.emitters import SuperSpeedDeviceDescriptorCollection
 
@@ -97,6 +99,12 @@ def create_descriptors():
         c.bMaxPower = 50
         with c.InterfaceDescriptor() as i:
             i.bInterfaceNumber = 0
+
+    # bcdUSB 0310 requires the SuperSpeedPlus device capability in the
+    # BOS [9.6.2.5] -- without it the bench host complains at every
+    # 10G enumeration (session-17 #49-adjacent enum-surface gap; the
+    # sim's PHASE=enum ladder validates the same bytes).
+    add_superspeedplus_bos(descriptors)
 
     return descriptors
 
@@ -178,6 +186,11 @@ class LunaEnumTop(Elaboratable):
         # rolled 135.9-155.5 pclk; 66_125 won at pclk 156.263 /
         # rxclk 161.580 -- both MET against the honest gates (156.25 /
         # 161.29).
+        # Session-17 (#50+#51 fixes + SSP BOS) netlist: 66_135..66_144
+        # ALL missed pclk (132.0-147.9; rxclk cleared on 3 of 10) --
+        # the no-lottery-budget rule applies; the #49 bench verdict
+        # rides the width-program 128-bit vehicle (core 78.125).  Seed
+        # left at the 66_135 pin (the saved s16 MET image's seed).
         m.d.cfg += [
             por_n.eq(por_cnt > 66_135),
             luna_go.eq(por_cnt.all()),

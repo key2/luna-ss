@@ -3561,6 +3561,25 @@ protocol state**; the bench wedge's hot-reset survival is not a
 device-side reset leak (consistent with #50/#51 being the mechanism:
 the DEVICE recovers, the HOST's view is already poisoned).
 
+### Verification + hardware state at session end
+
+* **Battery 57/57 GREEN from the settled tree** (incl. the two new
+  entries; log `/tmp/kilo/s17_battery_settled.log`).
+* **Shipping parity proven TWICE** (after the CTC/aligner unit and
+  after #50/#51): 14 diff bytes, all in 603–621 (header date).
+* **Fresh Gen1-64 build flashed and laddered on the bench**: 5000M
+  on 4-3, 1 MiB ×3 + 16 MiB ×3 + 64 MiB PASS (283.4 MB/s) — the
+  fence held at session start AND end; the fresh build is resident.
+* **Gen2-64 roll batch (the #49 bench-verdict bonus attempt): NO MET
+  in 10 rolls** (66_135..66_144; pclk 132.0–147.9 vs the 156.25
+  gate; rxclk cleared on 3).  Per the no-lottery-budget rule the
+  batch stopped there — **the #49 bench verdict (clean repeatable
+  10000M enumeration) rides the V3 128-bit vehicle** (core 78.125,
+  no pclk-domain MAC).  The saved s16 MET image
+  (`/tmp/kilo/s16_gen2_48fix_66_135_met.fs`) predates #50/#51 and
+  the SSP BOS: it remains the pre-fix EVIDENCE build only, never a
+  verdict vehicle.
+
 ### Carry-over state (supersedes the §10v list)
 
 * Bug numbering: **#48 RESOLVED on the wire (session 16); #49 OPEN —

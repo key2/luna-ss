@@ -98,6 +98,7 @@ from amaranth.sim import Simulator
 
 from luna.gateware.interface.pipe import PIPEInterface
 from luna.gateware.usb.usb3.device import USBSuperSpeedDevice
+from luna.gateware.usb.usb3.descriptors import add_superspeedplus_bos
 from usb_protocol.emitters import SuperSpeedDeviceDescriptorCollection
 
 from gw_usb3.scramble import Scrambler, Descrambler
@@ -167,6 +168,10 @@ def create_descriptors():
             with i.EndpointDescriptor() as e:
                 e.bEndpointAddress = 0x01
                 e.wMaxPacketSize = 1024
+    # bcdUSB 0310 requires the SuperSpeedPlus device capability in the
+    # BOS [9.6.2.5]; the default (USB2 ext + SS cap only) draws a
+    # bench-host complaint and under-describes the Gen2 sublinks.
+    add_superspeedplus_bos(d)
     return d
 
 
@@ -411,6 +416,16 @@ class HostModem:
             if ctx.get(usb.debug_rx_hdr_stb):
                 self.notes.append(("hdr_to_protocol",
                                    ctx.get(usb.debug_rx_hdr_type), self.cyc))
+            # Device-initiated recovery causes (the #49 wedge hunt: the
+            # bench per-cause counters read ZERO through the failure
+            # window -- the sim must show the same silence or name the
+            # cause).
+            if ctx.get(usb.debug_recovery_timers):
+                self.notes.append(("rec_timers", self.cyc))
+            if ctx.get(usb.debug_recovery_rx):
+                self.notes.append(("rec_rx", self.cyc))
+            if ctx.get(usb.debug_recovery_tx):
+                self.notes.append(("rec_tx", self.cyc))
             if VERBOSE and ctx.get(usb.rx_data_tap.valid):
                 d = ctx.get(usb.rx_data_tap.data)
                 c = ctx.get(usb.rx_data_tap.ctrl)
@@ -813,14 +828,25 @@ class HostRx:
         self.blocks = []            # (head, syms) per completed block
         self._cur = None
         # PHY TX gearbox FIFO model (gw_usb3 phy.py ``tx_fifo``, 32
-        # deep): fills on every MAC tx_datavalid beat at the 10G trim,
-        # drains 32 beats per 33 pclk cycles (the 128b/132b wire payload
-        # rate: 132 wire bits per 128 payload bits).  On silicon an
-        # overflow silently corrupts the wire stream -- and so does an
-        # UNDERFLOW while the wire is mid-stream (bug #44: the gearbox
-        # serializes stale bits when starved), so the sim fails hard on
-        # either.  The model's level feeds the DUT's closed pacing loop
-        # (pipe.tx_fifo_occupancy), exactly like TxFifoWrNum on silicon.
+        # deep): fills on every MAC tx_datavalid beat at the 10G trim
+        # and drains through the REAL TxGearbox132 consumption law
+        # (session 17, the #49 txfifo-hi28 hunt -- the historical
+        # flat 32-per-33 approximation hid the boundary dynamics):
+        #   - the FIFO read side is ``RdEn = S_READY & ~empty_r`` with
+        #     ``empty_r`` REGISTERED (one cycle stale);
+        #   - the gearbox accepts 64 wire bits per beat plus 4 sync-
+        #     header bits on start_block beats, and emits 64 bits per
+        #     cycle while primed: one dead read cycle whenever the
+        #     residue exceeds 64 (once per 16 two-beat blocks);
+        #   - from empty (UNDERFLOW) the residue restarts at zero.
+        # On silicon an overflow silently corrupts the wire stream --
+        # and so does an UNDERFLOW while the wire is mid-stream (bug
+        # #44: the gearbox serializes stale bits when starved), so the
+        # sim fails hard on either.  The model's level feeds the DUT's
+        # closed pacing loop (pipe.tx_fifo_occupancy), exactly like
+        # TxFifoWrNum on silicon.  ``fifo_hi28`` mirrors the bench
+        # txfifo-hi28 probe (cycles at level >= 28; the #49 canary
+        # fires ~71k/s on silicon during the enumeration window).
         self.fifo_level    = 0
         self.fifo_max      = 0
         self.fifo_cyc      = 0
@@ -828,21 +854,43 @@ class HostRx:
         self.fifo_armed    = False   # prefill reached once
         self.fifo_starved  = 0       # drain-eligible cycles at level 0
                                      # after prefill (wire starvation)
+        self.fifo_hi28     = 0       # cycles at level >= 28 (bench canary)
+        self._fifo_q       = []      # start_block flag per buffered beat
+        self._gb_active    = False   # gearbox primed (ACTIVE state)
+        self._gb_bits      = 0       # gearbox residue above the 64/cycle
+        self._empty_r      = True    # registered FIFO empty (1 stale cycle)
 
     def sample(self, ctx):
         pipe = self.bench.pipe
         self.fifo_cyc += 1
+        # ── FIFO write side (MAC supply) ──
         if ctx.get(pipe.tx_datavalid) and ctx.get(pipe.rate) == 1:
             self.fifo_level += 1
-        if self.fifo_cyc % 33 != 0:
-            if self.fifo_level > 0:
-                self.fifo_level -= 1
-            elif self.fifo_armed:
-                self.fifo_starved += 1
+            self._fifo_q.append(bool(ctx.get(pipe.tx_start_block)))
+        # ── FIFO read side + gearbox drain (the real law) ──
+        ready = (not self._gb_active) or (self._gb_bits <= 64)
+        rd = ready and not self._empty_r and self.fifo_level > 0
+        self._empty_r = (self.fifo_level == 0)
+        if rd:
+            start = self._fifo_q.pop(0)
+            self.fifo_level -= 1
+            self._gb_bits += 68 if start else 64
+            self._gb_active = True
+        if self._gb_active:
+            self._gb_bits -= 64
+            if self._gb_bits < 0:
+                # The wire consumed bits the MAC never supplied: the
+                # gearbox serializes stale bits (bug #44 starvation).
+                self._gb_bits = 0
+                self._gb_active = False
+                if self.fifo_armed:
+                    self.fifo_starved += 1
         if self.fifo_level >= 8:
             self.fifo_armed = True
         if self.fifo_level > self.fifo_max:
             self.fifo_max = self.fifo_level
+        if self.fifo_level >= 28:
+            self.fifo_hi28 += 1
         if self.fifo_level > 32:
             self.fifo_overflow = True
         ctx.set(pipe.tx_fifo_occupancy, min(self.fifo_level, 31))
@@ -909,7 +957,8 @@ IDLE_SYM = int(BlockType.LIS)          # Gen2 Idle Symbol, 5Ah [7.1.2]
 
 
 async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False,
-                      hot_reset=False, recovery=False, advearly=False):
+                      hot_reset=False, recovery=False, advearly=False,
+                      reccut=False):
     pipe = bench.pipe
     await bringup(ctx, pipe)
     hm = HostModem(ctx, bench)
@@ -1002,9 +1051,12 @@ async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False,
     if u0_checks:
         return await run_u0_checks(ctx, bench, hm, rx, model_tx)
     if hot_reset:
-        return await run_hotreset(ctx, bench, hm, rx, model_tx)
+        return await run_hotreset(ctx, bench, hm, rx, model_tx,
+                                  parked=(PHASE == "hotreset-parked"))
     if recovery:
         return await run_recovery(ctx, bench, hm, rx, model_tx)
+    if reccut:
+        return await run_reccut(ctx, bench, hm, rx, model_tx)
     if advearly:
         return await run_advearly(ctx, bench, hm, rx, model_tx)
     if not continue_to_enum:
@@ -1108,6 +1160,19 @@ class Gen2LinkHost:
                     continue
                 i += 4
             else:
+                # An aborted DPP carries NO payload: DPPSTART is followed
+                # immediately by the EDB EDB EDB EPF abort framing (the
+                # DL=1 retransmission of a consumed-payload DP; bug #51
+                # surface).  Recognize it before demanding payload-length
+                # symbols.
+                if self._state == 'dpp' and n - i >= 4 \
+                        and tuple(s[i:i + 4]) == DPPABORT:
+                    self.events.append(('dpp', b'', False, True))
+                    if VERBOSE:
+                        print(f"    [{self.tag} ev] {self.events[-1]}")
+                    i += 4
+                    self._state = 'search'
+                    continue
                 if n - i < self._need:
                     break
                 body = s[i:i + self._need]
@@ -1159,7 +1224,9 @@ class Gen2LinkHost:
             crc_ok = crc == crc32_payload(payload)
             if end != DPPEND and end != DPPABORT:
                 self.errors.append(f"bad DPP end framing {end}")
-            self.events.append(('dpp', payload, crc_ok))
+            self.events.append(('dpp', payload, crc_ok, end == DPPABORT))
+        if VERBOSE and self.events:
+            print(f"    [{self.tag} ev] {self.events[-1]}")
 
     # ── host -> device transmission ──────────────────────────────────
     async def send_syms(self, syms):
@@ -1475,6 +1542,37 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
               f"silicon #48-tail shape: wLength={total})")
         return False
     print(f"ENUM: full BOS ({total} bytes) {bos_full.hex()}")
+
+    # A bcdUSB-0310 device must carry the SuperSpeedPlus device
+    # capability [9.6.2.5] -- the bench host complains without it
+    # (the #49-adjacent enum-surface gap, session 17).  Walk the BOS
+    # subordinates and demand a type-0x0A capability whose sublink
+    # speed attributes include a 10 Gb/s SSP entry (LSE=3, LSM=10,
+    # LP=SSP).
+    ssp_cap = None
+    off = 5
+    while off + 2 <= len(bos_full):
+        blen = bos_full[off]
+        if blen < 3 or off + blen > len(bos_full):
+            break
+        if bos_full[off + 1] == 0x10 and bos_full[off + 2] == 0x0A:
+            ssp_cap = bos_full[off:off + blen]
+        off += blen
+    if ssp_cap is None:
+        print("ENUM FAIL: BOS carries no SuperSpeedPlus device "
+              "capability (required at bcdUSB 0310 [9.6.2.5])")
+        return False
+    ssac = (ssp_cap[4] & 0x1F) + 1
+    attrs = [int.from_bytes(ssp_cap[12 + 4 * k:16 + 4 * k], 'little')
+             for k in range(ssac)]
+    has_10g_ssp = any((((a >> 4) & 3) == 3) and ((a >> 16) == 10)
+                      and (((a >> 14) & 3) == 1) for a in attrs)
+    if not has_10g_ssp:
+        print(f"ENUM FAIL: SSP capability lacks a 10 Gb/s SSP sublink "
+              f"speed attribute (attrs: {[hex(a) for a in attrs]})")
+        return False
+    print(f"ENUM: SSP device capability present "
+          f"({ssac} sublink attrs: {[hex(a) for a in attrs]})")
     cfg9 = await control_in("Config/9", 0x0200, 9, 9)
     if cfg9 is None:
         return False
@@ -1489,11 +1587,17 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
 
     if not echo:
         print(f"ENUM: PHY TX FIFO model max occupancy {rx.fifo_max}/32, "
-              f"starved {rx.fifo_starved}")
+              f"starved {rx.fifo_starved}, hi28 cycles {rx.fifo_hi28}")
         if rx.fifo_overflow or not rx.fifo_armed or rx.fifo_starved:
             print("ENUM FAIL: PHY TX FIFO left the near-full pacing band "
                   f"(overflow={rx.fifo_overflow} prefill={rx.fifo_armed} "
                   f"starved={rx.fifo_starved}) (bug #44)")
+            return False
+        if rx.fifo_hi28:
+            print(f"ENUM FAIL: PHY TX FIFO overshot the pacing band "
+                  f"(level >= 28 for {rx.fifo_hi28} cycles, max "
+                  f"{rx.fifo_max} -- the silicon txfifo-hi28 canary, "
+                  f"bug #49 lead (a))")
             return False
         return True
 
@@ -1555,7 +1659,7 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
     return True
 
 
-async def run_hotreset(ctx, bench, hm, rx, model_tx):
+async def run_hotreset(ctx, bench, hm, rx, model_tx, parked=False):
     """Gen2 Hot Reset (bug #44): the xHCI hub driver's very first action
     on a freshly connected SS port is a port reset = LINK Hot Reset
     [7.5.12].  On silicon the Gen2 attempt died exactly here: PORTSC
@@ -1579,8 +1683,18 @@ async def run_hotreset(ctx, bench, hm, rx, model_tx):
       6. SET_ADDRESS(2) delivered to the DEFAULT address: a device
          whose address survived the reset ignores it (red signature);
       7. GetDescriptor(DEVICE) at address 2, full DPH+DPP.
+
+    ``parked=True`` (PHASE=hotreset-parked; bug #49 sim lead (c),
+    session 17): between steps 1 and 2 a control IN transfer is PARKED
+    mid-data-stage -- SETUP acknowledged, IN ACK TP sent, the device's
+    DPH+DPP received but never LGOOD'd and its credit never returned,
+    no STATUS stage.  The bench post-#48 wedge survives hot reset AND
+    the 5G fallback until a power cycle; if the EP0/protocol state
+    machine holds any state across the reset (a pending IN, an
+    un-acked header, a half-open control transfer), steps 5-7 go red.
     """
-    from sim_link_loopback import frame_out_dp, frame_status_tp
+    from sim_link_loopback import frame_out_dp, frame_status_tp, \
+        frame_ack_tp
     host = Gen2LinkHost(ctx, bench, hm, rx, model_tx, tag="HOTRESET")
     ret_idx = {1: 0, 2: 0}
 
@@ -1693,6 +1807,54 @@ async def run_hotreset(ctx, bench, hm, rx, model_tx):
     if not await set_address(1, 0):
         return False
     print("HOTRESET: link initialized, device at address 1")
+
+    if parked:
+        # ── 1b. park a control IN mid-data-stage (lead (c)): the
+        # device is left holding an un-acknowledged DPH (its
+        # PENDING_HP_TIMER running), a consumed type-2 credit, and a
+        # control transfer with no STATUS stage. ──
+        setup = bytes([0x80, 0x06, 0x00, 0x01, 0x00, 0x00, 18, 0x00])
+        await host.send_frame(frame_out_dp(0, 0, setup, setup=1,
+                                           address=1))
+        if not await host.expect("parked SETUP LGOOD",
+                                 lambda e: e[0] == 'lc'
+                                 and e[1] == 0b0000):
+            return False
+        if not await host.expect("parked SETUP credit",
+                                 lambda e: e[0] == 'lc'
+                                 and e[1] == 0b0001):
+            return False
+        ev = await host.expect("parked SETUP ACK TP",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 4)
+        if ev is None:
+            return False
+        host.dev_seq = (host.dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        await return_credit(1)
+        await host.send_frame(frame_ack_tp(ep=0, nseq=0, nump=1,
+                                           direction=1))
+        if not await host.expect("parked IN LGOOD",
+                                 lambda e: e[0] == 'lc'
+                                 and e[1] == 0b0000):
+            return False
+        if not await host.expect("parked IN credit",
+                                 lambda e: e[0] == 'lc'
+                                 and e[1] == 0b0001):
+            return False
+        ev = await host.expect("parked DPH",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 8)
+        if ev is None:
+            return False
+        ev_dpp = await host.expect("parked DPP",
+                                   lambda e: e[0] == 'dpp')
+        if ev_dpp is None:
+            return False
+        # NO LGOOD, NO credit return, NO STATUS: the transfer is
+        # parked mid-data-stage as the reset begins.
+        print("HOTRESET: control IN parked mid-data-stage (DPH "
+              "un-acknowledged, credit held, no STATUS)")
 
     # ── 2. Recovery entry: TS1s ──
     def count_ts(kind, reset_bit=None, since=0):
@@ -1986,9 +2148,417 @@ async def run_recovery(ctx, bench, hm, rx, model_tx):
     if host.errors:
         print(f"RECOVERY FAIL: parser errors: {host.errors[:6]}")
         return False
+
+    # The #49 lead-(a) instrument (session 17): the bench canary fires
+    # txfifo-hi28 ~71k/s against ~5.5k host retrains/s (~13 hi28
+    # cycles per retrain) -- if the TX FIFO overshoots the #44 band
+    # across U0->Recovery->U0 crossings, it must reproduce here under
+    # the real gearbox drain law.
+    print(f"RECOVERY: PHY TX FIFO across {3} retrain crossings: max "
+          f"{rx.fifo_max}/32, hi28 cycles {rx.fifo_hi28}, "
+          f"starved {rx.fifo_starved}, overflow {rx.fifo_overflow}")
+    if rx.fifo_overflow or rx.fifo_hi28 or rx.fifo_starved:
+        print(f"RECOVERY FAIL: PHY TX FIFO left the pacing band across "
+              f"a retrain (hi28={rx.fifo_hi28} starved={rx.fifo_starved} "
+              f"overflow={rx.fifo_overflow}) -- the #49 lead (a) shape")
+        return False
     print("RECOVERY: three mid-traffic Recovery passes with preserved "
           "sequence numbers and full 4+4 re-advertisement -- the U0 "
           "re-initialization surface works at Gen2")
+    return True
+
+
+async def run_reccut(ctx, bench, hm, rx, model_tx):
+    """Bug #49 sim lead (b) (session 17): a control transfer CUT by a
+    host-initiated Recovery mid-data-stage.  The bench evidence: the
+    full-BOS read dies EPROTO -71 while the host retrains at kHz rates
+    throughout the window -- a retrain lands between the host's IN ACK
+    TP and the device's DPP with certainty at those rates.  The
+    idealized enum ladder never overlaps a retrain with a transfer;
+    this phase does, at swept offsets:
+
+      offset 0       the TS1 burst begins IMMEDIATELY after the IN ACK
+                     TP is acknowledged -- the device is yanked while
+                     preparing or transmitting the DPH/DPP;
+      offset 1..N    idle blocks first, walking the cut across the
+                     DPH, the DPH/DPP seam and the DPP body.
+
+    After each retrain + re-advertisement the device must retransmit
+    the un-acknowledged DP -- SAME link-header sequence number,
+    byte-exact SAME payload [7.2.4.1.1 rule 7, 7.2.4.1.5]; if the cut
+    landed after the full DP was properly received, the host's
+    advertisement covers it and NO retransmission may occur.  The
+    STATUS stage then completes, and a further full control transfer
+    proves EP0 survived (the #49 post-failure wedge shape).  The
+    PHY TX FIFO instrument rides along: the #44 pacing band must hold
+    across every mid-transfer retrain (lead (a) under overlap).
+
+    The #37 parked item (truncated inbound DPP never retried) is the
+    RX-side sibling of this surface; a red here localizes the wedge.
+    """
+    from sim_link_loopback import frame_out_dp, frame_ack_tp, \
+        frame_status_tp
+    host = Gen2LinkHost(ctx, bench, hm, rx, model_tx, tag="RECCUT")
+    ret_idx = {1: 0, 2: 0}
+
+    async def return_credit(series):
+        sub = (0b0100 if series == 2 else 0) | ret_idx[series]
+        ret_idx[series] = (ret_idx[series] + 1) & 3
+        await host.send_lc(0b0001, sub)
+
+    async def link_init(tag, legal_lgoods):
+        """Advertisement exchange; returns the device's advertised
+        LGOOD (the last host header it PROPERLY received -- a header
+        fully delivered but yanked out of the RX pipeline by the
+        retrain may legitimately be excluded: the host then
+        retransmits past the advertisement, exactly like the real
+        xHC), or None on failure."""
+        ev = await host.expect(f"LGOOD advertisement ({tag})",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None:
+            return None
+        if ev[2] not in legal_lgoods:
+            print(f"RECCUT FAIL: advertisement LGOOD_{ev[2]} ({tag}), "
+                  f"legal values {sorted(legal_lgoods)}")
+            return None
+        lgood = ev[2]
+        adv = []
+        for _ in range(8):
+            ev = await host.expect(f"credit advertisement ({tag})",
+                                   lambda e: e[0] == 'lc'
+                                   and e[1] == 0b0001)
+            if ev is None:
+                print(f"RECCUT FAIL: short credit advertisement ({tag})")
+                return None
+            adv.append(ev[2])
+        if [c & 3 for c in adv if not (c & 4)] != [0, 1, 2, 3] or \
+                [c & 3 for c in adv if c & 4] != [0, 1, 2, 3]:
+            print(f"RECCUT FAIL: advertisement "
+                  f"{['%#x' % c for c in adv]} not 4+4 ({tag})")
+            return None
+        syms = link_command_syms(0b0000, (host.dev_seq - 1) & 0xF)
+        for i in range(4):
+            syms += link_command_syms(0b0001, i)
+        for i in range(4):
+            syms += link_command_syms(0b0001, 0b0100 | i)
+        await host.send_syms(syms)
+        return lgood
+
+    async def drain_lmps():
+        while True:
+            ev = await host.expect("link-up LMP",
+                                   lambda e: e[0] == 'hdr'
+                                   and (e[1][0] & 0x1F) == 0,
+                                   timeout_blocks=400, quiet=True)
+            if ev is None:
+                return True
+            if ev[2] != host.dev_seq:
+                print(f"RECCUT FAIL: LMP seq {ev[2]} != {host.dev_seq}")
+                return False
+            host.dev_seq = (host.dev_seq + 1) & 0xF
+            await host.send_lc(0b0000, ev[2])
+            await return_credit(1)
+
+    async def retrain(tag):
+        """Yank the link into Recovery with TS1s, run the handshake,
+        clear the (legitimately truncated) parser state, re-init."""
+        mark = len(rx.blocks)
+
+        def count_ts(kind, since):
+            return sum(1 for h, s in rx.blocks[since:]
+                       if h == BLOCK_CONTROL and s and s[0] == int(kind))
+
+        for _ in range(12):
+            await feed_blocks(ctx, bench, model_tx,
+                              [sync_block()] + [ts1_block()] * 32, rx, hm)
+            if count_ts(BlockType.TS1, mark) >= 8:
+                break
+        if count_ts(BlockType.TS1, mark) < 8:
+            print(f"RECCUT FAIL: {tag}: no TS1s from device")
+            return False
+        mark2 = len(rx.blocks)
+        for _ in range(8):
+            await feed_blocks(ctx, bench, model_tx,
+                              [sync_block()] + [ts2_block()] * 16, rx, hm)
+            if count_ts(BlockType.TS2, mark2) >= 8:
+                break
+        await feed_blocks(ctx, bench, model_tx,
+                          [skp_block(), sds_block()]
+                          + [idle_block()] * 20, rx, hm)
+        # The cut legitimately truncates the device's wire stream:
+        # reset the parser mid-construct state and drop cut artifacts.
+        host.events.clear()
+        host.errors.clear()
+        host._state = 'search'
+        host._syms = []
+        host._dph_pending = False
+        host._cursor = len(rx.blocks)
+        ret_idx[1] = ret_idx[2] = 0
+        return True
+
+    async def send_frame_with_seq(frame, seq):
+        """Retransmit a host frame with its ORIGINAL header sequence
+        number (rule-7 go-back-N; ``send_frame`` would renumber)."""
+        is_dp = frame["payload"] is not None
+        syms = header_packet_syms(frame["dw0"], frame["dw1"],
+                                  frame["dw2"], seq,
+                                  start=DPHSTART if is_dp else HPSTART)
+        if is_dp:
+            syms += dpp_syms(frame["payload"])
+        await host.send_syms(syms)
+
+    # ── link-up + SET_ADDRESS(1) ──
+    host.dev_seq = 0
+    if await link_init("initial", {15}) is None:
+        return False
+    if not await drain_lmps():
+        return False
+    setup = bytes([0x00, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00])
+    await host.send_frame(frame_out_dp(0, 0, setup, setup=1, address=0))
+    if not await host.expect("SET_ADDRESS LGOOD",
+                             lambda e: e[0] == 'lc' and e[1] == 0b0000):
+        return False
+    if not await host.expect("SET_ADDRESS credit",
+                             lambda e: e[0] == 'lc' and e[1] == 0b0001):
+        return False
+    ev = await host.expect("SET_ADDRESS ACK TP",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 4)
+    if ev is None:
+        return False
+    host.dev_seq = (host.dev_seq + 1) & 0xF
+    await host.send_lc(0b0000, ev[2])
+    await return_credit(1)
+    await host.send_frame(frame_status_tp(0, address=0))
+    if not await host.expect("STATUS LGOOD",
+                             lambda e: e[0] == 'lc' and e[1] == 0b0000):
+        return False
+    if not await host.expect("STATUS credit",
+                             lambda e: e[0] == 'lc' and e[1] == 0b0001):
+        return False
+    ev = await host.expect("STATUS ACK TP",
+                           lambda e: e[0] == 'hdr'
+                           and (e[1][0] & 0x1F) == 4)
+    if ev is None:
+        return False
+    host.dev_seq = (host.dev_seq + 1) & 0xF
+    await host.send_lc(0b0000, ev[2])
+    await return_credit(1)
+    print("RECCUT: SET_ADDRESS complete; sweeping mid-data-stage cuts")
+
+    expected_payload = None
+
+    # ── the sweep: GetDescriptor(Device, 18) cut at swept offsets ──
+    for offset in (0, 1, 2, 3, 4, 8, 24):
+        setup = bytes([0x80, 0x06, 0x00, 0x01, 0x00, 0x00, 18, 0x00])
+        await host.send_frame(frame_out_dp(0, 0, setup, setup=1,
+                                           address=1))
+        if not await host.expect("GetDescriptor SETUP LGOOD",
+                                 lambda e: e[0] == 'lc'
+                                 and e[1] == 0b0000):
+            return False
+        if not await host.expect("GetDescriptor SETUP credit",
+                                 lambda e: e[0] == 'lc'
+                                 and e[1] == 0b0001):
+            return False
+        ev = await host.expect("GetDescriptor SETUP ACK TP",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 4)
+        if ev is None:
+            return False
+        if ev[2] != host.dev_seq:
+            print(f"RECCUT FAIL: SETUP ACK seq {ev[2]} != {host.dev_seq} "
+                  f"(offset {offset})")
+            return False
+        host.dev_seq = (host.dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        await return_credit(1)
+
+        # IN token -- the device now owes DPH+DPP...
+        in_ack = frame_ack_tp(ep=0, nseq=0, nump=1, direction=1)
+        ack_seq = host.tx_seq
+        await host.send_frame(in_ack)
+        # ...and the cut lands after ``offset`` idle blocks.
+        await feed_blocks(ctx, bench, model_tx,
+                          [idle_block()] * offset, rx, hm)
+
+        # Classify what made it out before the cut: a COMPLETE DP
+        # (DPH event + CRC-valid DPP event) counts as properly
+        # received; anything less does not.
+        host.pump()
+        dph_seq = None
+        got_payload = None
+        for e in host.events:
+            if e[0] == 'hdr' and (e[1][0] & 0x1F) == 8 and e[3] == 'dph':
+                dph_seq = e[2]
+            elif e[0] == 'dpp' and e[2] and dph_seq is not None:
+                got_payload = e[1]
+        complete_pre_cut = got_payload is not None
+        if complete_pre_cut:
+            host.dev_seq = (dph_seq + 1) & 0xF
+
+        if not await retrain(f"offset {offset}"):
+            return False
+        # The device advertises the last host header it PROPERLY
+        # received: the IN ACK TP (seq ``ack_seq``) if it cleared the
+        # RX pipeline before the yank, else the header before it.
+        lgood = await link_init(f"offset {offset}",
+                                {ack_seq, (ack_seq - 1) & 0xF})
+        if lgood is None:
+            return False
+        if not await drain_lmps():
+            return False
+
+        if lgood != ack_seq:
+            # The IN ACK TP died in the cut: host-side rule-7
+            # retransmission with the ORIGINAL sequence number.
+            print(f"RECCUT: offset {offset}: IN ACK TP (seq {ack_seq}) "
+                  f"not covered by LGOOD_{lgood}; host retransmits")
+            await send_frame_with_seq(in_ack, ack_seq)
+            if not await host.expect(
+                    f"retransmitted-ACK LGOOD (offset {offset})",
+                    lambda e: e[0] == 'lc' and e[1] == 0b0000
+                    and e[2] == ack_seq):
+                return False
+            if not await host.expect(
+                    f"retransmitted-ACK credit (offset {offset})",
+                    lambda e: e[0] == 'lc' and e[1] == 0b0001):
+                return False
+
+        if complete_pre_cut:
+            payload = got_payload
+            print(f"RECCUT: offset {offset}: DP completed pre-cut "
+                  f"(seq {dph_seq}); host advertisement covers it")
+        else:
+            # The DP must now arrive: RETRANSMITTED (if it went out
+            # pre-cut un-acked) or fresh (if the IN ACK TP itself was
+            # cut) -- either way with the device's next unacknowledged
+            # sequence number and a byte-exact payload.
+            ev = await host.expect(
+                f"post-cut DPH (offset {offset})",
+                lambda e: e[0] == 'hdr' and (e[1][0] & 0x1F) == 8
+                and e[3] == 'dph')
+            if ev is None:
+                print(f"RECCUT FAIL: offset {offset}: the cut DP was "
+                      f"never (re)transmitted after the retrain (the "
+                      f"#37 class on the TX side; bug #49 lead (b))")
+                return False
+            if ev[2] != host.dev_seq:
+                print(f"RECCUT FAIL: offset {offset}: post-cut DPH "
+                      f"seq {ev[2]} != {host.dev_seq} (rule-7 go-back-N "
+                      f"must preserve numbering)")
+                return False
+            ev_dpp = await host.expect(
+                f"post-cut DPP (offset {offset})",
+                lambda e: e[0] == 'dpp')
+            if ev_dpp is None:
+                print(f"RECCUT FAIL: offset {offset}: post-cut DPH "
+                      f"without its DPP")
+                return False
+            host.dev_seq = (host.dev_seq + 1) & 0xF
+            await host.send_lc(0b0000, (host.dev_seq - 1) & 0xF)
+            await return_credit(2)
+
+            if len(ev_dpp) > 3 and ev_dpp[3]:
+                # The DL=1 retransmission ABORTED its DPP (the payload
+                # was consumed by the cut transmission; no link-level
+                # copy exists) -- the spec-correct wire shape.  Recovery
+                # of the DATA is the protocol layer's job: the host
+                # re-requests the IN data stage and the endpoint must
+                # re-serve it [the #37 surface, TX side].
+                print(f"RECCUT: offset {offset}: retransmitted DP "
+                      f"aborted its DPP (payload consumed); host "
+                      f"protocol-retries the IN stage")
+                await host.send_frame(frame_ack_tp(ep=0, nseq=0, nump=1,
+                                                   direction=1))
+                if not await host.expect(
+                        f"retry-IN LGOOD (offset {offset})",
+                        lambda e: e[0] == 'lc' and e[1] == 0b0000):
+                    return False
+                if not await host.expect(
+                        f"retry-IN credit (offset {offset})",
+                        lambda e: e[0] == 'lc' and e[1] == 0b0001):
+                    return False
+                ev = await host.expect(
+                    f"re-served DPH (offset {offset})",
+                    lambda e: e[0] == 'hdr' and (e[1][0] & 0x1F) == 8
+                    and e[3] == 'dph')
+                if ev is None:
+                    print(f"RECCUT FAIL: offset {offset}: the endpoint "
+                          f"never re-served the aborted data stage (the "
+                          f"#37 class; the #49 EP0 wedge shape)")
+                    return False
+                if ev[2] != host.dev_seq:
+                    print(f"RECCUT FAIL: offset {offset}: re-served DPH "
+                          f"seq {ev[2]} != {host.dev_seq}")
+                    return False
+                ev_dpp = await host.expect(
+                    f"re-served DPP (offset {offset})",
+                    lambda e: e[0] == 'dpp')
+                if ev_dpp is None:
+                    print(f"RECCUT FAIL: offset {offset}: re-served DPH "
+                          f"without its DPP")
+                    return False
+                host.dev_seq = (host.dev_seq + 1) & 0xF
+                await host.send_lc(0b0000, (host.dev_seq - 1) & 0xF)
+                await return_credit(2)
+
+            payload, crc_ok = ev_dpp[1], ev_dpp[2]
+            if not crc_ok:
+                print(f"RECCUT FAIL: offset {offset}: post-cut DPP "
+                      f"CRC-32 invalid")
+                return False
+
+        if len(payload) != 18 or payload[0] != 0x12 or payload[1] != 0x01:
+            print(f"RECCUT FAIL: offset {offset}: descriptor payload "
+                  f"{payload.hex() if payload else payload} malformed")
+            return False
+        if expected_payload is None:
+            expected_payload = payload
+        elif payload != expected_payload:
+            print(f"RECCUT FAIL: offset {offset}: post-cut payload "
+                  f"{payload.hex()} != original {expected_payload.hex()} "
+                  f"(byte-exactness across the cut)")
+            return False
+
+        # STATUS stage completes the cut transfer.
+        await host.send_frame(frame_status_tp(0, address=1))
+        if not await host.expect("post-cut STATUS LGOOD",
+                                 lambda e: e[0] == 'lc'
+                                 and e[1] == 0b0000):
+            return False
+        if not await host.expect("post-cut STATUS credit",
+                                 lambda e: e[0] == 'lc'
+                                 and e[1] == 0b0001):
+            return False
+        ev = await host.expect("post-cut STATUS ACK TP",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 4)
+        if ev is None:
+            return False
+        host.dev_seq = (host.dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        await return_credit(1)
+        print(f"RECCUT: offset {offset}: transfer completed across the "
+              f"mid-data-stage retrain")
+
+    if host.errors:
+        print(f"RECCUT FAIL: parser errors: {host.errors[:6]}")
+        return False
+
+    # The lead-(a) instrument under transfer/retrain overlap.
+    print(f"RECCUT: PHY TX FIFO across the cut sweep: max "
+          f"{rx.fifo_max}/32, hi28 cycles {rx.fifo_hi28}, "
+          f"starved {rx.fifo_starved}, overflow {rx.fifo_overflow}")
+    if rx.fifo_overflow or rx.fifo_hi28 or rx.fifo_starved:
+        print(f"RECCUT FAIL: PHY TX FIFO left the pacing band across a "
+              f"mid-transfer retrain (hi28={rx.fifo_hi28} "
+              f"starved={rx.fifo_starved} overflow={rx.fifo_overflow}) "
+              f"-- the #49 lead (a) shape under overlap")
+        return False
+    print("RECCUT: every mid-data-stage cut recovered -- rule-7 "
+          "retransmission byte-exact, STATUS stages completed, EP0 "
+          "alive, pacing band held (bug #49 leads (a)+(b) surface)")
     return True
 
 
@@ -2430,10 +3000,12 @@ def main():
                                              continue_to_enum=True)
         elif PHASE == "u0":
             result["ok"] = await phase_train(ctx, bench, u0_checks=True)
-        elif PHASE == "hotreset":
+        elif PHASE in ("hotreset", "hotreset-parked"):
             result["ok"] = await phase_train(ctx, bench, hot_reset=True)
         elif PHASE == "recovery":
             result["ok"] = await phase_train(ctx, bench, recovery=True)
+        elif PHASE == "reccut":
+            result["ok"] = await phase_train(ctx, bench, reccut=True)
         elif PHASE == "advearly":
             result["ok"] = await phase_train(ctx, bench, advearly=True)
         else:

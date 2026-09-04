@@ -211,6 +211,37 @@ if PHASE=recovery TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/
 else
     echo "FAIL gen2-recovery <<<<<<<<"
 fi
+# Mid-transfer Recovery cuts (session 17, bugs #50+#51; the #49 sim
+# lead (b)): a GetDescriptor data stage cut by a host-initiated
+# retrain at swept offsets -- between the IN ACK TP and the DPH,
+# across the DPH/DPP seam, and inside/after the DPP.  RED baselines
+# recorded 2026-09-04: offset 2 = the link-down advertisement race
+# (a header accepted in the first link-down cycle was delivered but
+# NOT covered by the re-advertisement; the partner's rule-7
+# retransmission then reads as a bad sequence -> device-initiated
+# recovery loop, wedged EP0 -- bug #50); offset 24 = the
+# consumed-payload bookkeeping window (a drop between the last
+# payload word and ``done`` left the header marked never-sent; its
+# DL=1 retransmission attached PHANTOM payload instead of aborting
+# the DPP -- garbage on the wire, bug #51).  The PHY TX FIFO pacing
+# band is asserted across every cut (the txfifo-hi28 canary, lead (a)).
+if PHASE=reccut TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_reccut.log 2>&1; then
+    echo "PASS gen2-reccut"
+else
+    echo "FAIL gen2-reccut <<<<<<<<"
+fi
+# Hot Reset with a transfer PARKED mid-data-stage (session 17; the
+# #49 sim lead (c)): SETUP acked, IN token sent, the device's DPH
+# left un-acknowledged with its credit held and no STATUS stage --
+# then the full xHCI port-reset flow.  EP0/protocol state must fully
+# clear: LGOOD_15 + 4+4 re-advertisement, address reset, clean
+# descriptor read (the bench wedge survives hot reset; a parked-state
+# leak here would name the mechanism).
+if PHASE=hotreset-parked TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_hotreset-parked.log 2>&1; then
+    echo "PASS gen2-hotreset-parked"
+else
+    echo "FAIL gen2-hotreset-parked <<<<<<<<"
+fi
 # Concurrent host advertisement (session 16, hardening #47; the #45
 # sim lead (b) of HANDOVER 10u EXECUTED): the host advertises at its
 # physically earliest instant -- gated only on observing the device's

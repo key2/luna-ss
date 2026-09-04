@@ -51,13 +51,18 @@ class CTCSkipRemover(Elaboratable):
         Strobe that indicates that a SKP ordered set was removed.
     """
 
-    def __init__(self):
+    def __init__(self, words=1):
+        # Width program (usb3_design.md 13.5): ``words=2`` removes SKPs
+        # from 8-symbol (64-bit) beats -- the same coalescing shift
+        # register at twice the width; the arrangement switch grows to
+        # 2**8 cases.  ``words=1`` is verbatim.
+        self._words = words
 
         #
         # I/O port
         #
-        self.sink            = USBRawSuperSpeedStream()
-        self.source          = USBRawSuperSpeedStream()
+        self.sink            = USBRawSuperSpeedStream(payload_words=4 * words)
+        self.source          = USBRawSuperSpeedStream(payload_words=4 * words)
 
         self.skip_removed    = Signal()
         self.bytes_in_buffer = Signal(range(len(self.sink.ctrl) + 1))
@@ -201,7 +206,8 @@ class CTCSkipRemover(Elaboratable):
             for i in range(bytes_in_stream, bytes_in_stream * 2):
                 with m.Case(i):
                     # Grab the relevant word from the end of the buffer.
-                    word_position = 8 - i
+                    # (At words=1 this is the historical ``8 - i``.)
+                    word_position = buffer_size_bytes - i
                     m.d.comb += [
                         source.data.eq(data_buffer[8 * word_position : 8 * (word_position + bytes_in_stream)]),
                         source.ctrl.eq(ctrl_buffer[1 * word_position : 1 * (word_position + bytes_in_stream)]),
@@ -231,9 +237,11 @@ class TxStreamSkidBuffer(Elaboratable):
     source: USBRawSuperSpeedStream(), output stream
     """
 
-    def __init__(self):
-        self.sink   = USBRawSuperSpeedStream()
-        self.source = USBRawSuperSpeedStream()
+    def __init__(self, words=1):
+        # Width program: purely ``Signal.like``-shaped internals; the
+        # ``words`` parameter only sizes the streams.  words=1 verbatim.
+        self.sink   = USBRawSuperSpeedStream(payload_words=4 * words)
+        self.source = USBRawSuperSpeedStream(payload_words=4 * words)
 
     def elaborate(self, platform):
         m = Module()
@@ -321,12 +329,18 @@ class CTCSkipInserter(Elaboratable):
 
     SKIP_BYTE_LIMIT = 354
 
-    def __init__(self):
+    def __init__(self, words=1):
+        # Width program: ``words=2`` replaces an 8-symbol beat with FOUR
+        # SKP ordered sets (2 symbols each) once four are owed -- the
+        # Y/354 schedule and its remainder arithmetic are unchanged, the
+        # emission granularity doubles with the beat.  words=1 verbatim.
+        self._words = words
+
         #
         # I/O port
         #
-        self.sink          = USBRawSuperSpeedStream()
-        self.source        = USBRawSuperSpeedStream()
+        self.sink          = USBRawSuperSpeedStream(payload_words=4 * words)
+        self.source        = USBRawSuperSpeedStream(payload_words=4 * words)
 
         self.can_send_skip = Signal()
         self.sending_skip  = Signal()
@@ -338,6 +352,10 @@ class CTCSkipInserter(Elaboratable):
         sink   = self.sink
         source = self.source
 
+        # Ordered sets emitted per insertion beat (a SKP ordered set is
+        # two SKP symbols): 2 at words=1, 4 at words=2.
+        sets_per_beat = 2 * self._words
+
         #
         # SKP scheduling.
         #
@@ -346,7 +364,12 @@ class CTCSkipInserter(Elaboratable):
         #   (20 bytes of DPH) + (1036 bytes of DPP) + (6 bytes of SKP)
         # This sequence is 1062, or 354*3, bytes long. Since we only transmit pairs of SKP ordered sets,
         # the maximum amount of pending SKP ordered sets at any time is 4.
-        skips_to_send = Signal(range(5))
+        #
+        # At words=2 the emission threshold is four sets; the same 1062-byte
+        # stretch can accumulate three MORE sets on top of a just-below-
+        # threshold count of three, so the saturation bound rises to 7.
+        skips_to_send = Signal(range(5)) if self._words == 1 \
+            else Signal(range(8))
         skip_needed   = Signal()
 
         # Precisely count the amount of skip ordered sets that will be inserted at the next opportunity.
@@ -356,13 +379,14 @@ class CTCSkipInserter(Elaboratable):
         # The counter saturates rather than wrapping: if insertion opportunities are
         # ever delayed beyond four pending sets, wrapping would silently discard eight
         # ordered sets' worth of compensation and permanently break the average rate.
+        saturation_bound = 4 if self._words == 1 else 7
         with m.If(skip_needed & ~self.sending_skip):
-            with m.If(skips_to_send != 4):
+            with m.If(skips_to_send != saturation_bound):
                 m.d.ss += skips_to_send.eq(skips_to_send + 1)
         with m.If(~skip_needed & self.sending_skip):
-            m.d.ss += skips_to_send.eq(skips_to_send - 2)
+            m.d.ss += skips_to_send.eq(skips_to_send - sets_per_beat)
         with m.If(skip_needed & self.sending_skip):
-            m.d.ss += skips_to_send.eq(skips_to_send - 1)
+            m.d.ss += skips_to_send.eq(skips_to_send - (sets_per_beat - 1))
 
 
         #
@@ -399,7 +423,7 @@ class CTCSkipInserter(Elaboratable):
         # Although [USB3.0r1: 6.4.3] allows "during training only [...] the option of waiting to insert 2 SKP
         # ordered sets when the integer result of Y/354 reaches 2", inserting individual SKP ordered sets on
         # a 32-bit data path has considerable overhead, and we only insert pairs.
-        with m.If(self.can_send_skip & (skips_to_send >= 2)):
+        with m.If(self.can_send_skip & (skips_to_send >= sets_per_beat)):
             m.d.comb += self.sending_skip.eq(1)
             m.d.ss += [
                 source.valid       .eq(1),

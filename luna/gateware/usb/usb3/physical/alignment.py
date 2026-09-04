@@ -21,18 +21,23 @@ class RxWordAligner(Elaboratable):
     relevant commas always fall in the data's LSB (little endian).
     """
 
-    def __init__(self):
+    def __init__(self, words=1):
+        # Width program (usb3_design.md 13.5): ``words=2`` aligns
+        # 8-symbol (64-bit) beats -- the same two-beat conglomeration
+        # searched at eight byte offsets; the 4-symbol alignment
+        # criteria windows are unchanged.  ``words=1`` is verbatim.
+        self._words = words
 
         #
         # I/O port
         #
 
         # Inputs and outputs.
-        self.sink      = USBRawSuperSpeedStream()
-        self.source    = USBRawSuperSpeedStream()
+        self.sink      = USBRawSuperSpeedStream(payload_words=4 * words)
+        self.source    = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Debug signals
-        self.alignment_offset = Signal(range(4))
+        self.alignment_offset = Signal(range(4 * words))
 
 
     @staticmethod
@@ -63,7 +68,7 @@ class RxWordAligner(Elaboratable):
 
         # Alignment register: stores how many words the data must be shifted by in order to
         # have correctly aligned data.
-        shift_to_apply = Signal(range(4))
+        shift_to_apply = Signal(range(4 * self._words))
 
         #
         # Alignment shift register.
@@ -74,8 +79,8 @@ class RxWordAligner(Elaboratable):
         ctrl = Cat(previous_ctrl, self.sink.ctrl)
 
         # Create two multiplexers that allow us to select from each of our four possible alignments.
-        shifted_data_slices = Array(data[8*i:] for i in range(4))
-        shifted_ctrl_slices = Array(ctrl[i:]   for i in range(4))
+        shifted_data_slices = Array(data[8*i:] for i in range(4 * self._words))
+        shifted_ctrl_slices = Array(ctrl[i:]   for i in range(4 * self._words))
 
 
         #
@@ -84,7 +89,7 @@ class RxWordAligner(Elaboratable):
         # We'll check each possible alignment to see if it would produce a valid start-of-TS1/TS2;
         # ignoring any words not marked as valid.
         changing_shift = Signal()
-        new_shift      = Signal(2)
+        new_shift      = Signal(range(4 * self._words))
 
         with m.If(self.sink.valid):
             possible_alignments = len(shifted_data_slices)

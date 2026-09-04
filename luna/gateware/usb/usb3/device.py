@@ -29,10 +29,32 @@ class USBSuperSpeedDevice(Elaboratable):
     """ Core gateware common to all LUNA USB3 devices. """
 
     def __init__(self, *, phy, sync_frequency=None, gen2=False,
+                 core_width=64,
                  tseq_burst_length=65536, polling_timeout_scale=1.0,
                  ssp_capability=None, phy_boots_gen2=True):
         self._phy = phy
         self._sync_frequency = sync_frequency
+        # The WIDTH PROGRAM elaboration point (usb3_design.md 13.1):
+        # ``core_width`` names the PIPE-register / Gen2-block width of
+        # the elaboration; the LUNA link/protocol streams run at
+        # core_width/2.  64 (default) is today's netlist BIT-FOR-BIT --
+        # the shipping-parity fence proves it after every shared-file
+        # change.  128 selects the wide core: 64-bit streams, the Gen1
+        # native 8-symbol trim at 62.5 MHz, and the Gen2 one-beat-per-
+        # block machinery at pclk/2 = 78.125 behind the 2:1 PIPE
+        # bridge.  The 128 elaboration lights up unit by unit through
+        # the V1 work list (13.5); until then it raises here.
+        if core_width not in (64, 128):
+            raise ValueError(f"core_width must be 64 or 128, "
+                             f"not {core_width!r}")
+        if core_width == 128:
+            raise NotImplementedError(
+                "core_width=128 is the width-program V1 target "
+                "(usb3_design.md 13.5): stream widening, wide CRC "
+                "units, the 128-bit Gen2 block machinery and the 2:1 "
+                "PIPE bridge land unit by unit; this gate lifts when "
+                "the w128 battery entries are green")
+        self._core_width = core_width
         # Gen2 (SuperSpeedPlus) capability.  Session 11d onward, built
         # up mechanism by mechanism per doc/gen2_design.md; with the
         # default False the device elaborates exactly the proven Gen1

@@ -65,8 +65,15 @@ class HeaderPacketCRC(Elaboratable):
             The initial value of the CRC shift register; the USB default is used if not provided.
     """
 
-    def __init__(self, initial_value=0xFFFF):
+    def __init__(self, initial_value=0xFFFF, words=1):
         self._initial_value = initial_value
+        # Width-program (usb3_design.md 13.5): ``words=2`` adds a
+        # 64-bit two-word advance (``advance_crc2`` over
+        # ``data_input2``), built by COMPOSING the spec-lifted 32-bit
+        # polynomial twice in one cycle -- no re-derived taps.  A
+        # 12-byte header CRC at 64-bit streams advances 8B then 4B.
+        # ``words=1`` elaborates the historical class verbatim.
+        self._words = words
 
         #
         # I/O port
@@ -75,6 +82,9 @@ class HeaderPacketCRC(Elaboratable):
 
         self.data_input  = Signal(32)
         self.advance_crc = Signal()
+        if words == 2:
+            self.data_input2  = Signal(64)   # byte 0 = bits [0:8]
+            self.advance_crc2 = Signal()
 
         self.crc   = Signal(16, init=initial_value)
 
@@ -144,6 +154,16 @@ class HeaderPacketCRC(Elaboratable):
         with m.Elif(self.advance_crc):
             m.d.ss += crc.eq(self._generate_next_crc(crc, self.data_input))
 
+        if self._words == 2:
+            # Two-word (64-bit) advance: the 32-bit transformation
+            # composed over both words in one cycle (word 0 = the
+            # earlier-on-the-wire DW = bits [0:32]).
+            with m.Elif(self.advance_crc2):
+                after_w0 = self._generate_next_crc(
+                    crc, self.data_input2[0:32])
+                m.d.ss += crc.eq(self._generate_next_crc(
+                    after_w0, self.data_input2[32:64]))
+
         # Convert from our intermediary "running CRC" format into the current CRC-16...
         m.d.comb += self.crc.eq(~crc[::-1])
 
@@ -192,8 +212,16 @@ class DataPacketPayloadCRC(Elaboratable):
             The initial value of the CRC shift register; the USB default is used if not provided.
     """
 
-    def __init__(self, initial_value=0xFFFFFFFF):
+    def __init__(self, initial_value=0xFFFFFFFF, words=1):
         self._initial_value = initial_value
+        # Width-program (usb3_design.md 13.5): ``words=2`` adds the
+        # 64-bit surface -- an 8-byte advance and the 4..7-byte tails,
+        # all built by COMPOSING the spec-lifted 32-bit/tail
+        # transformations in one cycle (no re-derived taps).  Tail
+        # bytes occupy the LOW end of ``data_input2`` (byte 0 = bits
+        # [0:8] = first on the wire), matching the 32-bit convention.
+        # ``words=1`` elaborates the historical class verbatim.
+        self._words = words
 
         #
         # I/O port
@@ -210,6 +238,19 @@ class DataPacketPayloadCRC(Elaboratable):
         self.next_crc_3B = Signal(32)
         self.next_crc_2B = Signal(32)
         self.next_crc_1B = Signal(32)
+
+        if words == 2:
+            self.data_input2    = Signal(64)
+            self.advance_2words = Signal()
+            self.advance_7B     = Signal()
+            self.advance_6B     = Signal()
+            self.advance_5B     = Signal()
+            self.advance_4B     = Signal()
+
+            self.next_crc_7B    = Signal(32)
+            self.next_crc_6B    = Signal(32)
+            self.next_crc_5B    = Signal(32)
+            self.next_crc_4B    = Signal(32)
 
 
     def _generate_next_full_crc(self, current_crc, data_in):
@@ -399,11 +440,38 @@ class DataPacketPayloadCRC(Elaboratable):
         next_crc_1B = Signal.like(crc)
 
         # Compute each of our theoretical partial "next-CRC" values.
+        # (words=2: data_input2 is THE input port -- the sub-4B tails
+        # read its low bytes, so the wide unit has a single input.)
+        tail_src = self.data_input if self._words == 1 else self.data_input2
         m.d.comb += [
-            next_crc_3B.eq(self._generate_next_3B_crc(crc, self.data_input[0:24])),
-            next_crc_2B.eq(self._generate_next_2B_crc(crc, self.data_input[0:16])),
-            next_crc_1B.eq(self._generate_next_1B_crc(crc, self.data_input[0:8])),
+            next_crc_3B.eq(self._generate_next_3B_crc(crc, tail_src[0:24])),
+            next_crc_2B.eq(self._generate_next_2B_crc(crc, tail_src[0:16])),
+            next_crc_1B.eq(self._generate_next_1B_crc(crc, tail_src[0:8])),
         ]
+
+        if self._words == 2:
+            # 64-bit surface: word 0 = bits [0:32] is earlier on the
+            # wire; every wide transformation is the 32-bit full-word
+            # transformation over word 0 COMPOSED with a (partial-)word
+            # transformation over the upper bytes.
+            after_w0    = self._generate_next_full_crc(
+                crc, self.data_input2[0:32])
+            next_crc_2W = Signal.like(crc)
+            next_crc_7B = Signal.like(crc)
+            next_crc_6B = Signal.like(crc)
+            next_crc_5B = Signal.like(crc)
+            next_crc_4B = Signal.like(crc)
+            m.d.comb += [
+                next_crc_2W.eq(self._generate_next_full_crc(
+                    after_w0, self.data_input2[32:64])),
+                next_crc_7B.eq(self._generate_next_3B_crc(
+                    after_w0, self.data_input2[32:56])),
+                next_crc_6B.eq(self._generate_next_2B_crc(
+                    after_w0, self.data_input2[32:48])),
+                next_crc_5B.eq(self._generate_next_1B_crc(
+                    after_w0, self.data_input2[32:40])),
+                next_crc_4B.eq(after_w0),
+            ]
 
         # If we're clearing our CRC in progress, move our holding register back to
         # our initial value.
@@ -420,6 +488,18 @@ class DataPacketPayloadCRC(Elaboratable):
         with m.Elif(self.advance_1B):
             m.d.ss   += crc.eq(next_crc_1B)
 
+        if self._words == 2:
+            with m.Elif(self.advance_2words):
+                m.d.ss += crc.eq(next_crc_2W)
+            with m.Elif(self.advance_7B):
+                m.d.ss += crc.eq(next_crc_7B)
+            with m.Elif(self.advance_6B):
+                m.d.ss += crc.eq(next_crc_6B)
+            with m.Elif(self.advance_5B):
+                m.d.ss += crc.eq(next_crc_5B)
+            with m.Elif(self.advance_4B):
+                m.d.ss += crc.eq(next_crc_4B)
+
 
         # Convert from our intermediary "running CRC" format into the correct CRC32 outputs.
         m.d.comb += [
@@ -428,5 +508,13 @@ class DataPacketPayloadCRC(Elaboratable):
             self.next_crc_2B  .eq(~next_crc_2B[::-1]),
             self.next_crc_1B  .eq(~next_crc_1B[::-1])
         ]
+
+        if self._words == 2:
+            m.d.comb += [
+                self.next_crc_7B.eq(~next_crc_7B[::-1]),
+                self.next_crc_6B.eq(~next_crc_6B[::-1]),
+                self.next_crc_5B.eq(~next_crc_5B[::-1]),
+                self.next_crc_4B.eq(~next_crc_4B[::-1]),
+            ]
 
         return m

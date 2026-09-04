@@ -211,6 +211,21 @@ if PHASE=recovery TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/
 else
     echo "FAIL gen2-recovery <<<<<<<<"
 fi
+# Concurrent host advertisement (session 16, hardening #47; the #45
+# sim lead (b) of HANDOVER 10u EXECUTED): the host advertises at its
+# physically earliest instant -- gated only on observing the device's
+# own idle stream -- across swept sub-block offsets on every recovery
+# re-entry.  VERDICT: under causally-legal timing the historical RTL
+# was NOT red (the RX pipeline delays the advertisement past
+# link_ready) -- candidate (b) does not reproduce #45; the widened
+# gen2 capture window (listen = idle states + U0) lands as hardening
+# (the truly-early stimulus red: a credit-starved link that trains,
+# receives, and never transmits a header).
+if PHASE=advearly TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_advearly.log 2>&1; then
+    echo "PASS gen2-advearly"
+else
+    echo "FAIL gen2-advearly <<<<<<<<"
+fi
 # Negative control: withholding the host's Type-2 credits must starve
 # the device's descriptor DP (proves the LCRD2 pool gating is real).
 if PHASE=enum TSEQ_LEN=64 NEG=nolcrd2 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_gen2_neg.log 2>&1; then

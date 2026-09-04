@@ -526,6 +526,19 @@ class PacketTransmitter(Elaboratable):
         self.usb_reset             = Signal()
         self.bringup_complete      = Signal()
 
+        # Link-command CAPTURE window (gen2 builds; unused -- and
+        # pruned -- at gen1): asserted from the idle-handshake states
+        # (Polling.Idle / Recovery.Idle) through U0.  The partner's U0
+        # entry needs only 8 of OUR idle symbols -- which we stream
+        # from Idle entry -- so its Header Sequence Number
+        # Advertisement can legally arrive up to the whole idle-
+        # handshake skew BEFORE our own ``enable`` (bug #47: the
+        # detector historically sat in ResetInserter(~enable) and ate
+        # any advertisement arriving before or straddling the enable
+        # edge -- a credit-starved link that trains, receives, and can
+        # never transmit a header; sim red PHASE=advearly).
+        self.listen                = Signal()
+
         # High when operating at the SuperSpeedPlus rate (gen2 builds).
         self.gen2_active           = Signal()
 
@@ -896,8 +909,18 @@ class PacketTransmitter(Elaboratable):
         # command, read a wrong LGOOD/LCRD out of it, and immediately
         # force ANOTHER recovery (observed with the force-recovery hook
         # strobed while a host link-command burst was mid-wire).
+        # gen2 builds widen the detector's live window to ``listen``
+        # (idle-handshake states + U0; see the port comment -- bug #47):
+        # the reset protection against mid-command truncation by a
+        # retrain (bug #36) is preserved, because ``listen`` drops with
+        # ``enable`` the moment training-class states are entered.
+        # Gen1 elaborations keep the historical ~enable reset verbatim.
+        if self._gen2:
+            detector_quiet = ~(self.enable | self.listen)
+        else:
+            detector_quiet = ~self.enable
         m.submodules.lc_detector = lc_detector = \
-            ResetInserter({"ss": ~self.enable})(LinkCommandDetector())
+            ResetInserter({"ss": detector_quiet})(LinkCommandDetector())
         m.d.comb += [
             lc_detector.sink            .tap(self.sink),
             self.link_command_received  .eq(lc_detector.new_command)
@@ -1107,7 +1130,16 @@ class PacketTransmitter(Elaboratable):
         #
         # Reset Handling
         #
-        with m.If(~self.enable):
+        # gen2: the clear is held only while the CAPTURE window is
+        # closed (~(enable | listen)), NOT while merely ~enable -- an
+        # advertisement legally captured during the idle-handshake
+        # states (bug #47) must survive into U0.  Gen1 keeps the
+        # historical ~enable level clear verbatim.
+        if self._gen2:
+            clear_state = ~(self.enable | self.listen)
+        else:
+            clear_state = ~self.enable
+        with m.If(clear_state):
             m.d.ss += [
                 self.bringup_complete     .eq(0),
 

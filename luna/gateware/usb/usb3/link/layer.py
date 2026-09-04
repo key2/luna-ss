@@ -360,6 +360,19 @@ class USB3LinkLayer(Elaboratable):
         if self._gen2:
             m.d.comb += transmitter.gen2_active \
                 .eq(physical_layer.operating_gen2)
+            # Bug #47: the partner's Header Sequence Number
+            # Advertisement can legally arrive during OUR idle-
+            # handshake window (its U0 entry needs only 8 of our idle
+            # symbols, which we stream from Idle entry) -- open the
+            # transmitter's link-command CAPTURE window from the idle
+            # states onward, and keep the recovery flavor of the
+            # coming U0 entry valid from Idle entry (the entering_u0
+            # latch below is too late for an early-captured
+            # advertisement's rule-7 disposition).
+            m.d.comb += transmitter.listen \
+                .eq(perform_idle_r | link_ready)
+            with m.If(ltssm.perform_idle_handshake):
+                m.d.ss += u0_from_recovery.eq(ltssm.in_recovery_idle)
         m.d.comb += [
             transmitter.sink                .tap(physical_layer.source),
             transmitter.enable              .eq(link_ready),

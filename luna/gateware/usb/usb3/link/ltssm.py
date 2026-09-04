@@ -109,6 +109,12 @@ class LTSSMController(Elaboratable):
         # flushed (as they are on entry from Polling or Hot Reset).
         self.entering_u0_from_recovery = Signal()
 
+        # Level decode of Recovery.Idle (gen2 elaborations only): the
+        # link layer's early link-command capture window (bug #47)
+        # needs the coming U0 entry's recovery flavor from Idle entry
+        # onward, before ``entering_u0`` strobes.
+        self.in_recovery_idle          = Signal()
+
         # External event controls.
         self.trigger_link_recovery     = Signal()
 
@@ -1204,6 +1210,9 @@ class LTSSMController(Elaboratable):
                     self.enable_scrambling       .eq(~self.request_no_scrambling & ~disable_scrambling_seen),
                     self.perform_idle_handshake  .eq(1)
                 ]
+                if self._gen2:
+                    # Early-capture support (bug #47; gen1 verbatim).
+                    m.d.comb += self.in_recovery_idle.eq(1)
 
                 # If a hot-reset is being requested, we'll enter Hot Reset.Active.
                 with m.If(hot_reset_seen):

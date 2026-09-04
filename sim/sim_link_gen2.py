@@ -909,7 +909,7 @@ IDLE_SYM = int(BlockType.LIS)          # Gen2 Idle Symbol, 5Ah [7.1.2]
 
 
 async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False,
-                      hot_reset=False, recovery=False):
+                      hot_reset=False, recovery=False, advearly=False):
     pipe = bench.pipe
     await bringup(ctx, pipe)
     hm = HostModem(ctx, bench)
@@ -1005,6 +1005,8 @@ async def phase_train(ctx, bench, continue_to_enum=False, u0_checks=False,
         return await run_hotreset(ctx, bench, hm, rx, model_tx)
     if recovery:
         return await run_recovery(ctx, bench, hm, rx, model_tx)
+    if advearly:
+        return await run_advearly(ctx, bench, hm, rx, model_tx)
     if not continue_to_enum:
         return True
     return await run_enum(ctx, bench, hm, rx, model_tx,
@@ -1884,6 +1886,193 @@ async def run_recovery(ctx, bench, hm, rx, model_tx):
     return True
 
 
+async def run_advearly(ctx, bench, hm, rx, model_tx):
+    """The CONCURRENT-advertisement surface (#45 sim lead (b), HANDOVER
+    10u): on silicon the host reaches U0 FIRST -- its U0 entry needs
+    only 8 of OUR idle symbols, which we stream from Polling/Recovery
+    .Idle entry, so its Header Sequence Number Advertisement can land
+    up to the whole idle-handshake skew BEFORE our own U0 entry.  The
+    historical link-command detector sat in ResetInserter(~link_ready)
+    and ATE any part of the burst arriving before -- or straddling --
+    the enable edge: a fully eaten advertisement starves the device of
+    TX credits forever (its headers never dispatch); a straddled one
+    mis-indexes the first caught LCRD and forces an OUR-side recovery,
+    re-aligning deterministically on every re-entry (the metronome
+    shape of #45).
+
+    Stimulus: plain Recovery passes; on each re-entry the host sends
+    its advertisement EARLY -- embedded in the SDS/idle feed at a
+    swept offset (block and half-block granularity) -- and only then
+    waits for the device's.  Traffic with preserved numbering must
+    resume on every pass; device-initiated TS1s in the aftermath
+    window are a verdict failure."""
+    from sim_link_loopback import frame_out_dp
+    host = Gen2LinkHost(ctx, bench, hm, rx, model_tx, tag="ADVEARLY")
+    ret_idx = {1: 0, 2: 0}
+
+    async def return_credit(series):
+        sub = (0b0100 if series == 2 else 0) | ret_idx[series]
+        ret_idx[series] = (ret_idx[series] + 1) & 3
+        await host.send_lc(0b0001, sub)
+
+    def adv_syms():
+        syms = link_command_syms(0b0000, (host.dev_seq - 1) & 0xF)
+        for i in range(4):
+            syms += link_command_syms(0b0001, i)
+        for i in range(4):
+            syms += link_command_syms(0b0001, 0b0100 | i)
+        return syms
+
+    async def expect_device_adv(tag, expect_lgood):
+        ev = await host.expect(f"LGOOD advertisement ({tag})",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None or ev[2] != expect_lgood:
+            print(f"ADVEARLY FAIL: device advertisement {ev} ({tag}), "
+                  f"expected LGOOD_{expect_lgood}")
+            return False
+        for _ in range(8):
+            ev = await host.expect(f"credit advertisement ({tag})",
+                                   lambda e: e[0] == 'lc'
+                                   and e[1] == 0b0001)
+            if ev is None:
+                print(f"ADVEARLY FAIL: short credit advertisement ({tag})")
+                return False
+        return True
+
+    async def setup_ack(tag, first_lgood):
+        """One SETUP DP -> LGOOD/LCRD2 -> ACK TP round: the ACK TP is
+        the direct proof the device holds TX credits from OUR (early)
+        advertisement."""
+        setup = bytes([0x00, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00])
+        await host.send_frame(frame_out_dp(0, 0, setup, setup=1,
+                                           address=0))
+        ev = await host.expect(f"SETUP LGOOD ({tag})",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0000)
+        if ev is None or ev[2] != first_lgood:
+            print(f"ADVEARLY FAIL: SETUP ack {ev} != LGOOD_{first_lgood} "
+                  f"({tag})")
+            return False
+        ev = await host.expect(f"SETUP credit ({tag})",
+                               lambda e: e[0] == 'lc' and e[1] == 0b0001)
+        if ev is None:
+            return False
+        ev = await host.expect(
+            f"SETUP ACK TP ({tag}; requires the early advertisement's "
+            f"credits)", lambda e: e[0] == 'hdr'
+            and (e[1][0] & 0x1F) == 4)
+        if ev is None:
+            return False
+        if ev[2] != host.dev_seq:
+            print(f"ADVEARLY FAIL: ACK seq {ev[2]} != {host.dev_seq} "
+                  f"({tag})")
+            return False
+        host.dev_seq = (host.dev_seq + 1) & 0xF
+        await host.send_lc(0b0000, ev[2])
+        await return_credit(1)
+        return True
+
+    def count_ts(kind, since):
+        return sum(1 for h, s in rx.blocks[since:]
+                   if h == BLOCK_CONTROL and s and s[0] == int(kind))
+
+    async def drain_lmps():
+        while True:
+            ev = await host.expect("link-up LMP",
+                                   lambda e: e[0] == 'hdr'
+                                   and (e[1][0] & 0x1F) == 0,
+                                   timeout_blocks=400, quiet=True)
+            if ev is None:
+                return
+            host.dev_seq = (host.dev_seq + 1) & 0xF
+            await host.send_lc(0b0000, ev[2])
+            await return_credit(1)
+
+    # ── initial link-up (normal ordering) + one SETUP round ──
+    host.dev_seq = 0
+    if not await expect_device_adv("initial", 15):
+        return False
+    await host.send_syms(adv_syms())
+    await drain_lmps()
+    if not await setup_ack("initial", 0):
+        return False
+    print("ADVEARLY: initial link-up + SETUP round complete")
+
+    # ── recovery passes, host advertisement EARLY at swept offsets ──
+    offsets = [(k, sub) for k in (0, 1, 2, 3, 4, 6, 8) for sub in (0, 1)]
+    for n, (k, sub) in enumerate(offsets):
+        mark = len(rx.blocks)
+        for _ in range(12):
+            await feed_blocks(ctx, bench, model_tx,
+                              [sync_block()] + [ts1_block()] * 32, rx, hm)
+            if count_ts(BlockType.TS1, mark) >= 8:
+                break
+        if count_ts(BlockType.TS1, mark) < 8:
+            print(f"ADVEARLY FAIL: pass {n}: no TS1s from device")
+            return False
+        mark2 = len(rx.blocks)
+        for _ in range(8):
+            await feed_blocks(ctx, bench, model_tx,
+                              [sync_block()] + [ts2_block()] * 16, rx, hm)
+            if count_ts(BlockType.TS2, mark2) >= 8:
+                break
+
+        host.events.clear()
+        host.errors.clear()
+        ret_idx[1] = ret_idx[2] = 0
+
+        # SDS, then wait for the DEVICE's idle stream (Recovery.Idle
+        # entry): the host's own U0 gate is 8 of the device's idle
+        # symbols, so this is the EARLIEST a real host can advertise.
+        # Then k more idle blocks (sub-shifted by half a block) before
+        # the early advertisement -- the device's own U0 entry is
+        # still pending for small k.
+        await feed_blocks(ctx, bench, model_tx,
+                          [skp_block(), sds_block()], rx, hm)
+        mark_idle = len(rx.blocks)
+        for _ in range(64):
+            await feed_blocks(ctx, bench, model_tx, [idle_block()],
+                              rx, hm)
+            dev_idles = sum(1 for h, s in rx.blocks[mark_idle:]
+                            if h == BLOCK_DATA
+                            and all(x == IDLE_SYM for x in s))
+            if dev_idles >= 1:
+                break
+        await feed_blocks(ctx, bench, model_tx, [idle_block()] * k,
+                          rx, hm)
+        await host.send_syms([IDLE_SYM] * (4 * sub) + adv_syms())
+        await feed_blocks(ctx, bench, model_tx, [idle_block()] * 8,
+                          rx, hm)
+
+        expect_lgood = (1 + n) & 0xF     # one host header per pass
+        if not await expect_device_adv(f"pass {n} k={k}.{sub}",
+                                       (expect_lgood - 1) & 0xF):
+            return False
+        await drain_lmps()
+        if not await setup_ack(f"pass {n} k={k}.{sub}", expect_lgood):
+            return False
+
+        # Aftermath: a quiet window must stay free of device TS1s (an
+        # OUR-side recovery here is the #45 metronome shape).
+        mark3 = len(rx.blocks)
+        await feed_blocks(ctx, bench, model_tx, [idle_block()] * 40,
+                          rx, hm)
+        ts1_after = count_ts(BlockType.TS1, mark3)
+        if ts1_after:
+            print(f"ADVEARLY FAIL: pass {n} k={k}.{sub}: {ts1_after} "
+                  f"device TS1 blocks in the aftermath window (device-"
+                  f"initiated recovery after the early advertisement)")
+            return False
+        print(f"ADVEARLY: pass {n} (k={k}.{sub}) complete")
+
+    if host.errors:
+        print(f"ADVEARLY FAIL: parser errors: {host.errors[:6]}")
+        return False
+    print(f"ADVEARLY: {len(offsets)} early-advertisement offsets all "
+          f"captured; traffic resumed with preserved numbering each "
+          f"time")
+    return True
+
+
 async def run_u0_checks(ctx, bench, hm, rx, model_tx):
     """STRICT U0 host behaviors the enum/echo phases never exercised
     (HANDOVER 10s suspects 1-3: the sim-uncovered surface where the H2
@@ -2139,6 +2328,8 @@ def main():
             result["ok"] = await phase_train(ctx, bench, hot_reset=True)
         elif PHASE == "recovery":
             result["ok"] = await phase_train(ctx, bench, recovery=True)
+        elif PHASE == "advearly":
+            result["ok"] = await phase_train(ctx, bench, advearly=True)
         else:
             raise SystemExit(f"unknown PHASE={PHASE}")
 

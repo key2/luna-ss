@@ -16,7 +16,8 @@ point; this module provides the Gen2 wire dialect around it:
   transmit stream is captured per packet (whole packets buffered so DPPs
   are wire-contiguous [7.2.1.2]), its K-code framing symbols are mapped
   to the Gen2 Table 6-2 framing symbols, a DATA-type header grows the
-  DPHSTART framing and its 2-byte length-field replica [7.2.1.1] (our
+  DPHSTART framing and its TWO 2-byte length-field replicas (the
+  24-byte Figure 7-4 format) [7.2.1.1] (our
   device never emits deferred DPHs), and packets burst out at the 64-bit
   beat rate with Gen2 Idle Symbols (5Ah! [7.1.2]) as filler.
 
@@ -27,7 +28,7 @@ point; this module provides the Gen2 wire dialect around it:
   byte-granular grammar engine walks the data-block symbol stream
   (framing may land at any symbol offset once DPH length replicas are in
   play), translates Gen2 framing back into the Gen1 K-coded wire dialect
-  the 32-bit core speaks, drops the DPH length replica, tracks DPP
+  the 32-bit core speaks, drops the DPH length replicas, tracks DPP
   extents by the DPH length field, and synthesizes Gen1 logical idle
   toward the core when nothing is in flight.
 
@@ -110,7 +111,8 @@ class Gen2TxBridge(Elaboratable):
     delimited by the ``first`` markers the emitters place on packet
     starts and on every logical-idle filler word), maps the Gen1 K-code
     framing to Gen2 symbols at enqueue time, converts a DATA-type header
-    to DPHSTART framing with the 2-byte length-field replica appended,
+    to DPHSTART framing with the two 2-byte length-field replicas
+    appended,
     and serves complete packets to the block transmitter one 8-symbol
     beat at a time, gaplessly.
     """
@@ -171,8 +173,9 @@ class Gen2TxBridge(Elaboratable):
         #
         # ``acc`` is a top-aligned 6-byte buffer (byte 0 -- first on the
         # wire -- in bits [40:48]).  Words append 4 bytes; the DPH
-        # replica appends 2; whenever 8 bytes are available a beat is
-        # written.  After a replica insertion the byte phase is +2 --
+        # replica pair appends 4; whenever 8 bytes are available a beat
+        # is written.  After the replica-pair insertion the byte phase
+        # re-aligns (20+4) --
         # legal at Gen2 (framing is grammar-recognized, not aligned).
 
         in_packet   = Signal()
@@ -312,8 +315,17 @@ class Gen2TxBridge(Elaboratable):
                         m.d.ss += byte_index.eq(byte_index + 4)
 
                         # After byte 19 of a DATA-type header (HPSTART +
-                        # 3 DWs + crc16/lcw = 20 bytes), insert the
-                        # 2-byte length replica [7.2.1.1].
+                        # 3 DWs + crc16/lcw = 20 bytes), insert the TWO
+                        # 2-byte length replicas -- the 24-byte
+                        # non-deferred Gen2 DPH of Figure 7-4
+                        # [7.2.1.1].  (Bug #48: a single replica made
+                        # every device DPH 22 bytes; the real xHC
+                        # parsed our DPPSTART framing as the second
+                        # replica -- "the two length field replica is
+                        # not identical" [7.2.4.1.6] -- and rejected
+                        # the DP: descriptor read/8 EPROTO -71 at
+                        # stable 10G U0, sim-green because the bench
+                        # host shared the misreading.)
                         with m.If(dph & (byte_index == 16)):
                             m.next = "REPLICA"
 
@@ -322,9 +334,12 @@ class Gen2TxBridge(Elaboratable):
             with m.State("REPLICA"):
                 m.d.comb += sink.ready.eq(0)
                 with m.If(fifo.w_rdy):
-                    # replica = length field, LSB first.
-                    append_bytes(2, Cat(dw1_len[8:16], dw1_len[0:8]))
-                    m.d.ss += [byte_index.eq(byte_index + 2), dph.eq(0)]
+                    # replica x2 = length field, LSB first, twice.
+                    # 20 header bytes + 4 = 24: the DPP framing that
+                    # follows re-aligns to the word phase.
+                    append_bytes(4, Cat(dw1_len[8:16], dw1_len[0:8],
+                                        dw1_len[8:16], dw1_len[0:8]))
+                    m.d.ss += [byte_index.eq(byte_index + 4), dph.eq(0)]
                     m.next = "RUN"
 
         # NOTE on the DPHSTART patch window: the packet's first beat is
@@ -1302,9 +1317,14 @@ class Gen2BlockReceiver(Elaboratable):
                         m.d.ss += dpp_len[8:16].eq(s)
                     with m.If(hdr_pos == 15):
                         # A non-deferred Gen2 DPH (DPHSTART framing)
-                        # carries a 2-byte length replica: swallow.
+                        # carries TWO 2-byte length replicas (the
+                        # 24-byte Figure 7-4 format [7.2.1.1]):
+                        # swallow all four bytes.  (Bug #48 companion
+                        # fix; replica-match validation [7.2.4.1.6
+                        # rule 2a -> Recovery] is parked as a
+                        # conformance follow-up.)
                         with m.If(hdr_data & (fr_kind == FR_DPH)):
-                            m.d.ss += [state.eq(ST_SKIP), count.eq(2)]
+                            m.d.ss += [state.eq(ST_SKIP), count.eq(4)]
                         with m.Else():
                             m.d.ss += state.eq(ST_SEARCH)
 

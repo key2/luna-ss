@@ -295,8 +295,12 @@ def header_packet_syms(dw0, dw1, dw2, seq, dl=0, hub_depth=0, deferred=False,
     """Header packet symbols: HPSTART/DPHSTART + 3 DWs (LSB first) +
     CRC-16 + Link Control Word.  ``seq`` is the 4-bit Gen2 header
     sequence number.  A DPHSTART-framed (non-deferred Gen2 DPH) header
-    additionally carries the 2-byte length-field replica (mirroring
-    dw1[16:32], LSB first) right after the LCW [7.2.1.1]."""
+    additionally carries TWO copies of the length-field replica
+    (mirroring dw1[16:32], LSB first, repeated) right after the LCW --
+    the 24-byte format of Figure 7-4 [7.2.1.1].  (Bug #48: the single-
+    replica misreading made every device DPH 22 bytes; the real xHC
+    parsed the DPP framing as the second replica and rejected the DP
+    -> descriptor read/8 EPROTO -71 at stable 10G U0.)"""
     from sim_link_loopback import crc16_header, crc5
     lcw = (seq & 0xF) | ((hub_depth & 0x7) << 6) | ((dl & 1) << 9) \
         | ((1 if deferred else 0) << 10)
@@ -311,7 +315,7 @@ def header_packet_syms(dw0, dw1, dw2, seq, dl=0, hub_depth=0, deferred=False,
     syms += list(lcw.to_bytes(2, "little"))
     if tuple(start) == DPHSTART:
         length = (dw1 >> 16) & 0xFFFF
-        syms += list(length.to_bytes(2, "little"))
+        syms += list(length.to_bytes(2, "little")) * 2   # replica x2
     return syms
 
 

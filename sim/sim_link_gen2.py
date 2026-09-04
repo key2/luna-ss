@@ -1032,6 +1032,7 @@ class Gen2LinkHost:
         self._buf = []
         self._kind = None
         self._dpp_len = 0
+        self._dph_pending = False  # DPH parsed; its DPP must follow
         self.tx_seq = 0           # host header sequence (mod 16)
         self.errors = []
 
@@ -1052,8 +1053,8 @@ class Gen2LinkHost:
                 # error -71 -> retrain loop; the forgiving bench host
                 # hid it).
                 self._walk()
-                mid = self._state != 'search' or any(
-                    x != G2_IDL for x in self._syms)
+                mid = (self._state != 'search' or self._dph_pending
+                       or any(x != G2_IDL for x in self._syms))
                 if mid and syms and syms[0] != 0xFF and syms[0] != 0x00:
                     self.errors.append(
                         f"control block (first sym {syms[0]:#04x}) "
@@ -1067,17 +1068,32 @@ class Gen2LinkHost:
         while True:
             if self._state == 'search':
                 while i < n and s[i] == G2_IDL:
+                    if self._dph_pending:
+                        # STRICT [7.2.1.2.3]: "There shall be no
+                        # spacing between a DPH and its corresponding
+                        # DPP."
+                        self.errors.append(
+                            "spacing between DPH and DPP [7.2.1.2.3]")
+                        self._dph_pending = False
                     i += 1
                 if i >= n:
                     break
                 if n - i < 4:
                     break
                 frame = tuple(s[i:i + 4])
+                if self._dph_pending and frame != DPPSTART:
+                    self.errors.append(
+                        f"DPH followed by {'/'.join(hex(x) for x in frame)}"
+                        f" instead of its DPP [7.2.1.2.3]")
+                self._dph_pending = False
                 if frame == HPSTART:
                     self._state, self._need = 'hdr', 20 - 4
                     self._kind = 'hp'
                 elif frame == DPHSTART:
-                    self._state, self._need = 'hdr', 22 - 4
+                    # non-deferred Gen2 DPH: 24 bytes -- framing + 12B
+                    # header + CRC-16 + LCW + TWO length replicas
+                    # [7.2.1.1 Figure 7-4].
+                    self._state, self._need = 'hdr', 24 - 4
                     self._kind = 'dph'
                 elif frame == DPPSTART:
                     self._state = 'dpp'
@@ -1117,12 +1133,20 @@ class Gen2LinkHost:
             if crc16 != crc16_header(dws):
                 self.errors.append(f"header CRC-16 bad (dw0={dws[0]:08x})")
             if self._kind == 'dph':
+                # STRICT [7.2.1.1 Figure 7-4, 7.2.4.1.6]: TWO length
+                # replicas follow the LCW; a real xHC validates both
+                # ("the two length field replica are valid and
+                # identical" -- a mismatch is a Recovery condition).
                 replica = body[16] | (body[17] << 8)
+                replica2 = body[18] | (body[19] << 8)
                 length = (dws[1] >> 16) & 0xFFFF
-                if replica != length:
+                if replica != length or replica2 != length:
                     self.errors.append(
-                        f"DPH length replica {replica} != length {length}")
+                        f"DPH length replicas {replica}/{replica2} != "
+                        f"length {length} (the 24-byte Figure 7-4 "
+                        f"format; bug #48)")
                 self._dpp_len = length
+                self._dph_pending = True
             elif (dws[0] & 0x1F) == 8:
                 # SHP-framed (deferred-style) DPH: still sets the length.
                 self._dpp_len = (dws[1] >> 16) & 0xFFFF

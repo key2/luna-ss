@@ -81,7 +81,7 @@ def expected_hp_bytes(syms):
             out += [(K_SHP, 1)] * 3 + [(K_EPF, 1)]
             body = syms[i+4:i+20]
             out += [(b, 0) for b in body]
-            i += 22                      # skip the 2-byte replica
+            i += 24                      # skip the 2x2-byte replicas
         elif i + 4 <= n and syms[i] == 0x96:      # DPPSTART
             out += [(K_SDP, 1)] * 3 + [(K_EPF, 1)]
             i += 4
@@ -204,7 +204,7 @@ def main():
         for off in range(16):
             await run_case(f"hp@{off}", [IDL] * off + hp_syms(off + 1))
 
-        # ── DPH+DPP at every offset (replica shifts by 2) ──
+        # ── DPH+DPP at every offset (replicas shift by 4) ──
         payload = bytes(range(1, 13))
         for off in range(16):
             await run_case(f"dph@{off}",

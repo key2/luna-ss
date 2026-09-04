@@ -109,7 +109,7 @@ def expected_bytes(syms):
             body = syms[i+4:i+20]
             out += [(b, 0) for b in body]
             dpp_len = body[6] | (body[7] << 8)
-            i += 22                        # 2-byte replica swallowed
+            i += 24                        # 2x2-byte replicas swallowed
         elif syms[i] == 0x96:              # DPPSTART
             out += [(K_SDP, 1)] * 3 + [(K_EPF, 1)]
             i += 4

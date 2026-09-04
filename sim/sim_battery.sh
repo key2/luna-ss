@@ -149,6 +149,20 @@ if pdm run pytest tests/test_gen2_pacing.py -q > /tmp/kilo/batt_gen2_pacing.log 
 else
     echo "FAIL gen2-pacing <<<<<<<<"
 fi
+# Gen2 TX request-seam conformance (session 16, bug #46; the #45 sim
+# leads of HANDOVER 10u): 1-cycle idle_mode blips at every alignment
+# must never truncate a 132-bit block on the PIPE or disturb the
+# single-SDS rule (drain-safe inactive arm + level-based SDS arming),
+# and a recovery entry must flush the TX bridge -- a mid-command yank
+# historically carried a truncated LC across the retrain and emitted
+# it as a REPLICA-VALID 0x5A5A alias command ahead of the
+# advertisement.  RED baselines recorded 2026-09-04 (truncated-block
+# at odd alignments; the (90,90,90,90) fragment construct).
+if pdm run pytest tests/test_gen2_tx_seams.py -q > /tmp/kilo/batt_gen2_txseams.log 2>&1; then
+    echo "PASS gen2-tx-seams"
+else
+    echo "FAIL gen2-tx-seams <<<<<<<<"
+fi
 # Gen 1x2 PortMatch (session 14, width program W0.3): a Gen 1x2-highest
 # device against a Gen 2x2-announcing host must hold its 0x40 dual-lane
 # announcement (the higher host adjusts down, Table 7-14), match at

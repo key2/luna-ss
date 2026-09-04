@@ -443,7 +443,25 @@ class Gen2BlockTransmitter(Elaboratable):
     def elaborate(self, platform):
         m = Module()
 
-        m.submodules.bridge = bridge = Gen2TxBridge()
+        # The bridge is held in reset while any training-class burst
+        # runs: training means the link is (re)training, and every
+        # packet the bridge holds -- complete queued packets AND a
+        # partial capture cut mid-construct by the link layer's
+        # ResetInserter discipline -- belongs to the dead link session.
+        # The historical bridge carried a truncated LC fragment across
+        # the retrain and flushed it (close-on-next-``first``, padded
+        # with Gen2 idle) onto the fresh link AHEAD of the header
+        # sequence advertisement; the fragment [SLC SLC SLC EPF][5A x4]
+        # even aliases a REPLICA-VALID link command (both halves
+        # 0x5A5A) (test_gen2_tx_seams red).  Retransmission of real
+        # headers is the LINK layer's job [7.2.4.1.x rule 7]; the
+        # bridge copy is a stale duplicate.  The level-held reset also
+        # swallows any skid-stage residue that drains in while the
+        # retrain runs.
+        training = (self.send_tseq_burst | self.send_ts1_burst
+                    | self.send_ts2_burst)
+        m.submodules.bridge = bridge = \
+            ResetInserter({"ss": training})(Gen2TxBridge())
         m.d.comb += [
             bridge.sink.stream_eq(self.sink),
             self.packets_buffered.eq(bridge.packets_buffered),
@@ -457,8 +475,18 @@ class Gen2BlockTransmitter(Elaboratable):
         os_count  = Signal(range(max(self._tseq_count, 65536) + 1))
         sync_gap  = Signal(range(self._sync_every_tseq + 1))
         skp_gap   = Signal(range(2 * self._skp_interval + 1))
-        sds_pending = Signal()
-        idle_prev = Signal()
+
+        # SDS arming is LEVEL-based [7.5.4.10: a single SDS before the
+        # first data block]: armed out of reset and re-armed by any
+        # training-class block we transmit (training implies the data
+        # stream ended); consumed when the SDS block is emitted.  The
+        # historical idle-mode EDGE detector had two request-seam
+        # hazards (test_gen2_tx_seams red): a 1-cycle idle_mode blip
+        # re-armed it mid-U0 (a spurious SDS inside the data stream),
+        # and an arm coinciding with an inactive cycle was killed by
+        # the state wipe below (no SDS at all -- the write-ordering
+        # coincidence that happened to mask the blip re-arm).
+        sds_pending = Signal(init=1)
 
         # Registered activity gate (156.25: the LTSSM burst-request seam
         # registers otherwise reach the scheduler/bridge FIFO controls
@@ -467,12 +495,6 @@ class Gen2BlockTransmitter(Elaboratable):
         active = Signal()
         m.d.ss += active.eq(self.send_tseq_burst | self.send_ts1_burst |
                             self.send_ts2_burst | self.idle_mode)
-
-        # Arm the single SDS whenever idle-mode is (re-)entered
-        # [7.5.4.10: a single SDS before the first data block].
-        m.d.ss += idle_prev.eq(self.idle_mode)
-        with m.If(self.idle_mode & ~idle_prev):
-            m.d.ss += sds_pending.eq(1)
 
         # TS/TSEQ mode tracking (counter resets on changes).
         mode = Signal(2)   # 0 none/idle, 1 tseq, 2 ts1, 3 ts2
@@ -544,7 +566,14 @@ class Gen2BlockTransmitter(Elaboratable):
         pace_due = Signal()
         m.d.comb += pace_due.eq(self.tx_fifo_level >= PACE_THRESHOLD)
 
-        with m.If(active & ~(pace_due & (beat_idx == 0))):
+        # The emission gate stays up mid-block even if ``active`` blips
+        # low (DRAIN-SAFE: a request-seam gap must never truncate a
+        # 132-bit block on the PIPE -- the PHY gearbox would emit a
+        # malformed block and desynchronize the host's receiver; the
+        # block boundary arm below is only reachable with ``active``
+        # high, so a true stop quiesces at the next boundary).
+        with m.If((active | (beat_idx != 0))
+                  & ~(pace_due & (beat_idx == 0))):
             m.d.comb += self.tx_valid.eq(1)
 
             with m.If(beat_idx == 0):
@@ -555,6 +584,11 @@ class Gen2BlockTransmitter(Elaboratable):
                 with m.If(new_mode != mode):
                     m.d.ss += [mode.eq(new_mode), os_count.eq(0),
                                sync_gap.eq(0)]
+
+                # Any training-class block (re-)arms the single SDS for
+                # the next data-stream start.
+                with m.If(new_mode != 0):
+                    m.d.ss += sds_pending.eq(1)
 
                 # SKP OS first when scheduled -- but NEVER inside a
                 # packet ("SKP Ordered Sets shall not be inserted within
@@ -676,8 +710,13 @@ class Gen2BlockTransmitter(Elaboratable):
             pass
 
         with m.Else():
+            # True stop (reachable only at a block boundary, see the
+            # drain-safe gate above): clear the schedule state.
+            # ``sds_pending`` is NOT touched here -- it is owned by the
+            # level-based arming above (the historical clear raced the
+            # same-cycle edge arm; write order decided who won).
             m.d.ss += [beat_idx.eq(0), mode.eq(0), os_count.eq(0),
-                       sync_gap.eq(0), skp_gap.eq(0), sds_pending.eq(0)]
+                       sync_gap.eq(0), skp_gap.eq(0)]
 
         return m
 

@@ -187,6 +187,20 @@ class USB3LinkLayer(Elaboratable):
             send_ts1_burst_r .eq(ltssm.send_ts1_burst),
             send_ts2_burst_r .eq(ltssm.send_ts2_burst),
         ]
+        if self._gen2:
+            # Registered like the burst requests: the Gen2 idle-mode OR
+            # below mixes this with the (also 1-cycle-late)
+            # ``link_ready`` register -- the historical COMB decode
+            # dropped one cycle BEFORE link_ready rose at the
+            # Polling.Idle/Recovery.Idle -> U0 transition, presenting a
+            # deterministic 1-cycle idle_mode gap to the block
+            # transmitter's ``active`` gate at EVERY U0 entry (the #45
+            # request-seam hazard class; the transmitter is now also
+            # drain-safe against any such blip, see physical/gen2.py +
+            # test_gen2_tx_seams).  Gen1 elaborations do not create
+            # this register (payload parity).
+            perform_idle_r = Signal()
+            m.d.ss += perform_idle_r.eq(ltssm.perform_idle_handshake)
 
         tx_deemph = Mux(compliance_emitter.disable_deemph,
                         TXDeemphMode.DEEMPH_NONE,
@@ -288,8 +302,7 @@ class USB3LinkLayer(Elaboratable):
                 physical_layer.gen2_send_ts2_burst
                     .eq(send_ts2_burst_r & op_gen2),
                 physical_layer.gen2_idle_mode
-                    .eq((ltssm.perform_idle_handshake | link_ready)
-                        & op_gen2),
+                    .eq((perform_idle_r | link_ready) & op_gen2),
                 physical_layer.gen2_request_hot_reset
                     .eq(ltssm.request_hot_reset),
                 physical_layer.gen2_request_no_scrambling

@@ -3412,6 +3412,181 @@ mission's no-lottery-budget rule.
   Notification TP during V3 if dmesg complains, stage-B credit
   scaling beyond 4+4).  #37 is now a live #48 candidate.
 
+## 10w. Session 17 — bug #49's device-side mechanisms FOUND & FIXED
+## in sim (bugs #50 + #51, red-first via the new PHASE=reccut cut
+## sweep); SSP BOS capability landed; V1 CTC/aligners widened
+
+### V0' — the fence (2026-09-04, session start)
+
+* Bench arrived WEDGED again (the warm-reset loop on usb4-port3, live
+  in dmesg; resident image = the session-16 #49-wedged build).  The
+  runbook held: PCI unbind/rebind of `0000:80:14.0` alone did not
+  clear it; JTAG channel unbound from ftdi_sio (`3-7.3.2:1.0` — the
+  quad FTDI now enumerates at `3-6.4`, the FT232H JTAG at `3-7.3.2`);
+  vendor `prj.fs` = **10000M first-try on 4-3** (port + cable
+  healthy); then the fence.
+* **Gen1 fence GREEN**: `h0_gen1_fence.fs` → 5000M on 4-3;
+  1 MiB ×10 = 252.4–267.4 MB/s agg, 16 MiB ×3 = 277.1–284.1,
+  64 MiB ×3 = 282.0–283.5, all sha-exact PASS; uart1 ch0 all-zero,
+  flags=8 (capture `/tmp/kilo/s17_v0_fence_both.txt`).
+
+### V1 — CTC + aligners width-parametric (usb3_design.md §13.5 next
+### unit after the landed CRC/scrambler pattern)
+
+* `physical/ctc.py`: `CTCSkipRemover(words=)` (the coalescing shift
+  register at 2× width; the output-slice constant generalized to
+  `buffer_size_bytes - i` — verbatim `8 - i` at words=1),
+  `CTCSkipInserter(words=)` (words=2 emits FOUR SKP ordered sets per
+  8-symbol beat once four are owed; saturation bound re-derived: 7),
+  `TxStreamSkidBuffer(words=)` (Signal.like internals, streams only).
+* `physical/alignment.py`: `RxWordAligner(words=)` /
+  `RxPacketAligner` — eight byte offsets at words=2, 4-symbol
+  criteria windows unchanged.
+* Fences: `tests/test_usb3_ctc_wide.py` (remover byte-exact vs narrow
+  vs software-stripped reference with SKP runs straddling beats;
+  inserter stream-preservation + Y/354 schedule with carried
+  remainder at both widths; word/packet aligner lock at all 8 offsets
+  + post-lock byte-exact equality vs narrow).  Mutation-checked red
+  (wide remover slice, wide aligner slice count), restored green.
+  words=1 = verbatim; **shipping parity proven after the change (14
+  diff bytes, all in 603–621 = the header date region)**.
+
+### The SSP BOS device capability (the REQUIRED enum-surface gap)
+
+* `luna/gateware/usb/usb3/descriptors.py` (new):
+  `ssp_device_capability()` builds the SuperSpeedPlus USB Device
+  Capability [9.6.2.5, Table 9-27] as raw bytes (usb_protocol 0.9.x
+  has no emitter): bLength 0x1C, SSAC=3/SSIC=1 (bmAttributes 0x23),
+  wFunctionalitySupport 0x1100 (SSID 0 full-function, 1+1 lanes),
+  RX/TX attribute pairs per SSID — SSID0 5 Gb/s SS, SSID1 10 Gb/s SSP
+  (LSE=3, LSM=5/10; field conventions cross-checked against the
+  bench's 10G hub at 4-6 via sysfs `bos_descriptors`).
+  `add_superspeedplus_bos()` composes USB2ext + SS cap + SSP cap
+  (wTotalLength 50, 3 caps).
+* RED-FIRST: the sim's enum ladder gained a BOS-walk validation
+  (type-0x0A capability with a 10 Gb/s LP=SSP attribute REQUIRED at
+  bcdUSB 0310); red recorded against the old surface, then the
+  capability added to BOTH `sim_link_gen2.py` and the
+  `luna-enum-gen2` top → green (full BOS now 50 bytes, read
+  end-to-end by the PHASE=enum ladder).
+
+### The #49 instruments and the two bugs they caught
+
+**Lead (a) — the honest-drain FIFO model.**  `HostRx`'s PHY TX FIFO
+model now drains through the REAL TxGearbox132 law (68-bit
+start-block beats, one dead read cycle per 16 blocks via the residue,
+registered-empty read enable, underflow-from-empty) instead of the
+flat 32-per-33 approximation, and counts `fifo_hi28` — the exact
+bench canary (level ≥ 28).  Verdicts: enum max 16/32, hi28 0;
+recovery (3 retrain crossings) max 16, hi28 0; reccut (7
+mid-transfer cuts) max 16, hi28 0.  **Steady-state supply/drain and
+retrain crossings are EXCLUDED as the overshoot source in lockstep
+timing** — the silicon hi28 evidence (71k/s ÷ 5.5k retrains/s ≈ 13
+cycles per retrain) now points at the retrain-entry window with
+host-overlapped traffic, which the reccut sweep models only at
+block granularity.  Enum/reccut/recovery now FAIL on any hi28.
+
+**Lead (b) — PHASE=reccut (new battery entry): a control transfer cut
+by Recovery mid-data-stage, swept at offsets 0,1,2,3,4,8,24 idle
+blocks after the host's IN ACK TP.**  The harness is spec-honest:
+it accepts a legal under-advertisement (a header yanked out of the
+RX pipeline is legitimately un-received) and RETRANSMITS past the
+device's advertisement with original sequence numbers, exactly like
+the real xHC.  Two REAL bugs, both red-first:
+
+* **Bug #50 (FIXED, link/receiver.py): the link-down
+  advertisement/credit race.**  The packet-acceptance block is not
+  gated by ``enable``; a header whose parse completes in the FIRST
+  link-down cycle (its ``new_packet`` strobe registered at the last
+  enabled edge) is properly accepted, buffered, delivered (rule 2d) —
+  and ``expected_sequence_number`` advances — but the one-shot
+  link-down preparation ran in the SAME cycle and read the
+  PRE-acceptance value: the re-advertisement under-reports by one
+  [violates 7.2.4.1.1 rule 2.e.2], the partner retransmits a header
+  the device already counted, and the device calls it a bad sequence
+  → **device-initiated recovery loop + wedged EP0** (reccut offset-2
+  red: advertisement LGOOD_8 with seq-9 accepted and its DP queued;
+  the retransmitted seq-9 ACK TP then fired ``rec_rx``).  The same
+  race under-corrected the per-class rule-2d credit recomputation
+  (a same-cycle-accepted header's buffer advertised as free →
+  partner oversubscribes the pool).  Fix: the prep accounts for the
+  same-cycle acceptance (``reserve_buffer``/``reserve2`` are exactly
+  the acceptance strobes).  Gen2 elaborations only; the Gen1 rail
+  keeps both historical statements verbatim (the fence) — **the Gen1
+  twin fix is a new parked item**.
+* **Bug #51 (FIXED, link/transmitter.py): the consumed-payload
+  bookkeeping windows.**  The link-drop handler marked a DP's payload
+  as consumed only while ``payload_pending`` (first-to-last word) was
+  high; a drop after the LAST payload word but before ``done``
+  (payload fully consumed, DPP CRC/END framing still going onto the
+  wire) — or in the first-capture cycle — left the header marked
+  never-sent, and its DL=1 retransmission attached a PHANTOM payload
+  from the (empty or next-transfer) data stream instead of aborting
+  the DPP: **a garbage DPP with a valid-looking DPH on the wire**
+  (reccut offset-24 red: retransmitted descriptor DPP =
+  ``69 69 69 36`` + idle fill, CRC-32 invalid — the BOS/22 EPROTO
+  wire shape).  Fix: ``RawPacketTransmitter(gen2=True)`` tracks
+  ``payload_consumed`` (combinationally exact from the first consumed
+  word until the next ``starting``); the drop handler marks
+  ``sent_flags`` from it and keeps ``drain_required`` on the
+  historical ``payload_pending`` qualifier.  Gen1 rail verbatim
+  behind the elaboration gate.
+
+Post-fix, the FULL sweep is green: honest advertisements, host
+rule-7 retransmission accepted, device DP retransmission byte-exact
+with original numbering, the consumed-payload cut correctly ABORTS
+its DPP (EDB) and **EP0 re-serves the data stage on the host's
+protocol retry** (the #37 TX-side surface verified working); every
+STATUS stage completes; EP0 alive across all seven cuts; pacing band
+held.  The host parser learned the DPPABORT dialect (a 4th ``dpp``
+event element).
+
+**Why this is the #49 shape**: both bugs fire exactly when a
+host-initiated retrain lands inside a control transfer — certain at
+the bench's ~5.5k retrains/s — and both wedge EP0 persistently
+(#50: every later host header reads stale → silently dropped or
+bad-sequence-looped; #51: the endpoint's data source desyncs).  The
+host-observed symptom is the ~7 ms transfer timeout → EPROTO -71,
+transfers dying at an arbitrary ladder step (BOS/22 on the bench),
+and a wedge that survives hot reset ON THE HOST SIDE (the device
+clears — sim lead (c) below — but the xHC has already torn the port
+down).  Bench confirmation still required (see next steps).
+
+**Lead (c) — PHASE=hotreset-parked (new battery entry)**: the full
+xHCI port-reset flow with a control IN PARKED mid-data-stage (SETUP
+acked, IN token sent, device DPH un-acknowledged, credit held, no
+STATUS).  GREEN first run: LGOOD_15 + 4+4, address reset, clean
+descriptor read — **the device-side reset path fully clears parked
+protocol state**; the bench wedge's hot-reset survival is not a
+device-side reset leak (consistent with #50/#51 being the mechanism:
+the DEVICE recovers, the HOST's view is already poisoned).
+
+### Carry-over state (supersedes the §10v list)
+
+* Bug numbering: **#48 RESOLVED on the wire (session 16); #49 OPEN —
+  its two device-side mechanisms (#50 advertisement race, #51
+  consumed-payload window) are FIXED and sim-fenced; the bench
+  verdict (clean repeatable 10000M enumeration) is the remaining
+  gate.  Next bug number: #52.**
+* NEW parked items: the Gen1-rail twins of #50 and #51 (the same
+  races exist in the non-gen2 elaborations; verbatim-preserved for
+  the fence — take them through the explicit
+  intend/battery/hardware-ladder ceremony); the reccut sweep at
+  sub-block cut granularity (the sim cuts at block boundaries; the
+  silicon host yanks mid-symbol).
+* Parked items carried: #37 RX side (truncated INBOUND DPP never
+  retried — the TX side is now verified working by reccut),
+  rule-2d/#36 stimuli, #29–#31 bench forced-recovery verdict, RX-side
+  DPH replica-match validation [7.2.4.1.6 rule 2a], SEND_ZLP
+  bare-ready, wire-checker TP blindness, SKP x=4 aligner knob,
+  Sublink Speed Device Notification TP (if the host asks — the SSP
+  BOS capability itself LANDED this session), stage-B credit scaling.
+* Width program V1: CRC/scrambler (landed §10v) + CTC/aligners
+  (landed §10w).  Next per §13.5: stream-width threading + framers,
+  `physical/gen2.py` at 128 (re-prove the #43 queue bound red-first),
+  the 2:1 PIPE bridge (+ pacing-lag sims), gowin-serdes 20×1:4 trim +
+  w128 SDC branches.
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 15: the width-generic

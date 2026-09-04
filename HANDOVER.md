@@ -3273,15 +3273,123 @@ Push everything after the #45 verdict or at session end regardless.
   verification deltas (§13.6).  §1 header carries the BINDING
   x2-dropped scope update.
 
+### Bug #46 (FIXED, commit 4e60bcd): the Gen2 TX request-seam hazards
+### — and the #45 metronome's mechanism
+
+The two cheap #45 sim leads of §10u were executed red-first
+(`tests/test_gen2_tx_seams.py`, new battery entry gen2-tx-seams):
+
+* **The U0-entry blip**: link/layer.py mixed a COMB
+  perform_idle_handshake decode with the 1-cycle-late registered
+  link_ready — gen2_idle_mode dropped for EXACTLY one cycle at EVERY
+  U0 entry (Polling.Idle and Recovery.Idle alike).  The scheduler's
+  inactive arm then wiped beat_idx MID-BLOCK (odd alignments): a
+  start beat with no continuation — a TRUNCATED 132-bit block on the
+  PIPE, desynchronizing the host's receiver against the standing #44
+  FIFO.  Even alignments exposed the SDS arm/wipe write-order race
+  (cold entry emitted NO SDS at all).
+* **The stale bridge flush**: the TX bridge carried packets across
+  retrains; an LC cut mid-command by the reset discipline was later
+  flushed idle-padded onto the FRESH link ahead of the advertisement
+  — and [SLC SLC SLC EPF][5A×4] aliases a REPLICA-VALID link command
+  (0x5A5A both halves).
+
+Fixes: gapless seam (perform_idle_r registered like the burst
+requests), DRAIN-SAFE emission gate (an open block always completes;
+true stops quiesce at the boundary), LEVEL-based SDS arming (armed at
+reset + by training-class blocks, consumed by SDS), and the bridge
+held in reset while any training-class burst runs.  All gen2-only
+elaborations; shipping parity re-proven; full gen2 sim section green.
+
+### Hardening #47 (commit 4e46281): early LC capture window — sim
+### lead (b) EXECUTED AND EXCLUDED
+
+`PHASE=advearly` (new battery entry): the host advertises at its
+physically earliest legal instant (gated on observing the device's
+own idle stream), swept at block/half-block offsets over recovery
+re-entries.  **Verdict: under causally-legal timing the historical
+RTL was NOT red** — the RX pipeline delays the advertisement past
+link_ready; candidate (b) cannot produce #45 from a conformant
+partner.  The truly-early stimulus red (credit-starved link: trains,
+receives, LGOODs/LUPs out, never one header TP) motivated the
+hardening: `transmitter.listen` opens the lc_detector from the
+idle-handshake states (bug-#36 protection preserved — listen drops
+with training states), the state clear holds only while the window is
+closed, and `ltssm.in_recovery_idle` + an idle-phase latch keep the
+rule-7 disposition valid for early-captured advertisements.
+
+### BUG #45 RESOLVED on the bench (2026-09-04): root cause = #46
+
+The post-#46/#47 per-cause netlist (the §10u "decisive instrument")
+MET ON THE FIRST ROLL from POR 66_125: pclk 156.340 / rxclk 180.039
+(`/tmp/kilo/s16_gen2_46_47_percause_met.fs`).  Flashed twice with
+by-id uart + PORTSC + usbmon instrumentation:
+
+* **The metronome is GONE**: uart0 rec-timers/rec-rx/rec-tx = 0 and
+  uart1 recovery = 0 across the active windows (the counters built to
+  discriminate #45 read zero); ss-cnt telltale 0x341556x = 156.25 (10G
+  held); trained reaches 1 with terminations engaged (flags d).
+  Capture `/tmp/kilo/s16_gen2_cause_both.txt` (t≈11.2–12.3 s).
+* **PORTSC now reaches 0203 (U0) at 10.0 Gb/s** and the host attempts
+  transfers: `new SuperSpeed Plus Gen 2x1 USB device number NN` —
+  where every pre-#46 Gen2 window died in the 7.05 µs U0→Recovery
+  loop.  #45 is closed: the metronome's mechanism was #46's seam
+  hazards (the truncation/stale-flush artifacts at every U0
+  (re-)entry, wire-visible only against the real host's timing — the
+  idealized sim feed waited for the device and never saw them).
+
+### BUG #48 (OPEN, next in line): Gen2 descriptor read/8 → EPROTO -71
+### at stable 10G U0
+
+The new gate, one layer up: `device descriptor read/8, error -71` on
+EVERY attempt (×4 per address, two addresses, then the hub
+power-cycles the port and the parked device re-enters the warm-reset
+loop).  usbmon: `S Ci:4:016:0 s 80 06 0100 0000 0008` → `C -71 0` —
+zero bytes returned, completions at ~100 µs or ~7 ms
+(`/tmp/kilo/s16_usbmon_48.log`, dmesg in §10v notes).  The SETUP DP /
+ACK TP / descriptor DP chain fails on the wire while PHASE=enum is
+sim-green end-to-end — a sim-vs-silicon gap in the DP path (candidate
+surfaces: SKP adjacency to DPH/DPP framing, the length-replica path
+under real host pacing, parked #37 truncated-DPP-retry).  **Per the
+mission this chase belongs to V3 at core_width=128** — every 64-bit
+RTL iteration re-enters the placement lottery (today's first-roll MET
+was luck; do not budget on it).
+
+### Width program state (V1)
+
+* V1a: `USBSuperSpeedDevice(core_width=64|128)` elaboration point
+  landed (64 = verbatim, parity-proven; 128 raises until §13.5 units
+  land).
+* V1b start: wide CRC surfaces by COMPOSITION (commit 582eb2b):
+  HeaderPacketCRC(words=2) two-word advance; DataPacketPayloadCRC
+  (words=2) 8B advance + 4..7B tails + next_crc outputs;
+  `tests/test_usb3_crc_wide.py` pins them byte-exact against the
+  proven sim references.  words=1 verbatim.
+* Next in V1: 64-bit Scrambler/Descrambler/CTC/aligner
+  parameterization, the stream-width threading, the framers, the
+  gen2.py 128 twin, the 2:1 bridge (+ its red-first pacing-lag sims).
+
+### Bench notes (2026-09-04)
+
+* The wedge appeared twice; one PCI unbind/rebind + vendor-oracle
+  flash (10000M first-try) cleared it — the oracle remains the
+  port-health arbiter.  The fence was re-proven green start AND end
+  of the bench day (end: 16 MiB ×3 = 278.0 MB/s PASS).
+* The stale `/tmp/kilo/uart_capture.py` reads only one UART (ttyUSB
+  numbering rot) — use the repo's by-id
+  `examples/gowin/luna-multiep/uart_capture.py` (tag L = uart0/if02,
+  tag C = uart1/if03).
+
 ### Carry-over state
 
-* Bug numbering: **#45 OPEN and first among bugs (V3); #46 next.**
+* Bug numbering: **#45 RESOLVED (root cause #46); #48 OPEN and first
+  among bugs (the V3 Gen2 gate); #49 next.**
 * Parked items unchanged from §10u (#37, rule-2d/#36 stimuli,
   #29–#31 bench forced-recovery verdict via the uart1 'R' hook during
   V3's ladder, SEND_ZLP bare-ready, wire-checker TP blindness, SKP
   x=4 aligner knob, SSP BOS device capability + Sublink Speed Device
   Notification TP during V3 if dmesg complains, stage-B credit
-  scaling beyond 4+4).
+  scaling beyond 4+4).  #37 is now a live #48 candidate.
 
 ## 11. Reading list for the new session (fork edition)
 

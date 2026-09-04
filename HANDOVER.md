@@ -3338,22 +3338,43 @@ by-id uart + PORTSC + usbmon instrumentation:
   (re-)entry, wire-visible only against the real host's timing — the
   idealized sim feed waited for the device and never saw them).
 
-### BUG #48 (OPEN, next in line): Gen2 descriptor read/8 → EPROTO -71
-### at stable 10G U0
+### BUG #48 (ROOT CAUSE FOUND + FIXED, commit 1698d05; bench verdict
+### pending a MET roll): the non-deferred Gen2 DPH is 24 BYTES — the
+### length replica appears TWICE (Figure 7-4)
 
-The new gate, one layer up: `device descriptor read/8, error -71` on
-EVERY attempt (×4 per address, two addresses, then the hub
-power-cycles the port and the parked device re-enters the warm-reset
-loop).  usbmon: `S Ci:4:016:0 s 80 06 0100 0000 0008` → `C -71 0` —
-zero bytes returned, completions at ~100 µs or ~7 ms
-(`/tmp/kilo/s16_usbmon_48.log`, dmesg in §10v notes).  The SETUP DP /
-ACK TP / descriptor DP chain fails on the wire while PHASE=enum is
-sim-green end-to-end — a sim-vs-silicon gap in the DP path (candidate
-surfaces: SKP adjacency to DPH/DPP framing, the length-replica path
-under real host pacing, parked #37 truncated-DPP-retry).  **Per the
-mission this chase belongs to V3 at core_width=128** — every 64-bit
-RTL iteration re-enters the placement lottery (today's first-roll MET
-was luck; do not budget on it).
+The gate one layer up: `device descriptor read/8, error -71` on EVERY
+attempt at stable 10G U0 (usbmon `s 80 06 0100 0000 0008` → `C -71 0`,
+completions ~100 µs / ~7 ms; ×4 per address, two addresses, then port
+power-cycle; `/tmp/kilo/s16_usbmon_48.log`).  Localization: SET_ADDRESS
+works (device number assigned), TPs flow both ways, host DPs are
+received — the ONLY failing element is the device-TRANSMITTED DP.
+
+**Root cause** (spec archaeology, Figure 7-4 read as an image from
+`doc/USB 3.2 Revision 1.1.pdf/pages/page-147/img-64.jpeg`): the
+non-deferred Gen2 DPH is **24 bytes** — framing + 12B header + CRC-16
++ LCW + **Length Field Replica ×2** ("the two length field replica are
+valid and identical" [7.2.4.1.6]).  We implemented ONE replica (22-byte
+DPH) from the prose of 7.2.1.1; the real xHC parsed our DPPSTART
+framing as the second replica → mismatch → DP rejected → EPROTO.
+Sim-green historically because the bench host embodied the SAME
+misreading — the strict-host upgrade (host sends AND validates both
+replicas + the [7.2.1.2.3] no-spacing rule) reproduced the silicon
+failure byte-exact: `DPH length replicas 18/38550 != length 18`
+(0x9696 = our SDP SDP framing).  RED recorded, RTL fixed both
+directions (TX bridge REPLICA ×2 — the DPP framing now re-aligns to
+the word phase; RX engine swallows 4), full gen2 sim section green.
+Inbound host DPHs (always 24B on silicon) had worked by luck: the RX
+engine's SEARCH state stepped past the 2 unswallowed replica bytes.
+
+Parked from this fix: RX-side replica-match validation
+([7.2.4.1.6 rule 2a → Recovery]).
+
+**Timing lottery on the fix netlist** (the mission's point made
+flesh): rolls 66_126..66_133 ALL missed pclk (141.7–154.6; the
+pre-fix sibling netlist MET on its first roll at 156.340) — batch 2
+(66_134..) running.  A MET roll flashes for the 10000M verdict; if
+the batch fails, the verdict waits for V2/V3's 128-bit core, per the
+mission's no-lottery-budget rule.
 
 ### Width program state (V1)
 

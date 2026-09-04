@@ -1401,11 +1401,91 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
     if not await expect_ack_tp("GetDescriptor STATUS ack"):
         return False
 
+    # ── the bench xHC's descriptor ladder (bug #48 tail; session 16):
+    # after the 18-byte device descriptor the real host reads BOS at
+    # wLength=5 (header), then the FULL BOS at wLength=22 -- the FIRST
+    # transfer that died with EPROTO -71 on silicon -- then the config
+    # descriptor at wLength=9.  Replicated verbatim, with data-stage
+    # length checks. ──
+    hseq = 5
+
+    async def control_in(tag, w_value, w_length, want_len):
+        nonlocal dev_seq, hseq
+        setup = bytes([0x80, 0x06, w_value & 0xFF, w_value >> 8,
+                       0x00, 0x00, w_length & 0xFF, w_length >> 8])
+        await host.send_frame(frame_out_dp(0, 0, setup, setup=1,
+                                           address=1))
+        if not await expect_lgood(hseq):
+            return None
+        hseq = (hseq + 1) & 0xF
+        if await expect_lcrd(2) is None:
+            return None
+        if not await expect_ack_tp(f"{tag} SETUP ack"):
+            return None
+        await host.send_frame(frame_ack_tp(ep=0, nseq=0, nump=1,
+                                           direction=1))
+        if not await expect_lgood(hseq):
+            return None
+        hseq = (hseq + 1) & 0xF
+        if await expect_lcrd(1) is None:
+            return None
+        ev = await host.expect(f"{tag} DPH",
+                               lambda e: e[0] == 'hdr'
+                               and (e[1][0] & 0x1F) == 8)
+        if ev is None:
+            return None
+        if ev[3] != 'dph':
+            print(f"ENUM FAIL: {tag} DPH not DPHSTART-framed")
+            return None
+        if ev[2] != dev_seq:
+            print(f"ENUM FAIL: {tag} DPH seq {ev[2]} != {dev_seq}")
+            return None
+        dev_seq = (dev_seq + 1) & 0xF
+        ev_dpp = await host.expect(f"{tag} DPP", lambda e: e[0] == 'dpp')
+        if ev_dpp is None:
+            return None
+        payload, crc_ok = ev_dpp[1], ev_dpp[2]
+        if not crc_ok:
+            print(f"ENUM FAIL: {tag} DPP CRC-32 invalid")
+            return None
+        if len(payload) != want_len:
+            print(f"ENUM FAIL: {tag} data stage {len(payload)} bytes, "
+                  f"expected {want_len}")
+            return None
+        await host.send_lc(0b0000, (dev_seq - 1) & 0xF)
+        await return_credit(2)
+        await host.send_frame(frame_status_tp(0, address=1))
+        if not await expect_lgood(hseq):
+            return None
+        hseq = (hseq + 1) & 0xF
+        if await expect_lcrd(1) is None:
+            return None
+        if not await expect_ack_tp(f"{tag} STATUS ack"):
+            return None
+        return payload
+
+    bos5 = await control_in("BOS/5", 0x0f00, 5, 5)
+    if bos5 is None:
+        return False
+    total = bos5[2] | (bos5[3] << 8)
+    print(f"ENUM: BOS header {bos5.hex()} (wTotalLength={total})")
+    bos_full = await control_in("BOS/full", 0x0f00, total, total)
+    if bos_full is None:
+        print(f"ENUM FAIL: the full-BOS control read died (the exact "
+              f"silicon #48-tail shape: wLength={total})")
+        return False
+    print(f"ENUM: full BOS ({total} bytes) {bos_full.hex()}")
+    cfg9 = await control_in("Config/9", 0x0200, 9, 9)
+    if cfg9 is None:
+        return False
+    print(f"ENUM: config header {cfg9.hex()}")
+
     if host.errors:
         print(f"ENUM FAIL: parser errors: {host.errors[:6]}")
         return False
     print("ENUM: modulo-16 sequence numbers, LCRD1/LCRD2 credit classes, "
-          "DPH length replica, bcdUSB 0310 -- all verified at Gen2")
+          "DPH length replica, bcdUSB 0310, BOS 5/full + config-9 reads "
+          "-- all verified at Gen2")
 
     if not echo:
         print(f"ENUM: PHY TX FIFO model max occupancy {rx.fifo_max}/32, "
@@ -1421,8 +1501,9 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
     host.tag = "ECHO"
     payload = bytes((17 * i + 3) & 0xFF for i in range(64))
     await host.send_frame(frame_out_dp(1, 0, payload, address=1))
-    if not await expect_lgood(5):
+    if not await expect_lgood(hseq):
         return False
+    hseq = (hseq + 1) & 0xF
     if await expect_lcrd(2) is None:
         return False
     ev = await host.expect("OUT ACK TP",
@@ -1436,8 +1517,9 @@ async def run_enum(ctx, bench, hm, rx, model_tx, echo=False):
 
     # IN token: the device echoes the payload back.
     await host.send_frame(frame_ack_tp(ep=1, nseq=0, nump=1, direction=1))
-    if not await expect_lgood(6):
+    if not await expect_lgood(hseq):
         return False
+    hseq = (hseq + 1) & 0xF
     if await expect_lcrd(1) is None:
         return False
     ev = await host.expect("echo DPH",

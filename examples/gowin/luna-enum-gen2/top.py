@@ -179,7 +179,7 @@ class LunaEnumTop(Elaboratable):
         # rxclk 161.580 -- both MET against the honest gates (156.25 /
         # 161.29).
         m.d.cfg += [
-            por_n.eq(por_cnt > 66_133),
+            por_n.eq(por_cnt > 66_135),
             luna_go.eq(por_cnt.all()),
         ]
 

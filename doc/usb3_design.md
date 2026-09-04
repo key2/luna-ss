@@ -642,3 +642,32 @@ hardware both widths (64 = fence re-proof; 128 @ 62.5 native, full
 ladder) → V3 Gen2x1 @ 128 hardware (#45 FIRST among bugs; per-cause
 probe at the no-lottery clock; then 10000M + Gen2 ladder) → V4 the
 dual-rate matrix, re-scoped without x2 (closes G5/H4).
+
+### 13.8 Considered alternative: widening at the serdes attach (PHY-side
+### 64→128, datapath at pclk/2) — DEFERRED past the V3 gate
+
+Proposal: convert 64→128 immediately at the serdes fabric attach and
+run the ENTIRE gw_usb3 Gen2 datapath (132b gearboxes, scrambler,
+descrambler, pacing FIFO) at 78.125 / rxclk/2 ≈ 80.57, instead of the
+§13.3 MAC-side bridge with the PHY pinned at 64@156.25/161.29.
+
+* FOR: every fabric cone drops to ≤80.6 MHz (the rxclk 6.2 ns domain
+  shrinks to a 2-register pair accumulator); the 132-over-128 rotation
+  is natural (1 beat ≈ 1 block, the 4-bit remainder spills exactly one
+  beat per 32 blocks — the 32+1/33 cadence falls out); the Gen1 legs
+  unify (one 8-symbol chain at 62.5 for both the native trim and the
+  fallback, retiring the low-half pair-packing bridge mode).
+* AGAINST (decisive for now): it replaces the SILICON-PROVEN datapath
+  during the #48 chase (two suspect pools instead of one); it breaks
+  the 1:1 golden-equivalence lock against rtl/usb31phy (wide twins
+  need composed wide-vs-narrow harnesses — real work for the v6 RX
+  gearbox); it re-plumbs the #44 closed loop's proven occupancy
+  semantics.  Empirically the placement lottery lives in pclk (rolls
+  missed at 138–144), which §13 already solves by evacuating the MAC;
+  rxclk has standing margin (MET 180.04 vs the 161.29 gate with the
+  whole MAC still on pclk).
+* DISPOSITION: keep §13.3 through the V3 gate.  Attach-side widening
+  is the end-state simplification to revisit WITH the ½-wire-rate cap
+  lift (full-rate payload needs 128-bit streams end to end — that is
+  when the wide gearbox pays): migrate inward module by module behind
+  composed-equivalence fences, retiring the bridge last.

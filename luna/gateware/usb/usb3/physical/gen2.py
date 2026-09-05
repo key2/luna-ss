@@ -104,6 +104,20 @@ def syms_to_beat(syms):
     return int.from_bytes(bytes(syms), "big")
 
 
+def syms_to_block(syms):
+    """Pack sixteen symbol constants into a 128-bit block value
+    (width-program core_width=128: one beat = one whole block;
+    symbol 0 in the TOP byte, matching ``syms_to_beat``)."""
+    return int.from_bytes(bytes(syms), "big")
+
+
+IDLE_BLOCK = int.from_bytes(bytes([G2_IDL] * 16), "big")
+
+# Gen1 HPSTART as it appears in the LOW half of the first 64-bit
+# link-stream word at words=2 ([HPSTART|DW0]).
+HPSTART_HALF = HPSTART_WORD
+
+
 class Gen2TxBridge(Elaboratable):
     """Per-packet 32->64 transmit bridge (stage A).
 
@@ -117,14 +131,22 @@ class Gen2TxBridge(Elaboratable):
     beat at a time, gaplessly.
     """
 
-    def __init__(self, depth=512):
+    def __init__(self, depth=512, words=1):
+        # Width program (usb3_design.md 13.5): ``words=2`` captures the
+        # 64-bit link stream and serves whole 128-bit blocks (1 beat =
+        # 1 block at 78.125).  The wide grammar is SIMPLER in places:
+        # the DPH decision needs no patch dance (HPSTART and dw0 share
+        # the first word), and the [DW3|DPPSTART] word of a data header
+        # takes a single-cycle 12-byte append with the length-replica
+        # pair spliced between the halves.
         self._depth = depth
+        self._words = words
 
-        self.sink         = USBRawSuperSpeedStream()   # from the arbiter
+        self.sink         = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Beat interface toward the block transmitter.
         self.beat_request = Signal()    # i: emit one data beat now
-        self.beat_data    = Signal(64)  # o: packet content or idle fill
+        self.beat_data    = Signal(64 * words)  # o: content or idle fill
         # A packet is straddling the current block boundary: its first
         # beat has been served but its final (eop) beat has not.  The
         # scheduler defers SKP OS insertion while set -- "SKP Ordered
@@ -136,6 +158,10 @@ class Gen2TxBridge(Elaboratable):
 
     def elaborate(self, platform):
         m = Module()
+
+        if self._words == 2:
+            return self._elaborate_wide(m)
+
         sink = self.sink
 
         # FIFO entries: {eop, beat[63:0]}.
@@ -407,6 +433,239 @@ class Gen2TxBridge(Elaboratable):
         return m
 
 
+    def _elaborate_wide(self, m):
+        """ The words=2 bridge: 64-bit link words in, 128-bit block
+        beats out.  Enqueue grammar (byte positions within a packet):
+
+          word 0 [HPSTART|DW0]  -- the DPH decision AND the framing
+                                   patch happen at capture (dw0 rides
+                                   the same word);
+          word 1 [DW1|DW2]      -- dw1's length field latched;
+          word 2 [DW3|DPPSTART] (data header) -- a single 12-byte
+                                   append: DW3, the length-replica pair,
+                                   DPPSTART.  24-byte Gen2 DPH + framing
+                                   = 28 bytes: payload runs at byte
+                                   phase 12 of the 16-byte beats;
+                 [DW3|pad]      (other headers) -- only the DW3 half is
+                                   appended; the transmitter's trailing
+                                   half-beat pad is DROPPED (the close
+                                   flush pads with Gen2 idle).
+          further words          -- payload, 8 bytes each; post-END
+                                   filler becomes Gen2 idle via the
+                                   terminator-qualified EPF rule below.
+        """
+        sink = self.sink
+
+        # FIFO entries: {eop, block[127:0]}.
+        m.submodules.fifo = fifo = DomainRenamer({"sync": "ss"})(
+            SyncFIFO(width=129, depth=self._depth))
+
+        # ── symbol translation (8 lanes) ──────────────────────────────
+        #
+        # The Gen1->Gen2 K mapping as at words=1; the POST-PACKET filler
+        # rule is qualified: only bytes following an EPF whose PRECEDING
+        # symbol is END or EDB (a packet terminator) become Gen2 Idle --
+        # a framing EPF (HPSTART/DPPSTART/LCSTART, preceded by
+        # SHP/SDP/SLC) may now sit mid-word with real content after it.
+        # The terminator can end exactly at a word boundary (EPF at
+        # byte 0 of the next word): track the last symbol's
+        # END/EDB-ness across words.
+        prev_was_term = Signal()   # last byte of the previous word
+
+        word_syms = []
+        after_end_epf = C(0, 1)
+        prev_term = prev_was_term
+        for i in range(8):
+            sym = Signal(8, name=f"txsym{i}")
+            byte_val = sink.data.word_select(i, 8)
+            is_epf  = sink.ctrl[i] & (byte_val == K_EPF)
+            is_term = sink.ctrl[i] & ((byte_val == K_END)
+                                      | (byte_val == K_EDB))
+            with m.If(after_end_epf):
+                m.d.comb += sym.eq(G2_IDL)
+            with m.Elif(sink.ctrl[i]):
+                with m.Switch(byte_val):
+                    for k, g2 in K_TO_G2.items():
+                        with m.Case(k):
+                            m.d.comb += sym.eq(g2)
+                    with m.Default():
+                        m.d.comb += sym.eq(G2_IDL)
+            with m.Else():
+                m.d.comb += sym.eq(byte_val)
+            word_syms.append(sym)
+            after_end_epf = after_end_epf | (is_epf & prev_term)
+            prev_term = is_term
+        with m.If(sink.valid & sink.ready):
+            m.d.ss += prev_was_term.eq(
+                sink.ctrl[7] & ((sink.data[56:64] == K_END)
+                                | (sink.data[56:64] == K_EDB)))
+
+        # ── enqueue: byte-granular capture into 16-byte beats ────────
+        #
+        # ``acc`` is a top-aligned 12-byte buffer (byte 0 in bits
+        # [88:96]); appends are 4, 8 or 12 bytes; whenever 16 are
+        # available a block is written (at most one w_en per cycle:
+        # 12 + 12 = 24 -> one block + 8 spill).
+        in_packet  = Signal()
+        byte_index = Signal(11)
+        dph        = Signal()
+        dw1_len    = Signal(16)
+
+        acc     = Signal(96)
+        acc_cnt = Signal(range(13))       # 0/4/8/12
+
+        pkts_in  = Signal()
+        pkts_out = Signal()
+        with m.If(pkts_in & ~pkts_out):
+            m.d.ss += self.packets_buffered.eq(self.packets_buffered + 1)
+        with m.Elif(pkts_out & ~pkts_in):
+            m.d.ss += self.packets_buffered.eq(self.packets_buffered - 1)
+
+        word_is_idle  = (sink.data == 0) & (sink.ctrl == 0)
+        starts_packet = sink.first & ~word_is_idle
+        # Byte 0 first-on-the-wire = TOP byte of the packed value.
+        word_bytes = Cat(*reversed(word_syms))              # 64b
+        low_bytes  = Cat(*reversed(word_syms[0:4]))         # 32b (syms 0-3)
+        high_bytes = Cat(*reversed(word_syms[4:8]))         # 32b (syms 4-7)
+
+        # Padded flush beat for the current accumulator content.
+        pad_beat = Signal(128)
+        m.d.comb += pad_beat.eq(Const(IDLE_BLOCK, 128))
+        with m.Switch(acc_cnt):
+            for cnt in (4, 8, 12):
+                with m.Case(cnt):
+                    m.d.comb += pad_beat[128 - 8 * cnt:128] \
+                        .eq(acc[96 - 8 * cnt:96])
+
+        def close_packet():
+            m.d.comb += [
+                fifo.w_data.eq(Cat(pad_beat, C(1, 1))),
+                fifo.w_en.eq(1),
+                pkts_in.eq(1),
+            ]
+            m.d.ss += [in_packet.eq(0), acc.eq(0), acc_cnt.eq(0)]
+
+        def append_bytes(n_bytes, payload):
+            """Append 4, 8 or 12 bytes (byte 0 in the top bits),
+            emitting a block when 16 are available."""
+            width = 8 * n_bytes
+            for cnt in (0, 4, 8, 12):
+                total = cnt + n_bytes
+                with m.If(acc_cnt == cnt):
+                    if total < 16:
+                        m.d.ss += [
+                            acc[96 - 8 * total:96 - 8 * cnt]
+                                .eq(payload[0:width]),
+                            acc_cnt.eq(total),
+                        ]
+                    else:
+                        spill = total - 16
+                        keep  = n_bytes - spill
+                        beat = Signal(128, name=f"wbeat_c{cnt}_{n_bytes}")
+                        m.d.comb += beat.eq(Const(IDLE_BLOCK, 128))
+                        if cnt:
+                            m.d.comb += beat[128 - 8 * cnt:128] \
+                                .eq(acc[96 - 8 * cnt:96])
+                        m.d.comb += \
+                            beat[128 - 8 * (cnt + keep):128 - 8 * cnt] \
+                            .eq(payload[width - 8 * keep:width])
+                        m.d.comb += [
+                            fifo.w_data.eq(Cat(beat, C(0, 1))),
+                            fifo.w_en.eq(1),
+                        ]
+                        if spill:
+                            m.d.ss += [
+                                acc.eq(0),
+                                acc[96 - 8 * spill:96]
+                                    .eq(payload[0:8 * spill]),
+                                acc_cnt.eq(spill),
+                            ]
+                        else:
+                            m.d.ss += [acc.eq(0), acc_cnt.eq(0)]
+
+        m.d.comb += sink.ready.eq(fifo.w_rdy)
+
+        with m.If(sink.valid & fifo.w_rdy):
+
+            with m.If(sink.first & in_packet):
+                # Packet boundary: close the open packet; a new
+                # packet's start word replays next cycle (not consumed).
+                close_packet()
+                with m.If(starts_packet):
+                    m.d.comb += sink.ready.eq(0)
+
+            with m.Elif(starts_packet):
+                is_hp = sink.data[0:32] == HPSTART_HALF
+                is_dp = is_hp & (sink.data[32:37] == 8)     # DATA type
+                m.d.ss += [
+                    in_packet.eq(1),
+                    byte_index.eq(8),
+                    dph.eq(is_dp),
+                ]
+                # The DPHSTART patch at capture: framing symbols 0-2
+                # become 95h for a data header.
+                patched = Signal(64)
+                m.d.comb += patched.eq(word_bytes)
+                with m.If(is_dp):
+                    m.d.comb += [
+                        patched[56:64].eq(G2_DPHP),
+                        patched[48:56].eq(G2_DPHP),
+                        patched[40:48].eq(G2_DPHP),
+                    ]
+                append_bytes(8, patched)
+
+            with m.Elif(in_packet):
+                with m.If(byte_index == 8):
+                    m.d.ss += dw1_len.eq(sink.data[16:32])
+                    append_bytes(8, word_bytes)
+                with m.Elif(dph & (byte_index == 16)):
+                    # [DW3|DPPSTART] + the replica pair in one go.
+                    rep = Cat(dw1_len[8:16], dw1_len[0:8],
+                              dw1_len[8:16], dw1_len[0:8])
+                    m.d.ss += dph.eq(0)
+                    append_bytes(12, Cat(high_bytes, rep, low_bytes))
+                with m.Elif(~dph & (byte_index == 16)):
+                    # Final header word of a non-data packet: only the
+                    # DW3 half is content; the pad half is dropped.
+                    append_bytes(4, low_bytes)
+                with m.Else():
+                    append_bytes(8, word_bytes)
+                m.d.ss += byte_index.eq(byte_index + 8)
+
+            # (bare idle filler with no packet open: dropped.)
+
+        # ── drain: gapless per-packet bursting (as at words=1) ───────
+        head_v    = Signal()
+        head_data = Signal(128)
+        head_eop  = Signal()
+        mid_pkt   = Signal()
+
+        m.d.comb += self.beat_data.eq(
+            Mux(head_v, head_data, Const(IDLE_BLOCK, 128)))
+
+        consume = self.beat_request & head_v
+
+        with m.If(consume):
+            m.d.ss += self.pkt_in_flight.eq(~head_eop)
+        with m.If(~head_v | consume):
+            with m.If(fifo.r_rdy
+                      & (mid_pkt | (self.packets_buffered != 0))):
+                m.d.ss += [
+                    head_v   .eq(1),
+                    head_data.eq(fifo.r_data[0:128]),
+                    head_eop .eq(fifo.r_data[128]),
+                    mid_pkt  .eq(~fifo.r_data[128]),
+                ]
+                m.d.comb += [
+                    fifo.r_en.eq(1),
+                    pkts_out .eq(fifo.r_data[128]),
+                ]
+            with m.Else():
+                m.d.ss += head_v.eq(0)
+
+        return m
+
+
 class Gen2BlockTransmitter(Elaboratable):
     """Gen2 block scheduler + ordered-set generator (stage A).
 
@@ -422,15 +681,23 @@ class Gen2BlockTransmitter(Elaboratable):
 
     def __init__(self, *, tseq_count=524288, ts_per_burst=16,
                  sync_every_ts=32, sync_every_tseq=16384,
-                 skp_interval=40):
+                 skp_interval=40, words=1):
         self._tseq_count      = tseq_count
         self._ts_per_burst    = ts_per_burst
         self._sync_every_ts   = sync_every_ts
         self._sync_every_tseq = sync_every_tseq
         self._skp_interval    = skp_interval
+        # Width program (usb3_design.md 13.3): ``words=2`` emits ONE
+        # whole 128-bit block per beat at the pclk/2 core clock; the
+        # 24-symbol SKP OS goes out as one full beat plus a HALF beat
+        # (symbols 16-23 in the data register's TOP lanes -- the lanes
+        # symbols 0-7 of a normal beat occupy) flagged ``tx_halfbeat``.
+        # The pacing reference stays in PHY-word (64-bit) units: a full
+        # beat supplies 2 words, a halfbeat 1.
+        self._words = words
 
         # Stream from the link layer (through the physical layer).
-        self.sink             = USBRawSuperSpeedStream()
+        self.sink             = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # LTSSM controls.
         self.send_tseq_burst  = Signal()
@@ -443,10 +710,12 @@ class Gen2BlockTransmitter(Elaboratable):
         self.burst_complete   = Signal()   # strobe (TS cadence)
 
         # PIPE block interface.
-        self.tx_data          = Signal(64)
+        self.tx_data          = Signal(64 * words)
         self.tx_head          = Signal(4)
         self.tx_start         = Signal()
         self.tx_valid         = Signal()
+        if words == 2:
+            self.tx_halfbeat  = Signal()
 
         # PHY TX gearbox FIFO occupancy (TxFifoWrNum): the closed-loop
         # pacing reference (bug #44; see the pacing section below).
@@ -457,6 +726,9 @@ class Gen2BlockTransmitter(Elaboratable):
 
     def elaborate(self, platform):
         m = Module()
+
+        if self._words == 2:
+            return self._elaborate_wide(m)
 
         # The bridge is held in reset while any training-class burst
         # runs: training means the link is (re)training, and every
@@ -736,6 +1008,168 @@ class Gen2BlockTransmitter(Elaboratable):
         return m
 
 
+    def _elaborate_wide(self, m):
+        """ The words=2 scheduler: one whole block per beat.  All the
+        words=1 scheduling decisions (mode tracking, SYNC cadence, SKP
+        interval with the in-flight deferral, the level-armed single
+        SDS, the drain-safe emission gate, the #44 closed-loop pacing)
+        carry over -- only the beat sequencing changes: every block is
+        a single beat, except the 24-symbol SKP OS = one beat plus a
+        ``tx_halfbeat``-flagged half.
+        """
+        training = (self.send_tseq_burst | self.send_ts1_burst
+                    | self.send_ts2_burst)
+        m.submodules.bridge = bridge = \
+            ResetInserter({"ss": training})(Gen2TxBridge(words=2))
+        m.d.comb += [
+            bridge.sink.stream_eq(self.sink),
+            self.packets_buffered.eq(bridge.packets_buffered),
+        ]
+
+        K_SKP_TAIL = 1     # scheduler sub-state: SKP halfbeat pending
+
+        skp_tail  = Signal()   # the halfbeat is the next emission
+        os_count  = Signal(range(max(self._tseq_count, 65536) + 1))
+        sync_gap  = Signal(range(self._sync_every_tseq + 1))
+        skp_gap   = Signal(range(2 * self._skp_interval + 1))
+
+        sds_pending = Signal(init=1)
+
+        active = Signal()
+        m.d.ss += active.eq(self.send_tseq_burst | self.send_ts1_burst |
+                            self.send_ts2_burst | self.idle_mode)
+
+        mode = Signal(2)
+        new_mode = Signal(2)
+        m.d.comb += new_mode.eq(
+            Mux(self.send_tseq_burst, 1,
+                Mux(self.send_ts1_burst, 2,
+                    Mux(self.send_ts2_burst, 3, 0))))
+
+        ts_config = Signal(8)
+        m.d.comb += ts_config.eq(Cat(self.request_hot_reset, C(0, 2),
+                                     self.request_no_scrambling, C(0, 4)))
+
+        def ts_block(ident):
+            base = [ident] * 16
+            base[4] = 0
+            base[5] = 0
+            out = Signal(128, name=f"ts{ident:02x}_blk")
+            m.d.comb += out.eq(Const(syms_to_block(base), 128))
+            # symbol 5 sits at bits [80:88] (symbol 0 = top byte).
+            m.d.comb += out[80:88].eq(ts_config)
+            return out
+
+        TSEQ_BLK = Const(syms_to_block(
+            [TSEQ_ID] * 4 + [0, 0] + [TSEQ_ID] * 10), 128)
+        SYNC_BLK = Const(syms_to_block([0x00, 0xFF] * 8), 128)
+        SDS_BLK  = Const(syms_to_block([SDS_ID] * 4 + [0x55] * 12), 128)
+        SKP_BLK  = Const(syms_to_block([SKP_SYM] * 16), 128)
+        # The halfbeat's 8 symbols ride the TOP lanes (the same lanes a
+        # normal beat's symbols 0-7 use); the low half is idle fill.
+        SKP_TAIL_BLK = Const(syms_to_block(
+            [SKP_SYM] * 4 + [SKPEND, 0, 0, 0] + [G2_IDL] * 8), 128)
+
+        # ── the #44 closed-loop pacing, in PHY-word units ────────────
+        # A full beat supplies 2 words to the PHY FIFO, a halfbeat 1;
+        # the threshold keeps its word units (16 of 32).
+        PACE_THRESHOLD = 16
+        pace_due = Signal()
+        m.d.comb += pace_due.eq(self.tx_fifo_level >= PACE_THRESHOLD)
+
+        # Drain-safe gate: the SKP halfbeat must follow its beat (a
+        # pacing gap between them would leave a malformed OS if the
+        # LTSSM stopped): ``skp_tail`` keeps emission up like a
+        # mid-block beat at words=1.
+        with m.If((active | skp_tail) & ~(pace_due & ~skp_tail)):
+            m.d.comb += self.tx_valid.eq(1)
+
+            with m.If(skp_tail):
+                # ── the SKP OS tail half ──
+                m.d.comb += [
+                    self.tx_head.eq(BLOCK_CONTROL),
+                    self.tx_data.eq(SKP_TAIL_BLK),
+                    self.tx_halfbeat.eq(1),
+                    # No tx_start: the halfbeat extends the SKP block.
+                ]
+                m.d.ss += skp_tail.eq(0)
+
+            with m.Else():
+                # ── block boundary: choose and emit a whole block ──
+                m.d.comb += self.tx_start.eq(1)
+
+                with m.If(new_mode != mode):
+                    m.d.ss += [mode.eq(new_mode), os_count.eq(0),
+                               sync_gap.eq(0)]
+                with m.If(new_mode != 0):
+                    m.d.ss += sds_pending.eq(1)
+
+                def os_tick(per_burst):
+                    with m.If(os_count + 1 == per_burst):
+                        m.d.comb += self.burst_complete.eq(1)
+                        m.d.ss += os_count.eq(0)
+                    with m.Else():
+                        m.d.ss += os_count.eq(os_count + 1)
+
+                with m.If((skp_gap >= self._skp_interval)
+                          & ~bridge.pkt_in_flight):
+                    m.d.ss += [skp_tail.eq(1), skp_gap.eq(0)]
+                    m.d.comb += [self.tx_head.eq(BLOCK_CONTROL),
+                                 self.tx_data.eq(SKP_BLK)]
+                with m.Else():
+                    with m.If(skp_gap < (self._skp_interval * 2)):
+                        m.d.ss += skp_gap.eq(skp_gap + 1)
+
+                    with m.If(new_mode == 1):        # TSEQ
+                        with m.If(sync_gap >= self._sync_every_tseq):
+                            m.d.ss += sync_gap.eq(0)
+                            m.d.comb += [self.tx_head.eq(BLOCK_CONTROL),
+                                         self.tx_data.eq(SYNC_BLK)]
+                        with m.Else():
+                            m.d.ss += sync_gap.eq(sync_gap + 1)
+                            m.d.comb += [self.tx_head.eq(BLOCK_CONTROL),
+                                         self.tx_data.eq(TSEQ_BLK)]
+                            os_tick(self._tseq_count)
+
+                    with m.Elif((new_mode == 2) | (new_mode == 3)):
+                        with m.If(sync_gap >= self._sync_every_ts):
+                            m.d.ss += sync_gap.eq(0)
+                            m.d.comb += [self.tx_head.eq(BLOCK_CONTROL),
+                                         self.tx_data.eq(SYNC_BLK)]
+                        with m.Else():
+                            m.d.ss += sync_gap.eq(sync_gap + 1)
+                            m.d.comb += self.tx_head.eq(BLOCK_CONTROL)
+                            with m.If(new_mode == 2):
+                                m.d.comb += self.tx_data.eq(
+                                    ts_block(TS1_ID))
+                            with m.Else():
+                                m.d.comb += self.tx_data.eq(
+                                    ts_block(TS2_ID))
+                            os_tick(self._ts_per_burst)
+
+                    with m.Elif(self.idle_mode):
+                        with m.If(sds_pending):
+                            m.d.ss += sds_pending.eq(0)
+                            m.d.comb += [self.tx_head.eq(BLOCK_CONTROL),
+                                         self.tx_data.eq(SDS_BLK)]
+                        with m.Else():
+                            m.d.comb += [
+                                self.tx_head.eq(BLOCK_DATA),
+                                self.tx_data.eq(bridge.beat_data),
+                                bridge.beat_request.eq(1),
+                            ]
+
+        with m.Elif(active):
+            # Rate-matching gap (the FIFO drains toward the cushion).
+            pass
+
+        with m.Else():
+            m.d.ss += [skp_tail.eq(0), mode.eq(0), os_count.eq(0),
+                       sync_gap.eq(0), skp_gap.eq(0)]
+
+        return m
+
+
 class Gen2BlockReceiver(Elaboratable):
     """Gen2 block-level receiver (stage A).
 
@@ -745,12 +1179,23 @@ class Gen2BlockReceiver(Elaboratable):
     K-coded dialect for the unmodified link core.
     """
 
-    def __init__(self, queue_depth=1024, out_depth=512):
+    def __init__(self, queue_depth=1024, out_depth=512, words=1):
+        # Width program (usb3_design.md 13.5): ``words=2`` receives one
+        # whole 128-bit block per beat (assembly trivializes), queues
+        # 128-bit entries, walks them as FOUR 4-symbol quarters (the
+        # grammar engine is unchanged), and presents the translated
+        # stream as 64-bit beats through a 2:1 output packer.  The #43
+        # queue-bound argument re-derives: entry arrival is still
+        # O(constructs) (idle runs compress whole blocks), while the
+        # engine's absolute drain per cycle is unchanged against a core
+        # clock at HALF the rate -- the bound doubles, the default
+        # depth keeps 4x headroom, and the sim asserts the level.
         self._queue_depth = queue_depth
         self._out_depth   = out_depth
+        self._words       = words
 
         # PIPE block interface.
-        self.rx_data      = Signal(64)
+        self.rx_data      = Signal(64 * words)
         self.rx_head      = Signal(4)
         self.rx_start     = Signal()
         self.rx_valid     = Signal()
@@ -766,7 +1211,7 @@ class Gen2BlockReceiver(Elaboratable):
         self.data_mode     = Signal()   # sticky: SDS seen, no TS since
 
         # Translated Gen1-dialect stream toward the link core.
-        self.source        = USBRawSuperSpeedStream()
+        self.source        = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Debug (prunable bring-up taps).
         self.queue_level   = Signal(16)
@@ -778,13 +1223,18 @@ class Gen2BlockReceiver(Elaboratable):
     def elaborate(self, platform):
         m = Module()
 
+        # Width-derived shapes.
+        BEAT_W  = 64 * self._words        # queue/engine beat width
+        HALVES  = 2 * self._words         # 4-symbol steps per beat
+        IDLE_W  = IDLE_BLOCK if self._words == 2 else IDLE_BEAT
+
         # ── PIPE input registers ─────────────────────────────────────
         # The whole receiver works from a locally registered copy of the
         # PIPE RX beat (156.25 timing: the adapter's output registers
         # otherwise reach the enqueue idle-compare and the block
         # classifier in one routed hop).  One beat of RX latency is
         # immaterial everywhere downstream.
-        rx_data  = Signal(64)
+        rx_data  = Signal(64 * self._words)
         rx_head  = Signal(4)
         rx_start = Signal()
         rx_valid = Signal()
@@ -796,24 +1246,34 @@ class Gen2BlockReceiver(Elaboratable):
         ]
 
         # ── block assembly ────────────────────────────────────────────
-        beat0_data = Signal(64)
-        have_beat0 = Signal()
         block_done = Signal()
         block_ctl  = Signal()
         b0 = Signal(64)
         b1 = Signal(64)
 
-        with m.If(rx_valid):
-            with m.If(rx_start):
-                m.d.ss += [beat0_data.eq(rx_data), have_beat0.eq(1)]
-            with m.Elif(have_beat0):
-                m.d.ss += have_beat0.eq(0)
+        if self._words == 2:
+            # One beat = one whole block (start on every beat).
+            with m.If(rx_valid & rx_start):
                 m.d.comb += [
                     block_done.eq(1),
-                    b0.eq(beat0_data),
-                    b1.eq(rx_data),
+                    b0.eq(rx_data[64:128]),   # symbols 0-7 (top lanes)
+                    b1.eq(rx_data[0:64]),     # symbols 8-15
                     block_ctl.eq(rx_head == BLOCK_CONTROL),
                 ]
+        else:
+            beat0_data = Signal(64)
+            have_beat0 = Signal()
+            with m.If(rx_valid):
+                with m.If(rx_start):
+                    m.d.ss += [beat0_data.eq(rx_data), have_beat0.eq(1)]
+                with m.Elif(have_beat0):
+                    m.d.ss += have_beat0.eq(0)
+                    m.d.comb += [
+                        block_done.eq(1),
+                        b0.eq(beat0_data),
+                        b1.eq(rx_data),
+                        block_ctl.eq(rx_head == BLOCK_CONTROL),
+                    ]
 
         syms = [Signal(8, name=f"blk_sym{i}") for i in range(16)]
         for i in range(8):
@@ -911,10 +1371,10 @@ class Gen2BlockReceiver(Elaboratable):
         # mid-construct run that never sees a terminating non-idle beat
         # (corrupt wire) still flushes via the RUN_MAX cap.
         m.submodules.queue = queue = DomainRenamer({"sync": "ss"})(
-            SyncFIFO(width=65, depth=self._queue_depth))
+            SyncFIFO(width=BEAT_W + 1, depth=self._queue_depth))
 
         engine_busy = Signal()   # grammar engine mid-construct
-        beat_is_idle = rx_data == Const(IDLE_BEAT, 64)
+        beat_is_idle = rx_data == Const(IDLE_W, BEAT_W)
         beat_is_data = rx_valid & (rx_head == BLOCK_DATA) \
             & self.data_mode
 
@@ -928,7 +1388,7 @@ class Gen2BlockReceiver(Elaboratable):
         run_left   = Signal(8)    # load-side run replay (declared here
                                   # for the all_empty term; logic below)
         sk_valid   = Signal()     # 1-deep enqueue skid
-        sk_data    = Signal(64)
+        sk_data    = Signal(BEAT_W)
 
         # Nothing anywhere in the RX path: the incoming idle beat is
         # provably inter-packet and carries no information.
@@ -943,7 +1403,8 @@ class Gen2BlockReceiver(Elaboratable):
             # Flush the pending idle run ahead of this beat; the beat
             # parks in the (provably empty) skid.
             m.d.comb += [
-                queue.w_data.eq(Cat(pend_idles, Const(0, 56), C(1, 1))),
+                queue.w_data.eq(Cat(pend_idles,
+                                    Const(0, BEAT_W - 8), C(1, 1))),
                 queue.w_en.eq(1),
             ]
             m.d.ss += [pend_idles.eq(0), sk_valid.eq(1),
@@ -972,7 +1433,8 @@ class Gen2BlockReceiver(Elaboratable):
                 # Cap flush (also the liveness bound for a construct
                 # stalled on an idle span with no terminator).
                 m.d.comb += [
-                    queue.w_data.eq(Cat(Const(RUN_MAX, 8), Const(0, 56),
+                    queue.w_data.eq(Cat(Const(RUN_MAX, 8),
+                                        Const(0, BEAT_W - 8),
                                         C(1, 1))),
                     queue.w_en.eq(1),
                 ]
@@ -1024,19 +1486,25 @@ class Gen2BlockReceiver(Elaboratable):
         dpp_len  = Signal(16)
         term_edb = Signal()
 
-        half     = Signal()    # which half of the current beat
-        sub      = Signal(2)   # symbol position within the half
-        cur_beat = Signal(64)
+        # ``half`` indexes the 4-symbol steps of the current beat: two
+        # at words=1, four (quarters) at words=2.
+        half     = Signal(range(HALVES)) if HALVES > 2 else Signal()
+        sub      = Signal(2)   # symbol position within the step
+        cur_beat = Signal(BEAT_W)
         have_cur = Signal()
 
+        # Step h covers symbols 4h..4h+3; symbol 0 is the beat's TOP
+        # byte, so step h's symbol i sits at byte (HALVES*4 - 1) -
+        # (4h + i) from the bottom.
         eng_syms = [Signal(8, name=f"eng_sym{i}") for i in range(4)]
-        for i in range(4):
-            with m.If(~half):
-                m.d.comb += eng_syms[i].eq(
-                    cur_beat[8 * (7 - i):8 * (8 - i)])
-            with m.Else():
-                m.d.comb += eng_syms[i].eq(
-                    cur_beat[8 * (3 - i):8 * (4 - i)])
+        n_syms = 4 * HALVES
+        with m.Switch(half):
+            for h in range(HALVES):
+                with m.Case(h):
+                    for i in range(4):
+                        pos = n_syms - 1 - (4 * h + i)
+                        m.d.comb += eng_syms[i].eq(
+                            cur_beat[8 * pos:8 * pos + 8])
 
         cur_sym = Signal(8)
         with m.Switch(sub):
@@ -1069,14 +1537,14 @@ class Gen2BlockReceiver(Elaboratable):
         # can never starve (a beat is consumed at most every other
         # cycle -- two halves per beat -- while the refill runs every
         # cycle with one cycle of lag).
-        qs_data = [Signal(65, name=f"qs_data{i}") for i in range(2)]
+        qs_data = [Signal(BEAT_W + 1, name=f"qs_data{i}") for i in range(2)]
         qs_head = Signal()      # read slot pointer
         qs_tail = Signal()      # write slot pointer
         qs_cnt  = Signal(2)
         qs_pop  = Signal()
         qs_push = Signal()
         qh_valid = qs_cnt != 0
-        qh_data  = Signal(65)
+        qh_data  = Signal(BEAT_W + 1)
 
         m.d.comb += [
             qs_push.eq(queue.r_rdy & (qs_cnt < 2)),
@@ -1101,16 +1569,19 @@ class Gen2BlockReceiver(Elaboratable):
         with m.If(qs_pop):
             m.d.ss += qs_head.eq(~qs_head)
 
-        load_is_run = qh_data[64]            # idle-run entry (count)
+        load_is_run = qh_data[BEAT_W]        # idle-run entry (count)
         run_count   = qh_data[0:8]
 
-        # Per-half idle flags, precomputed at beat load (the bulk
+        # Per-step idle flags, precomputed at beat load (the bulk
         # eligibility's all-idle test otherwise closes a combinational
         # loop cur_beat -> compare -> half_done -> cur_beat load enable).
-        h_idle = Signal(2)
+        # Flag h covers symbols 4h..4h+3 = the (HALVES-1-h)'th 32-bit
+        # slice from the bottom.
+        h_idle = Signal(HALVES)
         load_h_idle = [
-            qh_data[32:64] == Const(IDLE_BEAT & 0xFFFFFFFF, 32),
-            qh_data[0:32]  == Const(IDLE_BEAT & 0xFFFFFFFF, 32),
+            qh_data[32 * (HALVES - 1 - h):32 * (HALVES - h)]
+            == Const(IDLE_BEAT & 0xFFFFFFFF, 32)
+            for h in range(HALVES)
         ]
 
         # Idle-run replay: while ``run_left`` is nonzero the load stage
@@ -1121,54 +1592,55 @@ class Gen2BlockReceiver(Elaboratable):
         # same-cycle race exactly as for beat entries: a walk that just
         # left SEARCH into a construct must not discard idle beats that
         # may be its payload.
+        IDLE_ALL = Const(IDLE_W, BEAT_W)
+        H_ALL    = Const((1 << HALVES) - 1, HALVES)
+
         with m.If(~have_cur):
             with m.If(run_left != 0):
                 with m.If(state == ST_SEARCH):
                     m.d.ss += run_left.eq(0)              # discard rest
                 with m.Else():
-                    m.d.ss += [cur_beat.eq(Const(IDLE_BEAT, 64)),
-                               h_idle.eq(0b11), run_left.eq(run_left - 1),
+                    m.d.ss += [cur_beat.eq(IDLE_ALL),
+                               h_idle.eq(H_ALL), run_left.eq(run_left - 1),
                                have_cur.eq(1), half.eq(0), sub.eq(0)]
             with m.Elif(qh_valid):
                 with m.If(load_is_run & (state == ST_SEARCH)):
                     m.d.comb += qs_pop.eq(1)              # whole run
                 with m.Elif(load_is_run):
-                    m.d.ss += [cur_beat.eq(Const(IDLE_BEAT, 64)),
-                               h_idle.eq(0b11),
+                    m.d.ss += [cur_beat.eq(IDLE_ALL),
+                               h_idle.eq(H_ALL),
                                run_left.eq(run_count - 1),
                                have_cur.eq(1), half.eq(0), sub.eq(0)]
                     m.d.comb += qs_pop.eq(1)
                 with m.Else():
-                    m.d.ss += [cur_beat.eq(qh_data[0:64]),
-                               h_idle.eq(Cat(load_h_idle[0],
-                                             load_h_idle[1])),
+                    m.d.ss += [cur_beat.eq(qh_data[0:BEAT_W]),
+                               h_idle.eq(Cat(*load_h_idle)),
                                have_cur.eq(1), half.eq(0), sub.eq(0)]
                     m.d.comb += qs_pop.eq(1)
         with m.Elif(half_done):
             m.d.ss += sub.eq(0)
-            with m.If(~half):
-                m.d.ss += half.eq(1)
+            with m.If(half != HALVES - 1):
+                m.d.ss += half.eq(half + 1)
             with m.Elif(run_left != 0):
                 with m.If((state == ST_SEARCH) & ~search_exit):
                     m.d.ss += [run_left.eq(0), have_cur.eq(0)]
                 with m.Else():
-                    m.d.ss += [cur_beat.eq(Const(IDLE_BEAT, 64)),
-                               h_idle.eq(0b11), run_left.eq(run_left - 1),
+                    m.d.ss += [cur_beat.eq(IDLE_ALL),
+                               h_idle.eq(H_ALL), run_left.eq(run_left - 1),
                                half.eq(0)]
             with m.Elif(qh_valid & load_is_run):
                 with m.If((state == ST_SEARCH) & ~search_exit):
                     m.d.comb += qs_pop.eq(1)              # whole run
                     m.d.ss += have_cur.eq(0)
                 with m.Else():
-                    m.d.ss += [cur_beat.eq(Const(IDLE_BEAT, 64)),
-                               h_idle.eq(0b11),
+                    m.d.ss += [cur_beat.eq(IDLE_ALL),
+                               h_idle.eq(H_ALL),
                                run_left.eq(run_count - 1),
                                half.eq(0)]
                     m.d.comb += qs_pop.eq(1)
             with m.Elif(qh_valid):
-                m.d.ss += [cur_beat.eq(qh_data[0:64]),
-                           h_idle.eq(Cat(load_h_idle[0],
-                                         load_h_idle[1])),
+                m.d.ss += [cur_beat.eq(qh_data[0:BEAT_W]),
+                           h_idle.eq(Cat(*load_h_idle)),
                            half.eq(0)]
                 m.d.comb += qs_pop.eq(1)
             with m.Else():
@@ -1191,7 +1663,7 @@ class Gen2BlockReceiver(Elaboratable):
         # Bulk eligibility, all from registered state (no chaining).
         # The all-idle test uses the flags precomputed at beat load.
         idle_half = Signal()
-        m.d.comb += idle_half.eq(Mux(half, h_idle[1], h_idle[0]))
+        m.d.comb += idle_half.eq(h_idle.bit_select(half, 1))
         m.d.comb += can_bulk.eq((sub == 0) & (
             ((state == ST_DPP) & (count > 4)) |
             ((state == ST_LC) & (count == 4)) |
@@ -1517,37 +1989,101 @@ class Gen2BlockReceiver(Elaboratable):
         # the FIFO at T+1 and is presented at T+2 -- the idle can never
         # split a construct (the DPP-follows-DPH rule the Gen1 framers
         # depend on).
-        o_valid = Signal()
-        o_data  = Signal(32)
-        o_ctrl  = Signal(4)
-        o_take  = Signal()
-        m.d.comb += o_take.eq(~o_valid | self.source.ready)
+        if self._words == 1:
+            o_valid = Signal()
+            o_data  = Signal(32)
+            o_ctrl  = Signal(4)
+            o_take  = Signal()
+            m.d.comb += o_take.eq(~o_valid | self.source.ready)
 
-        with m.If(o_take):
-            with m.If(out_fifo.r_rdy):
-                m.d.ss += [
-                    o_valid.eq(1),
-                    o_data.eq(out_fifo.r_data[0:32]),
-                    o_ctrl.eq(out_fifo.r_data[32:36]),
-                ]
-                m.d.comb += out_fifo.r_en.eq(1)
-            with m.Elif(self.data_mode & ~engine_busy):
-                # Synthesized Gen1 logical idle: the partner is in its
-                # data-block stream (post-SDS); the wire between packets
-                # carries Gen2 Idle Symbols.  NB: while the engine is
-                # mid-construct (a construct tail momentarily dips the
-                # output rate below one word per cycle) the stream goes
-                # INVALID instead -- an idle word spliced mid-packet
-                # would make the Gen1 core's framers bail (the DPP must
-                # immediately follow its DPH).
-                m.d.ss += [o_valid.eq(1), o_data.eq(0), o_ctrl.eq(0)]
-            with m.Else():
-                m.d.ss += o_valid.eq(0)
+            with m.If(o_take):
+                with m.If(out_fifo.r_rdy):
+                    m.d.ss += [
+                        o_valid.eq(1),
+                        o_data.eq(out_fifo.r_data[0:32]),
+                        o_ctrl.eq(out_fifo.r_data[32:36]),
+                    ]
+                    m.d.comb += out_fifo.r_en.eq(1)
+                with m.Elif(self.data_mode & ~engine_busy):
+                    # Synthesized Gen1 logical idle: the partner is in
+                    # its data-block stream (post-SDS); the wire between
+                    # packets carries Gen2 Idle Symbols.  NB: while the
+                    # engine is mid-construct (a construct tail
+                    # momentarily dips the output rate below one word
+                    # per cycle) the stream goes INVALID instead -- an
+                    # idle word spliced mid-packet would make the Gen1
+                    # core's framers bail (the DPP must immediately
+                    # follow its DPH).
+                    m.d.ss += [o_valid.eq(1), o_data.eq(0), o_ctrl.eq(0)]
+                with m.Else():
+                    m.d.ss += o_valid.eq(0)
 
-        m.d.comb += [
-            self.source.valid.eq(o_valid),
-            self.source.data.eq(o_data),
-            self.source.ctrl.eq(o_ctrl),
-        ]
+            m.d.comb += [
+                self.source.valid.eq(o_valid),
+                self.source.data.eq(o_data),
+                self.source.ctrl.eq(o_ctrl),
+            ]
+        else:
+            # ── words=2: a 2:1 output packer ─────────────────────────
+            #
+            # The collector emits 32-bit words at <= 1/cycle; the wide
+            # source presents 64-bit beats (at most every other cycle
+            # under saturation -- the wide link receivers tolerate
+            # valid gaps anywhere).  A solo word is flushed with an
+            # idle high half ONLY when the whole engine is quiescent
+            # (fifo empty + engine drained): mid-construct it would
+            # splice idle into a packet, so the beat waits for its
+            # pair instead.  Constructs may thus land at either beat
+            # half downstream -- exactly the offsets-0/4 machinery the
+            # words=2 framers implement.
+            pend_v = Signal()
+            pend_d = Signal(32)
+            pend_c = Signal(4)
+            o_valid = Signal()
+            o_data  = Signal(64)
+            o_ctrl  = Signal(8)
+            o_take  = Signal()
+            quiescent = Signal()
+            m.d.comb += [
+                o_take.eq(~o_valid | self.source.ready),
+                quiescent.eq(self.data_mode & ~engine_busy),
+            ]
+
+            with m.If(o_take):
+                with m.If(pend_v & out_fifo.r_rdy):
+                    m.d.ss += [
+                        o_valid.eq(1),
+                        o_data.eq(Cat(pend_d, out_fifo.r_data[0:32])),
+                        o_ctrl.eq(Cat(pend_c, out_fifo.r_data[32:36])),
+                        pend_v.eq(0),
+                    ]
+                    m.d.comb += out_fifo.r_en.eq(1)
+                with m.Elif(pend_v & quiescent):
+                    # Solo flush: idle high half (safe -- see above).
+                    m.d.ss += [
+                        o_valid.eq(1),
+                        o_data.eq(Cat(pend_d, Const(0, 32))),
+                        o_ctrl.eq(Cat(pend_c, Const(0, 4))),
+                        pend_v.eq(0),
+                    ]
+                with m.Elif(out_fifo.r_rdy):
+                    m.d.ss += [
+                        pend_v.eq(1),
+                        pend_d.eq(out_fifo.r_data[0:32]),
+                        pend_c.eq(out_fifo.r_data[32:36]),
+                        o_valid.eq(0),
+                    ]
+                    m.d.comb += out_fifo.r_en.eq(1)
+                with m.Elif(quiescent):
+                    # Whole synthesized idle beat (as at words=1).
+                    m.d.ss += [o_valid.eq(1), o_data.eq(0), o_ctrl.eq(0)]
+                with m.Else():
+                    m.d.ss += o_valid.eq(0)
+
+            m.d.comb += [
+                self.source.valid.eq(o_valid),
+                self.source.data.eq(o_data),
+                self.source.ctrl.eq(o_ctrl),
+            ]
 
         return m

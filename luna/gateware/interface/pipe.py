@@ -132,9 +132,17 @@ class PIPEInterface(Elaboratable):
         # (e.g. the Gowin GTR12 USB 3.1 PHY, 32-bit@125MHz at Gen1 in the
         # low half, 64-bit block payload @156.25MHz at Gen2).
         8: 0b11,
+        # 128-bit (16-symbol) geometry: the width-program one-beat-per-
+        # block bridge contract; the encoding field is not meaningful
+        # (our bridge does not consume it).
+        16: 0b11,
     }
     def __init__(self, *, width):
-        if width not in (1, 2, 4, 8):
+        # width=16 is OUR width-program extension (usb3_design.md 13.3):
+        # the 128-bit one-beat-per-block contract presented to the core
+        # by the 2:1 PIPE bridge (plus ``tx_halfbeat`` for the
+        # 24-symbol SKP OS tail).
+        if width not in (1, 2, 4, 8, 16):
             raise ValueError(f"PIPE does not support a data bus width of {width}")
         self.width          = width
 
@@ -190,6 +198,12 @@ class PIPEInterface(Elaboratable):
         self.rx_sync_header = Signal(4)
         self.tx_start_block = Signal()
         self.rx_start_block = Signal()
+
+        # Width-program 128-bit block contract (width=16 only): the
+        # transmitted beat is a HALF block (symbols 16-23 of a SKP OS
+        # in the top lanes).
+        if width == 16:
+            self.tx_halfbeat = Signal()
 
 
 

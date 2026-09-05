@@ -36,12 +36,15 @@ PATTERNS = [
 class CompliancePatternEmitter(Elaboratable):
     """ Emitter for USB3 physical layer compliance test patterns.
     """
-    def __init__(self):
+    def __init__(self, words=1):
+        # Width program: the patterns are byte-replicated -- only the
+        # replication factor changes.  words=1 verbatim.
+        self._words = words
 
         #
         # I/O port
         #
-        self.source             = USBRawSuperSpeedStream()
+        self.source             = USBRawSuperSpeedStream(payload_words=4 * words)
 
         self.enable             = Signal()
         self.enable_scrambling  = Signal()
@@ -68,8 +71,10 @@ class CompliancePatternEmitter(Elaboratable):
                     with m.If(self.enable):
                         m.d.comb += [
                             self.source.valid     .eq(1),
-                            self.source.data      .eq(C(pattern.value, 8).replicate(4)),
-                            self.source.ctrl      .eq(C(pattern.ctrl,  1).replicate(4)),
+                            self.source.data      .eq(C(pattern.value, 8)
+                                                      .replicate(4 * self._words)),
+                            self.source.ctrl      .eq(C(pattern.ctrl,  1)
+                                                      .replicate(4 * self._words)),
                             self.enable_scrambling.eq(pattern.scrambling),
                             self.send_lfps_polling.eq(pattern.lfps),
                             self.disable_deemph   .eq(~pattern.deemphasis),

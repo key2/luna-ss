@@ -53,6 +53,14 @@ TS2_SET_DATA = [
 ]
 
 
+def pair_words(set_data):
+    """Width program: pairs a 32-bit set-data list into the 64-bit
+    (words=2) form -- word k = data[2k] | data[2k+1] << 32."""
+    assert len(set_data) % 2 == 0
+    return [set_data[2 * k] | (set_data[2 * k + 1] << 32)
+            for k in range(len(set_data) // 2)]
+
+
 class TSBurstDetector(Elaboratable):
     """ Simple Training Set detector; capable of detecting basic training sets.
 
@@ -64,16 +72,23 @@ class TSBurstDetector(Elaboratable):
         Strobe; pulses high when a burst of ordered sets has been received.
     """
 
-    def __init__(self, *, set_data, first_word_ctrl=0b1111, sets_in_burst=1, include_config=False):
+    def __init__(self, *, set_data, first_word_ctrl=0b1111, sets_in_burst=1,
+                 include_config=False, words=1):
+        # Width program (usb3_design.md 13.5): at ``words=2`` the
+        # caller supplies PAIRED 64-bit set data (``pair_words``) and
+        # an 8-bit first-word ctrl; the configuration field (symbol 5)
+        # then lives in word 0 byte 5 instead of word 1 byte 1.
+        # words=1 is the historical unit verbatim.
         self._set_data            = set_data
         self._first_word_ctrl     = first_word_ctrl
         self._detection_threshold = sets_in_burst
         self._include_config      = include_config
+        self._words               = words
 
         #
         # I/O port
         #
-        self.sink                 = USBRawSuperSpeedStream()
+        self.sink                 = USBRawSuperSpeedStream(payload_words=4 * words)
         self.detected             = Signal()
 
         if self._include_config:
@@ -88,6 +103,9 @@ class TSBurstDetector(Elaboratable):
 
         # Always accept data from our SerDes.
         m.d.comb += self.sink.ready.eq(1)
+
+        if self._words == 2:
+            return self._elaborate_wide(m)
 
         # Counter that tracks how many consecutive sets we've received.
         consecutive_set_count = Signal(range(0, self._detection_threshold + 1))
@@ -185,6 +203,78 @@ class TSBurstDetector(Elaboratable):
         return m
 
 
+    def _elaborate_wide(self, m):
+        """ The words=2 detector: identical FSM over the paired word
+        list; the configuration field (symbol 5, when present) rides
+        word 0 at byte 5, masked out of that word's compare.  Training
+        sets arrive beat-aligned behind the words=2 word aligner (COM
+        at lane 0), so no offset machinery is required. """
+        consecutive_set_count = Signal(
+            range(0, self._detection_threshold + 1))
+
+        data = self.sink.data
+        ctrl = self.sink.ctrl
+
+        # Symbols 4/5 (byte lanes 4/5 of word 0) are excluded from the
+        # config-carrying compare.
+        CONFIG_MASK = 0xFFFF0000FFFFFFFF
+
+        def match(count, target_ctrl=0):
+            if self._include_config and count == 0:
+                data_matches = ((data & Const(CONFIG_MASK, 64))
+                                == (self._set_data[0] & CONFIG_MASK))
+            else:
+                data_matches = (data == self._set_data[count])
+            return data_matches & (ctrl == target_ctrl)
+
+        def advance_on_match(count, target_ctrl=0,
+                             fail_state="NONE_DETECTED"):
+            with m.If(self.sink.valid):
+                with m.If(match(count, target_ctrl)):
+                    if self._include_config and count == 0:
+                        m.d.ss += [
+                            self.hot_reset          .eq(data[40]),
+                            self.loopback_requested .eq(data[42]),
+                            self.scrambling_disabled.eq(data[43]),
+                        ]
+                    m.next = f"{count + 1}_DETECTED"
+                with m.Else():
+                    m.next = fail_state
+
+        last_state_number = len(self._set_data)
+        with m.FSM(domain="ss", name="wide_fsm"):
+
+            with m.State("NONE_DETECTED"):
+                m.d.ss += consecutive_set_count.eq(0)
+                m.next = "WAIT_FOR_FIRST"
+
+            with m.State("WAIT_FOR_FIRST"):
+                advance_on_match(0, target_ctrl=self._first_word_ctrl,
+                                 fail_state="WAIT_FOR_FIRST")
+
+            for i in range(1, last_state_number):
+                with m.State(f"{i}_DETECTED"):
+                    advance_on_match(i)
+
+            with m.State(f"{last_state_number}_DETECTED"):
+                with m.If(consecutive_set_count + 1
+                          == self._detection_threshold):
+                    m.d.ss += [
+                        consecutive_set_count .eq(0),
+                        self.detected         .eq(1),
+                    ]
+                with m.Else():
+                    m.d.ss += consecutive_set_count \
+                        .eq(consecutive_set_count + 1)
+
+                with m.If(self.sink.valid):
+                    advance_on_match(0, target_ctrl=self._first_word_ctrl)
+                with m.Else():
+                    m.next = "WAIT_FOR_FIRST"
+
+        return m
+
+
 
 class TSEmitter(Elaboratable):
     """ Training Set Emitter
@@ -196,16 +286,22 @@ class TSEmitter(Elaboratable):
     on the last cycle of the generation. Training config can also be transmitted for TS1/TS2 Ordered
     Sets.
     """
-    def __init__(self, *, set_data, first_word_ctrl=0b1111, transmit_burst_length=1, include_config=False):
+    def __init__(self, *, set_data, first_word_ctrl=0b1111,
+                 transmit_burst_length=1, include_config=False, words=1):
+        # Width program: at ``words=2`` the caller supplies paired
+        # 64-bit set data; the configuration field (symbol 5) is
+        # injected into word 0 bits [40:44] instead of word 1 byte 1.
+        # words=1 verbatim.
         self._set_data          = set_data
         self._first_word_ctrl   = first_word_ctrl
         self._total_to_transmit = transmit_burst_length
         self._include_config    = include_config
+        self._words             = words
 
         #
         # I/O port
         #
-        self.source            = USBRawSuperSpeedStream()
+        self.source            = USBRawSuperSpeedStream(payload_words=4 * words)
 
         self.start             = Signal()
         self.done              = Signal()
@@ -246,13 +342,22 @@ class TSEmitter(Elaboratable):
 
                     # If this is the first data word of our Training Set, we'll optionally set
                     # our control fields.
-                    if self._include_config and (i == 1):
+                    if self._include_config and (i == 1) and self._words == 1:
                         with m.If(self.request_hot_reset):
                             m.d.comb += self.source.data.word_select(1, 8)[0].eq(1)
                         with m.If(self.request_loopback):
                             m.d.comb += self.source.data.word_select(1, 8)[2].eq(1)
                         with m.If(self.request_no_scrambling):
                             m.d.comb += self.source.data.word_select(1, 8)[3].eq(1)
+
+                    # words=2: symbol 5 rides word 0 (bits [40:44]).
+                    if self._include_config and (i == 0) and self._words == 2:
+                        with m.If(self.request_hot_reset):
+                            m.d.comb += self.source.data[40].eq(1)
+                        with m.If(self.request_loopback):
+                            m.d.comb += self.source.data[42].eq(1)
+                        with m.If(self.request_no_scrambling):
+                            m.d.comb += self.source.data[43].eq(1)
 
 
                     with m.If(self.source.ready):
@@ -295,14 +400,18 @@ class TSTransceiver(Elaboratable):
         Number of TSEQ ordered sets emitted during Polling.RxEQ.  The
         specification value is 65536; simulations may shorten it.
     """
-    def __init__(self, *, tseq_burst_length=65536):
+    def __init__(self, *, tseq_burst_length=65536, words=1):
+        # Width program: words=2 pairs every set-data list (a Gen1 TS =
+        # two 64-bit words) and threads the config-field relocation
+        # through the detectors/emitters.  words=1 verbatim.
         self._tseq_burst_length = tseq_burst_length
+        self._words = words
 
         #
         # I/O port
         #
-        self.sink       = USBRawSuperSpeedStream()
-        self.source     = USBRawSuperSpeedStream()
+        self.sink       = USBRawSuperSpeedStream(payload_words=4 * words)
+        self.source     = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Detectors
         self.tseq_detected         = Signal() # o
@@ -329,6 +438,19 @@ class TSTransceiver(Elaboratable):
     def elaborate(self, platform):
         m = Module()
 
+        # Width-selected set data and instantiation keywords.
+        W = self._words
+        if W == 2:
+            tseq_data = pair_words(TSEQ_SET_DATA)
+            ts1_data  = pair_words(TS1_SET_DATA)
+            its1_data = pair_words(INVERTED_TS1_SET_DATA)
+            ts2_data  = pair_words(TS2_SET_DATA)
+        else:
+            tseq_data = TSEQ_SET_DATA
+            ts1_data  = TS1_SET_DATA
+            its1_data = INVERTED_TS1_SET_DATA
+            ts2_data  = TS2_SET_DATA
+
         #
         # TSEQ Detectors
         #
@@ -338,9 +460,10 @@ class TSTransceiver(Elaboratable):
 
         # TSEQ detector (not strictly required, but useful for alignment)
         m.submodules.tseq_detector = tseq_detector = TSBurstDetector(
-            set_data        = TSEQ_SET_DATA,
+            set_data        = tseq_data,
             first_word_ctrl = 0b0001,
-            sets_in_burst   = 32
+            sets_in_burst   = 32,
+            words           = W,
         )
         m.d.comb += [
             tseq_detector.sink  .tap(self.sink),
@@ -349,8 +472,9 @@ class TSTransceiver(Elaboratable):
 
         # TS1 detector
         m.submodules.ts1_detector = ts1_detector = TSBurstDetector(
-            set_data        = TS1_SET_DATA,
-            sets_in_burst   = 8
+            set_data        = ts1_data,
+            sets_in_burst   = 8,
+            words           = W,
         )
         m.d.comb += [
             ts1_detector.sink   .tap(self.sink),
@@ -359,8 +483,9 @@ class TSTransceiver(Elaboratable):
 
         # Inverted TS1 detector
         m.submodules.inverted_ts1_detector = inverted_ts1_detector = TSBurstDetector(
-            set_data        = INVERTED_TS1_SET_DATA,
-            sets_in_burst   = 8
+            set_data        = its1_data,
+            sets_in_burst   = 8,
+            words           = W,
         )
         m.d.comb += [
             inverted_ts1_detector.sink  .tap(self.sink),
@@ -369,9 +494,10 @@ class TSTransceiver(Elaboratable):
 
         # TS2 detector
         m.submodules.ts2_detector = ts2_detector = TSBurstDetector(
-            set_data        = TS2_SET_DATA,
+            set_data        = ts2_data,
             sets_in_burst   = 8,
-            include_config  = True
+            include_config  = True,
+            words           = W,
         )
         m.d.comb += [
             ts2_detector.sink   .tap(self.sink),
@@ -389,9 +515,10 @@ class TSTransceiver(Elaboratable):
 
         # TSEQ generator
         m.submodules.tseq_generator = tseq_generator = TSEmitter(
-            set_data              = TSEQ_SET_DATA,
+            set_data              = tseq_data,
             first_word_ctrl       = 0b0001,
-            transmit_burst_length = self._tseq_burst_length
+            transmit_burst_length = self._tseq_burst_length,
+            words                 = W,
         )
         with m.If(self.send_tseq_burst):
             m.d.comb += [
@@ -401,8 +528,9 @@ class TSTransceiver(Elaboratable):
 
         # TS1 generator
         m.submodules.ts1_generator = ts1_generator = TSEmitter(
-            set_data              = TS1_SET_DATA,
-            transmit_burst_length = 16
+            set_data              = ts1_data,
+            transmit_burst_length = 16,
+            words                 = W,
         )
         with m.If(self.send_ts1_burst):
             m.d.comb += [
@@ -412,9 +540,10 @@ class TSTransceiver(Elaboratable):
 
         # TS2 Generator
         m.submodules.ts2_generator = ts2_generator = TSEmitter(
-            set_data              = TS2_SET_DATA,
+            set_data              = ts2_data,
             transmit_burst_length = 16,
             include_config        = True,
+            words                 = W,
         )
         with m.If(self.send_ts2_burst):
             m.d.comb += [

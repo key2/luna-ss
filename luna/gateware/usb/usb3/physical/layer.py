@@ -36,7 +36,13 @@ class USB3PhysicalLayer(Elaboratable):
     """
 
     def __init__(self, *, phy, sync_frequency, scd_pattern=None, gen2=False,
-                 gen2_tseq_count=524288, phy_boots_gen2=True):
+                 gen2_tseq_count=524288, phy_boots_gen2=True, words=1):
+        # Width program (usb3_design.md 13.1/13.5): ``words=2`` runs the
+        # whole conditioning chain at 8 symbols/beat; the PIPE-shaped
+        # ``phy`` interface is then the 128-bit block contract (Gen2:
+        # 1 beat = 1 block + tx_halfbeat; Gen1 leg: 8 symbols riding
+        # [63:0]).  words=1 verbatim.
+        self._words = words
         self._scd_pattern = scd_pattern
         self._gen2 = gen2
         self._gen2_tseq_count = gen2_tseq_count
@@ -54,11 +60,11 @@ class USB3PhysicalLayer(Elaboratable):
         #
 
         # Data streams.
-        self.sink                       = USBRawSuperSpeedStream()
-        self.source                     = USBRawSuperSpeedStream()
+        self.sink                       = USBRawSuperSpeedStream(payload_words=4 * words)
+        self.source                     = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Raw source (never descrambled; for reset detection).
-        self.raw_source                 = USBRawSuperSpeedStream()
+        self.raw_source                 = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Physical link state.
         self.ready                      = Signal()
@@ -136,13 +142,13 @@ class USB3PhysicalLayer(Elaboratable):
         self.skip_removed               = Signal()
 
         # Debug signaling.
-        self.ctc_bytes_in_buffer        = Signal(range(9))
-        self.alignment_offset           = Signal(range(4))
+        self.ctc_bytes_in_buffer        = Signal(range(8 * words + 1))
+        self.alignment_offset           = Signal(range(4 * words))
 
         # Debug tap: conditioned (descrambled-equivalent) transmit stream
         # as consumed from the TX skid stage (see elaborate; prunable).
-        self.debug_tx_data              = Signal(32)
-        self.debug_tx_ctrl              = Signal(4)
+        self.debug_tx_data              = Signal(32 * words)
+        self.debug_tx_ctrl              = Signal(4 * words)
         self.debug_tx_strobe            = Signal()
 
 
@@ -254,7 +260,7 @@ class USB3PhysicalLayer(Elaboratable):
         # inserter's hold condition reaches all the way back into the link
         # layer FSM enables in a single cycle, which does not close timing
         # at 125 MHz.
-        m.submodules.tx_skid = tx_skid = TxStreamSkidBuffer()
+        m.submodules.tx_skid = tx_skid = TxStreamSkidBuffer(words=self._words)
         m.d.comb += tx_skid.sink.stream_eq(self.sink)
 
         # Register the scrambling enable: it is decoded combinationally from
@@ -284,7 +290,8 @@ class USB3PhysicalLayer(Elaboratable):
         # Substitute logical idle (data 0, ctrl 0 -- exactly what the link
         # emits when idle) for the bubble instead: it scrambles to the
         # idle sequence the partner expects between packets.
-        m.submodules.scrambler = scrambler = Scrambler(initial_value=0xffff)
+        m.submodules.scrambler = scrambler = Scrambler(
+            initial_value=0xffff, words=self._words)
 
         if self._gen2:
             # Dual-rate TX front: at the 10G trim the link layer's
@@ -292,8 +299,9 @@ class USB3PhysicalLayer(Elaboratable):
             # Gen1 scrambler/CTC chain (the PHY owns Gen2 scrambling).
             from .gen2 import Gen2BlockTransmitter, Gen2BlockReceiver
             m.submodules.gen2_tx = gen2_tx = Gen2BlockTransmitter(
-                tseq_count=self._gen2_tseq_count)
-            m.submodules.gen2_rx = gen2_rx = Gen2BlockReceiver()
+                tseq_count=self._gen2_tseq_count, words=self._words)
+            m.submodules.gen2_rx = gen2_rx = Gen2BlockReceiver(
+                words=self._words)
 
             # The block transmitter's LTSSM control surface is registered
             # at the seam in BOTH directions (156.25 routing: the
@@ -358,7 +366,8 @@ class USB3PhysicalLayer(Elaboratable):
             # output registers across the seam (a reported 156.25
             # routing cone).  Fully elastic; ``first``/``last`` markers
             # ride along.
-            m.submodules.gen2_tx_skid = gen2_tx_skid = TxStreamSkidBuffer()
+            m.submodules.gen2_tx_skid = gen2_tx_skid = \
+                TxStreamSkidBuffer(words=self._words)
             m.d.comb += gen2_tx.sink.stream_eq(gen2_tx_skid.source)
 
             with m.If(rate_r):
@@ -409,7 +418,7 @@ class USB3PhysicalLayer(Elaboratable):
         # the inserter holds that word while the SKPs go out.  Computing this
         # from the post-skid stream keeps the qualifier aligned with the word
         # the inserter is actually looking at.
-        m.submodules.tx_ctc = tx_ctc = CTCSkipInserter()
+        m.submodules.tx_ctc = tx_ctc = CTCSkipInserter(words=self._words)
         m.d.comb += [
             tx_ctc.sink           .stream_eq(scrambler.source),
             tx_ctc.can_send_skip  .eq(tx_skid.source.valid &
@@ -435,12 +444,21 @@ class USB3PhysicalLayer(Elaboratable):
                         phy.tx_sync_header   .eq(gen2_tx.tx_head),
                         phy.tx_start_block   .eq(gen2_tx.tx_start),
                     ]
+                    if self._words == 2:
+                        m.d.comb += phy.tx_halfbeat.eq(gen2_tx.tx_halfbeat)
                 with m.Else():
-                    m.d.comb += [
-                        phy.tx_data          .eq(tx_ctc.source.data),
-                        phy.tx_datak         .eq(tx_ctc.source.ctrl),
-                        tx_ctc.source.ready  .eq(1),
-                    ]
+                    if self._words == 1:
+                        m.d.comb += [
+                            phy.tx_data          .eq(tx_ctc.source.data),
+                            phy.tx_datak         .eq(tx_ctc.source.ctrl),
+                            tx_ctc.source.ready  .eq(1),
+                        ]
+                    else:
+                        m.d.comb += [
+                            phy.tx_data[0:64]    .eq(tx_ctc.source.data),
+                            phy.tx_datak[0:8]    .eq(tx_ctc.source.ctrl),
+                            tx_ctc.source.ready  .eq(1),
+                        ]
         else:
             with m.If(~tx_electrical_idle):
                 m.d.comb += [
@@ -455,11 +473,16 @@ class USB3PhysicalLayer(Elaboratable):
         #
 
         # Clock tolerance compensation / SKP remover.
-        m.submodules.rx_ctc = rx_ctc = CTCSkipRemover()
+        m.submodules.rx_ctc = rx_ctc = CTCSkipRemover(words=self._words)
         m.d.comb += [
             # Connect our PHY's receive data directly to our CTC hardware.
-            rx_ctc.sink.data   .eq(phy.rx_data),
-            rx_ctc.sink.ctrl   .eq(phy.rx_datak),
+            # (words=2: the Gen1 leg rides the PIPE register's low half;
+            # words=1 keeps the historical implicit-truncation assign
+            # verbatim for the shipping parity fence.)
+            rx_ctc.sink.data   .eq(phy.rx_data if self._words == 1
+                                   else phy.rx_data[0:64]),
+            rx_ctc.sink.ctrl   .eq(phy.rx_datak if self._words == 1
+                                   else phy.rx_datak[0:8]),
             rx_ctc.sink.valid  .eq(1),
 
             # Diagnostic output.
@@ -472,7 +495,7 @@ class USB3PhysicalLayer(Elaboratable):
             m.d.comb += rx_ctc.sink.valid.eq(~rate_r)
 
         # Word align the data, so it's easily handleable internally.
-        m.submodules.aligner = aligner = RxWordAligner()
+        m.submodules.aligner = aligner = RxWordAligner(words=self._words)
         m.d.comb += [
             aligner.sink           .stream_eq(rx_ctc.source),
             self.raw_source        .tap(aligner.source),
@@ -482,7 +505,7 @@ class USB3PhysicalLayer(Elaboratable):
 
 
         # De-scramble our data before output, if needed.
-        m.submodules.descrambler = descrambler = Descrambler()
+        m.submodules.descrambler = descrambler = Descrambler(words=self._words)
         m.d.comb += [
             descrambler.enable  .eq(enable_scrambling),
             descrambler.sink    .stream_eq(aligner.source),
@@ -490,7 +513,7 @@ class USB3PhysicalLayer(Elaboratable):
 
         # Finally, as a requirement of strict compliance, we'll ensure we can handle packets
         # that arrive even without correct alignment.
-        m.submodules.realigner = realigner = RxPacketAligner()
+        m.submodules.realigner = realigner = RxPacketAligner(words=self._words)
         if self._gen2:
             m.d.comb += realigner.sink.stream_eq(descrambler.source)
             # The muxed RX stream is REGISTERED at the physical->link
@@ -503,8 +526,8 @@ class USB3PhysicalLayer(Elaboratable):
             # identically.  Gen1-only builds keep the historical
             # combinational connection verbatim.
             src_valid = Signal()
-            src_data  = Signal(32)
-            src_ctrl  = Signal(4)
+            src_data  = Signal(32 * self._words)
+            src_ctrl  = Signal(4 * self._words)
             with m.If(rate_r):
                 m.d.ss += [src_valid.eq(gen2_rx.source.valid),
                            src_data .eq(gen2_rx.source.data),

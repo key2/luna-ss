@@ -47,14 +47,8 @@ class USBSuperSpeedDevice(Elaboratable):
         if core_width not in (64, 128):
             raise ValueError(f"core_width must be 64 or 128, "
                              f"not {core_width!r}")
-        if core_width == 128:
-            raise NotImplementedError(
-                "core_width=128 is the width-program V1 target "
-                "(usb3_design.md 13.5): stream widening, wide CRC "
-                "units, the 128-bit Gen2 block machinery and the 2:1 "
-                "PIPE bridge land unit by unit; this gate lifts when "
-                "the w128 battery entries are green")
         self._core_width = core_width
+        self._words      = core_width // 64
         # Gen2 (SuperSpeedPlus) capability.  Session 11d onward, built
         # up mechanism by mechanism per doc/gen2_design.md; with the
         # default False the device elaborates exactly the proven Gen1
@@ -162,8 +156,10 @@ class USBSuperSpeedDevice(Elaboratable):
         self.debug_force_recovery         = Signal()
 
         # Temporary, debug signals.
-        self.rx_data_tap         = USBRawSuperSpeedStream()
-        self.tx_data_tap         = USBRawSuperSpeedStream()
+        self.rx_data_tap         = USBRawSuperSpeedStream(
+            payload_words=4 * (core_width // 64))
+        self.tx_data_tap         = USBRawSuperSpeedStream(
+            payload_words=4 * (core_width // 64))
 
         self.ep_tx_stream        = SuperSpeedStreamInterface()
         self.ep_tx_length        = Signal(range(1024 + 1))
@@ -237,6 +233,7 @@ class USBSuperSpeedDevice(Elaboratable):
             # 8x the Gen1 count [7.5.4.7.2]; sim shortening scales both.
             gen2_tseq_count = 8 * self._tseq_burst_length,
             phy_boots_gen2 = self._phy_boots_gen2,
+            words          = self._words,
         )
 
         #
@@ -253,7 +250,8 @@ class USBSuperSpeedDevice(Elaboratable):
             tseq_burst_length=self._tseq_burst_length,
             polling_timeout_scale=self._timeout_scale,
             ssp_capability=self._ssp_capability,
-            phy_boots_gen2=self._phy_boots_gen2)
+            phy_boots_gen2=self._phy_boots_gen2,
+            words=self._words)
         m.d.comb += [
             self.link_trained     .eq(link.trained),
             self.link_in_reset    .eq(link.in_reset),

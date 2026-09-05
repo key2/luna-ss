@@ -19,8 +19,9 @@ from .transmitter  import PacketTransmitter
 from ..physical.ctc import TxStreamSkidBuffer
 from .timers       import LinkMaintenanceTimers
 from .ordered_sets import TSTransceiver
-from .data         import DataPacketReceiver, DataPacketTransmitter, DataHeaderPacket
-from .compliance   import CompliancePatternEmitter
+from .data           import DataPacketReceiver, DataPacketTransmitter, DataHeaderPacket
+from .compliance     import CompliancePatternEmitter
+from .width_adapters import TxPacketWidthAdapter, RxWidthSplitter
 
 
 class USB3LinkLayer(Elaboratable):
@@ -34,7 +35,15 @@ class USB3LinkLayer(Elaboratable):
     def __init__(self, *, physical_layer, ss_clock_frequency=125e6,
                  tseq_burst_length=65536, gen2=False,
                  polling_timeout_scale=1.0,
-                 ssp_capability=None, phy_boots_gen2=True):
+                 ssp_capability=None, phy_boots_gen2=True, words=1):
+        # Width program (usb3_design.md 13.5): ``words=2`` runs every
+        # link-layer datapath at 8 symbols/beat; the EXTERNAL data
+        # interface stays 32-bit behind the protocol-boundary width
+        # adapters (store-and-forward TX, strobe-ordered RX splitter)
+        # -- the protocol layer and endpoints keep their proven shape.
+        # Control traffic is unaffected; full-rate 64-bit bulk
+        # endpoints are the documented follow-up.  words=1 verbatim.
+        self._words             = words
         self._physical_layer    = physical_layer
         self._clock_frequency   = ss_clock_frequency
         self._tseq_burst_length = tseq_burst_length
@@ -125,20 +134,22 @@ class USB3LinkLayer(Elaboratable):
         #
         # Compliance pattern generation
         #
-        m.submodules.compliance_emitter = compliance_emitter = CompliancePatternEmitter()
+        m.submodules.compliance_emitter = compliance_emitter = \
+            CompliancePatternEmitter(words=self._words)
 
         #
         # Training Set Detectors/Emitters
         #
-        training_set_source = USBRawSuperSpeedStream()
+        training_set_source = USBRawSuperSpeedStream(
+            payload_words=4 * self._words)
 
         m.submodules.ts = ts = TSTransceiver(
-            tseq_burst_length=self._tseq_burst_length)
+            tseq_burst_length=self._tseq_burst_length, words=self._words)
 
         # The training-set stream is decoupled through a registered skid:
         # the emitters' FSM state otherwise reaches through the transmit
         # arbiter into the U0 datapath ready cone.
-        m.submodules.ts_skid = ts_skid = TxStreamSkidBuffer()
+        m.submodules.ts_skid = ts_skid = TxStreamSkidBuffer(words=self._words)
         m.d.comb += [
             # Note: we bring the physical layer's "raw" (non-descrambled) source to the TS detector,
             # as we'll still need to detect non-scrambled TS1s and TS2s if they arrive during normal
@@ -153,7 +164,7 @@ class USB3LinkLayer(Elaboratable):
         #
         # Idle handshake / logical idle detection.
         #
-        m.submodules.idle = idle = IdleHandshakeHandler()
+        m.submodules.idle = idle = IdleHandshakeHandler(words=self._words)
         m.d.comb += idle.sink.tap(physical_layer.source)
 
 
@@ -356,7 +367,8 @@ class USB3LinkLayer(Elaboratable):
 
         # Core transmitter.
         m.submodules.transmitter = transmitter = PacketTransmitter(
-            ss_clock_frequency=self._clock_frequency, gen2=self._gen2)
+            ss_clock_frequency=self._clock_frequency, gen2=self._gen2,
+            words=self._words)
         if self._gen2:
             m.d.comb += transmitter.gen2_active \
                 .eq(physical_layer.operating_gen2)
@@ -402,7 +414,8 @@ class USB3LinkLayer(Elaboratable):
         # never transmits a single header packet and walks the link
         # down.  Gen1 builds keep the historical 4-buffer pool verbatim.
         m.submodules.header_rx = header_rx = HeaderPacketReceiver(
-            gen2=self._gen2, buffer_count=8 if self._gen2 else 4)
+            gen2=self._gen2, buffer_count=8 if self._gen2 else 4,
+            words=self._words)
         if self._gen2:
             m.d.comb += header_rx.gen2_active \
                 .eq(physical_layer.operating_gen2)
@@ -458,7 +471,8 @@ class USB3LinkLayer(Elaboratable):
         #
 
         # Receiver.
-        m.submodules.data_rx = data_rx = DataPacketReceiver(gen2=self._gen2)
+        m.submodules.data_rx = data_rx = DataPacketReceiver(
+            gen2=self._gen2, words=self._words)
 
         # The received payload stream is registered before it fans out to
         # the endpoints: its per-lane valids are decoded combinationally
@@ -483,23 +497,69 @@ class USB3LinkLayer(Elaboratable):
 
         m.d.comb += [
             data_rx.sink                .tap(physical_layer.source),
-
-            # Data interface to Protocol layer.
-            self.data_source.data       .eq(rx_data_q),
-            self.data_source.valid      .eq(rx_valid_q),
-            self.data_source.first      .eq(rx_first_q),
-            self.data_source.last       .eq(rx_last_q),
             self.data_header_from_host  .eq(data_rx.header),
-            self.data_source_complete   .eq(rx_good_q),
-            self.data_source_invalid    .eq(rx_bad_q),
         ]
+        if self._words == 1:
+            m.d.comb += [
+                # Data interface to Protocol layer.
+                self.data_source.data       .eq(rx_data_q),
+                self.data_source.valid      .eq(rx_valid_q),
+                self.data_source.first      .eq(rx_first_q),
+                self.data_source.last       .eq(rx_last_q),
+                self.data_source_complete   .eq(rx_good_q),
+                self.data_source_invalid    .eq(rx_bad_q),
+            ]
+        else:
+            # words=2: the 64-bit payload splits to the 32-bit protocol
+            # interface; the completion strobes travel THROUGH the
+            # splitter so no endpoint sees a verdict before its bytes.
+            m.submodules.rx_split = rx_split = RxWidthSplitter()
+            m.d.comb += [
+                rx_split.sink.data          .eq(rx_data_q),
+                rx_split.sink.valid         .eq(rx_valid_q),
+                rx_split.sink.first         .eq(rx_first_q),
+                rx_split.sink.last          .eq(rx_last_q),
+                rx_split.sink_good          .eq(rx_good_q),
+                rx_split.sink_bad           .eq(rx_bad_q),
 
-        # Transmitter.
+                self.data_source            .stream_eq(rx_split.source),
+                self.data_source_complete   .eq(rx_split.source_good),
+                self.data_source_invalid    .eq(rx_split.source_bad),
+            ]
+
+        # Transmitter.  (Always the proven 32-bit unit: at words=2 the
+        # store-and-forward width adapter below feeds the wide packet
+        # transmitter a gapless 64-bit burst per packet.)
         m.submodules.data_tx = data_tx = DataPacketTransmitter()
-        hp_mux.add_producer(data_tx.header_source)
+
+        if self._words == 1:
+            hp_mux.add_producer(data_tx.header_source)
+            m.d.comb += transmitter.data_sink.stream_eq(data_tx.data_source)
+        else:
+            m.submodules.tx_widen = tx_widen = TxPacketWidthAdapter()
+            m.d.comb += [
+                tx_widen.sink            .stream_eq(data_tx.data_source),
+                transmitter.data_sink    .stream_eq(tx_widen.source),
+            ]
+            # The header offer must not reach the transmitter before
+            # the adapter has the WHOLE packet buffered: the wide
+            # transmitter samples its payload stream at DPP start to
+            # decide ZLP-ness, and store-and-forward would read as a
+            # false ZLP.  Real ZLP offers (data_tx FSM state 3) pass
+            # ungated.
+            gated_hq = HeaderQueue()
+            packet_staged = tx_widen.source.valid.any() \
+                | (data_tx.debug_fsm == 3)
+            m.d.comb += [
+                gated_hq.header.eq(data_tx.header_source.header),
+                gated_hq.valid .eq(data_tx.header_source.valid
+                                   & packet_staged),
+                data_tx.header_source.ready.eq(gated_hq.ready
+                                               & gated_hq.valid),
+            ]
+            hp_mux.add_producer(gated_hq)
 
         m.d.comb += [
-            transmitter.data_sink    .stream_eq(data_tx.data_source),
 
             # Device state information.
             data_tx.address          .eq(self.current_address),
@@ -527,7 +587,8 @@ class USB3LinkLayer(Elaboratable):
         #
         # Transmit stream arbiter.
         #
-        m.submodules.stream_arbiter = arbiter = SuperSpeedStreamArbiter()
+        m.submodules.stream_arbiter = arbiter = \
+            SuperSpeedStreamArbiter(words=self._words)
 
         # Add each of our streams to our arbiter, from highest to lowest priority.
         arbiter.add_stream(compliance_emitter.source)

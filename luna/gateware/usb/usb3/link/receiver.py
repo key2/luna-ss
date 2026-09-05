@@ -386,9 +386,13 @@ class HeaderPacketReceiver(Elaboratable):
     SEQUENCE_NUMBER_WIDTH = 3
 
     def __init__(self, *, buffer_count=4, downstream_facing=False,
-                 gen2=False):
+                 gen2=False, words=1):
         self._buffer_count = buffer_count
         self._is_downstream_facing = downstream_facing
+        # Width program: ``words`` sizes the streams and the raw
+        # receiver / LC generator; the credit/LGOOD machinery is
+        # width-agnostic.  words=1 verbatim.
+        self._words = words
         # SuperSpeedPlus trims [USB3.2r1: 7.2.4.1.x]: modulo-16 header
         # sequence numbers (LGOOD_0..15) and the LCRD1/LCRD2 credit
         # class split.  gen2_active selects them at runtime; at the SS
@@ -398,8 +402,8 @@ class HeaderPacketReceiver(Elaboratable):
         #
         # I/O port
         #
-        self.sink                    = USBRawSuperSpeedStream()
-        self.source                  = USBRawSuperSpeedStream()
+        self.sink                    = USBRawSuperSpeedStream(payload_words=4 * words)
+        self.source                  = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Simple controls.
         self.enable                  = Signal()
@@ -615,7 +619,8 @@ class HeaderPacketReceiver(Elaboratable):
         # header) as the remainder of the old one.
         m.submodules.receiver = rx = \
             ResetInserter({"ss": ~self.enable})(
-                RawHeaderPacketReceiver(gen2=self._gen2))
+                RawHeaderPacketReceiver(gen2=self._gen2,
+                                        words=self._words))
         m.d.comb += [
             # Our receiver passively monitors the data received for header packets.
             rx.sink                   .tap(self.sink),
@@ -743,7 +748,8 @@ class HeaderPacketReceiver(Elaboratable):
         # advertisements.  Observed as a pre-recovery LCRD_n leaking out
         # after re-entry, desynchronizing the partner's credit index.
         m.submodules.lc_generator = lc_generator = \
-            ResetInserter({"ss": ~self.enable})(LinkCommandGenerator())
+            ResetInserter({"ss": ~self.enable})(
+                LinkCommandGenerator(words=self._words))
         m.d.comb += [
             self.source             .stream_eq(lc_generator.source),
             self.link_command_sent  .eq(lc_generator.done),

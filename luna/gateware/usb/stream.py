@@ -322,8 +322,17 @@ class USBRawSuperSpeedStream(StreamInterface):
 class SuperSpeedStreamArbiter(StreamArbiter):
     """ Convenience variant of our StreamArbiter that operates SuperSpeed streams in the ``ss`` domain. """
 
-    def __init__(self):
-        super().__init__(stream_type=USBRawSuperSpeedStream, domain="ss")
+    def __init__(self, words=1):
+        # Width program: ``words=2`` arbitrates 8-symbol streams.
+        # words=1 verbatim.
+        if words == 1:
+            super().__init__(stream_type=USBRawSuperSpeedStream, domain="ss")
+        else:
+            import functools
+            super().__init__(
+                stream_type=functools.partial(USBRawSuperSpeedStream,
+                                              payload_words=4 * words),
+                domain="ss")
 
 
 class SuperSpeedStreamInterface(StreamInterface):

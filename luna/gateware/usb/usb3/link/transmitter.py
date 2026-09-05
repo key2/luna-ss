@@ -837,9 +837,13 @@ class PacketTransmitter(Elaboratable):
     CREDIT_TIMEOUT = 5e-3
 
     def __init__(self, *, buffer_count=4, ss_clock_frequency=125e6,
-                 gen2=False):
+                 gen2=False, words=1):
         self._buffer_count    = buffer_count
         self._clock_frequency = ss_clock_frequency
+        # Width program: ``words`` sizes the streams and the raw
+        # transmitter / LC detector; the FSM (headers, credits, rule-7
+        # dispositions) is width-agnostic.  words=1 verbatim.
+        self._words           = words
         # SuperSpeedPlus trims [USB3.2r1: 7.2.4.1.x]: modulo-16 header
         # sequence numbers and the LCRD1/LCRD2 credit-class split
         # (Type 1: TPs/LMPs/ITPs/periodic DPs; Type 2: async DPs).
@@ -851,8 +855,8 @@ class PacketTransmitter(Elaboratable):
         #
         # I/O port
         #
-        self.sink                  = USBRawSuperSpeedStream()
-        self.source                = USBRawSuperSpeedStream()
+        self.sink                  = USBRawSuperSpeedStream(payload_words=4 * words)
+        self.source                = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Simple controls.
         self.enable                = Signal()
@@ -885,7 +889,7 @@ class PacketTransmitter(Elaboratable):
 
         # Protocol layer interface.
         self.queue                 = HeaderQueue()
-        self.data_sink             = SuperSpeedStreamInterface()
+        self.data_sink             = SuperSpeedStreamInterface(payload_words=4 * words)
 
         # Event interface.
         self.link_command_received = Signal()
@@ -1088,7 +1092,7 @@ class PacketTransmitter(Elaboratable):
         # and is handled by the post-recovery advertisement.
         m.submodules.packet_tx = packet_tx = \
             ResetInserter({"ss": ~self.enable})(
-                RawPacketTransmitter(gen2=self._gen2))
+                RawPacketTransmitter(gen2=self._gen2, words=self._words))
         m.d.comb += [
             packet_tx.header             .eq(buffers[read_pointer]),
             packet_tx.header_sent_before .eq(sent_flags[read_pointer]),
@@ -1272,7 +1276,8 @@ class PacketTransmitter(Elaboratable):
         else:
             detector_quiet = ~self.enable
         m.submodules.lc_detector = lc_detector = \
-            ResetInserter({"ss": detector_quiet})(LinkCommandDetector())
+            ResetInserter({"ss": detector_quiet})(
+                LinkCommandDetector(words=self._words))
         m.d.comb += [
             lc_detector.sink            .tap(self.sink),
             self.link_command_received  .eq(lc_detector.new_command)

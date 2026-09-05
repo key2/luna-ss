@@ -100,3 +100,20 @@ def stream_word_matches_symbol(stream, word_number, *, symbol):
         (stream.ctrl[word_number] == symbol.ctrl)
     )
 
+
+def half_matches_symbols(stream, half, *target_symbols):
+    """ Width-program helper: evaluates true when the given 4-symbol
+    HALF of an 8-symbol (words=2) stream beat matches the given four
+    symbols.  ``half`` = 0 selects symbols 0-3, 1 selects symbols 4-7.
+    Like ``stream_matches_symbols``, evaluates False when the stream
+    is not valid.  (The full-width helpers above compare the WHOLE
+    beat and stay reserved for the words=1 elaborations.) """
+
+    target_data, target_ctrl = get_word_for_symbols(*target_symbols)
+
+    return (
+        stream.valid &
+        (stream.data.word_select(half, 32) == target_data) &
+        (stream.ctrl.word_select(half, 4)  == target_ctrl)
+    )
+

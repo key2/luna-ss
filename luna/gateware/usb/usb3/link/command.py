@@ -13,7 +13,8 @@ from enum import IntEnum
 from amaranth          import *
 
 from .crc              import compute_usb_crc5
-from ..physical.coding import SLC, EPF, stream_matches_symbols, get_word_for_symbols
+from ..physical.coding import SLC, EPF, stream_matches_symbols, \
+    get_word_for_symbols, half_matches_symbols
 from ...stream         import USBRawSuperSpeedStream
 
 
@@ -43,12 +44,18 @@ class LinkCommandDetector(Elaboratable):
         are ready to be read.
     """
 
-    def __init__(self):
+    def __init__(self, words=1):
+        # Width program (usb3_design.md 13.5): at ``words=2`` a link
+        # command (LCSTART + command word, 8 symbols) fits ONE beat --
+        # but a real partner emits constructs at 4-symbol granularity,
+        # so the detector walks both beat halves (offsets 0/4).
+        # ``words=1`` is the historical unit verbatim.
+        self._words = words
 
         #
         # I/O port
         #
-        self.sink = USBRawSuperSpeedStream()
+        self.sink = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Link command information.
         self.command       = Signal(4)
@@ -72,6 +79,9 @@ class LinkCommandDetector(Elaboratable):
 
         # Assume we don't have a new command, unless asserted below.
         m.d.ss += self.new_command.eq(0)
+
+        if self._words == 2:
+            return self._elaborate_wide(m)
 
         with m.FSM(domain="ss"):
 
@@ -125,6 +135,75 @@ class LinkCommandDetector(Elaboratable):
         return m
 
 
+    def _elaborate_wide(self, m):
+        """ The words=2 detector: both beat halves examined per cycle.
+
+        An LCSTART in the LOW half has its command word in the HIGH
+        half of the SAME beat; an LCSTART in the HIGH half completes
+        in the LOW half of the NEXT valid beat (the offset-4 case,
+        with the following high half free to start another command).
+        Mirrors the narrow unit's semantics exactly: the word after an
+        LCSTART is consumed as a command candidate (never re-examined
+        as framing), and an invalid candidate is silently discarded.
+        """
+        sink = self.sink
+
+        def parse_half(half):
+            """Validity + fields of one half parsed as a command word."""
+            data = sink.data.word_select(half, 32)
+            ctrl = sink.ctrl.word_select(half, 4)
+            word    = data.word_select(0, 16)
+            replica = data.word_select(1, 16)
+            valid = (
+                (ctrl == 0)
+                & (word == replica)
+                & (word[11:16] == compute_usb_crc5(word[0:11]))
+            )
+            return valid, word
+
+        def accept(word):
+            return [
+                self.command     .eq(word[7:11]),
+                self.subtype     .eq(word[0: 4]),
+                self.new_command .eq(1),
+            ]
+
+        lcstart_low  = half_matches_symbols(sink, 0, SLC, SLC, SLC, EPF)
+        lcstart_high = half_matches_symbols(sink, 1, SLC, SLC, SLC, EPF)
+
+        with m.FSM(domain="ss"):
+
+            # ALIGNED -- no partially received command pending.
+            with m.State("ALIGNED"):
+                with m.If(sink.valid):
+                    # Offset-0 command: framing low, command word high;
+                    # completes within this very beat.
+                    with m.If(lcstart_low):
+                        valid, word = parse_half(1)
+                        with m.If(valid):
+                            m.d.ss += accept(word)
+                    # Offset-4 command: framing high; the command word
+                    # arrives in the next beat's low half.
+                    with m.Elif(lcstart_high):
+                        m.next = "PARSE_LOW"
+
+            # PARSE_LOW -- an LCSTART occupied the previous beat's high
+            # half; this beat's low half is its command word.
+            with m.State("PARSE_LOW"):
+                with m.If(sink.valid):
+                    valid, word = parse_half(0)
+                    with m.If(valid):
+                        m.d.ss += accept(word)
+                    # The high half may immediately start another
+                    # offset-4 command; otherwise realign.
+                    with m.If(lcstart_high):
+                        m.next = "PARSE_LOW"
+                    with m.Else():
+                        m.next = "ALIGNED"
+
+        return m
+
+
 
 class LinkCommandGenerator(Elaboratable):
     """ USB3 Link Command Generator.
@@ -149,12 +228,16 @@ class LinkCommandGenerator(Elaboratable):
     """
 
 
-    def __init__(self):
+    def __init__(self, words=1):
+        # Width program: at ``words=2`` the whole link command (LCSTART
+        # + duplicated command word, 8 symbols) is emitted as a SINGLE
+        # beat.  ``words=1`` is the historical unit verbatim.
+        self._words = words
 
         #
         # I/O port
         #
-        self.source = USBRawSuperSpeedStream()
+        self.source = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Link command information.
         self.command    = Signal(4)
@@ -172,6 +255,45 @@ class LinkCommandGenerator(Elaboratable):
         latched_command = Signal.like(self.command)
         latched_subtype = Signal.like(self.subtype)
 
+        if self._words == 2:
+            header_data, header_ctrl = get_word_for_symbols(SLC, SLC, SLC, EPF)
+            with m.FSM(domain="ss"):
+
+                # IDLE -- waiting to generate a link command.
+                with m.State("IDLE"):
+                    with m.If(self.generate):
+                        m.d.ss += [
+                            latched_command  .eq(self.command),
+                            latched_subtype  .eq(self.subtype)
+                        ]
+                        m.next = "TRANSMIT"
+
+                # TRANSMIT -- the full 8-symbol link command in one beat:
+                # LCSTART framing low, the duplicated command word high.
+                with m.State("TRANSMIT"):
+                    link_command = Signal(16)
+                    m.d.comb += [
+                        link_command[ 0: 4]      .eq(latched_subtype),
+                        link_command[ 4: 7]      .eq(0),  # Reserved.
+                        link_command[ 7:11]      .eq(latched_command),
+                        link_command[11:16]      .eq(
+                            compute_usb_crc5(link_command[0:11])),
+
+                        self.source.valid        .eq(1),
+                        self.source.data[ 0:32]  .eq(header_data),
+                        self.source.ctrl[ 0: 4]  .eq(header_ctrl),
+                        self.source.data[32:48]  .eq(link_command),
+                        self.source.data[48:64]  .eq(link_command),
+                        self.source.ctrl[ 4: 8]  .eq(0),
+
+                        # Packet boundary (see the words=1 comment below).
+                        self.source.first        .eq(1),
+                    ]
+                    with m.If(self.source.ready):
+                        m.d.comb += self.done.eq(1)
+                        m.next = "IDLE"
+
+            return m
 
         with m.FSM(domain="ss"):
 

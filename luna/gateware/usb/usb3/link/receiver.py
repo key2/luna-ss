@@ -12,7 +12,8 @@ from usb_protocol.types.superspeed import LinkCommand
 from .header                       import HeaderPacket, HeaderQueue
 from .crc                          import compute_usb_crc5, HeaderPacketCRC
 from .command                      import LinkCommandGenerator
-from ..physical.coding             import SHP, EPF, stream_matches_symbols
+from ..physical.coding             import SHP, EPF, stream_matches_symbols, \
+    half_matches_symbols
 from ...stream                     import USBRawSuperSpeedStream
 
 
@@ -42,15 +43,20 @@ class RawHeaderPacketReceiver(Elaboratable):
 
     """
 
-    def __init__(self, gen2=False):
+    def __init__(self, gen2=False, words=1):
         # SuperSpeedPlus trim: 4-bit header sequence numbers, with the
         # top bit riding in the LCW's SS-reserved bit (dw3_reserved[0]).
         self._gen2 = gen2
+        # Width program (usb3_design.md 13.5): at ``words=2`` a header
+        # packet (HPSTART + 16 bytes, 20 symbols) spans 2.5 beats and
+        # may start at EITHER beat half (offsets 0/4) -- back-to-back
+        # headers alternate phase.  ``words=1`` is verbatim.
+        self._words = words
 
         #
         # I/O port
         #
-        self.sink              = USBRawSuperSpeedStream()
+        self.sink              = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Header packet output.
         self.packet            = HeaderPacket()
@@ -66,6 +72,9 @@ class RawHeaderPacketReceiver(Elaboratable):
 
     def elaborate(self, platform):
         m = Module()
+
+        if self._words == 2:
+            return self._elaborate_wide(m)
 
         sink   = self.sink
 
@@ -177,6 +186,151 @@ class RawHeaderPacketReceiver(Elaboratable):
                 with m.Else():
                     m.next = "WAIT_FOR_HPSTART"
 
+
+        return m
+
+
+    def _elaborate_wide(self, m):
+        """ The words=2 receiver: a half-phase walker.
+
+        Beat layouts (H0 = symbols 0-3, H1 = symbols 4-7):
+
+          offset 0: [HPSTART|DW0] [DW1|DW2] [DW3|tail]
+          offset 4: [....|HPSTART] [DW0|DW1] [DW2|DW3]
+
+        A 20-symbol header is an odd number of halves, so back-to-back
+        headers ALTERNATE phase: the offset-0 tail may itself be the
+        next header's HPSTART, and an offset-4 header ends beat-aligned
+        with the next header free to start at either half of the next
+        beat.  There is no separate CHECK state: the validity checks
+        run in the DW3 beat (the running CRC-16 is committed through
+        DW2 for offset 0; the offset-4 case -- DW2 and DW3 in the SAME
+        beat -- uses the CRC's combinational one-word lookahead), and
+        the outcome strobes register out one cycle after the DW3 beat,
+        exactly the narrow unit's relative timing.
+        """
+        sink = self.sink
+
+        packet = HeaderPacket()
+
+        m.d.ss += [
+            self.new_packet   .eq(0),
+            self.bad_packet   .eq(0),
+            self.bad_sequence .eq(0),
+        ]
+
+        #
+        # CRC-16 Generator (wide surface: one- and two-word advances,
+        # plus the one-word combinational lookahead).
+        #
+        m.submodules.crc16 = crc16 = HeaderPacketCRC(words=2)
+        m.d.comb += crc16.data_input2.eq(sink.data)
+
+        hpstart_low  = half_matches_symbols(sink, 0, SHP, SHP, SHP, EPF)
+        hpstart_high = half_matches_symbols(sink, 1, SHP, SHP, SHP, EPF)
+
+        low  = sink.data.word_select(0, 32)
+        high = sink.data.word_select(1, 32)
+
+        def finish(dw3, crc16_value, dw2_now=None):
+            """The end-of-packet actions: validity checks against the
+            given (possibly lookahead) CRC-16, then the outcome
+            strobes.  ``dw2_now``: for the offset-4 case DW2 arrives in
+            this very beat -- the intermediate ``packet`` record is one
+            cycle stale for it, so it is spliced in directly."""
+            crc5_ok  = (dw3[27:32] == compute_usb_crc5(dw3[16:27]))
+            crc16_ok = (crc16_value == dw3[0:16])
+            if not self._gen2:
+                rx_sequence = dw3[16:19]
+            else:
+                rx_sequence = Cat(dw3[16:19], dw3[19])
+            seq_ok = (rx_sequence == self.expected_sequence)
+
+            with m.If(~crc5_ok | ~crc16_ok):
+                m.d.ss += self.bad_packet.eq(1)
+            with m.Elif(~seq_ok):
+                m.d.ss += self.bad_sequence.eq(1)
+            with m.Else():
+                m.d.ss += [
+                    self.new_packet .eq(1),
+                    self.packet     .eq(packet),
+                    self.packet.crc16           .eq(dw3[ 0:16]),
+                    self.packet.sequence_number .eq(dw3[16:19]),
+                    self.packet.dw3_reserved    .eq(dw3[19:22]),
+                    self.packet.hub_depth       .eq(dw3[22:25]),
+                    self.packet.delayed         .eq(dw3[25]),
+                    self.packet.deferred        .eq(dw3[26]),
+                    self.packet.crc5            .eq(dw3[27:32]),
+                ]
+                if dw2_now is not None:
+                    m.d.ss += self.packet.dw2.eq(dw2_now)
+
+        with m.FSM(domain="ss"):
+
+            # WAIT -- no header in progress; a header may start in
+            # either half of the next valid beat.
+            with m.State("WAIT"):
+                m.d.comb += crc16.clear.eq(1)
+                with m.If(sink.valid):
+                    with m.If(hpstart_low):
+                        # [HPSTART|DW0]: DW0 enters the CRC now.
+                        # (clear + advance would collide -- but the CRC
+                        # register is already at its initial value in
+                        # WAIT, so simply suppress the clear and
+                        # advance over DW0.)
+                        m.d.comb += [
+                            crc16.clear       .eq(0),
+                            crc16.data_input  .eq(high),
+                            crc16.advance_crc .eq(1),
+                        ]
+                        m.d.ss += packet.dw0.eq(high)
+                        m.next = "P0_MID"
+                    with m.Elif(hpstart_high):
+                        m.next = "P4_DW01"
+
+            # P0_MID -- offset-0 body beat: [DW1|DW2].
+            with m.State("P0_MID"):
+                with m.If(sink.valid):
+                    m.d.comb += crc16.advance_crc2.eq(1)
+                    m.d.ss += [
+                        packet.dw1.eq(low),
+                        packet.dw2.eq(high),
+                    ]
+                    m.next = "P0_END"
+
+            # P0_END -- offset-0 final beat: [DW3|tail].  The running
+            # CRC is committed through DW2; check directly.  The tail
+            # may already be the next header's HPSTART (phase flip).
+            with m.State("P0_END"):
+                with m.If(sink.valid):
+                    finish(low, crc16.crc)
+                    m.d.comb += crc16.clear.eq(1)
+                    with m.If(hpstart_high):
+                        m.next = "P4_DW01"
+                    with m.Else():
+                        m.next = "WAIT"
+
+            # P4_DW01 -- offset-4 body beat: [DW0|DW1].
+            with m.State("P4_DW01"):
+                with m.If(sink.valid):
+                    m.d.comb += crc16.advance_crc2.eq(1)
+                    m.d.ss += [
+                        packet.dw0.eq(low),
+                        packet.dw1.eq(high),
+                    ]
+                    m.next = "P4_END"
+
+            # P4_END -- offset-4 final beat: [DW2|DW3].  DW2 and DW3
+            # arrive together: the CRC-16 comparison uses the
+            # combinational one-word lookahead over DW2.  The packet
+            # ends beat-aligned; the next may start at either half of
+            # the next beat (back to WAIT).
+            with m.State("P4_END"):
+                with m.If(sink.valid):
+                    m.d.comb += crc16.data_input.eq(low)
+                    finish(high, crc16.crc_after_word, dw2_now=low)
+                    m.d.comb += crc16.clear.eq(1)
+                    m.next = "WAIT"
 
         return m
 

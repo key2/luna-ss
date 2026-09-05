@@ -85,6 +85,15 @@ class HeaderPacketCRC(Elaboratable):
         if words == 2:
             self.data_input2  = Signal(64)   # byte 0 = bits [0:8]
             self.advance_crc2 = Signal()
+            # Combinational lookahead: the CRC value as if
+            # ``data_input`` were advanced THIS cycle.  The wide header
+            # receiver needs it for the offset-4 case, where DW2 (the
+            # last CRC-covered word) and DW3 (carrying the CRC to
+            # check) arrive in the SAME beat -- the registered running
+            # CRC only covers DW0-1 at that point.  (The 128-bit core
+            # runs at 78.125/62.5 MHz; the extra 32-bit CRC step in the
+            # compare cone has double the slack of the 156.25 builds.)
+            self.crc_after_word = Signal(16)
 
         self.crc   = Signal(16, init=initial_value)
 
@@ -163,6 +172,12 @@ class HeaderPacketCRC(Elaboratable):
                     crc, self.data_input2[0:32])
                 m.d.ss += crc.eq(self._generate_next_crc(
                     after_w0, self.data_input2[32:64]))
+
+            # The lookahead (see the port comment): one more 32-bit
+            # step over ``data_input``, presented through the same
+            # output transformation as ``crc``.
+            lookahead = self._generate_next_crc(crc, self.data_input)
+            m.d.comb += self.crc_after_word.eq(~lookahead[::-1])
 
         # Convert from our intermediary "running CRC" format into the current CRC-16...
         m.d.comb += self.crc.eq(~crc[::-1])

@@ -37,12 +37,18 @@ class IdleHandshakeHandler(Elaboratable):
     # that's a total of four cycles.
     RX_CYCLES_REQUIRED = 4
 
-    def __init__(self):
+    def __init__(self, words=1):
+        # Width program: the detection is width-generic (zero
+        # comparisons over Signal.like shapes); the 16-byte handshake
+        # requirement halves in cycles at 8 bytes/beat.  words=1
+        # verbatim.
+        if words == 2:
+            self.RX_CYCLES_REQUIRED = 2
 
         #
         # I/O port
         #
-        self.sink                    = USBRawSuperSpeedStream()
+        self.sink                    = USBRawSuperSpeedStream(payload_words=4 * words)
 
         self.enable                  = Signal()
         self.idle_detected           = Signal()

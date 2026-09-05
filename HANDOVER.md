@@ -3717,6 +3717,85 @@ pclk/2 (78.125), the 2:1 bridge at the PIPE boundary.
 * Parked: the Gen1-rail twins of #50/#51; sub-block-granularity
   reccut cuts; #37 RX side; the rest of the §10w list unchanged.
 
+## 10y. Session 18b — gen2.py lands at core_width=128; the exact
+## remaining path to the Gen2-128 vehicle
+
+### Landed (battery 57/57 after each; Gen2-64 phases are gen2.py's
+### fence -- the Gen1-64 shipping build never elaborates it)
+
+* `physical/gen2.py` at words=2 (commit 4ee2dca): TxBridge (64-bit
+  link stream -> 128-bit blocks; capture-time DPHSTART patch;
+  single-cycle 12-byte [DW3|rep|rep|DPPSTART] append; terminator-
+  qualified EPF filler rule with cross-word carry; close-cycle replay
+  fixed), BlockTransmitter (1 beat = 1 block; SKP OS = beat +
+  `tx_halfbeat` half riding the drain-safe gate; #44 pacing in
+  PHY-word units: +2/beat, +1/halfbeat), BlockReceiver (in-place
+  parameterization: trivial assembly, 128-bit queue entries, the
+  grammar engine walks 4 quarters/beat, 2:1 output packer with
+  quiescent-only solo flush).
+* `link/idle.py`: words= (16B handshake = 2 cycles at 8B/beat).
+
+### The EXACT remaining work list (in order)
+
+1. **ordered_sets.py at words=2**: TSBurstDetector/TSEmitter are
+   generic over their ``set_data`` word lists EXCEPT the config-field
+   handling (symbol 5): at words=1 it sits in word 1 byte 1 with the
+   0xffff0000 mask; at words=2 in word 0 byte 5.  Parameterize
+   (config_word, config_byte, config_mask) and have TSTransceiver
+   (line ~296) supply width-appropriate constants (a Gen1 TS = 2
+   64-bit words; first_word_ctrl = 0b00001111).  Post-aligner TSs are
+   beat-aligned (COM at lane 0), so no offset machinery is needed.
+2. **compliance.py**: words= stream sizing (pattern emission; check
+   whether the LTSSM instantiates it unconditionally).
+3. **link/layer.py threading**: words= into TxStreamSkidBuffer,
+   IdleHandshakeHandler, PacketTransmitter, HeaderPacketReceiver,
+   DataPacketReceiver, DataPacketTransmitter + the layer's own
+   streams (lines 57-62, 133); the parents' inner instantiations
+   (receiver.py:618/746, transmitter.py:1091/1275) get words= too --
+   the parent FSMs are width-agnostic.
+4. **protocol layer at words=2**: protocol/layer.py + endpoint.py
+   streams; transaction.py / link_management.py TP/LMP generators
+   (HeaderQueue-based -- width-free); the ENDPOINT data paths
+   (SuperSpeedStreamInterface plumbing, per-byte valid arithmetic in
+   endpoint.py and the control-endpoint request handlers) are the
+   real work -- audit every hard-coded 4/32.
+5. **physical/layer.py threading**: words= into the Gen1 conditioning
+   chain (already width-capable), the gen2 legs
+   (Gen2BlockTransmitter/Receiver words=2, gen2_tx_skid), the LFPS/
+   LTSSM side is width-free; the PIPE-facing side at core_width=128
+   is the 128-bit block contract + `tx_halfbeat`.
+6. **device.py**: drop the core_width=128 NotImplementedError; thread
+   words = core_width//64 everywhere; taps sized accordingly.
+7. **The 128-bit oracle re-pin**: sim_link_gen2.py gains a `W128=1`
+   knob -- BenchPIPE with 128-bit rx/tx data + tx_halfbeat,
+   feed_blocks emits ONE beat per block, HostRx parses 1 beat = 1
+   block + halfbeat SKPs, and the #44 FIFO model adds 2 words/beat,
+   1/halfbeat.  Re-run the full gen2 phase set at W128; re-prove the
+   #43 queue bound RED-FIRST (drive a construct-dense stream and
+   assert queue_level bounded; the bound doubles at pclk/2).
+8. **The 2:1 PIPE bridge** (new file, e.g.
+   luna/gateware/interface/serdes_phy/gen2_width_bridge.py), per
+   design note 13.3/13.4: pclk/2 fabric FF divider (core domain),
+   TX phase-mux (128->64 halves; the halfbeat emits ONE pclk beat),
+   RX start-anchored pair accumulator, level/pulse seam registers per
+   the 13.4 table (phy_status latch-and-hold >= 2 pclk), and the #44
+   pacing-lag sims RED-FIRST (tests/test_gen2_pacing.py models the
+   bridged 2-3 pclk sampling lag).
+9. **gowin-serdes**: the w128 SDC branch (create_generated_clock
+   -divide_by 2 on the core FF divider; keep 6.4/6.2 on pclk/rxclk).
+10. **luna-enum-gen2 top at core_width=128**: instantiate the bridge
+    between GowinGTR12PIPE (unchanged, 64-bit pclk) and the device
+    (core domain = the divided clock; DomainRenamer the device's
+    "ss" onto it); build, gate (core >= 78.125, pclk >= 156.25,
+    rxclk >= 161.29), flash, **the #49 bench verdict**: repeatable
+    10000M on 4-3, dmesg clean (no SSP-BOS complaint), then the Gen2
+    ladder.  The #50/#51 fixes + SSP BOS are already in the tree.
+
+### Carry-over
+
+* Bug numbering: next **#52**.  #49 OPEN pending the bench verdict.
+* All 10w/10x parked items unchanged.
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 15: the width-generic

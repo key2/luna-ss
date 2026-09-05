@@ -3606,6 +3606,117 @@ the DEVICE recovers, the HOST's view is already poisoned).
   the 2:1 PIPE bridge (+ pacing-lag sims), gowin-serdes 20×1:4 trim +
   w128 SDC branches.
 
+## 10x. Session 18 — THE 128-BIT PIVOT: the framer layer lands at
+## words=2 (command, header RX/TX, data RX), all fence-proven
+
+### The directive
+
+The 64-bit Gen2 core does not close timing on this fabric (10 rolls,
+pclk 132–148 vs 156.25; TNS −60.8 ns across 303 MAC endpoints — the
+whole LUNA core is 10–12 LUT levels deep against a 6.4 ns budget).
+**Decision (user, session 18): the 128-bit core is the ACTIVE
+implementation target** — half the clock at the cost of LUT/regs.
+The 64-bit mode stays maintained verbatim (the shipping Gen1 fence,
+and the future C2/I1 speed-grade trim of the FPGA), but receives no
+further timing effort.  §13.1 semantics: `core_width=128` = LUNA
+streams at 8 symbols/beat (words=2), Gen2 blocks 1 beat = 1 block @
+pclk/2 (78.125), the 2:1 bridge at the PIPE boundary.
+
+### What landed (all red/mutation-checked, words=1 verbatim, each
+### unit followed by parity + battery)
+
+* **coding.py**: `half_matches_symbols()` — 4-symbol match against
+  either half of an 8-symbol beat.
+* **command.py**: `LinkCommandGenerator(words=2)` — the whole
+  8-symbol LC as ONE beat; `LinkCommandDetector(words=2)` — both
+  beat halves walked (offsets 0/4, back-to-back offset-4 runs).
+  Fence: `test_usb3_command_wide.py` (event/symbol equality, CRC/
+  replica/ctrl corruption, gaps, backpressure).
+* **crc.py**: `HeaderPacketCRC(words=2)` gains `crc_after_word` — a
+  combinational one-word lookahead for the offset-4 DW2+DW3-same-beat
+  case (the 128 core's 12.8/16 ns budgets absorb the compare cone).
+* **receiver.py**: `RawHeaderPacketReceiver(words=2)` — half-phase
+  walker; 20 symbols = odd halves so back-to-back headers ALTERNATE
+  phase; no CHECK state (committed CRC at offset 0, lookahead at
+  offset 4; outcome strobes one cycle after the DW3 beat — narrow's
+  exact relative timing).  Fence: `test_usb3_header_rx_wide.py`
+  (gen1 + gen2 4-bit sequences, alternating chains, all bad classes,
+  gaps).
+* **stream.py**: `SuperSpeedStreamInterface(payload_words=)`.
+* **transmitter.py**: `RawPacketTransmitter(words=2)` — TX wire
+  shapes: HPs pad their trailing half-beat (legal inter-packet
+  idle); a DATA header carries DPPSTART gaplessly in its final
+  beat's high half (a DPP shall immediately follow its DPH — the
+  abort/ZLP/capture dispatch folds into the HDR2 accept to keep the
+  stream bubble-free); payload tail (CRC-32 + END framing, 8 bytes)
+  spliced at byte granularity across SEND_LAST/SEND_TAIL; DL=1
+  consumed-payload aborts (EDB after DPPSTART, the #51 contract);
+  `payload_consumed` always present in the wide path.  Fence:
+  `test_usb3_header_tx_wide.py` (padding-tolerant parser: CRCs,
+  DPH→DPP adjacency, payload byte-exact at every alignment 1..8 +
+  multi-beat + ZLP, the abort shape, cross-width equality,
+  backpressure).  (EDB is K28.3 = 0x7C.)
+* **data.py**: `DataPacketReceiver(words=2)` — offset-0 (payload
+  beat-aligned) AND offset-4 (payload HALF-SKEWED: beats assembled
+  from consecutive halves, data+ctrl, one shared path via the
+  `skewed` mux); final CRC-32 at byte v of the last assembled beat
+  (contained v≤4 / straddling 5..7 / next-beat v=8).
+  `DataPacketTransmitter(words=)` stream sizing.  Fence:
+  `test_usb3_data_rx_wide.py` (both offsets, all alignments,
+  corrupted CRC-32, ctrl-in-payload).
+  **The first wide red-first catch**: terminal states handing WAIT a
+  dirty running CRC-16 made WAIT's same-cycle HPSTART advance compose
+  on the previous packet's leftovers — any header landing on the
+  first post-packet beat was silently dropped (caught by the
+  back-to-back offset-alternating stimulus; fixed by clearing the
+  CRCs on every WAIT-entry path.  The header-RX unit already did
+  this; keep the pattern for every future wide receiver).
+
+### Verification state
+
+* Shipping parity after the framer round: 13 diff bytes (603–621);
+  after the TX round: 11 diff bytes (603–621) — header date only.
+* Battery 57/57 after the framer round AND after the TX round; the
+  final settled-tree battery + parity (post data.py) were launched at
+  session end — VERIFY `/tmp/kilo/s18_battery_final.log` (57 PASS +
+  BATTERY4-DONE) and the parity compare of
+  `examples/gowin/luna-multiep/build/luna_multiep.fs` vs
+  `/tmp/kilo/h0_gen1_fence.fs` (diffs only in ~603–621) BEFORE
+  building on this tree.
+
+### What remains for the Gen2-128 vehicle (§13.5 order)
+
+1. **Threading**: link/layer.py + protocol layer + endpoint plumbing
+   at words=2 (idle.py, ordered_sets.py for the Gen1/fallback leg;
+   PacketTransmitter/HeaderPacketReceiver parent FSMs are
+   width-agnostic logic but their stream/submodule instantiations
+   need the words parameter threaded).
+2. **physical/gen2.py at 128**: 1 beat = 1 block; the 32↔64
+   per-packet stage bridges become 64↔128; re-prove the #43
+   run-compression queue bound red-first (the engine's drain:wire gap
+   widens 8 vs 16).
+3. **The 2:1 PIPE bridge** (§13.3/13.4): pclk/2 fabric divider +
+   generated clock; `tx_halfbeat` SKP contract; the #44 pacing-lag
+   sims RED-FIRST (registered-sample lag budget).
+4. **device.py core_width=128** end-to-end + the 128-bit oracle
+   re-pin of sim_link_gen2 (the sim drives the PIPE at the bridge's
+   128-bit contract or through a bridge model).
+5. **gowin-serdes**: w128 SDC branches (the Gen2-128 build needs the
+   /2 generated clock; the 20×1:4 trim entry is only for the
+   Gen1-128 native 62.5 build, later).
+6. Then: build `luna-enum-gen2` at core_width=128, gate timing
+   (core ≥ 78.125, pclk ≥ 156.25, rxclk ≥ 161.29), flash, and take
+   the **#49 bench verdict** (the #50/#51 fixes + SSP BOS are in the
+   tree and sim-fenced; the wedge mechanisms are already fixed —
+   the 128 vehicle exists to get them onto the wire).
+
+### Carry-over
+
+* Bug numbering: next is **#52**.  #49 remains OPEN pending the
+  bench verdict (mechanisms #50/#51 fixed+fenced in sim).
+* Parked: the Gen1-rail twins of #50/#51; sub-block-granularity
+  reccut cuts; #37 RX side; the rest of the §10w list unchanged.
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 15: the width-generic

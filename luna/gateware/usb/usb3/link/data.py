@@ -689,6 +689,14 @@ class DataPacketTransmitter(Elaboratable):
         self.header_source   = HeaderQueue()
         self.data_source     = SuperSpeedStreamInterface(payload_words=4 * words)
 
+        # Width-program hook (words=2 layers): the store-and-forward
+        # width adapter consumes our register stage GREEDILY, so
+        # ``data_source.valid`` -- the historical header-offer
+        # qualifier -- drops before the (externally gated) offer is
+        # accepted.  The layer then completes the SEND_HEADER handshake
+        # through this strobe instead.
+        self.external_accept = Signal()
+
         # Strobe: the data parameters above have just been consumed
         # (latched for the packet whose transmission is beginning).  The
         # endpoint multiplexer holds its captured parameter registers --
@@ -819,7 +827,8 @@ class DataPacketTransmitter(Elaboratable):
                 # acceptance -- advancing on it dispatches no header, and
                 # the packet's staged payload then wedges the shared
                 # transmit path for every endpoint.
-                with m.If(header_source.valid & header_source.ready):
+                with m.If((header_source.valid & header_source.ready)
+                          | self.external_accept):
                     m.next = "SEND_PAYLOAD"
 
 

@@ -545,17 +545,28 @@ class USB3LinkLayer(Elaboratable):
             # the adapter has the WHOLE packet buffered: the wide
             # transmitter samples its payload stream at DPP start to
             # decide ZLP-ness, and store-and-forward would read as a
-            # false ZLP.  Real ZLP offers (data_tx FSM state 3) pass
-            # ungated.
+            # false ZLP.  Moreover the adapter's greedy intake drains
+            # data_tx's register stage during SEND_HEADER, dropping the
+            # historical valid qualifier -- so the offer is keyed on
+            # the data_tx FSM STATE (1 = SEND_HEADER; the header fields
+            # are comb from its latches, stable throughout) plus the
+            # adapter's packet-staged flag, and the acceptance
+            # completes through data_tx.external_accept.  Real ZLP
+            # offers (state 3) keep their own valid/ready handshake.
             gated_hq = HeaderQueue()
-            packet_staged = tx_widen.source.valid.any() \
-                | (data_tx.debug_fsm == 3)
+            in_send_header = data_tx.debug_fsm == 1
+            in_send_zlp    = data_tx.debug_fsm == 3
+            packet_staged  = tx_widen.source.valid.any()
             m.d.comb += [
                 gated_hq.header.eq(data_tx.header_source.header),
-                gated_hq.valid .eq(data_tx.header_source.valid
-                                   & packet_staged),
+                gated_hq.valid .eq((in_send_header & packet_staged)
+                                   | (in_send_zlp
+                                      & data_tx.header_source.valid)),
                 data_tx.header_source.ready.eq(gated_hq.ready
                                                & gated_hq.valid),
+                data_tx.external_accept.eq(in_send_header
+                                           & gated_hq.valid
+                                           & gated_hq.ready),
             ]
             hp_mux.add_producer(gated_hq)
 

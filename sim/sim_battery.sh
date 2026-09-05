@@ -293,4 +293,20 @@ if [ "$RXOFF_OK" = "1" ]; then
 else
     echo "FAIL gen2-rx-offsets <<<<<<<<"
 fi
+# -- The 128-bit core (width program, session 19): the SAME Gen2 phase
+# set at core_width=128 -- one beat = one block at the 78.125 core
+# clock, clear-data conditioning (the RTL scrambler round-trip is a
+# 64-bit PHY surface), the protocol boundary behind the width
+# adapters.  First green 2026-09-05: the whole stack (wide framers,
+# gen2 128 bridges, adapters, EP0) enumerates end to end with the
+# pacing band held (max 16/32, hi28 0).
+for W128PH in train enum echo u0 hotreset hotreset-parked recovery reccut advearly; do
+    if W128=1 PHASE=$W128PH TSEQ_LEN=64 pdm run python "$LL/sim_link_gen2.py" > /tmp/kilo/batt_w128_$W128PH.log 2>&1; then
+        echo "PASS w128-$W128PH"
+    else
+        echo "FAIL w128-$W128PH <<<<<<<<"
+    fi
+done
+
 echo BATTERY4-DONE
+

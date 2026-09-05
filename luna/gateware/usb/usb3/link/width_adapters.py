@@ -51,9 +51,19 @@ class TxPacketWidthAdapter(Elaboratable):
             SyncFIFO(width=64 + 8 + 1, depth=self._depth))
 
         # ── pack side ────────────────────────────────────────────────
-        low_v  = Signal()          # a low half is staged
-        low_d  = Signal(32)
-        low_c  = Signal(4)
+        #
+        # A ONE-BEAT LOOKAHEAD stage delays each completed beat until
+        # its last-ness is known: packet ends are recognized both from
+        # a marked ``last`` word AND from the stream going invalid (the
+        # historical delimiter -- data_tx itself treats an invalid
+        # cycle as end-of-packet, and the upstream stages guarantee
+        # gaplessness within a packet, so a bubble is authoritative).
+        low_v   = Signal()         # a low half awaits its pair
+        low_d   = Signal(32)
+        low_c   = Signal(4)
+        stage_v = Signal()         # a completed beat awaits last-ness
+        stage_d = Signal(64)
+        stage_c = Signal(8)
 
         packets_buffered = Signal(8)
         pkt_in  = Signal()
@@ -63,32 +73,69 @@ class TxPacketWidthAdapter(Elaboratable):
         with m.Elif(pkt_out & ~pkt_in):
             m.d.ss += packets_buffered.eq(packets_buffered - 1)
 
-        m.d.comb += sink.ready.eq(fifo.w_rdy)
-        with m.If(sink.valid.any() & fifo.w_rdy):
-            with m.If(~low_v & ~sink.last):
-                # Stage the low half.
-                m.d.ss += [low_v.eq(1), low_d.eq(sink.data),
-                           low_c.eq(sink.valid)]
-            with m.Elif(~low_v & sink.last):
-                # Single-word packet (or odd final word arriving with
-                # nothing staged): a half-valid final beat.
-                m.d.comb += [
-                    fifo.w_data.eq(Cat(sink.data, Const(0, 32),
-                                       sink.valid, Const(0, 4),
-                                       C(1, 1))),
-                    fifo.w_en.eq(1),
-                    pkt_in.eq(1),
-                ]
-            with m.Else():
-                # Pair the staged low half with this word.
-                m.d.comb += [
-                    fifo.w_data.eq(Cat(low_d, sink.data,
-                                       low_c, sink.valid,
-                                       sink.last)),
-                    fifo.w_en.eq(1),
-                    pkt_in.eq(sink.last),
-                ]
-                m.d.ss += low_v.eq(0)
+        def write_stage(is_last):
+            m.d.comb += [
+                fifo.w_data.eq(Cat(stage_d, stage_c,
+                                   C(1, 1) if is_last else C(0, 1))),
+                fifo.w_en.eq(1),
+            ]
+            if is_last:
+                m.d.comb += pkt_in.eq(1)
+
+        with m.FSM(domain="ss", name="pack_fsm"):
+
+            with m.State("RUN"):
+                m.d.comb += sink.ready.eq(fifo.w_rdy)
+                with m.If(sink.valid.any() & fifo.w_rdy):
+                    new_d = Signal(64)
+                    new_c = Signal(8)
+                    new_full = Signal()
+                    with m.If(~low_v & ~sink.last):
+                        # Stage the low half; no beat completes.
+                        m.d.ss += [low_v.eq(1), low_d.eq(sink.data),
+                                   low_c.eq(sink.valid)]
+                    with m.Elif(~low_v & sink.last):
+                        # Final word with nothing staged: a half-valid
+                        # final beat.
+                        m.d.comb += [new_full.eq(1),
+                                     new_d.eq(Cat(sink.data, C(0, 32))),
+                                     new_c.eq(Cat(sink.valid, C(0, 4)))]
+                    with m.Else():
+                        m.d.comb += [new_full.eq(1),
+                                     new_d.eq(Cat(low_d, sink.data)),
+                                     new_c.eq(Cat(low_c, sink.valid))]
+                        m.d.ss += low_v.eq(0)
+
+                    with m.If(new_full):
+                        with m.If(stage_v):
+                            write_stage(is_last=False)
+                        m.d.ss += [stage_v.eq(1), stage_d.eq(new_d),
+                                   stage_c.eq(new_c)]
+                        with m.If(sink.last):
+                            m.next = "CLOSE"
+
+                with m.Elif(~sink.valid.any() & (stage_v | low_v)):
+                    # The gap delimiter: promote a pending odd half to
+                    # the final (half-valid) beat, then close.
+                    with m.If(low_v & fifo.w_rdy):
+                        with m.If(stage_v):
+                            write_stage(is_last=False)
+                        m.d.ss += [
+                            stage_v.eq(1),
+                            stage_d.eq(Cat(low_d, C(0, 32))),
+                            stage_c.eq(Cat(low_c, C(0, 4))),
+                            low_v.eq(0),
+                        ]
+                        m.next = "CLOSE"
+                    with m.Elif(~low_v):
+                        m.next = "CLOSE"
+
+            with m.State("CLOSE"):
+                # The staged beat is the packet's final beat.
+                with m.If(fifo.w_rdy):
+                    write_stage(is_last=True)
+                    m.d.ss += stage_v.eq(0)
+                    m.next = "RUN"
 
         # ── serve side: gapless per-packet bursts ────────────────────
         # A packet's first beat is only presented once the WHOLE packet
@@ -179,6 +226,11 @@ class RxWidthSplitter(Elaboratable):
 
         phase = Signal()    # 0: serve low half, 1: serve high half
 
+        # The RX data path is MONITOR-style: the protocol layer samples
+        # valid lanes without a ready handshake (data_source.ready is
+        # unconnected in the link layer's historical wiring).  The
+        # splitter therefore presents fire-and-forget, one word per
+        # cycle -- its guaranteed maximum rate.
         with m.If(fifo.r_rdy):
             with m.If(e_good | e_bad):
                 # A verdict entry: pulse and retire.
@@ -195,11 +247,10 @@ class RxWidthSplitter(Elaboratable):
                     # last only if the high half carries nothing.
                     source.last .eq(e_last & ~high_has),
                 ]
-                with m.If(source.ready):
-                    with m.If(high_has):
-                        m.d.ss += phase.eq(1)
-                    with m.Else():
-                        m.d.comb += fifo.r_en.eq(1)
+                with m.If(high_has):
+                    m.d.ss += phase.eq(1)
+                with m.Else():
+                    m.d.comb += fifo.r_en.eq(1)
             with m.Else():
                 m.d.comb += [
                     source.valid.eq(e_valid[4:8]),
@@ -207,8 +258,7 @@ class RxWidthSplitter(Elaboratable):
                     source.first.eq(0),
                     source.last .eq(e_last),
                 ]
-                with m.If(source.ready):
-                    m.d.ss += phase.eq(0)
-                    m.d.comb += fifo.r_en.eq(1)
+                m.d.ss += phase.eq(0)
+                m.d.comb += fifo.r_en.eq(1)
 
         return m

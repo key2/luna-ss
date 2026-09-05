@@ -327,7 +327,14 @@ class SuperSpeedStreamArbiter(StreamArbiter):
 
 
 class SuperSpeedStreamInterface(StreamInterface):
-    """ Convenience variant of our StreamInterface sized to work with SuperSpeed streams. """
+    """ Convenience variant of our StreamInterface sized to work with SuperSpeed streams.
 
-    def __init__(self):
-        super().__init__(payload_width=32, valid_width=4)
+    Width program (usb3_design.md 13.5): ``payload_words=8`` sizes the
+    payload stream for the 128-bit core (8 data bytes + 8 per-byte
+    valids per beat); the default is the historical 32-bit shape,
+    verbatim.
+    """
+
+    def __init__(self, payload_words=4):
+        super().__init__(payload_width=8 * payload_words,
+                         valid_width=payload_words)

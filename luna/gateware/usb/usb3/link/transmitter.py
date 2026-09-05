@@ -45,21 +45,31 @@ class RawPacketTransmitter(Elaboratable):
         be ready to send another packet next cycle.
     """
 
-    def __init__(self, gen2=False):
+    def __init__(self, gen2=False, words=1):
         # Bug #51 (session 17, the #49 reccut offset-24 red): gen2
         # elaborations additionally track ``payload_consumed`` -- see
         # below.  Gen1 elaborations are the historical unit verbatim
         # (the shipping fence).
         self._gen2 = gen2
+        # Width program (usb3_design.md 13.5): ``words=2`` emits
+        # 8-symbol beats -- header packets go out as 2.5 beats padded
+        # to 3 ([HPSTART|DW0] [DW1|DW2] [DW3|pad]), EXCEPT a data
+        # header, whose final beat carries the DPP framing gaplessly
+        # in its high half ([DW3|DPPSTART]; a DPP shall immediately
+        # follow its DPH -- inter-packet idle is only legal after a
+        # complete packet).  The payload then runs beat-aligned with
+        # the CRC-32 + END framing tail spliced at byte granularity.
+        # ``words=1`` is the historical unit verbatim.
+        self._words = words
 
         #
         # I/O port.
         #
-        self.source    = USBRawSuperSpeedStream()
+        self.source    = USBRawSuperSpeedStream(payload_words=4 * words)
 
         # Packet data in.
         self.header    = HeaderPacket()
-        self.data_sink = SuperSpeedStreamInterface()
+        self.data_sink = SuperSpeedStreamInterface(payload_words=4 * words)
 
         # When set alongside a delayed (DL=1) data header, indicates that the
         # header's payload was already consumed by an earlier transmission:
@@ -104,6 +114,9 @@ class RawPacketTransmitter(Elaboratable):
 
     def elaborate(self, platform):
         m = Module()
+
+        if self._words == 2:
+            return self._elaborate_wide(m)
 
         # Shorthands.
         source    = self.source
@@ -498,6 +511,288 @@ class RawPacketTransmitter(Elaboratable):
             with m.Elif(consuming):
                 m.d.ss += consumed_r.eq(1)
             m.d.comb += self.payload_consumed.eq(consumed_r | consuming)
+
+        return m
+
+
+    def _elaborate_wide(self, m):
+        """ The words=2 transmitter (see the constructor comment for
+        the wire shapes).  The final-chunk tail -- CRC-32 (4 bytes)
+        then END END END EPF -- is 8 bytes: the SEND_LAST beat carries
+        the v payload bytes plus the first (8-v) tail bytes, and the
+        SEND_TAIL beat the remaining v, idle-padded.  A full final
+        chunk (v=8) and a ZLP (v=0) degenerate to a bare SEND_TAIL
+        beat carrying the whole tail.  The final partial CRC advance
+        commits at the capture cycle (one beat ahead of use, through
+        the pipeline register), so ``crc32.crc`` is always the
+        finished value when spliced -- the narrow unit's exact scheme
+        at twice the width.
+        """
+        source    = self.source
+        data_sink = self.data_sink
+
+        header    = HeaderPacket()
+
+        #
+        # CRC Generators (wide surfaces).
+        #
+        m.submodules.crc16 = crc16 = HeaderPacketCRC(words=2)
+        m.submodules.crc32 = crc32 = DataPacketPayloadCRC(words=2)
+        m.d.comb += [
+            crc32.data_input2   .eq(data_sink.data),
+            crc32.data_input    .eq(data_sink.data[0:32]),
+
+            # Advance the CRC-32 whenever payload is consumed, by the
+            # number of valid bytes in the chunk (tail bytes occupy the
+            # LOW end of the beat, first-on-the-wire).
+            crc32.advance_2words.eq((data_sink.valid == 0b11111111) & data_sink.ready),
+            crc32.advance_7B    .eq((data_sink.valid == 0b01111111) & data_sink.ready),
+            crc32.advance_6B    .eq((data_sink.valid == 0b00111111) & data_sink.ready),
+            crc32.advance_5B    .eq((data_sink.valid == 0b00011111) & data_sink.ready),
+            crc32.advance_4B    .eq((data_sink.valid == 0b00001111) & data_sink.ready),
+            crc32.advance_3B    .eq((data_sink.valid == 0b00000111) & data_sink.ready),
+            crc32.advance_2B    .eq((data_sink.valid == 0b00000011) & data_sink.ready),
+            crc32.advance_1B    .eq((data_sink.valid == 0b00000001) & data_sink.ready),
+        ]
+
+        # Pipelined final chunk (payload data one beat behind, so the
+        # committed CRC is available when the tail is spliced).
+        pipelined_data_word  = Signal.like(data_sink.data)
+        pipelined_data_valid = Signal.like(data_sink.valid)
+
+        packet_is_zlp = Signal()
+        sent_before   = Signal()
+
+        # Framing constants.
+        hpstart_data, hpstart_ctrl = get_word_for_symbols(SHP, SHP, SHP, EPF)
+        dppstart_data, dppstart_ctrl = get_word_for_symbols(SDP, SDP, SDP, EPF)
+        abort_data, abort_ctrl = get_word_for_symbols(EDB, EDB, EDB, EPF)
+
+        # The 8 tail bytes: CRC-32 (little-endian) then END framing.
+        end_data, end_ctrl = get_word_for_symbols(END, END, END, EPF)
+        tail_bytes = [crc32.crc.word_select(k, 8) for k in range(4)] \
+            + [end_data.word_select(k, 8) for k in range(4)]
+        tail_ctrls = [C(0, 1)] * 4 + [end_ctrl[k] for k in range(4)]
+
+        def valid_count(pattern):
+            """Payload bytes in a (contiguous, low-aligned) valid mask."""
+            return {0b00000001: 1, 0b00000011: 2, 0b00000111: 3,
+                    0b00001111: 4, 0b00011111: 5, 0b00111111: 6,
+                    0b01111111: 7, 0b11111111: 8}[pattern]
+
+        with m.FSM(domain="ss"):
+
+            # IDLE -- wait for a generate command.
+            with m.State("IDLE"):
+                m.d.comb += [
+                    crc16.clear.eq(1),
+                    crc32.clear.eq(1),
+                ]
+                with m.If(self.generate):
+                    m.d.comb += self.starting.eq(1)
+                    m.d.ss += [
+                        header               .eq(self.header),
+                        sent_before          .eq(self.header_sent_before),
+                        self.payload_pending .eq(0),
+                    ]
+                    m.next = "SEND_HDR0"
+
+            # SEND_HDR0 -- [HPSTART | DW0]; DW0 enters the CRC-16.
+            with m.State("SEND_HDR0"):
+                m.d.comb += [
+                    source.valid           .eq(1),
+                    source.data[ 0:32]     .eq(hpstart_data),
+                    source.ctrl[ 0: 4]     .eq(hpstart_ctrl),
+                    source.data[32:64]     .eq(header.dw0),
+                    source.ctrl[ 4: 8]     .eq(0),
+                    # Packet boundary: a legal SKP insertion point (see
+                    # the narrow unit's comment).
+                    source.first           .eq(1),
+
+                    crc16.data_input       .eq(header.dw0),
+                ]
+                with m.If(source.ready):
+                    m.d.comb += crc16.advance_crc.eq(1)
+                    m.next = "SEND_HDR1"
+
+            # SEND_HDR1 -- [DW1 | DW2].
+            with m.State("SEND_HDR1"):
+                m.d.comb += [
+                    source.valid           .eq(1),
+                    source.data[ 0:32]     .eq(header.dw1),
+                    source.data[32:64]     .eq(header.dw2),
+                    source.ctrl            .eq(0),
+
+                    crc16.data_input2      .eq(Cat(header.dw1, header.dw2)),
+                ]
+                with m.If(source.ready):
+                    m.d.comb += crc16.advance_crc2.eq(1)
+                    m.next = "SEND_HDR2"
+
+            # SEND_HDR2 -- [DW3 | pad-or-DPPSTART].  The running CRC-16
+            # is committed through DW2.  A data header carries its DPP
+            # framing gaplessly in the high half; anything else pads
+            # with logical idle (legal between packets) and finishes.
+            with m.State("SEND_HDR2"):
+                was_data_header = (header.dw0[0:4] == HeaderPacketType.DATA)
+
+                dw3 = Signal(32)
+                m.d.comb += [
+                    dw3[ 0:16]  .eq(crc16.crc),
+                    dw3[16:19]  .eq(header.sequence_number),
+                    dw3[19:22]  .eq(header.dw3_reserved),
+                    dw3[22:25]  .eq(header.hub_depth),
+                    dw3[25]     .eq(header.delayed),
+                    dw3[26]     .eq(header.deferred),
+                    dw3[27:32]  .eq(compute_usb_crc5(dw3[16:27])),
+
+                    source.valid           .eq(1),
+                    source.data[ 0:32]     .eq(dw3),
+                    source.ctrl            .eq(0),
+                ]
+                with m.If(was_data_header):
+                    m.d.comb += [
+                        source.data[32:64] .eq(dppstart_data),
+                        source.ctrl[ 4: 8] .eq(dppstart_ctrl),
+                    ]
+                with m.Else():
+                    m.d.comb += [
+                        source.data[32:64] .eq(0),
+                        source.ctrl[ 4: 8] .eq(0),
+                    ]
+
+                with m.If(source.ready):
+                    with m.If(was_data_header):
+                        # The DPP framing is on the wire with this
+                        # beat; the stream must stay GAPLESS through
+                        # the payload, so the abort/ZLP/capture
+                        # dispatch happens right here.
+                        with m.If(header.delayed & sent_before):
+                            # A DL=1 retransmission whose payload was
+                            # already consumed aborts its DPP (see the
+                            # narrow unit).
+                            m.next = "ABORT_DPP"
+                        with m.Elif(data_sink.valid == 0):
+                            # ZLP: the whole tail forms the next beat.
+                            m.d.ss += [
+                                packet_is_zlp        .eq(1),
+                                pipelined_data_valid .eq(0),
+                            ]
+                            m.next = "SEND_TAIL"
+                        with m.Else():
+                            m.d.ss += [
+                                packet_is_zlp        .eq(0),
+                                pipelined_data_word  .eq(data_sink.data),
+                                pipelined_data_valid .eq(data_sink.valid),
+                            ]
+                            m.d.comb += data_sink.ready.eq(1)
+                            with m.If(~data_sink.last):
+                                m.d.ss += self.payload_pending.eq(1)
+                                m.next = "SEND_PAYLOAD"
+                            with m.Else():
+                                m.next = "SEND_LAST"
+                    with m.Else():
+                        m.d.comb += self.done.eq(1)
+                        m.next = "IDLE"
+
+            # SEND_PAYLOAD -- stream full beats through the pipeline.
+            with m.State("SEND_PAYLOAD"):
+                m.d.comb += [
+                    source.data   .eq(pipelined_data_word),
+                    source.valid  .eq(1),
+                ]
+                with m.If(source.ready):
+                    m.d.comb += data_sink.ready.eq(1)
+                    with m.If(~data_sink.valid.any()):
+                        m.d.comb += self.debug_payload_underrun.eq(1)
+                    m.d.ss += [
+                        pipelined_data_word   .eq(data_sink.data),
+                        pipelined_data_valid  .eq(data_sink.valid),
+                    ]
+                    with m.If(data_sink.last):
+                        m.d.ss += self.payload_pending.eq(0)
+                        m.next = "SEND_LAST"
+
+            # SEND_LAST -- the final payload chunk (v bytes) plus the
+            # first (8-v) tail bytes.  A full chunk (v=8) is emitted
+            # whole, with the entire tail following in SEND_TAIL.
+            with m.State("SEND_LAST"):
+                m.d.comb += [
+                    source.data   .eq(pipelined_data_word),
+                    source.valid  .eq(1),
+                ]
+                with m.Switch(pipelined_data_valid):
+                    for pattern in (0b00000001, 0b00000011, 0b00000111,
+                                    0b00001111, 0b00011111, 0b00111111,
+                                    0b01111111):
+                        v = valid_count(pattern)
+                        with m.Case(pattern):
+                            for j in range(v, 8):
+                                m.d.comb += [
+                                    source.data.word_select(j, 8)
+                                        .eq(tail_bytes[j - v]),
+                                    source.ctrl[j]
+                                        .eq(tail_ctrls[j - v]),
+                                ]
+                    # v=8: nothing to splice; full payload beat.
+
+                with m.If(source.ready):
+                    m.next = "SEND_TAIL"
+
+            # SEND_TAIL -- the remaining v tail bytes (all 8 for a full
+            # final chunk or a ZLP), idle-padded to the beat.
+            with m.State("SEND_TAIL"):
+                m.d.comb += source.valid.eq(1)
+                with m.Switch(pipelined_data_valid):
+                    for pattern, v in [(0b00000001, 1), (0b00000011, 2),
+                                       (0b00000111, 3), (0b00001111, 4),
+                                       (0b00011111, 5), (0b00111111, 6),
+                                       (0b01111111, 7)]:
+                        with m.Case(pattern):
+                            for j in range(v):
+                                m.d.comb += [
+                                    source.data.word_select(j, 8)
+                                        .eq(tail_bytes[8 - v + j]),
+                                    source.ctrl[j]
+                                        .eq(tail_ctrls[8 - v + j]),
+                                ]
+                    with m.Default():
+                        # v=8 (full final chunk) and ZLP: whole tail.
+                        for j in range(8):
+                            m.d.comb += [
+                                source.data.word_select(j, 8)
+                                    .eq(tail_bytes[j]),
+                                source.ctrl[j]
+                                    .eq(tail_ctrls[j]),
+                            ]
+
+                with m.If(source.ready):
+                    m.d.comb += self.done.eq(1)
+                    m.next = "IDLE"
+
+            # ABORT_DPP -- [EDB EDB EDB EPF | pad].
+            with m.State("ABORT_DPP"):
+                m.d.comb += [
+                    source.valid       .eq(1),
+                    source.data[ 0:32] .eq(abort_data),
+                    source.ctrl[ 0: 4] .eq(abort_ctrl),
+                    source.data[32:64] .eq(0),
+                    source.ctrl[ 4: 8] .eq(0),
+                ]
+                with m.If(source.ready):
+                    m.d.comb += self.done.eq(1)
+                    m.next = "IDLE"
+
+        # Bug #51 tracking (see the narrow gen2 block): the wide unit
+        # is new code with no verbatim constraint -- always present.
+        consumed_r = Signal()
+        consuming  = Signal()
+        m.d.comb += consuming.eq(data_sink.ready & data_sink.valid.any())
+        with m.If(self.starting):
+            m.d.ss += consumed_r.eq(consuming)
+        with m.Elif(consuming):
+            m.d.ss += consumed_r.eq(1)
+        m.d.comb += self.payload_consumed.eq(consumed_r | consuming)
 
         return m
 

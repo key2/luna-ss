@@ -3796,6 +3796,73 @@ pclk/2 (78.125), the 2:1 bridge at the PIPE boundary.
 * Bug numbering: next **#52**.  #49 OPEN pending the bench verdict.
 * All 10w/10x parked items unchanged.
 
+## 10z. Session 19 — the stack threads: core_width=128 elaborates
+## END TO END (commit 5658274); what remains is behavior-proof + the
+## bridge + the build
+
+### Landed (battery 57/57; parity 14 bytes, 603–621 only)
+
+Items 1–6 of the §10y list are DONE: ordered_sets (config field
+relocated to word 0 bits [40:44], paired constants), compliance,
+idle, link/layer + parents + arbiter threading, physical/layer
+threading (128-bit PIPE contract with tx_halfbeat; Gen1 leg on
+[63:0]), PIPEInterface width=16, device.py unlocked.  The protocol
+boundary stays 32-bit behind `link/width_adapters.py`
+(store-and-forward TX with the ZLP-gated header offer; RX splitter
+with through-FIFO verdict strobes) — control traffic full-fidelity,
+bulk capped at 4 B/core-cycle until the endpoints widen (documented
+follow-up).  `USBSuperSpeedDevice(phy=PIPEInterface(width=16),
+core_width=128, gen2=True)` + control endpoint elaborates clean.
+
+### Remaining (was §10y items 7–10), in order
+
+7. **The W128 oracle re-pin** — the next session's FIRST job, and
+   where the wide gen2 units meet their first behavioral runs:
+   * sim_link_gen2.py `W128=1` knob: BenchPIPE(width=16) +
+     core_width=128; feed_blocks emits ONE beat per block; HostRx
+     collects 1 block/beat + tx_halfbeat SKP tails; the #44 FIFO
+     model adds 2 words/full beat, 1/halfbeat (drain law unchanged
+     in pclk terms: model the 2x-rate drain per core cycle).
+   * THE WIRING TRAP: the Bench routes device TX through the RTL
+     ``dev_scr`` (gw_usb3 64-bit Scrambler) and host RX through the
+     RTL ``host_descr`` — both are 64-bit units in the SAME clock
+     domain and cannot run 2 sub-beats per core cycle.  At W128,
+     bypass the RTL conditioning and use the PYTHON ScramblerModel
+     both ways (HostRx already owns a descrambling model; feed_blocks
+     already owns model_tx).  Keep the RTL-conditioned path at W64
+     (it is part of the proven fences).
+   * Expect first-run reds in: the wide TX bridge byte phases (the
+     28-byte DPH pre-payload = phase 12 packing), the halfbeat SKP
+     seam, the RX packer's solo-flush, and the #43 queue bound
+     (re-prove RED-FIRST with a construct-dense stream; the bound
+     doubles at pclk/2 — queue_level asserts).
+   * Then the full phase set at W128 + width-parallel battery
+     entries (train/enum/echo/u0/hotreset/recovery/reccut/advearly).
+8. **The 2:1 PIPE bridge** (new module; §13.3/13.4): pclk-domain
+   phase toggle aligned to the /2 divider; TX half-select (beat 0 =
+   tx_data[64:128] first-on-wire, halfbeat = one pclk beat); RX
+   start-anchored pair accumulator presenting one core cycle;
+   seam registers per the §13.4 table (phy_status latch-and-hold);
+   tx_fifo_occupancy registered at the core edge.  RED-FIRST
+   two-clock testbench (64-side block stream <-> 128-side contract,
+   both directions) + the #44 pacing-lag model in
+   tests/test_gen2_pacing.py (2–3 pclk sampling lag).
+9. **gowin-serdes**: the w128 SDC branch (create_generated_clock
+   -divide_by 2 on the core divider FF; pclk 6.4 / rxclk 6.2 stay).
+10. **luna-enum-gen2 at core_width=128**: divider + DomainRenamer
+    ({"ss": core}) around the device, bridge between the adapter and
+    the device, probes re-homed; build, gate (core >= 78.125, pclk >=
+    156.25, rxclk >= 161.29), flash, **the #49 bench verdict**
+    (10000M repeatable, dmesg clean incl. no SSP-BOS complaint, then
+    the Gen2 ladder at the adapter-capped bulk rate).
+
+### Carry-over
+
+* Bug numbering: next **#52**.  #49 OPEN pending the bench verdict.
+* NEW parked: full-rate 64-bit endpoint widening (the bulk-ladder
+  MB/s targets at 128); the Gen1-128 native serdes trim (20×1:4)
+  for V2.  All earlier parked items unchanged.
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 15: the width-generic

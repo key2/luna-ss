@@ -3863,6 +3863,72 @@ core_width=128, gen2=True)` + control endpoint elaborates clean.
   MB/s targets at 128); the Gen1-128 native serdes trim (20×1:4)
   for V2.  All earlier parked items unchanged.
 
+## 10aa. Session 19b — THE 128-BIT CORE IS BEHAVIOR-PROVEN: all nine
+## Gen2 phases green at core_width=128 (commit 2548e8f)
+
+### The milestone
+
+`W128=1 PHASE=<any>` runs the full Gen2 phase set at core_width=128:
+**train, enum, echo, u0, hotreset, hotreset-parked, recovery, reccut,
+advearly — ALL PASS**, including the complete enumeration ladder
+(SET_ADDRESS, byte-exact descriptor, the 50-byte SSP BOS, config),
+the #50/#51 mid-transfer-cut sweep, and the #44 pacing band (max
+16/32, zero hi28, zero starvation) — at the 78.125 MHz core clock.
+W64 re-verified green; the battery grew a 9-entry w128 section (66).
+
+Three first-run integration bugs found+fixed (see commit 2548e8f):
+the monitor-style RX splitter, the unmarked-last packet close (the
+one-beat lookahead stage + gap delimiter), and the header-offer race
+against data_tx's SEND_HEADER handshake (fixed with the state-keyed
+offer + `data_tx.external_accept`).
+
+### DIRECTIVE UPDATE (user, session 19): full-128 PHY+MAC
+
+The gw_usb3 PHY moves to 128 bits next — 64-bit is being RETIRED for
+timing.  Consequences: the 2:1 PIPE bridge below is INTERIM (it ships
+the first Gen2-128 image against the proven 64-bit PHY datapath);
+the §13.8 PHY-side widening becomes the plan of record after the
+bridge-based #49 verdict.  gowin-serdes and gw_usb3 changes are
+authorized.
+
+### Remaining to the Gen2-128 bitstream (in order)
+
+1. **The 2:1 PIPE bridge** (new module under
+   luna/gateware/interface/serdes_phy/): pclk-domain phase toggle
+   aligned to the /2 FF divider; TX: core beat -> two pclk beats
+   (beat 0 first-on-wire = tx_data[64:128]; tx_halfbeat = ONE pclk
+   beat from the top lanes; tx_datavalid gaps = no pclk emission both
+   phases); RX: start-anchored pair accumulator presenting one core
+   cycle (rx_data 128 = (beat0 << 64) | beat1); seam registers per
+   the §13.4 table (phy_status latch-and-hold >= 2 pclk;
+   tx_fifo_occupancy registered at the core edge -- the #44 loop
+   tolerates the documented 2-3 pclk lag but RE-PROVE with the
+   pacing-lag model in tests/test_gen2_pacing.py RED-FIRST); a
+   two-clock testbench pinning both directions byte-exact including
+   the SKP halfbeat seam and valid gaps.
+2. **gowin-serdes SDC**: create_generated_clock -divide_by 2 on the
+   divider FF (core clock); pclk 6.4 ns / rxclk 6.2 ns unchanged.
+3. **luna-enum-gen2 at core_width=128**: the divider + bridge between
+   GowinGTR12PIPE (64-bit pclk, unchanged) and the device;
+   DomainRenamer({"ss": "core"}) around USBSuperSpeedDevice(
+   core_width=128); probes re-homed to the core domain where they
+   sample MAC state.  Build, gate (core >= 78.125, pclk >= 156.25,
+   rxclk >= 161.29 -- only the thin bridge + PHY fabric remain at
+   pclk), flash, **the #49 bench verdict**, then the Gen2 ladder
+   (bulk capped by the 32-bit protocol boundary; sha-exactness is
+   the verdict, MB/s is documented-degraded until the endpoint
+   widening).
+4. **Then the full-128 PHY** (the directive): gw_usb3 datapath at 16
+   symbols/beat end to end (gearboxes, scrambler chain, elastic
+   buffer), pclk retire, the bridge removed.  Plan against the
+   equivalence-fence pattern (tests/test_equiv.py is the oracle
+   harness); the 5G configuration stays pinned until its own ladder.
+
+### Carry-over
+
+* Bug numbering: next **#52**.  #49 OPEN pending the bench verdict.
+* Parked items unchanged (+ the full-rate endpoint widening).
+
 ## 11. Reading list for the new session (fork edition)
 
 * `prompt.md` — the active mission (session 15: the width-generic

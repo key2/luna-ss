@@ -663,7 +663,7 @@ class DataPacketTransmitter(Elaboratable):
 
     MAX_PACKET_SIZE = 1024
 
-    def __init__(self, words=1):
+    def __init__(self, words=1, external_accept=False):
         # Width program: the orchestration below is width-agnostic
         # (``valid.any()``/``stream_eq`` plumbing); ``words`` only
         # sizes the streams.  words=1 verbatim.
@@ -689,13 +689,18 @@ class DataPacketTransmitter(Elaboratable):
         self.header_source   = HeaderQueue()
         self.data_source     = SuperSpeedStreamInterface(payload_words=4 * words)
 
-        # Width-program hook (words=2 layers): the store-and-forward
-        # width adapter consumes our register stage GREEDILY, so
-        # ``data_source.valid`` -- the historical header-offer
-        # qualifier -- drops before the (externally gated) offer is
-        # accepted.  The layer then completes the SEND_HEADER handshake
-        # through this strobe instead.
-        self.external_accept = Signal()
+        # Width-program hook (words=2 layers, ``external_accept=True``):
+        # the store-and-forward width adapter consumes our register
+        # stage GREEDILY, so ``data_source.valid`` -- the historical
+        # header-offer qualifier -- drops before the (externally gated)
+        # offer is accepted.  The layer then completes the SEND_HEADER
+        # handshake through this strobe instead.  Elaboration-gated
+        # (finding #52): an always-present constant-0 OR into the
+        # SEND_HEADER transition perturbed the words=1 SHIPPING netlist
+        # (42k diff bytes vs the laddered fence image, caught by the
+        # session-20 V0' parity rebuild); the words=1 statements below
+        # stay verbatim.
+        self.external_accept = Signal() if external_accept else None
 
         # Strobe: the data parameters above have just been consumed
         # (latched for the packet whose transmission is beginning).  The
@@ -827,8 +832,10 @@ class DataPacketTransmitter(Elaboratable):
                 # acceptance -- advancing on it dispatches no header, and
                 # the packet's staged payload then wedges the shared
                 # transmit path for every endpoint.
-                with m.If((header_source.valid & header_source.ready)
-                          | self.external_accept):
+                header_accepted = header_source.valid & header_source.ready
+                if self.external_accept is not None:
+                    header_accepted = header_accepted | self.external_accept
+                with m.If(header_accepted):
                     m.next = "SEND_PAYLOAD"
 
 

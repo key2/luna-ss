@@ -529,8 +529,12 @@ class USB3LinkLayer(Elaboratable):
 
         # Transmitter.  (Always the proven 32-bit unit: at words=2 the
         # store-and-forward width adapter below feeds the wide packet
-        # transmitter a gapless 64-bit burst per packet.)
-        m.submodules.data_tx = data_tx = DataPacketTransmitter()
+        # transmitter a gapless 64-bit burst per packet.  The
+        # external-accept hook exists only at words=2 -- finding #52:
+        # an always-present hook perturbed the words=1 shipping
+        # netlist.)
+        m.submodules.data_tx = data_tx = DataPacketTransmitter(
+            external_accept=(self._words == 2))
 
         if self._words == 1:
             hp_mux.add_producer(data_tx.header_source)

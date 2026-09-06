@@ -2471,29 +2471,38 @@ async def run_reccut(ctx, bench, hm, rx, model_tx):
     await return_credit(1)
     print("RECCUT: SET_ADDRESS complete; sweeping mid-data-stage cuts")
 
-    expected_payload = None
+    expected_payload = {}
 
-    # ── the sweep: GetDescriptor(Device, 18) cut at swept offsets ──
-    for offset in (0, 1, 2, 3, 4, 8, 24):
-        setup = bytes([0x80, 0x06, 0x00, 0x01, 0x00, 0x00, 18, 0x00])
+    # ── the cut sweeps ──
+    #
+    # dev18: GetDescriptor(Device, 18) -- the historical #50/#51 sweep
+    #        (payload BELOW the bench length boundary: 18-byte reads
+    #        complete on silicon).
+    # bos50: GetDescriptor(BOS, 50) -- THE bench EPROTO transfer
+    #        (session 20: every read with payload >= 22 bytes dies
+    #        EPROTO -71 deterministically at Gen2 while <= 18-byte
+    #        reads complete; the wedge follows).  The offsets walk the
+    #        cut across the whole longer construct.
+    async def sweep_cuts(tag, setup, offsets, validate):
+      for offset in offsets:
         await host.send_frame(frame_out_dp(0, 0, setup, setup=1,
                                            address=1))
-        if not await host.expect("GetDescriptor SETUP LGOOD",
+        if not await host.expect(f"{tag} SETUP LGOOD",
                                  lambda e: e[0] == 'lc'
                                  and e[1] == 0b0000):
             return False
-        if not await host.expect("GetDescriptor SETUP credit",
+        if not await host.expect(f"{tag} SETUP credit",
                                  lambda e: e[0] == 'lc'
                                  and e[1] == 0b0001):
             return False
-        ev = await host.expect("GetDescriptor SETUP ACK TP",
+        ev = await host.expect(f"{tag} SETUP ACK TP",
                                lambda e: e[0] == 'hdr'
                                and (e[1][0] & 0x1F) == 4)
         if ev is None:
             return False
         if ev[2] != host.dev_seq:
-            print(f"RECCUT FAIL: SETUP ACK seq {ev[2]} != {host.dev_seq} "
-                  f"(offset {offset})")
+            print(f"RECCUT FAIL: {tag} SETUP ACK seq {ev[2]} != "
+                  f"{host.dev_seq} (offset {offset})")
             return False
         host.dev_seq = (host.dev_seq + 1) & 0xF
         await host.send_lc(0b0000, ev[2])
@@ -2522,12 +2531,12 @@ async def run_reccut(ctx, bench, hm, rx, model_tx):
         if complete_pre_cut:
             host.dev_seq = (dph_seq + 1) & 0xF
 
-        if not await retrain(f"offset {offset}"):
+        if not await retrain(f"{tag} offset {offset}"):
             return False
         # The device advertises the last host header it PROPERLY
         # received: the IN ACK TP (seq ``ack_seq``) if it cleared the
         # RX pipeline before the yank, else the header before it.
-        lgood = await link_init(f"offset {offset}",
+        lgood = await link_init(f"{tag} offset {offset}",
                                 {ack_seq, (ack_seq - 1) & 0xF})
         if lgood is None:
             return False
@@ -2634,15 +2643,17 @@ async def run_reccut(ctx, bench, hm, rx, model_tx):
                       f"CRC-32 invalid")
                 return False
 
-        if len(payload) != 18 or payload[0] != 0x12 or payload[1] != 0x01:
-            print(f"RECCUT FAIL: offset {offset}: descriptor payload "
-                  f"{payload.hex() if payload else payload} malformed")
+        err = validate(payload)
+        if err:
+            print(f"RECCUT FAIL: {tag} offset {offset}: {err} "
+                  f"(payload {payload.hex() if payload else payload})")
             return False
-        if expected_payload is None:
-            expected_payload = payload
-        elif payload != expected_payload:
-            print(f"RECCUT FAIL: offset {offset}: post-cut payload "
-                  f"{payload.hex()} != original {expected_payload.hex()} "
+        if tag not in expected_payload:
+            expected_payload[tag] = payload
+        elif payload != expected_payload[tag]:
+            print(f"RECCUT FAIL: {tag} offset {offset}: post-cut payload "
+                  f"{payload.hex()} != original "
+                  f"{expected_payload[tag].hex()} "
                   f"(byte-exactness across the cut)")
             return False
 
@@ -2664,8 +2675,32 @@ async def run_reccut(ctx, bench, hm, rx, model_tx):
         host.dev_seq = (host.dev_seq + 1) & 0xF
         await host.send_lc(0b0000, ev[2])
         await return_credit(1)
-        print(f"RECCUT: offset {offset}: transfer completed across the "
-              f"mid-data-stage retrain")
+        print(f"RECCUT: {tag} offset {offset}: transfer completed across "
+              f"the mid-data-stage retrain")
+      return True
+
+    def validate_dev18(payload):
+        if len(payload) != 18 or payload[0] != 0x12 or payload[1] != 0x01:
+            return "descriptor payload malformed"
+        return None
+
+    def validate_bos50(payload):
+        if len(payload) != 50 or payload[0:4] != bytes([5, 0x0F, 50, 0]) \
+                or payload[4] != 3:
+            return "BOS payload malformed (50-byte SSP BOS expected)"
+        return None
+
+    if not await sweep_cuts(
+            "dev18", bytes([0x80, 0x06, 0x00, 0x01, 0x00, 0x00, 18, 0x00]),
+            (0, 1, 2, 3, 4, 8, 24), validate_dev18):
+        return False
+    print("RECCUT: dev18 sweep complete; sweeping the 50-byte BOS read "
+          "(the bench EPROTO transfer, session 20)")
+    if not await sweep_cuts(
+            "bos50", bytes([0x80, 0x06, 0x00, 0x0F, 0x00, 0x00, 50, 0x00]),
+            (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 28),
+            validate_bos50):
+        return False
 
     if host.errors:
         print(f"RECCUT FAIL: parser errors: {host.errors[:6]}")

@@ -149,6 +149,21 @@ if pdm run pytest tests/test_gen2_pacing.py -q > /tmp/kilo/batt_gen2_pacing.log 
 else
     echo "FAIL gen2-pacing <<<<<<<<"
 fi
+# The 2:1 PIPE bridge (session 20; width program usb3_design.md
+# 13.3/13.4): two-clock testbench pinning BOTH directions byte-exact
+# across the pclk <-> pclk/2 seam -- blocks, the SKP-halfbeat seam,
+# valid gaps, RX gap cadences + orphan drop, the Gen1 fallback leg,
+# and the phy_status latch-and-hold.  Includes the permanent negative
+# control: an INVERTED divider phase must fail the byte-exact check
+# (RED recorded 2026-09-06: beat-0 data mispaired with the next
+# beat's second half -- the wire-garbage class).  The pacing entry
+# above additionally carries the bridged occupancy-lag band sweep
+# (2-4 core cycles green, 10 = red teeth).
+if pdm run pytest tests/test_gen2_pipe_bridge.py -q > /tmp/kilo/batt_gen2_bridge.log 2>&1; then
+    echo "PASS gen2-bridge"
+else
+    echo "FAIL gen2-bridge <<<<<<<<"
+fi
 # Gen2 TX request-seam conformance (session 16, bug #46; the #45 sim
 # leads of HANDOVER 10u): 1-cycle idle_mode blips at every alignment
 # must never truncate a 132-bit block on the PIPE or disturb the

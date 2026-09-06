@@ -3982,3 +3982,206 @@ authorized.
 * `sim/sim_link_loopback.py` header — every host-model knob.
 * The frozen archive (`~/Downloads/GW_USB3/ARCHIVE.md`) — vendor
   refdesign baselines, hybrid A/B rig, bug-report packages.
+
+## §10ab (session 20): the Gen2-128 image SHIPS AND TRAINS AT 10 Gb/s
+## (timing MET first roll); the #49 bench verdict is RED with the
+## mechanism narrowed to a device-TX wedge after the first >18-byte
+## DP; finding #52 (the Gen1 parity fence break) caught and fixed
+
+### The headline results
+
+1. **The 2:1 PIPE bridge is LANDED and sim-fenced**
+   (`luna/gateware/interface/serdes_phy/pipe_bridge_2to1.py`,
+   usb3_design.md 13.3/13.4): phase toggle = the /2 divider FF itself
+   (contract: `ClockSignal(core_domain) == phase`; `phase==1` during
+   the FIRST pclk cycle of each core period); TX = one core-side beat
+   register + phase-muxed half-select (`[64:128]` first-on-wire,
+   halfbeat = ONE pclk beat from the top lanes, dv gaps emit nothing);
+   RX = start-anchored pair accumulator with ATOMIC pair-register
+   write + a 2-pclk `done_cnt` window (exactly one core edge samples
+   each pair at either divider phase); Gen1 fallback leg (low-half
+   split/pack, free-running phase, aligner owns the offset);
+   phy_status latch-and-hold 2 pclk; occupancy registered at the core
+   edge; all other levels one boundary register.  Two-clock testbench
+   `tests/test_gen2_pipe_bridge.py` = 8/8 green: TX/RX byte-exact
+   (blocks + SKP-halfbeat seam + dv gaps + RX gap cadences + orphan
+   drop), Gen1 leg both directions, phy_status at both pulse phases,
+   plus the PERMANENT negative control -- an INVERTED divider phase
+   fails byte-exact on wire beat 0 (RED recorded 2026-09-06:
+   `91b7584a...` = the next beat's second half mispaired; the
+   wire-garbage class).  Battery entry `gen2-bridge`.
+2. **The #44 pacing-lag re-proof** (tests/test_gen2_pacing.py,
+   `Gen2TxPacingBridgedLagTest`): words=2 transmitter at the core
+   clock against the pclk drain law (2 drains/core cycle), supply
+   delayed one core cycle (the bridge TX latency), occupancy presented
+   2/3/4 core cycles stale: band held EXACTLY at every lag (max 16/32,
+   starved 0, hi28 0).  Teeth: lag 10 -> 9 starvation events (RED
+   recorded; the undershoot side is the failure mode -- gap decisions
+   arrive so late the drain empties the FIFO).
+3. **Battery 67/67** (new gen2-bridge entry) from the settled tree;
+   V0' baseline 66/66 re-confirmed first.  Gen1 fence re-proven on
+   hardware at session start (5000M on 4-3; 1 MiB x10, 16 x3, 64 x3
+   sha-exact; uart1 ch0 = 0 throughout) and the bench left with the
+   fence image resident + re-verified at session end.
+4. **luna-enum-gen2 is now the Gen2-128 vehicle**: core_width=128
+   under `DomainRenamer({"ss": "core"})` at pclk/2 (78.125), top-level
+   "sync" also at the core clock, divider `core_div` in reset-free
+   ss_raw, core/sync resets via a core_raw 2-FF synchronizer; the 3
+   multiep bulk pairs (BURST=1, 16 KiB elastic FIFOs in the core
+   domain, packet_space gate) + the uart1 'R' forced-recovery hook;
+   probes re-homed (MAC channels "core", TxFifoWrNum stays "ss",
+   ss-cnt telltale kept).  **TIMING GATE MET ON THE FIRST ROLL**:
+   core_clk 78.872 / pclk 157.425 / rxclk 161.934, TNS 0.000 setup AND
+   hold on every clock -- against the retired Gen2-64's 10/10 misses
+   at -60.8 ns TNS.  Image saved `/tmp/kilo/s20_gen2_128_met.fs`.
+5. **Finding #52 (FIXED): the session-19b `external_accept` hook broke
+   the Gen1 shipping-parity fence.**  Commit 2548e8f added the signal
+   unconditionally in link/data.py and OR-ed it (constant 0 at
+   words=1) into the SEND_HEADER transition -- logically identical,
+   but the netlist perturbation moved placement: the V0' parity
+   rebuild showed **42105 diff bytes** vs the laddered fence image
+   (session 19b never ran the parity step).  Fix: constructor knob
+   (`DataPacketTransmitter(external_accept=(words == 2))`), words=1
+   statements verbatim; parity restored to **13 bytes, 602-620**
+   (header date region only) -- which also re-proves toolchain
+   determinism.  LESSON (binding): the parity rebuild is part of EVERY
+   session that touches a shared file, not just sessions that feel
+   Gen1-relevant.  Evidence: `/tmp/kilo/s20_parity_run1.fs` (the
+   broken-parity build).
+
+### The #49 bench verdict: RED -- but the mechanism space collapsed
+
+The Gen2-128 image **trains at SuperSpeed Plus Gen 2x1 (10000M) on
+port 4-3** -- the first hardware enumeration attempt of the 128-bit
+core, through the bridge -- and completes, byte-exact and repeatable
+3/3 PORs: GetDescriptor(Device)/8, SET_ADDRESS, SET_ISOCH_DELAY,
+GetDescriptor(Device)/18, GetDescriptor(BOS)/5 (`050f3200 03` -- the
+SSP BOS header).  **GetDescriptor(BOS)/50 then dies EPROTO -71
+deterministically** and EP0 is wedged for everything after (even
+dev/8 on re-enumeration; survives warm resets; only POR clears it).
+The dual-rate ladder ends parked at the 5G trim (ss-cnt telltale
+0x29aaab2 = 125 MHz) in SS.Disabled without a 5G enumeration.
+
+What is NEW and decisive vs the s16 evidence (same wire shape, then
+at BOS/22 on the 64-bit build -- the mechanism PRE-DATES the bridge
+and is width-independent; the length boundary is <=18 payload OK,
+>=22 fails):
+
+* **The device-side per-cause recovery counters read ZERO** through
+  the whole window (uart0 ch1/ch2/ch3 = timers/rx/tx) -- the #50/#51
+  mechanisms are confirmed GONE on silicon.  The retrain storm is
+  entirely HOST-initiated: ts1-det ~480k and ts2-det ~24k per 0.35 s
+  (~70k/s handshake rate, the familiar metronome cadence) DURING the
+  enum window; txfifo-hi28 = 0 throughout (the #44 band held on
+  silicon at 128 bits).
+* **xhci ftrace** (`/tmp/kilo/s20_xhci_trace.txt`): the failing
+  completion is 'USB Transaction Error' pointing at the **Status
+  Stage TRB** of the BOS/50 TD (ring reconstruction: Setup@..50b0 /
+  Data@..50c0 / Status@..50d0; a data-stage error would point at the
+  Data TRB) -- i.e. **the 50-byte DPP reached the xHC intact**; the
+  transfer died at the status handshake.  Every subsequent SETUP
+  errors with len 8 (zero bytes accepted): the device stops
+  handshaking host packets entirely -- while uart1 ch1 (accepted RX
+  headers) KEEPS COUNTING.  Shape: **the device's TX side wedges
+  immediately after transmitting its first >18-byte DP**; RX keeps
+  accepting; the host then hammers recovery (the storm) and times
+  out.
+* **The sim exonerates the MAC's cut handling for the exact
+  transfer**: run_reccut now carries a second sweep -- the 50-byte
+  BOS read cut at 14 offsets walking the whole construct
+  (sim_link_gen2.py `sweep_cuts("bos50", ...)`) -- GREEN at BOTH
+  widths (W64 = through the RTL scrambler round-trip).  The plain
+  50-byte read was already green in every enum phase.
+
+Hypothesis space for next session, in evidence order (H1 = MAC emits
+well-formed TX and the damage is downstream; H2 = the MAC's TX
+stream itself goes quiet/malformed -- a class the idealized host
+never provokes):
+
+1. **The H1/H2 discriminator instrument**: a TxWireChecker-class
+   monitor (CRC-32 recompute + framing) on the dialect-neutral
+   link-layer TX tap in the gen2 top, plus a per-interval device-TX
+   header/TP counter on a uart channel.  If the MAC keeps emitting
+   well-formed TPs after the 50-byte DP while the host sees nothing:
+   the wedge is in gen2_tx/PHY TX (gearbox/scrambler/FIFO seam under
+   OUR beat pattern -- note the vendor MAC drives the same silicon
+   through long bulk DPs fine).  If the MAC goes quiet: a MAC-level
+   TX-arbiter/credit hang the sim host's timing never triggers.
+2. **The BOS-length diagnostic build**: a build with the BOS
+   truncated to 12 bytes (USB2-ext cap only; spec-invalid but
+   host-readable) moves the length-boundary probe INSIDE the
+   enumeration: if BOS/12 completes and the wedge migrates to the
+   next >=22-byte read (config full read), the length law is
+   descriptor-type-independent and pure TX-construct-length.
+3. The parked **sub-block reccut** granularity and the gen2_tx
+   `debug_state` uart channel remain the deeper instruments.
+
+### Toolchain fact (REQUIRED for every W128 build)
+
+The bundled wasm yosys (amaranth-yosys) dies with `bad_alloc` on the
+Gen2-128 RTLIL (wasm32 memory ceiling).  W128 builds need a native
+yosys >= 0.40 on PATH plus `AMARANTH_USE_YOSYS=system`:
+
+    PATH=/tmp/kilo/oss-cad-suite/bin:$PATH AMARANTH_USE_YOSYS=system \
+        .venv/bin/python -u top.py
+
+oss-cad-suite (yosys 0.68) is unpacked at `/tmp/kilo/oss-cad-suite`
+(re-download: github.com/YosysHQ/oss-cad-suite-build releases,
+linux-x64 tarball).  If /tmp is wiped, re-fetch before building.
+Gen1 (words=1) builds still fit the wasm yosys.
+
+### SDC facts (gowin-serdes, PUBLIC repo)
+
+`create_generated_clock -name core_clk -source [get_nets
+{serdes_pcs_tx_clk_i}] -divide_by 2 [get_nets {core_raw_clk}]` + the
+mutual false paths for core_clk against everything EXCEPT pclk
+(core<->pclk are true synchronous 2:1 paths).  NET NAME PITFALL:
+GowinSynthesis canonicalizes the divider's alias group
+(`core_div` = ClockSignal(core_raw/core/sync)) to the DOMAIN CLOCK
+net `core_raw_clk` (divider FF instance `core_raw_clk_s0`); a
+`core_div` pattern hard-errors TA2003 "Can't set timing constraint"
++ TA2004 cascades, exactly the H1 empty-pattern lesson class.
+
+### Verification state
+
+* Battery **67/67** from the settled tree (s20_battery_v1.log);
+  V0' baseline 66/66 (s20_battery_v0.log).
+* Shipping parity: **13 bytes, 602-620** after the #52 fix (and the
+  #52 red: 42105 bytes -- both recorded above).
+* Gen1 fence hardware ladder GREEN at session start AND a 1 MiB
+  smoke re-check at session end; uart1 ch0 = 0; port healthy after
+  the Gen2 storms (fence image resident).
+* Bridge tests 8/8; pacing 6/6; reccut extended sweep green at both
+  widths.
+
+### Evidence artifacts (/tmp/kilo)
+
+`s20_gen2_128_met.fs` (THE Gen2-128 MET image), `s20_parity_run1.fs`
+(#52 red build), `s20_battery_v0.log`/`s20_battery_v1.log`,
+`s20_fence_uart_both.txt`, `s20_gen2_por1_both.txt` (uart during the
+RED window), `s20_gen2_por1_usbmon.log`, `s20_xhci_trace.txt` (the
+status-stage localization), `s20_reccut_bos50_w64.log`/`_w128.log`,
+`s20_gen2_build_fail.log` (the wasm yosys bad_alloc).
+
+### Parked items (delta)
+
+* The #49 mechanism hunt continues with the H1/H2 instrument list
+  above (this is the top of next session).
+* The 'R' forced-recovery hardware verdict (#29-#31) stays blocked
+  behind #49 (no Gen2 ladder yet); the hook is BUILT into the
+  Gen2-128 top and sim-covered.
+* The 5G-hub-port fallback row (dual-rate matrix run 2) untested:
+  needs the physical hub path; the 10G root port never produced a 5G
+  fallback enumeration (host gives up before the device's ladder).
+* Everything else from 10aa unchanged (Gen1 twins of #50/#51,
+  sub-block reccut, #37 RX side, rule-2a/2d stimuli, SEND_ZLP
+  bare-ready, wire-checker TP blindness, SKP x=4 knob, stage-B
+  credits, Gen1-128 native trim).
+* V3 (the full-128 PHY, standing directive 1) NOT started this
+  session -- the #49 evidence work took the slot; the bridge
+  testbench + pacing-lag model stand ready as its acceptance
+  fixtures.
+
+Bug numbering: **#52 = the parity fence break (FIXED)**; #49 stays
+OPEN (the RED verdict above names the next instruments); numbering
+continues at **#53**.

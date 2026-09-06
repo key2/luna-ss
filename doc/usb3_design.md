@@ -528,6 +528,15 @@ shared-file change, plus the untouched 64-bit battery entries.
 
 ### 13.3 The 2:1 PIPE bridge (Gen 2 @ 128 ↔ the pinned 64-bit PHY)
 
+**LANDED session 20** (`serdes_phy/pipe_bridge_2to1.py`; two-clock
+testbench `tests/test_gen2_pipe_bridge.py` with the inverted-phase
+negative control; the bridged-lag pacing re-proof in
+`tests/test_gen2_pacing.py`).  The first Gen2-128 image MET its
+timing gates on the first roll (core 78.872 / pclk 157.425 / rxclk
+161.934, TNS 0 setup+hold) and TRAINS at 10 Gb/s on the bench —
+HANDOVER §10ab for the build facts (native-yosys requirement, the
+`core_raw_clk` SDC net name) and the open #49 verdict.
+
 W0 verdict (§3.1): the 10G fabric attach is fixed at 64-bit/156.25
 (no width_mode >20 on the GW5AT-60) — Gen2×128 is the bridge, full
 stop.  Design:

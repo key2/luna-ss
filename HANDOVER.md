@@ -4596,3 +4596,184 @@ Coverage caution for future clock-boundary changes: the current W128
 by LGOOD. Its green result alone does not prove cuts inside the emitted
 DPP; use actual packet-position witnesses when extending the parked
 sub-block recovery-cut coverage. Bug numbering remains next at **#57**.
+
+## 10ad. Session 22 — finding #57: the bridge clock seam is closed
+## structurally; the Gen2-128 #56 candidate MEETS THE FULL TIMING GATE
+## through the normal build path
+
+### Finding #57: same-edge capture races the divided clock's insertion
+### delay — fixed by a falling-edge relaunch (pclk->core) and core
+### pre-registers (core->pclk)
+
+The #56 blocker's mechanism, from `s21_tt_pnr310_timing.json`: every
+failing hold row is pclk[R] -> core_clk[R] at the bridge (23 of the
+top 25 are `bridge/pair_data -> bridge/rx_data`, the rest
+`serdes_astat -> rx_elec_idle` and `done_cnt`), relation 0.0 ns,
+clock skew -0.63..-0.65 ns against 0.40-0.53 ns data delays.  The
+fabric-divider core clock (divider clk->Q plus a second global-net
+entry) reaches the core flops ~0.64 ns AFTER pclk reaches the launch
+flops; a same-edge register-to-register hop is shorter than that
+skew, so the capture tears.  P&R settings cannot repair a systematic
+clock-tree offset on 128+ minimum-delay nets (session 21's table),
+and simulation's atomic-update model cannot express the per-bit race.
+
+The fix, in `pipe_bridge_2to1.py` (bridge-local, no constraint
+changes, no false paths, no PHY/MAC mechanism changes):
+
+* pclk->core: EVERY crossing (pair_data/head, the done qualifier,
+  rx_elec_idle/power_present/rx_status/rx_valid, phy_ready,
+  tx_fifo_occupancy, the phy_status latch level, the Gen1-leg pair)
+  is relaunched ONCE on the pclk FALLING edge — a local
+  `<pclk>_n` negedge domain (reset-free, `local=True`), clock tied
+  to the pclk net.  The launch edge moves half a pclk ahead of the
+  capture edge: ~2.5 ns structural hold margin that no insertion
+  skew can race; >3 ns setup budget remains on the final hop.
+  Cycle-exact transparent at nominal phase (the core edge sees the
+  previous pclk edge's value either way) — all eight byte-exact
+  bridge tests pass VERBATIM, including the inverted-phase negative
+  control.  Emission verified: `always @(negedge ss_clk)` clocked by
+  the constrained pclk net (an early all-zero probe was an
+  undriven-ports artifact, not a real emission failure).
+* core->pclk: all sixteen MAC control levels (the twelve-level loop,
+  tx_elec_idle, rate, ltssm_training, reset) get one CORE
+  pre-register ahead of the existing pclk boundary register, ending
+  the decoded-LTSSM cone at the 12.8 ns boundary — the
+  `fsm_state -> bridge/rx_termination` -0.021 ns seam (the
+  `ltssm_in_training` precedent, now bridge-internal and uniform).
+  One core cycle of added latency on microsecond-tolerance levels;
+  init values preserved (tx_elec_idle/rate reset to 1).
+
+Red-first fences in `Gen2BridgeHoldRelaunchTest`
+(tests/test_gen2_pipe_bridge.py, joins the existing battery entry):
+`test_no_direct_pclk_capture_into_core` (comb-transitive: no core
+register may see a pclk-posedge-driven or PHY-status signal; RED
+named pair_data/done_cnt/rx_elec_idle et al.,
+`s22_bridge_hold_red.log`), `test_relaunch_domain_is_falling_edge`
+(negedge domain must exist; the actual extracted pair_data_nr
+assignment is simulated for edge polarity — rising must NOT
+capture), and `test_core_to_pclk_levels_are_core_preregistered`
+(RED listed all 16 levels, `s22_prereg_red.log`).  GREEN:
+`s22_bridge_hold_green.log`, `s22_prereg_green.log`; bridge suite
+11/11.  Design note: usb3_design.md §13.4 hold-hardening paragraph.
+
+### Build plan: Gen2 P&R options move to 3/1/0 (measured)
+
+On the relaunch RTL, the committed 0/1/1 options MISS setup on
+existing adapter/encoder pclk cones and rxclk aligner paths (19 rows,
+`s22_bridge_gen2_build.log`, hold CLEAN — the 53-violation class is
+gone at both settings).  The hash-verified same-RTL 3/1/0 trial
+(`/tmp/kilo/s22_pnr310*`, inputs.sha256) met every frequency with
+setup clean and ZERO hold violations, leaving only the -0.021 ns
+rx_termination path — then fixed by the core pre-registers.  The
+Gen2 top's explicit options are now `-place_option 3 -route_option 1
+-timing_driven 1 -clock_route_order 0 -route_maxfan 23`; the #54
+fence (options explicit and applied, programmer gated) is updated in
+test_gen2_debug_taps and stays RED-proven.  Gen1 build settings
+remain untouched.
+
+### Verification and the gated image
+
+* Settled-tree battery: **69/69 PASS**, zero FAIL, BATTERY4-DONE
+  (`/tmp/kilo/s22_settled_battery.log`; the earlier mid-edit run was
+  discarded at 47 green when the pre-registers landed).
+* Debug-taps + pacing fences: 19 passed (top elaborates with the
+  relaunch bridge; training register, flash gate, #44 budget green).
+* Gen1 shipping parity: **10 date bytes only** (606-620), pclk
+  **139.027 MHz** (`s22_final_parity_build.log`, `s22_final_gen1.fs`).
+* Gen2-128 native build through the NORMAL path (no trial, original
+  SDC): core_clk **81.040** / pclk **157.682** / rxclk **163.338 MHz**,
+  TNS all zero, **zero negative setup rows, zero negative hold rows,
+  zero violated endpoints** — `require_timing_met()` prints MET,
+  related-clock setup/hold clean.  Artifacts: `s22_final_gen2.fs`,
+  `s22_final_timing.json`, `s22_final_gen2_build.log`.  This is the
+  first #56 candidate eligible for silicon.
+
+### What remains (unchanged order)
+
+1. Flash the gated image and take the repeated #49 verdict:
+   `sudo -n .venv/bin/python -u /tmp/kilo/s21_tt_pors.py <prefix>
+   --runs 3` (reference reload + health check before each POR; EP0
+   BOS/50 bytes, physical PIPE TT, clean counters).  The TT credit
+   hypothesis is still unproven on hardware.
+2. If enumeration goes green: `s21_tt_ladder.py --recovery` under
+   acquisition, then the physical 5G-hub fallback.
+3. Only after the #49 verdict: the full-128 PHY widening
+   (usb3_design.md §13.8; gw_usb3 stays `1b54cf6`).
+
+NOT executed at this checkpoint: no flash, no POR, no bench change.
+The working tree holds the #57 source/doc/test changes uncommitted
+(bridge, §13.4 note, bridge tests, Gen2 top options + its fence).
+The pre-existing untracked redline conversion remains untouched.
+Numbering next: **#58**.
+
+### BUG #49 RESOLVED ON THE BENCH — REPEATED POR PASS 3/3 (2026-09-07)
+
+The gated #56+#57 image was flashed by the prepared runner
+(`s21_tt_pors.py`, one owned change first: capture window 12 -> 20 s,
+matching the session-21 documented procedure; flash+boot takes ~4 s
+of the window).  All three synchronized PORs, each from a freshly
+verified 10000M reference baseline:
+
+* Native SSP enumeration at **10000M** (SuperSpeed Plus), bcdUSB
+  0x0310, **config=1** — the first Gen2-128 enumeration ever.
+* **BOS/50 byte-exact** over EP0 — the exact transfer that EPROTO'd
+  in every session-20/21 attempt.
+* Physical PIPE **DPH TT=100** in the captured first-long-DPH ring
+  (the #56 correction verified at the cleartext PIPE tap).
+* The #49 discriminator is GONE and DETERMINISTIC: per POR,
+  ep0_ack_dispatch=26 = tp_accept=26 = tx_tp=26 (was 12 dispatched /
+  11 accepted with one TP stuck for millions of cycles); tx_dph =
+  tx_dpp = 10.  Zero retry/framing/CRC/underrun counters; link
+  trained (flags=8) through 362-363 samples per run.
+
+Evidence: `/tmp/kilo/s22_tt_por{1,2,3}_*` (uarts, usbmon, xhci
+ftrace, PORTSC, flash, decode logs), runner log
+`s22_tt_pors_run.log`.  The #56 credit HYPOTHESIS (Type1/Type2
+refund) was never directly observed and is now moot for #49: correct
+TT ends the admission stall.
+
+### FINDING #58 (OPEN): Gen2-128 bulk streaming wedges the device TX
+### after tens of DPs; control and small bulk echo are healthy
+
+`s21_tt_ladder.py --recovery` under acquisition (no reflash, same POR
+as verdict run 3) FAILED in the FIRST 1 MiB rung:
+
+* Warmup echo (small transfers) PASSED on all three pairs first.
+* The streaming phase died inside ONE 43.69 ms counter interval:
+  the device emitted 77 DPH+DPP and 67 TPs with **63 retry-ACK
+  events**, header queue 107 offers / 67 accepts / 40 blocked — then
+  went PERMANENTLY TX-silent: zero TPs, DPHs and even zero further
+  OFFERS for the rest of the capture, while the host kept sending
+  (49k RX headers accepted, ~47.5k of them after the silence began).
+* Host view (usbmon): the IN direction fails FIRST — EP1 EPROTO -71
+  after 3072 bytes (3 DPs), EP3 after 5120 (5 DPs), EP2 at 0; the
+  OUT URBs fail ~5 s later at teardown.  The link NEVER left U0
+  (PORTSC single entry, PortSpeed:5), no recovery events, no device
+  RX CRC/framing/underrun errors, dmesg silent.
+* This is NOT #49 (dispatch==accept there is fixed; #49's stall kept
+  offering forever — #58 stops offering, so the wedge sits at or
+  above the protocol layer's TX production, or the queue froze in a
+  different mode).  Sim precedent: W128 control+bulk ECHO is green
+  (`s21_tt_echo_w128_v2.log`) — the gap is STREAMING shape:
+  multi-DP IN bursts against host retry ACKs.
+* The PIPE ring held no bulk-phase frames: the one-shot epoch trigger
+  was already consumed by the BOS long-DPH in the verdict capture.
+  A rearm ('A') / mode plan inside the ladder acquisition is the
+  first instrumentation step next session.
+
+Evidence: `/tmp/kilo/s22_tt_ladder_*` (workload, usbmon, xhci,
+portsc, uarts), `s22_tt_ladder_run.log`.  Sim-first localization
+(red-first: a streaming-shaped Gen2 harness — sustained multi-DP IN
+with host RTY injection — against the settled tree) is the intended
+next move; no source change was made for #58.
+
+### Bench end state
+
+Restored `/tmp/kilo/h0_gen1_fence.fs`: **5000M on 4-3**, U0,
+EP1-3 1 MiB SHA-exact smoke PASS (253.7 MB/s aggregate,
+`s22_fence_smoke.log`, `s22_fence_restore_flash.log`).  No
+background job left running.  The #57 tree changes remain
+uncommitted; gw_usb3 stays `1b54cf6`.  The full-128 PHY directive's
+gate (#49 verdict) is now SATISFIED, but #58 blocks a working Gen2
+bulk vehicle — sequence that decision explicitly next session.
+Numbering next: **#59**.

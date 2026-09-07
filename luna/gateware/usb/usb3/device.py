@@ -2,6 +2,7 @@
 # This file is part of LUNA.
 #
 # Copyright (c) 2020 Great Scott Gadgets <info@greatscottgadgets.com>
+# Copyright (c) 2026 the luna-ss contributors
 # SPDX-License-Identifier: BSD-3-Clause
 """
 Contains the organizing hardware used to add USB3 Device functionality
@@ -136,9 +137,15 @@ class USBSuperSpeedDevice(Elaboratable):
         self.debug_hsk_bus                = Signal(16) # arbiter cycle-trace bus
 
         # Wire-level TX tap + RX ACK broadcast (open item #23 probes).
-        self.debug_wire_tx_data           = Signal(32) # pre-scrambler TX word
-        self.debug_wire_tx_ctrl           = Signal(4)
+        if self._words == 1:
+            self.debug_wire_tx_data           = Signal(32) # pre-scrambler TX word
+            self.debug_wire_tx_ctrl           = Signal(4)
+        else:
+            self.debug_wire_tx_data           = Signal(64)
+            self.debug_wire_tx_ctrl           = Signal(8)
         self.debug_wire_tx_strobe         = Signal()   # word consumed this cycle
+        if gen2 and self._words == 2:
+            self.debug_gen2_tx_state      = Signal(16)
         self.debug_ack_received           = Signal()   # ACK TP broadcast strobe
         self.debug_payload_underrun       = Signal()   # transmitter consumed invalid payload
         self.debug_rx_dpp_invalid         = Signal()   # received DPP failed CRC-32
@@ -277,6 +284,8 @@ class USBSuperSpeedDevice(Elaboratable):
             self.debug_rx_dpp_invalid        .eq(link.data_source_invalid),
             self.debug_rx_hdr_bad            .eq(link.debug_rx_bad_packet),
         ]
+        if self._gen2 and self._words == 2:
+            m.d.comb += self.debug_gen2_tx_state.eq(physical.debug_gen2_tx_state)
 
         # RX header field tap (bug-#34 probe): registered so the consumer
         # sees stable fields aligned with the strobe.

@@ -29,9 +29,9 @@ bridge and the PHY fabric attach remain in the pclk domain.
                      verdict, MB/s is documented-degraded until the
                      endpoint widening).
 
-STATUS: behavior-proven core (all nine Gen2 phases green at W128,
-battery 66/66; HANDOVER 10aa) + the sim-fenced bridge; THIS TOP IS THE
-FIRST GEN2-128 HARDWARE ELABORATION — the #49 bench-verdict vehicle.
+STATUS: session 20 met timing and trained at 10G; #49 wedges TX after
+the first >18-byte DP (HANDOVER 10ab). Session 21 adds the passive
+PIPE ring and full-width MAC TX checker to distinguish H1 from H2.
 
 Build & program:
 
@@ -43,6 +43,8 @@ Build & program:
 Watch:  examples/gowin/luna-multiep/uart_capture.py <s> <prefix>
 """
 
+import json
+import math
 import os
 import subprocess
 import sys
@@ -73,6 +75,8 @@ from luna.gateware.usb.usb3.endpoints.ss_stream_out import SuperSpeedStreamOutEn
 from usb_protocol.emitters import SuperSpeedDeviceDescriptorCollection
 
 from gowin_serdes.bench import AsyncSerialRX, ClockFreqProbe
+from pipe_capture import PipeBeatCapture, capture_events
+from tx_checker import Gen2TxWireChecker
 
 # ── Configuration ─────────────────────────────────────────────────────
 QUAD, LANE = 0, 1
@@ -328,44 +332,39 @@ class LunaEnumTop(Elaboratable):
 
         # LTSSM training indicator for the PHY's Gen2 descrambler /
         # polarity acquisition (bug #39 history): through the bridge's
-        # core->pclk seam register.
-        m.d.comb += bridge.ltssm_training.eq(usb.ltssm_in_training)
+        # core->pclk seam register. Terminate the decoded LTSSM cone at
+        # a core FF first; otherwise it has only 6.4 ns across that seam.
+        m.d.core += bridge.ltssm_training.eq(usb.ltssm_in_training)
 
         m.d.comb += led.o.eq(usb.link_trained)
 
         # ==============================================================
         # Debug UARTs
         # ==============================================================
-        # Probes are re-homed to the domain whose state they sample:
-        # MAC state = "core"; TxFifoWrNum = "ss" (pclk); rxclk telltale
-        # unchanged.  The platform SDC declares pclk/rxclk/core_clk and
-        # the mutual false paths (H1 lesson: without them the probes'
-        # skew-tolerant snapshot handshakes are analyzed against the
-        # 100 MHz default clocks and mask the real cones).
+        # UART0/tag L: P1/R/E (or X abort) PIPE capture frames; format in
+        # pipe_capture.py. Each ring contains 128 consecutive pclk beats,
+        # INCLUDING dv=0, and freezes 96 cycles after the selected event.
+        # The default event is the first emitted DPH with length >18.
         #
-        # uart0 (link probe, tag L):
-        #   C <ss-cnt> <rec-timers> <rec-rx> <rec-tx> <ts1-det> <flags>
-        #   ss-cnt telltale: 0x341554x = 156.25 MHz pclk (still 10G);
-        #   0x29aaa9x = 125 MHz (fell back / never matched).  The MAC
-        #   channels count in the 78.125 MHz core domain.
-        #   ch1..3 split debug_recovery by cause: link maintenance
-        #   timers / receiver bad_sequence / transmitter (LGOOD-LCRD
-        #   mismatch, credit timeout).
-        #   flags: trained[0] in_reset[1] phy_ready[2] terminations[3].
-        # uart1 (pipe probe, tag C):
-        #   C <rxclk> <rx-hdrs-accepted> <sds-det> <ts2-det> <txfifo-hi28> <flags>
-        #   ch1 = debug_rx_hdr_stb count: ACCEPTED inbound header
-        #   packets reaching the protocol layer (zero at Gen2 U0 = the
-        #   old #42 failure; counting = host LMP/ITP traffic flowing).
-        #   flags: power_down[0] tx_elec_idle[1] rx_elec_idle[2]
-        #   data_mode[3].
-        # uart1 RX: byte 'R' (0x52) forces ONE link recovery entry from
-        # U0 -- the hardware verdict path for the recovery-retransmit
-        # conformance (#29-#31) at Gen2.  During the forced-recovery
-        # test itself the host may legitimately send rty=1
-        # re-establishment ACKs; uart1 ch0 has no retry counter on this
-        # loadout (the wire checkers stay multiep/Gen1) -- the verdict
-        # is sha-exactness across the retrain.
+        # UART1/tag C: interval counters, every 2**20/24MHz = 43.69 ms.
+        #   0 RX ACK(rty=1), 1/2/3 recovery timers/RX/TX, 4 RX headers,
+        #   5 TX TP, 6 TX DPH, 7 completed DPP (including EDB),
+        #   8 TX framing errors, 9 TX DPPCRC, 10 TX header errors,
+        #   11 TX LC errors, 12 pclk cycles, 13 rxclk cycles,
+        #   14 TS1, 15 TS2, 16 SDS, 17 TX-FIFO>=28 cycles,
+        #   18 STATUS received, 19 EP0 ACK dispatch, 20 TP offer cycles,
+        #   21 TP queue accepts, 22 link-header blocked cycles,
+        #   23 payload underruns, 24 capture-command overflow cycles,
+        #   25 trained cycles, 26 ungated accepted MAC beats,
+        #   27/28 ungated MAC TP/DPH starts (not complete-header verdicts).
+        # Checker counts are trained-gated; zero during recovery alone
+        # is NOT evidence of MAC silence. Ch25-28 qualify that inference.
+        # Clock telltales are 1/8 the old 2**23 gate's counts.
+        # Flags: sticky framing/header/LC[0], underrun[1], DPPCRC[2],
+        # trained[3]. Ch0 must be zero except legitimate recovery ACKs.
+        # UART1 RX: R=force recovery (unchanged); 0/1/2=select and rearm
+        # long-DPH/retraining/manual capture; A=rearm; T=manual trigger;
+        # D=replay the frozen dump. No serial-waveform muxing.
         uart0 = platform.request("uart", 0)
         uart1 = platform.request("uart", 1)
 
@@ -374,38 +373,98 @@ class LunaEnumTop(Elaboratable):
         txfifo_hi28 = Signal()
         m.d.ss += txfifo_hi28.eq(adapter.phy.TxFifoWrNum >= 28)
 
-        m.submodules.linkprobe = linkprobe = DomainRenamer({"cfg": "dbg"})(
-            ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
-                ("ss", None),
-                ("core", usb.debug_recovery_timers),
-                ("core", usb.debug_recovery_rx),
-                ("core", usb.debug_recovery_tx),
-                ("core", usb.debug_ts1_detected),
-            )))
-        link_flags = Signal(4)
-        m.submodules += FFSynchronizer(
-            Cat(usb.link_trained, usb.link_in_reset,
-                usb.debug_phy_ready, usb.debug_engage_terminations),
-            link_flags, o_domain="dbg")
+        m.submodules.txchk = txchk = DomainRenamer({"ss": "core"})(
+            Gen2TxWireChecker())
         m.d.comb += [
-            linkprobe.flags.eq(link_flags),
-            uart0.tx.o.eq(linkprobe.tx_o),
+            txchk.data.eq(usb.debug_wire_tx_data),
+            txchk.ctrl.eq(usb.debug_wire_tx_ctrl),
+            txchk.strobe.eq(usb.debug_wire_tx_strobe),
+            txchk.enable.eq(usb.link_trained),
         ]
 
+        m.submodules.capture = capture = PipeBeatCapture(DBG_FREQ, BAUD_RATE)
+        # The two core events cross to pclk as toggles. These are true
+        # synchronous 2:1 paths, NOT false-pathed CDCs. A core pulse must
+        # not be counted twice by pclk. The capture inputs share its edge.
+        events, long_seen = capture_events(m, txchk.long_dph, usb.link_trained)
+        core_context = Signal(5)
+        m.d.core += core_context.eq(Cat(usb.link_trained,
+            usb.debug_gen2_data_mode, usb.ltssm_in_training,
+            long_seen, usb.debug_link_hdr_blocked))
+        m.d.comb += [
+            capture.data.eq(adapter.phy.PipeTxData),
+            capture.datavalid.eq(adapter.phy.PipeTxDataValid),
+            capture.start_block.eq(adapter.phy.PipeTxStartBlock),
+            capture.sync_header.eq(adapter.phy.PipeTxSyncHead),
+            capture.fifo_level.eq(adapter.phy.TxFifoWrNum),
+            capture.tx_state.eq(usb.debug_gen2_tx_state),
+            capture.triggers.eq(events),
+            # Scheduler state is one CORE cycle old; it is not claimed
+            # to be metadata of the beat that the 2:1 bridge is emitting.
+            # Context: rate[0], phase[1], electrical-idle[2], trained[3],
+            # RX-data-mode[4], training[5], long-DPH-seen[6], blocked[7].
+            # Bits 3:8 are also one core cycle old (registered seam).
+            capture.context.eq(Cat(adapter.rate[0], core_div,
+                adapter.tx_elec_idle, core_context)),
+            uart0.tx.o.eq(capture.tx_o),
+        ]
+
+        retry_flagged = Signal()
+        underrun_sticky = Signal()
+        m.d.core += retry_flagged.eq(
+            usb.debug_rx_hdr_stb & (usb.debug_rx_hdr_type == 4)
+            & (usb.debug_rx_hdr_dw1[:4] == 1) & usb.debug_rx_hdr_dw1[6])
+        with m.If(usb.debug_payload_underrun):
+            m.d.core += underrun_sticky.eq(1)
+        raw_tp_start = Signal()
+        raw_dph_start = Signal()
+        raw_hp_start = (usb.debug_wire_tx_strobe
+                        & (usb.debug_wire_tx_ctrl[:4] == 15)
+                        & (usb.debug_wire_tx_data[:32] == 0xf7fbfbfb))
+        m.d.core += [
+            raw_tp_start.eq(raw_hp_start & (usb.debug_wire_tx_data[32:37] == 4)),
+            raw_dph_start.eq(raw_hp_start & (usb.debug_wire_tx_data[32:37] == 8)),
+        ]
         m.domains += ClockDomain("rxprobe", reset_less=True)
         m.d.comb += ClockSignal("rxprobe").eq(lane.rx.pcs_clkout)
         m.submodules.pipeprobe = pipeprobe = DomainRenamer({"cfg": "dbg"})(
-            ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, channels=(
-                ("rxprobe", None),
+            ClockFreqProbe(clk_freq=DBG_FREQ, baud=BAUD_RATE, gate_bits=20,
+                           compact=True, channels=(
+                ("core", retry_flagged),
+                ("core", usb.debug_recovery_timers),
+                ("core", usb.debug_recovery_rx),
+                ("core", usb.debug_recovery_tx),
                 ("core", usb.debug_rx_hdr_stb),
-                ("core", usb.debug_gen2_sds_detected),
+                ("core", txchk.tp_seen),
+                ("core", txchk.dph_seen),
+                ("core", txchk.dpp_seen),
+                ("core", txchk.framing_error),
+                ("core", txchk.crc_error),
+                ("core", txchk.header_error),
+                ("core", txchk.lc_error),
+                ("ss", None),
+                ("rxprobe", None),
+                ("core", usb.debug_ts1_detected),
                 ("core", usb.debug_ts2_detected),
+                ("core", usb.debug_gen2_sds_detected),
                 ("ss", txfifo_hi28),
+                ("core", usb.debug_status_received),
+                ("core", usb.debug_hsk_ep0_dispatch),
+                ("core", usb.debug_tp_hdr_valid),
+                ("core", usb.debug_tp_hdr_accepted),
+                ("core", usb.debug_link_hdr_blocked),
+                ("core", usb.debug_payload_underrun),
+                ("dbg", capture.command_overflow),
+                ("core", usb.link_trained),
+                ("core", usb.debug_wire_tx_strobe),
+                ("core", raw_tp_start),
+                ("core", raw_dph_start),
             )))
         pipe_flags = Signal(4)
         m.submodules += FFSynchronizer(
-            Cat(adapter.power_down[0], adapter.tx_elec_idle,
-                adapter.rx_elec_idle, usb.debug_gen2_data_mode),
+            Cat(txchk.framing_error_sticky | txchk.header_error_sticky
+                | txchk.lc_error_sticky, underrun_sticky,
+                txchk.crc_error_sticky, usb.link_trained),
             pipe_flags, o_domain="dbg")
         m.d.comb += [
             pipeprobe.flags.eq(pipe_flags),
@@ -420,8 +479,11 @@ class LunaEnumTop(Elaboratable):
         m.submodules += FFSynchronizer(uart1.rx.i, rx1_i, o_domain="dbg",
                                        init=1)
         m.d.comb += [rx1.i.eq(rx1_i), rx1.ack.eq(1)]
+        command_valid = rx1.rdy & ~rx1.err.as_value().any()
+        m.d.comb += [capture.command.eq(rx1.data),
+                     capture.command_strobe.eq(command_valid)]
         forcerec_tgl = Signal()
-        with m.If(rx1.rdy & (rx1.data == ord("R"))):
+        with m.If(command_valid & (rx1.data == ord("R"))):
             m.d.dbg += forcerec_tgl.eq(~forcerec_tgl)
         forcerec_s = Signal()
         m.submodules += FFSynchronizer(forcerec_tgl, forcerec_s,
@@ -468,14 +530,50 @@ def build(do_program=False):
     platform = DKUSBGW5AT60Platform()
     _setup_gowin_env(platform)
     platform.add_file("serdes.csr", (HERE / "serdes.csr").read_text())
-    platform.build(LunaEnumTop(), name="luna_enum_gen2", build_dir="build",
-                   do_program=do_program)
+    plan = platform.build(LunaEnumTop(), name="luna_enum_gen2", do_build=False)
+    # The generated project_process_config.json does not set these options
+    # in gw_sh. Keep the platform's other options and override this top only.
+    script = plan.files["luna_enum_gen2.tcl"]
+    marker = "\nrun all\n"
+    if script.count(marker) != 1:
+        raise RuntimeError("unexpected Gowin build script: missing unique run all")
+    plan.files["luna_enum_gen2.tcl"] = script.replace(marker,
+        "\nset_option -place_option 0 -route_option 1 -timing_driven 1\n"
+        "set_option -clock_route_order 1 -route_maxfan 23\nrun all\n")
+    products = plan.execute_local(str(HERE / "build"))
+    if do_program:
+        require_timing_met()
+        platform.toolchain_program(products, "luna_enum_gen2")
+
+
+def require_timing_met():
+    """Reject unsafe Gen2 images, including related-clock failures (#55)."""
+    try:
+        report = json.loads(subprocess.check_output([
+            sys.executable, str(HERE.parents[2] / "tools/gowin_timing_report.py"),
+            str(HERE / "build"), "--json"]))
+        fmax = {row["clock_name"]: row["actual_fmax_mhz"] for row in report["fmax"]}
+        required = {"core_clk": 78.125, "pclk": 156.25, "rxclk": 161.29}
+        valid = all(math.isfinite(fmax[name]) and fmax[name] >= minimum
+                    for name, minimum in required.items())
+        for section, value in (("tns", "endpoints_tns"),
+                               ("setup_slack", "slack_ns"), ("hold_slack", "slack_ns")):
+            valid &= bool(report[section]) and all(
+                math.isfinite(row[value]) and row[value] >= 0 for row in report[section])
+        for analysis in ("Setup", "Hold"):
+            valid &= int(report["sta_summary"][f"Numbers of {analysis} Violated Endpoints"]) == 0
+    except (OSError, subprocess.CalledProcessError, KeyError, TypeError, ValueError) as error:
+        sys.exit(f"Gen2 timing report unavailable or invalid: {error}")
+    if not valid:
+        sys.exit("Gen2 timing gate failed; image NOT FLASHED (check related-clock setup/hold too)")
+    print(f"Gen2 timing gate MET: {fmax}; related-clock setup/hold clean")
 
 
 def flash():
     bitstream = HERE / "build" / "luna_enum_gen2.fs"
     if not bitstream.exists():
         sys.exit(f"no bitstream at {bitstream}; run `python top.py` first")
+    require_timing_met()
     cmd = ["openFPGALoader", "-c", "ft232", str(bitstream)]
     try:
         subprocess.check_call(cmd)

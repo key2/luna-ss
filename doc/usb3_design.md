@@ -560,7 +560,7 @@ stop.  Design:
   sim at this width)**: one TX/RX beat = one whole 132-bit block
   payload (block_head as today, start on every beat).  The 24-symbol
   SKP OS does not fit the invariant (192 = 1.5×128): TX crosses it as
-  one full beat + one half beat carrying symbols 16–23 in the LOW half
+  one full beat + one half beat carrying symbols 16–23 in the TOP half
   flagged by a new **`tx_halfbeat`** qualifier — the bridge emits 2+1
   pclk beats and stays content-blind.  RX never sees a SKP (the PHY
   strips them, §gen2.py): the RX side is a clean 2-beat pairer
@@ -599,6 +599,12 @@ registered at the boundary to keep the 156.25 cones shallow:
 | ltssm_training (→ PHY polarity acquisition, #39) | core→pclk | level | register |
 | Gen1-leg rx_data[31:0]/rx_datak (fallback) | pclk→core | data | low-half pair accumulator (same phase bit) |
 | Gen1-leg tx_data[31:0]/tx_datak (fallback) | core→pclk | data | low-half phase split |
+
+Session-21 timing prerequisite (HANDOVER 10ac, #55): check the full
+related-clock setup/hold tables and global violation counts, not only
+Fmax/per-clock TNS. The latter omit failing core<->pclk paths. The Gen2
+top pre-registers the decoded LTSSM training indicator in core before
+the bridge's pclk register; no timing false paths are added.
 
 Everything else — LTSSM, timers, LFPSTransceiver (constants from
 `sync_frequency`), PHYResetController, rate FSM, link layer, protocol
@@ -652,8 +658,8 @@ ladder) → V3 Gen2x1 @ 128 hardware (#45 FIRST among bugs; per-cause
 probe at the no-lottery clock; then 10000M + Gen2 ladder) → V4 the
 dual-rate matrix, re-scoped without x2 (closes G5/H4).
 
-### 13.8 Considered alternative: widening at the serdes attach (PHY-side
-### 64→128, datapath at pclk/2) — DEFERRED past the V3 gate
+### 13.8 End state: widening at the serdes attach (PHY-side
+### 64→128, datapath at pclk/2) - begins after the #49 verdict
 
 Proposal: convert 64→128 immediately at the serdes fabric attach and
 run the ENTIRE gw_usb3 Gen2 datapath (132b gearboxes, scrambler,
@@ -675,8 +681,9 @@ descrambler, pacing FIFO) at 78.125 / rxclk/2 ≈ 80.57, instead of the
   missed at 138–144), which §13 already solves by evacuating the MAC;
   rxclk has standing margin (MET 180.04 vs the 161.29 gate with the
   whole MAC still on pclk).
-* DISPOSITION: keep §13.3 through the V3 gate.  Attach-side widening
-  is the end-state simplification to revisit WITH the ½-wire-rate cap
-  lift (full-rate payload needs 128-bit streams end to end — that is
-  when the wide gearbox pays): migrate inward module by module behind
-  composed-equivalence fences, retiring the bridge last.
+* DISPOSITION (standing directive, session 19 onward): keep §13.3
+  through the #49 verdict, THEN begin full-128 PHY widening, independent
+  of the parked endpoint throughput work. Migrate module by module
+  behind composed-equivalence fences, keep the proven 5G configuration
+  pinned, and retire the bridge last. The bridge testbench and pacing-lag
+  model remain acceptance fixtures; single lane only.

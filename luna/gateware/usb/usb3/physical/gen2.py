@@ -723,6 +723,10 @@ class Gen2BlockTransmitter(Elaboratable):
 
         # Debug.
         self.packets_buffered = Signal(8)
+        if words == 2:
+            # Registered scheduler snapshot, not an FSM number. Bit layout
+            # is defined at the wide scheduler's assignment below.
+            self.debug_state = Signal(16)
 
     def elaborate(self, platform):
         m = Module()
@@ -1076,6 +1080,16 @@ class Gen2BlockTransmitter(Elaboratable):
         PACE_THRESHOLD = 16
         pace_due = Signal()
         m.d.comb += pace_due.eq(self.tx_fifo_level >= PACE_THRESHOLD)
+
+        # Probe-only, one core cycle old: active[0], mode[1:3], SKP-tail[3],
+        # SDS-pending[4], paced[5], packet-in-flight[6], queued[7],
+        # sink-valid[8], sink-ready[9], beat-request[10], tx-valid[11],
+        # idle-request[12], training-request[13], reserved[14:16].
+        m.d.ss += self.debug_state.eq(Cat(
+            active, mode, skp_tail, sds_pending, pace_due,
+            bridge.pkt_in_flight, bridge.packets_buffered.any(),
+            self.sink.valid, self.sink.ready, bridge.beat_request,
+            self.tx_valid, self.idle_mode, training, C(0, 2)))
 
         # Drain-safe gate: the SKP halfbeat must follow its beat (a
         # pacing gap between them would leave a malformed OS if the

@@ -2,6 +2,7 @@
 # This file is part of LUNA.
 #
 # Copyright (c) 2020 Great Scott Gadgets <info@greatscottgadgets.com>
+# Copyright (c) 2026 the luna-ss contributors
 # SPDX-License-Identifier: BSD-3-Clause
 """ USB3 physical-layer abstraction."""
 
@@ -150,6 +151,8 @@ class USB3PhysicalLayer(Elaboratable):
         self.debug_tx_data              = Signal(32 * words)
         self.debug_tx_ctrl              = Signal(4 * words)
         self.debug_tx_strobe            = Signal()
+        if gen2 and words == 2:
+            self.debug_gen2_tx_state    = Signal(16)
 
 
     def elaborate(self, platform):
@@ -302,6 +305,8 @@ class USB3PhysicalLayer(Elaboratable):
                 tseq_count=self._gen2_tseq_count, words=self._words)
             m.submodules.gen2_rx = gen2_rx = Gen2BlockReceiver(
                 words=self._words)
+            if self._words == 2:
+                m.d.comb += self.debug_gen2_tx_state.eq(gen2_tx.debug_state)
 
             # The block transmitter's LTSSM control surface is registered
             # at the seam in BOTH directions (156.25 routing: the

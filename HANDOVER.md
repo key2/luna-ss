@@ -4185,3 +4185,287 @@ status-stage localization), `s20_reccut_bos50_w64.log`/`_w128.log`,
 Bug numbering: **#52 = the parity fence break (FIXED)**; #49 stays
 OPEN (the RED verdict above names the next instruments); numbering
 continues at **#53**.
+
+## 10ac. Session 21 - the #49 device-TX discriminator
+
+### W0: fence and bench orientation
+
+The starting fork was `ad03a3c` (the session-21 prompt above `4787f1f`),
+with gowin-serdes `a698d24` and gw_usb3 `1b54cf6`. The untracked USB 3.2
+redline PDF conversion was pre-existing and left untouched.
+
+The board was NOT enumerated at entry: port 4-3 was in the documented
+warm-reset loop. Recovered in the runbook order: PCI 0000:80:14.0
+unbind/rebind, release the rebound single-channel FTDI JTAG interface
+3-7.3.2:1.0, flash the untouched reference `prj.fs`. Reference health:
+10000M on 4-3, 030a:0301 Gowin UVC. Restored `h0_gen1_fence.fs`:
+5000M on 4-3, full 1 MiB x10 / 16 MiB x3 / 64 MiB x3 ladder GREEN on
+all three endpoint pairs. All 344 valid UART1 samples had ch0=0;
+flags=8, RX CRC counters zero. Large-transfer aggregate 281-283 MB/s
+per direction. Evidence: `/tmp/kilo/s21_w0_fence_ladder.log`,
+`s21_w0_fence_both.txt` (raw POR NULs retained),
+`s21_w0_fence_text.txt` (NUL-free analysis view).
+
+Settled-tree baseline: **67/67 PASS**, zero FAIL,
+`/tmp/kilo/s21_battery_w0.log`. Source edits started only after
+BATTERY4-DONE. Native yosys verified: 0.68+195 at the existing
+`/tmp/kilo/oss-cad-suite` installation.
+
+### W1: instruments and their red-first fences
+
+New, example-local modules (no foreign debug RTL, no public-submodule
+changes):
+
+* `pipe_capture.py`: PipeBeatCapture, 128 x 128-bit synchronous RAM ring
+  in actual pclk/ss, retaining invalid cycles as well as valid beats.
+  Default 31 prebeats + triggering beat + 96 postbeats. First trigger
+  wins; independent dbg mailbox and UART readout preserve a frozen
+  epoch across link resets and stop safely if either clock pauses.
+  Atomic runtime rearm/mode commands, automatic first dump and D replay;
+  chronological fixed-width P1/R/E frames, X for aborted old epochs.
+  RED: inert ring did not count its first invalid beat (`0 == 1`);
+  `/tmp/kilo/s21_capture_red.log`. Unit fence initially 8/8 GREEN,
+  including real UART-bit decoding, wrap, no/double trigger, all modes,
+  reset retention, and rearm during readout.
+* `tx_checker.py`: Gen2TxWireChecker on the full 64-bit accepted MAC
+  stream, renamed to core. CRC16/CRC5 headers and LCs, CRC32 DPPs with
+  every tail alignment (including 18/22/50), SDP/END and legal delayed
+  EDB, EP0 TP/DPH counters, long-DPH trigger, per-cause sticky/errors.
+  Header counters resynchronize independently of a truncated DPP.
+  RED: inert checker missed the EP0 TP (`0 == 1`),
+  `/tmp/kilo/s21_txchecker_red.log`. Initial 95/95 GREEN against
+  independent software CRCs and the real wide RawPacketTransmitter.
+  This suite takes about 16 minutes in the Python simulator; use a
+  tracked background job, not a 120-second shell timeout.
+* **Finding #53 (probe defect, not the #49 datapath diagnosis):**
+  `device.debug_wire_tx_data/ctrl` still exported 32/4 bits at W128,
+  although the physical-layer tap was correctly 64/8. The width test
+  failed `32 == 128//2` (`s21_debugtap_red.log`). Wide declarations
+  now preserve the entire accepted beat; words=1 declarations remain
+  verbatim. The new scheduler snapshot is a registered W128-only
+  `Gen2BlockTransmitter.debug_state`, not the similarly named RX FSM.
+
+Gen2 top loadout (supersedes 10ab's UART map): UART0/tag L is exclusively
+the PIPE dump. UART1/tag C has 29 counters, with retry ACKs retained at
+ch0, per-cause recovery at ch1-3, and actual emitted MAC TP/DPH at ch5/6.
+The complete channel map is next to the top's probe wiring. Snapshot
+interval is 2**20/24MHz = 43.69 ms (clock telltales are 1/8 the old
+2**23 values); the ~21 ms serial line fits inside that interval.
+Flags: framing/header/LC sticky[0], underrun[1], DPPCRC[2], trained[3].
+UART1 RX preserves R=forced recovery and accepts 0/1/2=select+rearm
+long-DPH/retraining-after-long-DPH/manual; A=rearm, T=manual, D=dump.
+Bad UART frames do not execute commands. The two core trigger events
+cross to pclk via registered toggle edge detection, not stretched pulses.
+The record's scheduler state and core-context bits are explicitly ONE
+CORE CYCLE OLD, not claimed to belong to the concurrent physical PIPE
+beat. Added trained-cycle and ungated accepted-beat/TP-start/DPH-start
+counters at ch25-28: zero training-gated checker counts alone must NOT
+be interpreted as MAC silence. A three-core-cycle fall history covers
+the long-DPH detector's pipeline delay (old arming predicate reproduced
+`[1,0]` events instead of `[1,1]` in `s21_trigger_arming_red.log`). Reason
+2 identifies a trained-state fall; host initiation must be established
+separately from recovery-cause counters and host trace, not that label.
+
+The full top elaborates with the instruments. A new battery entry
+`gen2-tx-instruments` includes capture/checker/debug-tap tests (114 tests).
+Updated settled-tree battery: **68/68 PASS**, zero FAIL
+(`s21_battery_w1.log`, including all 114 instrument tests). Shipping
+parity rebuild: **13 differing bytes, 603-621 only**, header date;
+pclk 139.027 MHz meets the shipping 125 MHz gate. Artifact
+`/tmp/kilo/s21_gen1_parity.fs`, log `s21_gen1_parity_build_v2.log`.
+The first queued launch wrapper failed before synthesis on shell
+quoting; the direct launch above completed normally.
+
+### W1 timing checkpoint: first instrumented image NOT FLASHED
+
+Native-yosys build completed, but MISSED all three gates:
+core 73.683 / pclk 148.584 / rxclk 146.179 MHz; setup TNS
+-18.248 / -1.348 / -1.542 ns, hold TNS all zero. Logic 57%, CLS 74%,
+BSRAM 82% (96 blocks). Image saved as
+`/tmp/kilo/s21_gen2_instruments_miss1.fs`, log
+`s21_gen2_instrumented_build.log`. **No silicon verdict weight.**
+
+Timing localization: worst new path is bridge TX half-select directly
+to capture RAM DI, core->pclk 6.4 ns, -2.110 ns, 94% routing. The
+five-level core limit is NOT checker CRC: existing pacing/output mux
+to bridge/tx_data_r, -0.772 ns, 92.6% routing. Other dominant failures
+are existing core RX CTC and PHY RX gearbox paths. No exported top-25
+setup path traverses txchk. The instrument load added 5,851 logic
+elements and moved CLS from 61% to 74%.
+
+Instrument-only timing relief, under re-verification:
+
+* Pipeline the complete capture RAM write (data/address/enable), keeping
+  the original timestamp/trigger association and committing the final
+  sample after logical freeze. The mailbox cannot read before that
+  commit; capture/reset/pause/rearm tests pin the unchanged dump.
+* Share one hex converter in the capture formatter. Opt in to
+  `ClockFreqProbe(compact=True)` only in the Gen2 top; this public,
+  original-code helper addition selects/registers one counter per
+  leading space instead of parallel per-digit conversion. Default False
+  keeps the shipping formatter verbatim. Its seven new tests match
+  actual UART bits/bytes and cadence at 1/5/29 channels and pin unchanged
+  source-domain/CDC statements. No timing false paths were added and
+  no MAC/PHY functional mechanism was changed.
+
+The revised battery (still 68 entries, now 121 instrument tests),
+renewed shipping parity, revised timing, and H1/H2 silicon localization
+are PENDING. **#49 remains OPEN; no functional fix or bench verdict is
+claimed.** The full-128 PHY remains gated behind that verdict.
+Numbering next at that checkpoint: #54.
+
+### W1: renewed fences; tooling findings #54/#55
+
+The timing-relief source passed **68/68**, including 121 instrument
+tests, and renewed Gen1 parity remained **13 date bytes at 603-621**,
+pclk 139.027 MHz. `/tmp/kilo/s21_timing2_battery.log`,
+`s21_timing2_parity_build.log`, `s21_timing2_gen1.fs`.
+The second native build improved to core 77.556 / pclk 153.723 /
+rxclk 159.860 MHz, but still MISSED. Logic reduced to 54%, CLS 70%,
+BSRAM 82%; capture's RAM-write routing failure was removed. Saved
+`s21_timing2_gen2.fs` and `s21_timing2_timing.json`. NOT FLASHED.
+
+**Finding #54: generated P&R JSON is not applied to the actual command.**
+`build/impl/project_process_config.json` advertised place=3, route=1,
+clock-order=1, but `build/impl/pnr/cmd.do` proved 0/0/0. The documented
+Tcl `set_option -place_option ... -route_option ... -clock_route_order
+...` actually changes the invocation. Do NOT globally fix the defaults:
+Gen1's existing 0/0/0 behavior is part of its shipping-parity fence.
+Experiments here are Gen2-128 P&R-only, on the SAME synthesized RTL and
+unchanged SDC/CSR after the settled battery. No Gen2-64 rolls.
+
+**Finding #55: Fmax + per-clock TNS alone is an insufficient timing gate.**
+The explicit 3/1/1 trial (`/tmp/kilo/s21_pnr3.tcl`, `s21_pnr3.log`,
+`s21_pnr3.fs`, `s21_pnr3_timing.json`) reports core 80.987 /
+pclk 156.340 / rxclk 173.950 MHz and ALL per-clock TNS zero, yet the
+related-clock tables show setup -0.550 ns to bridge/rx_termination and
+76 hold violations, worst -0.433 ns from bridge/pair_data to core RX
+output. **NOT FLASHED.** The gate now additionally checks the full
+setup/hold slack tables, including the synchronous core<->pclk paths.
+The prior session-20 report's STA summary also lists 65 hold violations;
+its Fmax/TNS-only MET label is not a full related-clock closure proof.
+This does not establish #49's cause (the comparable W64 failure predates
+the bridge), but unsafe images cannot establish the new verdict.
+
+Next trial: explicit 3/1/0, restoring fanout-ordered clock routing to
+test the hold-skew dependence without altering RTL or constraints.
+The Gen1 fence remains resident at 5000M; #49 remains OPEN and no
+functional fix or full-128 PHY work is claimed. Numbering next: #56.
+
+Subsequent same-RTL trials (all saved under /tmp/kilo; none flashed):
+
+| Settings | core / pclk / rxclk MHz | Related timing verdict |
+|---|---|---|
+| 3/1/0 | 82.733 / 156.450 / 174.744 | setup -0.462 ns, 74 hold violations |
+| 0/1/0 | 83.372 / 157.247 / 161.828 | hold clean; one training-decode setup -0.017 ns |
+| 0/1/0, maxfan 20 | same | identical remaining -0.017 ns path |
+| 0/1/1 | 85.391 / 158.075 / 162.300 | hold clean; one training-decode setup -0.010 ns |
+
+Stopped routing trials rather than waive even that small setup failure.
+The Gen2 top now pre-registers the actual `usb.ltssm_in_training` level
+in **core**, ahead of the existing bridge pclk register. This terminates
+the decoded LTSSM cone at the 12.8 ns boundary instead of the 6.4 ns seam;
+it adds one core cycle to that PHY training indicator, not a change to
+MAC packet/credit behavior. No RX bridge clock-phase rewrite was needed.
+
+#54 is addressed in the Gen2 top's build plan: insert explicit 0/1/1
+Tcl options before `run all`, preserving all platform options. Gen1
+build settings remain untouched. #55 is fenced in BOTH `flash` and
+`program`: require all three frequencies, all setup/hold tables,
+per-clock TNS, and zero global setup/hold violation counts before any
+programmer call. Missing/invalid reports fail closed.
+
+New RED evidence `s21_training_gate_red.log`: absent core register,
+programmer reachable despite bad cross-clock setup/hold or summary,
+and build execution preceding explicit P&R options. All 13 debug/top
+tests now GREEN (`s21_training_gate_green.log`), including simulation
+of the actual extracted training-register assignment and a stubbed
+programmer that must never see an unsafe image. Instrument battery
+entry now contains 129 tests. Fresh full battery/parity/native build
+is required before the first instrumented POR.
+
+Public helper was committed/pushed first, as `gowin-serdes 0f1a23b`
+(compact formatter, legacy-default preservation, seven original-code
+tests). No vendor RTL/debug IP was added. Fork commit/push, #49
+localization/fix/verdict, and full-128 PHY remain pending at this point.
+
+### W1 complete: fully timing-closed discriminator on silicon
+
+Fresh settled-tree validation completed: **68/68 PASS**, including all
+129 instrument/build-guard tests, in `s21_timing3_battery.log`. Gen1
+parity is **9 date bytes only** (607,608,609,611,612,614,615,620,621),
+pclk **139.027 MHz**. The native Gen2 instrumented image meets the
+FULL timing gate: core **83.223**, pclk **156.274**, rxclk **162.288 MHz**;
+no negative setup/hold/TNS rows and zero global setup/hold violations.
+Saved `/tmp/kilo/s21_timing3_gen2.fs`, `s21_timing3_timing.json`,
+`s21_timing3_gen2_build.log`, `s21_timing3_gen1.fs` and parity log.
+Only this fully closed instrumented image was flashed; no failed
+P&R trial was used for a silicon verdict.
+
+The first 20-second acquisition (`s21_por1*`) ended BEFORE the separate
+programming call. Its Gen1 UART/PORTSC output is NOT Gen2 POR evidence.
+Before resetting, UART1 `D` recovered the frozen first-long-DPH ring
+(`s21_retained*`). A corrected acquisition helper now opens both UARTs,
+usbmon, an isolated xHCI ftrace instance, and PORTSC logging BEFORE
+launching the timing-gated programmer in the SAME process:
+
+    sudo -n .venv/bin/python -u /tmp/kilo/s21_bench.py capture \
+        /tmp/kilo/<prefix> --seconds 20 --flash
+
+`--mode 1` selects the first trained-fall-after-long-DPH capture from
+the first Gen2 UART line; `--command D` replays without another POR.
+Start flash+mode runs from the reference baseline so an old Gen2 line
+cannot consume the one-shot mode command. The text view strips POR
+NULs; raw UART bytes are retained. `decode <prefix>_both.txt` checks
+epoch/index/count integrity and modulo-24-bit consecutive timestamps.
+
+### W2 localization: header admission blocks, not BOS corruption
+
+Repeated the controller recovery/reference-health runbook before each
+instrumented POR; the untouched reference returned 10000M each time.
+Both synchronized runs (`s21_por2*`, `s21_por3*`) reproduce dev/8,
+SET_ISOCH_DELAY, dev/18 and BOS/5 success, then BOS/50 EPROTO -71.
+The xHCI error again names the BOS/50 **Status Stage**: por2 Setup
+`1c27a6f0b0`, Data `1c27a6f0c0`, Status/error `1c27a6f0d0`.
+
+The first long-DP ring contains the complete BOS/50 at the cleartext
+PIPE input, after the encoder/bridge but BEFORE the PHY TX FIFO,
+scrambler and gearbox. DPH CRC16/CRC5, both length replicas, all 50
+payload bytes, CRC32 `5bac929b` and DPPEND validate independently.
+The following SKP tail and its suppressed `dv=0` half are legal.
+The ring ends only about 442 ns after DPPEND at this pre-FIFO tap;
+absence of an ACK there alone would NOT establish H2.
+
+The synchronized MAC counters provide the discriminator: in BOTH
+PORs, six STATUS events and **12 EP0 ACK dispatches**, but only **11
+TP queue accepts/emissions**, accompany four CRC-correct completed
+DPs. The pending TP remains offered with the link header queue blocked
+for millions of core cycles (por2 `25f7d0` offer / `25f7c4` blocked;
+por3 `1c36c2` / `1c36b6` in the first failure-containing interval).
+Checker errors, underruns and FIFO>=28 remain zero. The mode-1 ring
+confirms blocked-context idle output before the first TS1 transition.
+This localizes the initial stall to MAC header admission/arbitration
+(H2 class), not a BOS packet disappearing after correct MAC emission.
+Later hot-reset attempts emit a few TPs but no DPs; this is NOT a
+claim that every TX signal stays permanently silent. Initial recovery
+cause counters are zero; each run has one maintenance-timer event
+only later, when the host powers off the failed port.
+
+**Finding #56: native SSP Transfer Type is missing.** The captured
+BOS DPH has DW1 `00320000`, TT=`000`; the native-Control value must
+be `00324000`, TT=`100` [Table 8-13, section 8.12.2]. ACK generation
+also leaves its existing `transfer_type` field unassigned. The new
+wire checker validates CRC/framing, NOT this semantic field. A strict
+decoded-wire sim check reproduces the omission in actual ACKs and
+DPHs (`s21_tt_enum_red.log`), independently of the hardware diagnosis.
+
+The apparent length threshold also coincides with the FOURTH DP.
+If the host refunds malformed-TT DPs to Type1 instead of Type2, the
+unchecked three-bit credit counters would reach Type2=0 and
+Type1=(4+4) mod 8=0, exactly blocking that DP's STATUS ACK. This is a
+causal HYPOTHESIS, not an observed host LCRD trace. The specification
+requires link acknowledgement/credit return even for a packet with a
+reserved field; it does not justify assuming that malformed native
+TT=000 maps to Type1. Correct TT first, without credit-counter or
+arbiter changes, then take the repeated hardware verdict. #49 is
+still OPEN; full-128 PHY work remains gated. Numbering next: **#57**.

@@ -164,6 +164,15 @@ if pdm run pytest tests/test_gen2_pipe_bridge.py -q > /tmp/kilo/batt_gen2_bridge
 else
     echo "FAIL gen2-bridge <<<<<<<<"
 fi
+# Session-21 H1/H2 instruments: circular PIPE capture, UART/CDC epochs,
+# full-width accepted TX tap, and the unaligned-DPP CRC/framing checker.
+# Behavioral RED baselines: inert ring never counted its first beat;
+# inert checker never reported EP0 TP; W128 tap exposed only 32 bits.
+if .venv/bin/python -u -m pytest tests/test_pipe_capture.py tests/test_gen2_tx_checker.py tests/test_gen2_debug_taps.py gowin-serdes/tests/test_bench_probe.py -q > /tmp/kilo/batt_gen2_tx_instruments.log 2>&1; then
+    echo "PASS gen2-tx-instruments"
+else
+    echo "FAIL gen2-tx-instruments <<<<<<<<"
+fi
 # Gen2 TX request-seam conformance (session 16, bug #46; the #45 sim
 # leads of HANDOVER 10u): 1-cycle idle_mode blips at every alignment
 # must never truncate a 132-bit block on the PIPE or disturb the
@@ -324,4 +333,3 @@ for W128PH in train enum echo u0 hotreset hotreset-parked recovery reccut advear
 done
 
 echo BATTERY4-DONE
-

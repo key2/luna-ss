@@ -31,6 +31,23 @@ Phase convention: ``phase == 1`` during the FIRST pclk cycle of every
 core period (the divider rises exactly on the core clock's rising
 edge).
 
+Hold hardening (finding #57): the divided core clock's insertion
+delay TRAILS pclk on silicon (divider clk->Q plus the second
+global-net entry; ~0.64 ns on the GW5AT-60 candidates), so a core
+register that captures a pclk POSEDGE register on the coincident
+edge races that skew on minimum-delay paths — the #56 candidate's
+53 related-clock hold violations (bridge/pair_data ->
+bridge/rx_data, worst -0.295 ns against 0.40-0.53 ns data delays).
+Every pclk->core crossing therefore relaunches ONCE on the pclk
+FALLING edge (the local ``<pclk_domain>_n`` negedge domain): the
+launch edge moves half a pclk ahead of the capture edge, giving
+~2.5 ns of structural hold margin while >3 ns of setup budget
+remains on the final register-to-register hop.  At the nominal
+phase the relaunch is transparent — the core edge sees the value
+from the previous pclk edge either way — and matches the silicon-
+nominal old-value capture.  No constraint is weakened; the
+structural fence is Gen2BridgeHoldRelaunchTest.
+
 Seam inventory (usb3_design.md 13.4) — all synchronous 2:1 paths, not
 metastability CDCs (the only true async crossing stays inside the PHY,
 rxclk->pclk):
@@ -117,30 +134,71 @@ class PIPEBridge2to1(PIPEInterface, Elaboratable):
         ph = self.phase
 
         #
+        # The pclk->core relaunch domain (finding #57, hold hardening).
+        #
+        # Everything the core domain captures from the pclk side is
+        # re-registered once on the pclk FALLING edge first: the launch
+        # edge moves half a pclk ahead of the core capture edge, which
+        # the divided core clock's insertion delay can never race.
+        # Cycle-exact transparent at the nominal phase (see the module
+        # docstring); reset-free, like the divider itself.
+        #
+        cd_n = ClockDomain(f"{self._pclk_domain}_n", clk_edge="neg",
+                           reset_less=True, local=True)
+        m.domains += cd_n
+        m.d.comb += cd_n.clk.eq(ClockSignal(self._pclk_domain))
+
+        def relaunched(src, name):
+            """One falling-edge relaunch register on a pclk-side value."""
+            reg = Signal.like(src, name=name)
+            m.d[cd_n.name] += reg.eq(src)
+            return reg
+
+        def preregistered(src, name, init=0):
+            """One CORE register ahead of a pclk boundary register.
+
+            The MAC's control levels are decoded LTSSM cones; captured
+            directly at the 6.4 ns seam they lose the divided clock's
+            insertion delay on top of the decode depth (the -0.021 ns
+            fsm_state -> rx_termination setup seam; the
+            ltssm_in_training precedent).  Terminating the cone at the
+            12.8 ns core boundary leaves the seam a pure register-to-
+            register hop.  One core cycle of added latency on levels
+            with microsecond tolerances.
+            """
+            reg = Signal(src.shape(), name=name, init=init)
+            m.d[self._core_domain] += reg.eq(src)
+            return reg
+
+        #
         # Clocking & reset.
         #
         m.d.comb += self.pclk.eq(phy.pclk)
         reset_r = Signal()
-        pclk += reset_r.eq(self.reset)
+        pclk += reset_r.eq(preregistered(self.reset, "reset_cr"))
         m.d.comb += phy.reset.eq(reset_r)
 
         #
-        # Control levels, core -> pclk: one boundary register each
+        # Control levels, core -> pclk: one CORE pre-register (the
+        # decoded-LTSSM cone stops at the 12.8 ns boundary; finding
+        # #57's setup side), then one pclk boundary register each
         # (microsecond-scale tolerances; usb3_design.md 13.4).
         #
         for name in ("phy_mode", "elas_buf_mode", "power_down", "tx_deemph",
                      "tx_margin", "tx_swing", "tx_detrx_lpbk",
                      "tx_compliance", "tx_ones_zeros", "rx_polarity",
                      "rx_eq_training", "rx_termination"):
-            src = getattr(self, name)
+            src = preregistered(getattr(self, name), f"{name}_cr")
             reg = Signal.like(src, name=f"{name}_pr")
             pclk += reg.eq(src)
             m.d.comb += getattr(phy, name).eq(reg)
 
         # tx_elec_idle resets to 1 (electrical idle) so the PHY never
-        # sees a spurious transmit-enable cycle out of reset.
+        # sees a spurious transmit-enable cycle out of reset — in the
+        # core pre-register as well.
         eidle_pr = Signal(init=1)
-        pclk += eidle_pr.eq(self.tx_elec_idle)
+        pclk += eidle_pr.eq(preregistered(self.tx_elec_idle,
+                                          "tx_elec_idle_cr", init=1))
         m.d.comb += phy.tx_elec_idle.eq(eidle_pr)
 
         # The operating rate: the pclk-side registered copy also selects
@@ -148,32 +206,41 @@ class PIPEBridge2to1(PIPEInterface, Elaboratable):
         # rate changes, which are followed by milliseconds of retrain).
         # Resets to 1: the PHY boots in its 10G trim.
         rate_pr = Signal(init=1)
-        pclk += rate_pr.eq(self.rate)
+        pclk += rate_pr.eq(preregistered(self.rate, "rate_cr", init=1))
         m.d.comb += phy.rate.eq(rate_pr)
 
         if hasattr(phy, "ltssm_training"):
             training_pr = Signal()
-            pclk += training_pr.eq(self.ltssm_training)
+            pclk += training_pr.eq(preregistered(self.ltssm_training,
+                                                 "ltssm_training_cr"))
             m.d.comb += phy.ltssm_training.eq(training_pr)
 
         #
-        # Status levels, pclk -> core: one boundary register each.
+        # Status levels, pclk -> core: one falling-edge relaunch, then
+        # one boundary register each.
         #
         core += [
-            self.rx_elec_idle .eq(phy.rx_elec_idle),
-            self.power_present.eq(phy.power_present),
-            self.rx_status    .eq(phy.rx_status),
-            self.rx_valid     .eq(phy.rx_valid),
+            self.rx_elec_idle .eq(relaunched(phy.rx_elec_idle,
+                                             "rx_elec_idle_nr")),
+            self.power_present.eq(relaunched(phy.power_present,
+                                             "power_present_nr")),
+            self.rx_status    .eq(relaunched(phy.rx_status,
+                                             "rx_status_nr")),
+            self.rx_valid     .eq(relaunched(phy.rx_valid,
+                                             "rx_valid_nr")),
         ]
         if hasattr(phy, "phy_ready"):
-            core += self.phy_ready.eq(phy.phy_ready)
+            core += self.phy_ready.eq(relaunched(phy.phy_ready,
+                                                 "phy_ready_nr"))
         else:
             m.d.comb += self.phy_ready.eq(1)
 
         # The #44 closed-loop pacing reference: registered once at the
-        # core edge (up to 2 pclk of staleness; budgeted).
+        # core edge (up to 2 pclk of staleness; budgeted — the half-pclk
+        # relaunch lag folds into the same budget).
         if hasattr(phy, "tx_fifo_occupancy"):
-            core += self.tx_fifo_occupancy.eq(phy.tx_fifo_occupancy)
+            core += self.tx_fifo_occupancy.eq(
+                relaunched(phy.tx_fifo_occupancy, "tx_fifo_occupancy_nr"))
 
         # phy_status: PIPE completion acks are single-pclk pulses; a
         # pulse can fall entirely between two core edges.  Stretch to a
@@ -185,7 +252,8 @@ class PIPEBridge2to1(PIPEInterface, Elaboratable):
             pclk += ps_cnt.eq(2)
         with m.Elif(ps_cnt != 0):
             pclk += ps_cnt.eq(ps_cnt - 1)
-        core += self.phy_status.eq(ps_cnt != 0)
+        core += self.phy_status.eq(relaunched(ps_cnt != 0,
+                                              "phy_status_nr"))
 
         #
         # TX: core beat -> pclk half-beats.
@@ -302,20 +370,29 @@ class PIPEBridge2to1(PIPEInterface, Elaboratable):
             ]
 
         #
-        # RX: core-side presentation register (one core register).
+        # RX: falling-edge relaunch (data and qualifier from the SAME
+        # falling edge stay coherent; the 2-pclk window is width-
+        # preserved, so exactly one core edge still samples each pair),
+        # then the core-side presentation register.
         #
+        pair_data_nr  = relaunched(pair_data,     "pair_data_nr")
+        pair_head_nr  = relaunched(pair_head,     "pair_head_nr")
+        pair_valid_nr = relaunched(done_cnt != 0, "pair_valid_nr")
+        g1_pair_nr    = relaunched(g1_pair,       "g1_pair_nr")
+        g1_pairk_nr   = relaunched(g1_pairk,      "g1_pairk_nr")
+
         with m.If(self.rate):
             core += [
-                self.rx_data       .eq(pair_data),
-                self.rx_sync_header.eq(pair_head),
-                self.rx_datavalid  .eq(done_cnt != 0),
-                self.rx_start_block.eq(done_cnt != 0),
+                self.rx_data       .eq(pair_data_nr),
+                self.rx_sync_header.eq(pair_head_nr),
+                self.rx_datavalid  .eq(pair_valid_nr),
+                self.rx_start_block.eq(pair_valid_nr),
                 self.rx_datak      .eq(0),
             ]
         with m.Else():
             core += [
-                self.rx_data       .eq(g1_pair),   # zero-extended high half
-                self.rx_datak      .eq(g1_pairk),
+                self.rx_data       .eq(g1_pair_nr),  # zero-extended high half
+                self.rx_datak      .eq(g1_pairk_nr),
                 self.rx_datavalid  .eq(0),
                 self.rx_start_block.eq(0),
             ]

@@ -24,6 +24,10 @@ Pins BOTH directions byte-exact across the pclk <-> pclk/2 seam:
   core-side aligner owns it).
 * phy_status: a single-pclk pulse must reach the core exactly once at
   either pulse phase (the latch-and-hold seam register).
+* Hold seam (finding #57): every pclk->core crossing must be
+  relaunched once on the pclk FALLING edge before a core register
+  captures it (the divided core clock's insertion delay races
+  same-edge captures on silicon; structural fence below).
 
 NEGATIVE CONTROL (the red-first teeth, recorded RED 2026-09-06): a
 deliberately broken phase relation — the core clock derived from the
@@ -36,6 +40,7 @@ import random
 import unittest
 
 from amaranth import *
+from amaranth.hdl import Fragment
 from amaranth.sim import Simulator
 
 from luna.gateware.interface.pipe import PIPEInterface
@@ -397,6 +402,182 @@ class Gen2BridgePhyStatusTest(unittest.TestCase):
 
     def test_pulse_odd_phase(self):
         self._run_pulses(1)
+
+
+class Gen2BridgeHoldRelaunchTest(unittest.TestCase):
+    """The pclk->core hold seam (finding #57).
+
+    The core clock is a fabric-divider generated clock whose insertion
+    delay TRAILS pclk (~0.64 ns on the GW5AT-60 candidates: divider
+    clk->Q plus the second global-net entry).  A core register that
+    directly captures a pclk POSEDGE register races that skew on
+    same-edge minimum-delay paths — the #56 candidate's 53
+    related-clock hold violations (bridge/pair_data -> bridge/rx_data,
+    worst -0.295 ns against 0.40-0.53 ns data delays;
+    /tmp/kilo/s21_tt_pnr310_timing.json).
+
+    Required structure: every pclk->core crossing relaunches ONCE on
+    the pclk FALLING edge, moving the launch edge half a pclk ahead of
+    the capture edge (~2.5 ns structural hold margin; >3 ns setup
+    budget remains on the final register-to-register hop).  At nominal
+    phase this is transparent — the byte-exact suites above pin the
+    unchanged contract.
+
+    Simulation's atomic-update model cannot express per-bit hold
+    tearing, so this fence is structural, with the extracted relaunch
+    assignment simulated for edge polarity (the training-register
+    precedent in test_gen2_debug_taps.py).
+
+    RED (recorded 2026-09-07, /tmp/kilo/s22_bridge_hold_red.log):
+    direct posedge captures of pair_data / done_cnt / the PHY status
+    levels, and no falling-edge domain in the elaborated bridge.
+    """
+
+    # PHY-side signals that are pclk-registered inside the PHY/adapter
+    # (the serdes_astat_filter family): a core register must never
+    # capture them without the relaunch.
+    PHY_PCLK_SOURCES = (
+        "rx_elec_idle", "power_present", "rx_status", "rx_valid",
+        "phy_status", "tx_fifo_occupancy", "phy_ready",
+        "rx_data", "rx_datak", "rx_datavalid", "rx_start_block",
+        "rx_sync_header",
+    )
+
+    def _elaborated(self):
+        phy = PIPEInterface(width=8)
+        # The gw_usb3 adapter extras (a bare PIPEInterface lacks them;
+        # their hasattr branches must elaborate too).
+        phy.tx_fifo_occupancy = Signal(5)
+        phy.phy_ready         = Signal()
+        phy.ltssm_training    = Signal()
+        dut = PIPEBridge2to1(phy=phy)
+        return phy, dut, Fragment.get(dut, None)
+
+    @staticmethod
+    def _rhs_ids(statement):
+        try:
+            return {id(sig): sig for sig in statement._rhs_signals()}
+        except NotImplementedError:
+            return {}       # a ClockSignal tie, not a data path
+
+    def test_no_direct_pclk_capture_into_core(self):
+        phy, dut, frag = self._elaborated()
+
+        hazards = {}
+        for stmt in frag.statements.get("ss", ()):
+            for sig in stmt._lhs_signals():
+                hazards[id(sig)] = sig
+        for name in self.PHY_PCLK_SOURCES:
+            sig = getattr(phy, name)
+            hazards[id(sig)] = sig
+
+        comb_deps = {}
+        for stmt in frag.statements.get("comb", ()):
+            rhs = self._rhs_ids(stmt)
+            for sig in stmt._lhs_signals():
+                comb_deps.setdefault(id(sig), {}).update(rhs)
+
+        offenders = set()
+        for stmt in frag.statements.get("core", ()):
+            work = list(self._rhs_ids(stmt).items())
+            seen = set()
+            while work:
+                key, sig = work.pop()
+                if key in seen:
+                    continue
+                seen.add(key)
+                if key in hazards:
+                    offenders.add(sig.name)
+                work.extend(comb_deps.get(key, {}).items())
+
+        self.assertFalse(
+            offenders,
+            f"core registers capture pclk-posedge signals directly — "
+            f"the related-clock hold race against the divided core "
+            f"clock's insertion delay: {sorted(offenders)}")
+
+    # Control levels the MAC drives toward the PHY: their sources are
+    # decoded core-domain cones (LTSSM state); the pclk boundary
+    # register must capture a CORE REGISTER, never the decode directly
+    # (the -0.021 ns fsm_state -> bridge/rx_termination setup seam at
+    # 3/1/0 on the relaunch RTL; the ltssm_in_training precedent).
+    CORE_LEVEL_SOURCES = (
+        "phy_mode", "elas_buf_mode", "power_down", "tx_deemph",
+        "tx_margin", "tx_swing", "tx_detrx_lpbk", "tx_compliance",
+        "tx_ones_zeros", "rx_polarity", "rx_eq_training",
+        "rx_termination", "tx_elec_idle", "rate", "ltssm_training",
+        "reset",
+    )
+
+    def test_core_to_pclk_levels_are_core_preregistered(self):
+        phy, dut, frag = self._elaborated()
+
+        core_regs = {}
+        for stmt in frag.statements.get("core", ()):
+            for sig in stmt._lhs_signals():
+                core_regs[id(sig)] = sig
+
+        offenders = set()
+        for stmt in frag.statements.get("ss", ()):
+            for key, sig in self._rhs_ids(stmt).items():
+                for name in self.CORE_LEVEL_SOURCES:
+                    src = getattr(dut, name, None)
+                    if src is not None and sig is src \
+                            and key not in core_regs:
+                        offenders.add(name)
+        self.assertFalse(
+            offenders,
+            f"pclk boundary registers capture MAC control levels "
+            f"directly — the decoded-LTSSM core->pclk setup seam "
+            f"(fsm_state -> rx_termination class): {sorted(offenders)}")
+
+    def test_relaunch_domain_is_falling_edge(self):
+        phy, dut, frag = self._elaborated()
+
+        neg = {name: cd for name, cd in frag.domains.items()
+               if cd.clk_edge == "neg"}
+        self.assertTrue(
+            neg, "no falling-edge relaunch domain in the bridge "
+                 "(pclk->core crossings capture same-edge)")
+        (negname,) = neg
+        writes = list(frag.statements.get(negname, ()))
+        self.assertTrue(writes, "the relaunch domain drives nothing")
+
+        # Simulate the actual extracted pair_data relaunch assignment:
+        # it must update on the FALLING edge only.
+        target = None
+        for stmt in writes:
+            for sig in stmt._lhs_signals():
+                if sig.name == "pair_data_nr":
+                    target = stmt
+        self.assertIsNotNone(
+            target,
+            f"no pair_data relaunch register in '{negname}' (lhs: "
+            f"{[s.name for w in writes for s in w._lhs_signals()]})")
+
+        m = Module()
+        cd = ClockDomain("relaunch", clk_edge="neg", reset_less=True)
+        m.domains += cd
+        m.d["relaunch"] += target
+        sim = Simulator(m)
+        pattern = 0x5A5A_A5A5_5A5A_A5A5_0123_4567_89AB_CDEF
+
+        async def bench(ctx):
+            ctx.set(cd.clk, 0)
+            ctx.set(target.rhs, pattern)
+            await ctx.delay(1e-9)
+            before = ctx.get(target.lhs)
+            ctx.set(cd.clk, 1)              # rising edge: must NOT capture
+            await ctx.delay(1e-9)
+            self.assertEqual(
+                ctx.get(target.lhs), before,
+                "relaunch register captured on the RISING pclk edge")
+            ctx.set(cd.clk, 0)              # falling edge: captures
+            await ctx.delay(1e-9)
+            self.assertEqual(ctx.get(target.lhs), pattern)
+
+        sim.add_testbench(bench)
+        sim.run()
 
 
 if __name__ == "__main__":

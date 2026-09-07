@@ -142,8 +142,8 @@ def test_gen2_build_explicitly_sets_pnr_options(board, monkeypatch, program):
         def execute_local(self, directory):
             text = self.files["luna_enum_gen2.tcl"]
             assert "set_option -bit_encrypt 0" in text
-            assert "set_option -place_option 0 -route_option 1 -timing_driven 1" in text
-            assert "set_option -clock_route_order 1 -route_maxfan 23" in text
+            assert "set_option -place_option 3 -route_option 1 -timing_driven 1" in text
+            assert "set_option -clock_route_order 0 -route_maxfan 23" in text
             assert text.count("run all") == 1
             calls.append("build")
             return "products"

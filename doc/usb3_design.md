@@ -606,6 +606,25 @@ Fmax/per-clock TNS. The latter omit failing core<->pclk paths. The Gen2
 top pre-registers the decoded LTSSM training indicator in core before
 the bridge's pclk register; no timing false paths are added.
 
+Hold hardening (finding #57, session 22): the divided core clock's
+insertion delay TRAILS pclk on silicon (fabric divider clk→Q plus a
+second global-net entry, ~0.64 ns on the GW5AT-60 candidates), so a
+core register that captured a pclk POSEDGE register on the coincident
+edge raced that skew on minimum-delay paths — the #56 candidate's 53
+related-clock hold violations (bridge/pair_data → bridge/rx_data,
+worst −0.295 ns against 0.40–0.53 ns data delays; P&R settings trials
+could not repair a systematic clock-tree offset).  Every pclk→core
+seam row above therefore relaunches ONCE on the pclk FALLING edge
+(the bridge-local `<pclk>_n` negedge domain) before its core
+register: the launch edge moves half a pclk ahead of the capture
+edge (~2.5 ns structural hold margin; >3 ns setup budget remains on
+the final hop).  Cycle-exact transparent at the nominal phase — the
+core edge sees the value from the previous pclk edge either way —
+and matches silicon-nominal old-value capture.  The core→pclk
+direction needs no relaunch: the early capture clock there ADDS hold
+margin.  No constraint was weakened; the structural fence is
+`Gen2BridgeHoldRelaunchTest` (tests/test_gen2_pipe_bridge.py).
+
 Everything else — LTSSM, timers, LFPSTransceiver (constants from
 `sync_frequency`), PHYResetController, rate FSM, link layer, protocol
 layer, endpoints, the Gen2 block engines, the Gen1

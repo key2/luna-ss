@@ -534,13 +534,18 @@ def build(do_program=False):
     plan = platform.build(LunaEnumTop(), name="luna_enum_gen2", do_build=False)
     # The generated project_process_config.json does not set these options
     # in gw_sh. Keep the platform's other options and override this top only.
+    # 3/1/0 (timing-priority placement, fanout clock order) is the measured
+    # closing setting for the #57 relaunch RTL: 0/1/1 misses setup on the
+    # Gen1-encoder/adapter pclk cones, while the falling-edge relaunch makes
+    # the bridge seam structurally immune to the hold skew that 3/1/x used
+    # to expose (HANDOVER 10ac/10ad; s22_pnr310_timing.json).
     script = plan.files["luna_enum_gen2.tcl"]
     marker = "\nrun all\n"
     if script.count(marker) != 1:
         raise RuntimeError("unexpected Gowin build script: missing unique run all")
     plan.files["luna_enum_gen2.tcl"] = script.replace(marker,
-        "\nset_option -place_option 0 -route_option 1 -timing_driven 1\n"
-        "set_option -clock_route_order 1 -route_maxfan 23\nrun all\n")
+        "\nset_option -place_option 3 -route_option 1 -timing_driven 1\n"
+        "set_option -clock_route_order 0 -route_maxfan 23\nrun all\n")
     products = plan.execute_local(str(HERE / "build"))
     if do_program:
         require_timing_met()

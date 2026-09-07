@@ -4520,19 +4520,79 @@ those listed paths. Same-generated-RTL P&R trials follow without changing RTL,
 SDC, the frequency gates, or the Gen1 build. The untouched reference is
 resident and healthy at 10000M while timing is resolved.
 
-Same-input timing trials (ALL NOT FLASHED):
+Timing trials (same RTL/CST/CSR; only the last row tightens SDC; ALL NOT FLASHED):
 
 | Settings | core / pclk / rxclk MHz | Remaining violations |
 |---|---|---|
 | 0/1/0 | 81.177 / 144.431 / 166.159 | 10 setup, 10 hold; worst -0.524 / -0.022 ns |
 | 3/1/0 | 84.277 / 157.626 / 161.451 | setup clean, 53 related-clock hold violations |
+| 2/1/0 | 88.835 / 156.549 / 161.533 | 1 related setup (-0.202 ns), 103 hold |
+| 3/1/0, explicit 50 ps hold uncertainty | 84.277 / 157.626 / 161.451 | setup clean, 53 hold; worst -0.310 ns |
 
 Artifacts: `s21_tt_pnr010*`, `s21_tt_pnr310*`. A fresh `gw_sh` project
 re-runs synthesis even with `run pnr`, and `project.vg` contains a creation
 timestamp. The first artifact wrapper over-strictly compared its raw hash;
 the completed trial was recovered/recorded separately. Subsequent trials
 hash the actual input Verilog, CST, SDC and CSR instead. Their hashes are
-printed in the tracked job, and no HDL or constraint was changed between
-these trials. The documented timing-priority place=2 is the next trial.
+printed in the tracked job. The setting-only trials change no HDL or
+constraint; the separate positive-hold experiment records its effective
+SDC hash as well. Timing-priority place=2 also failed related-clock closure.
 Hold repair (`correct_hold_violation`) is already enabled; no negative
 uncertainty, false path or relaxed clock requirement is permitted.
+
+### Timing stop and final bench state
+
+Stopped placement trials without flashing ANY #56 candidate. Place=2's
+remaining setup failure is decoded LTSSM -> bridge/rx_termination, a true
+core->pclk path. The 3/1/0 build meets frequencies/setup but its shortest
+bridge pclk->core paths have -0.295 ns hold with about 0.642 ns clock skew.
+The explicit positive hold-uncertainty experiment is recognized by STA
+(`TC_CLOCK_UNCERTAINTY: Actived`) and makes that worst slack -0.310 ns;
+it does NOT repair the route or reduce the 53 violations. The setting is
+50 ps uncertainty, not necessarily 50 ps additional to the tool's default:
+the observed change in slack is 15 ps. No weaker timing constraint was used.
+
+The experiment is ONLY `/tmp/kilo/s21_tt_hold050.sdc` and
+`s21_tt_pnr310h50.tcl`; no experimental SDC is committed. Its results are
+`s21_tt_pnr310h50.fs`, `_timing.json`, `.log`; place=2 results are
+`s21_tt_pnr210*`. **The current ignored Gen2 build image/report are this
+unsafe hold-margin trial, not the earlier fully closed W1 image.** The
+normal build still uses its original SDC and 0/1/1 settings. `top.py flash`
+correctly refuses the current image. Closing the real related-clock
+bridge/clock boundary, then re-running its fences and full timing gate,
+is required before the #56 silicon verdict. Full-128 PHY widening is NOT
+a substitute for that pending #49 verdict.
+
+#56's conformance correction and its 69/69 + Gen1 parity evidence were
+committed/pushed separately as **`7e2f464`**, after W1 **`c1f8336`** and
+public helper **`0f1a23b`**. #49 remains OPEN: initial MAC-admission stall
+is observed, missing native TT is corrected in source/sim, but the
+post-correction hardware effect is UNKNOWN. No Gen2 bulk/recovery ladder
+or physical 5G-hub fallback was run, and gw_usb3 remains `1b54cf6`.
+
+Final bench: restored `/tmp/kilo/h0_gen1_fence.fs` from the healthy
+reference baseline. **5000M on 4-3**, VID:PID 1209:0001, persistent U0.
+One MiB on each of EP1-3 is byte/SHA-exact (248.6 MB/s aggregate per
+direction in this short smoke). All three captured UART1 samples have
+ch0=0, RX CRC counters=0, flags=8. Evidence `s21_final_fence_workload.log`,
+`s21_final_fence_both.txt`, `s21_final_fence_portsc.log`. This is the
+end-of-work smoke, not a replacement for W0's full ladder. No background
+build/acquisition remains running. The pre-existing untracked redline
+conversion remains untouched and unstaged.
+
+Prepared bench runners (CLI/smoke-tested only; Gen2 verdicts NOT RUN):
+`/tmp/kilo/s21_tt_pors.py <prefix> --runs 3` reloads/checks the untouched
+reference before each gated instrumented POR, checks persistent 10000M,
+EP0 BOS50 bytes, physical PIPE TT and clean counters. The acquisition
+helper also accepts `--workload ...`, starting it only AFTER capture is
+ready and retaining a second after its exit; `s21_tt_ladder.py --recovery`
+runs 1 MiB x10 / 16 x3 / 64 x3 and injects R after the first 64-MiB
+warmup while that transfer is active. It must run under acquisition and
+only after a valid native-SSP enumeration. Isolated ftrace now uses the
+mono clock, and termination cleans up the trace instance.
+
+Coverage caution for future clock-boundary changes: the current W128
+`batt_w128_reccut.log` reports offsets 0-24 before the IN ACK is covered
+by LGOOD. Its green result alone does not prove cuts inside the emitted
+DPP; use actual packet-position witnesses when extending the parked
+sub-block recovery-cut coverage. Bug numbering remains next at **#57**.

@@ -2,6 +2,7 @@
 # This file is part of LUNA.
 #
 # Copyright (c) 2020 Great Scott Gadgets <info@greatscottgadgets.com>
+# Copyright (c) 2026 the luna-ss contributors
 # SPDX-License-Identifier: BSD-3-Clause
 """ USB3 link-layer abstraction."""
 
@@ -35,7 +36,8 @@ class USB3LinkLayer(Elaboratable):
     def __init__(self, *, physical_layer, ss_clock_frequency=125e6,
                  tseq_burst_length=65536, gen2=False,
                  polling_timeout_scale=1.0,
-                 ssp_capability=None, phy_boots_gen2=True, words=1):
+                 ssp_capability=None, phy_boots_gen2=True, words=1,
+                 endpoint_types=None):
         # Width program (usb3_design.md 13.5): ``words=2`` runs every
         # link-layer datapath at 8 symbols/beat; the EXTERNAL data
         # interface stays 32-bit behind the protocol-boundary width
@@ -48,6 +50,7 @@ class USB3LinkLayer(Elaboratable):
         self._clock_frequency   = ss_clock_frequency
         self._tseq_burst_length = tseq_burst_length
         self._gen2              = gen2
+        self._endpoint_types    = endpoint_types
         self._timeout_scale     = polling_timeout_scale
         # Advertised-highest capability + PHY boot rate: see
         # LTSSMController (defaults are elaboration-identical).
@@ -368,7 +371,7 @@ class USB3LinkLayer(Elaboratable):
         # Core transmitter.
         m.submodules.transmitter = transmitter = PacketTransmitter(
             ss_clock_frequency=self._clock_frequency, gen2=self._gen2,
-            words=self._words)
+            words=self._words, endpoint_types=self._endpoint_types)
         if self._gen2:
             m.d.comb += transmitter.gen2_active \
                 .eq(physical_layer.operating_gen2)

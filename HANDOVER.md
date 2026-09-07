@@ -4469,3 +4469,70 @@ reserved field; it does not justify assuming that malformed native
 TT=000 maps to Type1. Correct TT first, without credit-counter or
 arbiter changes, then take the repeated hardware verdict. #49 is
 still OPEN; full-128 PHY work remains gated. Numbering next: **#57**.
+
+### #56 correction under validation
+
+Native SSP endpoint registration now requires an explicit
+`endpoint_types={address: USBTransferType}` map. Standard EP0 registers
+Control; the Gen2 hardware/sim bulk pairs register their actual OUT/IN
+addresses as Bulk. No inference that every nonzero endpoint is Bulk;
+periodic types are rejected until the SSP credit/scheduling path supports
+them. Gen1 registrations and elaborations retain their default behavior.
+
+The configured type is written to the accepted ACK/DPH buffer before
+CRC generation, including ZLPs, and retained for retransmission. Encoding
+is Control=100/Bulk=110 only at the negotiated SSP rate; the Gen1 fallback
+emits zero. NRDY/ERDY/STALL/LMP fields are untouched. Bare lower-level
+transmitter users without native endpoint metadata still own their
+protocol fields. No credit-count, arbiter, PHY or recovery mechanism is
+changed in this correction.
+
+`sim_link_gen2.py` now checks TT in decoded device wire headers and sends
+legal host TT/control-direction fields before regenerating CRCs, including
+recovery retransmissions. Behavioral RED `s21_tt_enum_red.log`: actual
+ACK DW1 `00210001` and DPH DW1 `00120000` had TT=000. CRC/payload and
+enumeration checks still completed; the semantic check made the run FAIL.
+
+Focused validation: **16/16** new tests in `test_usb3_transfer_types.py`
+(both widths/rates, independent wire CRCs, actual payload/credit
+handshakes, ZLP, backpressure, input mutation, buffered replay and atomic
+registration rejection). W64 enumeration and W128 control+bulk echo are
+GREEN (`s21_tt_enum_w64.log`, `s21_tt_echo_w128_v2.log`). The first W128
+echo attempt hit the terminal's 120-second limit during elaboration and
+was rerun as a tracked job; it is not a functional failure.
+
+Battery now has **69 entries**, adding `gen2-transfer-types`. A fresh
+settled-tree battery, shipping parity and fully gated hardware build
+are required before testing #56 on silicon. Instruments/evidence were
+committed separately as `c1f8336`; #49 remains OPEN at this checkpoint.
+
+Fresh full validation: **69/69 PASS**, `s21_tt1_battery.log`; shipping
+parity **10 date bytes only** (607,608,609,611,612,614,615,617,618,620),
+pclk **139.027 MHz**, `s21_tt1_gen1.fs`. The native #56 candidate build
+MISSED: core **84.222**, pclk **136.215**, rxclk **169.067 MHz**;
+pclk setup TNS -44.960 ns, 118 setup and 9 related-clock hold violations.
+The strict gate rejected it: **NOT FLASHED**. Saved `s21_tt1_gen2.fs`,
+`s21_tt1_timing.json`, `s21_tt1_gen2_build.log`, `s21_tt1_timing_gate.log`.
+Worst setup is the existing pclk adapter ack-counter -> bridge ps-counter
+cone (-0.941 ns); the Gen1 encoder also misses at the 156.25 MHz constraint.
+Worst hold is bridge pclk -> core output (-0.026 ns). No TT logic lies on
+those listed paths. Same-generated-RTL P&R trials follow without changing RTL,
+SDC, the frequency gates, or the Gen1 build. The untouched reference is
+resident and healthy at 10000M while timing is resolved.
+
+Same-input timing trials (ALL NOT FLASHED):
+
+| Settings | core / pclk / rxclk MHz | Remaining violations |
+|---|---|---|
+| 0/1/0 | 81.177 / 144.431 / 166.159 | 10 setup, 10 hold; worst -0.524 / -0.022 ns |
+| 3/1/0 | 84.277 / 157.626 / 161.451 | setup clean, 53 related-clock hold violations |
+
+Artifacts: `s21_tt_pnr010*`, `s21_tt_pnr310*`. A fresh `gw_sh` project
+re-runs synthesis even with `run pnr`, and `project.vg` contains a creation
+timestamp. The first artifact wrapper over-strictly compared its raw hash;
+the completed trial was recovered/recorded separately. Subsequent trials
+hash the actual input Verilog, CST, SDC and CSR instead. Their hashes are
+printed in the tracked job, and no HDL or constraint was changed between
+these trials. The documented timing-priority place=2 is the next trial.
+Hold repair (`correct_hold_violation`) is already enabled; no negative
+uncertainty, false path or relaxed clock requirement is permitted.

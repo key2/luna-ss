@@ -100,6 +100,7 @@ from luna.gateware.interface.pipe import PIPEInterface
 from luna.gateware.usb.usb3.device import USBSuperSpeedDevice
 from luna.gateware.usb.usb3.descriptors import add_superspeedplus_bos
 from usb_protocol.emitters import SuperSpeedDeviceDescriptorCollection
+from usb_protocol.types import USBTransferType
 
 from gw_usb3.scramble import Scrambler, Descrambler
 from gw_usb3.tables import BLOCK_CONTROL, BLOCK_DATA, BlockType
@@ -241,8 +242,10 @@ class Bench(Elaboratable):
                 endpoint_number=1, max_packet_size=1024)
             in_ep = SuperSpeedStreamInEndpoint(
                 endpoint_number=1, max_packet_size=1024)
-            usb.add_endpoint(out_ep)
-            usb.add_endpoint(in_ep)
+            usb.add_endpoint(out_ep,
+                             endpoint_types={0x01: USBTransferType.BULK})
+            usb.add_endpoint(in_ep,
+                             endpoint_types={0x81: USBTransferType.BULK})
             m.d.comb += in_ep.stream.stream_eq(out_ep.stream)
 
         m.submodules.usb = self.usb = usb
@@ -1196,6 +1199,9 @@ class Gen2LinkHost:
     (validating the DPHSTART length replica) and DPPs, and builds the
     host's transmissions."""
 
+    # Native SSP TT: control EP0, declared bulk EP1 (both directions).
+    _tt_by_ep = {0: 0b100, 1: 0b110}
+
     def __init__(self, ctx, bench, hm, rx, model_tx, tag="ENUM"):
         self.ctx, self.bench, self.hm = ctx, bench, hm
         self.rx, self.model_tx = rx, model_tx
@@ -1322,6 +1328,19 @@ class Gen2LinkHost:
             seq = lcw & 0xF
             if crc16 != crc16_header(dws):
                 self.errors.append(f"header CRC-16 bad (dw0={dws[0]:08x})")
+            packet_type = dws[0] & 0x1F
+            if packet_type == 8 or (packet_type == 4
+                                    and (dws[1] & 0xF) == 1):
+                # TT exists only in DP/ACK, not NRDY/ERDY/STALL.
+                ep = (dws[1] >> 8) & 0xF
+                tt = (dws[1] >> 12) & 0x7
+                expected_tt = self._tt_by_ep.get(ep)
+                if expected_tt is not None and tt != expected_tt:
+                    self.errors.append(
+                        f"native SSP device "
+                        f"{'DPH' if packet_type == 8 else 'ACK'} EP{ep} "
+                        f"TT={tt:03b}, expected {expected_tt:03b} "
+                        f"(DW1=0x{dws[1]:08x}; Table 8-13 p264, bug #56)")
             if self._kind == 'dph':
                 # STRICT [7.2.1.1 Figure 7-4, 7.2.4.1.6]: TWO length
                 # replicas follow the LCW; a real xHC validates both
@@ -1361,15 +1380,25 @@ class Gen2LinkHost:
     async def send_lc(self, cmd, sub):
         await self.send_syms(link_command_syms(cmd, sub))
 
-    async def send_frame(self, frame):
-        """Send a Gen1-host-model frame dict as Gen2 constructs."""
+    async def send_frame(self, frame, *, seq=None):
+        """Send a Gen1 frame as Gen2; explicit seq preserves retry numbering."""
+        packet_type = frame["dw0"] & 0x1F
+        dw1 = frame["dw1"]
+        ep = (dw1 >> 8) & 0xF
+        if packet_type in (4, 8) and ep == 0:
+            # Control direction is zero, including IN polls [8.12.2].
+            dw1 &= ~(1 << 7)
+        if packet_type == 8 or (packet_type == 4 and (dw1 & 0xF) == 1):
+            # Replace Gen1 reserved-zero TT before regenerating CRC-16.
+            dw1 = (dw1 & ~(0x7 << 12)) | (self._tt_by_ep[ep] << 12)
+        if seq is None:
+            seq = self.tx_seq
+            self.tx_seq = (self.tx_seq + 1) & 0xF
         is_dp = frame["payload"] is not None
-        syms = header_packet_syms(frame["dw0"], frame["dw1"], frame["dw2"],
-                                  self.tx_seq,
+        syms = header_packet_syms(frame["dw0"], dw1, frame["dw2"], seq,
                                   start=DPHSTART if is_dp else HPSTART)
         if is_dp:
             syms += dpp_syms(frame["payload"])
-        self.tx_seq = (self.tx_seq + 1) & 0xF
         await self.send_syms(syms)
 
     async def expect(self, what, pred, timeout_blocks=4000, quiet=False):
@@ -2421,17 +2450,6 @@ async def run_reccut(ctx, bench, hm, rx, model_tx):
         ret_idx[1] = ret_idx[2] = 0
         return True
 
-    async def send_frame_with_seq(frame, seq):
-        """Retransmit a host frame with its ORIGINAL header sequence
-        number (rule-7 go-back-N; ``send_frame`` would renumber)."""
-        is_dp = frame["payload"] is not None
-        syms = header_packet_syms(frame["dw0"], frame["dw1"],
-                                  frame["dw2"], seq,
-                                  start=DPHSTART if is_dp else HPSTART)
-        if is_dp:
-            syms += dpp_syms(frame["payload"])
-        await host.send_syms(syms)
-
     # ── link-up + SET_ADDRESS(1) ──
     host.dev_seq = 0
     if await link_init("initial", {15}) is None:
@@ -2548,7 +2566,7 @@ async def run_reccut(ctx, bench, hm, rx, model_tx):
             # retransmission with the ORIGINAL sequence number.
             print(f"RECCUT: offset {offset}: IN ACK TP (seq {ack_seq}) "
                   f"not covered by LGOOD_{lgood}; host retransmits")
-            await send_frame_with_seq(in_ack, ack_seq)
+            await host.send_frame(in_ack, seq=ack_seq)
             if not await host.expect(
                     f"retransmitted-ACK LGOOD (offset {offset})",
                     lambda e: e[0] == 'lc' and e[1] == 0b0000

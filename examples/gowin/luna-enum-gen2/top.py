@@ -73,6 +73,7 @@ from luna.gateware.usb.usb3.endpoints.stream import SuperSpeedStreamInEndpoint
 from luna.gateware.usb.usb3.endpoints.ss_stream_out import SuperSpeedStreamOutEndpoint
 
 from usb_protocol.emitters import SuperSpeedDeviceDescriptorCollection
+from usb_protocol.types import USBTransferType
 
 from gowin_serdes.bench import AsyncSerialRX, ClockFreqProbe
 from pipe_capture import PipeBeatCapture, capture_events
@@ -292,12 +293,12 @@ class LunaEnumTop(Elaboratable):
         for ep in BULK_EPS:
             out_ep = SuperSpeedStreamOutEndpoint(
                 endpoint_number=ep, max_packet_size=1024, max_burst=1)
-            usb.add_endpoint(out_ep)
+            usb.add_endpoint(out_ep, endpoint_types={ep: USBTransferType.BULK})
 
             in_ep = SuperSpeedStreamInEndpoint(
                 endpoint_number=ep, max_packet_size=1024,
                 generate_zlps=False, max_burst=1)
-            usb.add_endpoint(in_ep)
+            usb.add_endpoint(in_ep, endpoint_types={0x80 | ep: USBTransferType.BULK})
 
             # Per-pair elastic loopback buffer (bug #35: the bench xHC
             # pipelines its whole scheduling window at transfer start;

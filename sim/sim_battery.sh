@@ -173,6 +173,14 @@ if .venv/bin/python -u -m pytest tests/test_pipe_capture.py tests/test_gen2_tx_c
 else
     echo "FAIL gen2-tx-instruments <<<<<<<<"
 fi
+# #56: native SSP ACK/DPH Transfer Type, explicit endpoint metadata,
+# both widths/rates, buffered retransmission and actual serialized CRCs.
+# RED: decoded full-device ACK/DPH carried TT=000 instead of Control=100.
+if .venv/bin/python -u -m pytest tests/test_usb3_transfer_types.py -q > /tmp/kilo/batt_gen2_transfer_types.log 2>&1; then
+    echo "PASS gen2-transfer-types"
+else
+    echo "FAIL gen2-transfer-types <<<<<<<<"
+fi
 # Gen2 TX request-seam conformance (session 16, bug #46; the #45 sim
 # leads of HANDOVER 10u): 1-cycle idle_mode blips at every alignment
 # must never truncate a 132-bit block on the PIPE or disturb the

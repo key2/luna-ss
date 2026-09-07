@@ -14,6 +14,7 @@ import logging
 from amaranth import *
 
 from usb_protocol.emitters import DeviceDescriptorCollection
+from usb_protocol.types import USBTransferType
 
 # USB3 Protocol Stack
 from .physical             import USB3PhysicalLayer
@@ -76,6 +77,8 @@ class USBSuperSpeedDevice(Elaboratable):
 
         # Create a collection of endpoints for this device.
         self._endpoints = []
+        if self._gen2:
+            self._endpoint_types = {}
 
         #
         # I/O port
@@ -172,7 +175,7 @@ class USBSuperSpeedDevice(Elaboratable):
         self.ep_tx_length        = Signal(range(1024 + 1))
 
 
-    def add_endpoint(self, endpoint):
+    def add_endpoint(self, endpoint, *, endpoint_types=None):
         """ Adds an endpoint interface to the device.
 
         Parameters
@@ -180,7 +183,31 @@ class USBSuperSpeedDevice(Elaboratable):
         endpoint: Elaborateable
             The endpoint interface to be added. Can be any piece of gateware with a
             :class:`EndpointInterface` attribute called ``interface``.
+        endpoint_types: dict[int, USBTransferType]
+            Required for SSP-capable devices: endpoint address (including the
+            direction bit) to transfer type. Control endpoints use the OUT
+            address for both directions, as required by section 8.12.2. Only
+            Control and Bulk are currently supported by the SSP credit path.
         """
+        if self._gen2:
+            if not endpoint_types:
+                raise ValueError("SSP endpoints require explicit endpoint_types")
+            types = {}
+            for address, transfer_type in endpoint_types.items():
+                if (not isinstance(address, int) or not 0 <= address <= 0x8f
+                        or address & 0x70):
+                    raise ValueError(f"invalid endpoint address: {address!r}")
+                transfer_type = USBTransferType(transfer_type)
+                if transfer_type not in (USBTransferType.CONTROL, USBTransferType.BULK):
+                    raise ValueError("periodic SSP endpoints are not supported by the credit path")
+                if transfer_type == USBTransferType.CONTROL and address & 0x80:
+                    raise ValueError("control endpoint metadata must use its OUT address")
+                if (address & 15) == 0 and transfer_type != USBTransferType.CONTROL:
+                    raise ValueError("endpoint zero must use the Control transfer type")
+                if address in self._endpoint_types:
+                    raise ValueError(f"duplicate endpoint type registration: {address:#04x}")
+                types[address] = transfer_type
+            self._endpoint_types.update(types)
         self._endpoints.append(endpoint)
 
 
@@ -201,7 +228,10 @@ class USBSuperSpeedDevice(Elaboratable):
 
         control_endpoint = USB3ControlEndpoint()
         control_endpoint.add_standard_request_handlers(descriptors)
-        self.add_endpoint(control_endpoint)
+        if self._gen2:
+            self.add_endpoint(control_endpoint, endpoint_types={0: USBTransferType.CONTROL})
+        else:
+            self.add_endpoint(control_endpoint)
 
         return control_endpoint
 
@@ -258,7 +288,8 @@ class USBSuperSpeedDevice(Elaboratable):
             polling_timeout_scale=self._timeout_scale,
             ssp_capability=self._ssp_capability,
             phy_boots_gen2=self._phy_boots_gen2,
-            words=self._words)
+            words=self._words,
+            endpoint_types=self._endpoint_types if self._gen2 else None)
         m.d.comb += [
             self.link_trained     .eq(link.trained),
             self.link_in_reset    .eq(link.in_reset),

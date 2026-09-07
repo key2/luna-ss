@@ -2,6 +2,7 @@
 # This file is part of LUNA.
 #
 # Copyright (c) 2020 Great Scott Gadgets <info@greatscottgadgets.com>
+# Copyright (c) 2026 the luna-ss contributors
 # SPDX-License-Identifier: BSD-3-Clause
 """ Packet transmission handling gateware. """
 
@@ -837,7 +838,7 @@ class PacketTransmitter(Elaboratable):
     CREDIT_TIMEOUT = 5e-3
 
     def __init__(self, *, buffer_count=4, ss_clock_frequency=125e6,
-                 gen2=False, words=1):
+                 gen2=False, words=1, endpoint_types=None):
         self._buffer_count    = buffer_count
         self._clock_frequency = ss_clock_frequency
         # Width program: ``words`` sizes the streams and the raw
@@ -851,6 +852,9 @@ class PacketTransmitter(Elaboratable):
         # the SSP trims at runtime (a dual-rate device that negotiated
         # 5G runs the SuperSpeed rules: modulo-8, single credit class).
         self._gen2 = gen2
+        # Native-device endpoint metadata, validated at registration. When
+        # absent, lower-level users supply their own protocol header fields.
+        self._endpoint_types = dict(endpoint_types) if endpoint_types is not None else None
 
         #
         # I/O port
@@ -1070,6 +1074,23 @@ class PacketTransmitter(Elaboratable):
             if not self._gen2:
                 m.d.ss += transmit_sequence_number.eq(transmit_sequence_number + 1)
             else:
+                if self._endpoint_types is not None:
+                    # #56: native SSP ACKs and DPHs require TT [Table 8-13].
+                    # Annotate the accepted header before CRC generation; its
+                    # endpoint/direction are already frozen by the producer.
+                    # ZLP and retransmission headers take this same path.
+                    header = self.queue.header
+                    is_ack = ((header.dw0[:5] == HeaderPacketType.TRANSACTION)
+                              & (header.dw1[:4] == 1))
+                    with m.If((header.dw0[:5] == HeaderPacketType.DATA) | is_ack):
+                        m.d.ss += buffers[write_pointer].dw1[12:15].eq(0)
+                        with m.If(self.gen2_active):
+                            with m.Switch(Cat(header.dw1[8:12], header.dw1[7])):
+                                for address, transfer_type in self._endpoint_types.items():
+                                    with m.Case((address & 15) | ((address >> 7) << 4)):
+                                        m.d.ss += buffers[write_pointer].dw1[12:15].eq(
+                                            0b100 | int(transfer_type))
+
                 # The 4-bit sequence number's top bit rides in the Link
                 # Control Word's (SS-reserved) bit 19, i.e. in
                 # ``dw3_reserved[0]`` -- the CRC-5 and the DW3 packing
